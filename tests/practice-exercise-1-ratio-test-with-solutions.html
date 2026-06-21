@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise 1 - Ratio Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 700;
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #3d66b2; }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: #243447;
+    }
+
+    .solution h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .solution p { margin: 6px 0; }
+
+    @media (max-width: 700px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Practice Exercise - 1</h1>
+        <div class="meta">Ratio and Proportion | 15 Questions | 40 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">40:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        level: "Level of difficulty - 1",
+        q: "P and Q together have Rs. 1,210. If 4/15 of P's amount is equal to 2/5 of Q's amount, how much amount does Q have?",
+        options: ["Rs. 484", "Rs. 605", "Rs. 726", "Rs. 806"],
+        answer: 0,
+        solution: "Since (4/15)P = (2/5)Q, P = (3/2)Q. Therefore P:Q = 3:2. Q's share = 2/5 of 1,210 = Rs. 484."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "Two quantities are, respectively, 30% and 60% more than a third quantity. What is their ratio?",
+        options: ["13:16", "16:13", "3:5", "5:8"],
+        answer: 0,
+        solution: "Let the third quantity be 100x. The two quantities are 130x and 160x. Their ratio is 130:160 = 13:16."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "The ratio of dogs and cats in a house is 3:2 and the ratio of cats and birds is 4:5. Find the ratio of dogs, cats, and birds in the same house.",
+        options: ["3:4:5", "6:4:5", "6:8:5", "12:8:10"],
+        answer: 1,
+        solution: "Dogs:cats = 3:2. Cats:birds = 4:5. Make cats equal by multiplying the first ratio by 2, giving dogs:cats = 6:4. Therefore dogs:cats:birds = 6:4:5."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "Rs. 3,105 is to be divided among P, Q, and R in the ratio of 2/3 : 3/4 : 1/2, respectively. How much amount will Q get?",
+        options: ["Rs. 945", "Rs. 1,080", "Rs. 1,215", "Rs. 1,350"],
+        answer: 2,
+        solution: "Multiply 2/3 : 3/4 : 1/2 by the LCM 12 to get 8:9:6. Total units = 23. One unit = 3,105/23 = 135. Q's share = 9 x 135 = Rs. 1,215."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "Find the compounded ratio of (2:3), (5:11), and (11:2).",
+        options: ["3:5", "5:3", "10:33", "11:15"],
+        answer: 1,
+        solution: "The compounded ratio is (2/3) x (5/11) x (11/2) = 5/3. Hence, the ratio is 5:3."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "The value of a diamond varies directly with the square of its weight. A diamond broke into three pieces whose weights were in the ratio 32:24:9. The loss caused due to the breakage was Rs. 25.44 lakhs. Find the initial value of the diamond.",
+        options: ["Rs. 25.44 lakhs", "Rs. 36.25 lakhs", "Rs. 42.25 lakhs", "Rs. 50.75 lakhs"],
+        answer: 2,
+        solution: "Let the weights be 32x, 24x, and 9x. Initial weight = 65x. Since value is proportional to weight squared, initial value = k(65x)^2 = 4,225kx^2. Broken value = k[(32x)^2 + (24x)^2 + (9x)^2] = 1,681kx^2. Loss = 2,544kx^2 = Rs. 25.44 lakhs, so kx^2 = 1,000. Initial value = 4,225 x 1,000 = Rs. 42.25 lakhs."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "Raghav distributed a certain amount of money among his friends Ankur, Ashwani, and Neeti in the ratio of 3:4:5. Neeti distributed her total amount among Dheeraj, Sunil, and Surendra in the ratio of 6:7:8. If Dheeraj gets Rs. 3,000, find the amount that Ashwani got from Raghav.",
+        options: ["Rs. 6,400", "Rs. 7,200", "Rs. 8,400", "Rs. 9,600"],
+        answer: 2,
+        solution: "Let Ankur, Ashwani, and Neeti get 3x, 4x, and 5x. Let Dheeraj, Sunil, and Surendra get 6y, 7y, and 8y. Neeti's amount gives 5x = 21y. Given 6y = 3,000, so y = 500. Then x = (21/5) x 500 = 2,100. Ashwani gets 4x = Rs. 8,400."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "The ratio of income to expenditure of P is 5:3 and that of Q is 7:6. If the savings of P are twice that of Q, then what is the ratio of the total income of P and Q to the total expenditure of P and Q?",
+        options: ["3:2", "4:3", "5:4", "7:5"],
+        answer: 1,
+        solution: "Let P's income and expenditure be 5x and 3x, so P's saving = 2x. Let Q's income and expenditure be 7y and 6y, so Q's saving = y. Given P's saving is twice Q's saving, 2x = 2y, so x = y. Total income : total expenditure = (5x + 7x):(3x + 6x) = 12x:9x = 4:3."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "During Navratri, every devotee offers fruits to the orphans. Every orphan received bananas, oranges, and mangoes in the ratio 3:2:7. The weight of a mango is 24 g and the weights of a banana and an orange are in the ratio 4:5. The weight of an orange is 150 g. Find the ratio of all three fruits in terms of weight that an orphan gets.",
+        options: ["20:25:14", "24:30:7", "30:25:14", "45:50:28"],
+        answer: 2,
+        solution: "Banana:orange weight = 4:5 and orange = 150 g, so banana = 120 g. Number of fruits = 3:2:7. Total weights = 3 x 120 : 2 x 150 : 7 x 24 = 360:300:168 = 30:25:14."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "Rs. 4,199 was intended to be divided among P, Q, R, and S in the ratio of 2:3:5:7, respectively. By mistake, the money is divided in the reciprocal of the intended ratio. Find the gain of P due to this mistake.",
+        options: ["Rs. 1,235", "Rs. 741", "Rs. 1,291", "None of the above"],
+        answer: 2,
+        solution: "Intended share of P = (2/17) x 4,199 = Rs. 494. Mistaken ratio = 1/2:1/3:1/5:1/7. Multiplying by LCM 210 gives 105:70:42:30. Mistaken share of P = (105/247) x 4,199 = Rs. 1,785. Gain = 1,785 - 494 = Rs. 1,291."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "Let A, B, C, D, and E be positive integers such that (2/3)A = (3/4)B = (5/6)C and (7/8)B = (9/10)D = (11/12)E. Find the minimum value of A + B + C + D + E.",
+        options: ["18,450", "19,609", "20,790", "24,700"],
+        answer: 1,
+        solution: "From (2/3)A = (3/4)B = (5/6)C, multiplying by 12 gives 8A = 9B = 10C. From (7/8)B = (9/10)D = (11/12)E, multiplying by 120 gives 105B = 108D = 110E. Combining conditions gives 280A = 315B = 350C and 315B = 324D = 330E. The least common value is LCM(280,315,350,324,330) = 1,247,400. Therefore A, B, C, D, E are 4,455, 3,960, 3,564, 3,850, and 3,780. Their sum is 19,609."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "The number of mangoes in three containers is in the ratio 3:4:5. In which ratio must the number of mangoes in the first two containers be increased, so the new ratio becomes 5:4:3?",
+        options: ["5:4", "3:1", "2:1", "4:1"],
+        answer: 2,
+        solution: "Initially C1:C2:C3 = 3x:4x:5x. Finally C1:C2:C3 = 5y:4y:3y. Since the third container is unchanged, 5x = 3y. Thus x = 3y/5. Initial first two containers are 9y/5 and 12y/5, while final first two are 5y and 4y. Increases are 16y/5 and 8y/5, so the required ratio is 2:1."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "Pyare Lal Ji sells gulab-jamun at Rs. 15 per kg. A gulab-jamun is made up of flour and sugar in the ratio of 5:3. The ratio of the price of sugar and flour is 7:3 per kg. He earns 66 2/3% profit. What is the cost price per kg of sugar?",
+        options: ["Rs. 12", "Rs. 14", "Rs. 16", "Rs. 18"],
+        answer: 1,
+        solution: "A 66 2/3% profit means profit is 2 units when CP is 3 units, so SP is 5 units. If SP = Rs. 15, then 1 unit = Rs. 3 and CP per kg of gulab-jamun = Rs. 9. In 1 kg, flour = 625 g and sugar = 375 g. Let flour cost per gram = 3K and sugar cost per gram = 7K. Total cost = 625 x 3K + 375 x 7K = 4,500K = Rs. 9, so K = 1/500. Sugar cost per kg = 7,000K = Rs. 14."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "In an examination of 1,260 students, the ratio of the number of boys to the number of girls is 3:4. The ratio of students who passed the exam to those who failed is 11:3. Among the girls, the ratio of passed to failed is 11:4. Find the number of boys who passed.",
+        options: ["462", "528", "990", "270"],
+        answer: 0,
+        solution: "Boys = 1,260 x 3/7 = 540 and girls = 720. Total passed = 1,260 x 11/14 = 990. Girls passed = 720 x 11/15 = 528. Therefore boys passed = 990 - 528 = 462."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "Three employees of an IT company started a business. Employee 1 invested Rs. 30,000 for 5 months. After this, he again invested Rs. 20,000 extra for the rest of the year. Employee 2 invested Rs. 60,000 after 6 months of the start of the business. Employee 3 invested Rs. 50,000 for the first 8 months, then he took out Rs. 20,000. Find the share of the second employee in the total profit, if the total profit at the end of 1 year is Rs. 7,65,900.",
+        options: ["Rs. 1,55,400", "Rs. 1,99,800", "Rs. 2,22,000", "Rs. 2,88,600"],
+        answer: 1,
+        solution: "Capital-time values are Employee 1 = 30,000 x 5 + 50,000 x 7 = 500,000; Employee 2 = 60,000 x 6 = 360,000; Employee 3 = 50,000 x 8 + 30,000 x 4 = 520,000. Profit ratio = 50:36:52 = 25:18:26. Total units = 69. One unit = 7,65,900/69 = Rs. 11,100. Employee 2 gets 18 units = Rs. 1,99,800."
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 40 * 60;
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      form.innerHTML = html + `
+        <div class="actions">
+          <button type="submit">Submit Test</button>
+        </div>
+      `;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const correctText = `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+
+        solution.style.display = "block";
+
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (Number(selected.value) === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctText}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

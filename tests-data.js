@@ -1,0 +1,943 @@
+﻿window.CAT_TESTS = [
+    {
+        "title":  "apti4all-profit-loss-page1",
+        "file":  "tests/apti4all-profit-loss-page1.html",
+        "original":  "apti4all-profit-loss-page1.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  null,
+        "questions":  null
+    },
+    {
+        "title":  "apti4all-profit-loss-page2",
+        "file":  "tests/apti4all-profit-loss-page2.html",
+        "original":  "apti4all-profit-loss-page2.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  null,
+        "questions":  null
+    },
+    {
+        "title":  "Arithmetic DPP 03 MBA Pro 2025 Test",
+        "file":  "tests/arithmetic-dpp-03-mba-pro-2025-test.html",
+        "original":  "Arithmetic DPP 03 MBA Pro 2025 Test.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Arithmetic DPP 04 MBA Pro 2025 Test",
+        "file":  "tests/arithmetic-dpp-04-mba-pro-2025-test.html",
+        "original":  "Arithmetic DPP 04 MBA Pro 2025 Test.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Average Test -2 40 Minute Test",
+        "file":  "tests/average-test-2-40-minute-test.html",
+        "original":  "Average Test -2 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Average",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Average Test -3 40 Minute Test",
+        "file":  "tests/average-test-3-40-minute-test.html",
+        "original":  "Average Test -3 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Average",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  1
+    },
+    {
+        "title":  "Average Test -4 40 Minute Test",
+        "file":  "tests/average-test-4-40-minute-test.html",
+        "original":  "Average Test -4 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Average",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Average Test 5 75 Minute Test",
+        "file":  "tests/average-test-5-75-minute-test.html",
+        "original":  "Average Test 5 75 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Average",
+        "type":  "Topic Wise Test",
+        "minutes":  75,
+        "questions":  null
+    },
+    {
+        "title":  "Avrage Test -1 40 Minute Test",
+        "file":  "tests/avrage-test-1-40-minute-test.html",
+        "original":  "Avrage Test -1 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Average",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Balance Weights 10 Minute Test",
+        "file":  "tests/balance-weights-10-minute-test.html",
+        "original":  "Balance Weights 10 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  10,
+        "questions":  null
+    },
+    {
+        "title":  "Beauty Contest Gowns 15 Minute Test",
+        "file":  "tests/beauty-contest-gowns-15-minute-test.html",
+        "original":  "Beauty Contest Gowns 15 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  15,
+        "questions":  5
+    },
+    {
+        "title":  "Careerlauncher Arithetic Advance test",
+        "file":  "tests/careerlauncher-arithetic-advance-test.html",
+        "original":  "Careerlauncher Arithetic Advance test.html",
+        "area":  "Quant",
+        "topic":  "Mixed Practice",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  18
+    },
+    {
+        "title":  "Careerlauncher Arithetic Basic test",
+        "file":  "tests/careerlauncher-arithetic-basic-test.html",
+        "original":  "Careerlauncher Arithetic Basic test.html",
+        "area":  "Quant",
+        "topic":  "Mixed Practice",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  32
+    },
+    {
+        "title":  "Careerlauncher Arithetic Intermediate test",
+        "file":  "tests/careerlauncher-arithetic-intermediate-test.html",
+        "original":  "Careerlauncher Arithetic Intermediate test.html",
+        "area":  "Quant",
+        "topic":  "Mixed Practice",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  30
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -1",
+        "file":  "tests/careerlauncher-logical-reasoning-basic-test-part-1.html",
+        "original":  "Careerlauncher Logical Reasoning Basic test Part -1.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  35
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -2",
+        "file":  "tests/careerlauncher-logical-reasoning-basic-test-part-2.html",
+        "original":  "Careerlauncher Logical Reasoning Basic test Part -2.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  35
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -3",
+        "file":  "tests/careerlauncher-logical-reasoning-basic-test-part-3.html",
+        "original":  "Careerlauncher Logical Reasoning Basic test Part -3.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  34
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -1",
+        "file":  "tests/careerlauncher-logical-reasoning-intermediate-test-part-1.html",
+        "original":  "Careerlauncher Logical Reasoning Intermediate test Part -1.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -2",
+        "file":  "tests/careerlauncher-logical-reasoning-intermediate-test-part-2.html",
+        "original":  "Careerlauncher Logical Reasoning Intermediate test Part -2.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -3",
+        "file":  "tests/careerlauncher-logical-reasoning-intermediate-test-part-3.html",
+        "original":  "Careerlauncher Logical Reasoning Intermediate test Part -3.html",
+        "area":  "LRDI",
+        "topic":  "Logical Reasoning",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Numbers Advance test",
+        "file":  "tests/careerlauncher-numbers-advance-test.html",
+        "original":  "Careerlauncher Numbers Advance test.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  16
+    },
+    {
+        "title":  "Careerlauncher Numbers Basic test",
+        "file":  "tests/careerlauncher-numbers-basic-test.html",
+        "original":  "Careerlauncher Numbers Basic test.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  29
+    },
+    {
+        "title":  "Careerlauncher Numbers Intermediate test Part -1",
+        "file":  "tests/careerlauncher-numbers-intermediate-test-part-1.html",
+        "original":  "Careerlauncher Numbers Intermediate test Part -1.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  33
+    },
+    {
+        "title":  "Careerlauncher Numbers Intermediate test Part -2",
+        "file":  "tests/careerlauncher-numbers-intermediate-test-part-2.html",
+        "original":  "Careerlauncher Numbers Intermediate test Part -2.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  60,
+        "questions":  33
+    },
+    {
+        "title":  "CAT Arithmetic ( Percentage , Profit Loss , SICI ) TEST Part -1",
+        "file":  "tests/cat-arithmetic-percentage-profit-loss-sici-test-part-1.html",
+        "original":  "CAT Arithmetic ( Percentage , Profit Loss , SICI ) TEST Part -1.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  1
+    },
+    {
+        "title":  "CAT Arithmetic ( Percentage , Profit Loss , SICI ) Test part -2 ( time 40 Minutes )",
+        "file":  "tests/cat-arithmetic-percentage-profit-loss-sici-test-part-2-time-40-minutes.html",
+        "original":  "CAT Arithmetic ( Percentage , Profit Loss , SICI ) Test part -2 ( time 40 Minutes ).html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  1
+    },
+    {
+        "title":  "CAT Percentage PYQ Test CL Jaipur",
+        "file":  "tests/cat-percentage-pyq-test-cl-jaipur.html",
+        "original":  "CAT Percentage PYQ Test CL Jaipur.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  150,
+        "questions":  59
+    },
+    {
+        "title":  "CAT Profit Loss PYQ 15 Inch Desktop Test",
+        "file":  "tests/cat-profit-loss-pyq-15-inch-desktop-test.html",
+        "original":  "CAT Profit Loss PYQ 15 Inch Desktop Test.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  95,
+        "questions":  null
+    },
+    {
+        "title":  "CAT Ratio Proportion Variation PYQ Test CL Jaipur",
+        "file":  "tests/cat-ratio-proportion-variation-pyq-test-cl-jaipur.html",
+        "original":  "CAT Ratio Proportion Variation PYQ Test CL Jaipur.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  90,
+        "questions":  35
+    },
+    {
+        "title":  "Chess Tournament Companions 20 Minute Test",
+        "file":  "tests/chess-tournament-companions-20-minute-test.html",
+        "original":  "Chess Tournament Companions 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  20,
+        "questions":  7
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -1 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-1-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -1 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -2 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-2-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -2 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -3 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-3-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -3 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -4 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-4-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -4 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -41 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-41-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -41 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -5 20 Minute Test",
+        "file":  "tests/cl-jaipur-repeaters-batch-lrdi-set-5-20-minute-test.html",
+        "original":  "CL Jaipur Repeaters Batch LRDI SET -5 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Sectional Test",
+        "minutes":  20,
+        "questions":  1
+    },
+    {
+        "title":  "Delivery Packages 15 Minute Test",
+        "file":  "tests/delivery-packages-15-minute-test.html",
+        "original":  "Delivery Packages 15 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  15,
+        "questions":  5
+    },
+    {
+        "title":  "DI - BAR graph 02 40 Minute Test",
+        "file":  "tests/di-bar-graph-02-40-minute-test.html",
+        "original":  "DI - BAR graph 02 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI - Bar Graph -1 40 Minute Test",
+        "file":  "tests/di-bar-graph-1-40-minute-test.html",
+        "original":  "DI - Bar Graph -1 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI - Line Graph -2 40 Minute Test",
+        "file":  "tests/di-line-graph-2-40-minute-test.html",
+        "original":  "DI - Line Graph -2 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI - Table -1 40 Minute Test",
+        "file":  "tests/di-table-1-40-minute-test.html",
+        "original":  "DI - Table -1 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI LINE GRAPH -1 ( 40 MINUTES )",
+        "file":  "tests/di-line-graph-1-40-minutes.html",
+        "original":  "DI LINE GRAPH -1 ( 40 MINUTES ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI PIE CHART -1 ( 40 MINUTES )",
+        "file":  "tests/di-pie-chart-1-40-minutes.html",
+        "original":  "DI PIE CHART -1 ( 40 MINUTES ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI PIE CHART -2 ( 40 MINUTES )",
+        "file":  "tests/di-pie-chart-2-40-minutes.html",
+        "original":  "DI PIE CHART -2 ( 40 MINUTES ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DI Table -2 40 Minute Test",
+        "file":  "tests/di-table-2-40-minute-test.html",
+        "original":  "DI Table -2 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Digit Grid Puzzle 5 Minute Test",
+        "file":  "tests/digit-grid-puzzle-5-minute-test.html",
+        "original":  "Digit Grid Puzzle 5 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  5,
+        "questions":  1
+    },
+    {
+        "title":  "DILR - Games \u0026 Tournaments -1 40 Minute Test",
+        "file":  "tests/dilr-games-and-tournaments-1-40-minute-test.html",
+        "original":  "DILR - Games \u0026 Tournaments -1 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Games and Tournaments",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DILR - Games \u0026 Tournaments -2 40 Minute Test",
+        "file":  "tests/dilr-games-and-tournaments-2-40-minute-test.html",
+        "original":  "DILR - Games \u0026 Tournaments -2 40 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "Games and Tournaments",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DILR - Network \u0026 3D diagram ( 40 minutes )",
+        "file":  "tests/dilr-network-and-3d-diagram-40-minutes.html",
+        "original":  "DILR - Network \u0026 3D diagram ( 40 minutes ).html",
+        "area":  "LRDI",
+        "topic":  "Mixed Practice",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DILR - Reasoning based DI Test -1 ( 40 Minutes )",
+        "file":  "tests/dilr-reasoning-based-di-test-1-40-minutes.html",
+        "original":  "DILR - Reasoning based DI Test -1  ( 40 Minutes ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "DPP 01 Ratio and Proportion Test",
+        "file":  "tests/dpp-01-ratio-and-proportion-test.html",
+        "original":  "DPP 01 Ratio and Proportion Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  30,
+        "questions":  null
+    },
+    {
+        "title":  "DPP 03 Ratio Proportion Basic to Moderate Test",
+        "file":  "tests/dpp-03-ratio-proportion-basic-to-moderate-test.html",
+        "original":  "DPP 03 Ratio Proportion Basic to Moderate Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "DPP 04 Ratio Proportion Partnership Variation Test",
+        "file":  "tests/dpp-04-ratio-proportion-partnership-variation-test.html",
+        "original":  "DPP 04 Ratio Proportion Partnership Variation Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "DPP 05 Ratio Proportion Advance PYQ Test",
+        "file":  "tests/dpp-05-ratio-proportion-advance-pyq-test.html",
+        "original":  "DPP 05 Ratio Proportion Advance PYQ Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "DPP 10 Profit Loss Discount CAT Desktop Test",
+        "file":  "tests/dpp-10-profit-loss-discount-cat-desktop-test.html",
+        "original":  "DPP 10 Profit Loss Discount CAT Desktop Test.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  30,
+        "questions":  null
+    },
+    {
+        "title":  "IMS Arithmetic Basic 41 Question Test Offline",
+        "file":  "tests/ims-arithmetic-basic-41-question-test-offline.html",
+        "original":  "IMS Arithmetic Basic 41 Question Test Offline.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  41,
+        "questions":  41
+    },
+    {
+        "title":  "IMS Arithmetic Basic 41 Question Test",
+        "file":  "tests/ims-arithmetic-basic-41-question-test.html",
+        "original":  "IMS Arithmetic Basic 41 Question Test.html",
+        "area":  "Quant",
+        "topic":  "Arithmetic",
+        "type":  "Sectional Test",
+        "minutes":  41,
+        "questions":  41
+    },
+    {
+        "title":  "International Economics Association 10 Minute Test",
+        "file":  "tests/international-economics-association-10-minute-test.html",
+        "original":  "International Economics Association 10 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  10,
+        "questions":  2
+    },
+    {
+        "title":  "Linear Equation Basics -1",
+        "file":  "tests/linear-equation-basics-1.html",
+        "original":  "Linear Equation Basics -1.html",
+        "area":  "Quant",
+        "topic":  "Linear Equations",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Linear Equation Basics -2",
+        "file":  "tests/linear-equation-basics-2.html",
+        "original":  "Linear Equation Basics -2.html",
+        "area":  "Quant",
+        "topic":  "Linear Equations",
+        "type":  "Topic Wise Test",
+        "minutes":  44,
+        "questions":  1
+    },
+    {
+        "title":  "Linear Equation Basics -3",
+        "file":  "tests/linear-equation-basics-3.html",
+        "original":  "Linear Equation Basics -3.html",
+        "area":  "Quant",
+        "topic":  "Linear Equations",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Manufacturing Job Scheduling 15 Minute Test",
+        "file":  "tests/manufacturing-job-scheduling-15-minute-test.html",
+        "original":  "Manufacturing Job Scheduling 15 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  15,
+        "questions":  5
+    },
+    {
+        "title":  "Percentage Advance Quant Test",
+        "file":  "tests/percentage-advance-quant-test.html",
+        "original":  "Percentage Advance Quant Test.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Percentage Basic Quant Test",
+        "file":  "tests/percentage-basic-quant-test.html",
+        "original":  "Percentage Basic Quant Test.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Percentage MOCK PYQ CAT level -1",
+        "file":  "tests/percentage-mock-pyq-cat-level-1.html",
+        "original":  "Percentage MOCK PYQ CAT level -1 .html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  null,
+        "questions":  1
+    },
+    {
+        "title":  "Percentage Profit Loss 120 Minute Test",
+        "file":  "tests/percentage-profit-loss-120-minute-test.html",
+        "original":  "Percentage Profit Loss 120 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  120,
+        "questions":  1
+    },
+    {
+        "title":  "Percentage Profit Loss 60 Minute Test",
+        "file":  "tests/percentage-profit-loss-60-minute-test.html",
+        "original":  "Percentage Profit Loss 60 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Percentages \u0026 Profit \u0026 Loss basis -1",
+        "file":  "tests/percentages-and-profit-and-loss-basis-1.html",
+        "original":  "Percentages \u0026 Profit \u0026 Loss basis -1.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  100,
+        "questions":  1
+    },
+    {
+        "title":  "Political Parties Constituencies 10 Minute Test",
+        "file":  "tests/political-parties-constituencies-10-minute-test.html",
+        "original":  "Political Parties Constituencies 10 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  10,
+        "questions":  2
+    },
+    {
+        "title":  "Practice Exercise 1 Percentage Test with Solutions",
+        "file":  "tests/practice-exercise-1-percentage-test-with-solutions.html",
+        "original":  "Practice Exercise 1 Percentage Test with Solutions.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Practice Exercise 1 Profit Loss Test with Solutions",
+        "file":  "tests/practice-exercise-1-profit-loss-test-with-solutions.html",
+        "original":  "Practice Exercise 1 Profit Loss Test with Solutions.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Practice Exercise 1 Ratio Test with Solutions",
+        "file":  "tests/practice-exercise-1-ratio-test-with-solutions.html",
+        "original":  "Practice Exercise 1 Ratio Test with Solutions.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Practice Exercise 2 Percentage Test with Solutions",
+        "file":  "tests/practice-exercise-2-percentage-test-with-solutions.html",
+        "original":  "Practice Exercise 2 Percentage Test with Solutions.html",
+        "area":  "Quant",
+        "topic":  "Percentage",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Practice Exercise 2 Ratio Proportion Test with Solutions",
+        "file":  "tests/practice-exercise-2-ratio-proportion-test-with-solutions.html",
+        "original":  "Practice Exercise 2 Ratio Proportion Test with Solutions.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Profit Loss and Discount 2 Secure Test 90 Minutes",
+        "file":  "tests/profit-loss-and-discount-2-secure-test-90-minutes.html",
+        "original":  "Profit Loss and Discount 2 Secure Test 90 Minutes.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  90,
+        "questions":  null
+    },
+    {
+        "title":  "Profit Loss and Discount Full Test 46 Questions",
+        "file":  "tests/profit-loss-and-discount-full-test-46-questions.html",
+        "original":  "Profit Loss and Discount Full Test 46 Questions.html",
+        "area":  "Quant",
+        "topic":  "Profit Loss",
+        "type":  "Topic Wise Test",
+        "minutes":  90,
+        "questions":  null
+    },
+    {
+        "title":  "QA Daily Dose Test",
+        "file":  "tests/qa-daily-dose-test.html",
+        "original":  "QA Daily Dose Test.html",
+        "area":  "Quant",
+        "topic":  "Mixed Practice",
+        "type":  "Sectional Test",
+        "minutes":  15,
+        "questions":  null
+    },
+    {
+        "title":  "Rahul Astrologer Choices 20 Minute Test",
+        "file":  "tests/rahul-astrologer-choices-20-minute-test.html",
+        "original":  "Rahul Astrologer Choices 20 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  20,
+        "questions":  7
+    },
+    {
+        "title":  "Ratio Proportion -2 Advance 60 Minute Test",
+        "file":  "tests/ratio-proportion-2-advance-60-minute-test.html",
+        "original":  "Ratio Proportion -2 Advance 60 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "Ratio proportion basics -3",
+        "file":  "tests/ratio-proportion-basics-3.html",
+        "original":  "Ratio proportion basics -3.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Ratio Proportion Test -1 40 Minute Test",
+        "file":  "tests/ratio-proportion-test-1-40-minute-test.html",
+        "original":  "Ratio Proportion Test -1 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Ratio proportion variation - basic -1",
+        "file":  "tests/ratio-proportion-variation-basic-1.html",
+        "original":  "Ratio proportion variation - basic -1.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Ratio Proportion variation basics -2",
+        "file":  "tests/ratio-proportion-variation-basics-2.html",
+        "original":  "Ratio Proportion variation basics -2.html",
+        "area":  "Quant",
+        "topic":  "Ratio Proportion",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  1
+    },
+    {
+        "title":  "Reasoning Based DI -2 ( 40 minutes )",
+        "file":  "tests/reasoning-based-di-2-40-minutes.html",
+        "original":  "Reasoning Based DI -2 ( 40 minutes ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Reasoning Based DI -2 test ( 40 minutes )",
+        "file":  "tests/reasoning-based-di-2-test-40-minutes.html",
+        "original":  "Reasoning Based DI -2 test ( 40 minutes ).html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "Reasoning Based DI-2",
+        "file":  "tests/reasoning-based-di-2.html",
+        "original":  "Reasoning Based DI-2 .HTML",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Topic Wise Test",
+        "minutes":  null,
+        "questions":  1
+    },
+    {
+        "title":  "Seating Directions 15 Minute Test",
+        "file":  "tests/seating-directions-15-minute-test.html",
+        "original":  "Seating Directions 15 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  15,
+        "questions":  5
+    },
+    {
+        "title":  "SI \u0026 CI Test -1 40 Minute Test",
+        "file":  "tests/si-and-ci-test-1-40-minute-test.html",
+        "original":  "SI \u0026 CI Test -1 40 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "SI CI",
+        "type":  "Topic Wise Test",
+        "minutes":  40,
+        "questions":  null
+    },
+    {
+        "title":  "SICI Advance Test -2 60 Minute Test",
+        "file":  "tests/sici-advance-test-2-60-minute-test.html",
+        "original":  "SICI Advance Test -2 60 Minute Test.html",
+        "area":  "Quant",
+        "topic":  "SI CI",
+        "type":  "Topic Wise Test",
+        "minutes":  60,
+        "questions":  null
+    },
+    {
+        "title":  "SIMCAT107 LRDI Test",
+        "file":  "tests/simcat107-lrdi-test.html",
+        "original":  "SIMCAT107 LRDI Test.html",
+        "area":  "LRDI",
+        "topic":  "Data Interpretation",
+        "type":  "Full Test",
+        "minutes":  60,
+        "questions":  28
+    },
+    {
+        "title":  "SIMCAT107 Quant Test",
+        "file":  "tests/simcat107-quant-test.html",
+        "original":  "SIMCAT107 Quant Test.html",
+        "area":  "Quant",
+        "topic":  "Mixed Practice",
+        "type":  "Full Test",
+        "minutes":  60,
+        "questions":  34
+    },
+    {
+        "title":  "SIMCAT107 VARC Test",
+        "file":  "tests/simcat107-varc-test.html",
+        "original":  "SIMCAT107 VARC Test.html",
+        "area":  "VARC",
+        "topic":  "VARC",
+        "type":  "Full Test",
+        "minutes":  60,
+        "questions":  35
+    },
+    {
+        "title":  "VARC Daily Dose Test CL Jaipur",
+        "file":  "tests/varc-daily-dose-test-cl-jaipur.html",
+        "original":  "VARC Daily Dose Test CL Jaipur.html",
+        "area":  "VARC",
+        "topic":  "VARC",
+        "type":  "Sectional Test",
+        "minutes":  15,
+        "questions":  null
+    },
+    {
+        "title":  "Workers Four Days 15 Minute Test",
+        "file":  "tests/workers-four-days-15-minute-test.html",
+        "original":  "Workers Four Days 15 Minute Test.html",
+        "area":  "LRDI",
+        "topic":  "LR Puzzle",
+        "type":  "Topic Wise Test",
+        "minutes":  15,
+        "questions":  5
+    }
+]
+;

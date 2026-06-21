@@ -1,0 +1,558 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPP 03 Ratio Proportion Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 700;
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #3d66b2; }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: #243447;
+    }
+
+    .solution h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .solution p { margin: 6px 0; }
+
+    @media (max-width: 700px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>DPP - 03 Ratio Proportion</h1>
+        <div class="meta">Basic to Moderate Level | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">60:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        level: "Questions 1-10",
+        q: "A sum of money is to be distributed among A, B and C in the ratio 2:4:9. If C gets Rs. 1400 more than A, then what is the share of B?",
+        options: ["Rs. 540", "Rs. 750", "Rs. 640", "Rs. 800"],
+        answer: 3,
+        solution: "Let A, B and C be 2k, 4k and 9k. Difference = 9k - 2k = 1400, so k = 200. Share of B = 4k = Rs. 800."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Three numbers are in the ratio 8:7:5 and their sum is 900. When the largest number is decreased by 80 and the other two numbers are increased by 35 each, then the new ratio becomes:",
+        options: ["9:10:7", "24:28:21", "28:35:26", "14:15:13"],
+        answer: 2,
+        solution: "Let the numbers be 8a, 7a and 5a. Since 20a = 900, a = 45. The numbers are 360, 315 and 225. New numbers = 280, 350 and 260 = 28:35:26."
+      },
+      {
+        level: "Questions 1-10",
+        q: "The ratio of the monthly income of P and Q is 6:7 and that of their monthly expenditure is 4:5. If the income of P is twice the expenditure of Q, then what is the ratio between the savings of P and Q?",
+        options: ["10:9", "9:10", "3:7", "6:5"],
+        answer: 1,
+        solution: "Let incomes be 6a and 7a, and expenditures be 4b and 5b. Given 6a = 2 x 5b, so 3a = 5b. Take a = 5y and b = 3y. Savings are P = 30y - 12y = 18y and Q = 35y - 15y = 20y, so ratio = 9:10."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Sunil divided Rs. 6200 among A, B and C. The ratio of the amount received by A and C is 3:5 and the ratio of the amount received by A and B is 2:5. What is the share of A?",
+        options: ["1800", "1200", "1450", "1600"],
+        answer: 1,
+        solution: "A:C = 3:5 and A:B = 2:5. Making A common gives A:B:C = 6:15:10. Total units = 31. A's share = 6/31 x 6200 = 1200."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Ratio of total chocolates with A to B is 3:2 and the ratio of chocolates with B to C is 3:5. If C has 2 chocolates more than A, find the total chocolates with all three students.",
+        options: ["40", "45", "50", "60"],
+        answer: 2,
+        solution: "A:B = 3:2 and B:C = 3:5. Combining gives A:B:C = 9:6:10. Since C - A = 1 unit = 2 chocolates, total = 25 units = 50 chocolates."
+      },
+      {
+        level: "Questions 1-10",
+        q: "The table shows the cumulative price distribution of 50 shirts: less than Rs.150 = 10, less than Rs.200 = 24, less than Rs.250 = 30, less than Rs.300 = 40, less than Rs.350 = 44, less than Rs.400 = 50. Find the ratio of shirts priced less than Rs.250 to shirts priced Rs.300 or more.",
+        options: ["2:1", "3:1", "1:3", "1:2"],
+        answer: 1,
+        solution: "Shirts below Rs.250 = 30. Shirts of Rs.300 or more = 50 - 40 = 10. Ratio = 30:10 = 3:1."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Which statement is correct? I. Ratio of the volume of two cylinders is equal to the ratio of the square of their respective radii. II. Ratio of the curved surface area of two cylinders is equal to the ratio of the product of their respective radius and height.",
+        options: ["Only I", "Only II", "Neither I nor II", "Both I and II"],
+        answer: 1,
+        solution: "Volume of a cylinder is proportional to r^2h, so statement I misses height. Curved surface area is proportional to rh, so statement II is correct."
+      },
+      {
+        level: "Questions 1-10",
+        q: "If (a + b):(b + c):(c + a) = 4:6:5 and a + b + c = 30, consider: i. a > b, ii. c - b = 4, iii. c - b = c - a. Which is true?",
+        options: ["Only i", "Only ii", "i, ii and iii", "Neither i nor ii"],
+        answer: 1,
+        solution: "Let a+b=4k, b+c=6k and c+a=5k. Adding gives 2(a+b+c)=15k, so 60=15k and k=4. Then a+b=16, b+c=24, c+a=20. Solving gives a=6, b=10, c=14. Only c-b=4 is true."
+      },
+      {
+        level: "Questions 1-10",
+        q: "A number is divided into 3 parts. Six times the third part is equal to eight times the second part, which is equal to five times the first part. In what ratio is the number divided?",
+        options: ["5:8:6", "24:15:20", "6:8:5", "20:16:24"],
+        answer: 1,
+        solution: "Let the parts be a, b, c. Given 5a = 8b = 6c. Therefore a:b:c = 1/5:1/8:1/6. Multiplying by 120 gives 24:15:20."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Mohan divided some amount among his wife, son and daughter such that wife:son = 5:7 and son:daughter = 2:5. If his daughter received Rs. 42000 more than his son, what amount did Mohan divide among them?",
+        options: ["Rs. 218000", "Rs. 118000", "Rs. 140000", "Rs. 211000"],
+        answer: 1,
+        solution: "Wife:son:daughter = 10:14:35. Difference between daughter and son = 21 units = 42000, so 1 unit = 2000. Total = 59 units = Rs. 118000."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Rs. 1110 is divided among Anku, Banku and Chanku such that 4 times Anku's share is equal to 5 times Banku's share, which is equal to 6 times Chanku's share. What is Banku's share?",
+        options: ["370", "360", "350", "340"],
+        answer: 1,
+        solution: "4A = 5B = 6C. Taking common value 60 gives A:B:C = 15:12:10. Total units = 37, so 1 unit = 30. Banku's share = 12 x 30 = 360."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Rs. 3960 is divided among Aman, Susheel and Raman. One-third of Susheel's part and one-sixth of Raman's part are equal. If Aman's share and Raman's share satisfy the given distribution, find the ratio of Aman's share to the difference between Raman's and Susheel's shares.",
+        options: ["2:9", "2:5", "2:3", "4:5"],
+        answer: 2,
+        solution: "From the given relation, Aman:Susheel:Raman = 2:3:6. Raman - Susheel = 3 units. Therefore Aman:(Raman - Susheel) = 2:3."
+      },
+      {
+        level: "Questions 11-20",
+        q: "A South Indian dish is made using jaggery and orange peels in the proportion 2:5. The price of jaggery is three times the price of orange peels. The overall cost of production of a bottle is Rs. 520 including Rs. 80 labour charges. What is the value of jaggery used in one bottle?",
+        options: ["Rs. 440", "Rs. 200", "Rs. 240", "Cannot be determined"],
+        answer: 2,
+        solution: "Material cost = 520 - 80 = 440. Let quantities be 2x and 5x, and orange peel price be p. Jaggery price = 3p. Cost = 2x(3p) + 5x(p) = 11xp = 440, so xp = 40. Jaggery value = 6xp = Rs. 240."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Ratio of total students in class A to class B is 9:10 and ratio of boys in class A to class B is 10:13. If ratio of boys to girls in class A is 5:4, find the ratio of boys in class A to girls in class B.",
+        options: ["8:5", "10:7", "12:7", "11:6"],
+        answer: 1,
+        solution: "Let total students in A and B be 9x and 10x. In class A, boys:girls = 5:4, so boys in A = 5x. Boys A:B = 10:13, so boys in B = 6.5x. Girls in B = 10x - 6.5x = 3.5x. Required ratio = 5x:3.5x = 10:7."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Age of A after 8 years will be equal to the present age of B. The sum of age of A after 18 years and age of B after 10 years will be 100 years. Find the ratio of ages of A and B after 4 years.",
+        options: ["7:11", "11:13", "7:9", "9:11"],
+        answer: 3,
+        solution: "Let present ages be A and B. A+8 = B, so B-A=8. Also A+18+B+10=100, so A+B=72. Solving gives A=32 and B=40. After 4 years, ratio = 36:44 = 9:11."
+      },
+      {
+        level: "Questions 11-20",
+        q: "A rectangular field has length double its breadth. Two square fields of maximum and equal areas are made in that rectangular field such that no area is left. Find the ratio of perimeter of the rectangular field to that of one square field.",
+        options: ["4:3", "3:2", "2:1", "5:4"],
+        answer: 1,
+        solution: "Let breadth = x, so length = 2x. Each square has side x. Rectangle perimeter = 2(2x+x)=6x and square perimeter = 4x. Ratio = 3:2."
+      },
+      {
+        level: "Questions 11-20",
+        q: "A consultancy company reduced the number of employees in the ratio 18:7 and increased average salary per employee in the ratio 8:15. The company saved Rs. 97,500. What is the current salary expenditure?",
+        options: ["Rs. 2,25,000", "Rs. 2,62,500", "Rs. 3,15,000", "Rs. 3,75,000"],
+        answer: 1,
+        solution: "Initial expenditure = 18x x 8 = 144x. Current expenditure = 7x x 15 = 105x. Saving = 39x = 97500, so x = 2500. Current expenditure = 105 x 2500 = Rs. 262500."
+      },
+      {
+        level: "Questions 11-20",
+        q: "The monthly salaries of Karan and Arjun are in the ratio 7:8. If both get a salary increment of Rs. 1500, the new ratio becomes 52:59. What is the new monthly salary of Arjun?",
+        options: ["Rs. 28,000", "Rs. 29,500", "Rs. 31,000", "Rs. 32,500"],
+        answer: 1,
+        solution: "Let old salaries be 7x and 8x. After increment, (7x+1500):(8x+1500)=52:59. Solving gives x=3500. Arjun's new salary = 8x+1500 = Rs. 29500."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Jitu's present age is 14 years less than 1.8 times Chinu's present age. Thirty years ago, Chinu's age was 3 years more than 40% of Jitu's age at that time. Find Jitu's present age.",
+        options: ["75", "80", "85", "90"],
+        answer: 2,
+        solution: "Let Jitu's age be x and Chinu's age be y. Then x = 1.8y - 14. Also y - 30 = 0.4(x - 30) + 3. Substituting gives y=55 and x=85."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Monthly incomes of Ajay and Vijay are in the ratio 7:8. Vijay saves Rs. 25920 every month and spends the remaining 46% amount. If Ajay's monthly savings and expenditure are in the ratio 3:1, find Ajay's monthly expenditure.",
+        options: ["Rs. 9,500", "Rs. 10,500", "Rs. 11,500", "Rs. 12,000"],
+        answer: 1,
+        solution: "Vijay spends 46%, so he saves 54%. If 54% = 25920, Vijay's income = 48000. Ajay's income = 7/8 x 48000 = 42000. Ajay savings:expenditure = 3:1, so expenditure = 1/4 of 42000 = Rs. 10500."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Some money was given to Bhima, Nakul and Arjun such that Bhima:(Nakul + Arjun) = 3:8 and Bhima:Arjun = 6:7. Find the ratio of money received by Nakul to money received by Bhima.",
+        options: ["3:2", "2:1", "1:5", "4:3"],
+        answer: 0,
+        solution: "Let Bhima = 6a and Arjun = 7a. Since Bhima:(Nakul+Arjun)=3:8, 6a:(Nakul+7a)=3:8. Thus Nakul+7a=16a, so Nakul=9a. Required ratio = 9a:6a = 3:2."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Matthew sells a laptop to David for Rs. 73000. David sells it to Jennifer at a loss of 15%. Matthew originally bought the laptop at double the price Jennifer paid David. Find the ratio of losses of Matthew and David.",
+        options: ["4:1", "7:6", "14:3", "10:7"],
+        answer: 2,
+        solution: "David sells for 85% of 73000 = Rs. 62050, so David's loss = 10950. Matthew's cost = 2 x 62050 = Rs. 124100. Matthew's loss = 124100 - 73000 = 51100. Ratio = 51100:10950 = 14:3."
+      },
+      {
+        level: "Questions 21-30",
+        q: "The sum of present ages of Chandan and his wife is 60 years. After 4 years, their age ratio will be 9:8. When they were married, the sum of their ages was 50 years. Find the ratio of their ages at the time of marriage.",
+        options: ["7:6", "27:23", "9:8", "None of these"],
+        answer: 1,
+        solution: "Let present ages be x and y. x+y=60 and (x+4):(y+4)=9:8. Solving gives x=32 and y=28. They married 5 years ago because present total 60 and marriage total 50. Ages then were 27 and 23, so ratio = 27:23."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Rs. 10900 is divided among x, y and z such that if their shares are reduced by Rs. 30, Rs. 20 and Rs. 50 respectively, the balances are in the ratio 4:3:5. What is y's share?",
+        options: ["3,180", "2,720", "3,253.33", "3,200"],
+        answer: 1,
+        solution: "Total reduction = 30+20+50 = 100, so remaining amount = 10800. This is divided in 4:3:5. y's balance = 3/12 x 10800 = 2700. Original y share = 2700 + 20 = 2720."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Three numbers a, b and c are in continued proportion. If 3 is subtracted from each number, the ratio becomes 3:5:8. Find a + b + c.",
+        options: ["57", "40", "60", "20"],
+        answer: 0,
+        solution: "Let a-3=3k, b-3=5k, c-3=8k. Since a, b, c are in continued proportion, b^2=ac. Thus (5k+3)^2=(3k+3)(8k+3), giving k=3. So a,b,c = 12,18,27 and sum = 57."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Ramesh divided his amount among Manjesh, Kamlesh and Sudesh such that Manjesh:Kamlesh = 3:5 and Kamlesh:Sudesh = 3:4. If Sudesh received Rs. 8800, find the total amount.",
+        options: ["Rs. 18240", "Rs. 19360", "Rs. 20460", "Rs. 22600"],
+        answer: 1,
+        solution: "Combining Manjesh:Kamlesh = 3:5 and Kamlesh:Sudesh = 3:4 gives 9:15:20. If 20 units = 8800, then 1 unit = 440. Total = 44 units = Rs. 19360."
+      },
+      {
+        level: "Questions 21-30",
+        q: "P, Q, R, S and T are five companies. Profits of P, Q and R are in the ratio 5:5.5:6 while profits of Q, S and T are in the ratio 11:18:20. If R made Rs. 10 crore more than P, find the total profit made by all companies.",
+        options: ["Rs. 249 crore", "Rs. 284 crore", "Rs. 240 crore", "Rs. 355 crore"],
+        answer: 3,
+        solution: "P:Q:R = 10:11:12 and Q:S:T = 11:18:20. Therefore P:Q:R:S:T = 10:11:12:18:20. Difference R-P = 2 units = Rs. 10 crore, so 1 unit = Rs. 5 crore. Total = 71 units = Rs. 355 crore."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Kumar, his brother, his wife and his son have salaries in the ratio 18:15:12:8. If the total family income is Rs. 6,36,000, what are the salaries earned by Kumar and his son together?",
+        options: ["Rs. 1,40,000", "Rs. 4,76,000", "Rs. 3,12,000", "Rs. 2,84,000"],
+        answer: 2,
+        solution: "Total ratio units = 18+15+12+8 = 53. Since total income is Rs. 636000, one unit = Rs. 12000. Kumar plus son = 18+8 = 26 units = 26 x 12000 = Rs. 312000."
+      },
+      {
+        level: "Questions 21-30",
+        q: "The ratio of the population of town Timbuktoo to Gimbuktoo is 7:9. Male population of Timbuktoo is equal to female population of Gimbuktoo, and female population of Timbuktoo to male population of Gimbuktoo is 2:3. Find the ratio of male population of Timbuktoo to male population of Gimbuktoo.",
+        options: ["1:3", "1:2", "1:4", "Cannot be determined"],
+        answer: 1,
+        solution: "Let male populations be m1 and m2, and female populations be f1 and f2. Given (m1+f1):(m2+f2)=7:9, m1=f2 and f1:m2=2:3. Using f1=2m2/3 and f2=m1 gives 9m1+6m2=7m2+7m1, so m1:m2=1:2."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Rs. 4500 was distributed among Amit, Bhanu and Chintu. They spent Rs. 110, Rs. 120 and Rs. 140 respectively. The amounts left with Amit and Bhanu were in the ratio 3:4 and with Bhanu and Chintu in the ratio 5:6. What amount did Bhanu receive?",
+        options: ["1520", "1400", "1600", "1420"],
+        answer: 0,
+        solution: "After spending, A:B = 3:4 and B:C = 5:6, so A:B:C = 15:20:24. Amount left = 4500 - 110 - 120 - 140 = 4130. Thus 59 units = 4130, so 1 unit = 70. Bhanu received = 20 x 70 + 120 = Rs. 1520."
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 60 * 60;
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      form.innerHTML = html + `
+        <div class="actions">
+          <button type="submit">Submit Test</button>
+        </div>
+      `;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const correctText = `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+
+        solution.style.display = "block";
+
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (Number(selected.value) === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctText}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,1386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT CBT Exam Console - Quantitative Ability</title>
+    <style>
+        :root {
+            --tcs-blue: #1e3d59;
+            --tcs-light-blue: #e8f1f5;
+            --tcs-border: #b2bec3;
+            --tcs-gray-bg: #f5f6fa;
+            --not-visited: #e5e7eb;
+            --not-answered: #e74c3c;
+            --answered: #2ecc71;
+            --marked-review: #9b59b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 24px; 
+        }
+
+        /* Top Bar */
+        .top-navbar {
+            background-color: #f1f2f6;
+            border-bottom: 2px solid var(--tcs-border);
+            height: 85px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .exam-logo-section h1 {
+            font-size: 26px;
+            color: var(--tcs-blue);
+            font-weight: bold;
+        }
+
+        .exam-logo-section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .candidate-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 2px solid var(--tcs-border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            max-width: 350px;
+        }
+
+        .candidate-photo {
+            width: 48px;
+            height: 60px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .candidate-info p {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        /* Section Tabs Bar */
+        .section-bar {
+            background-color: #dfe4ea;
+            border-bottom: 2px solid var(--tcs-border);
+            display: flex;
+            height: 45px;
+            align-items: flex-end;
+            padding-left: 15px;
+        }
+
+        .section-tab {
+            padding: 6px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid var(--tcs-border);
+            border-bottom: none;
+            background-color: #ced6e0;
+            color: #555;
+            cursor: not-allowed;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            margin-right: 6px;
+        }
+
+        .section-tab.active {
+            background-color: var(--tcs-blue);
+            color: white;
+            border-color: var(--tcs-blue);
+            cursor: default;
+        }
+
+        /* Question Status Header Line */
+        .question-meta-bar {
+            background-color: var(--tcs-light-blue);
+            border-bottom: 2px solid var(--tcs-border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timer-container {
+            color: #d01c1c;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Split Workspace Window */
+        .workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 190px);
+            overflow: hidden;
+        }
+
+        /* Full-Width CBT Question Panel */
+        .question-section {
+            width: 82%;
+            padding: 30px 45px;
+            overflow-y: auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 18px;
+        }
+
+        .question-header {
+            font-size: 17px;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .question-text {
+            font-size: 21px; 
+            font-weight: bold;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        /* Options Design */
+        .options-container {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 14px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 18px; 
+        }
+
+        .option-item:hover {
+            background-color: #f1f2f6;
+        }
+
+        .option-item input[type="radio"] {
+            transform: scale(1.4);
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* TITA Box Style */
+        .tita-container {
+            margin-top: 5px;
+        }
+
+        .tita-container p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tita-input {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 20px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+        }
+
+        /* Rightmost Area: Expanded Question Palette Grid (Full Mode, No Scroll) */
+        .palette-section {
+            width: 18%;
+            background: #f1f2f6;
+            border-left: 2px solid var(--tcs-border);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .palette-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid var(--tcs-border);
+            padding-bottom: 6px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-bottom: 15px;
+            overflow: visible; 
+        }
+
+        .palette-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            font-weight: bold;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-size: 16px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--not-visited);
+            color: #333;
+        }
+
+        .palette-btn.not-visited {
+            background-color: var(--not-visited);
+            color: #333;
+            border-radius: 0;
+        }
+
+        .palette-btn.not-answered {
+            background-color: var(--not-answered);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .palette-btn.answered {
+            background-color: var(--answered);
+            color: white;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .palette-btn.marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .palette-btn.ans-marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+        .palette-btn.ans-marked-review::after {
+            content: "âœ“";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            background: #2ecc71;
+            color: white;
+            font-size: 9px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+        }
+
+        .palette-btn.active {
+            border: 3px solid #2c3e50 !important;
+            box-shadow: 0 0 4px rgba(0,0,0,0.5);
+        }
+
+        /* Sidebar Legend Container */
+        .legend {
+            font-size: 12px; 
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            border-top: 2px solid var(--tcs-border);
+            padding-top: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #7f8c8d;
+            display: inline-block;
+        }
+
+        /* Footer Console controls */
+        footer {
+            height: 60px; 
+            background-color: #ced6e0;
+            border-top: 2px solid var(--tcs-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px; 
+            border-radius: 4px;
+            background-color: #f1f2f6;
+            color: #333;
+        }
+
+        .btn:active {
+            background-color: #ddd;
+        }
+
+        .btn-blue {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .btn-green {
+            background-color: var(--answered);
+            color: white;
+            border-color: #27ae60;
+        }
+
+        /* Tables style matching standard data interpretation tests */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 16px; 
+        }
+
+        th, td {
+            border: 2px solid #666;
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        th {
+            background-color: #f1f2f6;
+        }
+
+        /* Popup Real CAT Calculator Style */
+        #calculator-modal {
+            display: none;
+            position: absolute;
+            top: 110px;
+            right: 30px;
+            width: 280px;
+            background: #eaeaea;
+            border: 2px solid #555;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            user-select: none;
+        }
+
+        .calc-header {
+            background: var(--tcs-blue);
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .calc-close {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .calc-screen {
+            background: white;
+            text-align: right;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #888;
+            border-radius: 2px;
+            font-family: monospace;
+            font-size: 20px;
+            min-height: 44px;
+            word-wrap: break-word;
+        }
+
+        .calc-formula {
+            font-size: 12px;
+            color: #777;
+            min-height: 16px;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            padding: 10px;
+        }
+
+        .calc-btn-item {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            background: #fcfcfc;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .calc-btn-item:active {
+            background: #ddd;
+        }
+
+        .calc-back {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-clear {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-equal {
+            background: #2ecc71;
+            color: white;
+            grid-row: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Results Display CSS */
+        #results-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        /* Detailed Question Review Cards on submission */
+        .review-section {
+            margin-top: 40px;
+            border-top: 4px solid var(--tcs-blue);
+            padding-top: 25px;
+        }
+
+        .review-card {
+            border: 1.5px solid var(--tcs-border);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+        }
+
+        .review-card-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
+            color: var(--tcs-blue);
+        }
+
+        .review-question-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .review-option-item {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .review-option-correct {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .review-option-incorrect {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .review-tita-result {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-navbar">
+        <div class="exam-logo-section">
+            <h1>CAT 2024 Mock Examination</h1>
+            <p>Computer Based Online Section Test</p>
+        </div>
+        <div class="candidate-card">
+            <div class="candidate-photo">PHOTO</div>
+            <div class="candidate-info">
+                <p><strong>John Doe</strong></p>
+                <p>Roll No: 820120</p>
+                <p>Subject: QA Section</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Section Tab bar -->
+    <div class="section-bar">
+        <div class="section-tab">VARC</div>
+        <div class="section-tab">Data Interpretation & LR</div>
+        <div class="section-tab active">Quantitative Ability</div>
+    </div>
+
+    <!-- Question Metadata & Timer Sub-Header -->
+    <div class="question-meta-bar">
+        <div>
+            <span>Section: Quantitative Ability</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <button class="btn" style="background-color: #ff9f43; color: white; border: none; padding: 4px 15px;" onclick="toggleCalculator()">Calculator</button>
+            <div class="timer-container">
+                Time Left: <span id="timer-display">60:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <div class="workspace">
+        <!-- Middle Column: Question details -->
+        <div class="question-section">
+            <div class="question-header">
+                <span id="question-number-title">Question No. 1</span>
+                <span id="question-marks-rule" style="color:#7f8c8d;">Marks: +3, -1</span>
+            </div>
+            <div class="question-text" id="question-text-box">
+                <!-- Question Text -->
+            </div>
+            <div id="answer-inputs">
+                <!-- Input Radio Choices or Text Area dynamically loaded -->
+            </div>
+        </div>
+
+        <!-- Rightmost Column: Palette (Full Mode, No Scroll) -->
+        <div class="palette-section">
+            <div class="palette-title">Question Palette</div>
+            <div class="palette-grid" id="palette-grid-box">
+                <!-- 30 grid buttons generated dynamically -->
+            </div>
+
+            <!-- Authentic Palette Legend Panel -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-visited);"></span> Not Visited
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-answered); border-radius: 10px 10px 0 0;"></span> Not Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--answered); border-radius: 0 0 10px 10px;"></span> Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span> Marked for Review
+                </div>
+                <div class="legend-item" style="position: relative;">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span>
+                    <span style="font-size: 10px; position: absolute; left: 5px; top: 3px; color: white;">âœ“</span>
+                    Answered & Marked for Review
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation footer console bar -->
+    <footer>
+        <div class="footer-left">
+            <button class="btn" onclick="clearResponse()">Clear Response</button>
+            <button class="btn" style="background-color: #f39c12; color: white; border-color: #d35400;" onclick="markForReview()">Mark for Review & Next</button>
+        </div>
+        <div>
+            <button class="btn btn-green" onclick="saveAndNext()">Save & Next</button>
+            <button class="btn" style="background-color: #c0392b; color: white; border-color: #a33227; margin-left: 10px;" onclick="confirmSubmit()">Submit</button>
+        </div>
+    </footer>
+
+    <!-- Interactive CAT Calculator Dialog Interface -->
+    <div id="calculator-modal">
+        <div class="calc-header" id="calc-header-drag">
+            <span>Calculator</span>
+            <button class="calc-close" onclick="toggleCalculator()">Ã—</button>
+        </div>
+        <div class="calc-screen">
+            <div class="calc-formula" id="calc-formula"></div>
+            <div id="calc-display">0</div>
+        </div>
+        <div class="calc-buttons">
+            <div class="calc-btn-item" onclick="calcMemory('MC')">MC</div>
+            <div class="calc-btn-item" onclick="calcMemory('MR')">MR</div>
+            <div class="calc-btn-item" onclick="calcMemory('MS')">MS</div>
+            <div class="calc-btn-item" onclick="calcMemory('M+')">M+</div>
+            <div class="calc-btn-item" onclick="calcMemory('M-')">M-</div>
+
+            <div class="calc-btn-item calc-back" onclick="calcBackspace()">â†</div>
+            <div class="calc-btn-item calc-clear" onclick="calcClear()">C</div>
+            <div class="calc-btn-item" onclick="calcOperator('pm')">+/-</div>
+            <div class="calc-btn-item" onclick="calcOperator('sqrt')">âˆš</div>
+            <div class="calc-btn-item" onclick="calcOperator('/')">/</div>
+
+            <div class="calc-btn-item" onclick="calcPress('7')">7</div>
+            <div class="calc-btn-item" onclick="calcPress('8')">8</div>
+            <div class="calc-btn-item" onclick="calcPress('9')">9</div>
+            <div class="calc-btn-item" onclick="calcOperator('*')">*</div>
+            <div class="calc-btn-item" onclick="calcOperator('inv')">1/x</div>
+
+            <div class="calc-btn-item" onclick="calcPress('4')">4</div>
+            <div class="calc-btn-item" onclick="calcPress('5')">5</div>
+            <div class="calc-btn-item" onclick="calcPress('6')">6</div>
+            <div class="calc-btn-item" onclick="calcOperator('-')">-</div>
+            <div class="calc-btn-item calc-equal" onclick="calcCalculate()">=</div>
+
+            <div class="calc-btn-item" onclick="calcPress('1')">1</div>
+            <div class="calc-btn-item" onclick="calcPress('2')">2</div>
+            <div class="calc-btn-item" onclick="calcPress('3')">3</div>
+            <div class="calc-btn-item" onclick="calcOperator('+')">+</div>
+
+            <div class="calc-btn-item" style="grid-column: span 2;" onclick="calcPress('0')">0</div>
+            <div class="calc-btn-item" onclick="calcPress('.')">.</div>
+        </div>
+    </div>
+
+    <!-- Final Exam Scoring Screen -->
+    <div id="results-screen">
+        <div class="results-container">
+            <h2>Quantitative Ability - Performance Summary</h2>
+            <hr style="margin: 20px 0;">
+            <div style="display: flex; gap: 40px; margin-bottom: 30px;">
+                <div>
+                    <h3 style="color: #7f8c8d;">Total Score</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: #3498db;" id="final-score">0</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Attempted</h3>
+                    <p style="font-size: 48px; font-weight: bold;" id="attempted-count">0/30</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Accuracy</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: var(--answered);" id="accuracy-rate">0%</p>
+                </div>
+            </div>
+            
+            <h3>Itemwise Breakdown</h3>
+            <table id="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>Q#</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                        <th>Score Change</th>
+                    </tr>
+                </thead>
+                <tbody id="breakdown-rows">
+                    <!-- Dynamic Rows Injected Here -->
+                </tbody>
+            </table>
+
+            <!-- Dynamic Question-wise Explanations Injected Here -->
+            <div class="review-section">
+                <h3 style="margin-bottom: 20px; font-size: 24px;">Exams Response & Solution Sheets</h3>
+                <div id="detailed-review-cards">
+                    <!-- Detailed cards injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Core Application Setup and Dataset ---
+
+        // Complete 30 questions dataset transcribed from images
+        const questions = [
+            {
+                id: 1,
+                type: 'MCQ',
+                text: 'Solve:\n7(x + 2) + 3(y - 2) = 8\n3(x - 2) + 7(y + 2) = 8',
+                options: ['x = 2, y = 0', 'x = 0, y = 2', 'x = 0, y = 0', 'x = -2, y = 2'],
+                correct: 'C'
+            },
+            {
+                id: 2,
+                type: 'TITA',
+                text: 'Solve for y in the following system:\n2x + 3y - 6z = 18\n2y - (4/3)x + 4z = 12',
+                correct: '6'
+            },
+            {
+                id: 3,
+                type: 'MCQ',
+                text: 'If x + 2y + 3z = 14, 2x + 3y + z = 11 and 3x + y + 2z = 11, find (x + y + z).',
+                options: ['6', '5', '4', '0'],
+                correct: 'A'
+            },
+            {
+                id: 4,
+                type: 'MCQ',
+                text: 'If 3x + y - 3z = 11 and 2x - 2z + 5y = 29 what is the value of x + y - z?',
+                options: ['7', '14', '9', '8'],
+                correct: 'A'
+            },
+            {
+                id: 5,
+                type: 'MCQ',
+                text: 'What is the value of p, if the equations are consistent and x â‰  0 â‰  y?\n5x + 4y = 32\n2py + 15x = 96',
+                options: ['5', '6', '4', '3'],
+                correct: 'B'
+            },
+            {
+                id: 6,
+                type: 'MCQ',
+                text: 'For which of the following values of k will 3x + (k + 3)y = 1 and kx + 6y = 4 have a unique solution?',
+                options: ['3', '-6', '6', 'Any value except 3 and -6'],
+                correct: 'D'
+            },
+            {
+                id: 7,
+                type: 'MCQ',
+                text: 'Six times the denominator of a fraction is two less than eight times the numerator and ten times the numerator equals 20 less than ten times the denominator. The reciprocal of the fraction is:',
+                options: ['6/7', '3/8', '7/9', '9/7'],
+                correct: 'D'
+            },
+            {
+                id: 8,
+                type: 'TITA',
+                text: 'John covers 10 km per hour more than Peter while driving. On doubling his speed, Peter covers 15 km per hour more than John who is driving at his normal speed. What is John\'s speed? (in km/hr)',
+                correct: '35'
+            },
+            {
+                id: 9,
+                type: 'MCQ',
+                text: 'Classes A and B have 35 students each. If seven girls shift from class A to class B, then the number of girls in the classes would interchange. If four girls shift from class B to class A, then the number of girls in class A would be twice the original number of girls in class B. What is the number of boys in Class A and in Class B?',
+                options: ['18 and 11', '24 and 17', '18 and 27', '17 and 24'],
+                correct: 'D'
+            },
+            {
+                id: 10,
+                type: 'MCQ',
+                text: 'Nitya and Satya have some marbles with them. Nitya says to Satya, "If you give one marble to me, we will have equal number of marbles." Satya says to Nitya, "If you give one marble to me, I will have twice the number of marbles you have". How many marbles do Nitya and Satya have respectively?',
+                options: ['4, 6', '5, 7', '6, 4', '7, 5'],
+                correct: 'B'
+            },
+            {
+                id: 11,
+                type: 'TITA',
+                text: 'Gopi, Murthy and Hari had some amount of money. Gopi gives half his amount to Murthy, who then gives half of what he now has to Hari. Hari gives half of what he now has to Gopi, who now has exactly what he started with. If the sum of Murthy\'s initial amount and twice Hari\'s initial amount is â‚¹45, what was the amount (in rupees) Gopi started with?',
+                correct: '30'
+            },
+            {
+                id: 12,
+                type: 'MCQ',
+                text: 'A shopkeeper has a few 100 gm weights and a few 500 gm weights. He can weigh a maximum of 8 kg in one weighing. If he has 20 pieces of weights, what is the maximum weight that he can weigh with only 100 gm weights?',
+                options: ['800 gm', '600 gm', '450 gm', '500 gm'],
+                correct: 'D'
+            },
+            {
+                id: 13,
+                type: 'TITA',
+                text: 'A child went to a shop to buy a pen, a pencil and a ruler where costs are integral values (in â‚¹) and are in decreasing order. Each item costs at least â‚¹4. The total cost is â‚¹15 and the cost of a pencil is â‚¹5. How many pencils can he purchase with the amount required to purchase ten rulers?',
+                correct: '8'
+            },
+            {
+                id: 14,
+                type: 'MCQ',
+                text: 'A housewife, with a given amount, can buy either 10 apples or 15 oranges or 2 watermelons. Find the maximum number of oranges which she can buy with six times the initial amount such that she gets each of the three varieties of fruits.',
+                options: ['75', '81', '60', '72'],
+                correct: 'B'
+            },
+            {
+                id: 15,
+                type: 'MCQ',
+                text: 'Ten years ago, the age of a man was 35 years more than twice his son\'s age. After how many years from now will the man be:\n(i) twice his son\'s age?\n(ii) thrice his son\'s age?',
+                options: [
+                    '(i) 25, (ii) Cannot be determined', 
+                    '(i) 15, (ii) 10', 
+                    '(i) 20, (ii) 15', 
+                    '(i) Cannot be determined, (ii) 20'
+                ],
+                correct: 'A'
+            },
+            {
+                id: 16,
+                type: 'TITA',
+                text: 'Runs scored by Bhangar in a match are 10 more than the balls faced by Karthik. The number of balls faced by Bhangar is 5 more than the number of runs scored by Karthik. Together they have scored 50 runs and Bhangar has faced 15 balls less than Karthik. What is the number of runs scored by Bhangar?',
+                correct: '40'
+            },
+            {
+                id: 17,
+                type: 'MCQ',
+                text: 'With the data from the above question (Q16), what is the number of runs scored by Karthik per ball?',
+                options: ['2.67', '2.33', '0.5', '0.33'],
+                correct: 'D'
+            },
+            {
+                id: 18,
+                type: 'MCQ',
+                text: 'An amount of â‚¹9000 is divided among four people A, B, C and D. The sum of the shares of A, C and D is four times the share of B. The sum of the shares of B and D is equal to four-fifths the sum of shares of A and C. Find the share of D.',
+                options: ['â‚¹1,800', 'â‚¹2,400', 'â‚¹2,200', 'Cannot be determined'],
+                correct: 'C'
+            },
+            {
+                id: 19,
+                type: 'MCQ',
+                text: 'P, Q and R completed a certain project working together. The number of hours for which P worked on the project was 2/3 of that for which Q worked on the project, which in turn was 2/5 of that for which R worked on the project. The number of hours for which R worked is what fraction of the total number of hours for which all three worked?',
+                options: ['2/5', '3/5', '7/10', '1/2'],
+                correct: 'B'
+            },
+            {
+                id: 20,
+                type: 'MCQ',
+                text: 'The cost of four apples, six bananas and eight oranges is p. The cost of five apples, eight bananas and eleven oranges is q. The cost of eight apples, fourteen bananas and twenty oranges is r. Which of the following is always true?',
+                options: [
+                    '3p + 4q = 3r/4', 
+                    '-3p + 4q = r/2', 
+                    '-4q + 3p = r/2', 
+                    '-3p + 4q = r'
+                ],
+                correct: 'D'
+            },
+            {
+                id: 21,
+                type: 'MCQ',
+                text: 'While adding ten two-digit numbers the digits of one of the numbers were interchanged. As a result the sum of all the ten numbers increased by a value which was four less than that number. Three times the sum of the digits of that original number is ten less than the number. What is the product of the digits of that number?',
+                options: ['56', '18', '36', '42'],
+                correct: 'C'
+            },
+            {
+                id: 22,
+                type: 'MCQ',
+                text: 'Directions for Q22 and Q23: A shopkeeper sold a certain number of toys. The number of toys as well as the price of each toy (in â‚¹) was a two digit number. By mistake, he reversed the digits of both the number of toys he sold and the price of each toy. As a result, he found that his stock account at the end of the day showed 81 items more than it actually was.\n\nFind the actual number of toys sold.',
+                options: ['92', '81', '90', '29'],
+                correct: 'C'
+            },
+            {
+                id: 23,
+                type: 'MCQ',
+                text: 'Using the information in Q22, if the faulty calculations show a total sale of â‚¹882, find the actual selling price of each toy (in â‚¹).',
+                options: ['89', '98', '97', '79'],
+                correct: 'A'
+            },
+            {
+                id: 24,
+                type: 'MCQ',
+                text: 'There are ten children (aged 1 to 10 years) who have equal amounts of money. In the first transaction the eldest child gives one rupee to every child younger to him. In the second transaction, the second eldest child gives one rupee to every child younger to him. This type of distribution continues for the next two transactions. In the end the total sum with the children who have given money to other children is half the sum of money with the children who did not give any money. What was the original amount with each child?',
+                options: ['â‚¹36', 'â‚¹48', 'â‚¹50', 'â‚¹32'],
+                correct: 'A'
+            },
+            {
+                id: 25,
+                type: 'TITA',
+                text: 'A three-digit number is eleven times the two-digit number formed by using the hundreds and the units digit of the three-digit number respectively, in the tens and units place of the two-digit number. If the difference between the digit in tens place and the digit in hundreds place is 1, then what is the digit in the units place?',
+                correct: '1'
+            },
+            {
+                id: 26,
+                type: 'TITA',
+                text: 'In addition to the data in Q25, if the difference between the digit in tens place and that in the units place of the three-digit number is also 1, then what is the number?',
+                correct: '121'
+            },
+            {
+                id: 27,
+                type: 'MCQ',
+                text: 'A grocer uses a weighing balance in which one pan weighs 0.5 kg and the other 0.75 kg. He puts a certain quantity of food grains in 0.5 kg pan and finds the weight (in kg) as a two-digit number. However, as the customer insists, he puts it in 0.75 kg pan. Now the indicated weight is 9.5 kg more than the weight which is obtained by reversing the digits of previous weight. Which of the following cannot be the actual weight (in kg) of the food grains?',
+                options: ['43.25', '36.25', '41.5', 'More than one of the above'],
+                correct: 'D'
+            },
+            {
+                id: 28,
+                type: 'MCQ',
+                text: 'Using the data of the above question (Q27), which of the following can be the weight as indicated in the first case?',
+                options: ['65 kg', '36 kg', '64 kg', 'D85 kg'],
+                correct: 'A'
+            },
+            {
+                id: 29,
+                type: 'TITA',
+                text: 'In t minutes from now, the time will be noon. 44 minutes ago, the time was 7t minutes past 9 a.m. Find the present time. (Format: HH, MM or HH:MM)',
+                correct: '11:43'
+            },
+            {
+                id: 30,
+                type: 'TITA',
+                text: 'In an exam, there are 35 questions. Each correct answer, each wrong answer and each unanswered question carries 5 points, 0 points and 1 point respectively. Had each correct answer, each wrong answer and each unanswered question carried 4, -1 and 0 points respectively, the number of points a student would score in the exam is 25. Find the actual number of points that he would score in the exam.',
+                correct: '60'
+            }
+        ];
+
+        let userStates = Array(30).fill(0); 
+        let userAnswers = Array(30).fill(""); 
+        let currentQuestionIdx = 0;
+
+        // --- Core Navigation Engine ---
+
+        function initTest() {
+            const paletteGrid = document.getElementById('palette-grid-box');
+            paletteGrid.innerHTML = '';
+            for(let i = 0; i < 30; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'palette-btn not-visited';
+                btn.id = `palette-btn-${i}`;
+                btn.innerText = i + 1;
+                btn.onclick = () => jumpToQuestion(i);
+                paletteGrid.appendChild(btn);
+            }
+            loadQuestion(0);
+            startSectionTimer(60 * 60); // 60 minutes
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIdx = index;
+            const question = questions[index];
+
+            if (userStates[index] === 0) {
+                userStates[index] = 1;
+            }
+
+            document.getElementById('question-number-title').innerText = `Question No. ${question.id}`;
+            document.getElementById('question-marks-rule').innerText = (question.type === 'MCQ') ? "Marks: +3, -1" : "Marks: +3, 0";
+
+            document.querySelectorAll('.palette-btn').forEach((btn, idx) => {
+                btn.classList.remove('active');
+                if(idx === index) btn.classList.add('active');
+            });
+
+            syncPaletteUI();
+
+            document.getElementById('question-text-box').innerText = question.text;
+
+            let inputsBox = document.getElementById('answer-inputs');
+            inputsBox.innerHTML = '';
+
+            if (question.type === 'MCQ') {
+                const optLabels = ['A', 'B', 'C', 'D'];
+                let container = document.createElement('div');
+                container.className = 'options-container';
+
+                question.options.forEach((optText, optIdx) => {
+                    let labelStr = optLabels[optIdx];
+                    let itemDiv = document.createElement('div');
+                    itemDiv.className = 'option-item';
+                    itemDiv.onclick = () => selectOption(labelStr);
+
+                    let isChecked = userAnswers[index] === labelStr ? 'checked' : '';
+                    itemDiv.innerHTML = `
+                        <input type="radio" name="mcq-options" value="${labelStr}" ${isChecked}>
+                        <span><strong>(${labelStr})</strong> ${optText}</span>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+                inputsBox.appendChild(container);
+            } else {
+                let container = document.createElement('div');
+                container.className = 'tita-container';
+                container.innerHTML = `
+                    <p>Type in your answer in the box below:</p>
+                    <input type="text" class="tita-input" id="tita-val" value="${userAnswers[index]}" placeholder="Enter response..." oninput="handleTitaInput(this.value)">
+                `;
+                inputsBox.appendChild(container);
+            }
+        }
+
+        function syncPaletteUI() {
+            for(let i = 0; i < 30; i++) {
+                const btn = document.getElementById(`palette-btn-${i}`);
+                btn.className = 'palette-btn'; 
+                if(i === currentQuestionIdx) btn.classList.add('active');
+
+                switch(userStates[i]) {
+                    case 0: btn.classList.add('not-visited'); break;
+                    case 1: btn.classList.add('not-answered'); break;
+                    case 2: btn.classList.add('answered'); break;
+                    case 3: btn.classList.add('marked-review'); break;
+                    case 4: btn.classList.add('ans-marked-review'); break;
+                }
+            }
+        }
+
+        function jumpToQuestion(index) {
+            loadQuestion(index);
+        }
+
+        // --- Handle Input Submissions ---
+
+        function selectOption(label) {
+            userAnswers[currentQuestionIdx] = label;
+            let radios = document.getElementsByName('mcq-options');
+            radios.forEach(radio => {
+                if(radio.value === label) radio.checked = true;
+            });
+        }
+
+        function handleTitaInput(val) {
+            userAnswers[currentQuestionIdx] = val.trim();
+        }
+
+        // --- Action controls ---
+
+        function clearResponse() {
+            userAnswers[currentQuestionIdx] = "";
+            if (userStates[currentQuestionIdx] === 4) {
+                userStates[currentQuestionIdx] = 3; 
+            } else {
+                userStates[currentQuestionIdx] = 1; 
+            }
+            loadQuestion(currentQuestionIdx); 
+        }
+
+        function saveAndNext() {
+            let ans = userAnswers[currentQuestionIdx];
+            // Format normalizations to match key variants (e.g. accepting '11,43' or '11, 43' or '11:43' for Q29)
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 2; // Turns Green (Answered)
+            } else {
+                userStates[currentQuestionIdx] = 1; // Turns Red (Not Answered)
+            }
+
+            if (currentQuestionIdx < 29) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        function markForReview() {
+            let ans = userAnswers[currentQuestionIdx];
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 4; // Answered & Marked for Review
+            } else {
+                userStates[currentQuestionIdx] = 3; // Marked for Review
+            }
+
+            if (currentQuestionIdx < 29) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        // --- Test Sectional Timer setup ---
+
+        function startSectionTimer(durationSeconds) {
+            let timeRemaining = durationSeconds;
+            const display = document.getElementById('timer-display');
+
+            const timerInterval = setInterval(() => {
+                let mins = Math.floor(timeRemaining / 60);
+                let secs = timeRemaining % 60;
+
+                mins = mins < 10 ? '0' + mins : mins;
+                secs = secs < 10 ? '0' + secs : secs;
+
+                display.innerText = `${mins}:${secs}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Submitting your responses.");
+                    showResults();
+                }
+                timeRemaining--;
+            }, 1000);
+        }
+
+        // --- Final Submission and Analysis ---
+
+        function confirmSubmit() {
+            if (confirm("Are you sure you want to submit the Quantitative Ability section?")) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('results-screen').style.display = 'block';
+
+            let correctCount = 0;
+            let totalScore = 0;
+            let attempted = 0;
+
+            const tbody = document.getElementById('breakdown-rows');
+            const detailContainer = document.getElementById('detailed-review-cards');
+            
+            tbody.innerHTML = '';
+            detailContainer.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                let uAns = userAnswers[idx] || "";
+                let isAttempted = uAns !== "";
+                if (isAttempted) attempted++;
+
+                let change = 0;
+                let statusText = "Unattempted";
+                let statusColor = "color: #7f8c8d;";
+                let isCorrect = false;
+
+                if (isAttempted) {
+                    // Match normalization to accept commas or colons cleanly (e.g. for time formats in Q29)
+                    let normalizedUser = uAns.replace(/[\s:]/g, ',');
+                    let normalizedCorrect = q.correct.replace(/[\s:]/g, ',');
+
+                    if (normalizedUser.toUpperCase() === normalizedCorrect.toUpperCase()) {
+                        correctCount++;
+                        change = 3;
+                        statusText = "Correct";
+                        statusColor = "color: #2ecc71; font-weight: bold;";
+                        isCorrect = true;
+                    } else {
+                        change = (q.type === 'MCQ') ? -1 : 0;
+                        statusText = "Incorrect";
+                        statusColor = "color: #e74c3c; font-weight: bold;";
+                    }
+                }
+                totalScore += change;
+
+                // 1. Generate Brief Summary Table Row
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${q.id}</td>
+                    <td>${q.type}</td>
+                    <td style="${statusColor}">${statusText}</td>
+                    <td style="font-weight:bold;">${uAns || "-"}</td>
+                    <td style="font-weight:bold; color: #2ecc71;">${q.correct}</td>
+                    <td>${change > 0 ? '+' + change : change}</td>
+                `;
+                tbody.appendChild(row);
+
+                // 2. Generate Detailed Question-Wise Review Cards
+                let card = document.createElement('div');
+                card.className = 'review-card';
+                
+                let reviewHeadingColor = isCorrect ? '#2ecc71' : (isAttempted ? '#e74c3c' : '#7f8c8d');
+                let reviewHeadingText = `Question ${q.id} (${q.type}) - ${statusText}`;
+
+                let optionsHTML = '';
+                if (q.type === 'MCQ') {
+                    optionsHTML = `<div class="review-options">`;
+                    const labels = ['A', 'B', 'C', 'D'];
+                    q.options.forEach((optVal, optIdx) => {
+                        let currentLabel = labels[optIdx];
+                        let itemClass = 'review-option-item';
+                        
+                        if (currentLabel === q.correct) {
+                            itemClass += ' review-option-correct'; 
+                        } else if (currentLabel === uAns) {
+                            itemClass += ' review-option-incorrect'; 
+                        }
+                        
+                        optionsHTML += `<div class="${itemClass}"><strong>(${currentLabel})</strong> ${optVal}</div>`;
+                    });
+                    optionsHTML += `</div>`;
+                } else {
+                    let titaStyle = isCorrect ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;';
+                    optionsHTML = `
+                        <div class="review-tita-result" style="${titaStyle}">
+                            <p><strong>Your Response:</strong> ${uAns || "No response filled"}</p>
+                            <p><strong>Correct Response Key:</strong> ${q.correct}</p>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="review-card-header" style="color: ${reviewHeadingColor};">
+                        ${reviewHeadingText}
+                    </div>
+                    <div class="review-question-text">
+                        ${q.text.replace(/\n/g, '<br>')}
+                    </div>
+                    ${optionsHTML}
+                `;
+                detailContainer.appendChild(card);
+            });
+
+            document.getElementById('final-score').innerText = totalScore;
+            document.getElementById('attempted-count').innerText = `${attempted}/30`;
+            let accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
+            document.getElementById('accuracy-rate').innerText = `${accuracy}%`;
+        }
+
+        // --- On-Screen Calculator Logic ---
+
+        let calcVal = "0";
+        let calcFormula = "";
+        let calcMem = 0;
+        let clearOnNext = false;
+
+        function toggleCalculator() {
+            const modal = document.getElementById('calculator-modal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function calcPress(char) {
+            if (calcVal === "0" || clearOnNext) {
+                calcVal = char;
+                clearOnNext = false;
+            } else {
+                calcVal += char;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcOperator(op) {
+            if (op === 'pm') {
+                calcVal = String(parseFloat(calcVal) * -1);
+            } else if (op === 'sqrt') {
+                calcVal = String(Math.sqrt(parseFloat(calcVal)));
+                clearOnNext = true;
+            } else if (op === 'inv') {
+                let v = parseFloat(calcVal);
+                calcVal = v !== 0 ? String(1 / v) : "Error";
+                clearOnNext = true;
+            } else {
+                calcFormula += calcVal + " " + op + " ";
+                clearOnNext = true;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcCalculate() {
+            try {
+                calcFormula += calcVal;
+                let finalVal = eval(calcFormula);
+                calcVal = String(finalVal);
+                calcFormula = "";
+                clearOnNext = true;
+            } catch(e) {
+                calcVal = "Error";
+                calcFormula = "";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcBackspace() {
+            if (calcVal.length > 1) {
+                calcVal = calcVal.slice(0, -1);
+            } else {
+                calcVal = "0";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcClear() {
+            calcVal = "0";
+            calcFormula = "";
+            updateCalcDisplay();
+        }
+
+        function calcMemory(action) {
+            let current = parseFloat(calcVal) || 0;
+            switch(action) {
+                case 'MC': calcMem = 0; break;
+                case 'MR': calcVal = String(calcMem); clearOnNext = true; break;
+                case 'MS': calcMem = current; clearOnNext = true; break;
+                case 'M+': calcMem += current; clearOnNext = true; break;
+                case 'M-': calcMem -= current; clearOnNext = true; break;
+            }
+            updateCalcDisplay();
+        }
+
+        function updateCalcDisplay() {
+            document.getElementById('calc-display').innerText = calcVal;
+            document.getElementById('calc-formula').innerText = calcFormula;
+        }
+
+        // Drag Support for the calculator modal
+        const dragHeader = document.getElementById("calc-header-drag");
+        const modalEl = document.getElementById("calculator-modal");
+        let activeDrag = false, initX, initY;
+
+        dragHeader.onmousedown = (e) => {
+            activeDrag = true;
+            initX = e.clientX - modalEl.offsetLeft;
+            initY = e.clientY - modalEl.offsetTop;
+        };
+
+        document.onmousemove = (e) => {
+            if (activeDrag) {
+                modalEl.style.left = (e.clientX - initX) + 'px';
+                modalEl.style.top = (e.clientY - initY) + 'px';
+            }
+        };
+
+        document.onmouseup = () => activeDrag = false;
+
+        window.onload = initTest;
+    </script>
+</body>
+</html>
