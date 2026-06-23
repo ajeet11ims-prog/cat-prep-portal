@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise 1 - Percentage Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #087fc1;
+      --brand-soft: #e9f6fc;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 700;
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #06689f; }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: #243447;
+    }
+
+    .solution h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .solution p { margin: 6px 0; }
+    .solution .formula {
+      white-space: pre-wrap;
+      background: #f7fafc;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 8px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Practice Exercise - 1</h1>
+        <div class="meta">Percentage | 15 Questions | 40 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">40:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        level: "Level of difficulty - 1",
+        q: "A wire manufacturing company purchased a certain amount of raw material, of which 10% was wasted due to improper handling. After using 85% of the remaining raw material, 47.25 kg of raw material was left. How much raw material was purchased initially?",
+        options: ["200 kg", "250 kg", "300 kg", "350 kg"],
+        answer: 3,
+        solution: "Let 100x raw material be purchased. After 10% wastage, remaining material = 90x. Since 85% of the remaining material is used, left material = 15% of 90x = 13.5x. Given 13.5x = 47.25 kg, so x = 3.5 kg. Initial raw material = 100x = 350 kg. Hence, option D is correct."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "The rate of inflation is 2,000% per annum. What is the value of the article two years from now, if it costs Rs. 12 today?",
+        options: ["Rs. 5,292", "Rs. 5,992", "Rs. 6,992", "Rs. 7,052"],
+        answer: 0,
+        solution: "A 2000% increase means the value becomes 21 times every year. After 2 years, value = 12 x 21 x 21 = Rs. 5292. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "A positive real number is first increased by 20%, then decreased by 25% and then finally increased by 10%. This process is repeated 49 more times. What can be said about the new number obtained?",
+        options: ["It is less than 45% of the original number.", "It is between 45% and 55% of the original number.", "It is between 55% and 65% of the original number.", "It is greater than 65% of the original number."],
+        answer: 2,
+        solution: "One full operation multiplies the number by 1.20 x 0.75 x 1.10 = 0.99. The process is done 50 times, so final value = original x (0.99)^50, which is approximately 60.29% of the original. Hence, option C is correct."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "Due to the rise in price by 9.09%, 2 kg wheat is obtainable for Rs. 60. Find the original per kg price of wheat.",
+        options: ["Rs. 5/kg", "Rs. 2.5/kg", "Rs. 10/kg", "Rs. 9/kg"],
+        answer: 1,
+        solution: "9.09% = 1/11, so price ratio old:new = 11:12. For the same money, consumption ratio old:new = 12:11. If new consumption is 2 kg, old consumption would be 24/11 kg. Original price per kg = 60 / 24 = Rs. 2.5/kg. Hence, option B is correct."
+      },
+      {
+        level: "Level of difficulty - 1",
+        q: "Kajal went to a vegetable market with a certain amount of money. With this money she can buy either 40 apples or 70 mangoes. She retains 15% of her money for auto fare. If she buys 35 mangoes, how many more apples can she buy?",
+        options: ["14", "20", "25", "28"],
+        answer: 0,
+        solution: "Let total money be Rs. 100. She keeps Rs. 15 for fare, so Rs. 85 is available for fruits. Cost of 70 mangoes = Rs. 100, so 35 mangoes cost Rs. 50. Remaining money = Rs. 35. Since Rs. 100 buys 40 apples, Rs. 35 buys 14 apples. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "A's income is 75% of B's income and A's expenditure is 80% of B's expenditure. If A's income is 90% of B's expenditure, then find the ratio of A's savings to B's savings.",
+        options: ["1 : 2", "2 : 1", "5 : 2", "3 : 5"],
+        answer: 0,
+        solution: "Let B's income = x and B's expenditure = y. A's income = 3x/4 and A's expenditure = 4y/5. Given A's income = 90% of B's expenditure, so 3x/4 = 9y/10, giving x/y = 6/5. Now A's savings = 3x/4 - 4y/5 and B's savings = x - y. Substituting x = 6y/5 gives A's savings : B's savings = 1 : 2. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "A trader marks an article 60% above the cost price and makes 12% profit by selling at a certain discount. If the mark-up percentage and the discount percentage are each increased by 10 percentage points, then the percentage change in the profit will be?",
+        options: ["It will decrease by 16.67%", "It will decrease by 83.33%", "It will increase by 21%", "It will decrease by 21%"],
+        answer: 1,
+        solution: "Let CP = 100. Initially profit = 12, so SP = 112 and MRP = 160. Discount = 48, so discount rate = 30%. New mark-up = 70%, so MRP = 170. New discount = 40% of 170 = 68, so new SP = 102 and new profit = 2. Profit decreases from 12 to 2, so percentage decrease = 10/12 x 100 = 83.33%. Hence, option B is correct."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "An amount first increased by 14% and then further increased by 45%, such that the final amount becomes Rs. 16,530. How much was the initial amount?",
+        options: ["Rs. 12,000", "Rs. 16,000", "Rs. 18,000", "Rs. 10,000"],
+        answer: 3,
+        solution: "Let initial amount be 100 units. After 14% increase it becomes 114 units. A further 45% increase on 114 = 51.3 units, so final amount = 165.3 units. If 165.3 units = Rs. 16,530, then 1 unit = Rs. 100 and 100 units = Rs. 10,000. Hence, option D is correct."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "Shopkeeper Laxman sells chocolates at Rs. 100 per chocolate up to 200 chocolates. He sells chocolates in packets where each packet contains 20 chocolates. For every additional packet after 20 chocolates, he allows a discount of Rs. 5 per chocolate for all packets. What would be the number of packets he should sell so that his revenue is maximised?",
+        options: ["13", "14", "15", "16"],
+        answer: 2,
+        solution: "Assume he sells k additional packets after the first 10 packets. Chocolates sold = 200 + 20k = 20(10 + k). Price per chocolate = 100 - 5k = 5(20 - k). Revenue = 100(10 + k)(20 - k). Since the sum of the two factors is constant, product is maximum when 10 + k = 20 - k, so k = 5. Packets = 10 + 5 = 15. Hence, option C is correct."
+      },
+      {
+        level: "Level of difficulty - 2",
+        q: "The income of Mr. Rajesh is 88.88% more than his expenditure. If his income increases by 30% and his expenditure increases by 35%, then his saving increases by Rs. 78,000. Find the difference between his initial income and initial expenditure.",
+        options: ["Rs. 3,20,000", "Rs. 4,40,000", "Rs. 5,50,000", "Rs. 6,60,000"],
+        answer: 0,
+        solution: "88.88% = 8/9, so if expenditure = 900 units, income = 1700 units and savings = 800 units. Increase in income = 30% of 1700 = 510 units. Increase in expenditure = 35% of 900 = 315 units. Increase in savings = 510 - 315 = 195 units = Rs. 78,000. Therefore 1 unit = Rs. 400. Initial savings = 800 units = Rs. 3,20,000. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "There are two types of biscuits P and Q. Type P has carbohydrates, fats and proteins and type Q has carbohydrates, fats and sugar. These two types are mixed in equal proportion to form type R. Both P and R have 30% carbohydrates. The percentage of sugar in Q and R is 40% and 20%, respectively. Type R has 24% proteins. The percentage of fat in type R biscuit is?",
+        options: ["26%", "33%", "21%", "22%"],
+        answer: 0,
+        solution: "Since P and Q are mixed equally, R has average composition. R has 30% carbohydrates and P also has 30%, so Q also has 30% carbohydrates. R has 24% protein, and Q has no protein, so P has 48% protein. Fat in P = 100 - 30 - 48 = 22%. Fat in Q = 100 - 30 - 40 = 30%. Fat in R = (22 + 30)/2 = 26%. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "A sweet seller decreases the price of one kg of sweet by 20% in the first month. In the second month, he increases the price by 20%. He follows this pattern every month. Find the month in which the price per kg goes below 60% of the initial price for the first time.",
+        options: ["17th month", "16th month", "8th month", "10th month"],
+        answer: 0,
+        solution: "Let initial price be 100. After two months: 100 x 0.8 x 1.2 = 96, so every 2 months price falls by 4%. After 16 months, price = 100 x (0.96)^8 = about 72.11. In the 17th month it decreases by 20%, becoming about 57.69, which is below 60 for the first time. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "In a class, each student likes at least one of the five subjects: Physics, Chemistry, Maths, English and Biotechnology. 80% like Physics, 70% like Chemistry, 90% like Maths, 80% like English and 90% like Biotechnology. What is the maximum percentage of students who like exactly 4 of the 5 subjects?",
+        options: ["90%", "70%", "62%", "50%"],
+        answer: 0,
+        solution: "Total subject-likes = 80 + 70 + 90 + 80 + 90 = 410%. Let P be the percentage liking exactly 4 subjects and Q exactly 5 subjects. To maximize P, make the percentage liking 1, 2 and 3 subjects zero. Then P + Q = 100 and 4P + 5Q = 410. Subtracting 4P + 4Q = 400 gives Q = 10 and P = 90. Hence, option A is correct."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "Shubham deals in only two types of beverages, cinnamon lime and jasmine crush. He wishes to spend Rs. 3.5 lakh to purchase a total of 100 cartons. Cinnamon lime costs Rs. 4,000 per carton and jasmine crush costs Rs. 3,000 per carton. During shortage, he can sell both at Rs. 6,000 per carton. For maximum profit, find the number of cartons he should stock of cinnamon lime and jasmine crush respectively.",
+        options: ["70, 30", "60, 40", "50, 50", "None of these"],
+        answer: 2,
+        solution: "Let C and J be cinnamon lime and jasmine crush cartons. C + J = 100. Budget condition: 4000C + 3000J <= 350000, or 4C + 3J <= 350. From C + J = 100, multiplying by 4 gives 4C + 4J = 400. Subtracting the budget equation gives J >= 50, so C <= 50. Since selling price is the same and cinnamon lime gives lower profit per carton than jasmine crush, maximum feasible split from the given options is 50, 50. Hence, option C is correct."
+      },
+      {
+        level: "Level of difficulty - 3",
+        q: "There are two schemes of investment where interest is compounded annually. In the first scheme, an amount becomes 81 times in 8 years, whereas in the second scheme, the rate of interest is 70% per annum. Which scheme is better for investment?",
+        options: ["The first scheme", "The second scheme", "Both would yield equal returns", "Cannot be determined"],
+        answer: 0,
+        solution: "For the first scheme, 81P = P(1 + R/100)^8. Since 81 = 3^4, (1 + R/100)^8 = 3^4, so (1 + R/100)^2 = 3. Therefore 1 + R/100 = sqrt(3) = 1.732, giving R = 73.2% approximately. This is greater than 70%, so the first scheme is better. Hence, option A is correct."
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 40 * 60;
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      form.innerHTML = html + `
+        <div class="actions">
+          <button type="submit">Submit Test</button>
+        </div>
+      `;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const correctText = `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+
+        solution.style.display = "block";
+
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (Number(selected.value) === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctText}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

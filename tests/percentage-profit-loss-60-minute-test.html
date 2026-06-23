@@ -1,0 +1,1410 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage & Profit Loss - 60 Minute Test</title>
+    <style>
+        :root {
+            --tcs-blue: #1e3d59;
+            --tcs-light-blue: #e8f1f5;
+            --tcs-border: #b2bec3;
+            --tcs-gray-bg: #f5f6fa;
+            --not-visited: #e5e7eb;
+            --not-answered: #e74c3c;
+            --answered: #2ecc71;
+            --marked-review: #9b59b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px; 
+        }
+
+        /* Top Bar */
+        .top-navbar {
+            background-color: #f1f2f6;
+            border-bottom: 2px solid var(--tcs-border);
+            height: 85px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .exam-logo-section h1 {
+            font-size: 26px;
+            color: var(--tcs-blue);
+            font-weight: bold;
+        }
+
+        .exam-logo-section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .candidate-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 2px solid var(--tcs-border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            max-width: 350px;
+        }
+
+        .candidate-photo {
+            width: 48px;
+            height: 60px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .candidate-info p {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        /* Section Tabs Bar */
+        .section-bar {
+            background-color: #dfe4ea;
+            border-bottom: 2px solid var(--tcs-border);
+            display: flex;
+            height: 45px;
+            align-items: flex-end;
+            padding-left: 15px;
+        }
+
+        .section-tab {
+            padding: 6px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid var(--tcs-border);
+            border-bottom: none;
+            background-color: #ced6e0;
+            color: #555;
+            cursor: not-allowed;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            margin-right: 6px;
+        }
+
+        .section-tab.active {
+            background-color: var(--tcs-blue);
+            color: white;
+            border-color: var(--tcs-blue);
+            cursor: default;
+        }
+
+        /* Question Status Header Line */
+        .question-meta-bar {
+            background-color: var(--tcs-light-blue);
+            border-bottom: 2px solid var(--tcs-border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timer-container {
+            color: #d01c1c;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Split Workspace Window */
+        .workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 190px);
+            overflow: hidden;
+        }
+
+        /* Full-Width CBT Question Panel */
+        .question-section {
+            width: 82%;
+            padding: 30px 45px;
+            overflow-y: auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 18px;
+        }
+
+        .question-header {
+            font-size: 17px;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .question-text {
+            font-size: 21px; 
+            font-weight: bold;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        /* Options Design */
+        .options-container {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 14px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 18px; 
+        }
+
+        .option-item:hover {
+            background-color: #f1f2f6;
+        }
+
+        .option-item input[type="radio"] {
+            transform: scale(1.4);
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* TITA Box Style */
+        .tita-container {
+            margin-top: 5px;
+        }
+
+        .tita-container p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tita-input {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 20px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+        }
+
+        /* Rightmost Area: Expanded Question Palette Grid (Full Mode, No Scroll) */
+        .palette-section {
+            width: 18%;
+            background: #f1f2f6;
+            border-left: 2px solid var(--tcs-border);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .palette-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid var(--tcs-border);
+            padding-bottom: 6px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-bottom: 15px;
+            overflow: visible; 
+        }
+
+        .palette-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            font-weight: bold;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-size: 16px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--not-visited);
+            color: #333;
+        }
+
+        .palette-btn.not-visited {
+            background-color: var(--not-visited);
+            color: #333;
+            border-radius: 0;
+        }
+
+        .palette-btn.not-answered {
+            background-color: var(--not-answered);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .palette-btn.answered {
+            background-color: var(--answered);
+            color: white;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .palette-btn.marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .palette-btn.ans-marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+        .palette-btn.ans-marked-review::after {
+            content: "âœ“";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            background: #2ecc71;
+            color: white;
+            font-size: 9px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+        }
+
+        .palette-btn.active {
+            border: 3px solid #2c3e50 !important;
+            box-shadow: 0 0 4px rgba(0,0,0,0.5);
+        }
+
+        /* Sidebar Legend Container */
+        .legend {
+            font-size: 12px; 
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            border-top: 2px solid var(--tcs-border);
+            padding-top: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #7f8c8d;
+            display: inline-block;
+        }
+
+        /* Footer Console controls */
+        footer {
+            height: 60px; 
+            background-color: #ced6e0;
+            border-top: 2px solid var(--tcs-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px; 
+            border-radius: 4px;
+            background-color: #f1f2f6;
+            color: #333;
+        }
+
+        .btn:active {
+            background-color: #ddd;
+        }
+
+        .btn-blue {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .btn-green {
+            background-color: var(--answered);
+            color: white;
+            border-color: #27ae60;
+        }
+
+        /* Tables style matching standard data interpretation tests */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 16px; 
+        }
+
+        th, td {
+            border: 2px solid #666;
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        th {
+            background-color: #f1f2f6;
+        }
+
+        /* Popup Real CAT Calculator Style */
+        #calculator-modal {
+            display: none;
+            position: absolute;
+            top: 110px;
+            right: 30px;
+            width: 280px;
+            background: #eaeaea;
+            border: 2px solid #555;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            user-select: none;
+        }
+
+        .calc-header {
+            background: var(--tcs-blue);
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .calc-close {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .calc-screen {
+            background: white;
+            text-align: right;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #888;
+            border-radius: 2px;
+            font-family: monospace;
+            font-size: 20px;
+            min-height: 44px;
+            word-wrap: break-word;
+        }
+
+        .calc-formula {
+            font-size: 12px;
+            color: #777;
+            min-height: 16px;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            padding: 10px;
+        }
+
+        .calc-btn-item {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            background: #fcfcfc;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .calc-btn-item:active {
+            background: #ddd;
+        }
+
+        .calc-back {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-clear {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-equal {
+            background: #2ecc71;
+            color: white;
+            grid-row: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Results Display CSS */
+        #results-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        /* Detailed Question Review Cards on submission */
+        .review-section {
+            margin-top: 40px;
+            border-top: 4px solid var(--tcs-blue);
+            padding-top: 25px;
+        }
+
+        .review-card {
+            border: 1.5px solid var(--tcs-border);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+        }
+
+        .review-card-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
+            color: var(--tcs-blue);
+        }
+
+        .review-question-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .review-option-item {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .review-option-correct {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .review-option-incorrect {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .review-tita-result {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-navbar">
+        <div class="exam-logo-section">
+            <h1>Percentage &amp; Profit Loss Test</h1>
+            <p>Computer Based Online Section Test</p>
+        </div>
+        <div class="candidate-card">
+            <div class="candidate-photo">PHOTO</div>
+            <div class="candidate-info">
+                <p><strong>John Doe</strong></p>
+                <p>Roll No: 820120</p>
+                <p>Subject: Percentage &amp; Profit Loss</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Section Tab bar -->
+    <div class="section-bar">
+        <div class="section-tab">VARC</div>
+        <div class="section-tab">Data Interpretation & LR</div>
+        <div class="section-tab active">Quantitative Ability</div>
+    </div>
+
+    <!-- Question Metadata & Timer Sub-Header -->
+    <div class="question-meta-bar">
+        <div>
+            <span>Section: Quantitative Ability</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <button class="btn" style="background-color: #ff9f43; color: white; border: none; padding: 4px 15px;" onclick="toggleCalculator()">Calculator</button>
+            <div class="timer-container">
+                Time Left: <span id="timer-display">60:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <div class="workspace">
+        <!-- Middle Column: Question details -->
+        <div class="question-section">
+            <div class="question-header">
+                <span id="question-number-title">Question No. 1</span>
+                <span id="question-marks-rule" style="color:#7f8c8d;">Marks: +3, -1</span>
+            </div>
+            <div class="question-text" id="question-text-box">
+                <!-- Question Text -->
+            </div>
+            <div id="answer-inputs">
+                <!-- Input Radio Choices or Text Area dynamically loaded -->
+            </div>
+        </div>
+
+        <!-- Rightmost Column: Palette (Full Mode, No Scroll) -->
+        <div class="palette-section">
+            <div class="palette-title">Question Palette</div>
+            <div class="palette-grid" id="palette-grid-box">
+                <!-- Question grid buttons generated dynamically -->
+            </div>
+
+            <!-- Authentic Palette Legend Panel -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-visited);"></span> Not Visited
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-answered); border-radius: 10px 10px 0 0;"></span> Not Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--answered); border-radius: 0 0 10px 10px;"></span> Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span> Marked for Review
+                </div>
+                <div class="legend-item" style="position: relative;">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span>
+                    <span style="font-size: 10px; position: absolute; left: 5px; top: 3px; color: white;">âœ“</span>
+                    Answered & Marked for Review
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation footer console bar -->
+    <footer>
+        <div class="footer-left">
+            <button class="btn" onclick="clearResponse()">Clear Response</button>
+            <button class="btn" style="background-color: #f39c12; color: white; border-color: #d35400;" onclick="markForReview()">Mark for Review & Next</button>
+        </div>
+        <div>
+            <button class="btn btn-green" onclick="saveAndNext()">Save & Next</button>
+            <button class="btn" style="background-color: #c0392b; color: white; border-color: #a33227; margin-left: 10px;" onclick="confirmSubmit()">Submit</button>
+        </div>
+    </footer>
+
+    <!-- Interactive CAT Calculator Dialog Interface -->
+    <div id="calculator-modal">
+        <div class="calc-header" id="calc-header-drag">
+            <span>Calculator</span>
+            <button class="calc-close" onclick="toggleCalculator()">Ã—</button>
+        </div>
+        <div class="calc-screen">
+            <div class="calc-formula" id="calc-formula"></div>
+            <div id="calc-display">0</div>
+        </div>
+        <div class="calc-buttons">
+            <div class="calc-btn-item" onclick="calcMemory('MC')">MC</div>
+            <div class="calc-btn-item" onclick="calcMemory('MR')">MR</div>
+            <div class="calc-btn-item" onclick="calcMemory('MS')">MS</div>
+            <div class="calc-btn-item" onclick="calcMemory('M+')">M+</div>
+            <div class="calc-btn-item" onclick="calcMemory('M-')">M-</div>
+
+            <div class="calc-btn-item calc-back" onclick="calcBackspace()">â†</div>
+            <div class="calc-btn-item calc-clear" onclick="calcClear()">C</div>
+            <div class="calc-btn-item" onclick="calcOperator('pm')">+/-</div>
+            <div class="calc-btn-item" onclick="calcOperator('sqrt')">âˆš</div>
+            <div class="calc-btn-item" onclick="calcOperator('/')">/</div>
+
+            <div class="calc-btn-item" onclick="calcPress('7')">7</div>
+            <div class="calc-btn-item" onclick="calcPress('8')">8</div>
+            <div class="calc-btn-item" onclick="calcPress('9')">9</div>
+            <div class="calc-btn-item" onclick="calcOperator('*')">*</div>
+            <div class="calc-btn-item" onclick="calcOperator('inv')">1/x</div>
+
+            <div class="calc-btn-item" onclick="calcPress('4')">4</div>
+            <div class="calc-btn-item" onclick="calcPress('5')">5</div>
+            <div class="calc-btn-item" onclick="calcPress('6')">6</div>
+            <div class="calc-btn-item" onclick="calcOperator('-')">-</div>
+            <div class="calc-btn-item calc-equal" onclick="calcCalculate()">=</div>
+
+            <div class="calc-btn-item" onclick="calcPress('1')">1</div>
+            <div class="calc-btn-item" onclick="calcPress('2')">2</div>
+            <div class="calc-btn-item" onclick="calcPress('3')">3</div>
+            <div class="calc-btn-item" onclick="calcOperator('+')">+</div>
+
+            <div class="calc-btn-item" style="grid-column: span 2;" onclick="calcPress('0')">0</div>
+            <div class="calc-btn-item" onclick="calcPress('.')">.</div>
+        </div>
+    </div>
+
+    <!-- Final Exam Scoring Screen -->
+    <div id="results-screen">
+        <div class="results-container">
+            <h2>Percentage & Profit Loss - Performance Summary</h2>
+            <hr style="margin: 20px 0;">
+            <div style="display: flex; gap: 40px; margin-bottom: 30px;">
+                <div>
+                    <h3 style="color: #7f8c8d;">Total Score</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: #3498db;" id="final-score">0</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Attempted</h3>
+                    <p style="font-size: 48px; font-weight: bold;" id="attempted-count">0/35</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Accuracy</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: var(--answered);" id="accuracy-rate">0%</p>
+                </div>
+            </div>
+            
+            <h3>Itemwise Breakdown</h3>
+            <table id="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>Q#</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                        <th>Score Change</th>
+                    </tr>
+                </thead>
+                <tbody id="breakdown-rows">
+                    <!-- Dynamic Rows Injected Here -->
+                </tbody>
+            </table>
+
+            <!-- Dynamic Question-wise Explanations Injected Here -->
+            <div class="review-section">
+                <h3 style="margin-bottom: 20px; font-size: 24px;">Exams Response & Solution Sheets</h3>
+                <div id="detailed-review-cards">
+                    <!-- Detailed cards injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Core Application Setup and Dataset ---
+        // Complete 35 questions dataset transcribed from the supplied Percentage & Profit & Loss paper
+        const questions = [
+            {
+                id: 1,
+                type: 'MCQ',
+                text: 'In 2004, the price of a shampoo bottle increases by 10% with respect to that in 2003. By what percentage is its price in 2003 less than that in 2004?',
+                options: ['10%', '9 1/11%', '11%', '10 1/11%'],
+                correct: 'B'
+            },
+            {
+                id: 2,
+                type: 'TITA',
+                text: 'A student secures 38% of the total marks in an exam and gets 18 marks more than the pass mark. A second student secures 27% of the total marks in the same exam and fails by 37 marks. What is the pass mark as a percentage of the total marks?',
+                correct: '34.4'
+            },
+            {
+                id: 3,
+                type: 'MCQ',
+                text: 'Due to inflation the total cost of monthly household items has gone up by 20%, but the salary of the family increased by only 10%. Initially, the family used to spend 20% of the salary on household items. What percentage of the present salary should the family spend to buy the same quantities of household items?',
+                options: ['10%', '20 2/11%', '22 2/11%', '21 9/11%'],
+                correct: 'D'
+            },
+            {
+                id: 4,
+                type: 'TITA',
+                text: 'In 2001, the transportation cost of an item was 30% of its manufacturing cost. From 2001 to 2002, its manufacturing cost went up by 20%. Its transportation cost in 2002 was 33 1/3% of its manufacturing cost in that year. By what percent should the total cost in 2002 be reduced to bring it back to that in 2001?\n\n(Total cost = Manufacturing Cost + Transportation cost).',
+                correct: '18.75'
+            },
+            {
+                id: 5,
+                type: 'MCQ',
+                text: 'In a town, the population of males decreased by 25% from 2001 to 2002. The population of females increased by 20% in this period. If females formed 44 4/9% of the population in 2002, what percentage of the population in 2001 were males?',
+                options: ['50%', '66 2/3%', '80%', '75%'],
+                correct: 'B'
+            },
+            {
+                id: 6,
+                type: 'MCQ',
+                text: 'The length of a rectangle is increased by 20% and its breadth is increased by 10%. Which of the following is a possible value of the percentage increase in its perimeter?',
+                options: ['13%', '14%', '12%', '16%'],
+                correct: 'D'
+            },
+            {
+                id: 7,
+                type: 'TITA',
+                text: 'The production of rice in the year 2001 was 1000 tonnes which was 25% of the total food grain production in that year. In the next year if the production of rice decreased by 4% and production of rice as a percentage of total food grain production increased by 5 percentage points, what is the total food grain production in 2002? (in tonnes)',
+                correct: '3200'
+            },
+            {
+                id: 8,
+                type: 'MCQ',
+                text: 'In a public sector unit (PSU), there are 45600 employees. When the PSU offered a voluntary retirement scheme (VRS), 40% of the employees applied for the VRS. After scrutinizing, the PSU has rejected 15% of the applications. But only 9120 employees took the retirement through the scheme. What percentage of the total number of employees did not take retirement even though their applications are not rejected?',
+                options: ['25%', '14%', '24%', '12.75%'],
+                correct: 'B'
+            },
+            {
+                id: 9,
+                type: 'MCQ',
+                text: 'A school has 2000 students, out of which 40% of the students are in higher secondary. Out of the students in the higher secondary, 28% are girls and 50% of them passed. The overall pass percentage in the higher secondary is 40%. How many boys passed?',
+                options: ['208', '320', '200', '96'],
+                correct: 'A'
+            },
+            {
+                id: 10,
+                type: 'MCQ',
+                text: 'In an election among three contestants P, Q and R, P gets 120% more votes than Q. P beats R by 3,50,000 votes. Q beats R by 5% of the total votes. Find the total number of votes polled (in lakhs).',
+                options: ['12', '10', '9', '11'],
+                correct: 'B'
+            },
+            {
+                id: 11,
+                type: 'TITA',
+                text: 'In a certain month, the total income of A, B, C is Rs. 644000. In that month, A spends 75% of his income, B spends 80% of his income, C spends 62.5% of his income. The ratio of the amounts spent by A, B, C in that month is 42 : 64 : 55. Find the income of A in the month. (in Rs.)',
+                correct: '16100'
+            },
+            {
+                id: 12,
+                type: 'MCQ',
+                text: 'The success rate at one stage, of the Indian cricket team in Australia was 25% from 60 matches. If India lost the next 12 matches, what was the minimum number of total matches that were played if the overall success rate of India was 50%?',
+                options: ['42', '104', '118', '114'],
+                correct: 'D'
+            },
+            {
+                id: 13,
+                type: 'MCQ',
+                text: 'In 2003, Brijesh paid a tax of 20% of his salary. In 2004, his salary increased by 93 3/4% and the tax scheme changed. Under the new tax scheme he had to pay a fixed sum of Rs. 1000 and an additional 20% on the amount above Rs. 10000. His salary in 2004 was more than Rs. 10000 and he paid a tax of Rs. 500 more than what he paid in 2003. What is his salary in 2004?',
+                options: ['Rs.15500', 'Rs.17000', 'Rs.18200', 'Rs.20000'],
+                correct: 'A'
+            },
+            {
+                id: 14,
+                type: 'TITA',
+                text: 'At a certain stationery shop, the cost of each ruler is 2.5 times the cost of each sharpener. Anil bought 25 rulers and a certain number of sharpeners. Had he bought as many rulers as the number of sharpeners that he bought and vice versa, his total expenditure on the two items would have been 9 1/11% less. How many sharpeners did he buy?',
+                correct: '20'
+            },
+            {
+                id: 15,
+                type: 'MCQ',
+                text: 'In 2000, the market shares of the toilet soaps Margo, Palmolive and Dove were 40%, 30% and 30% respectively. Starting from the next year, a new soap enters the market each year and gets 10% of total market share in that year. The existing soaps in that year share the remaining market in the same ratio as they did in the previous year. What percent of the total market share will Margo have in 2002?',
+                options: ['32%', '32.4%', '28.8%', '34%'],
+                correct: 'B'
+            },
+            {
+                id: 16,
+                type: 'MCQ',
+                text: 'At the beginning of a year, the owner of a jewel shop raised the prices of all the jewels in his shop by x% and then lowered them by x%. The price of one jewel after this up and down cycle reduced by Rs. 100. The owner carried out the same procedure after a month. After this second up-down cycle, the price of that jewel was Rs. 2304. Find the original price of that jewel (in Rs.).',
+                options: ['2600', '2550', '2650', '2500'],
+                correct: 'D'
+            },
+            {
+                id: 17,
+                type: 'MCQ',
+                text: 'At the beginning of 2002, Sunil had four dozen goats with him. He increased this stock by x%. At the end of 2002, he sold off y% of his stock. At the beginning of 2003, he again increased his stock by x% and at the end of 2003, he again sold off y% of his stock. There were no other changes in the number of goats. At the end of 2003, he had five dozen goats with him after his sales. Which of the following always holds true?',
+                options: ['x > 100y/(100-y)', '100y/(100-y) > x > y', 'x < y', '100y/(100-y) < x < y'],
+                correct: 'A'
+            },
+            {
+                id: 18,
+                type: 'TITA',
+                text: 'A bicycle was sold at a loss of 18%. Had it been sold for Rs. 990 more, there would have been a profit of 15%. At what price (in Rs.) should the bicycle be sold to make a profit of 10%?',
+                correct: '3300'
+            },
+            {
+                id: 19,
+                type: 'MCQ',
+                text: 'A person sold two shirts each for Rs. 880. On one he gained 10% and on the other he lost 20%. What is the overall profit or loss percentage?',
+                options: ['55% profit', '5.5% loss', '7.36% profit', '7.36% loss'],
+                correct: 'D'
+            },
+            {
+                id: 20,
+                type: 'TITA',
+                text: 'The cost of production of a motorbike which is sold at 20% profit went up by 40%. What should be the percentage increase in the selling price to maintain the profit percentage the same even at the new cost of production?',
+                correct: '40'
+            },
+            {
+                id: 21,
+                type: 'MCQ',
+                text: 'Initially a television was being offered at a discount of 40%. The dealer reduced this discounted price further by 20% because the customer bargained. If the selling price of the television is Rs. 9600, then what is its marked price?',
+                options: ['Rs.19200', 'Rs.16000', 'Rs.20000', 'Rs.25000'],
+                correct: 'C'
+            },
+            {
+                id: 22,
+                type: 'MCQ',
+                text: 'A shopkeeper sold 2/9 of his stock at 18% profit, three-fifth of his stock at 27.5% profit and the rest at 30% profit. The overall profit percentage made by the shopkeeper is',
+                options: ['21 1/6%', '25 5/6%', '19 7/2%', '28 1/3%'],
+                correct: 'B'
+            },
+            {
+                id: 23,
+                type: 'MCQ',
+                text: 'A man bought 100 mangoes at a certain price, with the intention of selling each at a profit of 25%. But 20 mangoes got spoilt. If he sold the rest at the intended price, what was his profit or loss percentage?',
+                options: ['0%', '6.66% profit', '6.25% loss', '12.5% profit'],
+                correct: 'A'
+            },
+            {
+                id: 24,
+                type: 'TITA',
+                text: 'A trader sells an article at a profit of Rs. 25. If the cost price is reduced by Rs. 25 and consequently the selling price is reduced by 25% he would make a profit of 25%. What is his initial cost price? (in Rs.)',
+                correct: '100'
+            },
+            {
+                id: 25,
+                type: 'MCQ',
+                text: 'A shopkeeper always weighs 20% less than the correct weight. One day, he weighed 20% more than the quantity usually weighed by him. If the profit on the correct weight is 20%, what is the effective percentage of profit in this transaction?',
+                options: ['10%', '25%', '20%', '15%'],
+                correct: 'B'
+            },
+            {
+                id: 26,
+                type: 'MCQ',
+                text: 'A dealer bought 50 television sets at Rs. 10000 each. For every set purchased from him, he gave one set free. The loss made by him is equal to the selling price of 15 sets. What is the selling price of each set that is bought?',
+                options: ['Rs.10000', 'Rs.15000', 'Rs.12500', 'Rs.20000'],
+                correct: 'C'
+            },
+            {
+                id: 27,
+                type: 'TITA',
+                text: 'Anwar bought an article listed at Rs. 18000 at 30% discount. He sold it to Balu at 33 1/3% profit. Balu marked up the price of the article by 25% and then gave 16 2/3% discount. Find the profit percentage made by Balu.',
+                correct: '25'
+            },
+            {
+                id: 28,
+                type: 'MCQ',
+                text: 'A printer undertook the task of printing 2000 pages for a client. The client provided the paper. The dimension of each page was 24 cm x 14 cm. A 2 cm gap was left on each page on all the 4 sides of the margin. The cost of printing was Rs. 8 per sq. cm. If the printer wants to make 8% profit, how much should he charge per page?',
+                options: ['Rs.1728', 'Rs.2281', 'Rs.1628', 'Rs.1901'],
+                correct: 'A'
+            },
+            {
+                id: 29,
+                type: 'MCQ',
+                text: 'Serena and Venus start a business with Rs. 50000 each. At the end of 3 months Venus withdraws Rs. 10000 from his investment. What percent of the total profit should Venus receive at the end of the year?',
+                options: ['33.3%', '45 5/6%', '50%', '45 35/37%'],
+                correct: 'D'
+            },
+            {
+                id: 30,
+                type: 'TITA',
+                text: 'Mehta, Mehra and Mihir start a business with investments in the ratios of 1 : 2 : 3. They make a profit of Rs. 600000. If Mihir and Mehra leave after 4 and 8 months respectively, then what is Mehta\'s share of the total profit? (in Rs.)',
+                correct: '180000'
+            },
+            {
+                id: 31,
+                type: 'MCQ',
+                text: 'Goyal and Gokul invest Rs. 20000 and Rs. 30000 respectively and start a business. Since Goyal manages the business, he gets a salary which is equal to 20% of the balance profit after deducting this salary. If Goyal\'s total earnings are Rs. 4800 at the end of one year, what is the total profit made by the business?',
+                options: ['Rs.4000', 'Rs.5200', 'Rs.9600', 'Rs.6400'],
+                correct: 'C'
+            },
+            {
+                id: 32,
+                type: 'MCQ',
+                text: 'Ganga and Gayathri start an enterprise by investing Rs. 24000 and Rs. 36000 respectively. Their agreement is to share half of the total profit equally and then share the remaining half in the ratio of their capitals. If they share the entire profit in the ratio of their capitals, Gayathri would have got Rs. 2500 more than what she would have got otherwise. What is the total profit?',
+                options: ['Rs.75000', 'Rs.72000', 'Rs.108000', 'Rs.50000'],
+                correct: 'D'
+            },
+            {
+                id: 33,
+                type: 'MCQ',
+                text: 'A man invests Rs. 1395 in a 3% stock at Rs. 93. After holding the stock for a month, he sells Rs. 1000 worth of stock at Rs. 95 and the remaining at Rs. 80. What is the overall profit or loss in the above purchase and sale transaction? (in Rs.)',
+                options: ['75 loss', '15 loss', '22 profit', '45 loss'],
+                correct: 'D'
+            },
+            {
+                id: 34,
+                type: 'TITA',
+                text: 'Ismail invests in a 6% stock at 5% premium. He gets a dividend of Rs. 3600 at the end of the year. What is his investment? (in Rs.)',
+                correct: '63000'
+            },
+            {
+                id: 35,
+                type: 'MCQ',
+                text: 'A man invests half of the amount he has in 4% stock at 90 and the other half in 8% stock at 110. If he had invested the total amount in the 8% stock at 110 he would have made Rs. 3500 more. How much did he invest?',
+                options: ['Rs.250000', 'Rs.247500', 'Rs.300000', 'Rs.225000'],
+                correct: 'B'
+            }
+        ];
+
+        let userStates = Array(questions.length).fill(0); 
+        let userAnswers = Array(questions.length).fill(""); 
+        let currentQuestionIdx = 0;
+
+        // --- Core Navigation Engine ---
+
+        function initTest() {
+            const paletteGrid = document.getElementById('palette-grid-box');
+            paletteGrid.innerHTML = '';
+            for(let i = 0; i < questions.length; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'palette-btn not-visited';
+                btn.id = `palette-btn-${i}`;
+                btn.innerText = i + 1;
+                btn.onclick = () => jumpToQuestion(i);
+                paletteGrid.appendChild(btn);
+            }
+            loadQuestion(0);
+            startSectionTimer(60 * 60); // 60 minutes
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIdx = index;
+            const question = questions[index];
+
+            if (userStates[index] === 0) {
+                userStates[index] = 1;
+            }
+
+            document.getElementById('question-number-title').innerText = `Question No. ${question.id}`;
+            document.getElementById('question-marks-rule').innerText = (question.type === 'MCQ') ? "Marks: +3, -1" : "Marks: +3, 0";
+
+            document.querySelectorAll('.palette-btn').forEach((btn, idx) => {
+                btn.classList.remove('active');
+                if(idx === index) btn.classList.add('active');
+            });
+
+            syncPaletteUI();
+
+            document.getElementById('question-text-box').innerText = question.text;
+
+            let inputsBox = document.getElementById('answer-inputs');
+            inputsBox.innerHTML = '';
+
+            if (question.type === 'MCQ') {
+                const optLabels = ['A', 'B', 'C', 'D'];
+                let container = document.createElement('div');
+                container.className = 'options-container';
+
+                question.options.forEach((optText, optIdx) => {
+                    let labelStr = optLabels[optIdx];
+                    let itemDiv = document.createElement('div');
+                    itemDiv.className = 'option-item';
+                    itemDiv.onclick = () => selectOption(labelStr);
+
+                    let isChecked = userAnswers[index] === labelStr ? 'checked' : '';
+                    itemDiv.innerHTML = `
+                        <input type="radio" name="mcq-options" value="${labelStr}" ${isChecked}>
+                        <span><strong>(${labelStr})</strong> ${optText}</span>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+                inputsBox.appendChild(container);
+            } else {
+                let container = document.createElement('div');
+                container.className = 'tita-container';
+                container.innerHTML = `
+                    <p>Type in your answer in the box below:</p>
+                    <input type="text" class="tita-input" id="tita-val" value="${userAnswers[index]}" placeholder="Enter response..." oninput="handleTitaInput(this.value)">
+                `;
+                inputsBox.appendChild(container);
+            }
+        }
+
+        function syncPaletteUI() {
+            for(let i = 0; i < questions.length; i++) {
+                const btn = document.getElementById(`palette-btn-${i}`);
+                btn.className = 'palette-btn'; 
+                if(i === currentQuestionIdx) btn.classList.add('active');
+
+                switch(userStates[i]) {
+                    case 0: btn.classList.add('not-visited'); break;
+                    case 1: btn.classList.add('not-answered'); break;
+                    case 2: btn.classList.add('answered'); break;
+                    case 3: btn.classList.add('marked-review'); break;
+                    case 4: btn.classList.add('ans-marked-review'); break;
+                }
+            }
+        }
+
+        function jumpToQuestion(index) {
+            loadQuestion(index);
+        }
+
+        // --- Handle Input Submissions ---
+
+        function selectOption(label) {
+            userAnswers[currentQuestionIdx] = label;
+            let radios = document.getElementsByName('mcq-options');
+            radios.forEach(radio => {
+                if(radio.value === label) radio.checked = true;
+            });
+        }
+
+        function handleTitaInput(val) {
+            userAnswers[currentQuestionIdx] = val.trim();
+        }
+
+        // --- Action controls ---
+
+        function clearResponse() {
+            userAnswers[currentQuestionIdx] = "";
+            if (userStates[currentQuestionIdx] === 4) {
+                userStates[currentQuestionIdx] = 3; 
+            } else {
+                userStates[currentQuestionIdx] = 1; 
+            }
+            loadQuestion(currentQuestionIdx); 
+        }
+
+        function saveAndNext() {
+            let ans = userAnswers[currentQuestionIdx];
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 2; // Turns Green (Answered)
+            } else {
+                userStates[currentQuestionIdx] = 1; // Turns Red (Not Answered)
+            }
+
+            if (currentQuestionIdx < questions.length - 1) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        function markForReview() {
+            let ans = userAnswers[currentQuestionIdx];
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 4; // Answered & Marked for Review
+            } else {
+                userStates[currentQuestionIdx] = 3; // Marked for Review
+            }
+
+            if (currentQuestionIdx < questions.length - 1) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        // --- Test Sectional Timer setup ---
+
+        function startSectionTimer(durationSeconds) {
+            let timeRemaining = durationSeconds;
+            const display = document.getElementById('timer-display');
+
+            const timerInterval = setInterval(() => {
+                let mins = Math.floor(timeRemaining / 60);
+                let secs = timeRemaining % 60;
+
+                mins = mins < 10 ? '0' + mins : mins;
+                secs = secs < 10 ? '0' + secs : secs;
+
+                display.innerText = `${mins}:${secs}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Submitting your responses.");
+                    showResults();
+                }
+                timeRemaining--;
+            }, 1000);
+        }
+
+        // --- Final Submission and Analysis ---
+
+        function confirmSubmit() {
+            if (confirm("Are you sure you want to submit the Quantitative Ability section?")) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('results-screen').style.display = 'block';
+
+            let correctCount = 0;
+            let totalScore = 0;
+            let attempted = 0;
+
+            const tbody = document.getElementById('breakdown-rows');
+            const detailContainer = document.getElementById('detailed-review-cards');
+            
+            tbody.innerHTML = '';
+            detailContainer.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                let uAns = userAnswers[idx] || "";
+                let isAttempted = uAns !== "";
+                if (isAttempted) attempted++;
+
+                let change = 0;
+                let statusText = "Unattempted";
+                let statusColor = "color: #7f8c8d;";
+                let isCorrect = false;
+
+                if (isAttempted) {
+                    let normalizedUser = uAns.replace(/[\s:]/g, ',');
+                    let normalizedCorrect = q.correct.replace(/[\s:]/g, ',');
+
+                    if (normalizedUser.toUpperCase() === normalizedCorrect.toUpperCase()) {
+                        correctCount++;
+                        change = 3;
+                        statusText = "Correct";
+                        statusColor = "color: #2ecc71; font-weight: bold;";
+                        isCorrect = true;
+                    } else {
+                        change = (q.type === 'MCQ') ? -1 : 0;
+                        statusText = "Incorrect";
+                        statusColor = "color: #e74c3c; font-weight: bold;";
+                    }
+                }
+                totalScore += change;
+
+                // 1. Generate Brief Summary Table Row
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${q.id}</td>
+                    <td>${q.type}</td>
+                    <td style="${statusColor}">${statusText}</td>
+                    <td style="font-weight:bold;">${uAns || "-"}</td>
+                    <td style="font-weight:bold; color: #2ecc71;">${q.correct}</td>
+                    <td>${change > 0 ? '+' + change : change}</td>
+                `;
+                tbody.appendChild(row);
+
+                // 2. Generate Detailed Question-Wise Review Cards
+                let card = document.createElement('div');
+                card.className = 'review-card';
+                
+                let reviewHeadingColor = isCorrect ? '#2ecc71' : (isAttempted ? '#e74c3c' : '#7f8c8d');
+                let reviewHeadingText = `Question ${q.id} (${q.type}) - ${statusText}`;
+
+                let optionsHTML = '';
+                if (q.type === 'MCQ') {
+                    optionsHTML = `<div class="review-options">`;
+                    const labels = ['A', 'B', 'C', 'D'];
+                    q.options.forEach((optVal, optIdx) => {
+                        let currentLabel = labels[optIdx];
+                        let itemClass = 'review-option-item';
+                        
+                        if (currentLabel === q.correct) {
+                            itemClass += ' review-option-correct'; 
+                        } else if (currentLabel === uAns) {
+                            itemClass += ' review-option-incorrect'; 
+                        }
+                        
+                        optionsHTML += `<div class="${itemClass}"><strong>(${currentLabel})</strong> ${optVal}</div>`;
+                    });
+                    optionsHTML += `</div>`;
+                } else {
+                    let titaStyle = isCorrect ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;';
+                    optionsHTML = `
+                        <div class="review-tita-result" style="${titaStyle}">
+                            <p><strong>Your Response:</strong> ${uAns || "No response filled"}</p>
+                            <p><strong>Correct Response Key:</strong> ${q.correct}</p>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="review-card-header" style="color: ${reviewHeadingColor};">
+                        ${reviewHeadingText}
+                    </div>
+                    <div class="review-question-text">
+                        ${q.text.replace(/\n/g, '<br>')}
+                    </div>
+                    ${optionsHTML}
+                `;
+                detailContainer.appendChild(card);
+            });
+
+            document.getElementById('final-score').innerText = totalScore;
+            document.getElementById('attempted-count').innerText = `${attempted}/${questions.length}`;
+            let accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
+            document.getElementById('accuracy-rate').innerText = `${accuracy}%`;
+        }
+
+        // --- On-Screen Calculator Logic ---
+
+        let calcVal = "0";
+        let calcFormula = "";
+        let calcMem = 0;
+        let clearOnNext = false;
+
+        function toggleCalculator() {
+            const modal = document.getElementById('calculator-modal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function calcPress(char) {
+            if (calcVal === "0" || clearOnNext) {
+                calcVal = char;
+                clearOnNext = false;
+            } else {
+                calcVal += char;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcOperator(op) {
+            if (op === 'pm') {
+                calcVal = String(parseFloat(calcVal) * -1);
+            } else if (op === 'sqrt') {
+                calcVal = String(Math.sqrt(parseFloat(calcVal)));
+                clearOnNext = true;
+            } else if (op === 'inv') {
+                let v = parseFloat(calcVal);
+                calcVal = v !== 0 ? String(1 / v) : "Error";
+                clearOnNext = true;
+            } else {
+                calcFormula += calcVal + " " + op + " ";
+                clearOnNext = true;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcCalculate() {
+            try {
+                calcFormula += calcVal;
+                let finalVal = eval(calcFormula);
+                calcVal = String(finalVal);
+                calcFormula = "";
+                clearOnNext = true;
+            } catch(e) {
+                calcVal = "Error";
+                calcFormula = "";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcBackspace() {
+            if (calcVal.length > 1) {
+                calcVal = calcVal.slice(0, -1);
+            } else {
+                calcVal = "0";
+            }
+            updateCalcDisplay();
+        }
+
+        // Reset display
+        function calcClear() {
+            calcVal = "0";
+            calcFormula = "";
+            updateCalcDisplay();
+        }
+
+        function calcMemory(action) {
+            let current = parseFloat(calcVal) || 0;
+            switch(action) {
+                case 'MC': calcMem = 0; break;
+                case 'MR': calcVal = String(calcMem); clearOnNext = true; break;
+                case 'MS': calcMem = current; clearOnNext = true; break;
+                case 'M+': calcMem += current; clearOnNext = true; break;
+                case 'M-': calcMem -= current; clearOnNext = true; break;
+            }
+            updateCalcDisplay();
+        }
+
+        // Drag Support for the calculator modal
+        const dragHeader = document.getElementById("calc-header-drag");
+        const modalEl = document.getElementById("calculator-modal");
+        let activeDrag = false, initX, initY;
+
+        dragHeader.onmousedown = (e) => {
+            activeDrag = true;
+            initX = e.clientX - modalEl.offsetLeft;
+            initY = e.clientY - modalEl.offsetTop;
+        };
+
+        document.onmousemove = (e) => {
+            if (activeDrag) {
+                modalEl.style.left = (e.clientX - initX) + 'px';
+                modalEl.style.top = (e.clientY - initY) + 'px';
+            }
+        };
+
+        document.onmouseup = () => activeDrag = false;
+
+        function updateCalcDisplay() {
+            document.getElementById('calc-display').innerText = calcVal;
+            document.getElementById('calc-formula').innerText = calcFormula;
+        }
+
+        window.onload = initTest;
+    </script>
+</body>
+</html>
+
+
+

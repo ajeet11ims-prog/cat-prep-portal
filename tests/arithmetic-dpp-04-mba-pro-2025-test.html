@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic DPP 04 MBA Pro 2025 Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
+    header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08); }
+    .topbar { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 22px; color: var(--brand); }
+    .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .timer { min-width: 150px; text-align: center; border: 1px solid var(--line); background: var(--brand-soft); border-radius: 6px; padding: 8px 12px; font-weight: 700; color: var(--brand); }
+    main { max-width: 1100px; margin: 22px auto 40px; padding: 0 18px; }
+    .instructions, .question, #result { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+    .instructions { padding: 16px; margin-bottom: 18px; }
+    .question { padding: 16px; margin-bottom: 14px; }
+    .question h2 { margin: 0 0 12px; font-size: 17px; }
+    .difficulty { display: inline-block; margin: 0 0 10px; color: var(--brand); font-weight: 700; border-bottom: 2px solid var(--brand); }
+    .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    label.option { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 10px; cursor: pointer; background: #fbfcfd; }
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+    .actions { display: flex; justify-content: center; margin: 24px 0; }
+    button { border: 0; border-radius: 6px; background: var(--brand); color: white; padding: 12px 22px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #3d66b2; }
+    #result { display: none; padding: 16px; margin-bottom: 18px; }
+    .score-grid { display: grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+    .score-box { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfcfd; }
+    .score-box strong { display: block; font-size: 22px; margin-top: 2px; }
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+    .solution { display: none; margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; color: #243447; }
+    .solution h3 { margin: 0 0 8px; font-size: 16px; color: var(--brand); }
+    .solution p { margin: 6px 0; }
+    @media (max-width: 700px) { .options, .score-grid { grid-template-columns: 1fr; } .timer { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Arithmetic DPP - 04</h1>
+        <div class="meta">Ratio & Proportion 2 | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">60:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      { level: "Questions 1-10", q: "Anu, Vinu and Punit started a business with initial investments Rs. 8000, Rs. 12000 and Rs. 10000 respectively. After 1 year, Anu and Punit again invested Rs. 2000 each. What is the ratio of profit of Anu, Vinu and Punit after two years?", options: ["9:12:7", "9:10:11", "9:12:11", "8:12:11"], answer: 2, solution: "Capital-time values are Anu = 8000 x 1 + 10000 x 1 = 18000, Vinu = 12000 x 2 = 24000, and Punit = 10000 x 1 + 12000 x 1 = 22000. Ratio = 18:24:22 = 9:12:11." },
+      { level: "Questions 1-10", q: "5 years ago, Father's age was twice the age of his son at that time. 10 years from now, the ratio of age of son to father will become 8:13. What is the current age of son?", options: ["20", "30", "35", "25"], answer: 1, solution: "Let current ages be S and F. Then F - 5 = 2(S - 5), so F = 2S - 5. Also (S + 10):(F + 10) = 8:13. Solving gives S = 30." },
+      { level: "Questions 1-10", q: "The number of toys with Tina and Reetu are in the ratio 3:8. Reetu gave some toys to Tina such that the number of toys with Tina and Reetu are in the ratio 5:6. What fraction of her toys did Reetu give away to Tina?", options: ["1/2", "5/8", "3/8", "1/4"], answer: 3, solution: "Let Tina and Reetu have 3x and 8x toys. If Reetu gives y toys, (3x + y):(8x - y) = 5:6. This gives y = 2x. Fraction given by Reetu = 2x/8x = 1/4." },
+      { level: "Questions 1-10", q: "The salaries of A, B, and C are in the ratio 4:5:6. The ratio of A's old salary to new salary is 2:3, while the new salary of B and C is equal. If the total sum of old and new salaries is in the ratio 3:4, find the ratio of old salary and new salary of C.", options: ["6:10", "2:3", "6:7", "6:5"], answer: 2, solution: "Let old salaries be 4x, 5x, and 6x. A's new salary = 6x. Old total = 15x and new total = 20x. Since new B = new C, they together are 14x, so new C = 7x. C old:new = 6x:7x = 6:7." },
+      { level: "Questions 1-10", q: "The number of kids, teens and adults visiting a park is in the ratio 3:6:8, and the ticket prices for them are in the ratio 4:6:5. If the teens generated Rs. 3600 more than the kids, find the total revenue of the park.", options: ["13,200", "17,600", "22,000", "11,600"], answer: 0, solution: "Let visitors be 3x, 6x, 8x and prices be 4y, 6y, 5y. Teen revenue - kid revenue = 36xy - 12xy = 24xy = 3600, so xy = 150. Total revenue = (12 + 36 + 40)xy = 88 x 150 = Rs. 13,200." },
+      { level: "Questions 1-10", q: "The salaries of Ram and Shyam are in the ratio 4:5. After increase in salaries, the ratio becomes 8:11. If Ram's salary increased by 25%, find the percentage increase in the salary of Shyam.", options: ["12.5", "25", "37.5", "50"], answer: 2, solution: "Let Ram and Shyam initially earn 4x and 5x. Ram's new salary = 5x. New ratio is 8:11, so Shyam's new salary = 55x/8. Increase = 55x/8 - 5x = 15x/8. Percentage increase = (15x/8)/(5x) x 100 = 37.5%." },
+      { level: "Questions 1-10", q: "The number of games played by A and B is in the ratio 3:2, B and C in the ratio 4:5, and C and D in the ratio 2:3. If A and D have played 45 games more than B and C, find the number of games played by A.", options: ["84", "70", "48", "60"], answer: 3, solution: "Combining the ratios gives A:B:C:D = 12:8:10:15. A + D = 27 units and B + C = 18 units, so difference = 9 units = 45. One unit = 5. A = 12 x 5 = 60." },
+      { level: "Questions 1-10", q: "Three friends A, B, and C go to a restaurant. A pays 3/10 of the bill while the ratio of the amount spent by B and amount spent by A and C is 1:4. If A spent Rs. 300 less than C, find the total bill.", options: ["900", "1200", "1500", "1800"], answer: 2, solution: "Let total bill be T. A = 3T/10. Since B:(A + C) = 1:4, B:(T - B) = 1:4, so B = T/5. Thus C = T - 3T/10 - T/5 = T/2. C - A = T/5 = 300, so T = 1500." },
+      { level: "Questions 1-10", q: "A, B, and C spend 40%, 60% and 80% of their incomes and their savings are in the ratio 9:8:5. If A earns Rs. 10,000 less than C, find the sum of all their incomes.", options: ["35,000", "60,000", "45,000", "50,000"], answer: 1, solution: "Their saving rates are 60%, 40% and 20%. Income ratio = 9/(3/5) : 8/(2/5) : 5/(1/5) = 15:20:25 = 3:4:5. C - A = 2 units = 10000, so one unit = 5000. Total income = 12 units = Rs. 60,000." },
+      { level: "Questions 1-10", q: "A varies directly to B when C is constant and directly to the square of C when B is constant. When B = 1 and C = 3, A = 108. What is the positive integral value of C when A = 4056 and B = 2?", options: ["11", "12", "13", "14"], answer: 2, solution: "A = kBC^2. With B = 1, C = 3 and A = 108, k = 12. Now 4056 = 12 x 2 x C^2, so C^2 = 169 and C = 13." },
+      { level: "Questions 11-20", q: "A, B and C entered into a partnership. The ratio of investment of A to C is 4:7 and B to C is 3:5. All invested for an equal period. If the total profit is Rs. 10640, find B's profit share.", options: ["Rs. 2800", "Rs. 2940", "Rs. 3080", "Rs. 3360"], answer: 1, solution: "A:C = 4:7 and B:C = 3:5. Making C common gives A:B:C = 20:21:35. Total units = 76. One unit = 10640/76 = 140. B's share = 21 x 140 = Rs. 2940." },
+      { level: "Questions 11-20", q: "Aleksandar and Binny started a business by investing Rs. 24000 and Rs. 16000 respectively. After six months, Charli joined them with Rs. 20000. What will be Binny's share in the total profit of Rs. 32890 earned at the end of 2 years?", options: ["5986", "6895", "8695", "9568"], answer: 3, solution: "Capital-time ratio = 24000 x 24 : 16000 x 24 : 20000 x 18 = 576:384:360 = 24:16:15. Total units = 55. Binny's share = 16/55 x 32890 = Rs. 9568." },
+      { level: "Questions 11-20", q: "Mark and Stark start a business together and invest $50,000 and $70,000 respectively. Stark is an active partner and he gets 15% of the profit separately. If total profit is $60,000, what is Stark's share at the end of a year?", options: ["$35,750", "$38,750", "$42,000", "$45,000"], answer: 1, solution: "Stark first gets 15% of 60000 = 9000. Remaining profit = 51000, shared in capital ratio 5:7. Stark's share from remaining profit = 7/12 x 51000 = 29750. Total = 9000 + 29750 = $38,750." },
+      { level: "Questions 11-20", q: "Mr. Buffett and Mr. Stark invest $14000 and $21000 respectively. They agree to share half the profit equally and the remaining half in the ratio of capitals. If sharing entirely in capital ratio would give Stark $1500 more than otherwise, what is the total profit?", options: ["$20000", "$30000", "$40000", "$50000"], answer: 1, solution: "Capital ratio = 2:3. Under the agreement, Stark gets half of half the profit plus 3/5 of the remaining half = T/4 + 3T/10 = 11T/20. If shared only by capital, Stark gets 3T/5 = 12T/20. Difference = T/20 = 1500, so T = $30000." },
+      { level: "Questions 11-20", q: "An expensive gem worth Rs. 10368 fell and broke into three pieces whose weights are in the ratio 1:2:3. The value of each gem is directly proportional to the square of its weight. Determine the loss due to the breaking.", options: ["Rs. 3624", "Rs. 4228", "Rs. 6336", "Rs. 7510"], answer: 2, solution: "Original weight = 6x, so value = k(6x)^2 = 36kx^2 = 10368. Broken value = k(x^2 + 4x^2 + 9x^2) = 14kx^2. Since kx^2 = 288, loss = 22 x 288 = Rs. 6336." },
+      { level: "Questions 11-20", q: "Four numbers a, b, c and d are such that c is one-fourth the sum of a and b, while d is one-sixth the sum of a and b. When 8, 14, 6 and 10 are added to a, b, c and d respectively, find the absolute difference between b and c.", options: ["9", "12", "15", "18"], answer: 0, solution: "From c = (a + b)/4 and d = (a + b)/6, c - d = (a + b)/12. The added values make the corresponding paired terms equal, so c + 6 = d + 10 and c - d = 4. Thus a + b = 48. Also a + 8 = b + 14, so a - b = 6. Hence a = 27, b = 21 and c = 12. Difference = 9." },
+      { level: "Questions 11-20", q: "The ratio of land and water on earth is 2:3. The ratio of land and water on the northern hemisphere is 7:8 and the ratio of land and water on two-thirds of the southern hemisphere is 1:3. Find the ratio of water and land on the remaining part of the southern hemisphere.", options: ["1:1", "1:2", "2:1", "3:2"], answer: 0, solution: "Let total land and water be 2x and 3x. Each hemisphere has total area 5x/2. Northern land and water are 7x/6 and 4x/3. Southern land and water are 5x/6 and 5x/3. Two-thirds of southern hemisphere has total 5x/3 and L:W = 1:3, so L = 5x/12 and W = 5x/4. Remaining part has land = 5x/12 and water = 5x/12, so W:L = 1:1." },
+      { level: "Questions 11-20", q: "Pinky stands before Rinky, and there are 19 people between them. The number of people before and after Rinky is in the ratio 5:3, and before and after Pinky is in the ratio 15:17. Find the number of people in the queue.", options: ["65", "129", "136", "193"], answer: 1, solution: "Let people before and after Pinky be 15x and 17x. Since Rinky is 20 places after Pinky, before Rinky = 15x + 20 and after Rinky = 17x - 20. Given (15x + 20):(17x - 20) = 5:3. Solving gives x = 4. Total people = 15x + 17x + 1 = 129." },
+      { level: "Questions 11-20", q: "A drone has a standard speed of 50 km/h. The increase above standard speed is directly proportional to the square root of horsepower and inversely proportional to the square of the weight it carries. With a 560-horsepower engine, speed is 86 km/h. With a 35-horsepower engine and weight reduced by 3 kg, speed is 66 km/h. What was the original weight carried?", options: ["18", "15", "12", "9"], answer: 2, solution: "Increase above standard is 36 and 16. Therefore 36/16 = sqrt(560/35) x ((w - 3)^2/w^2) = 4 x ((w - 3)^2/w^2). Hence (w - 3)/w = 3/4, giving w = 12 kg." },
+      { level: "Questions 11-20", q: "Three friends A, B and C distribute Rs. 840 such that 25 less than five-fourths of A, 5 less than three-fourths of B, and 50 more than five-sevenths of C are equal. Find the amount received by B.", options: ["250", "280", "300", "340"], answer: 3, solution: "Let the common value be x. Then A = 4(x + 25)/5, B = 4(x + 5)/3 and C = 7(x - 50)/5. Their sum is 840. Solving gives x = 250. Hence B = 4(255)/3 = Rs. 340." },
+      { level: "Questions 21-30", q: "A invests Rs. 40000. After the first quarter, B joins with Rs. 60000. Finally C joins after the second quarter with Rs. 70000. At year-end, 28% of profit goes to A as founding member. The rest is shared by investment. If A gets Rs. 6000 more than B and C combined, find B's profit share.", options: ["31,500", "27,000", "40,500", "43,500"], answer: 2, solution: "Capital-time ratio for the remaining profit is A:B:C = 40000 x 12 : 60000 x 9 : 70000 x 6 = 8:9:7. A gets 28% directly plus 8/24 of the remaining 72%, so A gets 52% of total profit. B+C get 48%. Difference 4% = 6000, so total profit = 150000. B gets 72% x 9/24 = 27% of total = Rs. 40500." },
+      { level: "Questions 21-30", q: "A invests Rs. 35000. After 4 months, B and C enter and invest x and Rs. 20000 respectively. At the end of the 9th month, A withdraws Rs. 10000 while B and C halve their investment. If B's profit share percentage is 16.67 percentage points more than C's at the end of the year, find x approximately.", options: ["50,000", "20,000", "30,000", "40,000"], answer: 3, solution: "Capital-time values are A = 35000 x 9 + 25000 x 3 = 390000, B = 5x + 3(x/2) = 6.5x and C = 20000 x 5 + 10000 x 3 = 130000. B's share minus C's share is 16.67% = 1/6 of total, so (6.5x - 130000)/(390000 + 6.5x + 130000) = 1/6. Solving gives x = 40000." },
+      { level: "Questions 21-30", q: "The cost of a phone bill is directly proportional to the square root of data consumed in mb. Additionally, there is a fixed discount. When 900 mb was used, the bill was Rs. 1200. When 3600 mb was used, its cost per unit was reciprocal to the cost per unit when 900 mb was used. Find the bill when 4900 mb is consumed.", options: ["3200", "3300", "3600", "3900"], answer: 0, solution: "Let bill = k sqrt(data) - d. For 900 mb, 30k - d = 1200. Cost per unit at 900 mb = 1200/900 = 4/3, so reciprocal = 3/4. For 3600 mb, bill = 3600 x 3/4 = 2700, so 60k - d = 2700. Thus k = 50 and d = 300. For 4900 mb, bill = 50 x 70 - 300 = Rs. 3200." },
+      { level: "Questions 21-30", q: "x years ago, Bolu was 7 times as old as his only brother. y years from now, Bolu will be 3 times as old as his brother. If x:y = 1:2, then how many years from now will Bolu be twice as old as his brother?", options: ["13x", "6.5x", "2x + 3y", "5y - 1.5x"], answer: 1, solution: "Let current ages be B and b, and y = 2x. Then B - x = 7(b - x) and B + 2x = 3(b + 2x). Solving gives b = 2.5x and B = 11.5x. For Bolu to be twice his brother, B + t = 2(b + t), so t = B - 2b = 6.5x." },
+      { level: "Questions 21-30", q: "Ashutosh and Binod started a business. At year-end, out of Rs. 40000 profit, Ashutosh received Rs. 8000 more than Binod. If Ashutosh had invested Rs. 120000 more and Binod Rs. 120000 less, Ashutosh would have received 25% more than actual. Find Binod's profit share if Ashutosh and Binod's investments were less by Rs. 60000 and Rs. 140000 respectively and profit decreased by 20%.", options: ["Rs. 9,600", "Rs. 5,760", "Rs. 6,720", "Rs. 7,200"], answer: 0, solution: "Actual profit shares are 24000 and 16000, so investment ratio A:B = 3:2. The alternate condition gives (A + 120000):(B - 120000) = 3:1, so A = 480000 and B = 320000. If investments are reduced by 60000 and 140000, the new ratio is 420000:180000 = 7:3. New profit = 80% of 40000 = 32000. Binod's share = 3/10 x 32000 = Rs. 9600." },
+      { level: "Questions 21-30", q: "A starts business with $2000. After 6 months, B joins with A as partner. C joined sometime before year-end and invested $6000. Profit after a year is divided in 4:5:3 among A, B and C. Had B invested for the same period as C, what would have been B's profit share out of total profit of $1900?", options: ["$400", "$500", "$600", "$450"], answer: 1, solution: "A's capital-time = 2000 x 12 = 24000, corresponding to 4 units, so one unit = 6000. B's capital-time = 5 units = 30000. Since B invested for 6 months, B's capital = 5000. C's capital-time = 3 units = 18000, and with $6000 this means C invested for 3 months. If B also invested for 3 months, B's capital-time = 15000. New ratio A:B:C = 24000:15000:18000 = 8:5:6. B's share = 5/19 x 1900 = $500." },
+      { level: "Questions 21-30", q: "Ashwani runs a 60-seater roller coaster. His profit from the coaster is directly dependent on the number of riders over a minimum number and on the rounds moved. His profit is Rs. 2700 with 30 riders for 42 rounds and Rs. 5400 with 45 riders for 48 rounds. Find the minimum number of riders required so that he will not suffer loss.", options: ["12", "10", "18", "15"], answer: 1, solution: "Let the minimum riders be n. Profit = k(riders - n)(rounds). So 2700 = k(30 - n)42 and 5400 = k(45 - n)48. Dividing gives 84(30 - n) = 48(45 - n), so n = 10." },
+      { level: "Questions 21-30", q: "Bulbul and Ashwani invest $1000 and $2000. Sahev joins after 3 months and Sounak after another 3 months. Bulbul actively works and takes some percentage of profit as salary. Remaining profit is distributed by investment. After one year all four get equal profit. Find Bulbul's salary percentage.", options: ["10%", "12.5%", "15%", "20%"], answer: 1, solution: "For the three passive partners to receive equal shares, their capital-time values must match Ashwani's 2000 x 12 = 24000. Total capital-time = Bulbul 12000 + 3 x 24000 = 84000. Let Bulbul's salary be p of total profit. Bulbul gets p + (1 - p)(12000/84000), while each other gets (1 - p)(24000/84000). Equating gives p = 1/8 = 12.5%." },
+      { level: "Questions 21-30", q: "Four friends A, B, C and D invested between $1000 and $2000 each at the start of the year. After 2 months A again invested $2000. Two months later B invested $2000. Two months later C invested $2000 and two months later D invested $2000. If profits are equally distributed, in what ratio did A, B, C and D invest at the start?", options: ["2:4:5:6", "3:4:5:6", "1:2:3:4", "2:3:4:5"], answer: 1, solution: "Equal profits mean equal capital-time. If initial investments are A, B, C, D, then 12A + 2000 x 10 = 12B + 2000 x 8 = 12C + 2000 x 6 = 12D + 2000 x 4. Hence B - A = C - B = D - C = 2000/6. With all amounts between 1000 and 2000, the ratio is 1000:1333.33:1666.67:2000 = 3:4:5:6." },
+      { level: "Questions 21-30", q: "A jeweller prices diamond necklaces so that cost varies as the square of the number of diamonds. A necklace with 8 diamonds costs Rs. 1,60,000. Ravi asks him to split 10 diamonds into 3 necklaces in the ratio 5:3:2. What is the loss or gain to Ravi on account of splitting the original necklace?", options: ["Rs. 1,00,000", "Rs. 1,55,000", "Rs. 2,50,000", "Rs. 95,000"], answer: 1, solution: "Cost = k n^2. Since 8 diamonds cost 160000, k = 160000/64 = 2500. A 10-diamond necklace costs 100 x 2500 = 250000. Split as 5, 3 and 2 diamonds, total cost = (25 + 9 + 4) x 2500 = 95000. Ravi saves Rs. 250000 - Rs. 95000 = Rs. 155000." }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 60 * 60;
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+      form.innerHTML = html + `<div class="actions"><button type="submit">Submit Test</button></div>`;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const correctText = `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+        solution.style.display = "block";
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (Number(selected.value) === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctText}`;
+        }
+      });
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

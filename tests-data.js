@@ -1,24 +1,5 @@
-﻿window.CAT_TESTS = [
-    {
-        "title":  "apti4all-profit-loss-page1",
-        "file":  "tests/apti4all-profit-loss-page1.html",
-        "original":  "apti4all-profit-loss-page1.html",
-        "area":  "Quant",
-        "topic":  "Profit Loss",
-        "type":  "Topic Wise Test",
-        "minutes":  null,
-        "questions":  null
-    },
-    {
-        "title":  "apti4all-profit-loss-page2",
-        "file":  "tests/apti4all-profit-loss-page2.html",
-        "original":  "apti4all-profit-loss-page2.html",
-        "area":  "Quant",
-        "topic":  "Profit Loss",
-        "type":  "Topic Wise Test",
-        "minutes":  null,
-        "questions":  null
-    },
+﻿window.CAT_TESTS = 
+[
     {
         "title":  "Arithmetic DPP 03 MBA Pro 2025 Test",
         "file":  "tests/arithmetic-dpp-03-mba-pro-2025-test.html",
@@ -939,5 +920,4 @@
         "minutes":  15,
         "questions":  5
     }
-]
-;
+];

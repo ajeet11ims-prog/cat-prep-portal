@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Daily Dose Test</title>
+  <style>
+    :root {
+      --page: #f7f8fb;
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d9dee7;
+      --blue: #9bdff2;
+      --blue-dark: #075985;
+      --green: #16803c;
+      --red: #b42318;
+      --white: #ffffff;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--page);
+      line-height: 1.45;
+    }
+
+    .app {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 14px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      margin: -14px -14px 14px;
+      background: rgba(247, 248, 251, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(20px, 5vw, 30px);
+      letter-spacing: 0;
+    }
+
+    .timer {
+      min-width: 98px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--white);
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .timer.warning {
+      background: var(--red);
+    }
+
+    .intro,
+    .result {
+      padding: 14px;
+      margin-bottom: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .intro p,
+    .result p {
+      margin: 4px 0;
+      color: var(--muted);
+    }
+
+    .question {
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .prompt {
+      padding: 14px;
+      background: var(--blue);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .prompt strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .options {
+      display: grid;
+      gap: 0;
+    }
+
+    label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 44px;
+      padding: 11px 14px;
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--white);
+    }
+
+    label:active {
+      background: #eef6ff;
+    }
+
+    input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex: 0 0 auto;
+      accent-color: var(--blue-dark);
+    }
+
+    .option-number {
+      flex: 0 0 auto;
+      font-weight: 400;
+    }
+
+    .diagram-wrap {
+      max-width: 720px;
+      margin: 10px 0 12px;
+      background: #ffffff;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 30px;
+    }
+
+    button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .submit {
+      flex: 1;
+      background: var(--blue-dark);
+      color: var(--white);
+    }
+
+    .reset {
+      background: #e8edf4;
+      color: var(--ink);
+    }
+
+    .result {
+      display: none;
+      border-color: #b7ddc2;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .review {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .review div {
+      padding: 9px 10px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .correct {
+      color: var(--green);
+    }
+
+    .wrong {
+      color: var(--red);
+    }
+
+    @media (max-width: 520px) {
+      .app {
+        padding: 10px;
+      }
+
+      .topbar {
+        margin: -10px -10px 12px;
+        padding: 10px;
+      }
+
+      .timer {
+        min-width: 86px;
+        font-size: 16px;
+      }
+
+      .prompt {
+        padding: 12px;
+      }
+
+      label {
+        padding: 12px;
+      }
+
+      .actions {
+        position: sticky;
+        bottom: 0;
+        margin: 0 -10px;
+        padding: 10px;
+        background: rgba(247, 248, 251, 0.96);
+        border-top: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>QA Daily Dose Test</h1>
+      <div id="timer" class="timer" aria-live="polite">15:00</div>
+    </header>
+
+    <section class="intro">
+      <p><strong>Section 1</strong></p>
+      <p>Total questions: 4 | Time: 15 minutes</p>
+    </section>
+
+    <form id="testForm">
+      <section class="question">
+        <div class="prompt">
+          <strong>Q.1</strong>
+          Raj and Atul start running towards each other simultaneously from the opposite ends of a linear racing track and take 81 seconds and 100 seconds respectively to reach the other end after crossing each other. If Raj and Siraj also start running towards each other simultaneously from opposite ends of the same track such that Raj takes 114 seconds to reach the other end after they cross each other, then how much time will Siraj take to run the entire length of the racing track?
+        </div>
+        <div class="options">
+          <label><span class="option-number">1</span><input type="radio" name="q1" value="1"><span>83.5 seconds</span></label>
+          <label><span class="option-number">2</span><input type="radio" name="q1" value="2"><span>80.5 seconds</span></label>
+          <label><span class="option-number">3</span><input type="radio" name="q1" value="3"><span>85.5 seconds</span></label>
+          <label><span class="option-number">4</span><input type="radio" name="q1" value="4"><span>90 seconds</span></label>
+        </div>
+      </section>
+
+      <section class="question">
+        <div class="prompt">
+          <strong>Q.2</strong>
+          <div class="diagram-wrap" aria-label="Original Q.2 diagram">
+            <svg class="diagram" xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" role="img" aria-label="Q.2 circular track diagram">
+              <rect width="720" height="260" fill="#ffffff"></rect>
+              <g transform="translate(8 10)" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#333">
+                <circle cx="112" cy="122" r="62" fill="none" stroke="#333" stroke-width="3"></circle>
+                <text x="52" y="128" font-size="16">2Ï€r = 20 metres</text>
+                <line x1="112" y1="60" x2="112" y2="18" stroke="#333" stroke-width="4"></line>
+                <line x1="112" y1="38" x2="82" y2="38" stroke="#333" stroke-width="4"></line>
+                <polygon points="82,38 95,31 95,45" fill="#333"></polygon>
+                <line x1="112" y1="58" x2="82" y2="58" stroke="#333" stroke-width="4"></line>
+                <polygon points="82,58 95,51 95,65" fill="#333"></polygon>
+                <line x1="112" y1="20" x2="142" y2="20" stroke="#333" stroke-width="4"></line>
+                <polygon points="142,20 129,13 129,27" fill="#333"></polygon>
+                <line x1="112" y1="40" x2="142" y2="40" stroke="#333" stroke-width="4"></line>
+                <polygon points="142,40 129,33 129,47" fill="#333"></polygon>
+                <line x1="112" y1="60" x2="142" y2="60" stroke="#333" stroke-width="4"></line>
+                <polygon points="142,60 129,53 129,67" fill="#333"></polygon>
+                <text x="148" y="25" font-size="16">A = 1 m/s</text>
+                <text x="148" y="46" font-size="16">B = 2 m/s</text>
+                <text x="148" y="67" font-size="16">C = 5 m/s</text>
+                <text x="0" y="42" font-size="16">1 m/s = D</text>
+                <text x="0" y="64" font-size="16">3 m/s = E</text>
+                <text x="0" y="222" font-size="17">What is the total number of distinct meeting points of any 2 persons? (All persons start at the</text>
+                <text x="0" y="243" font-size="17">same time)</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="options">
+          <label><span class="option-number">1</span><input type="radio" name="q2" value="1"><span>29</span></label>
+          <label><span class="option-number">2</span><input type="radio" name="q2" value="2"><span>28</span></label>
+          <label><span class="option-number">3</span><input type="radio" name="q2" value="3"><span>16</span></label>
+          <label><span class="option-number">4</span><input type="radio" name="q2" value="4"><span>None of these</span></label>
+        </div>
+      </section>
+
+      <section class="question">
+        <div class="prompt">
+          <strong>Q.3</strong>
+          A man gets 20 minutes late to his office, if he drives at 40 km/h and is 4 minutes early, if he drives at 50 km/h. By how much time will he be early or late, if he drives at 48 km/h?
+        </div>
+        <div class="options">
+          <label><span class="option-number">1</span><input type="radio" name="q3" value="1"><span>1 minute early</span></label>
+          <label><span class="option-number">2</span><input type="radio" name="q3" value="2"><span>On time</span></label>
+          <label><span class="option-number">3</span><input type="radio" name="q3" value="3"><span>1 minute late</span></label>
+          <label><span class="option-number">4</span><input type="radio" name="q3" value="4"><span>2 minutes late</span></label>
+        </div>
+      </section>
+
+      <section class="question">
+        <div class="prompt">
+          <strong>Q.4</strong>
+          Bithika takes 45 strides, each 2 feet long, per minute during morning walk. However, while walking to school, she travels at 50% higher speed, taking strides, each of which are 2.5 feet long. How many more strides does she take per minute while walking to the school as compared to those she take during her morning walk?
+        </div>
+        <div class="options">
+          <label><span class="option-number">1</span><input type="radio" name="q4" value="1"><span>9</span></label>
+          <label><span class="option-number">2</span><input type="radio" name="q4" value="2"><span>18</span></label>
+          <label><span class="option-number">3</span><input type="radio" name="q4" value="3"><span>36</span></label>
+          <label><span class="option-number">4</span><input type="radio" name="q4" value="4"><span>45</span></label>
+        </div>
+      </section>
+
+      <section id="result" class="result" aria-live="polite"></section>
+
+      <div class="actions">
+        <button class="submit" type="submit">Submit Test</button>
+        <button class="reset" type="button" id="resetBtn">Reset</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const correctAnswers = {
+      q1: "3",
+      q2: "3",
+      q3: "2",
+      q4: "1"
+    };
+
+    const totalSeconds = 15 * 60;
+    let remainingSeconds = totalSeconds;
+    let submitted = false;
+    const timer = document.getElementById("timer");
+    const form = document.getElementById("testForm");
+    const result = document.getElementById("result");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function updateTimer() {
+      timer.textContent = formatTime(remainingSeconds);
+      timer.classList.toggle("warning", remainingSeconds <= 60);
+    }
+
+    function selectedAnswer(name) {
+      const checked = form.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : "";
+    }
+
+    function disableTest() {
+      form.querySelectorAll("input, button.submit").forEach((element) => {
+        element.disabled = true;
+      });
+    }
+
+    function submitTest(reason) {
+      if (submitted) return;
+      submitted = true;
+      clearInterval(countdown);
+
+      let score = 0;
+      const review = Object.keys(correctAnswers).map((question, index) => {
+        const userAnswer = selectedAnswer(question);
+        const correctAnswer = correctAnswers[question];
+        const isCorrect = userAnswer === correctAnswer;
+        if (isCorrect) score += 1;
+        const given = userAnswer || "Not answered";
+        return `<div class="${isCorrect ? "correct" : "wrong"}">Q.${index + 1}: Your answer ${given} | Correct answer ${correctAnswer}</div>`;
+      }).join("");
+
+      result.innerHTML = `
+        <h2>${reason}</h2>
+        <p><strong>Score: ${score} / ${Object.keys(correctAnswers).length}</strong></p>
+        <div class="review">${review}</div>
+      `;
+      result.classList.add("show");
+      disableTest();
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    const countdown = setInterval(() => {
+      remainingSeconds -= 1;
+      updateTimer();
+      if (remainingSeconds <= 0) {
+        submitTest("Time is over");
+      }
+    }, 1000);
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest("Test submitted");
+    });
+
+    resetBtn.addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    updateTimer();
+  </script>
+</body>
+</html>
+
