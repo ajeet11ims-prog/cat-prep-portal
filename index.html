@@ -8,75 +8,83 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">
+    <a class="brand" href="#home" aria-label="Go to home">
       <span class="mark">CAT</span>
-      <div>
-        <h1>CAT Prep With Ajeet Sir</h1>
-        <p>Practice tests for Quant, LRDI and VARC</p>
-      </div>
-    </div>
-    <a class="ghost-link" href="#tests">Browse Tests</a>
+      <span>
+        <strong>CAT Prep With Ajeet Sir</strong>
+        <small>Practice tests for QA, LR, DI, RC and VA-VR</small>
+      </span>
+    </a>
+    <button class="ghost-link" id="homeButton" type="button">Home</button>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-copy">
+      <div>
         <p class="eyebrow">Student Test Portal</p>
-        <h2>Choose a category. Launch a full-screen test. Track your practice with clarity.</h2>
-        <p class="subcopy">All tests open as standalone exam windows, so students get a cleaner experience than Blogger post embeds.</p>
+        <h1>Choose your test path and start practice in full-page exam mode.</h1>
+        <p class="subcopy">Select a category first. Then choose the subject area and launch the test directly.</p>
       </div>
       <div class="hero-panel" aria-label="Portal summary">
-        <div><strong id="totalTests">94</strong><span>Total tests</span></div>
-        <div><strong>3</strong><span>Core areas</span></div>
+        <div><strong id="totalTests">0</strong><span>Total tests</span></div>
+        <div><strong>5</strong><span>Subject groups</span></div>
         <div><strong>Full page</strong><span>Exam mode</span></div>
       </div>
     </section>
 
-    <section class="quick-grid" aria-label="Main categories">
-      <button class="quick-card active" data-filter-type="all">
-        <span>All Tests</span>
-        <strong id="countAll">0</strong>
-      </button>
-      <button class="quick-card" data-filter-type="Topic Wise Test">
-        <span>Topic Wise Test</span>
-        <strong id="countTopic">0</strong>
-      </button>
-      <button class="quick-card" data-filter-type="Sectional Test">
-        <span>Sectional Test</span>
-        <strong id="countSectional">0</strong>
-      </button>
-      <button class="quick-card" data-filter-type="Full Test">
-        <span>Full Test</span>
-        <strong id="countFull">0</strong>
-      </button>
+    <section id="homeView" class="view active-view" aria-labelledby="homeTitle">
+      <div class="section-head">
+        <p class="eyebrow">Choose Category</p>
+        <h2 id="homeTitle">Start from one of these test groups</h2>
+      </div>
+      <div class="menu-grid">
+        <button class="menu-card" data-route="topic">
+          <span>1</span>
+          <strong>Topic Test</strong>
+          <small id="topicCount">0 tests</small>
+        </button>
+        <button class="menu-card" data-route="area">
+          <span>2</span>
+          <strong>Area Wise Test</strong>
+          <small id="areaCount">0 tests</small>
+        </button>
+        <button class="menu-card" data-route="sectional">
+          <span>3</span>
+          <strong>Sectional Test</strong>
+          <small id="sectionalCount">0 tests</small>
+        </button>
+        <button class="menu-card" data-route="full">
+          <span>4</span>
+          <strong>Full Length Test</strong>
+          <small id="fullCount">0 tests</small>
+        </button>
+      </div>
     </section>
 
-    <section id="tests" class="test-shell">
-      <aside class="filters" aria-label="Filters">
-        <label class="search-label" for="searchInput">Search tests</label>
-        <input id="searchInput" type="search" placeholder="Percentage, LRDI, SIMCAT...">
-
-        <div class="filter-block">
-          <h3>Area</h3>
-          <div id="areaFilters" class="chip-list"></div>
+    <section id="subjectView" class="view" aria-labelledby="subjectTitle">
+      <div class="section-head with-action">
+        <div>
+          <p class="eyebrow" id="subjectEyebrow">Topic Test</p>
+          <h2 id="subjectTitle">Choose a subject</h2>
         </div>
+        <button class="back-btn" type="button" data-back="home">Back</button>
+      </div>
+      <div class="subject-grid" id="subjectGrid"></div>
+    </section>
 
-        <div class="filter-block">
-          <h3>Topic</h3>
-          <div id="topicFilters" class="chip-list"></div>
+    <section id="listView" class="view" aria-labelledby="listTitle">
+      <div class="section-head with-action">
+        <div>
+          <p class="eyebrow" id="listEyebrow">Available Tests</p>
+          <h2 id="listTitle">Tests</h2>
+          <p id="listCount" class="muted-line">0 tests</p>
         </div>
-      </aside>
-
-      <section class="results" aria-live="polite">
-        <div class="results-head">
-          <div>
-            <p class="eyebrow">Available Tests</p>
-            <h2 id="resultTitle">All Tests</h2>
-          </div>
-          <p id="resultCount">0 tests</p>
-        </div>
-        <div id="testGrid" class="test-grid"></div>
-      </section>
+        <button class="back-btn" type="button" id="listBackButton">Back</button>
+      </div>
+      <div class="test-tools">
+        <input id="searchInput" type="search" placeholder="Search within this list...">
+      </div>
+      <div id="testGrid" class="test-grid"></div>
     </section>
   </main>
 
