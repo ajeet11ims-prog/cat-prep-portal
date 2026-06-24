@@ -1,0 +1,899 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CL Jaipur Repeaters Batch LRDI SET -2</title>
+  <style>
+    :root {
+      --cat-blue: #0b75bb;
+      --cat-blue-dark: #075d98;
+      --cat-light: #d9eef9;
+      --cat-border: #aeb9c4;
+      --cat-panel: #f4f6f8;
+      --ink: #111827;
+      --muted: #5b6773;
+      --green: #2d9b55;
+      --red: #ca2f2f;
+      --purple: #6d42b8;
+      --grey: #d8dde3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .exam-frame {
+      width: 100vw;
+      height: 100vh;
+      margin: auto;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      display: grid;
+      grid-template-rows: 52px 42px minmax(0, 1fr) 58px;
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.38);
+    }
+
+    .top-strip {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      align-items: center;
+      background: var(--cat-blue);
+      color: #fff;
+      border-bottom: 1px solid #075a91;
+    }
+
+    .test-title {
+      padding: 0 18px;
+      min-width: 0;
+    }
+
+    .test-title h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .test-title p {
+      margin: 3px 0 0;
+      font-size: 12px;
+      opacity: 0.92;
+    }
+
+    .candidate-panel {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      background: var(--cat-blue-dark);
+      border-left: 1px solid rgba(255, 255, 255, 0.28);
+      font-weight: 700;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 3px;
+      background: #eef3f7;
+      color: var(--cat-blue-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .section-strip {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      border-bottom: 1px solid var(--cat-border);
+      background: #eef3f7;
+    }
+
+    .section-left,
+    .section-right {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 12px;
+    }
+
+    .section-left {
+      border-right: 1px solid var(--cat-border);
+    }
+
+    .section-name {
+      min-width: 116px;
+      padding: 7px 14px;
+      background: #fff;
+      border: 1px solid var(--cat-border);
+      border-bottom: 3px solid var(--cat-blue);
+      color: var(--cat-blue-dark);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .timer {
+      margin-left: auto;
+      color: #111;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .section-right {
+      justify-content: space-between;
+      background: #f7f9fb;
+      font-size: 13px;
+      font-weight: 700;
+      color: #263746;
+    }
+
+    .exam-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      background: #fff;
+    }
+
+    .workspace {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: 38px minmax(0, 1fr);
+      border-right: 1px solid var(--cat-border);
+    }
+
+    .question-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--cat-border);
+      background: #fafafa;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .marking {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .content-grid {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.65fr);
+    }
+
+    .passage-pane,
+    .question-pane {
+      min-height: 0;
+      overflow: auto;
+      padding: 16px 18px;
+    }
+
+    .passage-pane {
+      border-right: 1px solid var(--cat-border);
+      background: #fff;
+    }
+
+    .question-pane {
+      background: #fff;
+    }
+
+    .passage-box {
+      background: #fff;
+      border: 0;
+      color: #000;
+      padding: 4px 2px;
+      font-size: 16px;
+      line-height: 1.42;
+    }
+
+    .passage-box p {
+      margin: 0 0 8px;
+    }
+
+    .passage-box ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .passage-box li {
+      margin: 5px 0;
+    }
+
+    .given-grid {
+      border-collapse: collapse;
+      margin: 14px 0 16px;
+      font-size: 15px;
+      min-width: 560px;
+      max-width: 100%;
+    }
+
+    .given-grid th,
+    .given-grid td {
+      border: 2px solid #111;
+      width: 92px;
+      height: 34px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 700;
+    }
+
+    .given-grid th {
+      background: #cfe3f7;
+    }
+
+    .given-grid .row-head {
+      width: 68px;
+      background: #fff;
+      text-align: left;
+      padding-left: 6px;
+    }
+
+    .q-card {
+      display: none;
+    }
+
+    .q-card.active {
+      display: block;
+    }
+
+    .q-title {
+      margin: 0 0 14px;
+      font-size: 17px;
+      line-height: 1.45;
+      color: #000;
+    }
+
+    .q-id {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .option {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #e1e5ea;
+      padding: 8px 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--cat-blue);
+      flex: 0 0 auto;
+    }
+
+    .answer-input {
+      width: min(320px, 100%);
+      height: 40px;
+      padding: 8px 10px;
+      border: 1px solid #8a98a8;
+      border-radius: 2px;
+      font-size: 16px;
+    }
+
+    .answer-note {
+      display: none;
+      margin-top: 14px;
+      padding: 10px;
+      border: 1px solid #d1d7de;
+      background: #f8fafc;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .answer-note.ok {
+      display: block;
+      color: var(--green);
+      border-color: rgba(45, 155, 85, 0.45);
+      background: #effaf3;
+    }
+
+    .answer-note.bad {
+      display: block;
+      color: var(--red);
+      border-color: rgba(202, 47, 47, 0.45);
+      background: #fff1f1;
+    }
+
+    .side-panel {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      background: #f4f7fa;
+    }
+
+    .status-box {
+      padding: 12px;
+      border-bottom: 1px solid var(--cat-border);
+      background: #fff;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 28px;
+    }
+
+    .shape {
+      width: 26px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      background: var(--grey);
+      color: #333;
+    }
+
+    .shape.answered {
+      background: var(--green);
+      color: #fff;
+      border-radius: 50% 50% 6px 6px;
+    }
+
+    .shape.not-answered {
+      background: var(--red);
+      color: #fff;
+      border-radius: 6px 6px 50% 50%;
+    }
+
+    .shape.review {
+      background: var(--purple);
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    .palette-title {
+      padding: 10px 12px;
+      background: var(--cat-blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .palette-wrap {
+      min-height: 0;
+      overflow: auto;
+      padding: 14px 12px;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, 42px);
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .pal-btn {
+      width: 42px;
+      height: 34px;
+      border: 1px solid #9da8b4;
+      background: var(--grey);
+      color: #1f2933;
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .pal-btn.current {
+      outline: 3px solid rgba(11, 117, 187, 0.28);
+      border-color: var(--cat-blue);
+    }
+
+    .pal-btn.answered {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+      border-radius: 50% 50% 7px 7px;
+    }
+
+    .pal-btn.not-answered {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+      border-radius: 7px 7px 50% 50%;
+    }
+
+    .pal-btn.review {
+      background: var(--purple);
+      color: #fff;
+      border-color: var(--purple);
+      border-radius: 50%;
+    }
+
+    .bottom-bar {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      border-top: 1px solid var(--cat-border);
+      background: #f4f6f8;
+    }
+
+    .left-actions,
+    .right-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+    }
+
+    .left-actions {
+      justify-content: space-between;
+      border-right: 1px solid var(--cat-border);
+    }
+
+    .action-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .right-actions {
+      justify-content: center;
+    }
+
+    .btn {
+      min-width: 92px;
+      min-height: 34px;
+      padding: 6px 12px;
+      border: 1px solid #7e8b97;
+      border-radius: 2px;
+      background: #fff;
+      color: #1f2933;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      border-color: var(--cat-blue-dark);
+      background: var(--cat-blue);
+      color: #fff;
+    }
+
+    .btn.orange {
+      border-color: #d57200;
+      background: #f28c22;
+      color: #fff;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    #result {
+      display: none;
+      margin: 0 0 12px;
+      padding: 12px;
+      border: 1px solid var(--cat-border);
+      background: #f8fafc;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(80px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .score-box {
+      background: #fff;
+      border: 1px solid #d6dde5;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 19px;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 1100px) {
+      .test-title h1 {
+        font-size: 17px;
+      }
+
+      .content-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="exam-frame">
+    <header class="top-strip">
+      <div class="test-title">
+        <h1>CL Jaipur Repeaters Batch LRDI SET -2</h1>
+        <p>CAT Desktop Format | LRDI | 5 Questions | 20 Minutes</p>
+      </div>
+      <div class="candidate-panel">
+        <div class="avatar">CL</div>
+        <div>
+          <div>Candidate</div>
+          <small>CL Jaipur Repeaters Batch</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="section-strip">
+      <div class="section-left">
+        <div class="section-name">LRDI</div>
+        <div class="timer">Time Left: <span id="timer">20:00</span></div>
+      </div>
+      <div class="section-right">
+        <span>Question Palette</span>
+        <span id="answeredCount">Answered: 0/5</span>
+      </div>
+    </div>
+
+    <main class="exam-body">
+      <section class="workspace">
+        <div class="question-head">
+          <span id="questionHeader">Question No. 29</span>
+          <span class="marking">Marks for correct answer: 3 | Negative marks: 1</span>
+        </div>
+
+        <div class="content-grid">
+          <article class="passage-pane">
+            <section class="passage-box">
+              <p><strong>Directions for questions 29 to 33:</strong> Answer the questions on the basis of the information given below.</p>
+              <p>A 5 x 5 grid is given below with letters A, B, C, D, and E and digits 1 to 5. Each cell contains one letter and one digit. Every row and every column contain each letter and each digit exactly once.</p>
+              <table class="given-grid" aria-label="Initial 5 by 5 letter grid">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                    <th>Column 4</th>
+                    <th>Column 5</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th class="row-head">Row 1</th><td></td><td>B</td><td></td><td>A</td><td></td></tr>
+                  <tr><th class="row-head">Row 2</th><td></td><td></td><td>C</td><td></td><td></td></tr>
+                  <tr><th class="row-head">Row 3</th><td></td><td>E</td><td></td><td></td><td>C</td></tr>
+                  <tr><th class="row-head">Row 4</th><td></td><td></td><td>A</td><td></td><td></td></tr>
+                  <tr><th class="row-head">Row 5</th><td>D</td><td></td><td></td><td>C</td><td></td></tr>
+                </tbody>
+              </table>
+              <p>The goal is to fill in the grid with symbols according to the following rules:</p>
+              <ol type="i">
+                <li>No two cells contain the same pair of symbols. For example: If a cell contains C2, then no other cells can contain the same pair; it can be either CX or Y2 where X is 1, 3, 4 or 5 and Y is A, B, D or E.</li>
+                <li>C and E is paired with 1 in row 1 and row 2, respectively.</li>
+                <li>D and E is paired with 3 in row 4 and row 5, respectively.</li>
+                <li>In row 1, the sum of numbers A and B are paired with is same as sum of numbers D and E are paired with.</li>
+              </ol>
+            </section>
+          </article>
+
+          <article class="question-pane">
+            <section id="result"></section>
+
+            <section class="q-card active" data-question="0" data-source="29">
+              <div class="q-id">Q.29 [2450309]</div>
+              <h2 class="q-title">For how many cells in the grid can you uniquely determine the pair?</h2>
+              <input class="answer-input" type="number" name="q0" placeholder="Type your answer">
+              <div class="answer-note" id="note-0"></div>
+            </section>
+
+            <section class="q-card" data-question="1" data-source="30">
+              <div class="q-id">Q.30 [2450309]</div>
+              <h2 class="q-title">Which of the following is not a possible pair in column 2?</h2>
+              <div class="options">
+                <label class="option"><input type="radio" name="q1" value="0"><span>C2</span></label>
+                <label class="option"><input type="radio" name="q1" value="1"><span>E5</span></label>
+                <label class="option"><input type="radio" name="q1" value="2"><span>D4</span></label>
+                <label class="option"><input type="radio" name="q1" value="3"><span>B4</span></label>
+              </div>
+              <div class="answer-note" id="note-1"></div>
+            </section>
+
+            <section class="q-card" data-question="2" data-source="31">
+              <div class="q-id">Q.31 [2450309]</div>
+              <h2 class="q-title">Which of the following statements can be TRUE?</h2>
+              <p><strong>Statement I:</strong> In row 4, when C is paired with 5, then A is paired with 2.<br><strong>Statement II:</strong> In column 3, when A is paired with 2, then B is paired with 4.</p>
+              <div class="options">
+                <label class="option"><input type="radio" name="q2" value="0"><span>I only</span></label>
+                <label class="option"><input type="radio" name="q2" value="1"><span>II only</span></label>
+                <label class="option"><input type="radio" name="q2" value="2"><span>Both I &amp; II</span></label>
+                <label class="option"><input type="radio" name="q2" value="3"><span>Neither I nor II</span></label>
+              </div>
+              <div class="answer-note" id="note-2"></div>
+            </section>
+
+            <section class="q-card" data-question="3" data-source="32">
+              <div class="q-id">Q.32 [2450309]</div>
+              <h2 class="q-title">With which number is D paired with in row 3?</h2>
+              <input class="answer-input" type="number" name="q3" placeholder="Type your answer">
+              <div class="answer-note" id="note-3"></div>
+            </section>
+
+            <section class="q-card" data-question="4" data-source="33">
+              <div class="q-id">Q.33 [2450309]</div>
+              <h2 class="q-title">Which of the following is the correct sequence of letters in row 4 from column 1 to column 5?</h2>
+              <div class="options">
+                <label class="option"><input type="radio" name="q4" value="0"><span>C, D, A, E, B</span></label>
+                <label class="option"><input type="radio" name="q4" value="1"><span>E, C, A, B, D</span></label>
+                <label class="option"><input type="radio" name="q4" value="2"><span>E, C, A, D, B</span></label>
+                <label class="option"><input type="radio" name="q4" value="3"><span>C, D, A, B, E</span></label>
+              </div>
+              <div class="answer-note" id="note-4"></div>
+            </section>
+          </article>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="status-box">
+          <div class="status-grid">
+            <div class="legend"><span class="shape" id="notVisitedCount">5</span> Not Visited</div>
+            <div class="legend"><span class="shape not-answered" id="notAnsweredCount">0</span> Not Answered</div>
+            <div class="legend"><span class="shape answered" id="answeredLegendCount">0</span> Answered</div>
+            <div class="legend"><span class="shape review" id="reviewCount">0</span> Marked</div>
+          </div>
+        </div>
+        <div class="palette-title">Choose a Question</div>
+        <div class="palette-wrap">
+          <div class="palette" id="palette"></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bottom-bar">
+      <div class="left-actions">
+        <div class="action-group">
+          <button class="btn" type="button" id="markReviewBtn">Mark for Review &amp; Next</button>
+          <button class="btn" type="button" id="clearBtn">Clear Response</button>
+        </div>
+        <div class="action-group">
+          <button class="btn" type="button" id="prevBtn">Previous</button>
+          <button class="btn primary" type="button" id="nextBtn">Save &amp; Next</button>
+        </div>
+      </div>
+      <div class="right-actions">
+        <button class="btn orange" type="button" id="submitBtn">Submit</button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const questions = [
+      { type: "number", name: "q0", source: 29, answer: "15", answerText: "15" },
+      { type: "radio", name: "q1", source: 30, answer: "3", answerText: "Option 4 - B4" },
+      { type: "radio", name: "q2", source: 31, answer: "2", answerText: "Option 3 - Both I & II" },
+      { type: "number", name: "q3", source: 32, answer: "1", answerText: "1" },
+      { type: "radio", name: "q4", source: 33, answer: "2", answerText: "Option 3 - E, C, A, D, B" }
+    ];
+
+    const cards = Array.from(document.querySelectorAll(".q-card"));
+    const palette = document.getElementById("palette");
+    const result = document.getElementById("result");
+    const timer = document.getElementById("timer");
+    const answeredCount = document.getElementById("answeredCount");
+    const questionHeader = document.getElementById("questionHeader");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const submitBtn = document.getElementById("submitBtn");
+    const markReviewBtn = document.getElementById("markReviewBtn");
+    const visited = new Set([0]);
+    const review = new Set();
+    let current = 0;
+    let submitted = false;
+    let secondsLeft = 20 * 60;
+
+    function getAnswer(index) {
+      const question = questions[index];
+      if (question.type === "radio") {
+        const checked = document.querySelector(`input[name="${question.name}"]:checked`);
+        return checked ? checked.value : "";
+      }
+      return document.querySelector(`input[name="${question.name}"]`).value.trim();
+    }
+
+    function hasAnswer(index) {
+      return getAnswer(index).length > 0;
+    }
+
+    function renderPalette() {
+      palette.innerHTML = questions.map((question, index) => `<button class="pal-btn" type="button" data-index="${index}">${index + 1}</button>`).join("");
+      palette.querySelectorAll(".pal-btn").forEach(button => {
+        button.addEventListener("click", () => showQuestion(Number(button.dataset.index)));
+      });
+      updateStatus();
+    }
+
+    function updateStatus() {
+      let answered = 0;
+      let notAnswered = 0;
+      let notVisited = 0;
+
+      questions.forEach((question, index) => {
+        const button = palette.querySelector(`[data-index="${index}"]`);
+        const isVisited = visited.has(index);
+        const isAnswered = hasAnswer(index);
+        const isReview = review.has(index);
+
+        button.className = "pal-btn";
+        if (index === current) button.classList.add("current");
+        if (isReview) {
+          button.classList.add("review");
+        } else if (isAnswered) {
+          button.classList.add("answered");
+        } else if (isVisited) {
+          button.classList.add("not-answered");
+        }
+
+        if (!isVisited) notVisited += 1;
+        if (isVisited && !isAnswered) notAnswered += 1;
+        if (isAnswered) answered += 1;
+      });
+
+      answeredCount.textContent = `Answered: ${answered}/${questions.length}`;
+      document.getElementById("notVisitedCount").textContent = notVisited;
+      document.getElementById("notAnsweredCount").textContent = notAnswered;
+      document.getElementById("answeredLegendCount").textContent = answered;
+      document.getElementById("reviewCount").textContent = review.size;
+    }
+
+    function showQuestion(index) {
+      if (index < 0 || index >= questions.length || submitted) return;
+      current = index;
+      visited.add(index);
+      cards.forEach((card, idx) => card.classList.toggle("active", idx === index));
+      questionHeader.textContent = `Question No. ${questions[index].source}`;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === questions.length - 1;
+      updateStatus();
+    }
+
+    function saveAndNext() {
+      review.delete(current);
+      if (current < questions.length - 1) showQuestion(current + 1);
+      else updateStatus();
+    }
+
+    function markForReviewAndNext() {
+      review.add(current);
+      if (current < questions.length - 1) showQuestion(current + 1);
+      else updateStatus();
+    }
+
+    function clearCurrentResponse() {
+      if (submitted) return;
+      const question = questions[current];
+      if (question.type === "radio") {
+        document.querySelectorAll(`input[name="${question.name}"]`).forEach(input => {
+          input.checked = false;
+        });
+      } else {
+        document.querySelector(`input[name="${question.name}"]`).value = "";
+      }
+      review.delete(current);
+      updateStatus();
+    }
+
+    function formatTime(totalSeconds) {
+      const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+      const seconds = String(totalSeconds % 60).padStart(2, "0");
+      return `${minutes}:${seconds}`;
+    }
+
+    function updateTimer() {
+      timer.textContent = formatTime(secondsLeft);
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((question, index) => {
+        const answer = getAnswer(index);
+        const note = document.getElementById(`note-${index}`);
+        if (!answer) {
+          unattempted += 1;
+          note.className = "answer-note bad";
+          note.textContent = `Unattempted. Correct answer: ${question.answerText}`;
+        } else if (answer.toLowerCase() === question.answer.toLowerCase()) {
+          correct += 1;
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          note.className = "answer-note bad";
+          note.textContent = `Incorrect. Correct answer: ${question.answerText}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      result.style.display = "block";
+      result.innerHTML = `<strong>Test Submitted</strong><div class="score-grid"><div class="score-box">Score<strong>${score}</strong></div><div class="score-box">Correct<strong>${correct}</strong></div><div class="score-box">Wrong<strong>${wrong}</strong></div><div class="score-box">Unattempted<strong>${unattempted}</strong></div></div>`;
+      document.querySelectorAll("input, button").forEach(element => {
+        element.disabled = true;
+      });
+      showAllNotes();
+    }
+
+    function showAllNotes() {
+      cards.forEach(card => card.classList.add("active"));
+      questionHeader.textContent = "Test Submitted";
+    }
+
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("change", updateStatus);
+      input.addEventListener("input", updateStatus);
+    });
+
+    prevBtn.addEventListener("click", () => showQuestion(current - 1));
+    nextBtn.addEventListener("click", saveAndNext);
+    markReviewBtn.addEventListener("click", markForReviewAndNext);
+    clearBtn.addEventListener("click", clearCurrentResponse);
+    submitBtn.addEventListener("click", submitTest);
+
+    renderPalette();
+    showQuestion(0);
+    updateTimer();
+    setInterval(() => {
+      if (!submitted) updateTimer();
+    }, 1000);
+  </script>
+</body>
+</html>
+

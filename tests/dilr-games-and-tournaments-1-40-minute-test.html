@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DILR - Games &amp; Tournaments -1</title>
+  <style>
+    :root{--brand:#0f4c81;--brand-dark:#0a3357;--line:#c9d3df;--ink:#111827;--muted:#6b7280;--ok:#157347;--bad:#b02a37}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#eef2f6;line-height:1.45}
+    header{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px}
+    .topbar{width:100%;display:flex;align-items:center;gap:14px}
+    .topbar h1{font-size:20px;margin:0;color:var(--brand-dark);letter-spacing:0}
+    .meta{font-size:13px;color:var(--muted);margin-top:3px}
+    .pill{margin-left:auto;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:#f8fafc;font-weight:700}
+    .pill+.pill{margin-left:0}
+    main{height:calc(100vh - 64px);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px;padding:10px}
+    main>section,aside{background:#fff;border:1px solid var(--line);border-radius:8px;min-height:0;overflow:hidden}
+    #testForm{height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto auto;overflow:hidden}
+    #result,.question{padding:12px}
+    #result{display:none}
+    .question{display:none}
+    .question.active{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(380px,.88fr);gap:10px;height:100%;min-height:0}
+    .question h2{margin:0 0 12px;font-size:17px;line-height:1.32}
+    .set-info,.question-body{border:1px solid var(--line);border-radius:8px;background:#fff;min-height:0;height:100%;overflow:auto}
+    .set-info{padding:16px;font-size:17px;font-weight:700;line-height:1.5}
+    .question-body{padding:14px}
+    .set-title{font-weight:800;font-style:italic;margin:0 0 10px;color:var(--brand-dark)}
+    .set-heading{font-family:Georgia,serif;font-size:28px;font-weight:700;margin:0 0 14px;letter-spacing:.5px}
+    p{margin:0 0 10px}
+    .stats-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;margin:12px 0}
+    table{border-collapse:collapse;width:100%;background:#fff}
+    th,td{border:2px solid #111;padding:6px 8px;text-align:center;font-size:16px;font-weight:700}
+    th:first-child,td:first-child{text-align:left}
+    .note{font-weight:700;margin-top:12px}
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    label.option{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:10px;background:#fbfcfd;cursor:pointer;font-size:16px;min-height:42px}
+    label.option:hover{border-color:#9ab7ca}
+    input[type=radio]{width:17px;height:17px;margin-top:3px;accent-color:var(--brand);flex:0 0 auto}
+    .text-answer{width:160px;border:2px solid #111;border-radius:0;padding:11px 12px;font-size:20px}
+    .question-nav,.actions{display:flex;justify-content:space-between;gap:10px;margin:8px 12px 0;flex-wrap:wrap}
+    button{border:0;border-radius:6px;background:var(--brand);color:#fff;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer}
+    button.secondary{background:#e8edf4;color:var(--ink)}
+    button:disabled{opacity:.55;cursor:default}
+    aside{padding:14px;overflow:auto}
+    .panel-title{font-size:17px;margin:0 0 12px;color:var(--brand-dark)}
+    .palette{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .dot{height:38px;border-radius:6px;border:1px solid var(--line);background:#f8fafc;color:var(--ink);font-weight:700}
+    .dot.active{background:var(--brand);color:#fff}
+    .dot.answered{border-color:var(--ok);box-shadow:inset 0 -4px 0 rgba(21,115,71,.4)}
+    .score-grid{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:9px;margin-top:12px}
+    .score-box{border:1px solid var(--line);border-radius:6px;padding:9px;background:#fbfcfd}
+    .score-box strong{display:block;font-size:22px}
+    .answer-note{margin-top:12px;font-weight:700}
+    .answer-note.ok{color:var(--ok)}
+    .answer-note.bad{color:var(--bad)}
+    .answer-note.muted{color:var(--muted)}
+    .correct{background:#eef8f2}
+    .wrong{background:#fff1f2}
+    .missed{background:#f6f7f9}
+    @media (max-width:900px){
+      header{height:auto;min-height:64px}.topbar{flex-wrap:wrap;padding:10px 0}.pill{margin-left:0}
+      main{height:auto;display:block}.question.active{display:block}.set-info,.question-body{height:auto;max-height:none;margin-bottom:10px}
+      aside{margin-top:10px}.options,.stats-wrap{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div><h1>DILR - Games &amp; Tournaments -1</h1><div class="meta">20 Questions | 40 Minutes</div></div>
+      <div class="pill">Time Left: <span id="time">40:00</span></div>
+      <div class="pill">Answered: <span id="answeredCount">0</span>/20</div>
+    </div>
+  </header>
+  <main>
+    <section><section id="result"></section><form id="testForm"></form></section>
+    <aside><h2 class="panel-title">Question Palette</h2><div class="palette" id="palette"></div></aside>
+  </main>
+  <script>
+    const optionLabels=["A","B","C","D"];
+    const sets={
+      1:`<h3 class="set-heading">GAMES AND TOURNAMENTS</h3><p class="set-title">Directions for questions 1 to 5: <span style="font-style:normal;font-weight:400;color:var(--ink)">These questions are based on the information given below.</span></p><p>128 players take part in a chess tournament. The players are ranked from 1 to 128, based on their FIDE ratings, such that rank 1 was given to the highest rated player, rank 2 to the next and so on till rank 128 to the lowest rated player. The tournament follows a knockout format in every round, with the winner advancing to the next round and the loser getting eliminated from the tournament till only a single player is left. There are no draws in the tournament. From the first round till the final round, in every round, among the players who are still in the tournament, the highest ranked player plays the lowest ranked player, the second highest ranked player plays the second lowest ranked player and so on. An upset is said to happen when a higher ranked player loses to a lower ranked player.</p>`,
+      2:`<p>The following table gives the statistics of all the bowlers in a cricket match between India and New Zealand.</p><div class="stats-wrap"><table><tr><th>India</th><th>O</th><th>M</th><th>R</th><th>W</th></tr><tr><td>Sharmi</td><td>10</td><td>3</td><td>61</td><td>1</td></tr><tr><td>Kumar</td><td>8</td><td>0</td><td>48</td><td>1</td></tr><tr><td>Aaron</td><td>10</td><td>0</td><td>60</td><td>2</td></tr><tr><td>Ashwin</td><td>6</td><td>0</td><td>37</td><td>0</td></tr><tr><td>Jadeja</td><td>9</td><td>0</td><td>54</td><td>0</td></tr><tr><td>Kohil</td><td>7</td><td>0</td><td>36</td><td>1</td></tr></table><table><tr><th>New Zealand</th><th>O</th><th>M</th><th>R</th><th>W</th></tr><tr><td>Millis</td><td>10</td><td>1</td><td>35</td><td>2</td></tr><tr><td>Mc lead</td><td>10</td><td>0</td><td>45</td><td>0</td></tr><tr><td>Henry</td><td>10</td><td>1</td><td>38</td><td>4</td></tr><tr><td>Nishaan</td><td>6</td><td>0</td><td>45</td><td>1</td></tr><tr><td>Macaulay</td><td>10</td><td>1</td><td>33</td><td>1</td></tr><tr><td>Williams</td><td>4</td><td>0</td><td>19</td><td>2</td></tr></table></div><p class="note">O - Overs bowled, M - Maidan overs (over in which no runs are conceded), R - Runs conceded, W - Wickets taken</p>`,
+      3:`<p>Kapil and Sachin were playing a game which involved picking up coins from a table. Each player in his turn was to pick a minimum of two and a maximum of six coins, except when there is only one coin left in which case, he has to pick up that coin. The game continues till all the coins are removed from the table. Assume that both players play intelligently so as to win the game.</p><p>For questions 11 - 13, assume that the player who picks the last coin loses the game.</p>`,
+      4:`<p>For questions 14 and 15 assume that the player who picks up the last coin wins the game.</p>`,
+      5:`<p>Eight teams A, B, C, D from Pool I and E, F, G, H from Pool II play in the world cup tournament. In each pool, every team plays with the remaining teams in that pool exactly once. The team which wins a game gets 5 points and the team which loses any game loses 5 points. No game ended in a draw. At the end of all the pool matches, the maximum difference between the points scored by any two teams in pool I is 30 and in pool II is 20.</p><p>The teams which stand in the first two positions in each pool enter into the semi-finals. In the semifinals, a team in pool I plays with a team in pool II and the other team in pool I plays with the remaining team in pool II. The points are awarded as in the pool stage, with the teams carrying forward their points from the pool stage. After the semifinals, the maximum difference between the points scored by any two teams is 20 and the two teams which stand in the first two positions played the final and they were not from the same pool. The team from pool I won the tournament.</p>`
+    };
+    const questions=[
+      {set:1,type:"mcq",q:"After which round do a prime number of players advance to the next round?",options:["2nd","5th","6th","7th"],answer:"C"},
+      {set:1,type:"mcq",q:"How many matches were played in the tournament?",options:["127","128","125","126"],answer:"A"},
+      {set:1,type:"mcq",q:"If there were no upsets in the tournament till the end of the 4th round, then which of these players could possibly play in the 6th round?<br>(i) 10th ranked player &nbsp;&nbsp; (ii) 7th ranked player<br>(iii) 9th ranked player &nbsp;&nbsp; (iv) 8th ranked player",options:["(ii), (iii), (iv)","(ii), (iv)","(i), (iii), (iv)","(iii), (iv)"],answer:"B"},
+      {set:1,type:"mcq",q:"If there were no upsets in the tournament, then what was the rank of the player who defeated the 65th ranked player?",options:["1","63","64","127"],answer:"C"},
+      {set:1,type:"mcq",q:"At most how many matches did a player who lost to the 8th ranked player win, if no upsets were recorded in the tournament?",options:["1","2","3","4"],answer:"C"},
+      {set:2,type:"mcq",q:"Which bowler bowled the least number of balls per wicket taken?",options:["Aaron","Millis","Henry","Williams"],answer:"D"},
+      {set:2,type:"mcq",q:"Which bowler conceded the least number runs per balls bowled?",options:["Kohil","Millis","Macaulay","Williams"],answer:"C"},
+      {set:2,type:"mcq",q:"If there are 11 batsmen in a team and the only runs that India scored are that conceded by the New Zealand bowlers, then how many runs did India score per batsman?",options:["21.54","19.54","23.88","25.37"],answer:"B"},
+      {set:2,type:"mcq",q:"If economy rate is calculated as number of runs conceded per over, then what is the highest number of bowlers having the same economy rate in the match?",options:["3","2","4","Cannot be determined"],answer:"A"},
+      {set:2,type:"mcq",q:"If the economy rate (runs conceded per over) of the entire match is calculated, how many bowlers from either side had a better economy rate than the overall economy rate?",options:["4","5","6","Cannot be determined"],answer:"B"},
+      {set:3,type:"mcq",q:"If the game starts with 60 coins and it is Kapil's turn to pick first, then how many coins should he pick up so as to ensure his win?",options:["2","3","4","either 2 or 3"],answer:"D"},
+      {set:3,type:"mcq",q:"Which of the following can be the number of coins on the table, before Kapil's turn to play, if it is known that Sachin would win the game, no matter how many coins Kapil picks?",options:["64","54","97","None of these"],answer:"C"},
+      {set:3,type:"mcq",q:"If the number of coins to be picked up in Sachin's turn so as to win the game no matter what Kapil picks is 5, then which of the following could be the number of coins on the table?",options:["38","50","77","None of these"],answer:"A"},
+      {set:4,type:"mcq",q:"How many coins should Kapil pick up to ensure his win, if there are 900 coins on the table before his turn to play?",options:["4","5","6","either 4 or 5"],answer:"D"},
+      {set:4,type:"mcq",q:"If the number of coins Sachin picked up in his turn, to ensure his victory was 2, then, which of the following could have been the number of coins on the table before his turn?",options:["49","67","101","More than one of the above"],answer:"A"},
+      {set:5,type:"mcq",q:"If A lost only one match and C won against only B in the pool stage, then which of the following teams would have won the tournament?",options:["A","B","C","D"],answer:"D"},
+      {set:5,type:"text",q:"If A lost only against D in the pool stage, then what is the total number of points scored by A in the tournament?",answer:"0"},
+      {set:5,type:"text",q:"If E won three matches in the tournament and G lost against only E in the pool stage, then what is the number of points scored by E in the tournament?",answer:"5"},
+      {set:5,type:"text",q:"What is the number of points scored by the team which won the tournament including the points scored in the finals?",answer:"25"},
+      {set:5,type:"text",q:"What is the total number of matches won by the team which won the tournament?",answer:"5"}
+    ];
+    const form=document.getElementById("testForm"),resultBox=document.getElementById("result"),palette=document.getElementById("palette"),answeredCount=document.getElementById("answeredCount"),time=document.getElementById("time");
+    let submitted=false,secondsLeft=40*60,currentQuestionIndex=0;
+    function correctAnswerText(item){return item.type==="text"?item.answer:`(${item.answer}) ${item.options[optionLabels.indexOf(item.answer)]}`}
+    function renderQuestions(){
+      form.innerHTML=questions.map((item,index)=>{
+        const control=item.type==="text"?`<input class="text-answer" name="q${index}" autocomplete="off" inputmode="numeric">`:`<div class="options">${item.options.map((o,i)=>`<label class="option"><input type="radio" name="q${index}" value="${optionLabels[i]}"><span>(${optionLabels[i]}) ${o}</span></label>`).join("")}</div>`;
+        return `<div class="question" id="qcard-${index}"><div class="set-info">${sets[item.set]}</div><div class="question-body"><h2>Q${index+1}. ${item.q}</h2>${control}<div class="answer-note" id="note-${index}"></div></div></div>`;
+      }).join("")+`<div class="question-nav"><button class="secondary" type="button" id="prevQuestion">Previous</button><button class="secondary" type="button" id="nextQuestion">Save & Next</button></div><div class="actions"><button type="submit" id="submitBtn">Submit Test</button><button class="secondary" type="button" id="clearAnswers">Clear Responses</button></div>`;
+      palette.innerHTML=questions.map((_,i)=>`<button class="dot" type="button" data-target="${i}">${i+1}</button>`).join("");
+      palette.querySelectorAll(".dot").forEach(b=>b.addEventListener("click",()=>showQuestion(Number(b.dataset.target))));
+      form.querySelectorAll("input").forEach(input=>{input.addEventListener("change",updateAnsweredState);input.addEventListener("input",updateAnsweredState)});
+      document.getElementById("prevQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex-1));
+      document.getElementById("nextQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex+1));
+      document.getElementById("clearAnswers").addEventListener("click",()=>{if(submitted)return;form.reset();updateAnsweredState();showQuestion(currentQuestionIndex)});
+      showQuestion(0);
+    }
+    function showQuestion(i){if(i<0||i>=questions.length)return;currentQuestionIndex=i;document.querySelectorAll(".question").forEach((c,n)=>c.classList.toggle("active",n===i));palette.querySelectorAll(".dot").forEach((d,n)=>d.classList.toggle("active",n===i));document.getElementById("prevQuestion").disabled=i===0||submitted;document.getElementById("nextQuestion").disabled=i===questions.length-1||submitted}
+    function getAnswer(i){const item=questions[i];if(item.type==="text"){const el=document.querySelector(`[name="q${i}"]`);return el?el.value.trim():""}const s=document.querySelector(`input[name="q${i}"]:checked`);return s?s.value:""}
+    function norm(v){return String(v).replace(/,/g,"").trim().toLowerCase()}
+    function updateAnsweredState(){let a=0;questions.forEach((_,i)=>{const has=!!getAnswer(i);if(has)a++;const dot=palette.querySelector(`[data-target="${i}"]`);if(dot)dot.classList.toggle("answered",has)});answeredCount.textContent=a}
+    function updateTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0"),s=String(secondsLeft%60).padStart(2,"0");time.textContent=`${m}:${s}`;if(secondsLeft<=0){submitTest();return}secondsLeft--}
+    function submitTest(e){
+      if(e)e.preventDefault();if(submitted)return;submitted=true;let c=0,w=0,u=0;
+      questions.forEach((item,i)=>{const ans=getAnswer(i),card=document.getElementById(`qcard-${i}`),note=document.getElementById(`note-${i}`),ok=item.type==="text"?norm(ans)===norm(item.answer):ans===item.answer;document.querySelectorAll(`[name="q${i}"]`).forEach(x=>x.disabled=true);if(!ans){u++;card.classList.add("missed");note.className="answer-note muted";note.textContent=`Unattempted. Correct answer: ${correctAnswerText(item)}`}else if(ok){c++;card.classList.add("correct");note.className="answer-note ok";note.textContent=`Correct. Correct answer: ${correctAnswerText(item)}`}else{w++;card.classList.add("wrong");note.className="answer-note bad";note.textContent=`Incorrect. Correct answer: ${correctAnswerText(item)}`}});
+      resultBox.style.display="block";resultBox.innerHTML=`<h2>Test Summary</h2><div class="score-grid"><div class="score-box">Score<strong>${c} / ${questions.length}</strong></div><div class="score-box">Correct<strong>${c}</strong></div><div class="score-box">Wrong<strong>${w}</strong></div><div class="score-box">Unattempted<strong>${u}</strong></div></div>`;
+      document.querySelectorAll(".question").forEach(x=>x.classList.add("active"));["prevQuestion","nextQuestion","submitBtn","clearAnswers"].forEach(id=>document.getElementById(id).disabled=true);
+    }
+    renderQuestions();updateAnsweredState();updateTimer();const timerId=setInterval(()=>{if(submitted){clearInterval(timerId);return}updateTimer()},1000);form.addEventListener("submit",submitTest);
+  </script>
+</body>
+</html>
+

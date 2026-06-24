@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise 2 - Percentage Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #087fc1;
+      --brand-soft: #e9f6fc;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 700;
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .typed-answer {
+      width: min(360px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 11px 12px;
+      font-size: 16px;
+      background: #fbfcfd;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #06689f; }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: #243447;
+    }
+
+    .solution h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .solution p { margin: 6px 0; }
+
+    @media (max-width: 700px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Practice Exercise - 2</h1>
+        <div class="meta">Percentage | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">60:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option or type the answer where required. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        level: "Level of Difficulty - 1",
+        q: "To qualify for the board exam, a student has to obtain 39% of the total marks. Rohan got 98 marks and yet failed by 19 marks in the annual exam. Find the total marks in the exam.",
+        type: "mcq",
+        options: ["500", "450", "400", "300"],
+        answer: 3,
+        solution: "Rohan failed by 19 marks, so qualifying marks = 98 + 19 = 117. Since 117 is 39% of total marks, total marks = 117 x 100 / 39 = 300. Hence, option D is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "Akhilesh usually saves 36% of his monthly income. In one month, he gives some donations and hence his monthly expenses increase by 25%. He manages to save Rs. 37,000 in that month. Find his monthly salary.",
+        type: "mcq",
+        options: ["1,50,000", "1,75,000", "1,85,000", "1,95,000"],
+        answer: 2,
+        solution: "Assume usual income = Rs. 100. Savings = Rs. 36, so expenses = Rs. 64. Expenses increase by 25%, so new expenses = 64 + 16 = Rs. 80. New savings = 100 - 80 = Rs. 20. Given Rs. 20 corresponds to Rs. 37,000, so Rs. 100 corresponds to Rs. 1,85,000. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "In a company, the amount of work in month 2 is 150% of month 1. Due to this, the company hires new workers who have 25% more efficiency than the usual workers. The number of workers in month 2 is what percent more than the number of workers in month 1, given that the time taken to do the work in both months is the same?",
+        type: "mcq",
+        options: ["33.33%", "40%", "25%", "28%"],
+        answer: 1,
+        solution: "Let there be 100 workers in month 1 and total work = 100 units. In month 2, work = 150 units. If normal workers were used, 50 extra workers would be needed. New workers are 25% more efficient, so required new workers = 50 / 1.25 = 40. Total workers in month 2 = 140, which is 40% more than month 1. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "Due to a 37.5% decrease in the price of chocolates, Anand bought 21 extra chocolates for his daughter at the same price in which he usually gets A chocolates. Find A.",
+        type: "mcq",
+        options: ["20", "35", "55", "56"],
+        answer: 1,
+        solution: "Let Anand initially bought A chocolates at price B per chocolate. New price after 37.5% decrease = 62.5% of B = 5B/8. Expenditure is constant, so A x B = (A + 21) x (5B/8). Solving gives 8A = 5A + 105, so A = 35. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "'P' is a number such that 80% of P is more than 57% by 25,300. What is 116% of the number P?",
+        type: "mcq",
+        options: ["1,20,000", "1,10,000", "1,27,600", "None of these"],
+        answer: 2,
+        solution: "According to the question, 80% of P - 57% of P = 25,300. So 23% of P = 25,300, giving P = 1,10,000. Therefore 116% of P = 1,27,600. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "The vehicle of Mr. Madmax needs 40% more fuel at 90 kmph than it needs at 60 kmph. At 60 kmph, with K litres of fuel, he can travel 322 km. At 90 kmph with the same K litres, what distance will he be able to travel?",
+        type: "mcq",
+        options: ["214.67 km", "230 km", "242 km", "450.8 km"],
+        answer: 1,
+        solution: "Fuel required for 322 km at 60 kmph = K litres. At 90 kmph, same distance requires 1.4K litres. So with K litres at 90 kmph, distance = 322 / 1.4 = 230 km. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "Sonia saves 18.75% of her income. A year later, her income shoots up by 37.5%, but her savings remain the same. Find the approximate percentage increase in her expenditure.",
+        type: "mcq",
+        options: ["48%", "46%", "44%", "42%"],
+        answer: 1,
+        solution: "18.75% = 3/16 and 37.5% = 3/8. Let earlier income = 16K. Savings = 3K and expenditure = 13K. New income = 22K, savings remain 3K, so new expenditure = 19K. Increase in expenditure = (19K - 13K) / 13K x 100 = approximately 46%. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "Archana decided to donate 15% of her monthly income to an NGO. On the day of donation, she changed her mind and donated Rs. 96,000 which was equal to 80% of what she had decided earlier. What is 40% of her monthly income?",
+        type: "mcq",
+        options: ["Rs 4,00,000", "Rs 3,20,000", "Rs 4,80,000", "Rs 5,00,000"],
+        answer: 1,
+        solution: "Let monthly salary = K. Planned donation = 15% of K = 0.15K. Actual donation = 80% of planned donation = 0.15K x 80% = 96,000. So K = 8,00,000. Therefore 40% of monthly salary = Rs. 3,20,000. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "If the present cost of an article is Rs. 2916 and the annual rate of inflation for that article is 166.67%, then what will be the cost of the same article 3 years from now?",
+        type: "mcq",
+        options: ["Rs. 52,300", "Rs. 54,300", "Rs. 55,200", "Rs. 55,296"],
+        answer: 3,
+        solution: "166.67% increase means the multiplying factor is 1 + 5/3? More directly, new value factor = 1 + 166.67/100 = 8/3. After 3 years, cost = 2916 x (8/3)^3 = Rs. 55,296. Hence, option D is correct."
+      },
+      {
+        level: "Level of Difficulty - 1",
+        q: "Khushi went shopping with a certain amount. She spent one-third of the amount on groceries, 30% of the remaining amount on chocolates, and one-fifth of the remaining amount on a gift for her sister. She came back with Rs. 336. Find the initial amount with her.",
+        type: "mcq",
+        options: ["Rs. 600", "Rs. 800", "Rs. 900", "Rs. 960"],
+        answer: 2,
+        solution: "Let initial amount = 150K. Grocery expense = 50K, leaving 100K. Chocolate expense = 30% of 100K = 30K, leaving 70K. Gift expense = 1/5 of 70K = 14K, leaving 56K. Given 56K = 336, so K = 6. Initial amount = 150 x 6 = Rs. 900. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "In an election between two candidates, 15% of voters did not vote, 3900 votes were declared invalid and the winner got 57% of the valid votes and won by 1120 votes. Find the total number of voters enrolled in the voting list.",
+        type: "mcq",
+        options: ["15,000 voters", "18,000 voters", "14,000 voters", "16,000 voters"],
+        answer: 2,
+        solution: "Let total voters = 20K. Voters who did not vote = 3K, so votes cast = 17K. Valid votes = 17K - 3900. Winner got 57% and loser 43%, so winning margin = 14% of valid votes = 1120. Thus 14% of (17K - 3900) = 1120, giving K = 700. Total voters = 20K = 14,000. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "The price of the bicycle first increased by 11.11%, then increased by 16.66% and then increased by 7.7% such that the price becomes Rs. 9800. What was the original price of the bicycle?",
+        type: "mcq",
+        options: ["Rs. 5,940", "Rs. 6,480", "Rs. 7,020", "Rs. 7,560"],
+        answer: 2,
+        solution: "11.11% = 1/9, 16.66% = 1/6 and 7.7% is treated as 1/13. Let original price = K. Then K x 10/9 x 7/6 x 14/13 = 9800. Solving gives K = Rs. 7020. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "A Business Group has 3 companies X, Y, Z, and a Trust P. Each group company donates 5% of its funds to the Trust, excluding loans taken from other group companies. X has given a loan to Y equivalent to 10% of Y's funds. After receiving the loan, Y has funds 2 times the funds of Z. If Z gave Rs. 10,000 as donation to Trust P, how much is the approximate contribution of Y to Trust P?",
+        type: "mcq",
+        options: ["Rs 17,000", "Rs 18000", "Rs 19000", "Rs 20000"],
+        answer: 1,
+        solution: "Z's donation = Rs. 10,000 = 5% of Z's fund, so Z's fund = Rs. 2,00,000. Y's new fund = 2 x Z = Rs. 4,00,000. Since this includes a loan equal to 10% of Y's original fund, 110% of Y's original fund = 4,00,000, so original fund is about Rs. 3,63,636. Y's donation = 5% of this = about Rs. 18,182, nearest Rs. 18,000. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "The price of a watch is first increased by 20% and then decreased by 5%. The price of another digital watch first increased by 25% and then decreased by 10%. If the final price of both watches is the same, find the ratio of their initial prices.",
+        type: "mcq",
+        options: ["75 : 76", "76 : 75", "97 : 71", "71 : 78"],
+        answer: 0,
+        solution: "Let the initial prices be x and y. Final price of first watch = x x 120% x 95%. Final price of second watch = y x 125% x 90%. Since final prices are equal, x/y = (125 x 90) / (120 x 95) = 75/76. Hence, option A is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "9.09% of the voters did not cast their vote in an election involving only 2 candidates. 11.11% of the votes polled were declared invalid. The losing candidate got 33.5% of the valid votes polled and lost by 39,600 votes. The number of voters enrolled on the voter list was:",
+        type: "mcq",
+        options: ["1,47,500", "1,36,500", "1,48,500", "1,62,000"],
+        answer: 2,
+        solution: "Let enrolled voters = N. Votes cast = 10N/11. Valid votes = (8/9) x (10N/11). Losing candidate got 33.5%, so winner got 66.5%, and margin = 33% of valid votes. Thus 33% x (8/9) x (10/11) x N = 39,600, giving N = 1,48,500. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "Rahul spends 12.5% of his monthly income on house rent, 16.66% of the remaining income on food, 18.75% of the remaining on education and travel, one-third of the remaining on medicines and saves the remaining amount of Rs. 27,300. Find Rahul's monthly income.",
+        type: "text",
+        answer: "69120",
+        accepted: ["69120", "69,120", "rs69120", "rs.69120", "rs.69120"],
+        solution: "Let monthly income = K. After rent, amount left = 7K/8. After food, left = (5/6)(7K/8). After education/travel, left = (13/16)(5/6)(7K/8). After medicines, savings = (2/3)(13/16)(5/6)(7K/8)K = 27,300. Solving gives K = Rs. 69,120."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "The income of Ankit is 60% more than Shrikant and the income of Shrikant is 20% less than Shishir. If Shishir's income goes down by 12% and Shrikant's income goes up by 20%, then the percent by which Shishir's income would become less than Shrikant is near to:",
+        type: "mcq",
+        options: ["4%", "6%", "8%", "10%"],
+        answer: 2,
+        solution: "Let Shrikant's income = 100. Then Shishir's income = 125. After changes, Shishir's income = 88% of 125 = 110 and Shrikant's income = 120% of 100 = 120. Difference = 10. Required percent = 10/120 x 100 = 8.33%, nearest 8%. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "There are two alloys A and B made up of Silver, Copper and Zinc. Alloy A contains 55% Silver and the rest Copper. Alloy B contains 45% Silver, 40% Copper and the rest Zinc. Alloys A and B are mixed in a ratio 5:3 to form a new alloy. Find the approximate percentage of Silver in the newly formed alloy.",
+        type: "mcq",
+        options: ["55%", "51%", "48%", "None of these"],
+        answer: 1,
+        solution: "Assume alloy A = 500 kg and alloy B = 300 kg. Silver in A = 55% of 500 = 275 kg. Silver in B = 45% of 300 = 135 kg. Total silver = 410 kg and total alloy = 800 kg. Silver percentage = 410/800 x 100 = 51.25%, approximately 51%. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "Data scientists predicted that 20% of people who consume alcohol get liver damage and 80% of liver patients consume alcohol. If 30% of the population consumes alcohol, find the percent of the total population having liver damage.",
+        type: "mcq",
+        options: ["13%", "9%", "6%", "7.5%"],
+        answer: 3,
+        solution: "Let total population = 100K. People consuming alcohol = 30K. Alcohol consumers with liver damage = 20% of 30K = 6K. These are 80% of all liver patients, so total liver patients = 6K / 0.8 = 7.5K, which is 7.5% of total population. Hence, option D is correct."
+      },
+      {
+        level: "Level of Difficulty - 2",
+        q: "There are 5 friends A, B, C, D and E. B's income is 20% less than A's. C's income is 12.5% more than B's. D's income is 33.33% more than C's, but 14.28% less than E's. E's income is how much percent more than A's income?",
+        type: "mcq",
+        options: ["20%", "25%", "33.33%", "40%"],
+        answer: 3,
+        solution: "Let A's income = 100K. B = 80K. C = 80K + 12.5% of 80K = 90K. D = 90K + 33.33% of 90K = 120K. Since D is 14.28% less than E, D = 6/7 of E, so E = 140K. E is 40% more than A. Hence, option D is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "The production of rice as a percentage of total food production was 28% in India in 2019. In 2020, rice production as a percentage of total food production decreased by 5 percentage points. Total food production increased by 20% from 2019 to 2020. If total rice production in 2020 was 138 million tons, what was total rice production in 2019?",
+        type: "text",
+        answer: "140",
+        accepted: ["140", "140 million tons", "140milliontons"],
+        solution: "Rice share in 2020 = 28% - 5% = 23%. Since 23% of total food production in 2020 = 138 million tons, total food production in 2020 = 600 million tons. Total food production in 2019 = 600 / 1.2 = 500 million tons. Rice production in 2019 = 28% of 500 = 140 million tons."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "In a class, 59% of the students are boys and the rest are girls. There are 162 more boys than girls. If 73% of the students in class, including 423 boys, pass an examination, then the approximate percentage of girls who did not pass the exam is:",
+        type: "mcq",
+        options: ["44%", "40%", "36%", "32%"],
+        answer: 2,
+        solution: "Let total students = 100K. Boys = 59K, girls = 41K. Difference = 18K = 162, so K = 9. Total students = 900, boys = 531, girls = 369. Total passed = 73% of 900 = 657. Boys passed = 423, so girls passed = 234. Girls not passed = 369 - 234 = 135. Required percentage = 135/369 x 100 = approximately 36%. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "Shubham was working in company A. He got a letter from company B with a hike of 20% on his current salary. Company A increased his salary by 25%. Company B then offered 16.66% more after knowing this. This was repeated once more by company A increasing the salary by 20% more and company B giving a hike of 14.28% more. Finally, Shubham joined company B. What is the percentage increase in Shubham's salary?",
+        type: "mcq",
+        options: ["40%", "45%", "60%", "75%"],
+        answer: 2,
+        solution: "Let Shubham's current salary be K. First offer by B = (6/5)K. Company A then gives 25% hike, and B gives 16.66% more: (6/5) x (7/6)K. Next A gives 20% more, and B gives 14.28% more: (6/5) x (7/6) x (8/7)K = (8/5)K = 1.6K. So salary increases by 60%. Hence, option C is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "Price of the bicycle first increased by 11.11%, then increased by 6.66%, then increased by 7.14%, then increased by 6.25% and then increased by 12.5%, such that the price becomes Rs. 13,600. What was the original price?",
+        type: "text",
+        answer: "8960",
+        accepted: ["8960", "8,960", "rs8960", "rs.8960"],
+        solution: "11.11% = 1/9, 6.66% = 1/15, 7.14% = 1/14, 6.25% = 1/16 and 12.5% = 1/8. Let original price = K. Then K x 10/9 x 16/15 x 15/14 x 17/16 x 9/8 = 13600. Solving gives K = Rs. 8960."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "Manufacturing a product requires raw materials A, B, C in the ratio 1:2:4 by quantity. Cost per ton of A, B and C is in the ratio 3:4:6. The product is sold at 20% profit. If costs of A, B and C increase by 30%, 40% and 10% respectively, what should be the approximate percent increase in selling price so that profit percent remains the same?",
+        type: "mcq",
+        options: ["17%", "19%", "20%", "23%"],
+        answer: 1,
+        solution: "Assume quantities of A, B, C are 1, 2, 4 tons and costs per ton are Rs. 30, 40, 60. Initial cost = 1x30 + 2x40 + 4x60 = Rs. 350. Initial selling price at 20% profit = Rs. 420. New costs: A = 39, B = 56, C = 66. New cost = 1x39 + 2x56 + 4x66 = Rs. 415. New selling price at 20% profit = Rs. 498. Increase = (498 - 420)/420 x 100 = approximately 19%. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "Raja bought a shotgun for Rs. 10,10,101. He sold it to Ram at 33.33% profit, Ram sold it to Mohan at 22.22% loss, Mohan sold it to Roy at 81.25% loss, Roy sold it to Neil at 6.66% profit, Neil sold it to Nitin at 28.57% profit, and Nitin sold it to Mukesh at 275% profit. What is the difference between the CP of Raja and Mukesh?",
+        type: "text",
+        answer: "0",
+        accepted: ["0", "zero", "rs0", "rs.0"],
+        solution: "The combined multiplying factor is (4/3) x (7/9) x (3/16) x (16/15) x (9/7) x (15/4) = 1. Therefore Mukesh's cost price equals Raja's original cost price, Rs. 10,10,101. Difference = 0."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "Ratan is considering 3 alternatives to invest his surplus cash for a month. He wishes to guarantee maximum return on his investment. He has 3 options, each of which can be utilized fully or partially in conjunction with others. Find the maximum guaranteed return.",
+        type: "mcq",
+        options: ["0.75%", "1%", "1.5%", "2%"],
+        answer: 1,
+        solution: "From the given solution method, mutual funds are better than debt funds. For guaranteed return, balance the stock-market-rise and stock-market-fall cases. Let investment in the two mutual funds be 100x and 100y. Returns are 6x - 3y and -4x + 5y. Equating gives 10x = 8y, so x:y = 4:5. Total investment = 900k and guaranteed return = 9k, giving 1%. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "There are 2 factories A and B. In factory A, male employees are 60% more than female employees. In factory B, female employees are 60% less than male employees. If total employees in A and B together are 6400, what could be the maximum number of total employees in factory B?",
+        type: "mcq",
+        options: ["6,160", "5,880", "5,600", "5,320"],
+        answer: 1,
+        solution: "Let female employees in factory A = 100a, so male employees = 160a and total A = 260a. Let male employees in factory B = 100b, so female employees = 40b and total B = 140b. Given 260a + 140b = 6400, or 13a + 7b = 320. To maximize 140b, maximize b with natural-number a. Taking a = 2 gives b = 42, so factory B total = 140 x 42 = 5880. Hence, option B is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "The production of rice formed 30% of total food grain produced in India in 2018. In 2019, the share of rice in total food grain production decreased by 10 percentage points. Find the percentage change in rice production from 2018 to 2019, if total food grain production increased by 25%.",
+        type: "mcq",
+        options: ["Decreased by 16.66%", "Increased by 16.66%", "Decreased by 12.5%", "Increased by 12.5%"],
+        answer: 0,
+        solution: "Assume total food grain production in 2018 = 100 kg. Rice in 2018 = 30% = 30 kg. In 2019, rice share = 20%. Total food grain production in 2019 = 125 kg. Rice in 2019 = 20% of 125 = 25 kg. Decrease = 5/30 x 100 = 16.66%. Hence, option A is correct."
+      },
+      {
+        level: "Level of Difficulty - 3",
+        q: "In a basketball tournament, a central region team has played 20 matches so far and won 40% of them. If they win 60% of the remaining matches, their overall winning percentage will be 50%. Suppose they win 80% of the remaining matches, then the total number of matches won by the team in this tournament will be:",
+        type: "mcq",
+        options: ["20", "16", "24", "28"],
+        answer: 2,
+        solution: "Matches won so far = 40% of 20 = 8. Let remaining matches = K. If they win 60% of remaining matches, then (8 + 0.6K)/(20 + K) = 1/2. Solving gives K = 20. If they instead win 80% of remaining matches, wins in remaining matches = 16. Total wins = 8 + 16 = 24. Hence, option C is correct."
+      }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 60 * 60;
+
+    function normalize(value) {
+      return String(value).trim().toLowerCase().replace(/\s+/g, "").replace(/,/g, "").replace(/â‚¹/g, "rs").replace(/\./g, "");
+    }
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+        const answerControl = item.type === "mcq"
+          ? `<div class="options">${item.options.map((option, optionIndex) => `
+              <label class="option">
+                <input type="radio" name="q${index}" value="${optionIndex}">
+                <span>(${optionLabels[optionIndex]}) ${option}</span>
+              </label>
+            `).join("")}</div>`
+          : `<input class="typed-answer" type="text" name="q${index}" placeholder="Type your answer">`;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            ${answerControl}
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>${correctAnswerText(item)}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      form.innerHTML = html + `
+        <div class="actions">
+          <button type="submit">Submit Test</button>
+        </div>
+      `;
+    }
+
+    function correctAnswerText(item) {
+      if (item.type === "mcq") {
+        return `Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+      }
+      return `Answer: ${item.answer}`;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function checkAnswer(item, index) {
+      if (item.type === "mcq") {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (!selected) return null;
+        return Number(selected.value) === item.answer;
+      }
+
+      const input = document.querySelector(`input[name="q${index}"]`);
+      if (!input.value.trim()) return null;
+      return item.accepted.map(normalize).includes(normalize(input.value));
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const result = checkAnswer(item, index);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+
+        solution.style.display = "block";
+
+        if (result === null) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctAnswerText(item)}`;
+        } else if (result) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctAnswerText(item)}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

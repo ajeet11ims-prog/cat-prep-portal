@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Advance Quant Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #145a86;
+      --brand-soft: #e9f5fb;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 150px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .typed-answer {
+      width: min(360px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 11px 12px;
+      font-size: 16px;
+      background: #fbfcfd;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover { background: #0f4668; }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    @media (max-width: 700px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Percentage Advance Level + PYQs</h1>
+        <div class="meta">Quantitative Aptitude | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">60:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option or type the exact answer as required. Unattempted questions carry 0 marks.
+      The test submits automatically when the timer ends.
+    </section>
+
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      { q: "60% of P is 32 less than 50% of Q and the sum of 50% of P and 75% of Q is equivalent to Q. Find the difference between P and Q.", type: "text", answer: "80", accepted: ["80"] },
+      { q: "The sum of 120% of 220 and 560% of 625% of 20 is equal to the sum of 80% of 180% of 250 and X. What is the value of 150% of X?", type: "text", answer: "906", accepted: ["906"] },
+      { q: "In a group of 600 people, the ratio of males to females is 5:1. 72.5% of people are graduates. If 84% of males are graduates, then what percentage of females are graduates?", type: "text", answer: "15", accepted: ["15", "15%"] },
+      { q: "Obama bought some shirts. He gave 70% of the total shirts to Johnson and the rest to Biden. Next day, he buys 25% more shirts than the previous day. If he gave 10% more shirts to Johnson than the previous day, then the number of shirts given to Biden is what percent more than the previous day?", type: "text", answer: "60", accepted: ["60", "60%"] },
+      { q: "There are four numbers such that A is 60% more than B and C is 30% less than the sum of B and A. If D is 10% more than C and the difference between D and B is 3006, then find C.", type: "text", answer: "5460", accepted: ["5460"] },
+      { q: "The price of an iPhone increased by 20% and then decreased by 15%. The price of an android smartphone increased by 15% and then decreased by 20%. If final prices of both items are same, find the ratio of initial price of iPhone to initial price of android smartphone.", type: "mcq", options: ["187/207", "46/51", "23/27", "19/21"], answer: 1 },
+      { q: "In a tank full of plastic balls of 4 different colours, 18% of the total balls are Red, 4/9 are Blue, and 8% are Green. If there are 133 yellow balls, find the difference between the number of Red balls and Green balls.", type: "mcq", options: ["45", "90", "30", "60"], answer: 0 },
+      { q: "At a marriage party, 45% of the guests are men and the remaining are women. 80% of the women guests are married and 40% of the men guests are unmarried. If 50% of the married men guests are present with their better halves, find the percentage of women who are married but not with their husbands.", type: "mcq", options: ["30.5%", "32.5%", "37.5%", "35.5%"], answer: 0 },
+      { q: "In the Delhi election, 55% of voters in a constituency are males and the rest are females. If 70% of males are employed and 60% of females are unemployed, then the number of unemployed males is what percent more or less than the number of employed females?", type: "mcq", options: ["8%", "8.3%", "8.1%", "7%"], answer: 1 },
+      { q: "In 2020, Vishal got 20% more incentive in the 3rd month than in the 2nd month. His incentive in the 4th month was 7 61/77% more than in the 3rd month. If he got Rs. 4500 in the first month and the difference between incentives in the 4th and 2nd month is Rs. 1130, then the total incentive received in the first four months is:", type: "mcq", options: ["Rs. 17950", "Rs. 16480", "Rs. 18560", "None of these"], answer: 0 },
+      { q: "There are three items A, B, and C. Price of A is 25% more than B, and price of C is 10% more than A. The sum of the difference between A and B, and the difference between B and C is Rs. 50. The difference between A and B is how much more or less than the difference between B and C?", type: "mcq", options: ["Rs. 10 more", "Rs. 10 less", "Rs. 20 less", "Rs. 20 more"], answer: 1 },
+      { q: "Every morning at 6:00 am, Usain leaves his house for his daily running routine and returns at 9:00 am. One day, he decided to cover the distance in 2/3 of the usual time. Find the percentage change in his speed.", type: "mcq", options: ["50%", "75%", "100%", "66.6%"], answer: 0 },
+      { q: "The radius of a circle decreases by 17%. If the absolute value of percentage change in area is written up to 2 decimal places as XY.ZW, find X + Y + Z + W.", type: "mcq", options: ["6", "8", "4", "7"], answer: 0 },
+      { q: "Naruto generally orders 37.92 grams of ramen at a fixed price of 948 Yen. On a particular day Naruto ate 10% less than usual, but the price of ramen was hiked by 20%. What is the extra/less amount that needs to be paid on this day?", type: "mcq", options: ["30.52 Yen less than usual", "25.93 Yen more than usual", "45.52 Yen more than usual", "75.84 Yen more than usual"], answer: 3 },
+      { q: "A landowner increased the length and breadth of a rectangular plot by 30% and 25% respectively. Find the percentage change in the cost of the plot assuming land prices are uniform throughout his plot.", type: "mcq", options: ["12.5%", "13%", "625%", "None of the above"], answer: 3 },
+      { q: "The rate per month of increase in income is 2 times that of expenditure. If there is no saving in the first month and total savings in two months is 1/5 of the initial income, then the rate at which expenditure increased is:", type: "mcq", options: ["5%", "10%", "20%", "22%"], answer: 2 },
+      { q: "Property rates per sq. feet are 16 2/3% less in locality B than A, and locality C is 25% less than B. Locality D is 50% more than E. Rates in A and E are same. If Mohan purchases 100 sq. feet each in C and D at an average rate of Rs. 255 per square feet, then the amount needed for 100 sq. feet each in A and E is:", type: "mcq", options: ["Rs. 51,000", "Rs. 50,000", "Rs. 49,000", "Rs. 48,000"], answer: 3 },
+      { q: "At Physics Wallah, 60% of a class are boys and 25% of the boys are at least 5 feet tall. If 25% of the girls are less than 5 feet tall, what is the percentage difference of students who are less than 5 feet and at least 5 feet tall?", type: "mcq", options: ["10%", "16.67%", "33.33%", "35%"], answer: 0 },
+      { q: "An organization gives its sales staff incentives based on sales value. In a particular year, despite a 5 percentage point increment on commission from 20%, total commission remained unaltered. Find the change in volume of sales.", type: "mcq", options: ["-5%", "-15%", "-20%", "-33 1/3%"], answer: 2 },
+      { q: "The population of Uttarakhand is 19,57,263 in 2010. There is steady growth of 20% at the start of every year and death rate of 8.33% at the end of every year. In the end of 2013, floods caused an effective death rate of r%. The population after floods was still 21% more than in 2010. Find r.", type: "mcq", options: ["20%", "83.33%", "16.67%", "25%"], answer: 2 },
+      { q: "Santa has companies A, B and C and a trust X. Each company gives 5% charity to trust X excluding loans taken from other group companies. A gave a loan to B equal to 10% of B's total fund. After receiving the loan, B has twice the fund of C. If C gives Rs. 20,000 as donation, find the approximate contribution of B.", type: "mcq", options: ["Rs. 36000", "Rs. 36300", "Rs. 28500", "Rs. 35500"], answer: 1 },
+      { q: "In a bag, there are 150 coins of denominations Rs. 1, Rs. 2 and Rs. 5 with at least one coin of each. The total value of Re. 1 coins is at least 50% of total value. If there are 23 Rs. 5 coins and total value of Rs. 2 coins is at least 3% of total value, find the number of Rs. 2 coins.", type: "mcq", options: ["1", "2", "3", "4"], answer: 3 },
+      { q: "An unscrupulous trader rigged his electronic weighing scale such that it shows 1 kg when 925 gms of goods are kept on it. Find the percentage error in measurement.", type: "text", answer: "8.10%", accepted: ["8.10", "8.10%", "8.1", "8.1%"] },
+      { q: "The height and base of a triangle are changed such that even though the base is decreased by 11.11%, the area increases by 10%. Find the percentage change in height.", type: "text", answer: "23.75%", accepted: ["23.75", "23.75%"] },
+      { q: "In a college, the number of students decreased by 10% and the price of a rim of paper increased by 25% over the previous year. By how much should usage of rims of papers be cut short by each student so that total money spent remains the same?", type: "text", answer: "12%", accepted: ["12", "12%"] },
+      { q: "In an examination of PW Mock CAT, Mohan scored 92%, Nishant scored 56% and Samarth scored 634 marks out of total marks. Average marks scored by them was 643. What percentage of total marks did Samarth get?", type: "text", answer: "72.45%", accepted: ["72.45", "72.45%"] },
+      { q: "The amount of money Dia gave to her friend is 69% of the amount remaining with her. Had Dia given 20% less money than now, she would have Rs. 434 more than she has now. What approximate percent is Rs. 3000 of the total amount of money she had?", type: "mcq", options: ["85%", "122%", "91%", "56%"], answer: 3 },
+      { q: "A marketing unit found that 30% of potential customers bought a product and the rest did not. Of buyers, 40% saw its online advertisement; of non-buyers, 45% saw the advertisement. Find the ratio of those who bought and saw the ad to those who saw the ad but did not buy.", type: "mcq", options: ["24 : 63", "24 : 35", "40 : 63", "None of these"], answer: 0 },
+      { q: "In an examination, 55% candidates passed in English and 75% passed in History, but 20% failed in both. If 3200 candidates passed in both subjects, find the number of candidates who appeared.", type: "mcq", options: ["4800", "9600", "6400", "7200"], answer: 2 },
+      { q: "Monthly income of A is 25% more than B and 20% less than C. Monthly expenditure of B is 20% more than C and 25% less than A. If A saves 60% of his monthly income, then monthly savings of B is approximately what percent of monthly savings of C?", type: "text", answer: "50", accepted: ["50", "50%"] }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["a", "b", "c", "d"];
+    let submitted = false;
+    let secondsLeft = 60 * 60;
+
+    function normalize(value) {
+      return String(value).trim().toLowerCase().replace(/\s+/g, "").replace(/,/g, "");
+    }
+
+    function renderQuestions() {
+      const html = questions.map((item, index) => {
+        const answerControl = item.type === "mcq"
+          ? `<div class="options">${item.options.map((option, optionIndex) => `
+              <label class="option">
+                <input type="radio" name="q${index}" value="${optionIndex}">
+                <span>(${optionLabels[optionIndex]}) ${option}</span>
+              </label>
+            `).join("")}</div>`
+          : `<input class="typed-answer" type="text" name="q${index}" placeholder="Type your answer">`;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            <h2>Q${index + 1}. ${item.q}</h2>
+            ${answerControl}
+            <div class="answer-note" id="note-${index}"></div>
+          </div>
+        `;
+      }).join("");
+
+      form.innerHTML = html + `
+        <div class="actions">
+          <button type="submit">Submit Test</button>
+        </div>
+      `;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function isCorrect(item, index) {
+      if (item.type === "mcq") {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (!selected) return null;
+        return Number(selected.value) === item.answer;
+      }
+
+      const input = document.querySelector(`input[name="q${index}"]`);
+      const value = input.value;
+      if (!value.trim()) return null;
+      return item.accepted.map(normalize).includes(normalize(value));
+    }
+
+    function correctAnswerText(item) {
+      if (item.type === "mcq") {
+        return `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+      }
+      return `Correct answer: ${item.answer}`;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const result = isCorrect(item, index);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+
+        if (result === null) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctAnswerText(item)}`;
+        } else if (result) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctAnswerText(item)}`;
+        }
+      });
+
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button").forEach((element) => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DI - Line Graph -2 40 Minute Test</title>
+  <style>
+    :root{--bg:#f4f7fa;--paper:#fff;--ink:#17202a;--muted:#5d6d7e;--line:#d7dde5;--brand:#4f79c7;--brand-dark:#2f5ca8;--brand-soft:#eef4ff;--ok:#157347;--bad:#b02a37}
+    *{box-sizing:border-box}html,body{height:100%;width:100%}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.45;overflow:hidden}
+    header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(20,40,60,.08)}
+    .topbar{width:100%;margin:0;padding:10px 14px;display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center}
+    h1{margin:0;font-size:21px;color:var(--brand);letter-spacing:0}.meta{color:var(--muted);font-size:13px;margin-top:2px}
+    .pill,.calc-open{border:1px solid var(--line);border-radius:6px;background:var(--brand-soft);color:var(--brand-dark);padding:8px 11px;font-weight:700;white-space:nowrap}.calc-open{border-color:var(--brand);background:var(--brand);color:#fff;cursor:pointer}
+    main{width:100vw;height:calc(100vh - 61px);margin:0;padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:10px;overflow:hidden;background:var(--bg)}
+    aside,.question,#result{background:var(--paper);border:1px solid var(--line);border-radius:8px}
+    aside{grid-column:2;grid-row:1;position:static;align-self:stretch;padding:14px;min-height:0;max-height:none;overflow-y:auto}
+    main>section{grid-column:1;grid-row:1;min-width:0;overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) auto auto}.panel-title{margin:0 0 12px;color:var(--brand);font-size:17px}
+    .palette{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.dot{min-height:48px;border:1px solid var(--line);border-radius:6px;background:#fbfcfd;color:var(--ink);font-weight:700;cursor:pointer;font-size:15px}.dot.active{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-dark)}.dot.answered{background:#eef8f2;border-color:rgba(21,115,71,.4);color:var(--ok)}
+    #testForm{height:100%;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto auto;overflow:hidden}
+    #result,.question{padding:12px;margin-bottom:0}#result{display:none}#result h2{margin:0 0 10px;color:var(--brand);font-size:18px}
+    .score-grid{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:9px;margin-top:12px}.score-box{border:1px solid var(--line);border-radius:6px;padding:9px;background:#fbfcfd}.score-box strong{display:block;font-size:22px;margin-top:2px}
+    .question{display:none}.question.active{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(390px,.88fr);gap:10px;align-items:stretch;height:100%;min-height:0}.question h2{margin:0 0 14px;font-size:17px}
+    .set-info{border:1px solid var(--line);border-radius:8px;padding:8px;margin-bottom:0;background:#fbfcfd;min-height:0;height:100%;display:grid;grid-auto-rows:minmax(0,1fr);gap:8px;overflow:hidden}
+    .chart-card{border:1px solid var(--line);border-radius:7px;background:#fff;padding:8px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;align-content:stretch;min-height:0;overflow:hidden}.chart-card h3{margin:0 0 6px;text-align:center;font-size:15px;line-height:1.25}.chart-card p{margin:6px 0 0;font-size:13px;line-height:1.3}.chart-svg{display:block;width:100%;height:100%;max-height:none;min-height:0}
+    .two-panel{grid-template-columns:1fr 1fr}.question-body{border:1px solid var(--line);border-radius:8px;background:#fff;padding:14px;min-height:0;height:100%;overflow:auto}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}label.option{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:9px;cursor:pointer;background:#fbfcfd;min-height:44px}label.option:hover{border-color:#9ab7ca}input[type=radio]{width:17px;height:17px;margin-top:4px;flex:0 0 auto;accent-color:var(--brand)}
+    .text-answer{width:min(100%,360px);min-height:42px;border:1px solid var(--line);border-radius:6px;padding:9px 11px;font-size:16px;background:#fbfcfd}
+    .question-nav,.actions{display:flex;justify-content:space-between;gap:10px;margin:8px 0 0;flex-wrap:wrap}button{border:0;border-radius:6px;background:var(--brand);color:white;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer}button.secondary{background:#e8edf4;color:var(--ink)}button:disabled{opacity:.55;cursor:default}
+    .answer-note{margin-top:10px;font-weight:700}.answer-note.ok{color:var(--ok)}.answer-note.bad{color:var(--bad)}.answer-note.muted{color:var(--muted)}.correct{border-color:rgba(21,115,71,.45);background:#eef8f2}.wrong{border-color:rgba(176,42,55,.45);background:#fff1f2}.missed{border-color:rgba(93,109,126,.45);background:#f6f7f9}
+    .calculator-dialog{width:min(340px,calc(100vw - 28px));max-width:340px;margin:0;inset:84px auto auto 50%;transform:translateX(-50%);border:1px solid var(--line);border-radius:8px;padding:14px;box-shadow:0 12px 34px rgba(15,23,42,.2)}.calculator-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;cursor:move;user-select:none}.calculator-head h2{margin:0;color:var(--brand-dark);font-size:18px}.calc-close{border:1px solid var(--line);border-radius:6px;background:#eef2f6;color:var(--ink);width:34px;height:34px;padding:0;font-size:20px;line-height:1;cursor:pointer}.calc-display{width:100%;border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:10px;background:#fbfcfd;color:var(--ink);font-size:22px;font-weight:700;text-align:right}.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calc-key{min-height:42px;border:1px solid var(--line);border-radius:6px;background:#f8fafc;color:var(--ink);font-size:17px;font-weight:700;cursor:pointer}.calc-key.operator{background:var(--brand-soft);color:var(--brand-dark)}.calc-key.equal{background:var(--brand);color:#fff;grid-column:span 2}.calc-key.clear{color:var(--bad)}
+    .axis{stroke:#17202a;stroke-width:1.8}.grid{stroke:#e3e8ef;stroke-width:1}.line{fill:none;stroke:#111;stroke-width:2}.line.blue{stroke:#1230a3}.label{font-size:14px;fill:#111}.small-label{font-size:12px;fill:#111}.title{font-size:17px;font-weight:700}.point{fill:#111}.point.blue{fill:#1230a3}.bar-hatch{fill:url(#hatch)}
+    @media(max-width:900px){.topbar{grid-template-columns:1fr}main{grid-template-columns:1fr}aside{grid-column:1;grid-row:2;position:static;min-height:auto;max-height:none}main>section{grid-column:1;grid-row:1}.question.active{display:block;min-height:auto}.set-info,.question-body{min-height:auto;margin-bottom:14px}.options,.score-grid{grid-template-columns:1fr}.pill,.calc-open,.question-nav button,.actions button{width:100%}.chart-svg{max-height:none}}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div><h1>DI - Line Graph -2</h1><div class="meta">20 Questions | 40 Minutes</div></div><div class="pill">Time Left: <span id="time">40:00</span></div><div class="pill">Answered: <span id="answeredCount">0</span>/20</div><button class="calc-open" type="button" id="openCalculator">Calculator</button></div></header>
+  <main><section><section id="result"></section><form id="testForm"></form></section><aside><h2 class="panel-title">Question Palette</h2><div class="palette" id="palette"></div></aside></main>
+
+  <template id="taskInfo">
+    <div class="set-info">
+      <div class="chart-card">
+        <h3>The line graph shows the time taken to complete a particular task by seven persons A to G.</h3>
+        <svg class="chart-svg" viewBox="0 0 720 430" role="img" aria-label="Task time line graph">
+          <line class="axis" x1="84" y1="332" x2="675" y2="332"/><line class="axis" x1="84" y1="42" x2="84" y2="332"/>
+          <text class="title" x="360" y="408" text-anchor="middle">Persons</text><text class="title" x="25" y="190" transform="rotate(-90 25 190)" text-anchor="middle">Time (in hours)</text>
+          <g class="label" text-anchor="end"><text x="75" y="336">0</text><text x="75" y="304">2</text><text x="75" y="272">4</text><text x="75" y="240">6</text><text x="75" y="208">8</text><text x="75" y="176">10</text><text x="75" y="144">12</text><text x="75" y="112">14</text><text x="75" y="80">16</text><text x="75" y="48">18</text></g>
+          <g class="label" text-anchor="middle"><text x="124" y="360">A</text><text x="215" y="360">B</text><text x="306" y="360">C</text><text x="397" y="360">D</text><text x="488" y="360">E</text><text x="579" y="360">F</text><text x="670" y="360">G</text></g>
+          <polyline class="line" points="124,236 215,140 306,172 397,252 488,92 579,44 670,92"/>
+          <g class="point"><polygon points="124,230 118,242 130,242"/><polygon points="215,134 209,146 221,146"/><polygon points="306,166 300,178 312,178"/><polygon points="397,246 391,258 403,258"/><polygon points="488,86 482,98 494,98"/><polygon points="579,38 573,50 585,50"/><polygon points="670,86 664,98 676,98"/></g>
+          <g class="label" text-anchor="middle"><text x="124" y="256">6</text><text x="215" y="126">12</text><text x="306" y="190">10</text><text x="397" y="274">5</text><text x="488" y="80">15</text><text x="579" y="64">18</text><text x="670" y="80">15</text></g>
+        </svg>
+      </div>
+    </div>
+  </template>
+  <template id="expenseInfo">
+    <div class="set-info">
+      <div class="chart-card">
+        <h3>Monthly expenditure of six persons - A, B, C, D, E and F</h3>
+        <svg class="chart-svg" viewBox="0 0 720 360" role="img" aria-label="Monthly expenditure line graph">
+          <line class="axis" x1="82" y1="292" x2="675" y2="292"/><line class="axis" x1="82" y1="34" x2="82" y2="292"/>
+          <text class="title" x="28" y="170" transform="rotate(-90 28 170)" text-anchor="middle">(in Rs.)</text>
+          <g class="label" text-anchor="end"><text x="74" y="296">0</text><text x="74" y="260">5000</text><text x="74" y="223">10000</text><text x="74" y="186">15000</text><text x="74" y="149">20000</text><text x="74" y="112">25000</text><text x="74" y="75">30000</text><text x="74" y="38">35000</text></g>
+          <g class="label" text-anchor="middle"><text x="128" y="320">A</text><text x="235" y="320">B</text><text x="342" y="320">C</text><text x="449" y="320">D</text><text x="556" y="320">E</text><text x="663" y="320">F</text></g>
+          <polyline class="line" points="128,115 235,86 342,108 449,71 556,182 663,56"/>
+          <g class="point"><polygon points="128,109 122,115 128,121 134,115"/><polygon points="235,80 229,86 235,92 241,86"/><polygon points="342,102 336,108 342,114 348,108"/><polygon points="449,65 443,71 449,77 455,71"/><polygon points="556,176 550,182 556,188 562,182"/><polygon points="663,50 657,56 663,62 669,56"/></g>
+          <g class="label" text-anchor="middle"><text x="128" y="102">24000</text><text x="235" y="74">28000</text><text x="342" y="128">25000</text><text x="449" y="60">30000</text><text x="556" y="204">15000</text><text x="663" y="42">32000</text></g>
+        </svg>
+      </div>
+      <div class="chart-card">
+        <h3>Breakup of expenses of D</h3>
+        <svg class="chart-svg" viewBox="0 0 520 300" role="img" aria-label="Breakup of expenses of D">
+          <defs><pattern id="diag" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="#111" stroke-width="2"/></pattern><pattern id="dot" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#111"/></pattern><pattern id="hline" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="3" x2="7" y2="3" stroke="#111" stroke-width="1.6"/></pattern><pattern id="vline" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="3" y1="0" x2="3" y2="7" stroke="#111" stroke-width="1.6"/></pattern></defs>
+          <circle cx="250" cy="150" r="86" fill="#fff" stroke="#111" stroke-width="2"/>
+          <path d="M250,150 L250,64 A86,86 0 0 1 331.8,123.4 Z" fill="url(#vline)" stroke="#111"/>
+          <path d="M250,150 L331.8,123.4 A86,86 0 0 1 320.2,199.7 Z" fill="url(#hline)" stroke="#111"/>
+          <path d="M250,150 L320.2,199.7 A86,86 0 0 1 217.3,229.5 Z" fill="url(#diag)" stroke="#111"/>
+          <path d="M250,150 L217.3,229.5 A86,86 0 0 1 166.9,172.3 Z" fill="url(#dot)" stroke="#111"/>
+          <path d="M250,150 L166.9,172.3 A86,86 0 0 1 176.1,106.2 Z" fill="#fff" stroke="#111"/>
+          <path d="M250,150 L176.1,106.2 A86,86 0 0 1 250,64 Z" fill="url(#diag)" stroke="#111"/>
+          <g class="label"><text x="342" y="72">Food</text><text x="342" y="90">20%</text><text x="382" y="142">Clothes</text><text x="382" y="160">12%</text><text x="332" y="238">Rent</text><text x="332" y="256">15%</text><text x="132" y="250">Education</text><text x="132" y="268">16%</text><text x="95" y="200">Fuel</text><text x="95" y="218">5%</text><text x="42" y="118">Telephone and</text><text x="42" y="136">Electricity bills</text><text x="42" y="154">10%</text><text x="136" y="62">Others</text><text x="136" y="80">22%</text></g>
+        </svg>
+      </div>
+    </div>
+  </template>
+  <template id="salesInfo">
+    <div class="set-info">
+      <div class="chart-card">
+        <h3>The line graph gives the sales and profit percentage of a company across five years starting from 2012.</h3>
+        <svg class="chart-svg" viewBox="0 0 720 380" role="img" aria-label="Sales index and profit percentage line graph">
+          <line class="axis" x1="82" y1="246" x2="675" y2="246"/><line class="axis" x1="82" y1="46" x2="82" y2="246"/>
+          <g class="label" text-anchor="end"><text x="74" y="250">0</text><text x="74" y="214">20</text><text x="74" y="184">40</text><text x="74" y="154">60</text><text x="74" y="124">80</text><text x="74" y="94">100</text><text x="74" y="64">120</text><text x="74" y="36">140</text></g>
+          <g class="label" text-anchor="middle"><text x="130" y="274">2012</text><text x="260" y="274">2013</text><text x="390" y="274">2014</text><text x="520" y="274">2015</text><text x="650" y="274">2016</text></g>
+          <polyline class="line blue" points="130,96 260,66 390,58 520,36 650,52"/><polyline class="line" points="130,219 260,216 390,212 520,215 650,207"/>
+          <g class="point blue"><text class="label" x="130" y="82" text-anchor="middle">100</text><text class="label" x="260" y="52" text-anchor="middle">120</text><text class="label" x="390" y="44" text-anchor="middle">125</text><text class="label" x="520" y="22" text-anchor="middle">140</text><text class="label" x="650" y="38" text-anchor="middle">130</text><path d="M124,90 L136,102 M136,90 L124,102"/><path d="M254,60 L266,72 M266,60 L254,72"/><path d="M384,52 L396,64 M396,52 L384,64"/><path d="M514,30 L526,42 M526,30 L514,42"/><path d="M644,46 L656,58 M656,46 L644,58"/></g>
+          <g class="point"><circle cx="130" cy="219" r="4"/><circle cx="260" cy="216" r="4"/><circle cx="390" cy="212" r="4"/><circle cx="520" cy="215" r="4"/><circle cx="650" cy="207" r="4"/><text class="label" x="130" y="204" text-anchor="middle">18</text><text class="label" x="260" y="202" text-anchor="middle">20</text><text class="label" x="390" y="198" text-anchor="middle">23</text><text class="label" x="520" y="201" text-anchor="middle">21</text><text class="label" x="650" y="192" text-anchor="middle">26</text></g>
+          <rect x="160" y="305" width="400" height="32" fill="#fff" stroke="#111"/><text class="title" x="275" y="327">x- Sales</text><text class="title" x="430" y="327">dot - Profit Percentage</text>
+        </svg>
+        <p>Profit percentage = Profit / Expenses. Sales = Expenses + Profit. The value of sales in 2012 has been taken as 100.</p>
+      </div>
+    </div>
+  </template>
+  <template id="priceInfo">
+    <div class="set-info">
+      <div class="chart-card">
+        <h3>The line graph gives the percentage increase in the price of an item and in the number of units sold.</h3>
+        <svg class="chart-svg" viewBox="0 0 720 390" role="img" aria-label="Price and units percentage increase line graph">
+          <line class="axis" x1="82" y1="268" x2="675" y2="268"/><line class="axis" x1="82" y1="58" x2="82" y2="268"/>
+          <g class="label" text-anchor="end"><text x="74" y="272">0</text><text x="74" y="242">2</text><text x="74" y="212">4</text><text x="74" y="182">6</text><text x="74" y="152">8</text><text x="74" y="122">10</text><text x="74" y="92">12</text><text x="74" y="62">14</text></g>
+          <g class="label" text-anchor="middle"><text x="130" y="296">2012</text><text x="260" y="296">2013</text><text x="390" y="296">2014</text><text x="520" y="296">2015</text><text x="650" y="296">2016</text></g>
+          <polyline class="line blue" points="130,178 260,148 390,118 520,88 650,103"/><polyline class="line" points="130,118 260,73 390,133 520,163 650,148"/>
+          <g class="point blue"><path d="M124,172 L136,184 M136,172 L124,184"/><path d="M254,142 L266,154 M266,142 L254,154"/><path d="M384,112 L396,124 M396,112 L384,124"/><path d="M514,82 L526,94 M526,82 L514,94"/><path d="M644,97 L656,109 M656,97 L644,109"/><text class="label" x="130" y="166" text-anchor="middle">6</text><text class="label" x="260" y="136" text-anchor="middle">8</text><text class="label" x="390" y="106" text-anchor="middle">10</text><text class="label" x="520" y="76" text-anchor="middle">12</text><text class="label" x="650" y="91" text-anchor="middle">11</text></g>
+          <g class="point"><rect x="126" y="114" width="8" height="8"/><rect x="256" y="69" width="8" height="8"/><rect x="386" y="129" width="8" height="8"/><rect x="516" y="159" width="8" height="8"/><rect x="646" y="144" width="8" height="8"/><text class="label" x="130" y="106" text-anchor="middle">10</text><text class="label" x="260" y="61" text-anchor="middle">13</text><text class="label" x="390" y="153" text-anchor="middle">9</text><text class="label" x="520" y="183" text-anchor="middle">7</text><text class="label" x="650" y="168" text-anchor="middle">8</text></g>
+          <rect x="150" y="320" width="430" height="32" fill="#fff" stroke="#111"/><text class="title" x="270" y="342">x- Price</text><text class="title" x="445" y="342">square - Number of Units</text>
+        </svg>
+        <p><strong>Note:</strong> All the values are the increase over the previous year. In 2011, the price of the item was Rs.160 and the number of units sold was 3500. Sales (by value) = Price x number of units sold.</p>
+      </div>
+    </div>
+  </template>
+
+  <dialog class="calculator-dialog" id="calculatorDialog"><div class="calculator-head"><h2>Calculator</h2><button class="calc-close" type="button" id="closeCalculator" aria-label="Close calculator">x</button></div><input class="calc-display" id="calcDisplay" type="text" value="0" inputmode="decimal" aria-label="Calculator display"><div class="calc-grid" id="calcKeys"><button class="calc-key clear" type="button" data-action="clear">C</button><button class="calc-key" type="button" data-action="backspace">DEL</button><button class="calc-key operator" type="button" data-value="%">%</button><button class="calc-key operator" type="button" data-value="/">/</button><button class="calc-key" type="button" data-value="7">7</button><button class="calc-key" type="button" data-value="8">8</button><button class="calc-key" type="button" data-value="9">9</button><button class="calc-key operator" type="button" data-value="*">x</button><button class="calc-key" type="button" data-value="4">4</button><button class="calc-key" type="button" data-value="5">5</button><button class="calc-key" type="button" data-value="6">6</button><button class="calc-key operator" type="button" data-value="-">-</button><button class="calc-key" type="button" data-value="1">1</button><button class="calc-key" type="button" data-value="2">2</button><button class="calc-key" type="button" data-value="3">3</button><button class="calc-key operator" type="button" data-value="+">+</button><button class="calc-key" type="button" data-value="0">0</button><button class="calc-key" type="button" data-value=".">.</button><button class="calc-key equal" type="button" data-action="equals">=</button></div></dialog>
+
+  <script>
+    const optionLabels=["A","B","C","D"];
+    const questions=[
+      {group:"task",q:"In how much time can B and D together complete the task?",options:["5 7/17 hours","5 9/17 hours","3 9/17 hours","3 7/17 hours"],answer:"C"},
+      {group:"task",q:"If C leaves 3 hours after A and C started the task, then how many more hours will A take to complete it?",options:["1.2 hours","2.4 hours","1.5 hours","2.5 hours"],answer:"A"},
+      {group:"task",q:"F, E and G worked on the task for one hour and then E left. If F and G together complete the remaining work, then how many more hours did F and G take to finish the remaining work?",options:["6 9/11 hours","7 7/11 hours","5 7/11 hours","6 7/11 hours"],answer:"D"},
+      {group:"task",q:"Approximately how long will it take for A, C, D and F together to complete the task?",options:["1.5 hours","1.7 hours","2.3 hours","1.9 hours"],answer:"D"},
+      {group:"task",q:"A and E started the task together and E left after some time. A completed the remaining work in 2.5 hours. After how many hours from the start did E leave?",options:["2.2 hours","2.5 hours","1.4 hours","1.8 hours"],answer:"B"},
+      {group:"expense",type:"text",q:"If the expenditure of D on food was 20% more than the average expenditure of all the six persons on food, then what is the average monthly expenditure on food for the given persons?",answer:"5000"},
+      {group:"expense",type:"text",q:"What is the total expenditure of D on Rent, Education and Telephone and Electricity bills?",answer:"12300"},
+      {group:"expense",type:"text",q:"If B and F spent 10% and 15% respectively of their expenses on clothes, then by what percentage were the expenses of F on clothes more than that of B?",answer:"71.4"},
+      {group:"expense",type:"text",q:"If the monthly expenses on fuel for all the six persons are the same, then for how many persons were the expenses on fuel more than 5% of their total monthly expenses?",answer:"4"},
+      {group:"expense",type:"text",q:"If the expenditure on 'others' for A was 10% more than that for D, then what percentage of the monthly expenses of A was spent on 'others'?",answer:"30.25"},
+      {group:"sales",q:"If the sales in 2012 were Rs.850 cr, then what were the expenses in 2013?",options:["Rs.780 cr","Rs.800 cr","Rs.850 cr","None of these"],answer:"C"},
+      {group:"sales",q:"What was the percentage increase in expenses from 2013 to 2014?",options:["1.05","1.62","2.18","2.65"],answer:"B"},
+      {group:"sales",q:"If the sales in 2013 were Rs.1380 cr, then what was the profit in 2015?",options:["Rs.280 cr","Rs.260 cr","Rs.320 cr","Rs.338 cr"],answer:"A"},
+      {group:"sales",q:"Which of the following years had the highest percentage increase in expenses, when compared to the previous year?",options:["2013","2014","2015","2016"],answer:"A"},
+      {group:"sales",q:"If the expenses in 2014 were Rs.1,033 cr, then what were the sales in 2016?",options:["Rs.12,246 cr","Rs.1,189 cr","Rs.1,265 cr","Rs.1,321 cr"],answer:"D"},
+      {group:"price",q:"How many units of the product were sold in 2013?",options:["4260","4350","4420","4490"],answer:"B"},
+      {group:"price",q:"In which year was the increase in the price of the item, the highest?",options:["2013","2014","2015","2016"],answer:"D"},
+      {group:"price",q:"What were the approximate sales (by value) of the product in 2014?",options:["Rs.8,68,320","Rs.9,08,460","Rs.9,55,510","Rs.9,96,470"],answer:"C"},
+      {group:"price",q:"What was the percentage increase in the sales (by value) of the product from 2015 to 2016?",options:["20","17","15","22"],answer:"A"},
+      {group:"price",q:"What was the percentage increase in the price of the product from 2012 to 2016?",options:["48","44","40","32"],answer:"A"}
+    ];
+    const groupTemplateIds={task:"taskInfo",expense:"expenseInfo",sales:"salesInfo",price:"priceInfo"};
+    const form=document.getElementById("testForm"),resultBox=document.getElementById("result"),palette=document.getElementById("palette"),answeredCount=document.getElementById("answeredCount"),time=document.getElementById("time"),calculatorDialog=document.getElementById("calculatorDialog"),calcDisplay=document.getElementById("calcDisplay");
+    let submitted=false,secondsLeft=40*60,currentQuestionIndex=0;
+    function correctAnswerText(item){if(item.type==="text")return item.answer;const i=optionLabels.indexOf(item.answer);return `(${item.answer}) ${item.options[i]}`}
+    function renderQuestions(){form.innerHTML=questions.map((item,index)=>{const control=item.type==="text"?`<input class="text-answer" type="text" name="q${index}" placeholder="Write your answer here">`:`<div class="options">${item.options.map((option,i)=>`<label class="option"><input type="radio" name="q${index}" value="${optionLabels[i]}"><span>(${optionLabels[i]}) ${option}</span></label>`).join("")}</div>`;return `<div class="question" id="qcard-${index}">${document.getElementById(groupTemplateIds[item.group]).innerHTML}<div class="question-body"><h2>Q${index+1}. ${item.q}</h2>${control}<div class="answer-note" id="note-${index}"></div></div></div>`}).join("")+`<div class="question-nav"><button class="secondary" type="button" id="prevQuestion">Previous</button><button class="secondary" type="button" id="nextQuestion">Save & Next</button></div><div class="actions"><button type="submit" id="submitBtn">Submit Test</button><button class="secondary" type="button" id="clearAnswers">Clear Responses</button></div>`;
+      palette.innerHTML=questions.map((_,i)=>`<button class="dot" type="button" data-target="${i}">${i+1}</button>`).join("");palette.querySelectorAll(".dot").forEach(b=>b.addEventListener("click",()=>showQuestion(Number(b.dataset.target))));form.querySelectorAll("input").forEach(input=>{input.addEventListener("change",updateAnsweredState);input.addEventListener("input",updateAnsweredState)});document.getElementById("prevQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex-1));document.getElementById("nextQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex+1));document.getElementById("clearAnswers").addEventListener("click",()=>{if(submitted)return;form.reset();updateAnsweredState();showQuestion(currentQuestionIndex)});showQuestion(0)}
+    function showQuestion(index){if(index<0||index>=questions.length)return;currentQuestionIndex=index;document.querySelectorAll(".question").forEach((card,i)=>card.classList.toggle("active",i===index));palette.querySelectorAll(".dot").forEach((dot,i)=>dot.classList.toggle("active",i===index));const prev=document.getElementById("prevQuestion"),next=document.getElementById("nextQuestion");if(prev)prev.disabled=index===0||submitted;if(next)next.disabled=index===questions.length-1||submitted;window.scrollTo({top:0,behavior:"smooth"})}
+    function getAnswer(index){const item=questions[index];if(item.type==="text")return document.querySelector(`[name="q${index}"]`).value.trim();const selected=document.querySelector(`input[name="q${index}"]:checked`);return selected?selected.value:""}
+    function updateAnsweredState(){let answered=0;questions.forEach((_,i)=>{const has=Boolean(getAnswer(i));if(has)answered++;const dot=palette.querySelector(`[data-target="${i}"]`);if(dot)dot.classList.toggle("answered",has)});answeredCount.textContent=answered}
+    function updateTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0"),s=String(secondsLeft%60).padStart(2,"0");time.textContent=`${m}:${s}`;if(secondsLeft<=0){submitTest();return}secondsLeft--}
+    function normalize(value){return value.replaceAll(",","").replace(/rs\.?/gi,"").replace(/%$/,"").replace(/\s+/g," ").trim().toLowerCase()}
+    function submitTest(event){if(event)event.preventDefault();if(submitted)return;submitted=true;let correct=0,wrong=0,unattempted=0;questions.forEach((item,index)=>{const answer=getAnswer(index),card=document.getElementById(`qcard-${index}`),note=document.getElementById(`note-${index}`),correctText=`Correct answer: ${correctAnswerText(item)}`,isCorrect=item.type==="text"?normalize(answer)===normalize(item.answer):answer===item.answer;document.querySelectorAll(`[name="q${index}"]`).forEach(input=>input.disabled=true);if(!answer){unattempted++;card.classList.add("missed");note.className="answer-note muted";note.textContent=`Unattempted. ${correctText}`}else if(isCorrect){correct++;card.classList.add("correct");note.className="answer-note ok";note.textContent=`Correct. ${correctText}`}else{wrong++;card.classList.add("wrong");note.className="answer-note bad";note.textContent=`Incorrect. ${correctText}`}});resultBox.style.display="block";resultBox.innerHTML=`<h2>Test Summary</h2><div class="score-grid"><div class="score-box">Score<strong>${correct} / ${questions.length}</strong></div><div class="score-box">Correct<strong>${correct}</strong></div><div class="score-box">Wrong<strong>${wrong}</strong></div><div class="score-box">Unattempted<strong>${unattempted}</strong></div></div>`;document.querySelectorAll(".question").forEach(card=>card.classList.add("active"));document.getElementById("prevQuestion").disabled=true;document.getElementById("nextQuestion").disabled=true;document.getElementById("submitBtn").disabled=true;document.getElementById("clearAnswers").disabled=true;window.scrollTo({top:0,behavior:"smooth"})}
+    function appendCalcValue(v){if(calcDisplay.value==="0"||calcDisplay.value==="Error"){calcDisplay.value=v==="."?"0.":v;return}calcDisplay.value+=v}function calculateExpression(){const expression=calcDisplay.value.trim();if(!/^[0-9+\-*/%. ()]+$/.test(expression)){calcDisplay.value="Error";return}try{const value=Function(`"use strict"; return (${expression})`)();calcDisplay.value=Number.isFinite(value)?String(Number(value.toFixed(10))):"Error"}catch{calcDisplay.value="Error"}}
+    document.getElementById("openCalculator").addEventListener("click",()=>{calculatorDialog.showModal();if(!calculatorDialog.dataset.moved){calculatorDialog.style.left=`${Math.max(14,(window.innerWidth-calculatorDialog.offsetWidth)/2)}px`;calculatorDialog.style.top="84px";calculatorDialog.style.transform="none"}calcDisplay.focus()});document.getElementById("closeCalculator").addEventListener("click",()=>calculatorDialog.close());document.getElementById("calcKeys").addEventListener("click",event=>{const key=event.target.closest("button");if(!key)return;if(key.dataset.action==="clear")calcDisplay.value="0";else if(key.dataset.action==="backspace")calcDisplay.value=calcDisplay.value.length>1?calcDisplay.value.slice(0,-1):"0";else if(key.dataset.action==="equals")calculateExpression();else if(key.dataset.value)appendCalcValue(key.dataset.value);calcDisplay.focus()});calcDisplay.addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();calculateExpression()}});
+    const calculatorHead=calculatorDialog.querySelector(".calculator-head");let calculatorDrag=null;calculatorHead.addEventListener("pointerdown",event=>{if(event.target.closest("button"))return;const rect=calculatorDialog.getBoundingClientRect();calculatorDrag={offsetX:event.clientX-rect.left,offsetY:event.clientY-rect.top};calculatorDialog.style.transform="none";calculatorHead.setPointerCapture(event.pointerId)});calculatorHead.addEventListener("pointermove",event=>{if(!calculatorDrag)return;const maxLeft=window.innerWidth-calculatorDialog.offsetWidth-8,maxTop=window.innerHeight-calculatorDialog.offsetHeight-8;calculatorDialog.style.left=`${Math.min(Math.max(8,event.clientX-calculatorDrag.offsetX),Math.max(8,maxLeft))}px`;calculatorDialog.style.top=`${Math.min(Math.max(8,event.clientY-calculatorDrag.offsetY),Math.max(8,maxTop))}px`;calculatorDialog.dataset.moved="true"});calculatorHead.addEventListener("pointerup",event=>{calculatorDrag=null;calculatorHead.releasePointerCapture(event.pointerId)});calculatorHead.addEventListener("pointercancel",()=>{calculatorDrag=null});
+    renderQuestions();updateAnsweredState();updateTimer();const timerId=setInterval(()=>{if(submitted){clearInterval(timerId);return}updateTimer()},1000);form.addEventListener("submit",submitTest);
+  </script>
+</body>
+</html>
+
