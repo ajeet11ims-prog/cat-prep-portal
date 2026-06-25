@@ -6,6 +6,14 @@ const SUBJECTS = [
   { key: "QA", label: "QA", description: "Quantitative Aptitude practice" }
 ];
 
+const QA_TOPICS = [
+  { key: "number-system", label: "Number System", description: "Numbers, divisibility, remainders and properties" },
+  { key: "arithmetic", label: "Arithmetic", description: "Percentage, profit loss, ratio, average, SI-CI and mixtures" },
+  { key: "algebra", label: "Algebra", description: "Equations, inequalities, functions and expressions" },
+  { key: "geometry", label: "Geometry", description: "Geometry, mensuration and coordinate geometry" },
+  { key: "modern-math", label: "Modern Math", description: "Permutation, probability, set theory and sequences" }
+];
+
 const ROUTES = {
   topic: {
     label: "Topic Test",
@@ -34,6 +42,7 @@ const state = {
   route: "home",
   activeRoute: null,
   subject: null,
+  qaTopic: null,
   search: ""
 };
 
@@ -45,10 +54,13 @@ const els = {
   fullCount: document.getElementById("fullCount"),
   homeView: document.getElementById("homeView"),
   subjectView: document.getElementById("subjectView"),
+  qaTopicView: document.getElementById("qaTopicView"),
   listView: document.getElementById("listView"),
   subjectEyebrow: document.getElementById("subjectEyebrow"),
   subjectTitle: document.getElementById("subjectTitle"),
   subjectGrid: document.getElementById("subjectGrid"),
+  qaTopicGrid: document.getElementById("qaTopicGrid"),
+  qaTopicBackButton: document.getElementById("qaTopicBackButton"),
   listEyebrow: document.getElementById("listEyebrow"),
   listTitle: document.getElementById("listTitle"),
   listCount: document.getElementById("listCount"),
@@ -82,6 +94,18 @@ function subjectFor(test) {
   return "QA";
 }
 
+function qaTopicFor(test) {
+  const topic = normalize(test.topic);
+  const title = normalize(test.title);
+  const text = `${topic} ${title}`;
+
+  if (text.includes("number")) return "number-system";
+  if (text.includes("linear") || text.includes("algebra") || text.includes("equation") || text.includes("function") || text.includes("inequal")) return "algebra";
+  if (text.includes("geometry") || text.includes("mensuration") || text.includes("triangle") || text.includes("circle") || text.includes("coordinate")) return "geometry";
+  if (text.includes("permutation") || text.includes("combination") || text.includes("probability") || text.includes("set theory") || text.includes("sequence") || text.includes("modern")) return "modern-math";
+  return "arithmetic";
+}
+
 function testsForRoute(routeKey) {
   const route = ROUTES[routeKey];
   if (!route || !route.type) return state.tests;
@@ -92,9 +116,10 @@ function testsForList() {
   const term = normalize(state.search.trim());
   return testsForRoute(state.activeRoute).filter(test => {
     const subjectOk = !state.subject || subjectFor(test) === state.subject;
+    const qaTopicOk = !state.qaTopic || qaTopicFor(test) === state.qaTopic;
     const text = normalize(`${test.title} ${test.area} ${test.topic} ${test.type}`);
     const searchOk = !term || text.includes(term);
-    return subjectOk && searchOk;
+    return subjectOk && qaTopicOk && searchOk;
   });
 }
 
@@ -103,16 +128,21 @@ function countByType(type) {
 }
 
 function showView(view) {
-  [els.homeView, els.subjectView, els.listView].forEach(node => node.classList.remove("active-view"));
+  [els.homeView, els.subjectView, els.qaTopicView, els.listView].forEach(node => node.classList.remove("active-view"));
   view.classList.add("active-view");
+}
+
+function resetSearch() {
+  state.search = "";
+  els.searchInput.value = "";
 }
 
 function goHome() {
   state.route = "home";
   state.activeRoute = null;
   state.subject = null;
-  state.search = "";
-  els.searchInput.value = "";
+  state.qaTopic = null;
+  resetSearch();
   showView(els.homeView);
   history.replaceState(null, "", "#home");
 }
@@ -124,8 +154,8 @@ function openRoute(routeKey) {
   state.route = "subjects";
   state.activeRoute = routeKey;
   state.subject = null;
-  state.search = "";
-  els.searchInput.value = "";
+  state.qaTopic = null;
+  resetSearch();
 
   if (routeKey === "full") {
     openList(null);
@@ -139,19 +169,30 @@ function openRoute(routeKey) {
   history.replaceState(null, "", `#${routeKey}`);
 }
 
-function openList(subjectKey) {
+function openQaTopics() {
+  state.route = "qa-topics";
+  state.subject = "QA";
+  state.qaTopic = null;
+  resetSearch();
+  renderQaTopicCards();
+  showView(els.qaTopicView);
+  history.replaceState(null, "", "#topic-qa");
+}
+
+function openList(subjectKey, qaTopicKey = null) {
   const route = ROUTES[state.activeRoute];
   state.route = "list";
   state.subject = subjectKey;
-  state.search = "";
-  els.searchInput.value = "";
+  state.qaTopic = qaTopicKey;
+  resetSearch();
 
   const subject = SUBJECTS.find(item => item.key === subjectKey);
+  const qaTopic = QA_TOPICS.find(item => item.key === qaTopicKey);
   els.listEyebrow.textContent = route.label;
-  els.listTitle.textContent = subject ? `${subject.label} ${route.label}` : route.label;
+  els.listTitle.textContent = qaTopic ? qaTopic.label : (subject ? `${subject.label} ${route.label}` : route.label);
   renderTestCards();
   showView(els.listView);
-  history.replaceState(null, "", subjectKey ? `#${state.activeRoute}-${subjectKey.toLowerCase()}` : `#${state.activeRoute}`);
+  history.replaceState(null, "", qaTopicKey ? `#topic-qa-${qaTopicKey}` : (subjectKey ? `#${state.activeRoute}-${subjectKey.toLowerCase()}` : `#${state.activeRoute}`));
 }
 
 function renderSubjectCards(routeKey) {
@@ -169,8 +210,34 @@ function renderSubjectCards(routeKey) {
       <strong>${count}</strong>
       <small>${subject.description}</small>
     `;
-    card.addEventListener("click", () => openList(subject.key));
+    card.addEventListener("click", () => {
+      if (routeKey === "topic" && subject.key === "QA") {
+        openQaTopics();
+      } else {
+        openList(subject.key);
+      }
+    });
     els.subjectGrid.appendChild(card);
+  });
+}
+
+function renderQaTopicCards() {
+  const qaTests = testsForRoute("topic").filter(test => subjectFor(test) === "QA");
+  els.qaTopicGrid.innerHTML = "";
+
+  QA_TOPICS.forEach(topic => {
+    const count = qaTests.filter(test => qaTopicFor(test) === topic.key).length;
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "subject-card";
+    card.disabled = count === 0;
+    card.innerHTML = `
+      <span>${topic.label}</span>
+      <strong>${count}</strong>
+      <small>${topic.description}</small>
+    `;
+    card.addEventListener("click", () => openList("QA", topic.key));
+    els.qaTopicGrid.appendChild(card);
   });
 }
 
@@ -227,6 +294,16 @@ function handleHash() {
     goHome();
     return;
   }
+  if (hash === "topic-qa") {
+    state.activeRoute = "topic";
+    openQaTopics();
+    return;
+  }
+  if (hash.startsWith("topic-qa-")) {
+    state.activeRoute = "topic";
+    openList("QA", hash.replace("topic-qa-", ""));
+    return;
+  }
   if (ROUTES[hash]) {
     openRoute(hash);
   }
@@ -250,8 +327,11 @@ function init() {
   });
 
   els.homeButton.addEventListener("click", goHome);
+  els.qaTopicBackButton.addEventListener("click", () => openRoute("topic"));
   els.listBackButton.addEventListener("click", () => {
-    if (state.activeRoute === "full") {
+    if (state.qaTopic) {
+      openQaTopics();
+    } else if (state.activeRoute === "full") {
       goHome();
     } else {
       openRoute(state.activeRoute);
