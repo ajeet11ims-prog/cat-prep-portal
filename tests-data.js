@@ -988,5 +988,15 @@ window.CAT_TESTS = [
     "type": "Topic Wise Test",
     "minutes": 40,
     "questions": null
+  },
+  {
+    "title": "Percentage -2",
+    "file": "tests/percentage-2.html",
+    "original": "Topic Test - Arithmetic - Percentage Basic -2.html",
+    "area": "Quant",
+    "topic": "Percentage",
+    "type": "Topic Wise Test",
+    "minutes": 40,
+    "questions": null
   }
 ];
