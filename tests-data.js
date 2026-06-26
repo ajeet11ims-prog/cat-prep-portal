@@ -992,7 +992,7 @@ window.CAT_TESTS = [
   {
     "title": "Percentage",
     "file": "tests/percentage.html",
-    "original": "Topic Test - Arithmetic -Percentage Advance -1.html",
+    "original": "Topic Test - Arithmetic -  Percentage Advance -2.html",
     "area": "Quant",
     "topic": "Percentage",
     "type": "Topic Wise Test",
