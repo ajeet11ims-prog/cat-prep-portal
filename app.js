@@ -14,6 +14,17 @@ const QA_TOPICS = [
   { key: "modern-math", label: "Modern Math", description: "Permutation, probability, set theory and sequences" }
 ];
 
+const ARITHMETIC_TOPICS = [
+  { key: "percentage", label: "Percentage", description: "Percentage change, comparison and applications" },
+  { key: "profit-loss", label: "Profit & Loss", description: "Profit, loss, discount, marked price and selling price" },
+  { key: "si-ci", label: "SI & CI", description: "Simple interest and compound interest" },
+  { key: "ratio-proportion", label: "Ratio Proportion", description: "Ratio, proportion, variation and partnership" },
+  { key: "average", label: "Average", description: "Average, weighted average and mean-based questions" },
+  { key: "mixture-alligation", label: "Mixture Alligation", description: "Mixtures, replacement and alligation rule" },
+  { key: "time-work", label: "Time & Work", description: "Work efficiency, pipes and cisterns" },
+  { key: "time-speed-distance", label: "Time Speed Distance", description: "Speed, distance, trains, boats and races" }
+];
+
 const ROUTES = {
   topic: {
     label: "Topic Test",
@@ -43,6 +54,7 @@ const state = {
   activeRoute: null,
   subject: null,
   qaTopic: null,
+  arithmeticTopic: null,
   search: ""
 };
 
@@ -74,21 +86,43 @@ function normalize(value) {
   return String(value || "").toLowerCase();
 }
 
+function slugText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function subjectFor(test) {
   const area = normalize(test.area);
   const topic = normalize(test.topic);
   const title = normalize(test.title);
   const text = `${area} ${topic} ${title}`;
 
-  if (area.includes("quant")) return "QA";
+  if (area.includes("quant") || area === "qa") return "QA";
   if (area.includes("varc")) {
     if (text.includes("rc") || text.includes("reading")) return "RC";
     return "VA-VR";
   }
-  if (text.includes("graph") || text.includes("table") || text.includes("pie") || text.includes("bar") || text.includes("line graph") || text.includes("data interpretation") || /\bdi\b/.test(text)) {
+  if (
+    text.includes("graph") ||
+    text.includes("table") ||
+    text.includes("pie") ||
+    text.includes("bar") ||
+    text.includes("line graph") ||
+    text.includes("data interpretation") ||
+    /\bdi\b/.test(text)
+  ) {
     return "DI";
   }
-  if (area.includes("lrdi") || text.includes("reasoning") || text.includes("puzzle") || text.includes("games") || text.includes("seating")) {
+  if (
+    area.includes("lrdi") ||
+    text.includes("reasoning") ||
+    text.includes("puzzle") ||
+    text.includes("games") ||
+    text.includes("seating")
+  ) {
     return "LR";
   }
   return "QA";
@@ -100,10 +134,53 @@ function qaTopicFor(test) {
   const text = `${topic} ${title}`;
 
   if (text.includes("number")) return "number-system";
-  if (text.includes("linear") || text.includes("algebra") || text.includes("equation") || text.includes("function") || text.includes("inequal")) return "algebra";
-  if (text.includes("geometry") || text.includes("mensuration") || text.includes("triangle") || text.includes("circle") || text.includes("coordinate")) return "geometry";
-  if (text.includes("permutation") || text.includes("combination") || text.includes("probability") || text.includes("set theory") || text.includes("sequence") || text.includes("modern")) return "modern-math";
+  if (
+    text.includes("linear") ||
+    text.includes("algebra") ||
+    text.includes("equation") ||
+    text.includes("function") ||
+    text.includes("inequal")
+  ) {
+    return "algebra";
+  }
+  if (
+    text.includes("geometry") ||
+    text.includes("mensuration") ||
+    text.includes("triangle") ||
+    text.includes("circle") ||
+    text.includes("coordinate")
+  ) {
+    return "geometry";
+  }
+  if (
+    text.includes("permutation") ||
+    text.includes("combination") ||
+    text.includes("probability") ||
+    text.includes("set theory") ||
+    text.includes("sequence") ||
+    text.includes("modern")
+  ) {
+    return "modern-math";
+  }
   return "arithmetic";
+}
+
+function arithmeticTopicFor(test) {
+  const topic = normalize(test.topic);
+  const title = normalize(test.title);
+  const text = `${topic} ${title} ${slugText(topic)} ${slugText(title)}`;
+
+  if (text.includes("percentage") || text.includes("percent") || text.includes("%-")) return "percentage";
+  if (text.includes("profit") || text.includes("loss") || text.includes("discount") || text.includes("marked price") || text.includes("selling price")) return "profit-loss";
+  if (text.includes("simple interest") || text.includes("compound interest") || /\bsi\b/.test(text) || /\bci\b/.test(text) || text.includes("si-ci") || text.includes("interest")) return "si-ci";
+  if (text.includes("ratio") || text.includes("proportion") || text.includes("variation") || text.includes("partnership")) return "ratio-proportion";
+  if (text.includes("average") || text.includes("weighted average") || text.includes("mean")) return "average";
+  if (text.includes("mixture") || text.includes("alligation") || text.includes("allegation") || text.includes("replacement")) return "mixture-alligation";
+  if (text.includes("time and work") || text.includes("time-work") || text.includes("work") || text.includes("pipe") || text.includes("cistern") || text.includes("efficiency")) return "time-work";
+  if (text.includes("time speed") || text.includes("time-speed") || text.includes("speed") || text.includes("distance") || text.includes("train") || text.includes("boat") || text.includes("race")) return "time-speed-distance";
+
+  const exact = ARITHMETIC_TOPICS.find(item => slugText(item.label) === slugText(topic));
+  return exact ? exact.key : null;
 }
 
 function testsForRoute(routeKey) {
@@ -114,12 +191,15 @@ function testsForRoute(routeKey) {
 
 function testsForList() {
   const term = normalize(state.search.trim());
+
   return testsForRoute(state.activeRoute).filter(test => {
     const subjectOk = !state.subject || subjectFor(test) === state.subject;
     const qaTopicOk = !state.qaTopic || qaTopicFor(test) === state.qaTopic;
+    const arithmeticTopicOk = !state.arithmeticTopic || arithmeticTopicFor(test) === state.arithmeticTopic;
     const text = normalize(`${test.title} ${test.area} ${test.topic} ${test.type}`);
     const searchOk = !term || text.includes(term);
-    return subjectOk && qaTopicOk && searchOk;
+
+    return subjectOk && qaTopicOk && arithmeticTopicOk && searchOk;
   });
 }
 
@@ -142,6 +222,7 @@ function goHome() {
   state.activeRoute = null;
   state.subject = null;
   state.qaTopic = null;
+  state.arithmeticTopic = null;
   resetSearch();
   showView(els.homeView);
   history.replaceState(null, "", "#home");
@@ -155,6 +236,7 @@ function openRoute(routeKey) {
   state.activeRoute = routeKey;
   state.subject = null;
   state.qaTopic = null;
+  state.arithmeticTopic = null;
   resetSearch();
 
   if (routeKey === "full") {
@@ -171,28 +253,66 @@ function openRoute(routeKey) {
 
 function openQaTopics() {
   state.route = "qa-topics";
+  state.activeRoute = "topic";
   state.subject = "QA";
   state.qaTopic = null;
+  state.arithmeticTopic = null;
   resetSearch();
   renderQaTopicCards();
   showView(els.qaTopicView);
   history.replaceState(null, "", "#topic-qa");
 }
 
-function openList(subjectKey, qaTopicKey = null) {
-  const route = ROUTES[state.activeRoute];
+function openArithmeticTopics() {
+  state.route = "arithmetic-topics";
+  state.activeRoute = "topic";
+  state.subject = "QA";
+  state.qaTopic = "arithmetic";
+  state.arithmeticTopic = null;
+  resetSearch();
+
+  els.listEyebrow.textContent = "Topic Test / QA / Arithmetic";
+  els.listTitle.textContent = "Choose an Arithmetic topic";
+  els.listCount.textContent = "8 topic boxes";
+  els.searchInput.style.display = "none";
+
+  renderArithmeticTopicCards();
+  showView(els.listView);
+  history.replaceState(null, "", "#topic-qa-arithmetic");
+}
+
+function openList(subjectKey, qaTopicKey = null, arithmeticTopicKey = null) {
+  const route = ROUTES[state.activeRoute] || ROUTES.topic;
+
   state.route = "list";
   state.subject = subjectKey;
   state.qaTopic = qaTopicKey;
+  state.arithmeticTopic = arithmeticTopicKey;
   resetSearch();
 
   const subject = SUBJECTS.find(item => item.key === subjectKey);
   const qaTopic = QA_TOPICS.find(item => item.key === qaTopicKey);
+  const arithmeticTopic = ARITHMETIC_TOPICS.find(item => item.key === arithmeticTopicKey);
+
+  els.searchInput.style.display = "block";
   els.listEyebrow.textContent = route.label;
-  els.listTitle.textContent = qaTopic ? qaTopic.label : (subject ? `${subject.label} ${route.label}` : route.label);
+  els.listTitle.textContent = arithmeticTopic
+    ? arithmeticTopic.label
+    : qaTopic
+      ? qaTopic.label
+      : subject
+        ? `${subject.label} ${route.label}`
+        : route.label;
+
   renderTestCards();
   showView(els.listView);
-  history.replaceState(null, "", qaTopicKey ? `#topic-qa-${qaTopicKey}` : (subjectKey ? `#${state.activeRoute}-${subjectKey.toLowerCase()}` : `#${state.activeRoute}`));
+
+  let hash = `#${state.activeRoute}`;
+  if (qaTopicKey && arithmeticTopicKey) hash = `#topic-qa-${qaTopicKey}-${arithmeticTopicKey}`;
+  else if (qaTopicKey) hash = `#topic-qa-${qaTopicKey}`;
+  else if (subjectKey) hash = `#${state.activeRoute}-${subjectKey.toLowerCase()}`;
+
+  history.replaceState(null, "", hash);
 }
 
 function renderSubjectCards(routeKey) {
@@ -204,12 +324,8 @@ function renderSubjectCards(routeKey) {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "subject-card";
-    card.disabled = count === 0;
-    card.innerHTML = `
-      <span>${subject.label}</span>
-      <strong>${count}</strong>
-      <small>${subject.description}</small>
-    `;
+    card.disabled = count === 0 && !(routeKey === "topic" && subject.key === "QA");
+    card.innerHTML = `<span>${subject.label}</span><strong>${count}</strong><small>${subject.description}</small>`;
     card.addEventListener("click", () => {
       if (routeKey === "topic" && subject.key === "QA") {
         openQaTopics();
@@ -230,15 +346,37 @@ function renderQaTopicCards() {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "subject-card";
-    card.disabled = count === 0;
-    card.innerHTML = `
-      <span>${topic.label}</span>
-      <strong>${count}</strong>
-      <small>${topic.description}</small>
-    `;
-    card.addEventListener("click", () => openList("QA", topic.key));
+    card.disabled = count === 0 && topic.key !== "arithmetic";
+    card.innerHTML = `<span>${topic.label}</span><strong>${count}</strong><small>${topic.description}</small>`;
+    card.addEventListener("click", () => {
+      if (topic.key === "arithmetic") {
+        openArithmeticTopics();
+      } else {
+        openList("QA", topic.key);
+      }
+    });
     els.qaTopicGrid.appendChild(card);
   });
+}
+
+function renderArithmeticTopicCards() {
+  const qaArithmeticTests = testsForRoute("topic").filter(test => subjectFor(test) === "QA" && qaTopicFor(test) === "arithmetic");
+  els.testGrid.innerHTML = "";
+
+  const grid = document.createElement("div");
+  grid.className = "topic-grid";
+
+  ARITHMETIC_TOPICS.forEach(topic => {
+    const count = qaArithmeticTests.filter(test => arithmeticTopicFor(test) === topic.key).length;
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "subject-card";
+    card.innerHTML = `<span>${topic.label}</span><strong>${count}</strong><small>${topic.description}</small>`;
+    card.addEventListener("click", () => openList("QA", "arithmetic", topic.key));
+    grid.appendChild(card);
+  });
+
+  els.testGrid.appendChild(grid);
 }
 
 function renderTestCards() {
@@ -265,14 +403,19 @@ function renderTestCards() {
 
     const meta = document.createElement("div");
     meta.className = "meta-row";
-    [test.type, subjectFor(test), test.area, test.topic, test.minutes ? `${test.minutes} min` : "", test.questions ? `${test.questions} questions` : ""]
-      .filter(Boolean)
-      .forEach(item => {
-        const pill = document.createElement("span");
-        pill.className = "pill";
-        pill.textContent = item;
-        meta.appendChild(pill);
-      });
+    [
+      test.type,
+      subjectFor(test),
+      test.area,
+      test.topic,
+      test.minutes ? `${test.minutes} min` : "",
+      test.questions ? `${test.questions} questions` : ""
+    ].filter(Boolean).forEach(item => {
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.textContent = item;
+      meta.appendChild(pill);
+    });
     copy.appendChild(meta);
 
     const link = document.createElement("a");
@@ -290,20 +433,35 @@ function renderTestCards() {
 
 function handleHash() {
   const hash = window.location.hash.replace("#", "");
+
   if (!hash || hash === "home") {
     goHome();
     return;
   }
+
   if (hash === "topic-qa") {
-    state.activeRoute = "topic";
     openQaTopics();
     return;
   }
+
+  if (hash === "topic-qa-arithmetic") {
+    openArithmeticTopics();
+    return;
+  }
+
+  if (hash.startsWith("topic-qa-arithmetic-")) {
+    const arithmeticTopicKey = hash.replace("topic-qa-arithmetic-", "");
+    state.activeRoute = "topic";
+    openList("QA", "arithmetic", arithmeticTopicKey);
+    return;
+  }
+
   if (hash.startsWith("topic-qa-")) {
     state.activeRoute = "topic";
     openList("QA", hash.replace("topic-qa-", ""));
     return;
   }
+
   if (ROUTES[hash]) {
     openRoute(hash);
   }
@@ -329,7 +487,11 @@ function init() {
   els.homeButton.addEventListener("click", goHome);
   els.qaTopicBackButton.addEventListener("click", () => openRoute("topic"));
   els.listBackButton.addEventListener("click", () => {
-    if (state.qaTopic) {
+    if (state.arithmeticTopic) {
+      openArithmeticTopics();
+    } else if (state.qaTopic === "arithmetic") {
+      openQaTopics();
+    } else if (state.qaTopic) {
       openQaTopics();
     } else if (state.activeRoute === "full") {
       goHome();
