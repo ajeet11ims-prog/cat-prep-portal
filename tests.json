@@ -998,5 +998,15 @@
     "type": "Topic Wise Test",
     "minutes": 40,
     "questions": null
+  },
+  {
+    "title": "Percentae pyq",
+    "file": "tests/percentae-pyq.html",
+    "original": "Topic Test - Arithmetic - Percentage PYQ.html",
+    "area": "Quant",
+    "topic": "Percentage",
+    "type": "Topic Wise Test",
+    "minutes": 150,
+    "questions": null
   }
 ]
