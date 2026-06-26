@@ -14,6 +14,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -87,84 +92,90 @@ button {
   cursor: pointer;
 }
 
+/* Full desktop/laptop width */
 main {
-  width: min(1180px, calc(100% - 28px));
-  margin: 0 auto 40px;
+  width: min(1680px, calc(100% - 44px));
+  margin: 0 auto 32px;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 22px;
   align-items: stretch;
-  padding: 28px 0 18px;
+  padding: 26px 0 20px;
 }
 
 .hero > div,
 .view,
 .hero-panel {
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--paper);
   box-shadow: 0 12px 28px rgba(20, 40, 60, 0.08);
 }
 
 .hero > div:first-child {
-  padding: 34px;
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 42px 48px;
 }
 
 .eyebrow {
-  margin: 0 0 9px;
+  margin: 0 0 10px;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  max-width: 860px;
+  max-width: 1120px;
   margin: 0;
-  font-size: clamp(31px, 4vw, 52px);
-  line-height: 1.04;
-  letter-spacing: 0;
+  font-size: clamp(44px, 4vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
 }
 
 .subcopy {
-  max-width: 720px;
-  margin: 18px 0 0;
+  max-width: 980px;
+  margin: 22px 0 0;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
 .hero-panel {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   padding: 20px;
 }
 
 .hero-panel div {
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px;
+  border-radius: 9px;
+  padding: 21px;
   background: #f8fbfd;
 }
 
 .hero-panel strong {
   display: block;
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .hero-panel span {
   display: block;
   color: var(--muted);
-  margin-top: 4px;
+  margin-top: 5px;
+  font-size: 16px;
 }
 
 .view {
   display: none;
-  padding: 22px;
+  padding: 28px 32px;
 }
 
 .active-view {
@@ -172,13 +183,13 @@ main {
 }
 
 .section-head {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .section-head h2 {
   margin: 0;
-  font-size: 30px;
-  line-height: 1.18;
+  font-size: 34px;
+  line-height: 1.16;
 }
 
 .with-action {
@@ -197,17 +208,17 @@ main {
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 18px;
 }
 
 .menu-card,
 .subject-card {
-  min-height: 150px;
+  min-height: 165px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: #fff;
   text-align: left;
-  padding: 18px;
+  padding: 24px;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(20, 40, 60, 0.06);
 }
@@ -219,8 +230,8 @@ main {
 }
 
 .menu-card span {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
   border-radius: 999px;
@@ -232,15 +243,15 @@ main {
 .menu-card strong,
 .subject-card span {
   display: block;
-  margin-top: 18px;
-  font-size: 24px;
+  margin-top: 20px;
+  font-size: 27px;
   font-weight: 900;
 }
 
 .menu-card small,
 .subject-card small {
   display: block;
-  margin-top: 8px;
+  margin-top: 9px;
   color: var(--muted);
   font-weight: 700;
   line-height: 1.35;
@@ -250,17 +261,17 @@ main {
 .topic-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
 }
 
 .subject-card {
-  min-height: 170px;
+  min-height: 180px;
 }
 
 .subject-card span {
   margin-top: 0;
   color: var(--blue);
-  font-size: 28px;
+  font-size: 30px;
 }
 
 .subject-card strong {
@@ -280,10 +291,10 @@ main {
 }
 
 #searchInput {
-  width: min(480px, 100%);
+  width: min(520px, 100%);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 12px;
+  padding: 13px;
   outline: none;
 }
 
@@ -294,7 +305,7 @@ main {
 
 .test-grid {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
 .test-card {
@@ -302,14 +313,14 @@ main {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   border: 1px solid var(--line);
-  border-radius: 9px;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 18px;
   background: #fff;
 }
 
 .test-card h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 21px;
   line-height: 1.28;
 }
 
@@ -353,7 +364,41 @@ main {
   background: #fff;
 }
 
+@media (min-width: 1500px) {
+  main {
+    width: min(1760px, calc(100% - 56px));
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 430px;
+  }
+
+  .hero > div:first-child {
+    min-height: 310px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 330px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4vw, 54px);
+  }
+
+  .menu-grid,
+  .subject-grid,
+  .topic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 980px) {
+  main {
+    width: min(100% - 28px, 960px);
+  }
+
   .hero,
   .menu-grid,
   .subject-grid,
@@ -367,6 +412,10 @@ main {
 }
 
 @media (max-width: 680px) {
+  main {
+    width: calc(100% - 24px);
+  }
+
   .topbar,
   .with-action,
   .test-card {
@@ -384,6 +433,10 @@ main {
   .hero > div:first-child,
   .view {
     padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
   }
 
   .test-card {
