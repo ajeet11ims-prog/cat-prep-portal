@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise 2 - Ratio Proportion Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
+    header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08); }
+    .topbar { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 22px; color: var(--brand); }
+    .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .timer { min-width: 150px; text-align: center; border: 1px solid var(--line); background: var(--brand-soft); border-radius: 6px; padding: 8px 12px; font-weight: 700; color: var(--brand); }
+    main { max-width: 1100px; margin: 22px auto 40px; padding: 0 18px; }
+    .instructions, .question, #result { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+    .instructions { padding: 16px; margin-bottom: 18px; }
+    .question { padding: 16px; margin-bottom: 14px; }
+    .question h2 { margin: 0 0 12px; font-size: 17px; }
+    .difficulty { display: inline-block; margin: 0 0 10px; color: var(--brand); font-weight: 700; border-bottom: 2px solid var(--brand); }
+    .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    label.option { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 10px; cursor: pointer; background: #fbfcfd; }
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+    .actions { display: flex; justify-content: center; margin: 24px 0; }
+    button { border: 0; border-radius: 6px; background: var(--brand); color: white; padding: 12px 22px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #3d66b2; }
+    #result { display: none; padding: 16px; margin-bottom: 18px; }
+    .score-grid { display: grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+    .score-box { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfcfd; }
+    .score-box strong { display: block; font-size: 22px; margin-top: 2px; }
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+    .solution { display: none; margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; color: #243447; }
+    .solution h3 { margin: 0 0 8px; font-size: 16px; color: var(--brand); }
+    .solution p { margin: 6px 0; }
+    @media (max-width: 700px) { .options, .score-grid { grid-template-columns: 1fr; } .timer { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Practice Exercise - 2</h1>
+        <div class="meta">Ratio and Proportion | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer">Time Left: <span id="time">60:00</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+      Solutions will appear only after submission.
+    </section>
+    <section id="result"></section>
+    <form id="testForm"></form>
+  </main>
+
+  <script>
+    const questions = [
+      { level: "Level of Difficulty - 1", q: "Given that y is directly proportional to 8 less than the 5th power of x. Also, y = 47 when x = 3. Find x when y = 4.8.", options: ["2", "3", "4", "5"], answer: 0, solution: "Let y = k(x^5 - 8). Using x = 3 and y = 47 gives 47 = k(243 - 8), so k = 1/5. For y = 4.8, x^5 - 8 = 24, so x^5 = 32 and x = 2." },
+      { level: "Level of Difficulty - 1", q: "If (2x + y):(3x + 3y) is the duplicate ratio of 2:3, find x:y.", options: ["1:2", "2:1", "1:3", "3:1"], answer: 0, solution: "Duplicate ratio of 2:3 is 4:9. So (2x + y)/(3x + 3y) = 4/9. This gives 18x + 9y = 12x + 12y, so 6x = 3y and x:y = 1:2." },
+      { level: "Level of Difficulty - 1", q: "An IAS aspirant took five papers with equal maximum marks. His marks were in the ratio 6:7:8:9:10. Overall, he obtained 80% of the total maximum marks. In how many papers did he get more than 72% marks?", options: ["1", "2", "3", "4"], answer: 2, solution: "Let each paper have maximum 100 marks, total 500. He scored 80% of 500 = 400. Marks are 6k, 7k, 8k, 9k, 10k, so 40k = 400 and k = 10. Marks are 60, 70, 80, 90, 100. More than 72 appears in 3 papers." },
+      { level: "Level of Difficulty - 1", q: "The mass of a liquid varies directly with its volume. The mass is 12 g when volume is 15 cm3. Find the mass if volume is 20 cm3.", options: ["14 g", "16 g", "18 g", "20 g"], answer: 1, solution: "Since M varies directly with V, M1/M2 = V1/V2. Thus 12/x = 15/20, so x = 16 g." },
+      { level: "Level of Difficulty - 1", q: "If a + b - c : b + c - a : a + c - b = 7:8:9, find c:b:a.", options: ["15:16:17", "16:15:17", "17:16:15", "17:15:16"], answer: 3, solution: "Let a+b-c=7k, b+c-a=8k, and a+c-b=9k. Adding gives a+b+c=24k. Subtracting from the sum gives c=17k/2, a=8k, and b=15k/2. Hence c:b:a = 17:15:16." },
+      { level: "Level of Difficulty - 1", q: "X, Y, and Z divide Rs. 5000 such that if Rs. 180 and Rs. 220 are taken away from X and Y respectively, and Rs. 200 is given to Z, the new amounts are in the ratio 4:5:7. Find Y's share in the original amount.", options: ["Rs. 1380", "Rs. 1820", "Rs. 1720", "Rs. 1500"], answer: 2, solution: "Net changed total = 5000 - 180 - 220 + 200 = 4800. In ratio 4:5:7, Y's new share = 5/16 x 4800 = 1500. Original Y share = 1500 + 220 = Rs. 1720." },
+      { level: "Level of Difficulty - 1", q: "The ratio of chocolates with P, Q, R and S is 6:7:9:10. How many of them have more than 25% of the total chocolates?", options: ["1", "2", "3", "4"], answer: 1, solution: "Total units = 32. 25% of total = 8 units. R has 9 units and S has 10 units, so 2 people have more than 25%." },
+      { level: "Level of Difficulty - 1", q: "In an exam, Ina's score was 37.5% of the sum of Mina and Dika's scores. After review, each score increased by 11. Reviewed scores of Ina, Mina and Dika were in the ratio 2:3:2. Mina's reviewed score was how much more than Dika's reviewed score?", options: ["22", "18", "15", "11"], answer: 0, solution: "Let original scores be A, B, C. Reviewed scores are A+11, B+11, C+11 in ratio 2:3:2. Thus A=C and 2B-3A=11. Also A = 37.5% of B+C = 3/8(B+C). Solving gives A=C=33 and B=55. Difference in reviewed scores = 55 - 33 = 22." },
+      { level: "Level of Difficulty - 1", q: "Amit, Sumit, Jimit, and Nimit have pencils in the ratio 1/5:1/7:1/9:1/11. What is the minimum number of pencils they must have altogether?", options: ["944", "472", "1,888", "3,776"], answer: 2, solution: "The ratio 1/5:1/7:1/9:1/11 becomes 693:495:385:315 after multiplying by LCM 3465. Total = 1888 units. Minimum total = 1888." },
+      { level: "Level of Difficulty - 1", q: "If a:b = 4:7 and b:c = 15:19, find the value of (c + a)/(3a + b - c).", options: ["11:7", "117:113", "152:193", "193:152"], answer: 3, solution: "Combining a:b = 4:7 and b:c = 15:19 gives a:b:c = 60:105:133. Then (c+a)/(3a+b-c) = (133+60)/(180+105-133) = 193/152." },
+      { level: "Level of Difficulty - 2", q: "The incomes of A, B, C, and D are in the ratio 5:6:7:8 and their expenditures are in the ratio 9:10:11:12. If B saves one-third of his income, then A's saving is how much percent less than D's saving?", options: ["37.5%", "50%", "56.25%", "68.75%"], answer: 2, solution: "Let incomes be 5y, 6y, 7y, 8y and expenditures be 9z, 10z, 11z, 12z. B saves 1/3 of income = 2y, so 6y - 10z = 2y, giving y = 2.5z. A saving = 5y - 9z = 3.5z. D saving = 8y - 12z = 8z. A's saving is (8 - 3.5)/8 x 100 = 56.25% less." },
+      { level: "Level of Difficulty - 2", q: "Rohan divides chocolates among A, B, C, and D such that 5A = 8B, 3B = 4C, and 4C = 5D. What is the minimum possible total number of chocolates?", options: ["69", "79", "89", "99"], answer: 2, solution: "A:B = 8:5, B:C = 4:3, and C:D = 5:4. Combining gives A:B:C:D = 32:20:15:12. Minimum total = 32+20+15+12 = 89." },
+      { level: "Level of Difficulty - 2", q: "John and Joe scored in the ratio 13:16. After an appeal, both scores increased by the same amount and their new scores were in the ratio 55:64. Find the ratio of John's new score to his original score.", options: ["55:39", "49:47", "57:44", "43:29"], answer: 0, solution: "Let original scores be 13x and 16x and increase be a. Then (13x+a)/(16x+a)=55/64. This gives a = 48x/9. John's new:old = (13x + 48x/9):13x = 165:117 = 55:39." },
+      { level: "Level of Difficulty - 2", q: "The value of a diamond varies directly with the cube of its weight. It broke into four pieces in weights 1:2:3:4. When sold individually, the merchant got Rs. 65,700 less than the unbroken value. Find the original value in thousand rupees.", options: ["63", "73", "83", "93"], answer: 1, solution: "Let piece weights be 1, 2, 3, 4 and original weight be 10. Broken value = k(1+8+27+64)=100k. Original value = k(10^3)=1000k. Loss = 900k = 65700, so k=73. Original value = 73000 = 73 thousand." },
+      { level: "Level of Difficulty - 2", q: "Rajan's present age is thrice his nephew's present age and four times his niece's present age. A few years from now, Rajan's age will become twice his nephew's age. What will be the ratio of Rajan's age to his niece's age at that time?", options: ["16:7", "4:7", "4:11", "12:11"], answer: 0, solution: "Let Rajan, nephew and niece be x, y, z. Then x=3y and x=4z. After a years, x+a = 2(y+a). Using x=3y gives a=y. Required ratio = (x+a)/(z+a) = (3y+y)/(3y/4+y)=4y/(7y/4)=16:7." },
+      { level: "Level of Difficulty - 2", q: "The ratio of a two-digit number and the number formed by reversing the digits is 13:31. How many such numbers are possible?", options: ["0", "2", "3", "6"], answer: 2, solution: "Let the number be 10x+y and reversed number be 10y+x. Then (10x+y)/(10y+x)=13/31, giving 297x=99y, so y=3x. Possible digit pairs are (1,3), (2,6), and (3,9), so 3 numbers are possible." },
+      { level: "Level of Difficulty - 2", q: "A rope is cut into two parts so that the ratio of total length to the larger part equals the ratio of larger part to smaller part. Find larger:smaller. Take sqrt(5)=2.2.", options: ["6/5", "7/5", "8/5", "9/5"], answer: 2, solution: "Let larger and smaller parts be a and b. Then (a+b)/a = a/b. Let a/b=x. Then 1+1/x=x, so x^2-x-1=0. Using sqrt(5)=2.2, x=(1+2.2)/2=1.6=8/5." },
+      { level: "Level of Difficulty - 2", q: "Total cost of a wedding function consists of fixed cost and variable cost. Variable cost varies directly with square of guests. Total cost for 80 guests is Rs. 83,800 and for 120 guests is Rs. 1,19,800. Find the fixed cost.", options: ["45,000", "50,000", "55,000", "60,000"], answer: 2, solution: "Let total cost = F + kN^2. Then 83800 = F + 6400k and 119800 = F + 14400k. Difference gives 36000 = 8000k, so k=4.5. F = 83800 - 6400 x 4.5 = Rs. 55000." },
+      { level: "Level of Difficulty - 2", q: "In a cricket innings, P:Q = 1/5:1/9 and Q:R = 1/5:1/9. If P scored 168 runs more than R, find the total runs scored by all three players.", options: ["403", "423", "453", "483"], answer: 2, solution: "P:Q = 9:5 and Q:R = 9:5. Combining gives P:Q:R = 81:45:25. Difference P-R = 56 units = 168, so one unit = 3. Total = 151 x 3 = 453." },
+      { level: "Level of Difficulty - 2", q: "A train can move at 60 km/h without wagons. Decrement in speed varies directly with square root of wagons. With 9 wagons, speed is 45 km/h. What is the greatest number of wagons with which it can just move?", options: ["121", "132", "143", "154"], answer: 2, solution: "Decrement D = k sqrt(W). With 9 wagons, decrement = 60-45=15, so 15=3k and k=5. For the train to stop, decrement is 60, so 60=5sqrt(W), giving W=144. It can just move with 143 wagons." },
+      { level: "Level of Difficulty - 3", q: "Virendra, Surya and Pratap invest Rs. 20 lakhs, Rs. 14 lakhs and Rs. 16 lakhs. First-year profit is Rs. 6,60,000. Some profit is shared between Surya and Pratap in 3:5, and the rest among all three in investment ratio. Pratap's total amount is 13/10 times Virendra's. Find Surya's amount.", options: ["Rs. 2,00,000", "Rs. 1,50,000", "Rs. 1,60,000", "Rs. 1,20,000"], answer: 0, solution: "Investment ratio = 20:14:16 = 10:7:8. Let special shares of Surya and Pratap be 3k and 5k, and common investment share units be 10x, 7x, 8x. Given 8x+5k = 13/10(10x), so k=x. Shares become 10x, 10x, 13x. Total 33x = 660000, so Surya receives 10x = Rs. 200000." },
+      { level: "Level of Difficulty - 3", q: "Profits of A and B, B and C, C and D, and D and E are in ratios 2:3, 4:5, 2:1 and 3:4. If profit of D is Rs. 432 crore less than B, find total profit of A and E together.", options: ["512", "1,240", "1,680", "1,728"], answer: 3, solution: "Combining ratios gives A:B:C:D:E = 16:24:30:15:20. B-D = 9 units = Rs. 432 crore, so 1 unit = Rs. 48 crore. A+E = 36 units = 36 x 48 = Rs. 1728 crore." },
+      { level: "Level of Difficulty - 3", q: "L and M made annual profit. M, as working partner, received 20% of profit as salary and remaining profit was divided in investment ratio. If entire profit were divided in investment ratio, L would have received Rs. 12,000 more than he actually got. Find actual amount received by L.", options: ["Rs. 48,000", "Rs. 42,000", "Rs. 36,000", "Rs. 30,000"], answer: 0, solution: "Let total profit be 100y. After M's 20y salary, 80y is shared by investment. L loses exactly his share of the 20y salary portion, which is Rs. 12000. Hence L's actual share from 80y is four times that amount = Rs. 48000." },
+      { level: "Level of Difficulty - 3", q: "If (9A - 18B + 8C)/(9A - 18B - 8C) = (9A + 18B - 8C)/(9A - 18B + 8C), which is true?", options: ["9AB - 18B^2 = 8AC + 8BC", "9AB + 8BC = 8AC + 18B^2", "8AB + 18B^2 = 9AC + 8BC", "9AB - 18B^2 = 8BC - 8AC"], answer: 1, solution: "Using (A+B)/(A-B) = (C+D)/(C-D), the expression simplifies to (A-2B)/(4C) = A/(9B-4C). Cross-multiplying gives 9AB + 8BC = 8AC + 18B^2." },
+      { level: "Level of Difficulty - 3", q: "The age ratios of wife and husband among two couples are 2:3 and 4:5. The oldest person is 40 years old. Difference between any two persons is not more than 20. Find the age of the youngest person, given that any male is not the second oldest and all ages are integers.", options: ["20", "22", "24", "Data insufficient"], answer: 0, solution: "Let pair ages be 2x,3x and 4y,5y. Since ages are integers and oldest is 40, 5y=40 gives the second pair 32 and 40. Constraints force the youngest 2x to be at least 20 and at most 20, so youngest age is 20." },
+      { level: "Questions 26-27", q: "In Free Cells, Bibo, Joe and Paes start with amounts in ratio 3:4:6. Winners in four games are Joe, Paes, Bibo and Joe. If Bibo wins, he gets from each other an amount equal to what he has. If Joe wins, he gets one-fourth of what he has from each other. If Paes wins, he gets one-fifth of what he has from each other. At the end, Paes loses Rs. 20. After the third game, what is the ratio of amounts with Bibo and Paes?", options: ["2:1", "1:3", "1:2", "3:1"], answer: 2, solution: "Let initial amounts be Bibo=3k, Joe=4k, Paes=6k. Tracking the four games gives: after game 1 = 2k,6k,5k; after game 2 = k,5k,7k; after game 3 = 3k,4k,6k; after game 4 = 2k,6k,5k. Since Paes loses k and this equals Rs. 20, k=20. After game 3, Bibo:Paes = 3k:6k = 1:2." },
+      { level: "Questions 26-27", q: "Who among Bibo, Joe and Paes did not make a loss on his/her investment?", options: ["Bibo", "Joe", "Paes", "None"], answer: 1, solution: "Initial amounts are 3k, 4k, 6k and final amounts after the fourth game are 2k, 6k, 5k. Only Joe increases from 4k to 6k, so Joe did not make a loss." },
+      { level: "Level of Difficulty - 3", q: "Four natural numbers are in proportion. Sum of means is 28 and sum of extremes is 32. The positive difference between extremes is four times the positive difference between means. Find the difference between the extremes.", options: ["12", "16", "20", "24"], answer: 1, solution: "Let extremes be 16+4x and 16-4x, so their difference is 8x. Difference of means is 2x, and means can be 14+x and 14-x. Since product of extremes equals product of means, (16+4x)(16-4x)=(14+x)(14-x). This gives x=2, so difference of extremes = 16." },
+      { level: "Level of Difficulty - 3", q: "A said to B, 'I am 4 times as old as you were when I was one-third of your age 2 years from now.' If the sum of their ages is 46, find A's age.", options: ["20", "24", "28", "32"], answer: 1, solution: "Let A's present age be 4a and B's age after 2 years be 3k. From the age-gap condition, a=(4k-2)/5. Also 4a + 3k - 2 = 46. Solving gives k=8 and A's present age = 4a = 24." },
+      { level: "Level of Difficulty - 3", q: "Two classes X and Y consist of American and Russian students. In class X, each American has five times as many Americans as classmates as Russians. In class Y, each American has five times as many Russians as classmates as Americans. Every Russian in class X has seven times as many Americans as classmates as Russians. Classes X and Y have the same number of students. How many students are there in class Y?", options: ["20", "25", "30", "35"], answer: 1, solution: "Let Americans and Russians in class X be XA and XR. Then XA-1=5XR and 7(XR-1)=XA. Solving gives XR=4 and XA=21, so class X has 25 students. Class Y has the same number, so it has 25 students." }
+    ];
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const optionLabels = ["A", "B", "C", "D"];
+    let submitted = false;
+    let secondsLeft = 60 * 60;
+
+    function renderQuestions() {
+      let currentLevel = "";
+      const html = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+      form.innerHTML = html + `<div class="actions"><button type="submit">Submit Test</button></div>`;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const correctText = `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+        solution.style.display = "block";
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (Number(selected.value) === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Wrong. ${correctText}`;
+        }
+      });
+      const score = correct * 3 - wrong;
+      const attempted = correct + wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${attempted}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+      document.querySelectorAll("input, button").forEach((element) => { element.disabled = true; });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitTest();
+    });
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>

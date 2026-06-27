@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DILR - Network &amp; 3D diagram ( 40 minutes )</title>
+  <style>
+    :root{--brand:#0f4c81;--brand-dark:#0a3357;--line:#c9d3df;--ink:#111827;--muted:#6b7280;--ok:#157347;--bad:#b02a37}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#eef2f6;line-height:1.45}
+    header{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px}
+    .topbar{width:100%;display:flex;align-items:center;gap:14px}
+    .topbar h1{font-size:20px;margin:0;color:var(--brand-dark);letter-spacing:0}
+    .meta{font-size:13px;color:var(--muted);margin-top:3px}
+    .header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .pill{border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:#f8fafc;font-weight:700}
+    main{height:calc(100vh - 64px);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:10px;padding:10px}
+    main>section,aside{background:#fff;border:1px solid var(--line);border-radius:8px;min-height:0;overflow:hidden}
+    #testForm{height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto auto;overflow:hidden}
+    #result,.question{padding:12px}
+    #result{display:none}
+    .question{display:none}
+    .question.active{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(380px,.88fr);gap:10px;height:100%;min-height:0}
+    .question h2{margin:0 0 12px;font-size:17px;line-height:1.32}
+    .set-info,.question-body{border:1px solid var(--line);border-radius:8px;background:#fff;min-height:0;height:100%;overflow:auto}
+    .set-info{padding:16px;font-size:17px;font-weight:700;line-height:1.5}
+    .question-body{padding:14px}
+    .set-title{font-weight:800;font-style:italic;margin:0 0 10px;color:var(--brand-dark)}
+    .set-heading{font-family:Georgia,serif;font-size:28px;font-weight:700;margin:0 0 14px;letter-spacing:.5px}
+    p{margin:0 0 10px}
+    .stats-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;margin:12px 0}
+    .wide-table-wrap{overflow:auto;margin:14px 0}
+    .ranking-table{min-width:980px}
+    .ranking-table th,.ranking-table td{font-size:15px;padding:5px 6px}
+    .compact-table{max-width:660px;margin:14px auto}
+    .diagram-wrap{margin:14px 0}
+    .diagram-wrap img{display:block;max-width:100%;height:auto;margin:0 auto;border:1px solid var(--line);background:#fff}
+    .diagram-stack{display:grid;gap:14px}
+    .small-caption{font-size:15px;font-weight:700;margin-top:10px}
+    .calc-open{border:1px solid #7fa1cd;border-radius:4px;background:#f5f9ff;color:#255e9b;padding:8px 12px;font-weight:700;white-space:nowrap;cursor:pointer}
+    .calc-open:hover{background:#e8f1fd}
+    .calc-modal{position:fixed;top:120px;right:110px;width:296px;background:linear-gradient(180deg,#efefef 0%,#e2e2e2 100%);border:1px solid #9ea6af;border-radius:16px;box-shadow:0 18px 32px rgba(15,28,45,.24);padding:0;display:none;z-index:30;overflow:hidden}
+    .calc-modal.open{display:block}
+    .calc-head{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#2b70b8;color:#fff;cursor:move}
+    .calc-head strong{font-size:18px;color:#fff}
+    .calc-head-actions{display:flex;align-items:center;gap:8px}
+    .calc-copy{font-size:11px;font-weight:700;background:#5d9ae0;color:#fff;padding:3px 6px;border-radius:3px}
+    .calc-close{width:24px;height:24px;border:2px solid #7f8b97;background:#fff;color:#3f4d5d;padding:0;border-radius:4px;font-size:12px}
+    .calc-body{padding:12px}
+    .calc-status{font-size:12px;color:#43a047;font-weight:700;text-align:right;min-height:18px;margin-bottom:6px}
+    .calc-buffer{width:100%;height:38px;border:1px solid #b9c0c8;border-radius:4px;background:#fff;padding:6px 10px;font-size:18px;text-align:left;margin-bottom:8px}
+    .calc-screen{width:100%;height:40px;border:1px solid #b9c0c8;border-radius:4px;background:#fff;padding:6px 10px;font-size:32px;text-align:right;margin-bottom:10px}
+    .calc-memory{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px}
+    .calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+    .calc-btn{border:1px solid #afb6be;background:#f7f7f7;color:#2b2b2b;padding:9px 0;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .calc-btn:hover{background:#f0f0f0}
+    .calc-btn.action{background:#ff5a2f;color:#fff;border-color:#db4a24}
+    .calc-btn.action:hover{background:#ef4f24}
+    .calc-btn.operator{background:#f2f2f2}
+    .calc-btn.equals{grid-column:5;grid-row:4 / span 2;background:#18c98b;color:#fff;border-color:#10ab75;font-size:30px}
+    .calc-btn.zero{grid-column:1 / span 2}
+    .calc-btn.memory{padding:7px 0;font-size:14px}
+    table{border-collapse:collapse;width:100%;background:#fff}
+    th,td{border:2px solid #111;padding:6px 8px;text-align:center;font-size:16px;font-weight:700}
+    th:first-child,td:first-child{text-align:left}
+    .note{font-weight:700;margin-top:12px}
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    label.option{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:10px;background:#fbfcfd;cursor:pointer;font-size:16px;min-height:42px}
+    label.option:hover{border-color:#9ab7ca}
+    input[type=radio]{width:17px;height:17px;margin-top:3px;accent-color:var(--brand);flex:0 0 auto}
+    .text-answer{width:160px;border:2px solid #111;border-radius:0;padding:11px 12px;font-size:20px}
+    .question-nav,.actions{display:flex;justify-content:space-between;gap:10px;margin:8px 12px 0;flex-wrap:wrap}
+    button{border:0;border-radius:6px;background:var(--brand);color:#fff;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer}
+    button.secondary{background:#e8edf4;color:var(--ink)}
+    button:disabled{opacity:.55;cursor:default}
+    aside{padding:14px;overflow:auto}
+    .panel-title{font-size:17px;margin:0 0 12px;color:var(--brand-dark)}
+    .palette{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .dot{height:38px;border-radius:6px;border:1px solid var(--line);background:#f8fafc;color:var(--ink);font-weight:700}
+    .dot.active{background:var(--brand);color:#fff}
+    .dot.answered{border-color:var(--ok);box-shadow:inset 0 -4px 0 rgba(21,115,71,.4)}
+    .score-grid{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:9px;margin-top:12px}
+    .score-box{border:1px solid var(--line);border-radius:6px;padding:9px;background:#fbfcfd}
+    .score-box strong{display:block;font-size:22px}
+    .answer-note{margin-top:12px;font-weight:700}
+    .answer-note.ok{color:var(--ok)}
+    .answer-note.bad{color:var(--bad)}
+    .answer-note.muted{color:var(--muted)}
+    .correct{background:#eef8f2}
+    .wrong{background:#fff1f2}
+    .missed{background:#f6f7f9}
+    @media (max-width:900px){
+      header{height:auto;min-height:64px}.topbar{flex-wrap:wrap;padding:10px 0}.header-right{margin-left:0;flex-wrap:wrap}
+      main{height:auto;display:block}.question.active{display:block}.set-info,.question-body{height:auto;max-height:none;margin-bottom:10px}
+      aside{margin-top:10px}.options,.stats-wrap{grid-template-columns:1fr}
+      .calc-modal{right:8px;left:8px;width:auto;top:96px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div><h1>DILR - Network &amp; 3D diagram ( 40 minutes )</h1><div class="meta">20 Questions | 40 Minutes</div></div>
+      <div class="header-right">
+        <div class="pill">Time Left: <span id="time">40:00</span></div>
+        <button class="calc-open" type="button" id="openCalc">Calculator</button>
+        <div class="pill">Answered: <span id="answeredCount">0</span>/20</div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section><section id="result"></section><form id="testForm"></form></section>
+    <aside><h2 class="panel-title">Question Palette</h2><div class="palette" id="palette"></div></aside>
+  </main>
+  <div class="calc-modal" id="calcModal">
+    <div class="calc-head" id="calcDragHandle">
+      <strong>Calculator</strong>
+      <div class="calc-head-actions">
+        <span class="calc-copy">COPY</span>
+        <button type="button" class="calc-close" id="closeCalc">X</button>
+      </div>
+    </div>
+    <div class="calc-body">
+      <div class="calc-status">Result copied Successfully...!!!</div>
+      <input class="calc-buffer" id="calcBuffer" type="text" value="" readonly>
+      <input class="calc-screen" id="calcScreen" type="text" value="0" readonly>
+      <div class="calc-memory">
+        <button type="button" class="calc-btn memory" data-memory="MC">MC</button>
+        <button type="button" class="calc-btn memory" data-memory="MR">MR</button>
+        <button type="button" class="calc-btn memory" data-memory="MS">MS</button>
+        <button type="button" class="calc-btn memory" data-memory="M+">M+</button>
+        <button type="button" class="calc-btn memory" data-memory="M-">M-</button>
+      </div>
+      <div class="calc-grid">
+        <button type="button" class="calc-btn action" data-calc="back">←</button>
+        <button type="button" class="calc-btn action" data-calc="clear">C</button>
+        <button type="button" class="calc-btn action" data-calc="sign">+/-</button>
+        <button type="button" class="calc-btn operator" data-calc="sqrt">sqrt</button>
+        <button type="button" class="calc-btn" data-calc="7">7</button>
+        <button type="button" class="calc-btn" data-calc="8">8</button>
+        <button type="button" class="calc-btn" data-calc="9">9</button>
+        <button type="button" class="calc-btn operator" data-calc="/">/</button>
+        <button type="button" class="calc-btn operator" data-calc="%">%</button>
+        <button type="button" class="calc-btn" data-calc="4">4</button>
+        <button type="button" class="calc-btn" data-calc="5">5</button>
+        <button type="button" class="calc-btn" data-calc="6">6</button>
+        <button type="button" class="calc-btn operator" data-calc="*">*</button>
+        <button type="button" class="calc-btn operator" data-calc="1/x">1/x</button>
+        <button type="button" class="calc-btn" data-calc="1">1</button>
+        <button type="button" class="calc-btn" data-calc="2">2</button>
+        <button type="button" class="calc-btn" data-calc="3">3</button>
+        <button type="button" class="calc-btn operator" data-calc="-">-</button>
+        <button type="button" class="calc-btn equals" data-calc="=">=</button>
+        <button type="button" class="calc-btn zero" data-calc="0">0</button>
+        <button type="button" class="calc-btn" data-calc=".">.</button>
+        <button type="button" class="calc-btn operator" data-calc="+">+</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const optionLabels=["A","B","C","D"];
+    const sets={
+      1:`<p class="set-title">Directions for questions 1 to 5: These questions are based on the information given below.</p><p>P, Q, R, S and T are five companies having branches in each of the cities A, B and C. The following figure gives the percentage contribution of the branches in different cities to the sales of each company.</p><div class="diagram-stack"><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-6d8027f4-5d9b-4f62-adf1-eb4304ed6bc4.png" alt="Sales percentage triangular chart"></div><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-6fc9ac4d-556a-473a-bda3-eb31776d977c.png" alt="Sales expenses and taxes table"></div></div>`,
+      2:`<p class="set-title">Directions for questions 6 to 10: These questions are based on the information given below.</p><p>The triangular chart given below represents the percentage of flat owners who own either a 3 BHK, a 2 BHK or a 1 BHK flat in cities - Ahmedabad, Bangalore, Chennai, Delhi, Hyderabad and Kolkata. Assume that no flat has more than one owner, no person owns more than one flat and that there are no other types of flats.</p><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-5497fd95-53eb-4d75-81a3-b2bc5261ecf4.png" alt="Flat ownership triangular chart"></div>`,
+      3:`<p class="set-title">Directions for questions 11 to 15: Type in your answer in the input box provided below the question.</p><p>The following network gives the flow of water supplied from the storage tank A to the tanks B, C, D, E and F through pipelines. The supply of water is such that at each of the tanks B, C, D and E, only after the tank is full, water is passed on to the next tank connected to it. The capacity of each pipeline is 1000 kls. The values alongside each tank gives the requirement (in kls) at each tank. The direction of flow of water is indicated by arrows. The slack in a pipeline is the additional flow required to bring it to full capacity.</p><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-87559f79-8fdf-4fab-a98e-1c7d4ab7bf46.png" alt="Water flow network"></div>`,
+      4:`<p class="set-title">Directions for questions 16 to 20: These questions are based on the information given below.</p><p>The graph gives the distribution of circulation of the three newspapers - The Times of India, The Hindu and The Hindustan Times in five localities - A, B, C, D and E of a city. The bar graph shows the total circulation of these three newspapers in these localities.</p><div class="diagram-stack"><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-e112b30a-67cf-449f-94d1-374bfe848f1b.png" alt="Newspaper distribution triangular chart"></div><div class="diagram-wrap"><img src="file:///C:/Users/dell/AppData/Local/Temp/codex-clipboard-d8ee38bf-ddd5-41c8-b676-5195c3a95b72.png" alt="Total circulation bar graph"></div></div>`
+    };
+    const questions=[
+      {set:1,type:"mcq",q:"What is the difference between the total sales of the branches of the five companies in cities A and B (in crores)?",options:["5","7","8","11"],answer:"A"},
+      {set:1,type:"mcq",q:"For which of the following companies is the net profit, as a percentage of its sales, the highest?",options:["P","Q","S","T"],answer:"D"},
+      {set:1,type:"mcq",q:"In city C, by what percentage is the sales of company P less than that of company Q?",options:["0","10","16.66","20"],answer:"C"},
+      {set:1,type:"mcq",q:"For how many of the given companies is the ratio of gross profit to expenses more than 0.4?",options:["1","2","3","4"],answer:"B"},
+      {set:1,type:"mcq",q:"Which of the following statements is/are true?<br>(I) In city A, the sales of company S is more than that of company R.<br>(II) For company R, the sales in city B was the least among the given cities.<br>(III) The sales of company R in city B is less than half of that of company P in city C.",options:["Only I","Only II and III","Only I and III","Only II"],answer:"C"},
+      {set:2,type:"mcq",q:"What is the total number of 2 BHK flats in the city which has the highest number of 2 BHK flats and the city which has the lowest number of 2 BHK flats?",options:["637500","362500","675000","875000"],answer:"A"},
+      {set:2,type:"mcq",q:"The number of 3 BHK flats in Hyderabad exceeds the number of 2 BHK flats in Ahmedabad by",options:["737500","462500","587500","537500"],answer:"B"},
+      {set:2,type:"mcq",q:"The number of 2 BHK flats in Ahmedabad form what percentage of the number of 3 BHK flats in Delhi?",options:["75%","62.5%","80%","83 1/3%"],answer:"C"},
+      {set:2,type:"mcq",q:"What is the total number of 1 BHK flats in all the six cities put together?",options:["1050000","2082000","1982500","2172500"],answer:"A"},
+      {set:2,type:"mcq",q:"For the six cities together, the total number of 1 BHK flats is what percent less than the total number of 2 BHK flats?",options:["22.15%","33 1/3%","35.87%","18.06%"],answer:"C"},
+      {set:3,type:"text",q:"What is the minimum flow (in kls) in the pipeline connecting tanks A and C?",answer:"800"},
+      {set:3,type:"text",q:"What is the maximum slack (in kls) in the pipeline connecting tanks B and E?",answer:"800"},
+      {set:3,type:"text",q:"What is the minimum slack (in kls) in the pipeline connecting tanks C and E?",answer:"500"},
+      {set:3,type:"text",q:"If the pipeline connecting C and F is under repair, what is the minimum quantity of water (in kls) that needs to be sent through it, so that the requirement at all the tanks is met?",answer:"0"},
+      {set:3,type:"text",q:"What is the maximum slack (in kls) in all the pipelines combined?",answer:"3950"},
+      {set:4,type:"mcq",q:"In how many localities does The Hindustan Times have a circulation of more than 1500?",options:["1","2","3","4"],answer:"D"},
+      {set:4,type:"mcq",q:"What is the ratio of the circulation of The Times of India in localities C and D together to that of The Hindu in localities C and E together?",options:["2 : 5","5 : 2","3 : 5","5 : 3"],answer:"B"},
+      {set:4,type:"mcq",q:"If in the next year the circulation of The Times of India in locality D increases by 20% and the circulation of The Hindu and The Hindustan Times in the same locality increases by 30% and 40% respectively, then what will be the total circulation of these three papers in locality D?",options:["7214","8128","9128","9620"],answer:"B"},
+      {set:4,type:"mcq",q:"What is the total circulation of The Hindu in the given five localities?",options:["9450","8762","9220","None of these"],answer:"D"},
+      {set:4,type:"mcq",q:"By approximately what percentage is the total circulation of The Times of India in the five localities, more/less than that of The Hindustan Times?",options:["21%","20%","24%","10%"],answer:"D"}
+    ];
+    const form=document.getElementById("testForm"),resultBox=document.getElementById("result"),palette=document.getElementById("palette"),answeredCount=document.getElementById("answeredCount"),time=document.getElementById("time");
+    const calcModal=document.getElementById("calcModal"),calcScreen=document.getElementById("calcScreen"),calcBuffer=document.getElementById("calcBuffer"),openCalc=document.getElementById("openCalc"),closeCalc=document.getElementById("closeCalc"),calcDragHandle=document.getElementById("calcDragHandle");
+    let submitted=false,secondsLeft=40*60,currentQuestionIndex=0;
+    let calcExpression="0";
+    let calcMemory=0;
+    let dragState=null;
+    function correctAnswerText(item){return item.type==="text"?item.answer:`(${item.answer}) ${item.options[optionLabels.indexOf(item.answer)]}`}
+    function renderQuestions(){
+      form.innerHTML=questions.map((item,index)=>{
+        const control=item.type==="text"?`<input class="text-answer" name="q${index}" autocomplete="off" inputmode="numeric">`:`<div class="options">${item.options.map((o,i)=>`<label class="option"><input type="radio" name="q${index}" value="${optionLabels[i]}"><span>(${optionLabels[i]}) ${o}</span></label>`).join("")}</div>`;
+        return `<div class="question" id="qcard-${index}"><div class="set-info">${sets[item.set]}</div><div class="question-body"><h2>Q${index+1}. ${item.q}</h2>${control}<div class="answer-note" id="note-${index}"></div></div></div>`;
+      }).join("")+`<div class="question-nav"><button class="secondary" type="button" id="prevQuestion">Previous</button><button class="secondary" type="button" id="nextQuestion">Save & Next</button></div><div class="actions"><button type="submit" id="submitBtn">Submit Test</button><button class="secondary" type="button" id="clearAnswers">Clear Responses</button></div>`;
+      palette.innerHTML=questions.map((_,i)=>`<button class="dot" type="button" data-target="${i}">${i+1}</button>`).join("");
+      palette.querySelectorAll(".dot").forEach(b=>b.addEventListener("click",()=>showQuestion(Number(b.dataset.target))));
+      form.querySelectorAll("input").forEach(input=>{input.addEventListener("change",updateAnsweredState);input.addEventListener("input",updateAnsweredState)});
+      document.getElementById("prevQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex-1));
+      document.getElementById("nextQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex+1));
+      document.getElementById("clearAnswers").addEventListener("click",()=>{if(submitted)return;form.reset();updateAnsweredState();showQuestion(currentQuestionIndex)});
+      showQuestion(0);
+    }
+    function showQuestion(i){if(i<0||i>=questions.length)return;currentQuestionIndex=i;document.querySelectorAll(".question").forEach((c,n)=>c.classList.toggle("active",n===i));palette.querySelectorAll(".dot").forEach((d,n)=>d.classList.toggle("active",n===i));document.getElementById("prevQuestion").disabled=i===0||submitted;document.getElementById("nextQuestion").disabled=i===questions.length-1||submitted}
+    function getAnswer(i){const item=questions[i];if(item.type==="text"){const el=document.querySelector(`[name="q${i}"]`);return el?el.value.trim():""}const s=document.querySelector(`input[name="q${i}"]:checked`);return s?s.value:""}
+    function norm(v){return String(v).replace(/,/g,"").trim().toLowerCase()}
+    function updateAnsweredState(){let a=0;questions.forEach((_,i)=>{const has=!!getAnswer(i);if(has)a++;const dot=palette.querySelector(`[data-target="${i}"]`);if(dot)dot.classList.toggle("answered",has)});answeredCount.textContent=a}
+    function updateTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0"),s=String(secondsLeft%60).padStart(2,"0");time.textContent=`${m}:${s}`;if(secondsLeft<=0){submitTest();return}secondsLeft--}
+    function updateCalcScreen(){calcScreen.value=calcExpression||"0";calcBuffer.value=calcExpression==="Error"?"":calcExpression}
+    function appendCalcValue(value){
+      if(calcExpression==="0"&&/^[0-9.]$/.test(value)&&value!=="."){calcExpression=value}else{calcExpression+=value}
+      updateCalcScreen()
+    }
+    function evaluateCalc(){
+      try{
+        const safe=calcExpression.replace(/%/g,"/100");
+        const result=Function(`"use strict"; return (${safe})`)();
+        calcExpression=String(Number.isFinite(result)?Number(result.toFixed(10)):0)
+      }catch{
+        calcExpression="Error"
+      }
+      updateCalcScreen()
+    }
+    function currentCalcNumber(){return Number(calcExpression)||0}
+    document.querySelectorAll("[data-calc]").forEach(btn=>btn.addEventListener("click",()=>{
+      const value=btn.dataset.calc;
+      if(value==="clear"){calcExpression="0";updateCalcScreen();return}
+      if(value==="back"){calcExpression=calcExpression.length>1?calcExpression.slice(0,-1):"0";updateCalcScreen();return}
+      if(value==="="){evaluateCalc();return}
+      if(value==="sign"){calcExpression=String(currentCalcNumber()*-1);updateCalcScreen();return}
+      if(value==="sqrt"){calcExpression=String(Math.sqrt(Math.max(currentCalcNumber(),0)));updateCalcScreen();return}
+      if(value==="1/x"){const n=currentCalcNumber();calcExpression=n===0?"Error":String(1/n);updateCalcScreen();return}
+      if(calcExpression==="Error")calcExpression="0";
+      appendCalcValue(value)
+    }));
+    document.querySelectorAll("[data-memory]").forEach(btn=>btn.addEventListener("click",()=>{
+      const value=btn.dataset.memory;
+      const n=currentCalcNumber();
+      if(value==="MC")calcMemory=0;
+      if(value==="MR"){calcExpression=String(calcMemory);updateCalcScreen();return}
+      if(value==="MS")calcMemory=n;
+      if(value==="M+")calcMemory+=n;
+      if(value==="M-")calcMemory-=n;
+    }));
+    openCalc.addEventListener("click",()=>{
+      calcModal.classList.add("open");
+      if(!calcModal.style.left&&!calcModal.style.top){
+        calcModal.style.left=`${Math.max(window.innerWidth-420,20)}px`;
+        calcModal.style.top="180px";
+        calcModal.style.right="auto";
+      }
+    });
+    closeCalc.addEventListener("click",()=>calcModal.classList.remove("open"));
+    calcDragHandle.addEventListener("mousedown",(event)=>{
+      dragState={x:event.clientX,y:event.clientY,left:calcModal.offsetLeft,top:calcModal.offsetTop};
+      calcModal.style.right="auto";
+      event.preventDefault();
+    });
+    document.addEventListener("mousemove",(event)=>{
+      if(!dragState)return;
+      const left=Math.min(Math.max(8,dragState.left+(event.clientX-dragState.x)),window.innerWidth-calcModal.offsetWidth-8);
+      const top=Math.min(Math.max(72,dragState.top+(event.clientY-dragState.y)),window.innerHeight-calcModal.offsetHeight-8);
+      calcModal.style.left=`${left}px`;
+      calcModal.style.top=`${top}px`;
+    });
+    document.addEventListener("mouseup",()=>{dragState=null});
+    function submitTest(e){
+      if(e)e.preventDefault();if(submitted)return;submitted=true;let c=0,w=0,u=0;
+      questions.forEach((item,i)=>{const ans=getAnswer(i),card=document.getElementById(`qcard-${i}`),note=document.getElementById(`note-${i}`),ok=item.type==="text"?norm(ans)===norm(item.answer):ans===item.answer;document.querySelectorAll(`[name="q${i}"]`).forEach(x=>x.disabled=true);if(!ans){u++;card.classList.add("missed");note.className="answer-note muted";note.textContent=`Unattempted. Correct answer: ${correctAnswerText(item)}`}else if(ok){c++;card.classList.add("correct");note.className="answer-note ok";note.textContent=`Correct. Correct answer: ${correctAnswerText(item)}`}else{w++;card.classList.add("wrong");note.className="answer-note bad";note.textContent=`Incorrect. Correct answer: ${correctAnswerText(item)}`}});
+      resultBox.style.display="block";resultBox.innerHTML=`<h2>Test Summary</h2><div class="score-grid"><div class="score-box">Score<strong>${c} / ${questions.length}</strong></div><div class="score-box">Correct<strong>${c}</strong></div><div class="score-box">Wrong<strong>${w}</strong></div><div class="score-box">Unattempted<strong>${u}</strong></div></div>`;
+      document.querySelectorAll(".question").forEach(x=>x.classList.add("active"));["prevQuestion","nextQuestion","submitBtn","clearAnswers"].forEach(id=>document.getElementById(id).disabled=true);
+    }
+    renderQuestions();updateAnsweredState();updateTimer();updateCalcScreen();const timerId=setInterval(()=>{if(submitted){clearInterval(timerId);return}updateTimer()},1000);form.addEventListener("submit",submitTest);
+  </script>
+</body>
+</html>

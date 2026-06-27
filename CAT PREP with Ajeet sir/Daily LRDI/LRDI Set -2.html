@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Political Parties Constituencies 10 Minute Test</title>
+  <style>
+    :root {
+      --bg: #f4f7fa;
+      --paper: #ffffff;
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+      letter-spacing: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .timer {
+      min-width: 130px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+      font-size: 18px;
+    }
+
+    .timer.warning {
+      background: #fff1f2;
+      color: var(--bad);
+      border-color: rgba(176, 42, 55, 0.35);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+    }
+
+    .instructions,
+    .passage,
+    .question,
+    #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .instructions {
+      color: var(--muted);
+    }
+
+    .passage h2,
+    #result h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--brand);
+    }
+
+    .passage p {
+      margin: 0 0 14px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: min(100%, 620px);
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 15px;
+    }
+
+    th,
+    td {
+      border: 1px solid #1f2937;
+      padding: 5px 10px;
+      text-align: center;
+      min-width: 58px;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .answer-input {
+      width: min(100%, 360px);
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 16px;
+      background: #fbfcfd;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+      min-height: 46px;
+    }
+
+    label.option:hover {
+      border-color: #9ab7ca;
+    }
+
+    input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      flex: 0 0 auto;
+      accent-color: var(--brand);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: default;
+    }
+
+    #result {
+      display: none;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct {
+      border-color: rgba(21, 115, 71, 0.45);
+      background: #eef8f2;
+    }
+
+    .wrong {
+      border-color: rgba(176, 42, 55, 0.45);
+      background: #fff1f2;
+    }
+
+    .missed {
+      border-color: rgba(93, 109, 126, 0.45);
+      background: #f6f7f9;
+    }
+
+    .answer-note {
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .answer-note.ok {
+      color: var(--ok);
+    }
+
+    .answer-note.bad {
+      color: var(--bad);
+    }
+
+    .answer-note.muted {
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timer {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Political Parties Constituencies Test</h1>
+        <div class="meta">LRDI | 2 Questions | 10 Minutes</div>
+      </div>
+      <div class="timer" id="timer">10:00</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">Attempt both questions. Correct answers will appear after submission or when time is over.</section>
+    <section id="result"></section>
+
+    <section class="passage">
+      <h2>Set Information</h2>
+      <p>The percentage of votes won by different political parties P, Q, R, S and T in different constituencies A, B, C, D, E, F, G and H are given below. The party with the maximum percentage votes in the constituency is said to win the constituency. Two or more parties, except those at the top two positions, can merge in order to form the government. When the parties merge, the numbers of constituencies they have won independently are added together, but their votes in any given constituency are not added together. A party or set of merged parties will be able to form the government if it/they win(s) more than 2/3 of the total constituencies.</p>
+      <div class="table-wrap">
+        <table aria-label="Vote percentage table">
+          <thead>
+            <tr>
+              <th>Constituency</th>
+              <th>P</th>
+              <th>Q</th>
+              <th>R</th>
+              <th>S</th>
+              <th>T</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>A</th><td>55</td><td>38</td><td>4</td><td>1</td><td>2</td></tr>
+            <tr><th>B</th><td>52</td><td>40</td><td>2</td><td>4</td><td>2</td></tr>
+            <tr><th>C</th><td>41</td><td>46</td><td>2</td><td>5</td><td>6</td></tr>
+            <tr><th>D</th><td>52</td><td>25</td><td>7</td><td>6</td><td>10</td></tr>
+            <tr><th>E</th><td>22</td><td>61</td><td>5</td><td>9</td><td>3</td></tr>
+            <tr><th>F</th><td>18</td><td>78</td><td>3</td><td>1</td><td>0</td></tr>
+            <tr><th>G</th><td>46</td><td>40</td><td>4</td><td>3</td><td>7</td></tr>
+            <tr><th>H</th><td>69</td><td>22</td><td>5</td><td>0</td><td>4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <form id="quizForm">
+      <section class="question" id="qcard-0">
+        <h2>Q1. If in each constituency, the votes of the parties that won fewer than 10% votes were added to the party that won second highest votes, the results of how many of the 8 constituencies will undergo a change?</h2>
+        <input class="answer-input" type="number" name="q0" id="q0" inputmode="numeric" placeholder="Enter your answer">
+        <div class="answer-note" id="note-0"></div>
+      </section>
+
+      <section class="question" id="qcard-1">
+        <h2>Q2. If in each constituency, a new party emerged that took away exactly half of the votes won by each of the top two parties, the results of how many of the 8 constituencies will undergo a change?</h2>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="8"><span>8</span></label>
+          <label class="option"><input type="radio" name="q1" value="7"><span>7</span></label>
+          <label class="option"><input type="radio" name="q1" value="6"><span>6</span></label>
+          <label class="option"><input type="radio" name="q1" value="5"><span>5</span></label>
+        </div>
+        <div class="answer-note" id="note-1"></div>
+      </section>
+
+      <div class="actions"><button type="submit" id="submitBtn">Submit Test</button></div>
+    </form>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        type: "number",
+        name: "q0",
+        answer: "2",
+        answerText: "2"
+      },
+      {
+        type: "radio",
+        name: "q1",
+        answer: "8",
+        answerText: "8"
+      }
+    ];
+
+    const form = document.getElementById("quizForm");
+    const result = document.getElementById("result");
+    const submitBtn = document.getElementById("submitBtn");
+    const timer = document.getElementById("timer");
+    let secondsLeft = 600;
+    let submitted = false;
+
+    function formatTime(seconds) {
+      const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
+      const secs = String(seconds % 60).padStart(2, "0");
+      return `${minutes}:${secs}`;
+    }
+
+    function updateTimer() {
+      timer.textContent = formatTime(secondsLeft);
+      timer.classList.toggle("warning", secondsLeft <= 60);
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function getAnswer(item) {
+      if (item.type === "number") {
+        return document.querySelector(`[name="${item.name}"]`).value.trim();
+      }
+      const selected = document.querySelector(`input[name="${item.name}"]:checked`);
+      return selected ? selected.value : "";
+    }
+
+    function lockQuestion(item) {
+      document.querySelectorAll(`[name="${item.name}"]`).forEach((input) => {
+        input.disabled = true;
+      });
+    }
+
+    function submitTest(event) {
+      if (event) event.preventDefault();
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const userAnswer = getAnswer(item);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const correctText = `Correct answer: ${item.answerText}`;
+
+        lockQuestion(item);
+
+        if (!userAnswer) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (userAnswer === item.answer) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = `Correct. ${correctText}`;
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Incorrect. ${correctText}`;
+        }
+      });
+
+      result.style.display = "block";
+      result.innerHTML = `<h2>Test Summary</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${correct} / ${questions.length}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>`;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitted";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    updateTimer();
+    const countdown = setInterval(() => {
+      if (submitted) {
+        clearInterval(countdown);
+        return;
+      }
+      updateTimer();
+    }, 1000);
+    form.addEventListener("submit", submitTest);
+  </script>
+</body>
+</html>

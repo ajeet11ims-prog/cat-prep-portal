@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DI - Table -1 40 Minute Test</title>
+  <style>
+    :root {
+      --bg: #f4f7fa;
+      --paper: #ffffff;
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-dark: #2f5ca8;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08);
+    }
+
+    .topbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+      letter-spacing: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .pill,
+    .calc-open {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+      padding: 9px 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .calc-open {
+      border-color: var(--brand);
+      background: var(--brand);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 22px auto 40px;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 18px;
+    }
+
+    aside,
+    .instructions,
+    .question,
+    #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    aside {
+      grid-column: 2;
+      grid-row: 1;
+      position: sticky;
+      top: 86px;
+      align-self: start;
+      padding: 14px;
+      min-height: calc(100vh - 112px);
+      max-height: calc(100vh - 112px);
+      overflow-y: auto;
+    }
+
+    main > section {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+
+    .panel-title {
+      margin: 0 0 12px;
+      color: var(--brand);
+      font-size: 17px;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .dot {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcfd;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .dot.answered {
+      background: #eef8f2;
+      border-color: rgba(21, 115, 71, 0.4);
+      color: var(--ok);
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 16px;
+      color: var(--muted);
+    }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    #result h2 {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-size: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .question {
+      display: none;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .question.active { display: block; }
+
+    .question h2 {
+      margin: 0 0 14px;
+      font-size: 17px;
+    }
+
+    .set-info {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+      background: #fbfcfd;
+    }
+
+    .set-info h3 {
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-size: 17px;
+    }
+
+    .set-info p {
+      margin: 0 0 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid #1f2937;
+      padding: 6px 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    td.left,
+    th.left {
+      text-align: left;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+      min-height: 46px;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+
+    input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      flex: 0 0 auto;
+      accent-color: var(--brand);
+    }
+
+    .text-answer {
+      width: min(100%, 420px);
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 16px;
+      background: #fbfcfd;
+    }
+
+    .question-nav,
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 16px 0 24px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      background: var(--brand);
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #e8edf4;
+      color: var(--ink);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    .answer-note {
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .correct {
+      border-color: rgba(21, 115, 71, 0.45);
+      background: #eef8f2;
+    }
+
+    .wrong {
+      border-color: rgba(176, 42, 55, 0.45);
+      background: #fff1f2;
+    }
+
+    .missed {
+      border-color: rgba(93, 109, 126, 0.45);
+      background: #f6f7f9;
+    }
+
+    .calculator-dialog {
+      width: min(360px, calc(100vw - 28px));
+      max-width: 360px;
+      margin: 0;
+      inset: 90px auto auto 50%;
+      transform: translateX(-50%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.2);
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      cursor: move;
+      user-select: none;
+    }
+
+    .calculator-head h2 {
+      margin: 0;
+      color: var(--brand-dark);
+      font-size: 18px;
+    }
+
+    .calc-close {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #eef2f6;
+      color: var(--ink);
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .calc-display {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #fbfcfd;
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .calc-key {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f8fafc;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .calc-key.operator {
+      background: var(--brand-soft);
+      color: var(--brand-dark);
+    }
+
+    .calc-key.equal {
+      background: var(--brand);
+      color: #fff;
+      grid-column: span 2;
+    }
+
+    .calc-key.clear { color: var(--bad); }
+
+    @media (max-width: 900px) {
+      .topbar { grid-template-columns: 1fr; }
+      main { grid-template-columns: 1fr; }
+      aside {
+        grid-column: 1;
+        grid-row: 2;
+        position: static;
+        min-height: auto;
+        max-height: none;
+      }
+      main > section {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .pill, .calc-open, .question-nav button, .actions button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>DI - Table -1</h1>
+        <div class="meta">20 Questions | 40 Minutes</div>
+      </div>
+      <div class="pill">Time Left: <span id="time">40:00</span></div>
+      <div class="pill">Answered: <span id="answeredCount">0</span>/20</div>
+      <button class="calc-open" type="button" id="openCalculator">Calculator</button>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <h2 class="panel-title">Question Palette</h2>
+      <div class="palette" id="palette"></div>
+    </aside>
+
+    <section>
+      <section class="instructions">Select one option for MCQs. Type exact answers for numeric questions. Correct answers unlock after submission or when time is over.</section>
+      <section id="result"></section>
+      <form id="testForm"></form>
+    </section>
+  </main>
+
+  <template id="populationInfo">
+    <div class="set-info">
+      <h3>Directions for questions 1 to 5</h3>
+      <p>These questions are based on the information given below.</p>
+      <p><strong>Population and area of few states in the country</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2">State</th>
+              <th colspan="2">Total population<br>(in lakhs)</th>
+              <th colspan="2">Male population<br>(in lakhs)</th>
+              <th colspan="2">Rural population (%)</th>
+              <th rowspan="2">Area<br>(in sq.km)</th>
+            </tr>
+            <tr>
+              <th>2001</th><th>2006</th><th>2001</th><th>2006</th><th>2001</th><th>2006</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th class="left">Uttar Pradesh</th><td>1660</td><td>1731</td><td>875</td><td>911</td><td>71</td><td>70</td><td>238576</td></tr>
+            <tr><th class="left">Madhya Pradesh</th><td>603</td><td>674</td><td>314</td><td>350</td><td>72</td><td>71</td><td>308144</td></tr>
+            <tr><th class="left">Andhra Pradesh</th><td>761</td><td>823</td><td>385</td><td>417</td><td>69</td><td>67</td><td>275068</td></tr>
+            <tr><th class="left">Tamil Nadu</th><td>624</td><td>697</td><td>315</td><td>348</td><td>70</td><td>68</td><td>130058</td></tr>
+            <tr><th class="left">Orissa</th><td>368</td><td>384</td><td>186</td><td>195</td><td>73</td><td>72</td><td>155707</td></tr>
+            <tr><th class="left">Maharashtra</th><td>968</td><td>1013</td><td>504</td><td>527</td><td>68</td><td>66</td><td>307713</td></tr>
+            <tr><th class="left">West Bengal</th><td>802</td><td>865</td><td>412</td><td>446</td><td>69</td><td>68</td><td>88752</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </template>
+
+  <template id="schoolInfo">
+    <div class="set-info">
+      <h3>Directions for questions 6 to 10</h3>
+      <p>These questions are based on the following table, which represents percentage of students of six schools who passed in the annual exams in the year 1999-2000.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>School</th><th>Percentage of students who passed</th></tr></thead>
+          <tbody>
+            <tr><th>A</th><td>48</td></tr>
+            <tr><th>B</th><td>34</td></tr>
+            <tr><th>C</th><td>56</td></tr>
+            <tr><th>D</th><td>30</td></tr>
+            <tr><th>E</th><td>45</td></tr>
+            <tr><th>F</th><td>58</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </template>
+
+  <template id="electionInfo">
+    <div class="set-info">
+      <h3>Directions for questions 11 to 15</h3>
+      <p>Four parties P, Q, R and S contested in the Lok Sabha elections in each of the years 1952, 1957, 1962, 1967 and 1972. For every election from 1957 the newspaper "Herald" had estimated the number of seats expected to be won by these parties in four states - Madhya Pradesh, Maharashtra, Bihar and Uttar Pradesh.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th rowspan="2">State</th><th rowspan="2">Party</th><th colspan="2">1957</th><th colspan="2">1962</th><th colspan="2">1967</th><th colspan="2">1972</th></tr>
+            <tr><th>X</th><th>Y</th><th>X</th><th>Y</th><th>X</th><th>Y</th><th>X</th><th>Y</th></tr>
+          </thead>
+          <tbody>
+            <tr><th rowspan="4" class="left">Madhya Pradesh</th><th>P</th><td>16</td><td>+2</td><td>12</td><td>+3</td><td>9</td><td>-1</td><td>10</td><td>+1</td></tr>
+            <tr><th>Q</th><td>8</td><td>-1</td><td>11</td><td>-1</td><td>10</td><td>+2</td><td>12</td><td>-3</td></tr>
+            <tr><th>R</th><td>12</td><td>+2</td><td>10</td><td>-1</td><td>13</td><td>+0</td><td>9</td><td>+2</td></tr>
+            <tr><th>S</th><td>4</td><td>-3</td><td>7</td><td>-1</td><td>8</td><td>-1</td><td>9</td><td>-0</td></tr>
+            <tr><th rowspan="4" class="left">Maharashtra</th><th>P</th><td>13</td><td>+2</td><td>11</td><td>+1</td><td>13</td><td>+1</td><td>15</td><td>+4</td></tr>
+            <tr><th>Q</th><td>15</td><td>-3</td><td>14</td><td>-1</td><td>8</td><td>-2</td><td>6</td><td>-2</td></tr>
+            <tr><th>R</th><td>12</td><td>-1</td><td>12</td><td>+2</td><td>9</td><td>+3</td><td>11</td><td>-3</td></tr>
+            <tr><th>S</th><td>8</td><td>+2</td><td>11</td><td>-2</td><td>18</td><td>-2</td><td>16</td><td>+1</td></tr>
+            <tr><th rowspan="4" class="left">Bihar</th><th>P</th><td>15</td><td>-3</td><td>17</td><td>+4</td><td>19</td><td>+4</td><td>20</td><td>+4</td></tr>
+            <tr><th>Q</th><td>12</td><td>-4</td><td>10</td><td>+5</td><td>5</td><td>-4</td><td>8</td><td>-3</td></tr>
+            <tr><th>R</th><td>18</td><td>+2</td><td>15</td><td>-4</td><td>20</td><td>+3</td><td>19</td><td>+1</td></tr>
+            <tr><th>S</th><td>9</td><td>+5</td><td>12</td><td>+3</td><td>10</td><td>-3</td><td>7</td><td>-2</td></tr>
+            <tr><th rowspan="4" class="left">Uttar Pradesh</th><th>P</th><td>18</td><td>+3</td><td>19</td><td>+1</td><td>17</td><td>+3</td><td>19</td><td>-2</td></tr>
+            <tr><th>Q</th><td>17</td><td>-3</td><td>21</td><td>-4</td><td>25</td><td>-2</td><td>27</td><td>+2</td></tr>
+            <tr><th>R</th><td>23</td><td>+2</td><td>18</td><td>+3</td><td>20</td><td>+2</td><td>19</td><td>-1</td></tr>
+            <tr><th>S</th><td>27</td><td>-1</td><td>27</td><td>+0</td><td>23</td><td>-3</td><td>20</td><td>+1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>X:</strong> The estimation of the newspaper about the number of seats expected to be won by the parties in the election.</p>
+      <p><strong>Y:</strong> Estimated change in the number of seats expected to be won by the parties over the seats actually won in the previous election.</p>
+      <p>It is also known that no elections were held between the above mentioned years, only these four parties contested in all these four states and no independent candidate contested in any of the elections.</p>
+    </div>
+  </template>
+
+  <template id="manufacturingInfo">
+    <div class="set-info">
+      <h3>Directions for questions 16 to 20</h3>
+      <p>Type in your answer in the input box provided below the question.</p>
+      <p>The following table gives the details about the number of units manufactured, the total cost involved in manufacturing, the number of units sold and the total revenue obtained from the sales of an item over a period of four years.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Year</th><th>Units manufactured</th><th>Total Cost<br>(in Rs)</th><th>Units Sold</th><th>Total revenue<br>(in Rs)</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>2013</th><td>1260</td><td>13,20,000</td><td>1080</td><td>15,60,000</td></tr>
+            <tr><th>2014</th><td>1420</td><td>14,50,000</td><td>1160</td><td>17,10,000</td></tr>
+            <tr><th>2015</th><td>1550</td><td>17,20,000</td><td>1250</td><td>18,20,000</td></tr>
+            <tr><th>2016</th><td>1650</td><td>18,40,000</td><td>1320</td><td>19,30,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Note:</strong> Only items manufactured in a year are sold in that year.</p>
+    </div>
+  </template>
+
+  <dialog class="calculator-dialog" id="calculatorDialog">
+    <div class="calculator-head">
+      <h2>Calculator</h2>
+      <button class="calc-close" type="button" id="closeCalculator" aria-label="Close calculator">x</button>
+    </div>
+    <input class="calc-display" id="calcDisplay" type="text" value="0" inputmode="decimal" aria-label="Calculator display">
+    <div class="calc-grid" id="calcKeys">
+      <button class="calc-key clear" type="button" data-action="clear">C</button>
+      <button class="calc-key" type="button" data-action="backspace">DEL</button>
+      <button class="calc-key operator" type="button" data-value="%">%</button>
+      <button class="calc-key operator" type="button" data-value="/">/</button>
+      <button class="calc-key" type="button" data-value="7">7</button>
+      <button class="calc-key" type="button" data-value="8">8</button>
+      <button class="calc-key" type="button" data-value="9">9</button>
+      <button class="calc-key operator" type="button" data-value="*">x</button>
+      <button class="calc-key" type="button" data-value="4">4</button>
+      <button class="calc-key" type="button" data-value="5">5</button>
+      <button class="calc-key" type="button" data-value="6">6</button>
+      <button class="calc-key operator" type="button" data-value="-">-</button>
+      <button class="calc-key" type="button" data-value="1">1</button>
+      <button class="calc-key" type="button" data-value="2">2</button>
+      <button class="calc-key" type="button" data-value="3">3</button>
+      <button class="calc-key operator" type="button" data-value="+">+</button>
+      <button class="calc-key" type="button" data-value="0">0</button>
+      <button class="calc-key" type="button" data-value=".">.</button>
+      <button class="calc-key equal" type="button" data-action="equals">=</button>
+    </div>
+  </dialog>
+
+  <script>
+    const optionLabels = ["A", "B", "C", "D"];
+    const questions = [
+      { group: "population", q: "In the year 2001, in which of the following states was the density of population the least? Density of population = Total Population / Area", options: ["Madhya Pradesh", "Andhra Pradesh", "Orissa", "Maharashtra"], answer: "A" },
+      { group: "population", q: "If in 2006, 51% of the rural population in Orissa are males, then what is the number of females in the rural population?", options: ["1,45,68,360", "1,41,00,480", "1,37,00,640", "1,35,47,520"], answer: "D" },
+      { group: "population", q: "What is the percentage increase in the female population in Uttar Pradesh from 2001 to 2006?", options: ["4.5%", "4.2%", "4.3%", "4.0%"], answer: "A" },
+      { group: "population", q: "For which of the following states is the ratio of rural population in 2001 to that in 2006, the least?", options: ["Madhya Pradesh", "Orissa", "Maharashtra", "Andhra Pradesh"], answer: "A" },
+      { group: "population", q: "For the year 2006, in how many of the given states is the male population more than the average male population in that year?", options: ["1", "2", "3", "4"], answer: "B" },
+      { group: "school", q: "What is the total number of students who did not pass the exams in schools B and C together, if 1100 students wrote the exams in each of schools B and C?", options: ["1205", "1210", "1130", "1195"], answer: "B" },
+      { group: "school", q: "If the ratio of the number of students who wrote the exams in schools A and F is 8 : 13, then what is the ratio of the number of students in A and F who did not pass?", options: ["23 : 16", "21 : 23", "16 : 21", "17 : 21"], answer: "C" },
+      { group: "school", q: "If in school D, the number of students who appeared for the exams in 1999-2000 is 20% more than that in the previous year and the number of students who passed in 1999-2000 is also 20% more than that in the previous year, then what is the ratio of the number of students who failed in 1998-1999 to that in 1999-2000?", options: ["5 : 6", "5 : 7", "7 : 6", "4 : 3"], answer: "A" },
+      { group: "school", q: "If 140 students failed in school D in 1999-2000, then how many students appeared for the exams in the school that year?", options: ["170", "180", "160", "None of these"], answer: "D" },
+      { group: "school", q: "If the number of students who appeared for the exam in schools A and E forms 20% and 25% respectively of the total students who appeared for the exams in the given six schools, then what is the approximate ratio of the students who failed in schools A and E?", options: ["2 : 3", "4 : 5", "3 : 4", "1 : 1"], answer: "C" },
+      { group: "election", q: "In 1952, in which state did party P win its highest number of seats?", options: ["Maharashtra", "Bihar", "Uttar Pradesh", "Madhya Pradesh"], answer: "B" },
+      { group: "election", q: "In which of the following years, did party R win its highest number of seats in Bihar?", options: ["1952", "1957", "1962", "1967"], answer: "B" },
+      { group: "election", q: "Considering the elections in 1957, 1962 and 1967, in Maharashtra, for which of the following parties is the difference between the number of seats estimated to be won and the actual seats won in any election, the highest?", options: ["P", "Q", "R", "S"], answer: "D" },
+      { group: "election", q: "Considering the elections in 1957, 1962 and 1967 in each state individually, in case of which party did the newspaper make a perfect estimation (i.e., no difference between the estimation and the actual number of seats won) the highest number of times?", options: ["P", "Q", "R", "S"], answer: "B" },
+      { group: "election", q: "What was the total number of seats won by party R in the elections in 1967, in the four given states?", options: ["54", "57", "59", "None of these"], answer: "C" },
+      { group: "manufacturing", type: "text", q: "In which year was the number of units sold, as a percentage of those manufactured, the highest?", answer: "2013" },
+      { group: "manufacturing", type: "text", q: "In which year was the selling price per unit, the lowest?", answer: "2013" },
+      { group: "manufacturing", type: "text", q: "What is the number of units of the item which were not sold in the four years together?", answer: "1070" },
+      { group: "manufacturing", type: "text", q: "What was the highest cost of manufacturing one unit of the item in any of the given years?", answer: "1115" },
+      { group: "manufacturing", type: "text", q: "Had the selling price per unit in 2014 remained the same, what would have been the approximate profit (in Rs) in that year had all the units been sold? (Profit = Total revenue - Total cost.)", answer: "643260" }
+    ];
+
+    const groupTemplateIds = {
+      population: "populationInfo",
+      school: "schoolInfo",
+      election: "electionInfo",
+      manufacturing: "manufacturingInfo"
+    };
+
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const palette = document.getElementById("palette");
+    const answeredCount = document.getElementById("answeredCount");
+    const time = document.getElementById("time");
+    const calculatorDialog = document.getElementById("calculatorDialog");
+    const calcDisplay = document.getElementById("calcDisplay");
+    let submitted = false;
+    let secondsLeft = 40 * 60;
+    let currentQuestionIndex = 0;
+
+    function correctAnswerText(item) {
+      if (item.type === "text") return item.answer;
+      const index = optionLabels.indexOf(item.answer);
+      return `(${item.answer}) ${item.options[index]}`;
+    }
+
+    function getInfoHtml(group) {
+      return document.getElementById(groupTemplateIds[group]).innerHTML;
+    }
+
+    function renderQuestions() {
+      form.innerHTML = questions.map((item, index) => {
+        const control = item.type === "text"
+          ? `<input class="text-answer" type="text" name="q${index}" placeholder="Write your answer here">`
+          : `<div class="options">${item.options.map((option, i) => `<label class="option"><input type="radio" name="q${index}" value="${optionLabels[i]}"><span>(${optionLabels[i]}) ${option}</span></label>`).join("")}</div>`;
+        return `<div class="question" id="qcard-${index}">
+          ${getInfoHtml(item.group)}
+          <h2>Q${index + 1}. ${item.q}</h2>
+          ${control}
+          <div class="answer-note" id="note-${index}"></div>
+        </div>`;
+      }).join("") + `<div class="question-nav">
+        <button class="secondary" type="button" id="prevQuestion">Previous</button>
+        <button class="secondary" type="button" id="nextQuestion">Save & Next</button>
+      </div>
+      <div class="actions">
+        <button type="submit" id="submitBtn">Submit Test</button>
+        <button class="secondary" type="button" id="clearAnswers">Clear Responses</button>
+      </div>`;
+
+      palette.innerHTML = questions.map((_, index) => `<button class="dot" type="button" data-target="${index}">${index + 1}</button>`).join("");
+      palette.querySelectorAll(".dot").forEach((button) => {
+        button.addEventListener("click", () => showQuestion(Number(button.dataset.target)));
+      });
+      form.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("change", updateAnsweredState);
+        input.addEventListener("input", updateAnsweredState);
+      });
+      document.getElementById("prevQuestion").addEventListener("click", () => showQuestion(currentQuestionIndex - 1));
+      document.getElementById("nextQuestion").addEventListener("click", () => showQuestion(currentQuestionIndex + 1));
+      document.getElementById("clearAnswers").addEventListener("click", () => {
+        if (submitted) return;
+        form.reset();
+        updateAnsweredState();
+        showQuestion(currentQuestionIndex);
+      });
+      showQuestion(0);
+    }
+
+    function showQuestion(index) {
+      if (index < 0 || index >= questions.length) return;
+      currentQuestionIndex = index;
+      document.querySelectorAll(".question").forEach((card, i) => {
+        card.classList.toggle("active", i === index);
+      });
+      palette.querySelectorAll(".dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      const prev = document.getElementById("prevQuestion");
+      const next = document.getElementById("nextQuestion");
+      if (prev) prev.disabled = index === 0 || submitted;
+      if (next) next.disabled = index === questions.length - 1 || submitted;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function getAnswer(index) {
+      const item = questions[index];
+      if (item.type === "text") {
+        return document.querySelector(`[name="q${index}"]`).value.trim();
+      }
+      const selected = document.querySelector(`input[name="q${index}"]:checked`);
+      return selected ? selected.value : "";
+    }
+
+    function updateAnsweredState() {
+      let answered = 0;
+      questions.forEach((_, index) => {
+        const hasAnswer = Boolean(getAnswer(index));
+        if (hasAnswer) answered += 1;
+        const dot = palette.querySelector(`[data-target="${index}"]`);
+        if (dot) dot.classList.toggle("answered", hasAnswer);
+      });
+      answeredCount.textContent = answered;
+    }
+
+    function updateTimer() {
+      const minutes = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
+      const seconds = String(secondsLeft % 60).padStart(2, "0");
+      time.textContent = `${minutes}:${seconds}`;
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest(event) {
+      if (event) event.preventDefault();
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const answer = getAnswer(index);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const correctText = `Correct answer: ${correctAnswerText(item)}`;
+        const isCorrect = item.type === "text"
+          ? answer.replaceAll(",", "").toLowerCase() === item.answer.toLowerCase()
+          : answer === item.answer;
+
+        document.querySelectorAll(`[name="q${index}"]`).forEach((input) => {
+          input.disabled = true;
+        });
+
+        if (!answer) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (isCorrect) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = `Correct. ${correctText}`;
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Incorrect. ${correctText}`;
+        }
+      });
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `<h2>Test Summary</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${correct} / ${questions.length}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>`;
+
+      document.querySelectorAll(".question").forEach((card) => card.classList.add("active"));
+      document.getElementById("prevQuestion").disabled = true;
+      document.getElementById("nextQuestion").disabled = true;
+      document.getElementById("submitBtn").disabled = true;
+      document.getElementById("clearAnswers").disabled = true;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function appendCalcValue(value) {
+      if (calcDisplay.value === "0" || calcDisplay.value === "Error") {
+        calcDisplay.value = value === "." ? "0." : value;
+        return;
+      }
+      calcDisplay.value += value;
+    }
+
+    function calculateExpression() {
+      const expression = calcDisplay.value.trim();
+      if (!/^[0-9+\-*/%. ()]+$/.test(expression)) {
+        calcDisplay.value = "Error";
+        return;
+      }
+      try {
+        const value = Function(`"use strict"; return (${expression})`)();
+        calcDisplay.value = Number.isFinite(value) ? String(Number(value.toFixed(10))) : "Error";
+      } catch {
+        calcDisplay.value = "Error";
+      }
+    }
+
+    document.getElementById("openCalculator").addEventListener("click", () => {
+      calculatorDialog.showModal();
+      if (!calculatorDialog.dataset.moved) {
+        calculatorDialog.style.left = `${Math.max(14, (window.innerWidth - calculatorDialog.offsetWidth) / 2)}px`;
+        calculatorDialog.style.top = "90px";
+        calculatorDialog.style.transform = "none";
+      }
+      calcDisplay.focus();
+    });
+
+    document.getElementById("closeCalculator").addEventListener("click", () => calculatorDialog.close());
+
+    document.getElementById("calcKeys").addEventListener("click", (event) => {
+      const key = event.target.closest("button");
+      if (!key) return;
+      if (key.dataset.action === "clear") calcDisplay.value = "0";
+      else if (key.dataset.action === "backspace") calcDisplay.value = calcDisplay.value.length > 1 ? calcDisplay.value.slice(0, -1) : "0";
+      else if (key.dataset.action === "equals") calculateExpression();
+      else if (key.dataset.value) appendCalcValue(key.dataset.value);
+      calcDisplay.focus();
+    });
+
+    calcDisplay.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        calculateExpression();
+      }
+    });
+
+    const calculatorHead = calculatorDialog.querySelector(".calculator-head");
+    let calculatorDrag = null;
+    calculatorHead.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("button")) return;
+      const rect = calculatorDialog.getBoundingClientRect();
+      calculatorDrag = { offsetX: event.clientX - rect.left, offsetY: event.clientY - rect.top };
+      calculatorDialog.style.transform = "none";
+      calculatorHead.setPointerCapture(event.pointerId);
+    });
+    calculatorHead.addEventListener("pointermove", (event) => {
+      if (!calculatorDrag) return;
+      const maxLeft = window.innerWidth - calculatorDialog.offsetWidth - 8;
+      const maxTop = window.innerHeight - calculatorDialog.offsetHeight - 8;
+      calculatorDialog.style.left = `${Math.min(Math.max(8, event.clientX - calculatorDrag.offsetX), Math.max(8, maxLeft))}px`;
+      calculatorDialog.style.top = `${Math.min(Math.max(8, event.clientY - calculatorDrag.offsetY), Math.max(8, maxTop))}px`;
+      calculatorDialog.dataset.moved = "true";
+    });
+    calculatorHead.addEventListener("pointerup", (event) => {
+      calculatorDrag = null;
+      calculatorHead.releasePointerCapture(event.pointerId);
+    });
+    calculatorHead.addEventListener("pointercancel", () => {
+      calculatorDrag = null;
+    });
+
+    renderQuestions();
+    updateAnsweredState();
+    updateTimer();
+    const timerId = setInterval(() => {
+      if (submitted) {
+        clearInterval(timerId);
+        return;
+      }
+      updateTimer();
+    }, 1000);
+    form.addEventListener("submit", submitTest);
+  </script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise - Percentage & Commission II</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}
+    .qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}
+    .qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}
+    .qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}
+    .qbtn.correct{background:#72bd3b!important;color:#fff!important;border-color:#4f9727!important}
+    .qbtn.wrong{background:#e55b25!important;color:#fff!important;border-color:#b02a37!important}
+    .legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px;white-space:pre-wrap}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Practice Exercise - 2</h1><div class="meta">Percentage & Commission | 25 Questions | 40 Minutes | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+      {
+        level: "Commission",
+        q: "A company allows 9% commission on total sales but if the salesman is appointed on a fixed salary of Rs. 4000 and 3% commission on the sales more than Rs. 10000, then the salesman gets Rs. 700 more. Find the total sales made by the salesman.",
+        type: "mcq",
+        options: ["Rs. 40000", "Rs. 45000", "Rs. 50000", "Rs. 60000"],
+        answer: 2,
+        solution: "Let the total sales be S.\nCase 1 (only commission): Earnings = 0.09 * S.\nCase 2 (salary + commission): Earnings = 4000 + 0.03 * (S - 10000) = 0.03 * S + 3700.\nDifference: Case 2 - Case 1 = 700\n(0.03 * S + 3700) - 0.09 * S = 700\n-0.06 * S = -3000\nS = 50,000."
+      },
+      {
+        level: "Commission",
+        q: "A company allows 11% commission on total sales. If the salesman is appointed on a fixed salary of Rs. 8200 and 5% commission on the sales more than Rs. 20000, then the salesman gets Rs. 1200 more. Find the total sales made by the salesman.",
+        type: "mcq",
+        options: ["Rs. 80000", "Rs. 100000", "Rs. 120000", "Rs. 150000"],
+        answer: 1,
+        solution: "Let the total sales be S.\nCase 1: Earnings = 0.11 * S.\nCase 2: Earnings = 8200 + 0.05 * (S - 20000) = 0.05 * S + 7200.\nGiven: Case 2 - Case 1 = 1200\n(0.05 * S + 7200) - 0.11 * S = 1200\n-0.06 * S = -6000\nS = 100,000."
+      },
+      {
+        level: "Commission",
+        q: "A salesman makes a commission of a% on the first 3000 Rs. worth of sales and b% commission on further sales. During the month of January he makes Rs. 960 from total sales of Rs. 7000 and during February Rs. 1110 from a total sales of 8000 Rs. Find the value of a and b.",
+        type: "mcq",
+        options: ["a = 10, b = 12", "a = 12, b = 15", "a = 15, b = 18", "a = 8, b = 10"],
+        answer: 1,
+        solution: "For January (total 7000): 3000 * (a/100) + 4000 * (b/100) = 960 => 3a + 4b = 96.\nFor February (total 8000): 3000 * (a/100) + 5000 * (b/100) = 1110 => 3a + 5b = 111.\nSubtracting the equations: b = 15.\nSubstitute b = 15: 3a + 4(15) = 96 => 3a = 36 => a = 12.\nThus, a = 12, b = 15."
+      },
+      {
+        level: "Price & Consumption",
+        q: "A person usually spent Rs. 48 to buy groundnuts for roasting and resale. On one occasion he could buy 1.5 kg of groundnut less for Rs 48 as the price had gone up by 25%. What was the earlier price of groundnut per kg?",
+        type: "mcq",
+        options: ["Rs. 5.50", "Rs. 6.00", "Rs. 6.40", "Rs. 8.00"],
+        answer: 2,
+        solution: "Price increased by 25% (fraction = 1/4), so new price is 5/4 of earlier price.\nQuantity purchased is inversely proportional to price under constant expenditure.\nQuantity ratio = 4 : 5 (New : Old).\nDifference in quantity = 1 unit = 1.5 kg.\nOriginal quantity = 5 * 1.5 = 7.5 kg.\nEarlier price = 48 / 7.5 = Rs. 6.40 per kg."
+      },
+      {
+        level: "Taxation",
+        q: "Rate of income tax is increased by 19%. Net Income is decreased by 1%. Find the rate of income tax.",
+        type: "mcq",
+        options: ["4%", "5%", "6%", "7.5%"],
+        answer: 1,
+        solution: "Let Tax = T and Net Income = N.\nAn increase in tax equals a decrease in net income:\n19% of T = 1% of N => T/N = 1/19.\nGross Income = T + N = 20.\nTax Rate = (T / Gross Income) * 100 = (1 / 20) * 100 = 5%."
+      },
+      {
+        level: "Taxation",
+        q: "Rate of income tax is increased by 23%. Net Income is decreased by 2%. Find the rate of income tax.",
+        type: "mcq",
+        options: ["8%", "10%", "12%", "15%"],
+        answer: 0,
+        solution: "23% of Tax = 2% of Net Income => Tax / Net Income = 2 / 23.\nGross Income = 2 + 23 = 25.\nTax Rate = (2 / 25) * 100 = 8%."
+      },
+      {
+        level: "Successive Changes",
+        q: "How much percent will the area of a rectangle exceed if its length is increased by 23% and breadth is increased by 9%?",
+        type: "mcq",
+        options: ["32%", "34.07%", "35%", "31.07%"],
+        answer: 1,
+        solution: "Net change in area = x + y + (xy / 100) = 23 + 9 + (23 * 9 / 100) = 32 + 2.07 = 34.07%."
+      },
+      {
+        level: "Price & Consumption",
+        q: "If the price of milk is increased by 35% by how much a lady must reduce her consumption so that her expenditure is increased only by 8%?",
+        type: "mcq",
+        options: ["15%", "18%", "20%", "22%"],
+        answer: 2,
+        solution: "Let initial price = 100, initial consumption = 100, initial expenditure = 10000.\nNew price = 135.\nAllowed expenditure = 108% of 10000 = 10800.\nNew consumption = 10800 / 135 = 80.\nReduction in consumption = 100 - 80 = 20%."
+      },
+      {
+        level: "Successive Changes",
+        q: "In a triangle, its altitude is increased by 22% and its base is decreased by 6%. Find the net effect on its area.",
+        type: "mcq",
+        options: ["14.68% increase", "14.68% decrease", "16% increase", "12.5% increase"],
+        answer: 0,
+        solution: "Net effect on Area = x + y + (xy / 100) = 22 - 6 + (22 * -6 / 100) = 16 - 1.32 = 14.68% increase."
+      },
+      {
+        level: "Successive Changes",
+        q: "The length of a cuboid is increased by 12% and its breadth is increased by 25%. By how much percent its height should be decreased so that the volume of cuboid increases only by 4%?",
+        type: "mcq",
+        options: ["20%", "25%", "25.71%", "28%"],
+        answer: 2,
+        solution: "Change in (Length * Breadth) = 12 + 25 + (12 * 25 / 100) = 40% (multiplying factor = 1.40).\nLet the multiplier of height be H.\n1.40 * H = 1.04 => H = 1.04 / 1.40 = 26/35.\nDecrease in height = 1 - 26/35 = 9/35 = 25.71%."
+      },
+      {
+        level: "Wages & Work",
+        q: "A labourer works for 60 hours a week and gets Rs. 2400 as wages. If his 1 hour wages are increased by 40% and his working hours are reduced by 16 <sup>2</sup>/<sub>3</sub>%, then by how much will his wages increase or decrease?",
+        type: "mcq",
+        options: ["16 2/3% increase", "16 2/3% decrease", "15% increase", "12% decrease"],
+        answer: 0,
+        solution: "Hourly wages multiplier = 1.4.\nWorking hours multiplier = 1 - 1/6 = 5/6.\nNew wages multiplier = 1.4 * 5/6 = 7/6.\nIncrease in wages = 7/6 - 1 = 1/6 = 16 2/3% increase."
+      },
+      {
+        level: "Wages & Work",
+        q: "Wages of a labourer are increased by 12 <sup>1</sup>/<sub>2</sub>% and his working hours are decreased by 8%. Initially he used to earn Rs. 1200 for 50 hours in a week. Find out:\n(i) His present wages per hour.\n(ii) His percentage increase in his weekly wages.",
+        type: "mcq",
+        options: ["(i) Rs. 27, (ii) 3.5%", "(i) Rs. 25, (ii) 4%", "(i) Rs. 27, (ii) 4.5%", "(i) Rs. 26, (ii) 3%"],
+        answer: 0,
+        solution: "Initial hourly wage = 1200 / 50 = Rs. 24.\n(i) New hourly wage = 24 * (1 + 1/8) = Rs. 27.\n(ii) New hours = 50 * 0.92 = 46 hours.\nNew weekly wage = 27 * 46 = Rs. 1242.\nPercentage increase = (42 / 1200) * 100 = 3.5%."
+      },
+      {
+        level: "Cinema Ticket Price",
+        q: "Entry ticket of a cinema hall is Rs. 250. When the price is reduced by a certain percentage then the sales of tickets increase by 50%, whereas the overall collection is reduced by 17.5%. Find the percentage decrease in the price of ticket.",
+        type: "mcq",
+        options: ["35%", "40%", "45%", "50%"],
+        answer: 2,
+        solution: "Collection = Price * Attendance.\nLet the price multiplier be P.\nOverall Collection multiplier = 1 - 0.175 = 0.825.\nAttendance multiplier = 1.50.\nP * 1.50 = 0.825 => P = 0.55.\nReduction in price = 1 - 0.55 = 45%."
+      },
+      {
+        level: "Cinema Ticket Price",
+        q: "Price of a ticket of a show of circus is Rs. 12. When the price of the ticket is reduced then the audience is increased by 80% and the total income is increased by 20%. Find the price of ticket after reduction.",
+        type: "mcq",
+        options: ["Rs. 6", "Rs. 8", "Rs. 9", "Rs. 10"],
+        answer: 1,
+        solution: "Let the price multiplier be P.\nAttendance multiplier = 1.80, Income multiplier = 1.20.\nP * 1.80 = 1.20 => P = 2/3.\nNew price = 12 * 2/3 = Rs. 8."
+      },
+      {
+        level: "Income & Savings",
+        q: "A person spends 75% of his income. His income increases by 60% and his expenditure increases by 70%. By how much percent of his savings will increase or decrease?",
+        type: "mcq",
+        options: ["30% increase", "30% decrease", "25% increase", "20% decrease"],
+        answer: 0,
+        solution: "Let Income = 100, Expenditure = 75, Savings = 25.\nNew Income = 160.\nNew Expenditure = 75 * 1.70 = 127.5.\nNew Savings = 160 - 127.5 = 32.5.\nPercentage change in savings = (7.5 / 25) * 100 = 30% increase."
+      },
+      {
+        level: "Income & Savings",
+        q: "A person spends 80% of his income. If his income increases by 35% and his expenditure increases by 37 <sup>1</sup>/<sub>2</sub>%, by how much percent of his savings will increase or decrease?",
+        type: "mcq",
+        options: ["20% increase", "25% increase", "25% decrease", "30% increase"],
+        answer: 1,
+        solution: "Let Income = 100, Expenditure = 80, Savings = 20.\nNew Income = 135.\nNew Expenditure = 80 * 1.375 = 110.\nNew Savings = 135 - 110 = 25.\nPercentage change in savings = (5 / 20) * 100 = 25% increase."
+      },
+      {
+        level: "Income & Savings",
+        q: "A person spends 87.5% of his income. His income increases by 59% and expenditure increases by 67%. Find his percentage increase or decrease in savings.",
+        type: "mcq",
+        options: ["3% increase", "3% decrease", "4% increase", "5% decrease"],
+        answer: 0,
+        solution: "Let Income = 100, Expenditure = 87.5, Savings = 12.5.\nNew Income = 159.\nNew Expenditure = 87.5 * 1.67 = 146.125.\nNew Savings = 159 - 146.125 = 12.875.\nChange in savings = 12.875 - 12.5 = 0.375.\nPercentage increase = (0.375 / 12.5) * 100 = 3% increase."
+      },
+      {
+        level: "Income & Savings",
+        q: "A person saves 6% of income. After 2 years his income is increased by 15% but his savings remain the same. Find the percentage increase in his expenditure.",
+        type: "mcq",
+        options: ["15%", "15.96%", "16.5%", "17%"],
+        answer: 1,
+        solution: "Let Income = 100, Savings = 6, Expenditure = 94.\nNew Income = 115.\nSavings remain 6, so new Expenditure = 115 - 6 = 109.\nIncrease in expenditure = 109 - 94 = 15.\nPercentage increase = (15 / 94) * 100 = 15.96%."
+      },
+      {
+        level: "Income & Savings",
+        q: "Ratio of Rama's expenditure and saving is 5 : 3. If his income is increased by 12% and expenditure is increased by 15%, find his savings increase.",
+        type: "mcq",
+        options: ["5%", "6%", "7%", "8%"],
+        answer: 2,
+        solution: "Let Expenditure = 50, Savings = 30 => Income = 80.\nNew Income = 80 * 1.12 = 89.6.\nNew Expenditure = 50 * 1.15 = 57.5.\nNew Savings = 89.6 - 57.5 = 32.1.\nIncrease in savings = 32.1 - 30 = 2.1.\nPercentage increase = (2.1 / 30) * 100 = 7%."
+      },
+      {
+        level: "Income & Savings",
+        q: "Monthly income of Ramesh is Rs. 5000 and he spends it in ratio 2 : 5 on clothes and food. If price of clothes is increased by 10% and price of food is increased by 20%, then by how much percent his income should be increased so that the ratio of his expenditure remains the same.",
+        type: "mcq",
+        options: ["15%", "17.14%", "18.5%", "20%"],
+        answer: 1,
+        solution: "Expenditure on clothes and food is in the ratio 2 : 5.\nIncrease in clothes = 10%.\nIncrease in food = 20%.\nWeighted percentage increase = (2 * 10 + 5 * 20) / (2 + 5) = 120 / 7 % = 17.14%."
+      },
+      {
+        level: "Price & Consumption",
+        q: "Due to an increment of 20% in the price of sugar, a person is able to buy 5 kg less for Rs. 600. Find the original and increased price of sugar.",
+        type: "mcq",
+        options: ["Orig: Rs. 18, Incr: Rs. 22", "Orig: Rs. 20, Incr: Rs. 24", "Orig: Rs. 24, Incr: Rs. 28", "Orig: Rs. 15, Incr: Rs. 18"],
+        answer: 1,
+        solution: "Price increased by 20% (multiplier = 6/5).\nQuantity multiplier = 5/6.\nOriginal quantity = 6x, new quantity = 5x => Difference = x = 5 kg.\nOriginal quantity = 30 kg.\nOriginal price = 600 / 30 = Rs. 20/kg.\nNew price = 600 / 25 = Rs. 24/kg."
+      },
+      {
+        level: "Price & Consumption",
+        q: "Due to decrease in price of wheat by 10%, a person is able to buy 50 gram more wheat for Rs. 1. Find the amount of wheat a person was able to buy for Rs. 1 initially.",
+        type: "mcq",
+        options: ["400 gram", "450 gram", "500 gram", "600 gram"],
+        answer: 1,
+        solution: "Price decreased by 10% (multiplier = 9/10), so quantity multiplier = 10/9.\nOriginal quantity = 9x, new quantity = 10x => Difference = x = 50 grams.\nOriginal quantity = 9 * 50 = 450 grams."
+      },
+      {
+        level: "Price & Consumption",
+        q: "Due to a reduction of 10% in the price of milk a person is able to buy 6.2 lt more for Rs. 1116. Find the reduced price of milk per litre.",
+        type: "mcq",
+        options: ["Rs. 15", "Rs. 16", "Rs. 18", "Rs. 20"],
+        answer: 2,
+        solution: "Savings on Rs. 1116 = 10% of 1116 = Rs. 111.6.\nThis savings allows the purchase of 6.2 litres at the reduced price.\nReduced price per litre = 111.6 / 6.2 = Rs. 18."
+      },
+      {
+        level: "Price & Consumption",
+        q: "Due to an increment of 50% in the price of egg a person is able to buy 4 eggs less for Rs. 24. Find the initial cost of per dozen egg.",
+        type: "mcq",
+        options: ["Rs. 18", "Rs. 20", "Rs. 24", "Rs. 30"],
+        answer: 2,
+        solution: "A 50% price increase represents Rs. 12 on Rs. 24.\nSo, 4 eggs now cost Rs. 12, making the increased price Rs. 3 per egg.\nInitial price per egg = 3 / 1.5 = Rs. 2.\nCost per dozen (12 eggs) initially = 2 * 12 = Rs. 24."
+      },
+      {
+        level: "Price & Consumption",
+        q: "Due to an increment of 16 <sup>2</sup>/<sub>3</sub>% in the price of banana, a person is able to buy 5 bananas less for Rs. 1. Find how many bananas was a person able to buy for Rs. 1 initially.",
+        type: "mcq",
+        options: ["30", "35", "40", "45"],
+        answer: 1,
+        solution: "Price increased by 16 2/3% (multiplier = 7/6).\nQuantity multiplier = 6/7.\nOriginal quantity = 7x, new quantity = 6x => Difference = x = 5 bananas.\nOriginal quantity = 7 * 5 = 35 bananas."
+      }
+    ];
+
+    let current = 0, submitted = false, secondsLeft = 40 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function rich(s){return hasHtml(s) ? String(s) : esc(s);}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    
+    function renderBar(){
+      qbar.innerHTML = questions.map((q,i)=>{
+        let cls = '';
+        if (i === current) cls += 'current ';
+        
+        if (submitted) {
+          const r = isCorrect(q, responses[i]);
+          if (r === true) {
+            cls += 'correct answered ';
+          } else if (r === false) {
+            cls += 'wrong answered ';
+          }
+        } else {
+          if (responses[i] !== null && responses[i] !== '') cls += 'answered ';
+          if (marked[i]) cls += 'marked ';
+        }
+        
+        return '<button type="button" class="qbtn ' + cls + '" onclick="go(' + i + ')">' + (i + 1) + '</button>';
+      }).join('');
+    }
+    
+    function correctText(q){
+      return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);
+    }
+    
+    function contentBlock(html, cls){
+      return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';
+    }
+    
+    function control(q,i){
+      if(qType(q)==="mcq") {
+        return '<div class="options">' + (q.options||[]).map((op,j)=>
+          '<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>'
+        ).join('') + '</div>';
+      }
+      return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';
+    }
+    
+    function solutionHtml(q){
+      return rich(q.solution || "Solution not provided.");
+    }
+    
+    function renderQuestion(){
+      const q = questions[current];
+      host.innerHTML = '<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>' +
+        contentBlock(q.direction,'block') + 
+        contentBlock(q.passage,'block') + 
+        '<div class="qtext">'+rich(qText(q))+'</div>' + 
+        control(q,current) + 
+        '<div id="note" class="answer-note"></div>' + 
+        '<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div>' + 
+        '<div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';
+      
+      if(submitted) showReviewForCurrent();
+      bindAnswer();
+      renderBar();
+    }
+    
+    function bindAnswer(){
+      host.querySelectorAll('[name^="answer_"]').forEach(el=>{
+        if(responses[current]===null && el.type==='radio') el.checked = false;
+        el.addEventListener('input',()=>{
+          responses[current] = el.type==='radio' ? el.value : el.value;
+          renderBar();
+        });
+        el.addEventListener('change',()=>{
+          responses[current] = el.type==='radio' ? el.value : el.value;
+          renderBar();
+        });
+      });
+    }
+    
+    function saveCurrent(){
+      const el = host.querySelector('[name^="answer_"]:checked') || host.querySelector('input.typed-answer');
+      if(el && !submitted) responses[current] = el.value || null;
+    }
+    
+    function go(i){ saveCurrent(); current = i; renderQuestion(); }
+    function prevQ(){ if(current>0) go(current-1); }
+    function nextQ(){ if(current<questions.length-1) go(current+1); }
+    function markReviewNext(){ marked[current] = true; if(current<questions.length-1) nextQ(); else renderQuestion(); }
+    function clearResponse(){ responses[current] = null; renderQuestion(); }
+    
+    function isCorrect(q,ans){
+      if(ans===null || ans==='') return null;
+      if(qType(q)==='mcq') return Number(ans)===Number(q.answer);
+      const accepted = (q.accepted && q.accepted.length ? q.accepted : [qAnswer(q)]).map(norm);
+      return accepted.includes(norm(ans));
+    }
+    
+    function showReviewForCurrent(){
+      const q = questions[current], r = isCorrect(q,responses[current]), note = document.getElementById('note'), sol = document.getElementById('solution');
+      sol.style.display = 'block';
+      if(r===null){
+        note.className = 'answer-note muted';
+        note.textContent = 'Unattempted. Correct answer: ' + correctText(q);
+      } else if(r){
+        note.className = 'answer-note ok';
+        note.textContent = 'Correct.';
+      } else {
+        note.className = 'answer-note bad';
+        note.textContent = 'Wrong. Correct answer: ' + correctText(q);
+      }
+    }
+    
+    function submitTest(){
+      if(submitted) return;
+      saveCurrent();
+      submitted = true;
+      let c=0, w=0, u=0;
+      questions.forEach((q,i)=>{
+        const r = isCorrect(q,responses[i]);
+        if(r===null) u++;
+        else if(r) c++;
+        else w++;
+      });
+      const score = c*3 - w;
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = '<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';
+      showReviewForCurrent();
+      renderBar();
+      resultBox.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    
+    function tick(){
+      const m = Math.floor(secondsLeft/60), s = secondsLeft%60;
+      document.getElementById('time').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if(secondsLeft<=0){ submitTest(); return; }
+      secondsLeft--;
+    }
+    
+    function calcEval(expr){
+      if(!/^[0-9+\-*/().%\s]+$/.test(expr)) return 'Error';
+      return Function('return ('+expr.replace(/%/g,'/100')+')')();
+    }
+    
+    function updateCalcSub(){
+      document.getElementById('calcSubDisplay').textContent = document.getElementById('calcDisplay').value || '0';
+    }
+    
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{
+      const d = document.getElementById('calcDisplay'), v = btn.dataset.calc;
+      if(['MC','MR','MS','M+','M-'].includes(v)) return;
+      if(v==='C') d.value='';
+      else if(v==='B') d.value = d.value.slice(0,-1);
+      else if(v==='+/-') { d.value = d.value.startsWith('-') ? d.value.slice(1) : ('-'+d.value); }
+      else if(v==='sqrt') {
+        try { d.value = Math.sqrt(Number(calcEval(d.value||'0'))); } catch(e) { d.value='Error'; }
+      } else if(v==='1/x') {
+        try { d.value = 1/Number(calcEval(d.value||'0')); } catch(e) { d.value='Error'; }
+      } else if(v==='=') {
+        try { d.value = calcEval(d.value); } catch(e) { d.value='Error'; }
+      } else d.value += v;
+      updateCalcSub();
+    }));
+    
+    const calcPopup = document.getElementById('calcPopup'), calcDragHandle = document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{
+      calcPopup.classList.toggle('open');
+      if(calcPopup.classList.contains('open') && !calcPopup.dataset.moved){
+        calcPopup.style.left = '52%'; calcPopup.style.top = '120px';
+      }
+    });
+    
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{ e.stopPropagation(); calcPopup.classList.remove('open'); });
+    
+    let dragCalc = false, calcDx = 0, calcDy = 0;
+    calcDragHandle.addEventListener('pointerdown',e=>{
+      dragCalc = true;
+      calcDragHandle.setPointerCapture(e.pointerId);
+      const r = calcPopup.getBoundingClientRect();
+      calcDx = e.clientX - r.left;
+      calcDy = e.clientY - r.top;
+      calcPopup.style.left = r.left + 'px';
+      calcPopup.style.top = r.top + 'px';
+      calcPopup.style.right = 'auto';
+      calcPopup.dataset.moved = '1';
+      e.preventDefault();
+    });
+    
+    calcDragHandle.addEventListener('pointermove',e=>{
+      if(!dragCalc) return;
+      const maxX = window.innerWidth - calcPopup.offsetWidth - 4, maxY = window.innerHeight - calcPopup.offsetHeight - 4;
+      calcPopup.style.left = Math.max(4, Math.min(maxX, e.clientX - calcDx)) + 'px';
+      calcPopup.style.top = Math.max(4, Math.min(maxY, e.clientY - calcDy)) + 'px';
+    });
+    
+    calcDragHandle.addEventListener('pointerup',e=>{ dragCalc = false; try { calcDragHandle.releasePointerCapture(e.pointerId); } catch(err){} });
+    calcDragHandle.addEventListener('pointercancel',()=>{ dragCalc = false; });
+    
+    renderQuestion();
+    tick();
+    setInterval(tick,1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digit Grid Puzzle 5 Minute Test</title>
+  <style>
+    :root{--bg:#f4f7fa;--paper:#fff;--ink:#17202a;--muted:#5d6d7e;--line:#d7dde5;--brand:#4f79c7;--brand-dark:#2f5ca8;--brand-soft:#eef4ff;--ok:#157347;--bad:#b02a37}
+    *{box-sizing:border-box}html,body{height:100%;width:100%}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.45;overflow:hidden}
+    header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(20,40,60,.08)}
+    .topbar{width:100%;margin:0;padding:10px 14px;display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center}
+    h1{margin:0;font-size:21px;color:var(--brand)}.meta{color:var(--muted);font-size:13px;margin-top:2px}
+    .pill{border:1px solid var(--line);border-radius:6px;background:var(--brand-soft);color:var(--brand-dark);padding:8px 11px;font-weight:700;white-space:nowrap}
+    main{width:100vw;height:calc(100vh - 61px);margin:0;padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:10px;overflow:hidden;background:var(--bg)}
+    aside,.question,#result{background:var(--paper);border:1px solid var(--line);border-radius:8px}
+    aside{grid-column:2;grid-row:1;align-self:stretch;padding:14px}.panel-title{margin:0 0 12px;color:var(--brand);font-size:17px}.palette{display:grid;grid-template-columns:1fr;gap:10px}.dot{min-height:52px;border:1px solid var(--brand);border-radius:6px;background:var(--brand-soft);color:var(--brand-dark);font-weight:700;font-size:16px}
+    main>section{grid-column:1;grid-row:1;min-width:0;overflow:hidden;display:grid;grid-template-rows:minmax(0,1fr) auto auto}#testForm{height:100%;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto auto;overflow:hidden}
+    #result,.question{padding:12px;margin-bottom:0}#result{display:none}#result h2{margin:0 0 10px;color:var(--brand);font-size:18px}.score-grid{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:9px;margin-top:12px}.score-box{border:1px solid var(--line);border-radius:6px;padding:9px;background:#fbfcfd}.score-box strong{display:block;font-size:22px;margin-top:2px}
+    .question{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:10px;align-items:stretch;height:100%;min-height:0}.set-info,.question-body{border:1px solid var(--line);border-radius:8px;background:#fff;padding:14px;min-height:0;height:100%;overflow:auto}.set-info{display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px}
+    .prompt{font-size:24px;font-weight:700;line-height:1.35}.prompt .code{color:#6b7280;font-style:italic;font-weight:700}.chart-svg{width:100%;height:100%;display:block}.svg-line{stroke:#111;stroke-width:3;fill:none}.grid-text{font-size:34px;font-weight:800;fill:#111}
+    .question-body h2{margin:0 0 14px;font-size:20px}.options{display:grid;grid-template-columns:1fr;gap:10px}label.option{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:12px;cursor:pointer;background:#fbfcfd;min-height:46px;font-size:18px}label.option:hover{border-color:#9ab7ca}input[type=radio]{width:18px;height:18px;margin-top:4px;accent-color:var(--brand)}
+    .question-nav,.actions{display:flex;justify-content:space-between;gap:10px;margin:8px 0 0;flex-wrap:wrap}button{border:0;border-radius:6px;background:var(--brand);color:white;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer}button.secondary{background:#e8edf4;color:var(--ink)}button:disabled{opacity:.55;cursor:default}
+    .answer-note{margin-top:10px;font-weight:700}.answer-note.ok{color:var(--ok)}.answer-note.bad{color:var(--bad)}.answer-note.muted{color:var(--muted)}.correct{border-color:rgba(21,115,71,.45);background:#eef8f2}.wrong{border-color:rgba(176,42,55,.45);background:#fff1f2}.missed{border-color:rgba(93,109,126,.45);background:#f6f7f9}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div><h1>Digit Grid Puzzle</h1><div class="meta">1 Question | 5 Minutes</div></div><div class="pill">Time Left: <span id="time">05:00</span></div><div class="pill">Answered: <span id="answeredCount">0</span>/1</div></div></header>
+  <main><section><section id="result"></section><form id="testForm">
+    <div class="question" id="qcard-0">
+      <div class="set-info">
+        <div class="prompt">The seven digits from 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9 are represented by a different letter in the adjoining figure. If A x B x C = B x G x E = B x C x E = D x E x F, then what does G represent? <span class="code">(Q. code - 100306004)</span></div>
+        <svg class="chart-svg" viewBox="0 0 560 360" role="img" aria-label="Letter grid">
+          <rect x="160" y="35" width="240" height="240" fill="#fff" stroke="#111" stroke-width="4"/>
+          <line class="svg-line" x1="240" y1="35" x2="240" y2="275"/><line class="svg-line" x1="320" y1="35" x2="320" y2="275"/>
+          <line class="svg-line" x1="160" y1="115" x2="400" y2="115"/><line class="svg-line" x1="160" y1="195" x2="400" y2="195"/>
+          <text class="grid-text" x="200" y="92" text-anchor="middle">A</text><text class="grid-text" x="360" y="92" text-anchor="middle">D</text>
+          <text class="grid-text" x="200" y="172" text-anchor="middle">B</text><text class="grid-text" x="280" y="172" text-anchor="middle">G</text><text class="grid-text" x="360" y="172" text-anchor="middle">E</text>
+          <text class="grid-text" x="200" y="252" text-anchor="middle">C</text><text class="grid-text" x="360" y="252" text-anchor="middle">F</text>
+        </svg>
+      </div>
+      <div class="question-body">
+        <h2>Q1. What does G represent?</h2>
+        <div class="options">
+          <label class="option"><input type="radio" name="q0" value="1"><span>(1) 4</span></label>
+          <label class="option"><input type="radio" name="q0" value="2"><span>(2) 8</span></label>
+          <label class="option"><input type="radio" name="q0" value="3"><span>(3) 6</span></label>
+          <label class="option"><input type="radio" name="q0" value="4"><span>(4) 2</span></label>
+        </div>
+        <div class="answer-note" id="note-0"></div>
+      </div>
+    </div>
+    <div class="question-nav"><button class="secondary" type="button" disabled>Previous</button><button class="secondary" type="button" disabled>Save & Next</button></div>
+    <div class="actions"><button type="submit" id="submitBtn">Submit Test</button><button class="secondary" type="button" id="clearAnswers">Clear Responses</button></div>
+  </form></section><aside><h2 class="panel-title">Question Palette</h2><div class="palette"><button class="dot" type="button">1</button></div></aside></main>
+  <script>
+    const resultBox=document.getElementById("result"),answeredCount=document.getElementById("answeredCount"),time=document.getElementById("time"),form=document.getElementById("testForm"),dot=document.querySelector(".dot");
+    let submitted=false,secondsLeft=5*60;
+    function getAnswer(){const selected=document.querySelector('input[name="q0"]:checked');return selected?selected.value:""}
+    function updateAnswered(){const has=Boolean(getAnswer());answeredCount.textContent=has?1:0;dot.classList.toggle("answered",has)}
+    function updateTimer(){const m=String(Math.floor(secondsLeft/60)).padStart(2,"0"),s=String(secondsLeft%60).padStart(2,"0");time.textContent=`${m}:${s}`;if(secondsLeft<=0){submitTest();return}secondsLeft--}
+    function submitTest(event){if(event)event.preventDefault();if(submitted)return;submitted=true;const answer=getAnswer(),note=document.getElementById("note-0"),card=document.getElementById("qcard-0");document.querySelectorAll('input[name="q0"]').forEach(input=>input.disabled=true);if(!answer){card.classList.add("missed");note.className="answer-note muted";note.textContent="Unattempted. Correct answer: (4) 2"}else if(answer==="4"){card.classList.add("correct");note.className="answer-note ok";note.textContent="Correct. Correct answer: (4) 2"}else{card.classList.add("wrong");note.className="answer-note bad";note.textContent="Incorrect. Correct answer: (4) 2"}resultBox.style.display="block";resultBox.innerHTML=`<h2>Test Summary</h2><div class="score-grid"><div class="score-box">Score<strong>${answer==="4"?1:0} / 1</strong></div><div class="score-box">Correct<strong>${answer==="4"?1:0}</strong></div><div class="score-box">Wrong<strong>${answer&&answer!=="4"?1:0}</strong></div><div class="score-box">Unattempted<strong>${answer?0:1}</strong></div></div>`;document.getElementById("submitBtn").disabled=true;document.getElementById("clearAnswers").disabled=true}
+    document.querySelectorAll('input[name="q0"]').forEach(input=>input.addEventListener("change",updateAnswered));document.getElementById("clearAnswers").addEventListener("click",()=>{if(submitted)return;form.reset();updateAnswered()});form.addEventListener("submit",submitTest);updateTimer();const timerId=setInterval(()=>{if(submitted){clearInterval(timerId);return}updateTimer()},1000);
+  </script>
+</body>
+</html>

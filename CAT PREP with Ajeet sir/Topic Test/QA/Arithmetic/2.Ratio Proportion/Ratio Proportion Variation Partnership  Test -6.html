@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DPP 04 Ratio Proportion Partnership and Variation Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6d7e;
+      --line: #d7dde5;
+      --brand: #4f79c7;
+      --brand-soft: #eef4ff;
+      --ok: #157347;
+      --bad: #b02a37;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
+    header { position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 2px 10px rgba(20, 40, 60, 0.08); }
+    .topbar { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 22px; color: var(--brand); }
+    .meta { color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .timer { min-width: 150px; text-align: center; border: 1px solid var(--line); background: var(--brand-soft); border-radius: 6px; padding: 8px 12px; font-weight: 700; color: var(--brand); }
+    main { max-width: 1100px; margin: 22px auto 40px; padding: 0 18px; }
+    .instructions, .question, #result { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+    .instructions { padding: 16px; margin-bottom: 18px; }
+    .question { padding: 16px; margin-bottom: 14px; }
+    .question h2 { margin: 0 0 12px; font-size: 17px; }
+    .difficulty { display: inline-block; margin: 0 0 10px; color: var(--brand); font-weight: 700; border-bottom: 2px solid var(--brand); }
+    .options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    label.option { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 10px; cursor: pointer; background: #fbfcfd; }
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+    .text-answer { width: min(360px, 100%); border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; font-size: 16px; }
+    .text-answer:focus { outline: 2px solid rgba(79, 121, 199, 0.25); border-color: var(--brand); }
+    .actions { display: flex; justify-content: center; margin: 24px 0; }
+    button { border: 0; border-radius: 6px; background: var(--brand); color: white; padding: 12px 22px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #3d66b2; }
+    #result { display: none; padding: 16px; margin-bottom: 18px; }
+    .score-grid { display: grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+    .score-box { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfcfd; }
+    .score-box strong { display: block; font-size: 22px; margin-top: 2px; }
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+    .solution { display: none; margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; color: #243447; }
+    .solution h3 { margin: 0 0 6px; font-size: 15px; color: var(--brand); }
+    @media (max-width: 720px) {
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .timer { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>DPP - 04: Ratio Proportion-02</h1>
+        <div class="meta">Partnership and Variation | 30 Questions | 60 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="timer" id="timer">60:00</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="instructions">
+      Attempt all questions. Typed numerical answers accept plain numbers, commas, and currency symbols. Solutions and correct answers will appear after submission.
+    </section>
+
+    <section id="result"></section>
+    <section id="quiz"></section>
+
+    <div class="actions">
+      <button type="button" id="submitBtn">Submit Test</button>
+    </div>
+  </main>
+
+  <script>
+    const optionLabels = ["a", "b", "c", "d"];
+    const questions = [
+      {
+        level: "Questions 1-10",
+        q: "The speeds of three cars are in the ratio 5:3:4. The ratio between the times taken by these cars to travel the same distance is:",
+        options: ["5:3:4", "4:3:5", "15:20:12", "None of these"],
+        answer: 3,
+        solution: "For the same distance, time is inversely proportional to speed. The time ratio is 1/5:1/3:1/4 = 12:20:15, which is not among the listed ratios."
+      },
+      {
+        level: "Questions 1-10",
+        q: "A varies directly to B when C is constant and directly to the square of C when B is constant. When B = 1 and C = 3, A = 108. What will be the value of C when A = 4056 and B = 2?",
+        options: ["11", "12", "13", "14"],
+        answer: 2,
+        solution: "A = kBC^2. From 108 = k x 1 x 9, k = 12. Then 4056 = 12 x 2 x C^2, so C^2 = 169 and C = 13."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Three partners A, B and C share profits such that 3 times the share of A is equal to 2 times the share of B which is equal to 4 times the share of C. Find the ratio of their shares.",
+        options: ["3:2:4", "3:6:4", "4:2:3", "4:6:3"],
+        answer: 3,
+        solution: "Let 3A = 2B = 4C = k. Then A:B:C = k/3:k/2:k/4. Multiplying by 12 gives 4:6:3."
+      },
+      {
+        level: "Questions 1-10",
+        q: "6 years ago, the ratio of the ages of A and B was 13:17 respectively. The difference between the age of A after 4 years and the age of B after 5 years is 9 years. Find the present age of A.",
+        options: ["30 years", "34 years", "32 years", "36 years"],
+        answer: 2,
+        solution: "Let ages 6 years ago be 13x and 17x. Then (17x + 11) - (13x + 10) = 9, so x = 2. Present age of A = 13x + 6 = 32 years."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Anu, Vinu and Punit started a business with initial investments Rs. 8000, Rs. 12000 and Rs. 10000 respectively and after 1 year, Anu and Punit again invested Rs. 2000 each. What is the ratio of share of profit of Anu, Vinu and Punit after two years?",
+        options: ["9:12:7", "9:10:11", "9:12:11", "8:12:11"],
+        answer: 2,
+        solution: "Capital-time ratio = (8000 + 10000):(12000 + 12000):(10000 + 12000) = 18000:24000:22000 = 9:12:11."
+      },
+      {
+        level: "Questions 1-10",
+        q: "The product of two fractions is 7/10 and when first fraction is divided by second fraction, the result is 35/32. What is the smaller fraction?",
+        options: ["4/5", "3/5", "6/7", "7/8"],
+        answer: 0,
+        solution: "Let the fractions be x and y. xy = 7/10 and x/y = 35/32. Solving gives y^2 = 16/25, so y = 4/5, the smaller fraction."
+      },
+      {
+        level: "Questions 1-10",
+        q: "A and B enter a partnership with initial investment in the ratio of 8:7 and after two months, C joins them with initial investment equal to 3/2 of investment of A. At the end of the year, the sum of share of profit of A and C is Rs. 63000. Find the share of profit of B.",
+        type: "text",
+        answerText: "24500",
+        solution: "Capital-time ratio A:B:C = 8 x 12 : 7 x 12 : 12 x 10 = 8:7:10. A + C = 18 parts = Rs. 63000, so B's 7 parts = Rs. 24500."
+      },
+      {
+        level: "Questions 1-10",
+        q: "A, B and C entered into a partnership. The respective ratio of the investment of A to that of C is 4:7 and the ratio of the investment of B to C is 3:5 respectively. All of them invested for an equal period of time. Find B's profit share, given that the total profit earned by them is Rs. 10640.",
+        type: "text",
+        answerText: "2940",
+        solution: "Investments are A:C = 4:7 and B:C = 3:5. Combining gives A:B:C = 20:21:35. B's share = 21/76 x 10640 = Rs. 2940."
+      },
+      {
+        level: "Questions 1-10",
+        q: "Aleksandar and Binny started a business in partnership investing Rs. 24000 and Rs. 16000 respectively. After six months, Charli joined them with Rs. 20000. What will be Binny's share in the total profit of Rs. 32,890 earned at the end of 2 years from the starting of the business?",
+        options: ["5986", "6895", "8695", "9568"],
+        answer: 3,
+        solution: "Capital-time ratio = 24000 x 24 : 16000 x 24 : 20000 x 18 = 24:16:15. Binny's share = 16/55 x 32890 = Rs. 9568."
+      },
+      {
+        level: "Questions 1-10",
+        q: "The present ages of A and B are 18 years and 27 years respectively. The ratio of the age of A, X years later and the age of B, Y years later will be 5:6 respectively. Which option is true for X and Y, if X + Y = 10?",
+        options: ["X = 2Y + 1", "Y = 2X + 1", "X = 2Y - 1", "Y = 2X - 1"],
+        answer: 0,
+        solution: "(18 + X)/(27 + Y) = 5/6 and X + Y = 10. Solving gives X = 7 and Y = 3, so X = 2Y + 1."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Lokendra starts a business with capital of Rs. 15000. After 6 months, Mukesh joins with Rs. 20000 and after 3 more months Suresh joins with a certain amount. At the end of the year the profit ratio is 15:10:6. Find the amount invested by Suresh.",
+        type: "text",
+        answerText: "24000",
+        solution: "Profit ratio = 15000 x 12 : 20000 x 6 : P x 3 = 15:10:6. Hence P = Rs. 24000."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Mark and Stark start a business together and invest $50,000 and $70,000 respectively. Stark is an active partner and gets 15% of the profit separately. If their business yields a total profit of $60,000, what is the share of Stark at the end of a year?",
+        type: "text",
+        answerText: "38750",
+        solution: "Stark first gets 15% of 60000 = 9000. Remaining 51000 is divided in 5:7, so Stark gets 7/12 x 51000 = 29750. Total = $38750."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Mr. Buffet and Mr. Stark start a Robotics company by investing $14000 and $21000 respectively. They share half of the total profit equally and the remaining half in the ratio of their capitals. If the entire profit had been shared in the ratio of their capitals, Mr. Stark would have got $1500 more. What is the total profit?",
+        options: ["$20000", "$30000", "$40000", "$50000"],
+        answer: 1,
+        solution: "Capital ratio is 2:3. Under the agreement, Stark gets 1250x + 1500x = 2750x while pure capital sharing gives 3000x. Difference 250x = 1500, so x = 6 and total profit = 5000x = $30000."
+      },
+      {
+        level: "Questions 11-20",
+        q: "If x varies directly as (y^3 - 6) and when y = 2 then x = 4. Find the value of x when y = 4.",
+        options: ["115", "116", "119", "120"],
+        answer: 1,
+        solution: "x = k(y^3 - 6). With y = 2, 4 = k(8 - 6), so k = 2. For y = 4, x = 2(64 - 6) = 116."
+      },
+      {
+        level: "Questions 11-20",
+        q: "In Mithadesh, the cost per kg of sugar varies inversely with the square of the quantity of sugar produced in a year. When 6 million tonnes is the annual production, the cost is Rs. 25/kg. What must have been the total production when the cost is Rs. 36/kg? (in million tonnes)",
+        options: ["5", "8.64", "9", "10"],
+        answer: 0,
+        solution: "Price is inversely proportional to production squared. 25/36 = P^2/6^2, so P = 5 million tonnes."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Ramya starts a company, and after 3 months, Ravi also joins. The initial investment of Ramya and Ravi is in the ratio of 3:2 respectively. Ramya and Ravi receive Rs. ____ and Rs. ____ respectively, as profit after one year.",
+        options: ["2350, 1350", "1960, 980", "1330, 660", "1240, 310"],
+        answer: 1,
+        solution: "Profit ratio = 3 x 12 : 2 x 9 = 36:18 = 2:1. The only option in this ratio is Rs. 1960 and Rs. 980."
+      },
+      {
+        level: "Questions 11-20",
+        q: "The price of the product varied such that the ratio of prices in 2000 to 2001 is 3:5, 2001 to 2002 is 7:4 and 2002 to 2003 is 5:7. If the price in 2001 is Rs. 35000, what is the difference in prices in 2000 and 2003?",
+        options: ["7000", "8000", "9000", "10000"],
+        answer: 0,
+        solution: "Price in 2000 = 3/5 x 35000 = 21000. Price in 2003 = 4/7 x 7/5 x 35000 = 28000. Difference = Rs. 7000."
+      },
+      {
+        level: "Questions 11-20",
+        q: "In a tea business, Amit is a working partner. Amit invests Rs. 7000 and Narendra invests Rs. 3000. Amit received 37.5% of profit for managing the business and the rest is divided in proportion to their capitals. What is Amit's share of profit if the total profit is Rs. 440?",
+        options: ["Rs. 357.5", "Rs. 90", "Rs. 390", "Rs. 100"],
+        answer: 0,
+        solution: "Amit gets 37.5% of 440 = 165 first. Remaining 275 is divided 7:3, so Amit gets 7/10 x 275 = 192.5. Total = Rs. 357.5."
+      },
+      {
+        level: "Questions 11-20",
+        q: "If 'a' is directly proportional to the square of 'b' and 'b' is inversely proportional to 'c', then which of the following is correct? I: 'a' is inversely proportional to the square of 'c'. II: 'ac' is directly proportional to 'b'.",
+        options: ["Both I and II", "Only II", "Only I", "Neither I nor II"],
+        answer: 0,
+        solution: "a is proportional to b^2, and b is proportional to 1/c. Therefore a is proportional to 1/c^2. Also, since c is proportional to 1/b, ac is proportional to b. Both statements are correct."
+      },
+      {
+        level: "Questions 11-20",
+        q: "Prerna started a business by investing 0.75 lakh. Mansee joins the business by investing 1 lakh after a few months. After how many months did Mansee join if at the end of the year profit was divided between Mansee and Prerna in the ratio of 13:18?",
+        options: ["5 1/2", "5", "7", "6"],
+        answer: 0,
+        solution: "Prerna's capital-time = 0.75 x 12 = 9 lakh-months. Let Mansee invest for N months. N:9 = 13:18, so N = 6.5 months. Therefore she joined after 5.5 months."
+      },
+      {
+        level: "Questions 21-30",
+        q: "5 years ago, Father's age was twice the age of his son at that time. 10 years from now, the ratio of age of son to father will become 8:13. What is the current age of son?",
+        options: ["20", "30", "35", "25"],
+        answer: 1,
+        solution: "Let present ages be F and S. F - 5 = 2(S - 5), and (S + 10):(F + 10) = 8:13. Solving gives S = 30."
+      },
+      {
+        level: "Questions 21-30",
+        q: "P and Q invested in a business in the ratio 4:7 respectively and for time periods in the ratio 21:16 respectively. If 10% of the total profit goes to charity and the rest is distributed between P and Q according to investments such that P's share is Rs. 5400, then what is total profit?",
+        options: ["Rs 8000", "Rs 10000", "Rs 12000", "Rs 14000"],
+        answer: 3,
+        solution: "Profit-sharing ratio = 4 x 21 : 7 x 16 = 84:112 = 3:4. P's 3 parts = 5400, so distributed profit = 12600. This is 90% of total, so total = Rs. 14000."
+      },
+      {
+        level: "Questions 21-30",
+        q: "The weight of a solid cylinder varies directly with the square of the radius when height is constant and varies directly with height when radius is constant. The weight of the solid cylinder is 15 kg, its radius is 2 m and height is 3 m. Find the weight of another solid cylinder whose radius is 4 m and height is 6 m.",
+        options: ["100 kg", "120 kg", "140 kg", "160 kg"],
+        answer: 1,
+        solution: "Weight is proportional to r^2h. Multiplier = (4^2 x 6)/(2^2 x 3) = 8. New weight = 15 x 8 = 120 kg."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Centripetal force is directly proportional to the square of velocity when the radius is constant and inversely proportional to radius when velocity is constant. The centripetal force is 13N when velocity is 11 m/s and radius is 121m. Find the centripetal force if velocity is 7 m/s and radius is 26m.",
+        options: ["22.5", "23.5", "24.5", "25.5"],
+        answer: 3,
+        solution: "Force is proportional to v^2/r. F2 = 13 x (7^2/11^2) x (121/26) = 25.5 N."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Ramu, Sumiyaa and Tara started a small business by investing Rs. 4800, Rs. 5400 and Rs. 8400 respectively. After one year they make a profit of Rs. 18,600. If they divide 2/3 of the profit equally and the remaining in the ratio of their capitals, find the total profit of Tara.",
+        options: ["Rs. 3369.33", "Rs. 6933.33", "Rs. 9633.50", "Rs. 6639.50"],
+        answer: 1,
+        solution: "Two-thirds of profit = 12400, so each gets 4133.33. Remaining 6200 is divided in 8:9:14. Tara gets 14/31 x 6200 = 2800. Total = Rs. 6933.33."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Mr. Richard and Mr. Nadar invest $6000 and $7000 respectively in a business. Mr. Richard received $95 per month out of profit as remuneration for running the business and the rest of profit is divided in proportion to investments. If in a year, Mr. Richard receives $3054 then the amount received by Mr. Nadar will be:",
+        options: ["2233", "3322", "4433", "3344"],
+        answer: 0,
+        solution: "Richard's yearly remuneration = 1140. Let total profit be x. Richard's total = 1140 + 6/13(x - 1140) = 3054, so x - 1140 = 4147. Nadar gets 7/13 x 4147 = $2233."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Three businessmen started a partnership by investing Rs. 8000, Rs. 10000 and Rs. 15000 respectively. After one year, they found there is a loss of Rs. 4950. They decided to pay to make up that loss to undisturb their capitals. Find the average amount they have to pay.",
+        options: ["1560", "1650", "5610", "6510"],
+        answer: 1,
+        solution: "Loss is shared in capital ratio 8:10:15. Their payments are 1200, 1500 and 2250. Average = (1200 + 1500 + 2250)/3 = Rs. 1650."
+      },
+      {
+        level: "Questions 21-30",
+        q: "Ravi started a business with Rs. 45,000. Bharat joined him 3 months later with Rs. 32,000. After 3 more months Ravi withdrew Rs. 5,000 and 2 more months later, Bharat brought in Rs. 13,000 more. At the end of the year, what will be the ratio in which they share profits if Ravi receives 20% of profits as commission?",
+        options: ["3:2", "5:4", "5:17", "17:8"],
+        answer: 3,
+        solution: "Capital-time ratio: Ravi = 45000 x 6 + 40000 x 6 = 510000; Bharat = 32000 x 5 + 45000 x 4 = 340000 = 3:2. After Ravi's 20% commission, final ratio becomes 0.68x:0.32x = 17:8."
+      },
+      {
+        level: "Questions 21-30",
+        q: "An expensive gem worth Rs. 10368 fell and broke into three pieces, the weights of which are proportional to 1:2:3. The value of each gem is directly proportional to the square of its weight. Determine the loss occurred due to breaking.",
+        options: ["Rs. 3624", "Rs. 4228", "Rs. 6336", "Rs. 7510"],
+        answer: 2,
+        solution: "Original value = k(6x)^2 = 36kx^2 = 10368, so kx^2 = 288. Broken value = kx^2(1 + 4 + 9) = 14kx^2. Loss = 22kx^2 = 22 x 288 = Rs. 6336."
+      },
+      {
+        level: "Questions 21-30",
+        q: "A, B and C ventured into a new business. A contributed Rs. 10,000 for 6 months, B invested Rs. 16,000 for 5 months and C invested a certain sum for 8 months. C manages the business and takes 25% of the profit; the remaining profit is shared among A, B and C in the ratio of cumulative investments. At the end of 8 months, total profit was Rs. 20,000. If profit received by B is Rs. 4000, find the sum that C invested.",
+        options: ["Rs 16,000", "Rs 24,000", "Rs 20,000", "Rs 25,000"],
+        answer: 2,
+        solution: "C gets 25% of 20000 = 5000 first. Remaining 15000 is shared in 60000:80000:8x. Since B gets 4000, 80000/(140000 + 8x) x 15000 = 4000. Solving gives x = Rs. 20000."
+      }
+    ];
+
+    const quiz = document.getElementById("quiz");
+    const result = document.getElementById("result");
+    const submitBtn = document.getElementById("submitBtn");
+    const timer = document.getElementById("timer");
+    let secondsLeft = 60 * 60;
+    let submitted = false;
+
+    function normalizeTextAnswer(value) {
+      return value.toLowerCase().replace(/rs\\.?|\\$|,/g, "").replace(/[^0-9.\\-]/g, "").trim();
+    }
+
+    function renderQuestions() {
+      let currentLevel = "";
+      quiz.innerHTML = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+        const answerControl = item.type === "text"
+          ? `<input class="text-answer" type="text" name="q${index}" placeholder="Type your answer">`
+          : `<div class="options">${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionIndex}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}</div>`;
+        const answerLine = item.type === "text"
+          ? item.answerText
+          : `(${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            ${answerControl}
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p><strong>Answer: ${answerLine}</strong></p>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateTimer() {
+      const minutes = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
+      const seconds = String(secondsLeft % 60).padStart(2, "0");
+      timer.textContent = `${minutes}:${seconds}`;
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    function submitTest() {
+      if (submitted) return;
+      submitted = true;
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      questions.forEach((item, index) => {
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        solution.style.display = "block";
+
+        const correctText = item.type === "text"
+          ? `Correct answer: ${item.answerText}`
+          : `Correct answer: (${optionLabels[item.answer]}) ${item.options[item.answer]}`;
+
+        let isAttempted = false;
+        let isCorrect = false;
+
+        if (item.type === "text") {
+          const input = document.querySelector(`input[name="q${index}"]`);
+          const response = normalizeTextAnswer(input.value);
+          isAttempted = response.length > 0;
+          isCorrect = response === normalizeTextAnswer(item.answerText);
+          input.disabled = true;
+        } else {
+          const selected = document.querySelector(`input[name="q${index}"]:checked`);
+          isAttempted = Boolean(selected);
+          isCorrect = isAttempted && Number(selected.value) === item.answer;
+          document.querySelectorAll(`input[name="q${index}"]`).forEach(input => input.disabled = true);
+        }
+
+        if (!isAttempted) {
+          unattempted += 1;
+          card.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = `Unattempted. ${correctText}`;
+        } else if (isCorrect) {
+          correct += 1;
+          card.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = `Correct. ${correctText}`;
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = `Incorrect. ${correctText}`;
+        }
+      });
+
+      const score = (correct * 3) - wrong;
+      result.style.display = "block";
+      result.innerHTML = `
+        <h2>Test Summary</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+          <div class="score-box">Total<strong>${questions.length}</strong></div>
+        </div>
+      `;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitted";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    renderQuestions();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+    submitBtn.addEventListener("click", submitTest);
+  </script>
+</body>
+</html>

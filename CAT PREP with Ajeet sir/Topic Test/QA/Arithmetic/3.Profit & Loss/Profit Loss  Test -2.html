@@ -1,0 +1,723 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit, Loss and Discount 2 - Secure Test</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #627386;
+      --line: #d8e0e8;
+      --brand: #087fc1;
+      --brand-dark: #055f92;
+      --brand-soft: #e9f6fc;
+      --paper: #ffffff;
+      --bg: #f4f7fa;
+      --ok: #157347;
+      --bad: #b02a37;
+      --warn: #8a5a00;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 12px rgba(20, 40, 60, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      align-items: center;
+      gap: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--brand);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .pill {
+      min-width: 146px;
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--brand-soft);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 22px auto 44px;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    aside {
+      position: sticky;
+      top: 84px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .panel-title {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--brand-dark);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+    }
+
+    .dot {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fbfcfd;
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .dot.answered { background: #eef8f2; border-color: rgba(21, 115, 71, 0.45); color: var(--ok); }
+    .dot.correct { background: #dff3e8; border-color: var(--ok); }
+    .dot.wrong { background: #ffe5e7; border-color: var(--bad); color: var(--bad); }
+    .dot.missed { background: #f0f2f5; color: var(--muted); }
+
+    .instructions, .question, #result {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .instructions {
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .security-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .question {
+      padding: 16px;
+      margin-bottom: 14px;
+      scroll-margin-top: 92px;
+    }
+
+    .question h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin: 0 0 10px;
+      color: var(--brand);
+      font-weight: 700;
+      border-bottom: 2px solid var(--brand);
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fbfcfd;
+    }
+
+    label.option:hover { border-color: #9ab7ca; }
+    input[type="radio"] { margin-top: 4px; }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    button.primary, button.secondary {
+      border: 0;
+      border-radius: 6px;
+      padding: 12px 22px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary { background: var(--brand); color: white; }
+    button.primary:hover { background: var(--brand-dark); }
+    button.secondary { background: #eef2f6; color: var(--ink); border: 1px solid var(--line); }
+    button:disabled { cursor: not-allowed; opacity: 0.7; }
+
+    .calc-open {
+      border: 1px solid var(--brand);
+      border-radius: 6px;
+      background: var(--brand);
+      color: #fff;
+      padding: 9px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .calc-open:hover { background: var(--brand-dark); }
+
+    #result {
+      display: none;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(110px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .score-box {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfcfd;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .correct { border-color: rgba(21, 115, 71, 0.45); background: #eef8f2; }
+    .wrong { border-color: rgba(176, 42, 55, 0.45); background: #fff1f2; }
+    .missed { border-color: rgba(93, 109, 126, 0.45); background: #f6f7f9; }
+    .answer-note { margin-top: 10px; font-weight: 700; }
+    .answer-note.ok { color: var(--ok); }
+    .answer-note.bad { color: var(--bad); }
+    .answer-note.muted { color: var(--muted); }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: #243447;
+    }
+
+    .solution h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .solution p { margin: 6px 0; }
+
+    dialog {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      max-width: 440px;
+      padding: 18px;
+      color: var(--ink);
+      box-shadow: 0 24px 80px rgba(20, 40, 60, 0.25);
+    }
+
+    dialog::backdrop { background: rgba(16, 28, 42, 0.42); }
+
+    .calculator-dialog {
+      width: min(360px, calc(100vw - 28px));
+      max-width: 360px;
+      margin: 0;
+      inset: 90px auto auto 50%;
+      transform: translateX(-50%);
+    }
+
+    .calculator-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      cursor: move;
+      user-select: none;
+    }
+
+    .calculator-head h2 {
+      margin: 0;
+      color: var(--brand-dark);
+      font-size: 18px;
+    }
+
+    .calc-close {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #eef2f6;
+      color: var(--ink);
+      width: 34px;
+      height: 34px;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .calc-display {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: #fbfcfd;
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .calc-key {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f8fafc;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .calc-key:hover { border-color: #9ab7ca; }
+    .calc-key.operator { background: var(--brand-soft); color: var(--brand-dark); }
+    .calc-key.equal { background: var(--brand); color: #fff; grid-column: span 2; }
+    .calc-key.clear { color: var(--bad); }
+
+    @media (max-width: 900px) {
+      .topbar { grid-template-columns: 1fr; }
+      main { grid-template-columns: 1fr; }
+      aside { position: static; }
+      .options, .score-grid { grid-template-columns: 1fr; }
+      .pill { width: 100%; }
+      .calc-open { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div>
+        <h1>Practice Exercise - 2</h1>
+        <div class="meta">Profit, Loss and Discount | 30 Questions | 90 Minutes | +3 correct, -1 wrong</div>
+      </div>
+      <div class="pill">Time Left: <span id="time">90:00</span></div>
+      <div class="pill">Answered: <span id="answeredCount">0</span>/30</div>
+      <button class="calc-open" type="button" id="openCalculator">Calculator</button>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <h2 class="panel-title">Question Palette</h2>
+      <div class="palette" id="palette"></div>
+    </aside>
+
+    <section>
+      <section class="instructions">
+        <strong>Instructions:</strong> Select one option for each question. Unattempted questions carry 0 marks.
+        Solutions unlock only after final submission.
+        <div class="security-note">This version uses a locked submission flow, local result calculation, disabled post-submit edits, and hash-based answer checking instead of plain answer indexes.</div>
+      </section>
+
+      <section id="result"></section>
+      <form id="testForm"></form>
+    </section>
+  </main>
+
+  <dialog class="calculator-dialog" id="calculatorDialog">
+    <div class="calculator-head">
+      <h2>Calculator</h2>
+      <button class="calc-close" type="button" id="closeCalculator" aria-label="Close calculator">x</button>
+    </div>
+    <input class="calc-display" id="calcDisplay" type="text" value="0" inputmode="decimal" aria-label="Calculator display">
+    <div class="calc-grid" id="calcKeys">
+      <button class="calc-key clear" type="button" data-action="clear">C</button>
+      <button class="calc-key" type="button" data-action="backspace">DEL</button>
+      <button class="calc-key operator" type="button" data-value="%">%</button>
+      <button class="calc-key operator" type="button" data-value="/">/</button>
+      <button class="calc-key" type="button" data-value="7">7</button>
+      <button class="calc-key" type="button" data-value="8">8</button>
+      <button class="calc-key" type="button" data-value="9">9</button>
+      <button class="calc-key operator" type="button" data-value="*">x</button>
+      <button class="calc-key" type="button" data-value="4">4</button>
+      <button class="calc-key" type="button" data-value="5">5</button>
+      <button class="calc-key" type="button" data-value="6">6</button>
+      <button class="calc-key operator" type="button" data-value="-">-</button>
+      <button class="calc-key" type="button" data-value="1">1</button>
+      <button class="calc-key" type="button" data-value="2">2</button>
+      <button class="calc-key" type="button" data-value="3">3</button>
+      <button class="calc-key operator" type="button" data-value="+">+</button>
+      <button class="calc-key" type="button" data-value="0">0</button>
+      <button class="calc-key" type="button" data-value=".">.</button>
+      <button class="calc-key equal" type="button" data-action="equals">=</button>
+    </div>
+  </dialog>
+
+  <dialog id="confirmDialog">
+    <h2>Submit test?</h2>
+    <p id="confirmText">Your answers will be locked and solutions will be shown.</p>
+    <div class="actions">
+      <button class="secondary" type="button" id="cancelSubmit">Review</button>
+      <button class="primary" type="button" id="confirmSubmit">Submit Test</button>
+    </div>
+  </dialog>
+
+  <script>
+    const questions = [
+      { level: "Level of Difficulty - 1", q: "Ritik spent Rs. 50,000 to purchase a laptop and a desktop computer. He sold the laptop at a 20% profit and the desktop at a 10% loss. If, overall, he made a 2% profit, then the purchase price of the laptop is:", options: ["Rs. 40,000", "Rs. 45,000", "Rs. 60,000", "Rs. 20,000"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "Let laptop and desktop CP be x and y. x + y = 50,000 and 1.2x + 0.9y = 51,000. Subtracting 0.9(x + y) gives 0.3x = 6,000, so x = Rs. 20,000. Hence, option D is correct." },
+      { level: "Level of Difficulty - 1", q: "Abhinav purchased 10 laptops in 2016, all at the same price. He sold six of these at a profit of 24% and the remaining four at a loss of 18%. If he made a total profit of Rs. 6,912, find the purchase price of a laptop.", options: ["6,250", "9,350", "8,900", "9,600"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "Let the CP of each laptop be x. Total SP = 6(1.24x) + 4(0.82x) = 10.72x. Profit = 10.72x - 10x = 0.72x = 6,912, so x = Rs. 9,600. Hence, option D is correct." },
+      { level: "Level of Difficulty - 1", q: "Rohit earns a profit of 17% after selling an article at a 22% discount on the marked price. In which of the following option choices should he sell the article to earn a profit of 25%?", options: ["Should sell at a discount of 10%", "Should sell at a discount of 15%", "Should sell at a discount of 16.66%", "Should sell at a discount of 20%"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Let MP = 100a and CP = 100b. At 17% profit and 22% discount, 117b = 78a, so a:b = 3:2. Take MP = 300 and CP = 200. For 25% profit, SP = 250, so discount = 50 on MP 300 = 16.66%. Hence, option C is correct." },
+      { level: "Level of Difficulty - 1", q: "Arun buys 40 kg of wheat for Rs. 9,600. He uses a faulty balance and takes 250 gm extra per kg. If 40% of the wheat gets spoiled, then at what price should he sell the remaining wheat per kg so that he can earn an overall profit of 30%?", options: ["84", "266.66", "416", "420"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "For every stated kg he takes 1.25 kg, so 40 kg becomes 50 kg. After 40% spoilage, 30 kg remains. Required revenue = 9,600 x 130% = Rs. 12,480. Selling price per kg = 12,480/30 = Rs. 416. Hence, option C is correct." },
+      { level: "Level of Difficulty - 1", q: "Anil buys some articles at Rs. 60 per item. Due to the demand-supply issue, Anil sells the first article at Rs. 6 and the second article at Rs. 12, third article at Rs. 18 and so on. By selling how many such articles will Anil make an overall profit of 40%?", options: ["27", "30", "25", "45"], answerHash: "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd", solution: "Let the number of articles be n. Total CP = 60n. Required SP for 40% profit = 84n. Actual SP = 6 + 12 + ... + 6n = n/2[2 x 6 + (n - 1) x 6] = 3n(n + 1). Thus 3n(n + 1) = 84n, so n = 27. Hence, option A is correct." },
+      { level: "Level of Difficulty - 1", q: "Even after giving two successive discounts of 8.33% and 6.66%, the shopkeeper earns a profit of 5%. Find the markup percentage.", options: ["17.28%", "22.725%", "25%", "45.45%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "The two discounts are 1/12 and 1/15, so MP x (11/12) x (14/15) = CP x 21/20. Hence MP/CP = 27/22. Markup = (5/22) x 100 = 22.725%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 1", q: "A washing machine is sold at a profit of 20% after giving a discount of 15% on its marked price. If the marked price is Rs. 9,600, find its cost price.", options: ["Rs. 6,800", "Rs. 7,200", "Rs. 7,600", "Rs. 8,000"], answerHash: "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd", solution: "Let CP = 100k. Then SP = 120k. Since discount is 15%, SP = 85% of MP = 0.85 x 9,600 = 8,160. Thus 120k = 8,160, so k = 68 and CP = Rs. 6,800. Hence, option A is correct." },
+      { level: "Level of Difficulty - 1", q: "Madan sold an article to Jitendra at a profit of Rs. 1,200. Jitendra increased its price by 60% and sold it to Mahendra at a discount of 25%. The profit earned by Jitendra is Rs. 450 more than that of Madan. Find the selling price of the article for Jitendra.", options: ["Rs. 2,500", "Rs. 2,700", "Rs. 2,850", "Rs. 2,250"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let Madan's CP be Y. Madan sells at Y + 1200. Jitendra's SP = (Y + 1200) x 160% x 75% = 1.2Y + 1440. Given Jitendra's profit is 450 more than Madan's, 1.2Y + 1440 - (Y + 1200) = 450, so Y = 1050. Jitendra's SP = Rs. 2700. Hence, option B is correct." },
+      { level: "Level of Difficulty - 1", q: "Ravi sells an article at a profit of 40% and gives a discount of 25% at marked price. If the cost price of the article is Rs. 4,500, then find the difference between the marked price and the cost price of the article.", options: ["Rs. 4,000", "Rs. 3,500", "Rs. 3,900", "None of these"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "CP/MRP = (100 - discount%)/(100 + profit%) = 75/140. Therefore MRP = 4500 x 140/75 = Rs. 8400. Difference = 8400 - 4500 = Rs. 3900. Hence, option C is correct." },
+      { level: "Level of Difficulty - 1", q: "The Maximum Retail Price (MRP) of a product is 60% above its manufacturing cost. The product is sold through a retailer, who earns 16% profit on the purchase price. What is the profit percentage for the manufacturer, who sells his product to the retailer? The retailer gives a 12% discount on the MRP.", options: ["19%", "21%", "13%", "15%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let manufacturing cost be Rs. 100. MRP = Rs. 160. Retailer sells at 12% discount, so customer SP = 160 x 0.88 = Rs. 140.8. Retailer earns 16%, so his purchase price = 140.8/1.16 = Rs. 121.379. Manufacturer's profit is about 21%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 2", q: "A bookseller buys a book for Rs. 1,000 and marks it up to Rs. 1,560. After that, he has given three successive discounts of a%, b%, c% in such a way that a + b + c = 18.75. If his overall loss or profit percentage is x, then find the possible correct range of x.", options: ["105% <= x <= 109%", "102% <= x <= 103%", "108% <= x <= 110.9375%", "110% <= x <= 115.25%"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "CP:MRP = 1000:2560 = 100:256. If discounts are 0, 0 and 18.75%, SP = 256 x 81.25% = 208, giving 108% profit. If discounts are equal at 6.25% each, SP = 256 x 93.75%^3 = 210.9375, giving 110.9375% profit. Hence 108% <= x <= 110.9375%. Option C is correct." },
+      { level: "Level of Difficulty - 2", q: "Namita purchased two varieties of rice, K and M, for a total of Rs. 70,000. The weights in kg of K and M purchased by Namita are in the ratio of 3:5. But the cost per kg of K is 25% more than that of M. Namita sells K and M with profits of 20% and 15% respectively. Find the overall profit in rupees.", options: ["Rs. 18,000", "Rs. 6,000", "Rs. 12,000", "Rs. 3,000"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Let weights of K and M be 3x and 5x. If M costs 4y/kg, K costs 5y/kg. Total CP = 15xy + 20xy = 70,000, so xy = 2,000. CP of K = 30,000 and CP of M = 40,000. Profit = 20% of 30,000 + 15% of 40,000 = 6,000 + 6,000 = Rs. 12,000. Hence, option C is correct." },
+      { level: "Level of Difficulty - 2", q: "A shopkeeper purchases a product at 40% discount from its MRP. He erases the old price tag and adds a new one. He offered a discount of 20% while selling the product. As a result, his profit percentage gets doubled compared to what it would have been if he had not changed the tag. By how much percent did he increase the MRP?", options: ["10%", "20%", "25%", "40%"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Let original MRP be x. CP = 0.6x. Without changing tag, SP = 0.8x and profit = 0.2x. With new MRP y, SP = 0.8y and profit is doubled: 0.8y - 0.6x = 0.4x. Thus 0.8y = x, so y = 1.25x. Increase = 25%. Hence, option C is correct." },
+      { level: "Level of Difficulty - 2", q: "A shopkeeper bought 240 shirts from a wholesaler at Rs. 300 a piece. The marked price he set for each shirt was Rs. 900. Out of the 240 shirts, he sold a few shirts in the first month at a 30% discount and the remaining shirts in the second month at a 50% discount. If the profit earned by selling the shirts in both months was the same, then what is the difference between the number of shirts sold in the two months?", options: ["36", "60", "90", "75"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "First month SP = 70% of 900 = Rs. 630, profit per shirt = 330. Second month SP = 50% of 900 = Rs. 450, profit per shirt = 150. Let first month shirts = x. Then 330x = 150(240 - x), so x = 75. Difference = 240 - 2x = 90. Hence, option C is correct." },
+      { level: "Level of Difficulty - 2", q: "If two articles were sold at the same price and if the first article was sold at a 20% profit and the second article was sold at a 20% loss and the sum of the cost prices of both the articles is Rs. 1,000, then find the amount of overall loss.", options: ["Rs. 40", "Rs. 60", "Rs. 400", "Rs. 769"], answerHash: "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd", solution: "Let CPs be x and 1000 - x. Equal SP gives 1.2x = 0.8(1000 - x), so x = 400. Each SP = 480, total SP = 960. Loss = 1000 - 960 = Rs. 40. Hence, option A is correct." },
+      { level: "Level of Difficulty - 2", q: "The cost of 7 shirts, 10 jackets, and 13 trousers is Rs. 25,000, whereas the cost of 25 trousers, 17 shirts, and 21 jackets is Rs. 41,000. If the S.P. of 1 shirt, 1 jacket and 1 trouser is Rs. 1,350, then find the profit percentage in selling 1 shirt, 1 jacket and 1 trouser.", options: ["20%", "25%", "30%", "None of these"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "Let costs be S, J and T. From equations, subtracting suitable multiples gives 23S + 23J + 23T = 23,000, so S + J + T = Rs. 1,000. Combined SP = Rs. 1,350, so profit percentage = 350/1000 x 100 = 35%, which is not listed. Hence, option D is correct." },
+      { level: "Level of Difficulty - 2", q: "A cloth merchant has a strange problem. His meter scale contracts 10% in length in winter and expands 10% in length in summer. He sells only one type of fabric and its unit price remains the same throughout the year. If the ratio of the volume sold in summer and winter is 3:7, then what will be the total percentage profit/loss in the year if the trader professes to sell at the cost price only?", options: ["4.04% profit", "4.04% loss", "5.05% profit", "5.05% loss"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Winter profit = 10/90 x 100 = 100/9%. Summer loss = 10/110 x 100 = 100/11%. Net profit = (7/10)(100/9) - (3/10)(100/11) = about 5.05%. Hence, option C is correct." },
+      { level: "Level of Difficulty - 2", q: "Mr. Bikanerwala marks up an article by P%, gives a discount of 2P/5%, and gets a profit of 2P/5%. Had it been marked up by P/2% and given a discount of 3P/10%, then what would be his profit percentage?", options: ["6.66%", "6.25%", "3.33%", "5.5%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let CP = 100. From (100 + P)(1 - 2P/500) = 100(1 + 2P/500), solving gives P = 50. In the second case, MP = 125 and discount = 15%, so SP = 125 x 85/100 = 106.25. Profit = 6.25%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 2", q: "In the year 2020, the cost price of a Covid vaccine was 80% of its selling price. In 2021, the cost price of the same Covid vaccine is 90% of its selling price. If the profit from the vaccine remains the same for both years, find the percent change in the cost price from 2020 to 2021.", options: ["150%", "125%", "120%", "100%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let SP in 2020 be 100a, so CP = 80a and profit = 20a. Let SP in 2021 be 100b, so CP = 90b and profit = 10b. Equal profits give 20a = 10b, so b = 2a. CP changes from 80a to 180a, an increase of 100a on 80a = 125%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 2", q: "A trader gives a discount based on the number of articles purchased by the customer. The trader gives a 5% discount when 8 articles are bought and 8.33% discount when 12 articles are bought. If the net profit for the trader in each case is the same, then find the ratio of the marked price to the cost price of the article.", options: ["20:19", "20:17", "20:13", "15:11"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let MP per article = 100 and CP per article = K. For 8 articles, profit = 760 - 8K. For 12 articles, discount is 1/12, so SP = 1100 and profit = 1100 - 12K. Equating gives K = 85. Thus MP:CP = 100:85 = 20:17. Hence, option B is correct." },
+      { level: "Level of Difficulty - 3", q: "A merchant, in order to promote his chocolate business, distributed a few chocolates for free. In a particular month when he distributed 10 chocolates for free, he was able to sell 15 chocolates at a certain fixed price and make 50% net profit. In another month, he distributed x chocolates for free and sold 36 chocolates at the same fixed price, thereby making a net profit of 25%. What is the value of x?", options: ["18", "24", "30", "36"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "Let SP and CP per chocolate be S and C. From first condition, 15S - 25C = 50% of 25C, giving S:C = 5:2. For the second, 36S - (x + 36)C = 25% of (x + 36)C. Using S:C = 5:2 gives 36 x 5 = (5/4)(x + 36) x 2, so x = 36. Hence, option D is correct." },
+      { level: "Level of Difficulty - 3", q: "Gunjan got a discount of 10% on an antique piece from shopkeeper Shubham. As she wasn't satisfied with the price, Shubham gave her a discount of 9.09% more on the discounted price. She insisted on more discounts, so Shubham gave a final discount of 8.33% more on the previous discounts. She left the shop. Later, Shubham increased the actual MRP by 50% and sold the piece to her at the increased MRP without any discounts. How much percent is she paying extra this time as compared to the price Shubham was offering to her when she left the shop?", options: ["37.5%", "50%", "80%", "100%"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "The successive discounts are 10%, 1/11 and 1/12, so final offered price = x x 9/10 x 10/11 x 11/12 = 3x/4 = 0.75x. Later price = 1.5x. Extra paid = (1.5x - 0.75x)/0.75x x 100 = 100%. Hence, option D is correct." },
+      { level: "Level of Difficulty - 3", q: "The price of an electric scooter is marked at 40% more than its manufacturing cost. What is the average of the maximum and minimum discount percentages that the manufacturing company offers so that the company can make a profit of not more than 20% and not less than 10%?", options: ["125/7%", "150/7%", "112.5%", "54.25%"], answerHash: "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd", solution: "Let manufacturing cost = 100. MRP = 140. For 10% profit, SP = 110, discount = 30/140 x 100 = 150/7%. For 20% profit, SP = 120, discount = 20/140 x 100 = 100/7%. Average = (150/7 + 100/7)/2 = 125/7%. Hence, option A is correct." },
+      { level: "Level of Difficulty - 3", q: "Amar, Akbar, and Anthony purchased 1, 10, and 25 notebooks for Rs. 15, Rs. 120 and Rs. 250 respectively from a stationery shop. In his transaction with Amar and Anthony, the shopkeeper made a profit of A% and B% respectively such that 3A = 8B. What profit did the shopkeeper make in his transaction with Akbar? Assume that the shopkeeper bought each notebook at the same price.", options: ["300/7%", "800/7%", "500/7%", "200/7%"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Let shopkeeper's CP per notebook be y. Profit from Amar A = (15 - y)/y x 100. Profit from Anthony B = (10 - y)/y x 100. Given 3A = 8B, so 3(15 - y) = 8(10 - y), giving y = 7. For Akbar, CP = 70 and SP = 120, so profit% = 50/70 x 100 = 500/7%. Hence, option C is correct." },
+      { level: "Level of Difficulty - 3", q: "Rajan purchased some goods for Rs. 4,000 and Shiva purchased some goods for Rs. 5,000. Rajan marks the price of goods up by 3a% and gives a discount of a%, whereas Shiva marks the price of goods up by a% and gives no discount. If they both made the same profit (non-zero), then find a.", options: ["15%", "25%", "50%", "75%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "For Rajan, profit = [(1 + 3a)(1 - a) - 1]4000. For Shiva, profit = 5000a. Equating gives [(1 + 3a)(1 - a) - 1]4 = 5a, so a(4a - 1) = 0. Since profit is non-zero, a = 1/4 = 25%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 3", q: "Aman goes to an electronic shop to buy a TV and a washing machine. He bargains for a 12.5% discount on the washing machine and a 30% discount on the TV. By mistake, the owner interchanged the discount rates while making a manual bill. Aman also paid according to the interchanged discount rates. The cost price of the washing machine is 20% higher than the cost price of the TV. The bill that Aman paid is what percent less than the bill he could have paid, had the discount rates not been interchanged?", options: ["1%", "2%", "3%", "5%"], answerHash: "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c", solution: "Let CP of TV = 100 units and washing machine = 120 units. Correct bill = 100 x 70% + 120 x 87.5% = 175 units. Interchanged bill = 100 x 87.5% + 120 x 70% = 171.5 units. Difference = 3.5, so percent less = 3.5/175 x 100 = 2%. Hence, option B is correct." },
+      { level: "Level of Difficulty - 3", q: "The profit is 20%, when two types of pulses, x and y, are mixed in the ratio 3:2 and then sold at Rs. 60/kg. The profit is 5%, when the same two types of pulses x and y are mixed in the ratio 2:3 and then sold at Rs. 60/kg. The cost prices per kg of x and y are in the ratio:", options: ["41:43", "5:3", "1:2", "2:3"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "For 20% profit, mixture CP = 60/1.2 = 50, so (3a + 2b)/5 = 50. For 5% profit, mixture CP = 60/1.05, so (2a + 3b)/5 = 60/1.05. Solving gives a:b = 1:2. Hence, option C is correct." },
+      { level: "Level of Difficulty - 3", q: "Amitabh buys 70 kg of wheat at a certain price and then marks it up by 20%. He sells 10 kg at marked price and 20 kg at a 20% discount on the marked price. Accidentally, 6 kg wheat is wasted. He sells the remaining wheat at the new marked price by increasing the existing marked price by a%, to make an overall profit of 30%. Find a to the nearest integer.", options: ["47", "50", "42", "39"], answerHash: "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd", solution: "Let CP per kg = Rs. 100. MP = 120. Revenue from first 10 kg = 1200 and next 20 kg = 1920, total 3120. Required total revenue = 70 x 100 x 130% = 9100. After 6 kg wastage, remaining quantity after first 30 kg sold = 34 kg. Required revenue from remaining = 9100 - 3120 = 5980, so price per kg = 5980/34 = 175.88. Increase from 120 to about 176 is 56/120 x 100 = 46.67%, nearest 47. Hence, option A is correct." },
+      { level: "Level of Difficulty - 3", q: "Ramesh bought two kinds of flowers, roses and marigold. He purchased fewer roses than marigolds as roses were more expensive. However, he didn't purchase more than 20 flowers of any kind. He plans to sell all roses at Rs. 13 per piece and all marigolds at Rs. 5 per piece. He sells all these flowers for Rs. 151. If he makes 30% profit on each rose and 25% profit on each marigold, then his overall profit percentage is:", options: ["26.8%", "29.45%", "27.96%", "28.5%"], answerHash: "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d", solution: "Let roses = x and marigolds = y, with x < y <= 20. Then 13x + 5y = 151. The only possible case is x = 7 and y = 12. Total CP = 7 x (13/1.3) + 12 x (5/1.25) = 70 + 48 = Rs. 118. Profit = 151 - 118 = 33, so profit% = 33/118 x 100 = 27.96%. Hence, option C is correct." },
+      { level: "Level of Difficulty - 3", q: "A fruit seller is earning a certain profit by selling mangoes, such that the selling price of 15 mangoes is equal to the cost price of 24 mangoes, which in turn equals 1/3rd of the total discount on 90 mangoes. If he reduces the earlier mark-up by 40 percentage points and the earlier discount by 50%, then find the new profit percentage.", options: ["30%", "40%", "50%", "60%"], answerHash: "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43", solution: "Let CP per mango = C, SP per mango = S and discount per mango = D. Given 15S = 24C = one-third of total discount on 90 mangoes, so 15S = 24C = 30D. Thus C:S:D = 5:8:4. Initially MP = 12 and CP = 5, so markup = 7 and markup% = 140%. New markup% = 100% and new discount = 2 units. Then MP = 10, SP = 8, profit = 3 on CP 5, so profit% = 60%. Hence, option D is correct." }
+    ];
+
+    const optionLabels = ["A", "B", "C", "D"];
+    const form = document.getElementById("testForm");
+    const resultBox = document.getElementById("result");
+    const palette = document.getElementById("palette");
+    const answeredCount = document.getElementById("answeredCount");
+    const confirmDialog = document.getElementById("confirmDialog");
+    const confirmText = document.getElementById("confirmText");
+    const calculatorDialog = document.getElementById("calculatorDialog");
+    const calcDisplay = document.getElementById("calcDisplay");
+    let submitted = false;
+    let secondsLeft = 90 * 60;
+
+    async function digest(value) {
+      const bytes = new TextEncoder().encode(value);
+      const hash = await crypto.subtle.digest("SHA-256", bytes);
+      return Array.from(new Uint8Array(hash)).map(byte => byte.toString(16).padStart(2, "0")).join("");
+    }
+
+    function renderQuestions() {
+      let currentLevel = "";
+      form.innerHTML = questions.map((item, index) => {
+        const levelHtml = item.level !== currentLevel ? `<div class="difficulty">${item.level}</div>` : "";
+        currentLevel = item.level;
+        return `
+          <div class="question" id="qcard-${index}">
+            ${levelHtml}
+            <h2>Q${index + 1}. ${item.q}</h2>
+            <div class="options">
+              ${item.options.map((option, optionIndex) => `
+                <label class="option">
+                  <input type="radio" name="q${index}" value="${optionLabels[optionIndex]}">
+                  <span>(${optionLabels[optionIndex]}) ${option}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="answer-note" id="note-${index}"></div>
+            <div class="solution" id="solution-${index}">
+              <h3>Solution</h3>
+              <p>${item.solution}</p>
+            </div>
+          </div>
+        `;
+      }).join("") + `
+        <div class="actions">
+          <button class="primary" type="submit">Submit Test</button>
+          <button class="secondary" type="button" id="clearAnswers">Clear Responses</button>
+        </div>
+      `;
+
+      palette.innerHTML = questions.map((_, index) => `<button class="dot" type="button" data-target="${index}">${index + 1}</button>`).join("");
+      palette.querySelectorAll(".dot").forEach(button => {
+        button.addEventListener("click", () => {
+          document.getElementById(`qcard-${button.dataset.target}`).scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      form.querySelectorAll("input[type='radio']").forEach(input => {
+        input.addEventListener("change", updateAnsweredState);
+      });
+
+      document.getElementById("clearAnswers").addEventListener("click", () => {
+        if (submitted) return;
+        form.reset();
+        updateAnsweredState();
+      });
+    }
+
+    function updateAnsweredState() {
+      let count = 0;
+      questions.forEach((_, index) => {
+        const answered = Boolean(document.querySelector(`input[name="q${index}"]:checked`));
+        const dot = palette.querySelector(`[data-target="${index}"]`);
+        dot.classList.toggle("answered", answered);
+        if (answered) count += 1;
+      });
+      answeredCount.textContent = count;
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      document.getElementById("time").textContent =
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      if (secondsLeft <= 0) {
+        submitTest();
+        return;
+      }
+      secondsLeft -= 1;
+    }
+
+    async function submitTest() {
+      if (submitted) return;
+      submitted = true;
+
+      let correct = 0;
+      let wrong = 0;
+      let unattempted = 0;
+
+      for (let index = 0; index < questions.length; index += 1) {
+        const item = questions[index];
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`qcard-${index}`);
+        const note = document.getElementById(`note-${index}`);
+        const solution = document.getElementById(`solution-${index}`);
+        const dot = palette.querySelector(`[data-target="${index}"]`);
+
+        solution.style.display = "block";
+        dot.classList.remove("answered");
+
+        if (!selected) {
+          unattempted += 1;
+          card.classList.add("missed");
+          dot.classList.add("missed");
+          note.className = "answer-note muted";
+          note.textContent = "Unattempted.";
+        } else if (await digest(selected.value) === item.answerHash) {
+          correct += 1;
+          card.classList.add("correct");
+          dot.classList.add("correct");
+          note.className = "answer-note ok";
+          note.textContent = "Correct.";
+        } else {
+          wrong += 1;
+          card.classList.add("wrong");
+          dot.classList.add("wrong");
+          note.className = "answer-note bad";
+          note.textContent = "Wrong. Review the solution below.";
+        }
+      }
+
+      const score = correct * 3 - wrong;
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Test Submitted</h2>
+        <div class="score-grid">
+          <div class="score-box">Score<strong>${score}</strong></div>
+          <div class="score-box">Correct<strong>${correct}</strong></div>
+          <div class="score-box">Wrong<strong>${wrong}</strong></div>
+          <div class="score-box">Attempted<strong>${correct + wrong}</strong></div>
+          <div class="score-box">Unattempted<strong>${unattempted}</strong></div>
+        </div>
+      `;
+
+      document.querySelectorAll("input, button.primary, #clearAnswers").forEach(element => {
+        element.disabled = true;
+      });
+      resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      if (submitted) return;
+      const attempted = Number(answeredCount.textContent);
+      confirmText.textContent = `You have answered ${attempted} out of ${questions.length} questions. Your answers will be locked and solutions will be shown.`;
+      if (typeof confirmDialog.showModal === "function") {
+        confirmDialog.showModal();
+      } else if (window.confirm(confirmText.textContent)) {
+        submitTest();
+      }
+    });
+
+    document.getElementById("cancelSubmit").addEventListener("click", () => confirmDialog.close());
+    document.getElementById("confirmSubmit").addEventListener("click", () => {
+      confirmDialog.close();
+      submitTest();
+    });
+
+    function appendCalcValue(value) {
+      if (calcDisplay.value === "0" || calcDisplay.value === "Error") {
+        calcDisplay.value = value === "." ? "0." : value;
+        return;
+      }
+      calcDisplay.value += value;
+    }
+
+    function calculateExpression() {
+      const expression = calcDisplay.value.trim();
+      if (!/^[0-9+\-*/%. ()]+$/.test(expression)) {
+        calcDisplay.value = "Error";
+        return;
+      }
+      try {
+        const result = Function(`"use strict"; return (${expression})`)();
+        calcDisplay.value = Number.isFinite(result) ? String(Number(result.toFixed(10))) : "Error";
+      } catch (error) {
+        calcDisplay.value = "Error";
+      }
+    }
+
+    document.getElementById("openCalculator").addEventListener("click", () => {
+      if (typeof calculatorDialog.showModal === "function") {
+        calculatorDialog.showModal();
+        if (!calculatorDialog.dataset.moved) {
+          calculatorDialog.style.left = `${Math.max(14, (window.innerWidth - calculatorDialog.offsetWidth) / 2)}px`;
+          calculatorDialog.style.top = "90px";
+          calculatorDialog.style.transform = "none";
+        }
+        calcDisplay.focus();
+      }
+    });
+
+    document.getElementById("closeCalculator").addEventListener("click", () => calculatorDialog.close());
+    document.getElementById("calcKeys").addEventListener("click", event => {
+      const key = event.target.closest("button");
+      if (!key) return;
+      if (key.dataset.action === "clear") {
+        calcDisplay.value = "0";
+      } else if (key.dataset.action === "backspace") {
+        calcDisplay.value = calcDisplay.value.length > 1 ? calcDisplay.value.slice(0, -1) : "0";
+      } else if (key.dataset.action === "equals") {
+        calculateExpression();
+      } else if (key.dataset.value) {
+        appendCalcValue(key.dataset.value);
+      }
+      calcDisplay.focus();
+    });
+
+    calcDisplay.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        calculateExpression();
+      }
+    });
+
+    const calculatorHead = calculatorDialog.querySelector(".calculator-head");
+    let calculatorDrag = null;
+
+    calculatorHead.addEventListener("pointerdown", event => {
+      if (event.target.closest("button")) return;
+      const rect = calculatorDialog.getBoundingClientRect();
+      calculatorDrag = {
+        offsetX: event.clientX - rect.left,
+        offsetY: event.clientY - rect.top
+      };
+      calculatorDialog.style.transform = "none";
+      calculatorHead.setPointerCapture(event.pointerId);
+    });
+
+    calculatorHead.addEventListener("pointermove", event => {
+      if (!calculatorDrag) return;
+      const maxLeft = window.innerWidth - calculatorDialog.offsetWidth - 8;
+      const maxTop = window.innerHeight - calculatorDialog.offsetHeight - 8;
+      const nextLeft = Math.min(Math.max(8, event.clientX - calculatorDrag.offsetX), Math.max(8, maxLeft));
+      const nextTop = Math.min(Math.max(8, event.clientY - calculatorDrag.offsetY), Math.max(8, maxTop));
+      calculatorDialog.style.left = `${nextLeft}px`;
+      calculatorDialog.style.top = `${nextTop}px`;
+      calculatorDialog.dataset.moved = "true";
+    });
+
+    calculatorHead.addEventListener("pointerup", event => {
+      calculatorDrag = null;
+      calculatorHead.releasePointerCapture(event.pointerId);
+    });
+
+    calculatorHead.addEventListener("pointercancel", () => {
+      calculatorDrag = null;
+    });
+
+    renderQuestions();
+    updateAnsweredState();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
+
+
