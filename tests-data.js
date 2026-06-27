@@ -1,0 +1,1088 @@
+﻿window.CAT_TESTS = [
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -1",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -1.html",
+        "original":  "Area wise  Logical Reasoning Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  35
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -2",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -2.html",
+        "original":  "Area wise  Logical Reasoning Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  35
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Basic test Part -3",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -3.html",
+        "original":  "Area wise  Logical Reasoning Test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  34
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -3",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -4.html",
+        "original":  "Area wise  Logical Reasoning Test -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -2",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -5.html",
+        "original":  "Area wise  Logical Reasoning Test -5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Logical Reasoning Intermediate test Part -1",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -6.html",
+        "original":  "Area wise  Logical Reasoning Test -6.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "LRDI",
+                        "LR"
+                    ],
+        "minutes":  60,
+        "questions":  43
+    },
+    {
+        "title":  "Careerlauncher Arithetic Basic test",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -1.html",
+        "original":  "Area Wise - Arithmetic Test  -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Arithmetic"
+                    ],
+        "minutes":  60,
+        "questions":  32
+    },
+    {
+        "title":  "Careerlauncher Arithetic Intermediate test",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -2.html",
+        "original":  "Area Wise - Arithmetic Test  -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Arithmetic"
+                    ],
+        "minutes":  60,
+        "questions":  30
+    },
+    {
+        "title":  "Careerlauncher Arithetic Advance test",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -3.html",
+        "original":  "Area Wise - Arithmetic Test  -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Arithmetic"
+                    ],
+        "minutes":  60,
+        "questions":  18
+    },
+    {
+        "title":  "Careerlauncher Numbers Basic test",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Number System/Area Wise  Number System  test -1.html",
+        "original":  "Area Wise  Number System  test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Number System"
+                    ],
+        "minutes":  60,
+        "questions":  29
+    },
+    {
+        "title":  "Careerlauncher Numbers Intermediate test Part -2",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Number System/Area Wise  Number System  test -2.html",
+        "original":  "Area Wise  Number System  test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Number System"
+                    ],
+        "minutes":  60,
+        "questions":  33
+    },
+    {
+        "title":  "Careerlauncher Numbers Intermediate test Part -1",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Number System/Area Wise  Number System  test -3.html",
+        "original":  "Area Wise  Number System  test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Number System"
+                    ],
+        "minutes":  60,
+        "questions":  12
+    },
+    {
+        "title":  "Careerlauncher Numbers Advance test",
+        "file":  "tests/CAT PREP with Ajeet sir/Area Wise Test/QA/Number System/Area Wise  Number System  test -4.html",
+        "original":  "Area Wise  Number System  test -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Area Wise Test",
+                        "QA",
+                        "Number System"
+                    ],
+        "minutes":  60,
+        "questions":  16
+    },
+    {
+        "title":  "International Economics Association 10 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -1.html",
+        "original":  "LRDI Set -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  10,
+        "questions":  0
+    },
+    {
+        "title":  "Digit Grid Puzzle 5 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -10.html",
+        "original":  "LRDI Set -10.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  5,
+        "questions":  1
+    },
+    {
+        "title":  "Balance Weights 10 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -11.html",
+        "original":  "LRDI Set -11.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  10,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -2",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -12.html",
+        "original":  "LRDI Set -12.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -1",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -13.html",
+        "original":  "LRDI Set -13.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -3",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -14.html",
+        "original":  "LRDI Set -14.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -4",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -15.html",
+        "original":  "LRDI Set -15.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -4",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -16.html",
+        "original":  "LRDI Set -16.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "CL Jaipur Repeaters Batch LRDI SET -5",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -17.html",
+        "original":  "LRDI Set -17.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "Political Parties Constituencies 10 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -2.html",
+        "original":  "LRDI Set -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  10,
+        "questions":  0
+    },
+    {
+        "title":  "Manufacturing Job Scheduling 15 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -3.html",
+        "original":  "LRDI Set -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  15,
+        "questions":  0
+    },
+    {
+        "title":  "Rahul Astrologer Choices 20 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -4.html",
+        "original":  "LRDI Set -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "Beauty Contest Gowns 15 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -5.html",
+        "original":  "LRDI Set -5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  15,
+        "questions":  0
+    },
+    {
+        "title":  "Seating Directions 15 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -6.html",
+        "original":  "LRDI Set -6.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  15,
+        "questions":  0
+    },
+    {
+        "title":  "Delivery Packages 15 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -7.html",
+        "original":  "LRDI Set -7.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  15,
+        "questions":  0
+    },
+    {
+        "title":  "Chess Tournament Companions 20 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -8.html",
+        "original":  "LRDI Set -8.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  20,
+        "questions":  0
+    },
+    {
+        "title":  "Workers Four Days 15 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Daily LRDI/LRDI Set -9.html",
+        "original":  "LRDI Set -9.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Daily LRDI"
+                    ],
+        "minutes":  15,
+        "questions":  0
+    },
+    {
+        "title":  "Percentage CAT PYQ CL Jaipur",
+        "file":  "tests/CAT PREP with Ajeet sir/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Topic Test - Arithmetic - Percentage PYQ.html",
+        "original":  "Topic Test - Arithmetic - Percentage PYQ.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "PYQ",
+                        "Topic Wise",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  150,
+        "questions":  59
+    },
+    {
+        "title":  "Ratio Proportion Variation CAT PYQ CL Jaipur",
+        "file":  "tests/CAT PREP with Ajeet sir/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/PYQ - QA - Ratio Proportion Variation PYQ.html",
+        "original":  "PYQ - QA - Ratio Proportion Variation PYQ.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "PYQ",
+                        "Topic Wise",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  90,
+        "questions":  35
+    },
+    {
+        "title":  "DI - Bar Graph -1 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -1.html",
+        "original":  "DI - Bar Graph - Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Bar Graph"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI - BAR graph 02 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -2.html",
+        "original":  "DI - Bar Graph - Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Bar Graph"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI - Line Graph -2 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Line Graph/DI - Line Graph -2.html",
+        "original":  "DI - Line Graph -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Line Graph"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI LINE GRAPH -1 ( 40 MINUTES )",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Line Graph/DI LINE GRAPH -1.html",
+        "original":  "DI LINE GRAPH -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Line Graph"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DILR - Network \u0026amp;amp; 3D diagram ( 40 minutes )",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Network \u0026 3D Graph/DILR - Network \u0026 3D diagram -1.html",
+        "original":  "DILR - Network \u0026 3D diagram -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Network \u0026 3D Graph"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI PIE CHART -1 ( 40 MINUTES )",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -1.html",
+        "original":  "DI PIE CHART -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Pie Chart"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI PIE CHART -2 ( 40 MINUTES )",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -2.html",
+        "original":  "DI PIE CHART -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Pie Chart"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI - Table -1 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Table/DI - Table - Test -1.html",
+        "original":  "DI - Table - Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Table"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DI Table -2 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/DI/Table/DI - Table - Test -2.html",
+        "original":  "DI - Table - Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "DI",
+                        "Table"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DILR - Games \u0026amp;amp; Tournaments -1",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/LR/Games \u0026 Tournaments/DILR - Games \u0026 Tournaments -1.html",
+        "original":  "DILR - Games \u0026 Tournaments -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "LR",
+                        "Games \u0026 Tournaments"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "DILR - Games \u0026amp;amp; Tournaments -2",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/LRDI/LR/Games \u0026 Tournaments/DILR - Games \u0026 Tournaments -2.html",
+        "original":  "DILR - Games \u0026 Tournaments -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "LRDI",
+                        "LR",
+                        "Games \u0026 Tournaments"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - Quant Section",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -1.html",
+        "original":  "Linear Equation Basics -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Algebra",
+                        "Linear Equation"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - Quantitative Ability",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -2.html",
+        "original":  "Linear Equation Basics -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Algebra",
+                        "Linear Equation"
+                    ],
+        "minutes":  44,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - QA Section",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -3.html",
+        "original":  "Linear Equation Basics -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Algebra",
+                        "Linear Equation"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Percentage Basic + Multiplying Factor + Successive Percentage",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
+        "original":  "Percentage Test-1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  60,
+        "questions":  30
+    },
+    {
+        "title":  "Practice Exercise 1 - Percentage Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-2.html",
+        "original":  "Percentage Test-2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise 2 - Percentage Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-3.html",
+        "original":  "Percentage Test-3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Percentage Advance Level + PYQs",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-4.html",
+        "original":  "Percentage Test-4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  60,
+        "questions":  30
+    },
+    {
+        "title":  "Percentage CAT PYQ Practice Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-5.html",
+        "original":  "Percentage Test-5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  40,
+        "questions":  26
+    },
+    {
+        "title":  "Practice Exercise - Percentage \u0026 Commission",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-6.html",
+        "original":  "Percentage Test-6.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise - Percentage Part III",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-7.html",
+        "original":  "Percentage Test-7.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise - Percentage \u0026 Commission II",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-8.html",
+        "original":  "Percentage Test-8.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "1.Percentage"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise 1 - Ratio Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -1.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Ratio Proportion -2 Advance 60 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -10.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -10.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - QA Section",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -11.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -11.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - QA Section",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -12.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -12.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "CAT CBT Exam Console - QA Section",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -13.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -13.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "DPP 03 Ratio Proportion Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "DPP 01 Ratio and Proportion Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -3.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  30,
+        "questions":  0
+    },
+    {
+        "title":  "Arithmetic DPP 04 MBA Pro 2025 Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -4.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise 2 - Ratio Proportion Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -5.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "DPP 04 Ratio Proportion Partnership and Variation Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -6.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -6.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "DPP 05 Ratio Proportion Advance PYQ Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -7.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -7.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Arithmetic DPP 03 MBA Pro 2025 Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -8.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -8.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Ratio Proportion Test -1 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -9.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -9.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Profit, Loss and Discount 2 - Secure Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss  Test -2.html",
+        "original":  "Profit Loss  Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "3.Profit \u0026 Loss"
+                    ],
+        "minutes":  90,
+        "questions":  0
+    },
+    {
+        "title":  "Apti4All CAT Profit \u0026amp; Loss - 15 Inch Desktop Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss  Test -5.html",
+        "original":  "Profit Loss  Test -5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "3.Profit \u0026 Loss"
+                    ],
+        "minutes":  95,
+        "questions":  0
+    },
+    {
+        "title":  "Practice Exercise 1 - Profit and Loss Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss Test -1.html",
+        "original":  "Profit Loss Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "3.Profit \u0026 Loss"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Profit, Loss and Discount - Full Secure Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss Test -3.html",
+        "original":  "Profit Loss Test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "3.Profit \u0026 Loss"
+                    ],
+        "minutes":  90,
+        "questions":  0
+    },
+    {
+        "title":  "DPP 10 - Profit, Loss and Discount CAT Desktop Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss Test -4.html",
+        "original":  "Profit Loss Test -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "3.Profit \u0026 Loss"
+                    ],
+        "minutes":  30,
+        "questions":  0
+    },
+    {
+        "title":  "SI \u0026amp; CI Test -1 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/4.SI \u0026 CI/SI \u0026 CI Test -1.html",
+        "original":  "SI \u0026 CI Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "4.SI \u0026 CI"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "SICI Advance Test -2 60 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/4.SI \u0026 CI/SI \u0026 CI Test -2.html",
+        "original":  "SI \u0026 CI Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "4.SI \u0026 CI"
+                    ],
+        "minutes":  60,
+        "questions":  0
+    },
+    {
+        "title":  "Avrage Test -1 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
+        "original":  "Average Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "5. Average"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Average Test -2 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
+        "original":  "Average Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "5. Average"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Average Test -3 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
+        "original":  "Average Test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "5. Average"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Average Test -4 40 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
+        "original":  "Average Test -4.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "5. Average"
+                    ],
+        "minutes":  40,
+        "questions":  0
+    },
+    {
+        "title":  "Average Test 5 75 Minute Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
+        "original":  "Average Test 5.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "5. Average"
+                    ],
+        "minutes":  75,
+        "questions":  0
+    },
+    {
+        "title":  "Number System Properties of Numbers Basic Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
+        "original":  "Properties Of Number Test -1.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Number System",
+                        "1.Properties Of Number"
+                    ],
+        "minutes":  45,
+        "questions":  30
+    },
+    {
+        "title":  "Number System Properties of Numbers Intermediate Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
+        "original":  "Properties Of Number Test -2.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Number System",
+                        "1.Properties Of Number"
+                    ],
+        "minutes":  60,
+        "questions":  30
+    },
+    {
+        "title":  "Number System Properties of Numbers Advance Test",
+        "file":  "tests/CAT PREP with Ajeet sir/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
+        "original":  "Properties Of Number Test -3.html",
+        "folders":  [
+                        "CAT PREP with Ajeet sir",
+                        "Topic Test",
+                        "QA",
+                        "Number System",
+                        "1.Properties Of Number"
+                    ],
+        "minutes":  75,
+        "questions":  30
+    }
+];
