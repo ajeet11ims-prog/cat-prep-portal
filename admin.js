@@ -4,12 +4,15 @@
   let folders = Array.isArray(window.CAT_FOLDERS) ? JSON.parse(JSON.stringify(window.CAT_FOLDERS)) : [];
   let selectedFolder = null;
   let selectedHtmlFile = null;
+  let currentBrowsePath = ROOT;
 
   const els = {
     total: document.getElementById("adminTotalTests"),
     folderCount: document.getElementById("adminFolderBoxes"),
     folderSearch: document.getElementById("folderSearch"),
     folderList: document.getElementById("folderAdminList"),
+    breadcrumb: document.getElementById("folderBreadcrumb"),
+    browserNote: document.getElementById("browserNote"),
     selectedTitle: document.getElementById("selectedFolderTitle"),
     selectedPath: document.getElementById("selectedFolderPath"),
     selectedMeta: document.getElementById("selectedFolderMeta"),
@@ -57,6 +60,10 @@
       return f === p || f.startsWith(prefix);
     }).length;
   }
+  function directChildCount(path) {
+    const p = cleanPath(path);
+    return folders.filter(f => cleanPath(f.path) !== p && parentPath(cleanPath(f.path)) === p).length;
+  }
   function ensureFolder(path, meta = {}) {
     path = cleanPath(path || ROOT);
     if (!path) path = ROOT;
@@ -78,6 +85,10 @@
     });
     if (els.total) els.total.textContent = tests.length;
     if (els.folderCount) els.folderCount.textContent = folders.length;
+  }
+  function getFolderByPath(path) {
+    const p = cleanPath(path);
+    return folders.find(f => cleanPath(f.path) === p) || { title: titleFromPath(p), path: p || ROOT };
   }
   function inferFromFolder(folder) {
     const text = normalize(`${folder.path} ${folder.title} ${folder.type} ${folder.subject} ${folder.topic} ${folder.area}`);
@@ -107,35 +118,117 @@
     }
     return { type, subject, area, topic, qaTopic };
   }
-  function selectFolder(folder) {
-    selectedFolder = folder;
-    const inferred = inferFromFolder(folder);
-    els.selectedTitle.textContent = safe(folder.title, titleFromPath(folder.path));
-    els.selectedPath.textContent = cleanPath(folder.path);
-    els.selectedMeta.textContent = `${recursiveTestCount(folder.path)} total tests inside • ${directTestCount(folder.path)} direct tests`;
+  function selectFolder(folder, navigate = true) {
+    selectedFolder = getFolderByPath(folder.path);
+    if (navigate) currentBrowsePath = cleanPath(selectedFolder.path);
+    const inferred = inferFromFolder(selectedFolder);
+    els.selectedTitle.textContent = safe(selectedFolder.title, titleFromPath(selectedFolder.path));
+    els.selectedPath.textContent = cleanPath(selectedFolder.path);
+    els.selectedMeta.textContent = `${recursiveTestCount(selectedFolder.path)} total tests inside • ${directTestCount(selectedFolder.path)} direct tests • ${directChildCount(selectedFolder.path)} subfolders`;
     els.testType.value = inferred.type;
     els.subject.value = inferred.subject;
     els.area.value = inferred.area;
     els.topic.value = inferred.topic;
     els.qaTopic.value = inferred.qaTopic;
-    els.emptyParent.value = cleanPath(folder.path);
+    els.emptyParent.value = cleanPath(selectedFolder.path);
     renderFolderList();
+  }
+  function renderBreadcrumb() {
+    if (!els.breadcrumb) return;
+    const parts = cleanPath(currentBrowsePath || ROOT).split("/").filter(Boolean);
+    els.breadcrumb.innerHTML = "";
+    let path = "";
+    parts.forEach((part, index) => {
+      path = path ? `${path}/${part}` : part;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "crumb-btn";
+      btn.textContent = index === 0 ? "Home" : part;
+      const thisPath = path;
+      btn.addEventListener("click", () => selectFolder(getFolderByPath(thisPath), true));
+      els.breadcrumb.appendChild(btn);
+      if (index < parts.length - 1) {
+        const sep = document.createElement("span");
+        sep.className = "crumb-sep";
+        sep.textContent = "›";
+        els.breadcrumb.appendChild(sep);
+      }
+    });
+  }
+  function iconForFolder(folder) {
+    const text = normalize(`${folder.title} ${folder.path} ${folder.type}`);
+    if (text.includes("pyq")) return "PY";
+    if (text.includes("daily")) return "⚡";
+    if (text.includes("sectional")) return "S";
+    if (text.includes("full") || text.includes("mock")) return "M";
+    if (text.includes("lr") || text.includes("di")) return "LD";
+    if (text.includes("varc") || text.includes("rc") || text.includes("va")) return "VA";
+    if (text.includes("qa") || text.includes("quant") || text.includes("arithmetic")) return "QA";
+    return "📁";
+  }
+  function renderFolderCard(folder, isSearchResult = false) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "folder-pick" + (selectedFolder && cleanPath(selectedFolder.path) === cleanPath(folder.path) ? " active" : "");
+    const count = recursiveTestCount(folder.path);
+    const direct = directTestCount(folder.path);
+    const children = directChildCount(folder.path);
+    const status = count > 0 ? "Ready" : "Upload Pending";
+    const action = children > 0 ? "Open →" : "Select →";
+    btn.innerHTML = `
+      <div class="card-top">
+        <span class="folder-icon">${escapeHtml(iconForFolder(folder))}</span>
+        <span class="folder-title-wrap">
+          <strong>${escapeHtml(safe(folder.title, titleFromPath(folder.path)))}</strong>
+          <small>${escapeHtml(cleanPath(folder.path))}</small>
+        </span>
+      </div>
+      <div class="meta-row">
+        <span class="pill">${count} tests</span>
+        <span class="pill">${direct} direct</span>
+        <span class="pill">${children} folders</span>
+        <span class="pill ${status === "Ready" ? "ready" : "pending"}">${status}</span>
+        <span class="folder-action">${isSearchResult ? "Jump →" : action}</span>
+      </div>`;
+    btn.addEventListener("click", () => selectFolder(folder, true));
+    return btn;
   }
   function renderFolderList() {
     refreshCounts();
+    if (!getFolderByPath(currentBrowsePath)) currentBrowsePath = ROOT;
     const term = normalize(els.folderSearch.value);
     els.folderList.innerHTML = "";
-    const list = folders.filter(f => normalize(`${f.title} ${f.path} ${f.type} ${f.subject} ${f.topic} ${f.area}`).includes(term));
-    list.forEach(folder => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "folder-pick" + (selectedFolder && cleanPath(selectedFolder.path) === cleanPath(folder.path) ? " active" : "");
-      const count = recursiveTestCount(folder.path);
-      const status = count > 0 ? "Ready" : "Upload Pending";
-      btn.innerHTML = `<strong>${escapeHtml(safe(folder.title, titleFromPath(folder.path)))}</strong><small>${escapeHtml(cleanPath(folder.path))}</small><div class="meta-row"><span class="pill">${count} tests</span><span class="pill ${status === "Ready" ? "ready" : "pending"}">${status}</span></div>`;
-      btn.addEventListener("click", () => selectFolder(folder));
-      els.folderList.appendChild(btn);
-    });
+    renderBreadcrumb();
+
+    let list;
+    if (term) {
+      list = folders.filter(f => normalize(`${f.title} ${f.path} ${f.type} ${f.subject} ${f.topic} ${f.area}`).includes(term));
+      if (els.browserNote) els.browserNote.textContent = `${list.length} matching folders found. Click any result to jump there.`;
+    } else {
+      const p = cleanPath(currentBrowsePath || ROOT);
+      list = folders.filter(f => cleanPath(f.path) !== p && parentPath(cleanPath(f.path)) === p);
+      if (els.browserNote) {
+        const direct = directTestCount(p);
+        els.browserNote.textContent = list.length
+          ? `Showing only direct folders inside “${titleFromPath(p)}”. Click a card to open it and set it as target.`
+          : `No subfolders inside “${titleFromPath(p)}”. This is a good place to upload if it is your exact target. Direct tests here: ${direct}.`;
+      }
+    }
+
+    if (!list.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+      empty.innerHTML = term
+        ? `<strong>No folder found.</strong><br>Try a smaller keyword like Percentage, QA, LRDI, PYQ, Sectional.`
+        : `<strong>No child folder here.</strong><br>The selected folder can still be used as upload target. Use the form on the right.`;
+      els.folderList.appendChild(empty);
+      return;
+    }
+    list.sort((a,b) => {
+      const ca = directChildCount(a.path), cb = directChildCount(b.path);
+      if (!!cb !== !!ca) return cb - ca;
+      return safe(a.title, titleFromPath(a.path)).localeCompare(safe(b.title, titleFromPath(b.path)));
+    }).forEach(folder => els.folderList.appendChild(renderFolderCard(folder, !!term)));
   }
   function makeTestsData() {
     refreshCounts();
@@ -194,6 +287,7 @@
     const newPath = cleanPath(`${selectedFolder.path}/${name}`);
     const meta = inferFromFolder({ ...selectedFolder, path: newPath, title: name });
     ensureFolder(newPath, { ...meta, title: name, status: "Upload Pending" });
+    currentBrowsePath = cleanPath(selectedFolder.path);
     setDownloadLink(els.downloadData, "tests-data.js", makeTestsData(), "text/javascript");
     els.finalUploadPath.textContent = newPath;
     els.newEntryPreview.textContent = JSON.stringify(folders.find(f => cleanPath(f.path) === newPath), null, 2);
@@ -236,7 +330,6 @@
   });
 
   refreshCounts();
-  renderFolderList();
-  const root = folders.find(f => cleanPath(f.path) === ROOT) || folders[0];
-  if (root) selectFolder(root);
+  const root = folders.find(f => cleanPath(f.path) === ROOT) || folders[0] || { title: ROOT, path: ROOT };
+  selectFolder(root, true);
 })();

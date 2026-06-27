@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Upload Helper | CAT Prep With Ajeet Sir</title>
   <link rel="stylesheet" href="styles.css?v=folder-tree-3" />
-  <link rel="stylesheet" href="admin.css?v=admin-layout-1" />
+  <link rel="stylesheet" href="admin.css?v=admin-layout-2" />
 </head>
 <body>
   <header class="topbar">
@@ -41,16 +41,23 @@
         <div>
           <p class="eyebrow">Step 1</p>
           <h2>Select destination folder</h2>
-          <p class="muted-line">Click any folder from the tree. The upload path will be created automatically.</p>
+          <p class="muted-line">Browse one level at a time, like the student portal. Search only when you want to jump directly.</p>
         </div>
         <button class="back-btn" id="resetAdmin" type="button">Reset</button>
       </div>
 
       <div class="admin-grid">
-        <aside class="admin-panel">
-          <label class="admin-label" for="folderSearch">Search folder</label>
-          <input id="folderSearch" class="admin-input" type="search" placeholder="Percentage, Arithmetic, LRDI, Sectional..." />
-          <div class="folder-admin-list" id="folderAdminList"></div>
+        <aside class="admin-panel folder-browser-panel">
+          <div class="browser-heading">
+            <div>
+              <label class="admin-label" for="folderSearch">Search / Browse folder</label>
+              <p class="mini-help">Default view shows only direct child folders. This keeps it clean like the main portal.</p>
+            </div>
+          </div>
+          <input id="folderSearch" class="admin-input" type="search" placeholder="Search: Percentage, Arithmetic, LRDI, Sectional..." />
+          <div class="folder-breadcrumb" id="folderBreadcrumb"></div>
+          <div class="browser-note" id="browserNote">Click a folder card to open it and set it as upload target.</div>
+          <div class="folder-admin-list portal-style-list" id="folderAdminList"></div>
         </aside>
 
         <section class="admin-panel admin-form-card">
@@ -169,7 +176,7 @@
     </section>
   </main>
 
-  <script src="tests-data.js?v=admin-layout-1"></script>
-  <script src="admin.js?v=admin-layout-1"></script>
+  <script src="tests-data.js?v=admin-layout-2"></script>
+  <script src="admin.js?v=admin-layout-2"></script>
 </body>
 </html>
