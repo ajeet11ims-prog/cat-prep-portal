@@ -3,240 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Upload Test | CAT Prep Portal</title>
-  <style>
-    :root {
-      --bg: #fff7ed;
-      --card: #ffffff;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #fed7aa;
-      --accent: #f97316;
-      --accent-dark: #c2410c;
-      --danger: #b91c1c;
-      --success: #047857;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #fff7ed, #ffffff 55%, #ffedd5);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    header {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 28px 18px 10px;
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-    }
-    .mark {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      color: #fff;
-      background: var(--accent);
-      letter-spacing: .02em;
-    }
-    .brand strong { display: block; font-size: 18px; }
-    .brand small { color: var(--muted); }
-    .home-link {
-      color: var(--accent-dark);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 20px 18px 50px;
-    }
-    .hero {
-      margin-bottom: 18px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: rgba(255,255,255,.82);
-    }
-    h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 44px); line-height: 1.05; }
-    .subcopy { margin: 0; color: var(--muted); font-size: 16px; }
-    .grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 18px 38px rgba(249, 115, 22, .09);
-    }
-    h2 { margin: 0 0 16px; font-size: 22px; }
-    label { display: block; font-weight: 700; margin: 14px 0 7px; }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 13px;
-      border: 1px solid #fdba74;
-      border-radius: 13px;
-      font: inherit;
-      background: #fff;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline: 3px solid #ffedd5;
-      border-color: var(--accent);
-    }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .helper { color: var(--muted); font-size: 13px; margin-top: 6px; }
-    button {
-      width: 100%;
-      margin-top: 18px;
-      border: 0;
-      border-radius: 15px;
-      padding: 14px 16px;
-      font: inherit;
-      font-weight: 900;
-      cursor: pointer;
-      color: white;
-      background: var(--accent);
-    }
-    button:disabled { opacity: .65; cursor: wait; }
-    .status {
-      margin-top: 14px;
-      padding: 13px;
-      border-radius: 14px;
-      background: #fff7ed;
-      border: 1px dashed #fdba74;
-      color: var(--muted);
-      white-space: pre-wrap;
-      min-height: 48px;
-    }
-    .status.success { color: var(--success); border-color: #6ee7b7; background: #ecfdf5; }
-    .status.error { color: var(--danger); border-color: #fecaca; background: #fef2f2; }
-    .steps { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #ffedd5;
-      color: var(--accent-dark);
-      font-weight: 800;
-      font-size: 13px;
-      margin-bottom: 12px;
-    }
-    code {
-      background: #f3f4f6;
-      border-radius: 6px;
-      padding: 2px 5px;
-    }
-    @media (max-width: 760px) {
-      header { align-items: flex-start; flex-direction: column; }
-      .grid, .row { grid-template-columns: 1fr; }
-    }
-  </style>
+  <title>Admin Upload Helper | CAT Prep With Ajeet Sir</title>
+  <link rel="stylesheet" href="styles.css?v=folder-tree-3" />
+  <link rel="stylesheet" href="admin.css?v=admin-layout-1" />
 </head>
 <body>
-  <header>
+  <header class="topbar">
     <a class="brand" href="index.html#home" aria-label="Go to student portal">
       <span class="mark">CAT</span>
       <span>
         <strong>CAT Prep With Ajeet Sir</strong>
-        <small>Admin Upload Panel</small>
+        <small>Admin upload helper</small>
       </span>
     </a>
-    <a class="home-link" href="index.html#home">Student Portal</a>
+    <div class="admin-top-actions">
+      <a class="ghost-link" href="index.html#home">Student Portal</a>
+      <button class="ghost-link" id="downloadCurrentData" type="button">Backup Data</button>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <span class="badge">Admin Login → Upload HTML Test → Auto-update portal</span>
-      <h1>Upload a new test to your portal</h1>
-      <p class="subcopy">This page commits your HTML test into GitHub and updates <code>tests-data.js</code>. After Vercel redeploys, students will see the test automatically.</p>
+    <section class="hero admin-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Admin Test Upload Panel</p>
+        <h1>Choose the right folder, prepare the test entry, then upload safely to GitHub.</h1>
+        <p class="subcopy">This page follows the same folder index as the student portal, so you can place every HTML test in the correct location and avoid undefined or broken cards.</p>
+      </div>
+      <div class="hero-panel" aria-label="Admin summary">
+        <div><strong id="adminTotalTests">0</strong><span>Total indexed tests</span></div>
+        <div><strong id="adminFolderBoxes">0</strong><span>Indexed folders</span></div>
+        <div><strong>Manual GitHub</strong><span>Safe static upload mode</span></div>
+      </div>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Upload Test</h2>
-
-        <label for="token">GitHub Fine-Grained Token</label>
-        <input id="token" type="password" autocomplete="off" placeholder="Paste token with Contents: Read and write" />
-        <div class="helper">Token is used only in this browser session. Do not use this page on a public computer.</div>
-
-        <label for="title">Test Title</label>
-        <input id="title" type="text" placeholder="Example: Percentage Basic Quant Test" />
-
-        <div class="row">
-          <div>
-            <label for="type">Category</label>
-            <select id="type">
-              <option value="Topic Wise Test">Topic Test</option>
-              <option value="Sectional Test">Sectional Test</option>
-              <option value="Full Test">Full Length Test</option>
-            </select>
-          </div>
-          <div>
-            <label for="area">Subject / Area</label>
-            <select id="area">
-              <option value="Quant">QA / Quant</option>
-              <option value="LRDI">LRDI</option>
-              <option value="VARC">VARC</option>
-            </select>
-          </div>
+    <section class="folder-section admin-shell">
+      <div class="section-head with-action">
+        <div>
+          <p class="eyebrow">Step 1</p>
+          <h2>Select destination folder</h2>
+          <p class="muted-line">Click any folder from the tree. The upload path will be created automatically.</p>
         </div>
-
-        <div class="row">
-          <div>
-            <label for="topic">Topic</label>
-            <input id="topic" type="text" placeholder="Percentage / Arithmetic / RC / DI" />
-          </div>
-          <div>
-            <label for="minutes">Duration in minutes</label>
-            <input id="minutes" type="number" min="1" value="20" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="questions">No. of Questions</label>
-            <input id="questions" type="number" min="0" placeholder="Optional" />
-          </div>
-          <div>
-            <label for="htmlFile">HTML Test File</label>
-            <input id="htmlFile" type="file" accept=".html,text/html" />
-          </div>
-        </div>
-
-        <button id="uploadBtn" type="button">Publish Test</button>
-        <div id="status" class="status" aria-live="polite">Ready. Fill details and upload your .html file.</div>
+        <button class="back-btn" id="resetAdmin" type="button">Reset</button>
       </div>
 
-      <aside class="card">
-        <h2>Before first use</h2>
-        <ol class="steps">
-          <li>Create a GitHub fine-grained token for repo <code>cat-prep-portal</code>.</li>
-          <li>Give repository permission: <code>Contents → Read and write</code>.</li>
-          <li>Open <code>/admin.html</code> on your deployed portal.</li>
-          <li>Paste token, upload test, then wait for Vercel redeploy.</li>
-        </ol>
-        <p class="helper">For true password-based admin login, convert this static portal to a backend app. This lightweight version is best for your present static Vercel setup.</p>
-      </aside>
+      <div class="admin-grid">
+        <aside class="admin-panel">
+          <label class="admin-label" for="folderSearch">Search folder</label>
+          <input id="folderSearch" class="admin-input" type="search" placeholder="Percentage, Arithmetic, LRDI, Sectional..." />
+          <div class="folder-admin-list" id="folderAdminList"></div>
+        </aside>
+
+        <section class="admin-panel admin-form-card">
+          <div class="target-box">
+            <p class="eyebrow">Selected target</p>
+            <h3 id="selectedFolderTitle">No folder selected</h3>
+            <code id="selectedFolderPath">Select a folder first</code>
+            <p id="selectedFolderMeta" class="muted-line">The uploaded test HTML should go inside this folder.</p>
+          </div>
+
+          <div class="form-grid">
+            <label class="field wide">Upload HTML test file
+              <input id="htmlFile" type="file" accept=".html,text/html" />
+            </label>
+
+            <label class="field wide">Test title
+              <input id="testTitle" type="text" placeholder="Example: Percentage Basic Test 1" />
+            </label>
+
+            <label class="field">Test type
+              <select id="testType">
+                <option>Topic Wise Test</option>
+                <option>Area Wise Test</option>
+                <option>Sectional Test</option>
+                <option>Full Test</option>
+                <option>Daily Dose</option>
+                <option>PYQ Topic Wise</option>
+              </select>
+            </label>
+
+            <label class="field">Subject
+              <select id="subject">
+                <option value="QA">QA</option>
+                <option value="LR">LR</option>
+                <option value="DI">DI</option>
+                <option value="RC">RC</option>
+                <option value="VA-VR">VA-VR</option>
+              </select>
+            </label>
+
+            <label class="field">Area
+              <input id="area" type="text" placeholder="Quant / LRDI / VARC" />
+            </label>
+
+            <label class="field">Topic
+              <input id="topic" type="text" placeholder="Arithmetic / Percentage / Arrangement" />
+            </label>
+
+            <label class="field">QA topic key
+              <select id="qaTopic">
+                <option value="">Not applicable</option>
+                <option value="arithmetic">Arithmetic</option>
+                <option value="number-system">Number System</option>
+                <option value="algebra">Algebra</option>
+                <option value="geometry">Geometry</option>
+                <option value="modern-math">Modern Math</option>
+              </select>
+            </label>
+
+            <label class="field">Minutes
+              <input id="minutes" type="number" min="1" step="1" placeholder="40" />
+            </label>
+
+            <label class="field">Questions
+              <input id="questions" type="number" min="1" step="1" placeholder="Optional" />
+            </label>
+          </div>
+
+          <div class="action-row">
+            <button class="primary-admin" id="prepareUpload" type="button">Prepare Upload Files</button>
+            <button class="secondary-admin" id="copyPath" type="button">Copy GitHub Folder Path</button>
+          </div>
+
+          <div id="outputBox" class="output-box hidden">
+            <h3>Generated files</h3>
+            <p class="muted-line">Upload the downloaded HTML file inside the selected GitHub folder. Then replace root <code>tests-data.js</code> with the downloaded updated version.</p>
+            <div class="download-row">
+              <a id="downloadHtml" class="start-btn" download>Download HTML Test</a>
+              <a id="downloadData" class="start-btn" download="tests-data.js">Download Updated tests-data.js</a>
+            </div>
+            <div class="code-block"><strong>Upload file here:</strong><br><code id="finalUploadPath"></code></div>
+            <div class="code-block"><strong>New index entry:</strong><pre id="newEntryPreview"></pre></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="folder-section admin-shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Optional</p>
+          <h2>Create an empty indexed folder</h2>
+          <p class="muted-line">Use this when you want the student portal to show a future folder as Upload Pending before tests are uploaded.</p>
+        </div>
+      </div>
+      <div class="admin-grid two-col-small">
+        <div class="admin-panel">
+          <label class="field wide">Parent folder path
+            <input id="emptyParent" type="text" readonly />
+          </label>
+          <label class="field wide">New folder name
+            <input id="emptyName" type="text" placeholder="Example: Time & Work" />
+          </label>
+          <button class="primary-admin" id="createEmptyFolder" type="button">Create Empty Folder Index</button>
+        </div>
+        <div class="admin-panel instructions">
+          <h3>How to use after generating</h3>
+          <ol>
+            <li>Download the updated <strong>tests-data.js</strong>.</li>
+            <li>Upload/replace it in the GitHub repo root.</li>
+            <li>Open the student portal with hard refresh.</li>
+            <li>The new folder will show as <strong>Upload Pending</strong>.</li>
+          </ol>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="admin.js"></script>
+  <script src="tests-data.js?v=admin-layout-1"></script>
+  <script src="admin.js?v=admin-layout-1"></script>
 </body>
 </html>
