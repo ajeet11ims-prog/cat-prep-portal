@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Upload Helper | CAT Prep With Ajeet Sir</title>
+  <title>Admin Upload / Delete Helper | CAT Prep With Ajeet Sir</title>
   <link rel="stylesheet" href="styles.css?v=folder-tree-3" />
-  <link rel="stylesheet" href="admin.css?v=admin-layout-2" />
+  <link rel="stylesheet" href="admin.css?v=admin-delete-html-2" />
 </head>
 <body>
   <header class="topbar">
@@ -13,7 +13,7 @@
       <span class="mark">CAT</span>
       <span>
         <strong>CAT Prep With Ajeet Sir</strong>
-        <small>Admin upload helper</small>
+        <small>Upload / delete helper</small>
       </span>
     </a>
     <div class="admin-top-actions">
@@ -26,7 +26,7 @@
     <section class="hero admin-hero">
       <div class="hero-copy">
         <p class="eyebrow">Admin Test Upload Panel</p>
-        <h1>Choose the right folder, prepare the test entry, then upload safely to GitHub.</h1>
+        <h1>Upload new tests or remove blank HTML tests safely from the portal index.</h1>
         <p class="subcopy">This page follows the same folder index as the student portal, so you can place every HTML test in the correct location and avoid undefined or broken cards.</p>
       </div>
       <div class="hero-panel" aria-label="Admin summary">
@@ -131,6 +131,40 @@
             <button class="secondary-admin" id="copyPath" type="button">Copy GitHub Folder Path</button>
           </div>
 
+
+
+          <div class="delete-card">
+            <div class="delete-head">
+              <div>
+                <p class="eyebrow">Delete / Replace</p>
+                <h3>Delete HTML test from portal index</h3>
+                <p class="muted-line">Select any blank/old HTML test, remove it from <code>tests-data.js</code>, copy its GitHub file path, then delete or replace that HTML file manually in GitHub.</p>
+              </div>
+            </div>
+            <label class="field wide">HTML tests inside selected folder
+              <select id="deleteTestSelect">
+                <option value="">Select a folder first</option>
+              </select>
+            </label>
+            <div id="deleteInfo" class="delete-info">Select the final folder, then choose the old test you want to remove.</div>
+            <div class="action-row compact-actions">
+              <button class="secondary-admin" id="copyDeletePath" type="button">Copy HTML File Path</button>
+              <button class="danger-admin" id="deleteIndexEntry" type="button">Remove Test from Index</button>
+              <a id="downloadDeleteData" class="start-btn danger-download hidden" download="tests-data.js">Download Updated tests-data.js</a>
+            </div>
+            <div class="delete-manual-guide">
+              <strong>Manual GitHub delete process:</strong>
+              <ol>
+                <li>Select the blank test from the dropdown.</li>
+                <li>Click <b>Copy HTML File Path</b>.</li>
+                <li>Click <b>Remove Test from Index</b> and download the updated <b>tests-data.js</b>.</li>
+                <li>In GitHub, open the copied path and delete or replace that HTML file.</li>
+                <li>Upload the updated <b>tests-data.js</b> in repo root and wait for Vercel.</li>
+              </ol>
+            </div>
+
+          </div>
+
           <div id="outputBox" class="output-box hidden">
             <h3>Generated files</h3>
             <p class="muted-line">Upload the downloaded HTML file inside the selected GitHub folder. Then replace root <code>tests-data.js</code> with the downloaded updated version.</p>
@@ -176,7 +210,7 @@
     </section>
   </main>
 
-  <script src="tests-data.js?v=admin-layout-2"></script>
-  <script src="admin.js?v=admin-layout-2"></script>
+  <script src="tests-data.js?v=admin-delete-html-2"></script>
+  <script src="admin.js?v=admin-delete-html-2"></script>
 </body>
 </html>

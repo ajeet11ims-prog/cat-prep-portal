@@ -36,7 +36,12 @@
     emptyName: document.getElementById("emptyName"),
     createEmptyFolder: document.getElementById("createEmptyFolder"),
     downloadCurrentData: document.getElementById("downloadCurrentData"),
-    reset: document.getElementById("resetAdmin")
+    reset: document.getElementById("resetAdmin"),
+    deleteTestSelect: document.getElementById("deleteTestSelect"),
+    deleteInfo: document.getElementById("deleteInfo"),
+    deleteIndexEntry: document.getElementById("deleteIndexEntry"),
+    copyDeletePath: document.getElementById("copyDeletePath"),
+    downloadDeleteData: document.getElementById("downloadDeleteData")
   };
 
   function safe(value, fallback = "") { const text = String(value ?? "").trim(); return text || fallback; }
@@ -63,6 +68,22 @@
   function directChildCount(path) {
     const p = cleanPath(path);
     return folders.filter(f => cleanPath(f.path) !== p && parentPath(cleanPath(f.path)) === p).length;
+  }
+
+  function testsInsideFolder(path) {
+    const p = cleanPath(path || ROOT);
+    const prefix = p + "/";
+    return tests.filter(t => {
+      const f = cleanPath(t.file || t.path || "");
+      const parent = parentPath(f);
+      return parent === p || parent.startsWith(prefix);
+    }).sort((a,b) => cleanPath(a.file || "").localeCompare(cleanPath(b.file || "")));
+  }
+  function getSelectedDeleteTest() {
+    if (!els.deleteTestSelect) return null;
+    const file = cleanPath(els.deleteTestSelect.value);
+    if (!file) return null;
+    return tests.find(t => cleanPath(t.file || t.path || "") === file) || null;
   }
   function ensureFolder(path, meta = {}) {
     path = cleanPath(path || ROOT);
@@ -131,6 +152,7 @@
     els.topic.value = inferred.topic;
     els.qaTopic.value = inferred.qaTopic;
     els.emptyParent.value = cleanPath(selectedFolder.path);
+    renderDeleteList();
     renderFolderList();
   }
   function renderBreadcrumb() {
@@ -230,6 +252,64 @@
       return safe(a.title, titleFromPath(a.path)).localeCompare(safe(b.title, titleFromPath(b.path)));
     }).forEach(folder => els.folderList.appendChild(renderFolderCard(folder, !!term)));
   }
+  function renderDeleteList() {
+    if (!els.deleteTestSelect) return;
+    const folder = selectedFolder || getFolderByPath(currentBrowsePath || ROOT);
+    const list = testsInsideFolder(folder.path);
+    els.deleteTestSelect.innerHTML = "";
+    if (!list.length) {
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "No tests inside selected folder";
+      els.deleteTestSelect.appendChild(opt);
+      if (els.deleteInfo) els.deleteInfo.textContent = "No indexed test found here. Go deeper or choose another folder.";
+      if (els.downloadDeleteData) els.downloadDeleteData.classList.add("hidden");
+      return;
+    }
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = `Select one test to remove (${list.length} found)`;
+    els.deleteTestSelect.appendChild(first);
+    list.forEach((test) => {
+      const opt = document.createElement("option");
+      const file = cleanPath(test.file || test.path || "");
+      opt.value = file;
+      const label = safe(test.title, titleFromPath(file));
+      const direct = parentPath(file) === cleanPath(folder.path) ? "direct" : "nested";
+      opt.textContent = `${label} — ${direct} — ${file}`;
+      els.deleteTestSelect.appendChild(opt);
+    });
+    updateDeleteInfo();
+  }
+  function updateDeleteInfo(message) {
+    if (!els.deleteInfo) return;
+    const test = getSelectedDeleteTest();
+    if (message) { els.deleteInfo.innerHTML = message; return; }
+    if (!test) {
+      els.deleteInfo.textContent = "Choose one old/blank test from this list. Then click Remove from Index.";
+      return;
+    }
+    const file = cleanPath(test.file || test.path || "");
+    els.deleteInfo.innerHTML = `<strong>${escapeHtml(safe(test.title, titleFromPath(file)))}</strong><br><code>${escapeHtml(file)}</code><br><span>After downloading updated tests-data.js, delete this same HTML file from GitHub or replace it with a new working HTML file.</span>`;
+  }
+  function removeSelectedTest() {
+    const test = getSelectedDeleteTest();
+    if (!test) { toast("Select a test to remove first."); return; }
+    const file = cleanPath(test.file || test.path || "");
+    const ok = confirm(`Remove this test from tests-data.js?\n\n${safe(test.title, titleFromPath(file))}\n${file}\n\nImportant: you still need to delete/replace the HTML file in GitHub manually.`);
+    if (!ok) return;
+    const before = tests.length;
+    tests = tests.filter(t => cleanPath(t.file || t.path || "") !== file);
+    const removed = before - tests.length;
+    refreshCounts();
+    setDownloadLink(els.downloadDeleteData, "tests-data.js", makeTestsData(), "text/javascript");
+    els.downloadDeleteData.classList.remove("hidden");
+    updateDeleteInfo(`<strong>Removed from index:</strong> ${escapeHtml(safe(test.title, titleFromPath(file)))}<br><code>${escapeHtml(file)}</code><br><span>Now download updated tests-data.js and upload it to GitHub root. Also delete/replace this HTML file in GitHub.</span>`);
+    renderFolderList();
+    renderDeleteList();
+    toast(removed ? "Test removed from index. Download updated tests-data.js." : "No matching test was removed.");
+  }
+
   function makeTestsData() {
     refreshCounts();
     const sortedTests = tests.slice().sort((a,b) => cleanPath(a.file || "").localeCompare(cleanPath(b.file || "")));
@@ -294,6 +374,7 @@
     els.outputBox.classList.remove("hidden");
     els.emptyName.value = "";
     renderFolderList();
+    renderDeleteList();
     toast("Empty folder index generated. Download updated tests-data.js.");
   }
   function toast(message) {
@@ -311,6 +392,14 @@
     if (selectedHtmlFile && !els.testTitle.value) els.testTitle.value = readableTitleFromFile(selectedHtmlFile.name);
   });
   els.folderSearch.addEventListener("input", renderFolderList);
+  if (els.deleteTestSelect) els.deleteTestSelect.addEventListener("change", updateDeleteInfo);
+  if (els.deleteIndexEntry) els.deleteIndexEntry.addEventListener("click", removeSelectedTest);
+  if (els.copyDeletePath) els.copyDeletePath.addEventListener("click", async () => {
+    const test = getSelectedDeleteTest();
+    if (!test) { toast("Select a test first."); return; }
+    await navigator.clipboard.writeText(cleanPath(test.file || test.path || ""));
+    toast("Test file path copied.");
+  });
   els.prepare.addEventListener("click", prepareUpload);
   els.createEmptyFolder.addEventListener("click", createEmptyFolder);
   els.copyPath.addEventListener("click", async () => {
@@ -325,7 +414,7 @@
     link.click();
   });
   els.reset.addEventListener("click", () => {
-    els.htmlFile.value = ""; els.testTitle.value = ""; els.minutes.value = ""; els.questions.value = ""; els.outputBox.classList.add("hidden"); selectedHtmlFile = null;
+    els.htmlFile.value = ""; els.testTitle.value = ""; els.minutes.value = ""; els.questions.value = ""; els.outputBox.classList.add("hidden"); if (els.downloadDeleteData) els.downloadDeleteData.classList.add("hidden"); selectedHtmlFile = null;
     toast("Form reset. Folder selection remains active.");
   });
 
