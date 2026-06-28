@@ -44,18 +44,12 @@
       </section>
 
       <section class="dashboard-panel" id="homePanel">
-        <div class="hero-card">
-          <div>
-            <p class="eyebrow">Premium Practice Dashboard</p>
-            <h2>Choose a topic and start practice without confusion.</h2>
-            <p>Large folder cards, calm colors, readable font and direct test access for students.</p>
-          </div>
-          <div class="hero-actions">
-            <a href="#folder/topic-test">Open Topic Tests</a>
-            <a href="#folder/area-wise-test">Area Wise Practice</a>
-            <a href="#folder/pyq">PYQ Library</a>
-          </div>
-        </div>
+        <a class="hero-banner-card" href="#folder/topic-test" aria-label="Open Topic Tests">
+          <picture>
+            <source srcset="assets/think-without-ink-header.webp" type="image/webp" />
+            <img src="assets/think-without-ink-header.png" alt="Think Without Ink - CAT Prep with Ajeet Sir" loading="eager" />
+          </picture>
+        </a>
 
         <div class="module-grid" id="homeModules"></div>
       </section>
@@ -93,5 +87,6 @@
 
   <script src="tests-data.js"></script>
   <script src="app.js"></script>
+  <!-- Final V5: Think Without Ink header added -->
 </body>
 </html>
