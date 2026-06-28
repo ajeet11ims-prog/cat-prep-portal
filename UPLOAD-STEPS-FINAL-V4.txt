@@ -1,0 +1,27 @@
+Final V4 Portal Design Fix
+
+Upload/replace these files in GitHub root:
+index.html
+styles.css
+app.js
+tests-data.js
+tests.json
+README.md
+admin.html
+admin.css
+admin.js
+attempt.html
+attempt.js
+
+Keep your existing tests/ folder.
+
+Delete these files from GitHub root if present:
+portal-calm-theme.css
+profit-loss-tests-addon.js
+index(1).html
+app(1)(1).js
+styles(1)(1).css
+
+After Vercel deploy:
+Open https://cat-prep-portal-26.vercel.app/?v=finalv4#home
+Press Ctrl + F5.

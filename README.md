@@ -23,3 +23,10 @@ This is a static Vercel-ready student test portal.
 - Test cards use actual HTML file names, e.g. Percentage Test -1.
 - Ratio `New folder` removed.
 - Profit & Loss has 13 tests directly in tests-data.js.
+
+
+## Final V4 design fix
+- Removed the folder-page line like "41 tests available in this path. Empty folders are also visible."
+- Folder cards now use dashboard-style colourful blue cards.
+- Header/top strip is now colourful instead of plain white.
+- No single-letter dashboard icons.

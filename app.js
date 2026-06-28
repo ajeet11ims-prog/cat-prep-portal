@@ -212,7 +212,7 @@
     const visibleTests = term ? allTestsUnder(state.path).filter((test) => `${test.title} ${test.original} ${test.folders.join(" ")}`.toLowerCase().includes(term)) : tests;
     els.crumbTrail.textContent = state.path.join(" / ") || "Course Content";
     els.sectionTitle.textContent = state.path[state.path.length - 1] || "Browse Tests";
-    els.sectionMeta.textContent = term ? `${visibleTests.length} matching test${visibleTests.length === 1 ? "" : "s"}.` : `${folders.length} folder${folders.length === 1 ? "" : "s"} and ${tests.length} direct test${tests.length === 1 ? "" : "s"} shown.`;
+    els.sectionMeta.textContent = "";
     els.clearSearchButton.hidden = !term;
     els.folderGrid.innerHTML = "";
     els.testGrid.innerHTML = "";

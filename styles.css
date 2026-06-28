@@ -57,3 +57,131 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
 .empty-state,.empty-data{border:1px dashed #b7c8da;border-radius:18px;background:#f8fbff;padding:24px;color:#5a7188;font-weight:700;grid-column:1/-1}.empty-data{max-width:960px;margin:50px auto}.empty-data h2{margin:0 0 8px;color:#0f172a}.empty-data code{background:#eef3f8;border:1px solid #d6e0ea;border-radius:7px;padding:2px 6px}.hidden{display:none!important}
 @media(max-width:1180px){.metric-row{grid-template-columns:repeat(3,1fr)}.module-grid{grid-template-columns:repeat(2,1fr)}.hero-card{grid-template-columns:1fr}.hero-actions{display:flex;flex-wrap:wrap}}
 @media(max-width:760px){.app-shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.workspace{padding:18px}.top-strip,.panel-head{flex-direction:column}.metric-row,.module-grid{grid-template-columns:1fr}.tools input{width:100%}.hero-card h2{font-size:34px}.top-strip h1{font-size:32px}.home-pill{min-width:0}}
+
+
+/* ===== Final V4 design polish requested by Ajeet Sir ===== */
+
+/* 1) Make page header colourful instead of plain white */
+.top-strip{
+  max-width:1520px;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(255,255,255,.26), transparent 22%),
+    radial-gradient(circle at 8% 10%, rgba(255,202,69,.22), transparent 24%),
+    linear-gradient(135deg,#083b70 0%, #0d6fd6 52%, #0b8aa6 100%) !important;
+  color:#fff !important;
+  border-radius:26px;
+  padding:26px 30px;
+  box-shadow:0 20px 44px rgba(12,88,157,.24);
+  border:1px solid rgba(255,255,255,.16);
+  align-items:center;
+}
+.top-strip .eyebrow{
+  color:#ffe08a !important;
+}
+.top-strip h1{
+  color:#fff !important;
+  text-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.top-strip p:last-child{
+  color:#e5f3ff !important;
+}
+.home-pill{
+  background:#fff !important;
+  color:#0758b8 !important;
+  border:0 !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.12) !important;
+}
+
+/* 2) Remove folder page count/meta line visually */
+#sectionMeta{
+  display:none !important;
+}
+
+/* 3) Folder cards should look like dashboard blue boxes */
+.folder-grid{
+  grid-template-columns:repeat(auto-fill,minmax(285px,1fr));
+  gap:18px;
+}
+.folder-card{
+  min-height:190px !important;
+  border:0 !important;
+  border-radius:18px !important;
+  color:#fff !important;
+  background:linear-gradient(135deg,#2f80ed 0%, #0864b7 100%) !important;
+  box-shadow:0 18px 34px rgba(47,115,214,.22) !important;
+  padding:24px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  overflow:hidden;
+}
+.folder-card:nth-child(3n){
+  background:linear-gradient(135deg,#0e8ba6 0%, #08658f 100%) !important;
+}
+.folder-card:nth-child(4n){
+  background:linear-gradient(135deg,#2879de 0%, #0558a8 100%) !important;
+}
+.folder-card:nth-child(5n){
+  background:linear-gradient(135deg,#1268c7 0%, #063b70 100%) !important;
+}
+.folder-card:hover{
+  transform:translateY(-3px) !important;
+  box-shadow:0 26px 48px rgba(47,115,214,.34) !important;
+}
+.folder-card .folder-icon{
+  width:66px !important;
+  height:66px !important;
+  border-radius:20px !important;
+  background:rgba(255,255,255,.10) !important;
+  border:2px solid rgba(255,255,255,.70) !important;
+  color:#fff !important;
+  font-size:31px !important;
+  margin-bottom:18px !important;
+}
+.folder-card h3{
+  color:#fff !important;
+  font-size:22px !important;
+  font-weight:900 !important;
+}
+.folder-card p{
+  color:#e8f2ff !important;
+  font-size:14px !important;
+  font-weight:750 !important;
+}
+.folder-card .card-meta{
+  margin-top:18px !important;
+}
+.folder-card .badge{
+  color:#fff !important;
+  border-color:rgba(255,255,255,.45) !important;
+  background:rgba(255,255,255,.13) !important;
+}
+.folder-card .muted-badge{
+  color:#eaf4ff !important;
+}
+
+/* 4) Keep test cards clean and readable */
+.test-card h3{
+  font-size:17px;
+}
+.content-panel{
+  padding:24px 24px 30px;
+}
+.panel-head{
+  margin-bottom:18px;
+}
+
+/* 5) Mobile polish */
+@media(max-width:760px){
+  .top-strip{
+    padding:22px;
+    border-radius:22px;
+  }
+  .folder-grid{
+    grid-template-columns:1fr;
+  }
+  .folder-card{
+    min-height:175px !important;
+  }
+}
+
