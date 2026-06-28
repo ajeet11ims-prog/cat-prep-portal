@@ -1,16 +1,43 @@
-﻿# CAT Prep With Ajeet Sir - Vercel Portal
+# CAT Prep With Ajeet Sir - Static Portal
 
-This is a static Vercel-ready student test portal.
+This is a clean, static, Vercel-ready CAT test portal.
 
-Deploy steps:
-1. Go to https://vercel.com/new
-2. Import/upload this folder: `vercel-cat-prep-portal`
-3. Framework preset: Other
-4. Build command: leave blank
-5. Output directory: leave blank / root
-6. Deploy
+## Upload / replace root files
 
-Local preview:
-Open `index.html` directly in a browser.
+Upload these files to the GitHub repo root:
 
-Students use the homepage filters, then click `Start Test`. Each test opens as a full page in a new tab.
+- `index.html`
+- `styles.css`
+- `app.js`
+- `tests-data.js`
+- `tests.json`
+- `attempt.html`
+- `attempt.js`
+- `admin.html`
+- `admin.css`
+- `admin.js`
+- `README.md`
+
+## Important
+
+Delete or stop using old extra design override files like:
+
+- `portal-calm-theme.css`
+
+The new `index.html` does not need that file.
+
+## Student portal
+
+Open:
+
+`https://cat-prep-portal-26.vercel.app/#home`
+
+## Profit & Loss folder
+
+Open:
+
+`https://cat-prep-portal-26.vercel.app/#folder/topic-test-qa-arithmetic-3-profit-and-loss`
+
+It should show 13 tests after the matching HTML files are uploaded in:
+
+`tests/Topic Test/QA/Arithmetic/3.Profit & Loss/`

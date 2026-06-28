@@ -4,38 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CAT Prep with Ajeet Sir</title>
+  <meta name="description" content="CAT Prep with Ajeet Sir - topic tests, PYQs, area-wise tests and daily practice portal." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" aria-label="Main navigation">
-      <a class="brand" href="#home" data-path="home" aria-label="CAT Prep Home">
+      <a class="brand" href="#home" aria-label="CAT Prep Home">
         <span class="brand-mark">CAT</span>
         <span class="brand-text"><strong>CAT Prep</strong><small>with Ajeet Sir</small></span>
       </a>
 
-      <nav class="side-nav">
-        <a class="side-link" href="#home" data-path="home"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
-        <a class="side-link" href="#folder/topic-test" data-path="Topic Test"><span class="nav-icon">T</span><span>Topic Tests</span><em id="countTopic">0</em></a>
-        <a class="side-link" href="#folder/area-wise-test" data-path="Area Wise Test"><span class="nav-icon">A</span><span>Area Wise Test</span><em id="countArea">0</em></a>
-        <a class="side-link" href="#folder/pyq" data-path="PYQ"><span class="nav-icon">P</span><span>Previous Papers</span><em id="countPyq">0</em></a>
-        <a class="side-link" href="#folder/sectionals" data-path="Sectionals"><span class="nav-icon">S</span><span>Sectionals</span><em id="countSectional">0</em></a>
-        <a class="side-link" href="#folder/full-length" data-path="Full Length"><span class="nav-icon">F</span><span>Full Length</span><em id="countFull">0</em></a>
-      </nav>
+      <nav class="side-nav" id="sideNav" aria-label="Folder navigation"></nav>
 
       <div class="student-note">
         <span>Student Mode</span>
-        <strong>Simple path → Start Test</strong>
-        <p>Folder-wise tests with calm exam console.</p>
+        <strong>Simple path → Open folder → Start test</strong>
+        <p>Clean practice dashboard for laptop and desktop students.</p>
       </div>
     </aside>
 
     <main class="workspace">
       <header class="top-strip">
         <div>
-          <p class="eyebrow" id="pathLabel">Course Content</p>
-          <h1 id="pageTitle">Dashboard</h1>
-          <p id="pageSubtitle">Topic-wise practice arranged folder by folder.</p>
+          <p class="eyebrow" id="pathLabel">Dashboard</p>
+          <h1 id="pageTitle">CAT Practice Portal</h1>
+          <p id="pageSubtitle">Topic-wise tests, PYQs, area-wise practice and daily drills in one calm place.</p>
         </div>
         <a class="home-pill" href="#home">Home</a>
       </header>
@@ -45,20 +39,21 @@
         <article><strong id="topicTests">0</strong><span>Topic Tests</span></article>
         <article><strong id="areaTests">0</strong><span>Area Wise</span></article>
         <article><strong id="pyqTests">0</strong><span>PYQs</span></article>
-        <article><strong id="sectionalTests">0</strong><span>Sectionals</span></article>
-        <article><strong id="fullTests">0</strong><span>Full Length</span></article>
+        <article><strong id="dailyTests">0</strong><span>Daily LRDI</span></article>
+        <article><strong id="folderTests">0</strong><span>This View</span></article>
       </section>
 
       <section class="dashboard-panel" id="homePanel">
         <div class="hero-card">
           <div>
             <p class="eyebrow">Premium Practice Dashboard</p>
-            <h2>One clean place for CAT topic tests, PYQs and mocks.</h2>
-            <p>Choose a section, open a topic, and start a test without confusion.</p>
+            <h2>Choose a topic and start practice without confusion.</h2>
+            <p>Designed for laptop and desktop use: bigger cards, calm colors, easy reading font and direct test access.</p>
           </div>
           <div class="hero-actions">
             <a href="#folder/topic-test">Open Topic Tests</a>
             <a href="#folder/area-wise-test">Area Wise Practice</a>
+            <a href="#folder/pyq">PYQ Library</a>
           </div>
         </div>
 
@@ -70,25 +65,33 @@
           <div>
             <p class="breadcrumb" id="crumbTrail">Course Content</p>
             <h2 id="sectionTitle">Browse Tests</h2>
-            <p id="sectionMeta">Folder-wise tests with calm exam console.</p>
+            <p id="sectionMeta">Open a folder or start a test directly.</p>
           </div>
           <div class="tools">
             <label>
               <span>Quick Search</span>
-              <input id="searchInput" type="search" placeholder="Search Percentage, Ratio, CAT 2023..." autocomplete="off" />
+              <input id="searchInput" type="search" placeholder="Search Percentage, Profit, CAT 2023..." autocomplete="off" />
             </label>
           </div>
         </div>
 
-        <button class="back-btn" id="backButton" type="button">← Back</button>
+        <div class="folder-toolbar">
+          <button class="back-btn" id="backButton" type="button">← Back</button>
+          <button class="back-btn" id="clearSearchButton" type="button">Clear Search</button>
+        </div>
+
         <div class="folder-grid" id="folderGrid"></div>
         <div class="test-grid" id="testGrid"></div>
+      </section>
+
+      <section class="empty-data-panel" id="emptyDataPanel" hidden>
+        <h2>Tests are not loaded yet.</h2>
+        <p>Please confirm <code>tests-data.js</code> is uploaded in the root and loaded before <code>app.js</code>.</p>
       </section>
     </main>
   </div>
 
   <script src="tests-data.js"></script>
-  <script src="profit-loss-tests-addon.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
