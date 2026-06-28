@@ -437,11 +437,11 @@
   }
 
   function attemptUrl(test) {
-    const params = new URLSearchParams();
-    params.set("src", test.file || "");
-    params.set("title", displayTestName(test) || "CAT Test");
-    if (test.minutes) params.set("minutes", test.minutes);
-    return `attempt.html?${params.toString()}`;
+    // Open the uploaded/original HTML test file directly.
+    // This preserves the exact layout, timer, question bar and styling already present inside each test file.
+    const file = String((test && test.file) || "").trim();
+    if (!file) return "#";
+    return encodeURI(file);
   }
 
   function testCard(test) {
