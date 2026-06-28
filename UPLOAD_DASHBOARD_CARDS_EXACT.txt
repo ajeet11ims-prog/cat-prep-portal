@@ -1,0 +1,26 @@
+Dashboard cards exact layout fix
+
+This package gives the dashboard cards the same look as your first screenshot:
+- colorful emoji icons
+- blue/teal cards
+- Coming soon for empty modules
+- same spacing and card proportions
+
+Upload/replace in GitHub root:
+1. app.js
+2. styles.css
+
+If your portal still does not change, replace all 7 core files:
+1. index.html
+2. styles.css
+3. app.js
+4. tests-data.js
+5. tests.json
+6. think-without-ink-header.png
+7. think-without-ink-header.webp
+
+Keep tests/ folder unchanged.
+
+After commit:
+Open https://cat-prep-portal-26.vercel.app/?v=exactcards#home
+Press Ctrl + F5.
