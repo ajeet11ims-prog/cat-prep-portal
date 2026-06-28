@@ -1,9 +1,0 @@
-Delete these files from GitHub root if present:
-
-portal-calm-theme.css
-index(1).html
-app(1)(1).js
-styles(1)(1).css
-profit-loss-tests-addon.js
-
-The new portal does not need profit-loss-tests-addon.js because Profit & Loss tests are already merged into tests-data.js.
