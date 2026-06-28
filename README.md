@@ -1,43 +1,17 @@
-# CAT Prep With Ajeet Sir - Static Portal
+# CAT Prep With Ajeet Sir - Clean Final Portal
 
-This is a clean, static, Vercel-ready CAT test portal.
+This package is a static Vercel-ready student test portal.
 
-## Upload / replace root files
+## Upload steps
+1. Upload/replace all root files from this ZIP into the GitHub repo root.
+2. Keep the existing `tests/` folder with all HTML test files.
+3. Delete old duplicate files like `portal-calm-theme.css`, `index(1).html`, `app(1)(1).js`, and `styles(1)(1).css`.
+4. Commit changes and wait for Vercel deployment.
+5. Open `https://cat-prep-portal-26.vercel.app/?v=stablev2#home` and press Ctrl + F5.
 
-Upload these files to the GitHub repo root:
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `tests-data.js`
-- `tests.json`
-- `attempt.html`
-- `attempt.js`
-- `admin.html`
-- `admin.css`
-- `admin.js`
-- `README.md`
-
-## Important
-
-Delete or stop using old extra design override files like:
-
-- `portal-calm-theme.css`
-
-The new `index.html` does not need that file.
-
-## Student portal
-
-Open:
-
-`https://cat-prep-portal-26.vercel.app/#home`
-
-## Profit & Loss folder
-
-Open:
-
-`https://cat-prep-portal-26.vercel.app/#folder/topic-test-qa-arithmetic-3-profit-and-loss`
-
-It should show 13 tests after the matching HTML files are uploaded in:
-
-`tests/Topic Test/QA/Arithmetic/3.Profit & Loss/`
+## Fixes included
+- No single alphabet module icons.
+- Empty folders are visible.
+- Test card names use actual HTML file names.
+- Ratio `New folder` removed.
+- Profit & Loss has 13 tests directly in `tests-data.js`.

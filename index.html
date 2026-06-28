@@ -19,8 +19,8 @@
 
       <div class="student-note">
         <span>Student Mode</span>
-        <strong>Simple path → Open folder → Start test</strong>
-        <p>Clean practice dashboard for laptop and desktop students.</p>
+        <strong>Open folder → Start test</strong>
+        <p>Clean folder-wise practice portal for laptop and desktop students.</p>
       </div>
     </aside>
 
@@ -48,7 +48,7 @@
           <div>
             <p class="eyebrow">Premium Practice Dashboard</p>
             <h2>Choose a topic and start practice without confusion.</h2>
-            <p>Designed for laptop and desktop use: bigger cards, calm colors, easy reading font and direct test access.</p>
+            <p>Large folder cards, calm colors, readable font and direct test access for students.</p>
           </div>
           <div class="hero-actions">
             <a href="#folder/topic-test">Open Topic Tests</a>
@@ -70,23 +70,23 @@
           <div class="tools">
             <label>
               <span>Quick Search</span>
-              <input id="searchInput" type="search" placeholder="Search Percentage, Profit, CAT 2023..." autocomplete="off" />
+              <input id="searchInput" type="search" placeholder="Search Percentage, Ratio, CAT 2023..." autocomplete="off" />
             </label>
           </div>
         </div>
 
-        <div class="folder-toolbar">
+        <div class="panel-actions">
           <button class="back-btn" id="backButton" type="button">← Back</button>
-          <button class="back-btn" id="clearSearchButton" type="button">Clear Search</button>
+          <button class="back-btn ghost" id="clearSearchButton" type="button" hidden>Clear Search</button>
         </div>
 
         <div class="folder-grid" id="folderGrid"></div>
         <div class="test-grid" id="testGrid"></div>
       </section>
 
-      <section class="empty-data-panel" id="emptyDataPanel" hidden>
-        <h2>Tests are not loaded yet.</h2>
-        <p>Please confirm <code>tests-data.js</code> is uploaded in the root and loaded before <code>app.js</code>.</p>
+      <section class="empty-data" id="emptyDataPanel" hidden>
+        <h2>No tests loaded</h2>
+        <p>Check that <code>tests-data.js</code> is uploaded in the repo root and loaded before <code>app.js</code>.</p>
       </section>
     </main>
   </div>

@@ -1,6 +1,6 @@
 [
   {
-    "title": "Careerlauncher Logical Reasoning Basic test Part -1",
+    "title": "Area wise Logical Reasoning Test -1",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -1.html",
     "original": "Area wise  Logical Reasoning Test -1.html",
     "folders": [
@@ -11,7 +11,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Logical Reasoning Basic test Part -2",
+    "title": "Area wise Logical Reasoning Test -2",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -2.html",
     "original": "Area wise  Logical Reasoning Test -2.html",
     "folders": [
@@ -22,7 +22,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Logical Reasoning Basic test Part -3",
+    "title": "Area wise Logical Reasoning Test -3",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -3.html",
     "original": "Area wise  Logical Reasoning Test -3.html",
     "folders": [
@@ -33,7 +33,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Logical Reasoning Intermediate test Part -3",
+    "title": "Area wise Logical Reasoning Test -4",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -4.html",
     "original": "Area wise  Logical Reasoning Test -4.html",
     "folders": [
@@ -44,7 +44,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Logical Reasoning Intermediate test Part -2",
+    "title": "Area wise Logical Reasoning Test -5",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -5.html",
     "original": "Area wise  Logical Reasoning Test -5.html",
     "folders": [
@@ -55,7 +55,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Logical Reasoning Intermediate test Part -1",
+    "title": "Area wise Logical Reasoning Test -6",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -6.html",
     "original": "Area wise  Logical Reasoning Test -6.html",
     "folders": [
@@ -67,7 +67,7 @@
     "questions": 1
   },
   {
-    "title": "Careerlauncher Arithetic Basic test",
+    "title": "Area Wise -Arithmetic Test -1",
     "file": "tests/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -1.html",
     "original": "Area Wise - Arithmetic Test  -1.html",
     "folders": [
@@ -78,7 +78,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Arithetic Intermediate test",
+    "title": "Area Wise -Arithmetic Test -2",
     "file": "tests/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -2.html",
     "original": "Area Wise - Arithmetic Test  -2.html",
     "folders": [
@@ -89,7 +89,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Arithetic Advance test",
+    "title": "Area Wise -Arithmetic Test -3",
     "file": "tests/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -3.html",
     "original": "Area Wise - Arithmetic Test  -3.html",
     "folders": [
@@ -100,7 +100,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Numbers Basic test",
+    "title": "Area Wise Number System test -1",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -1.html",
     "original": "Area Wise  Number System  test -1.html",
     "folders": [
@@ -111,7 +111,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Numbers Intermediate test Part -2",
+    "title": "Area Wise Number System test -2",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -2.html",
     "original": "Area Wise  Number System  test -2.html",
     "folders": [
@@ -122,7 +122,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Numbers Intermediate test Part -1",
+    "title": "Area Wise Number System test -3",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -3.html",
     "original": "Area Wise  Number System  test -3.html",
     "folders": [
@@ -133,7 +133,7 @@
     "minutes": 60
   },
   {
-    "title": "Careerlauncher Numbers Advance test",
+    "title": "Area Wise Number System test -4",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -4.html",
     "original": "Area Wise  Number System  test -4.html",
     "folders": [
@@ -144,7 +144,7 @@
     "minutes": 60
   },
   {
-    "title": "International Economics Association 10 Minute Test",
+    "title": "LRDI Set -1",
     "file": "tests/Daily LRDI/LRDI Set -1.html",
     "original": "LRDI Set -1.html",
     "folders": [
@@ -153,85 +153,7 @@
     "minutes": 10
   },
   {
-    "title": "Digit Grid Puzzle 5 Minute Test",
-    "file": "tests/Daily LRDI/LRDI Set -10.html",
-    "original": "LRDI Set -10.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 5
-  },
-  {
-    "title": "Balance Weights 10 Minute Test",
-    "file": "tests/Daily LRDI/LRDI Set -11.html",
-    "original": "LRDI Set -11.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 10
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -2",
-    "file": "tests/Daily LRDI/LRDI Set -12.html",
-    "original": "LRDI Set -12.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 1
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -1",
-    "file": "tests/Daily LRDI/LRDI Set -13.html",
-    "original": "LRDI Set -13.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 2
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -3",
-    "file": "tests/Daily LRDI/LRDI Set -14.html",
-    "original": "LRDI Set -14.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 1
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -4",
-    "file": "tests/Daily LRDI/LRDI Set -15.html",
-    "original": "LRDI Set -15.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 1
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -4",
-    "file": "tests/Daily LRDI/LRDI Set -16.html",
-    "original": "LRDI Set -16.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 1
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch LRDI SET -5",
-    "file": "tests/Daily LRDI/LRDI Set -17.html",
-    "original": "LRDI Set -17.html",
-    "folders": [
-      "Daily LRDI"
-    ],
-    "minutes": 20,
-    "questions": 1
-  },
-  {
-    "title": "Political Parties Constituencies 10 Minute Test",
+    "title": "LRDI Set -2",
     "file": "tests/Daily LRDI/LRDI Set -2.html",
     "original": "LRDI Set -2.html",
     "folders": [
@@ -240,7 +162,7 @@
     "minutes": 10
   },
   {
-    "title": "Manufacturing Job Scheduling 15 Minute Test",
+    "title": "LRDI Set -3",
     "file": "tests/Daily LRDI/LRDI Set -3.html",
     "original": "LRDI Set -3.html",
     "folders": [
@@ -250,7 +172,7 @@
     "questions": 2
   },
   {
-    "title": "Rahul Astrologer Choices 20 Minute Test",
+    "title": "LRDI Set -4",
     "file": "tests/Daily LRDI/LRDI Set -4.html",
     "original": "LRDI Set -4.html",
     "folders": [
@@ -260,7 +182,7 @@
     "questions": 2
   },
   {
-    "title": "Beauty Contest Gowns 15 Minute Test",
+    "title": "LRDI Set -5",
     "file": "tests/Daily LRDI/LRDI Set -5.html",
     "original": "LRDI Set -5.html",
     "folders": [
@@ -270,7 +192,7 @@
     "questions": 2
   },
   {
-    "title": "Seating Directions 15 Minute Test",
+    "title": "LRDI Set -6",
     "file": "tests/Daily LRDI/LRDI Set -6.html",
     "original": "LRDI Set -6.html",
     "folders": [
@@ -280,7 +202,7 @@
     "questions": 2
   },
   {
-    "title": "Delivery Packages 15 Minute Test",
+    "title": "LRDI Set -7",
     "file": "tests/Daily LRDI/LRDI Set -7.html",
     "original": "LRDI Set -7.html",
     "folders": [
@@ -290,7 +212,7 @@
     "questions": 2
   },
   {
-    "title": "Chess Tournament Companions 20 Minute Test",
+    "title": "LRDI Set -8",
     "file": "tests/Daily LRDI/LRDI Set -8.html",
     "original": "LRDI Set -8.html",
     "folders": [
@@ -300,7 +222,7 @@
     "questions": 2
   },
   {
-    "title": "Workers Four Days 15 Minute Test",
+    "title": "LRDI Set -9",
     "file": "tests/Daily LRDI/LRDI Set -9.html",
     "original": "LRDI Set -9.html",
     "folders": [
@@ -310,7 +232,85 @@
     "questions": 2
   },
   {
-    "title": "Percentage CAT PYQ CL Jaipur",
+    "title": "LRDI Set -10",
+    "file": "tests/Daily LRDI/LRDI Set -10.html",
+    "original": "LRDI Set -10.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 5
+  },
+  {
+    "title": "LRDI Set -11",
+    "file": "tests/Daily LRDI/LRDI Set -11.html",
+    "original": "LRDI Set -11.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 10
+  },
+  {
+    "title": "LRDI Set -12",
+    "file": "tests/Daily LRDI/LRDI Set -12.html",
+    "original": "LRDI Set -12.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 1
+  },
+  {
+    "title": "LRDI Set -13",
+    "file": "tests/Daily LRDI/LRDI Set -13.html",
+    "original": "LRDI Set -13.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 2
+  },
+  {
+    "title": "LRDI Set -14",
+    "file": "tests/Daily LRDI/LRDI Set -14.html",
+    "original": "LRDI Set -14.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 1
+  },
+  {
+    "title": "LRDI Set -15",
+    "file": "tests/Daily LRDI/LRDI Set -15.html",
+    "original": "LRDI Set -15.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 1
+  },
+  {
+    "title": "LRDI Set -16",
+    "file": "tests/Daily LRDI/LRDI Set -16.html",
+    "original": "LRDI Set -16.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 1
+  },
+  {
+    "title": "LRDI Set -17",
+    "file": "tests/Daily LRDI/LRDI Set -17.html",
+    "original": "LRDI Set -17.html",
+    "folders": [
+      "Daily LRDI"
+    ],
+    "minutes": 20,
+    "questions": 1
+  },
+  {
+    "title": "Topic Test -Arithmetic -Percentage PYQ",
     "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Topic Test - Arithmetic - Percentage PYQ.html",
     "original": "Topic Test - Arithmetic - Percentage PYQ.html",
     "folders": [
@@ -323,7 +323,7 @@
     "minutes": 150
   },
   {
-    "title": "Ratio Proportion Variation CAT PYQ CL Jaipur",
+    "title": "PYQ -QA -Ratio Proportion Variation PYQ",
     "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/PYQ - QA - Ratio Proportion Variation PYQ.html",
     "original": "PYQ - QA - Ratio Proportion Variation PYQ.html",
     "folders": [
@@ -336,7 +336,7 @@
     "minutes": 90
   },
   {
-    "title": "DI - Bar Graph -1 40 Minute Test",
+    "title": "DI -Bar Graph -Test -1",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -1.html",
     "original": "DI - Bar Graph - Test -1.html",
     "folders": [
@@ -348,7 +348,7 @@
     "minutes": 40
   },
   {
-    "title": "DI - BAR graph 02 40 Minute Test",
+    "title": "DI -Bar Graph -Test -2",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -2.html",
     "original": "DI - Bar Graph - Test -2.html",
     "folders": [
@@ -360,7 +360,7 @@
     "minutes": 40
   },
   {
-    "title": "DI - Line Graph -2 40 Minute Test",
+    "title": "DI -Line Graph -2",
     "file": "tests/Topic Test/LRDI/DI/Line Graph/DI - Line Graph -2.html",
     "original": "DI - Line Graph -2.html",
     "folders": [
@@ -372,7 +372,7 @@
     "minutes": 40
   },
   {
-    "title": "DI LINE GRAPH -1 ( 40 MINUTES )",
+    "title": "DI LINE GRAPH -1",
     "file": "tests/Topic Test/LRDI/DI/Line Graph/DI LINE GRAPH -1.html",
     "original": "DI LINE GRAPH -1.html",
     "folders": [
@@ -384,7 +384,7 @@
     "minutes": 40
   },
   {
-    "title": "DILR - Network & 3D diagram ( 40 minutes )",
+    "title": "DILR -Network & 3D diagram -1",
     "file": "tests/Topic Test/LRDI/DI/Network & 3D Graph/DILR - Network & 3D diagram -1.html",
     "original": "DILR - Network & 3D diagram -1.html",
     "folders": [
@@ -396,7 +396,7 @@
     "minutes": 40
   },
   {
-    "title": "DI PIE CHART -1 ( 40 MINUTES )",
+    "title": "DI PIE CHART -1",
     "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -1.html",
     "original": "DI PIE CHART -1.html",
     "folders": [
@@ -408,7 +408,7 @@
     "minutes": 40
   },
   {
-    "title": "DI PIE CHART -2 ( 40 MINUTES )",
+    "title": "DI PIE CHART -2",
     "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -2.html",
     "original": "DI PIE CHART -2.html",
     "folders": [
@@ -420,7 +420,7 @@
     "minutes": 40
   },
   {
-    "title": "DI - Table -1 40 Minute Test",
+    "title": "DI -Table -Test -1",
     "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -1.html",
     "original": "DI - Table - Test -1.html",
     "folders": [
@@ -432,7 +432,7 @@
     "minutes": 40
   },
   {
-    "title": "DI Table -2 40 Minute Test",
+    "title": "DI -Table -Test -2",
     "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -2.html",
     "original": "DI - Table - Test -2.html",
     "folders": [
@@ -444,7 +444,7 @@
     "minutes": 40
   },
   {
-    "title": "DILR - Games & Tournaments -1",
+    "title": "DILR -Games & Tournaments -1",
     "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -1.html",
     "original": "DILR - Games & Tournaments -1.html",
     "folders": [
@@ -456,7 +456,7 @@
     "minutes": 40
   },
   {
-    "title": "DILR - Games & Tournaments -2",
+    "title": "DILR -Games & Tournaments -2",
     "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -2.html",
     "original": "DILR - Games & Tournaments -2.html",
     "folders": [
@@ -468,7 +468,7 @@
     "minutes": 40
   },
   {
-    "title": "CAT CBT Exam Console - Quant Section",
+    "title": "Linear Equation Basics -1",
     "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -1.html",
     "original": "Linear Equation Basics -1.html",
     "folders": [
@@ -481,7 +481,7 @@
     "questions": 1
   },
   {
-    "title": "CAT CBT Exam Console - Quantitative Ability",
+    "title": "Linear Equation Basics -2",
     "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -2.html",
     "original": "Linear Equation Basics -2.html",
     "folders": [
@@ -494,7 +494,7 @@
     "questions": 1
   },
   {
-    "title": "CAT CBT Exam Console - QA Section",
+    "title": "Linear Equation Basics -3",
     "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -3.html",
     "original": "Linear Equation Basics -3.html",
     "folders": [
@@ -507,7 +507,7 @@
     "questions": 1
   },
   {
-    "title": "Percentage Basic Quant Test",
+    "title": "Percentage Test -1",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
     "original": "Percentage Test-1.html",
     "folders": [
@@ -519,7 +519,7 @@
     "minutes": 60
   },
   {
-    "title": "Practice Exercise 1 - Percentage Test",
+    "title": "Percentage Test -2",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-2.html",
     "original": "Percentage Test-2.html",
     "folders": [
@@ -531,7 +531,7 @@
     "minutes": 40
   },
   {
-    "title": "Practice Exercise 2 - Percentage Test",
+    "title": "Percentage Test -3",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-3.html",
     "original": "Percentage Test-3.html",
     "folders": [
@@ -543,7 +543,7 @@
     "minutes": 60
   },
   {
-    "title": "Percentage Advance Quant Test",
+    "title": "Percentage Test -4",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-4.html",
     "original": "Percentage Test-4.html",
     "folders": [
@@ -555,7 +555,7 @@
     "minutes": 60
   },
   {
-    "title": "CAT Exam Practice Simulator",
+    "title": "Percentage Test -5",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-5.html",
     "original": "Percentage Test-5.html",
     "folders": [
@@ -567,7 +567,7 @@
     "questions": 1
   },
   {
-    "title": "Practice Exercise - Percentage & Commission",
+    "title": "Percentage Test -6",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-6.html",
     "original": "Percentage Test-6.html",
     "folders": [
@@ -579,7 +579,7 @@
     "minutes": 40
   },
   {
-    "title": "Practice Exercise - Percentage Part III",
+    "title": "Percentage Test -7",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-7.html",
     "original": "Percentage Test-7.html",
     "folders": [
@@ -591,7 +591,7 @@
     "minutes": 40
   },
   {
-    "title": "Practice Exercise - Percentage & Commission II",
+    "title": "Percentage Test -8",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-8.html",
     "original": "Percentage Test-8.html",
     "folders": [
@@ -604,19 +604,6 @@
   },
   {
     "title": "Ratio Proportion Variation Partnership Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/New folder/Ratio Proportion Variation Partnership  Test -1.html",
-    "original": "Ratio Proportion Variation Partnership  Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion",
-      "New folder"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Practice Exercise 1 - Ratio Test",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -1.html",
     "original": "Ratio Proportion Variation Partnership  Test -1.html",
     "folders": [
@@ -628,7 +615,103 @@
     "minutes": 40
   },
   {
-    "title": "Ratio Proportion -2 Advance 60 Minute Test",
+    "title": "Ratio Proportion Variation Partnership Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
+    "original": "Ratio Proportion Variation Partnership  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -3.html",
+    "original": "Ratio Proportion Variation Partnership  Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 30
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -4.html",
+    "original": "Ratio Proportion Variation Partnership  Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -5.html",
+    "original": "Ratio Proportion Variation Partnership  Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -6.html",
+    "original": "Ratio Proportion Variation Partnership  Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -7.html",
+    "original": "Ratio Proportion Variation Partnership  Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -8.html",
+    "original": "Ratio Proportion Variation Partnership  Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -9.html",
+    "original": "Ratio Proportion Variation Partnership  Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -10",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -10.html",
     "original": "Ratio Proportion Variation Partnership  Test -10.html",
     "folders": [
@@ -640,7 +723,7 @@
     "minutes": 60
   },
   {
-    "title": "CAT CBT Exam Console - QA Section",
+    "title": "Ratio Proportion Variation Partnership Test -11",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -11.html",
     "original": "Ratio Proportion Variation Partnership  Test -11.html",
     "folders": [
@@ -653,7 +736,7 @@
     "questions": 1
   },
   {
-    "title": "CAT CBT Exam Console - QA Section",
+    "title": "Ratio Proportion Variation Partnership Test -12",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -12.html",
     "original": "Ratio Proportion Variation Partnership  Test -12.html",
     "folders": [
@@ -666,7 +749,7 @@
     "questions": 1
   },
   {
-    "title": "CAT CBT Exam Console - QA Section",
+    "title": "Ratio Proportion Variation Partnership Test -13",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -13.html",
     "original": "Ratio Proportion Variation Partnership  Test -13.html",
     "folders": [
@@ -677,223 +760,6 @@
     ],
     "minutes": 60,
     "questions": 1
-  },
-  {
-    "title": "DPP 03 Ratio Proportion Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
-    "original": "Ratio Proportion Variation Partnership  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "DPP 01 Ratio and Proportion Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -3.html",
-    "original": "Ratio Proportion Variation Partnership  Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 30
-  },
-  {
-    "title": "Arithmetic DPP 04 MBA Pro 2025 Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -4.html",
-    "original": "Ratio Proportion Variation Partnership  Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Practice Exercise 2 - Ratio Proportion Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -5.html",
-    "original": "Ratio Proportion Variation Partnership  Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "DPP 04 Ratio Proportion Partnership and Variation Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -6.html",
-    "original": "Ratio Proportion Variation Partnership  Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "DPP 05 Ratio Proportion Advance PYQ Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -7.html",
-    "original": "Ratio Proportion Variation Partnership  Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Arithmetic DPP 03 MBA Pro 2025 Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -8.html",
-    "original": "Ratio Proportion Variation Partnership  Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Test -1 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -9.html",
-    "original": "Ratio Proportion Variation Partnership  Test -9.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "SI & CI Test -1 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -1.html",
-    "original": "SI & CI Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "SICI Advance Test -2 60 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -2.html",
-    "original": "SI & CI Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Avrage Test -1 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
-    "original": "Average Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -2 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
-    "original": "Average Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -3 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
-    "original": "Average Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40,
-    "questions": 1
-  },
-  {
-    "title": "Average Test -4 40 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
-    "original": "Average Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test 5 75 Minute Test",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
-    "original": "Average Test 5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 75
-  },
-  {
-    "title": "Number System Properties of Numbers Basic Test",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
-    "original": "Number System - Properties of Numbers  Test -2 (2).html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 45
-  },
-  {
-    "title": "Number System Properties of Numbers Intermediate Test",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
-    "original": "Number System - Properties of Numbers  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Number System Properties of Numbers Advance Test",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
-    "original": "number-system-properties-of-numbers Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 75
   },
   {
     "title": "Profit Loss Test -1",
@@ -1050,5 +916,126 @@
       "3.Profit & Loss"
     ],
     "minutes": 60
+  },
+  {
+    "title": "SI & CI Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -1.html",
+    "original": "SI & CI Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "SI & CI Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -2.html",
+    "original": "SI & CI Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Average Test 5",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
+    "original": "Average Test 5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 75
+  },
+  {
+    "title": "Average Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
+    "original": "Average Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
+    "original": "Average Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
+    "original": "Average Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40,
+    "questions": 1
+  },
+  {
+    "title": "Average Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
+    "original": "Average Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "number -system -properties -of -numbers Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
+    "original": "number-system-properties-of-numbers Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 75
+  },
+  {
+    "title": "Number System -Properties of Numbers Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
+    "original": "Number System - Properties of Numbers  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Number System -Properties of Numbers Test -2 (2)",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
+    "original": "Number System - Properties of Numbers  Test -2 (2).html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 45
   }
 ]
