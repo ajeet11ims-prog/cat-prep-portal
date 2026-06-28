@@ -194,7 +194,7 @@
     const folders = Array.from(folderMap.values())
       .filter(folder => folder.count > 0 || folderExists(folder.path))
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-    const sortedTests = directTests.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { numeric: true }));
+    const sortedTests = directTests.sort((a, b) => displayTestName(a).localeCompare(displayTestName(b), undefined, { numeric: true }));
     return { folders, tests: sortedTests };
   }
 
@@ -249,6 +249,23 @@
 
   function cleanFolderName(name) {
     return String(name || "Folder").replace(/^\d+\.?\s*/, "").replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function decodeText(value) {
+    const raw = String(value || "");
+    try { return decodeURIComponent(raw.replace(/\+/g, " ")); }
+    catch (e) { return raw.replace(/\+/g, " "); }
+  }
+
+  function fileBaseName(filePath) {
+    const clean = decodeText(filePath).split(/[?#]/)[0].split(/[\\/]/).filter(Boolean).pop() || "";
+    return clean.replace(/\.html?$/i, "").replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function displayTestName(test) {
+    // Show the exact uploaded HTML file name on the portal.
+    // This keeps portal names synced with names visible inside the tests folder.
+    return fileBaseName(test && test.file) || String((test && (test.title || test.original)) || "Untitled Test").trim();
   }
 
   function nicePath(path) {
@@ -315,7 +332,7 @@
     const q = normalize(term);
     if (!q) return [];
     return tests.filter(test => {
-      const text = normalize([test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
+      const text = normalize([displayTestName(test), test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
       return text.includes(q);
     }).slice(0, 40);
   }
@@ -387,7 +404,7 @@
     setSearchVisible(true);
     const term = normalize(searchTerm);
     const filtered = directTests.filter(test => {
-      const text = normalize([test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
+      const text = normalize([displayTestName(test), test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
       return !term || text.includes(term);
     });
     els.contentNote.textContent = `${filtered.length} of ${directTests.length} ${directTests.length === 1 ? "test" : "tests"} shown.`;
@@ -407,7 +424,7 @@
   function attemptUrl(test) {
     const params = new URLSearchParams();
     params.set("src", test.file || "");
-    params.set("title", test.title || test.original || "CAT Test");
+    params.set("title", displayTestName(test) || "CAT Test");
     if (test.minutes) params.set("minutes", test.minutes);
     return `attempt.html?${params.toString()}`;
   }
@@ -422,7 +439,7 @@
     if (test.minutes) tags.push(`${test.minutes} min`);
     return `
       <article class="test-card">
-        <h3>${escapeHtml(test.title || test.original || "Untitled Test")}</h3>
+        <h3>${escapeHtml(displayTestName(test))}</h3>
         <div class="pill-row">${tags.slice(0, 4).map(tag => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
         <a class="start-btn" href="${escapeHtml(attemptUrl(test))}" target="_blank" rel="noopener">Start Test →</a>
       </article>`;
