@@ -8,8 +8,7 @@
                         "LRDI",
                         "LR"
                     ],
-        "minutes":  60,
-        "questions":  35
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Logical Reasoning Basic test Part -2",
@@ -20,8 +19,7 @@
                         "LRDI",
                         "LR"
                     ],
-        "minutes":  60,
-        "questions":  35
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Logical Reasoning Basic test Part -3",
@@ -32,8 +30,7 @@
                         "LRDI",
                         "LR"
                     ],
-        "minutes":  60,
-        "questions":  34
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Logical Reasoning Intermediate test Part -3",
@@ -44,8 +41,7 @@
                         "LRDI",
                         "LR"
                     ],
-        "minutes":  60,
-        "questions":  43
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Logical Reasoning Intermediate test Part -2",
@@ -56,8 +52,7 @@
                         "LRDI",
                         "LR"
                     ],
-        "minutes":  60,
-        "questions":  43
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Logical Reasoning Intermediate test Part -1",
@@ -69,7 +64,7 @@
                         "LR"
                     ],
         "minutes":  60,
-        "questions":  43
+        "questions":  1
     },
     {
         "title":  "Careerlauncher Arithetic Basic test",
@@ -80,8 +75,7 @@
                         "QA",
                         "Arithmetic"
                     ],
-        "minutes":  60,
-        "questions":  32
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Arithetic Intermediate test",
@@ -92,8 +86,7 @@
                         "QA",
                         "Arithmetic"
                     ],
-        "minutes":  60,
-        "questions":  30
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Arithetic Advance test",
@@ -104,8 +97,7 @@
                         "QA",
                         "Arithmetic"
                     ],
-        "minutes":  60,
-        "questions":  18
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Numbers Basic test",
@@ -116,8 +108,7 @@
                         "QA",
                         "Number System"
                     ],
-        "minutes":  60,
-        "questions":  29
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Numbers Intermediate test Part -2",
@@ -128,8 +119,7 @@
                         "QA",
                         "Number System"
                     ],
-        "minutes":  60,
-        "questions":  33
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Numbers Intermediate test Part -1",
@@ -140,8 +130,7 @@
                         "QA",
                         "Number System"
                     ],
-        "minutes":  60,
-        "questions":  12
+        "minutes":  60
     },
     {
         "title":  "Careerlauncher Numbers Advance test",
@@ -152,8 +141,7 @@
                         "QA",
                         "Number System"
                     ],
-        "minutes":  60,
-        "questions":  16
+        "minutes":  60
     },
     {
         "title":  "International Economics Association 10 Minute Test",
@@ -162,8 +150,7 @@
         "folders":  [
                         "Daily LRDI"
                     ],
-        "minutes":  10,
-        "questions":  0
+        "minutes":  10
     },
     {
         "title":  "Digit Grid Puzzle 5 Minute Test",
@@ -172,8 +159,7 @@
         "folders":  [
                         "Daily LRDI"
                     ],
-        "minutes":  5,
-        "questions":  1
+        "minutes":  5
     },
     {
         "title":  "Balance Weights 10 Minute Test",
@@ -182,8 +168,7 @@
         "folders":  [
                         "Daily LRDI"
                     ],
-        "minutes":  10,
-        "questions":  0
+        "minutes":  10
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -2",
@@ -193,7 +178,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -1",
@@ -203,7 +188,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -3",
@@ -213,7 +198,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -4",
@@ -223,7 +208,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -4",
@@ -233,7 +218,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CL Jaipur Repeaters Batch LRDI SET -5",
@@ -243,7 +228,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "Political Parties Constituencies 10 Minute Test",
@@ -252,8 +237,7 @@
         "folders":  [
                         "Daily LRDI"
                     ],
-        "minutes":  10,
-        "questions":  0
+        "minutes":  10
     },
     {
         "title":  "Manufacturing Job Scheduling 15 Minute Test",
@@ -263,7 +247,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  15,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Rahul Astrologer Choices 20 Minute Test",
@@ -273,7 +257,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Beauty Contest Gowns 15 Minute Test",
@@ -283,7 +267,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  15,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Seating Directions 15 Minute Test",
@@ -293,7 +277,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  15,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Delivery Packages 15 Minute Test",
@@ -303,7 +287,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  15,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Chess Tournament Companions 20 Minute Test",
@@ -313,7 +297,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  20,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Workers Four Days 15 Minute Test",
@@ -323,7 +307,7 @@
                         "Daily LRDI"
                     ],
         "minutes":  15,
-        "questions":  0
+        "questions":  2
     },
     {
         "title":  "Percentage CAT PYQ CL Jaipur",
@@ -336,8 +320,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  150,
-        "questions":  59
+        "minutes":  150
     },
     {
         "title":  "Ratio Proportion Variation CAT PYQ CL Jaipur",
@@ -350,8 +333,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  90,
-        "questions":  35
+        "minutes":  90
     },
     {
         "title":  "DI - Bar Graph -1 40 Minute Test",
@@ -363,8 +345,7 @@
                         "DI",
                         "Bar Graph"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI - BAR graph 02 40 Minute Test",
@@ -376,8 +357,7 @@
                         "DI",
                         "Bar Graph"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI - Line Graph -2 40 Minute Test",
@@ -389,8 +369,7 @@
                         "DI",
                         "Line Graph"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI LINE GRAPH -1 ( 40 MINUTES )",
@@ -402,11 +381,10 @@
                         "DI",
                         "Line Graph"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
-        "title":  "DILR - Network \u0026amp;amp; 3D diagram ( 40 minutes )",
+        "title":  "DILR - Network \u0026 3D diagram ( 40 minutes )",
         "file":  "tests/Topic Test/LRDI/DI/Network \u0026 3D Graph/DILR - Network \u0026 3D diagram -1.html",
         "original":  "DILR - Network \u0026 3D diagram -1.html",
         "folders":  [
@@ -415,8 +393,7 @@
                         "DI",
                         "Network \u0026 3D Graph"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI PIE CHART -1 ( 40 MINUTES )",
@@ -428,8 +405,7 @@
                         "DI",
                         "Pie Chart"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI PIE CHART -2 ( 40 MINUTES )",
@@ -441,8 +417,7 @@
                         "DI",
                         "Pie Chart"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI - Table -1 40 Minute Test",
@@ -454,8 +429,7 @@
                         "DI",
                         "Table"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "DI Table -2 40 Minute Test",
@@ -467,11 +441,10 @@
                         "DI",
                         "Table"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
-        "title":  "DILR - Games \u0026amp;amp; Tournaments -1",
+        "title":  "DILR - Games \u0026 Tournaments -1",
         "file":  "tests/Topic Test/LRDI/LR/Games \u0026 Tournaments/DILR - Games \u0026 Tournaments -1.html",
         "original":  "DILR - Games \u0026 Tournaments -1.html",
         "folders":  [
@@ -480,11 +453,10 @@
                         "LR",
                         "Games \u0026 Tournaments"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
-        "title":  "DILR - Games \u0026amp;amp; Tournaments -2",
+        "title":  "DILR - Games \u0026 Tournaments -2",
         "file":  "tests/Topic Test/LRDI/LR/Games \u0026 Tournaments/DILR - Games \u0026 Tournaments -2.html",
         "original":  "DILR - Games \u0026 Tournaments -2.html",
         "folders":  [
@@ -493,8 +465,7 @@
                         "LR",
                         "Games \u0026 Tournaments"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "CAT CBT Exam Console - Quant Section",
@@ -507,7 +478,7 @@
                         "Linear Equation"
                     ],
         "minutes":  60,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CAT CBT Exam Console - Quantitative Ability",
@@ -520,7 +491,7 @@
                         "Linear Equation"
                     ],
         "minutes":  44,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CAT CBT Exam Console - QA Section",
@@ -533,10 +504,10 @@
                         "Linear Equation"
                     ],
         "minutes":  60,
-        "questions":  0
+        "questions":  1
     },
     {
-        "title":  "Percentage Basic + Multiplying Factor + Successive Percentage",
+        "title":  "Percentage Basic Quant Test",
         "file":  "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
         "original":  "Percentage Test-1.html",
         "folders":  [
@@ -545,8 +516,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  60,
-        "questions":  30
+        "minutes":  60
     },
     {
         "title":  "Practice Exercise 1 - Percentage Test",
@@ -558,8 +528,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Practice Exercise 2 - Percentage Test",
@@ -571,11 +540,10 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
-        "title":  "Percentage Advance Level + PYQs",
+        "title":  "Percentage Advance Quant Test",
         "file":  "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-4.html",
         "original":  "Percentage Test-4.html",
         "folders":  [
@@ -584,11 +552,10 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  60,
-        "questions":  30
+        "minutes":  60
     },
     {
-        "title":  "Percentage CAT PYQ Practice Test",
+        "title":  "CAT Exam Practice Simulator",
         "file":  "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-5.html",
         "original":  "Percentage Test-5.html",
         "folders":  [
@@ -597,8 +564,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  40,
-        "questions":  26
+        "questions":  1
     },
     {
         "title":  "Practice Exercise - Percentage \u0026 Commission",
@@ -610,8 +576,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Practice Exercise - Percentage Part III",
@@ -623,8 +588,7 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Practice Exercise - Percentage \u0026 Commission II",
@@ -636,8 +600,20 @@
                         "Arithmetic",
                         "1.Percentage"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
+    },
+    {
+        "title":  "Ratio Proportion Variation Partnership Test -1",
+        "file":  "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/New folder/Ratio Proportion Variation Partnership  Test -1.html",
+        "original":  "Ratio Proportion Variation Partnership  Test -1.html",
+        "folders":  [
+                        "Topic Test",
+                        "QA",
+                        "Arithmetic",
+                        "2.Ratio Proportion",
+                        "New folder"
+                    ],
+        "minutes":  40
     },
     {
         "title":  "Practice Exercise 1 - Ratio Test",
@@ -649,8 +625,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Ratio Proportion -2 Advance 60 Minute Test",
@@ -662,8 +637,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "CAT CBT Exam Console - QA Section",
@@ -676,7 +650,7 @@
                         "2.Ratio Proportion"
                     ],
         "minutes":  60,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CAT CBT Exam Console - QA Section",
@@ -689,7 +663,7 @@
                         "2.Ratio Proportion"
                     ],
         "minutes":  60,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "CAT CBT Exam Console - QA Section",
@@ -702,7 +676,7 @@
                         "2.Ratio Proportion"
                     ],
         "minutes":  60,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "DPP 03 Ratio Proportion Test",
@@ -714,8 +688,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "DPP 01 Ratio and Proportion Test",
@@ -727,8 +700,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  30,
-        "questions":  0
+        "minutes":  30
     },
     {
         "title":  "Arithmetic DPP 04 MBA Pro 2025 Test",
@@ -740,8 +712,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "Practice Exercise 2 - Ratio Proportion Test",
@@ -753,8 +724,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "DPP 04 Ratio Proportion Partnership and Variation Test",
@@ -766,8 +736,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "DPP 05 Ratio Proportion Advance PYQ Test",
@@ -779,8 +748,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "Arithmetic DPP 03 MBA Pro 2025 Test",
@@ -792,8 +760,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "Ratio Proportion Test -1 40 Minute Test",
@@ -805,8 +772,7 @@
                         "Arithmetic",
                         "2.Ratio Proportion"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Profit, Loss and Discount 2 - Secure Test",
@@ -818,11 +784,10 @@
                         "Arithmetic",
                         "3.Profit \u0026 Loss"
                     ],
-        "minutes":  90,
-        "questions":  0
+        "minutes":  90
     },
     {
-        "title":  "Apti4All CAT Profit \u0026amp; Loss - 15 Inch Desktop Test",
+        "title":  "Apti4All CAT Profit \u0026 Loss - 15 Inch Desktop Test",
         "file":  "tests/Topic Test/QA/Arithmetic/3.Profit \u0026 Loss/Profit Loss  Test -5.html",
         "original":  "Profit Loss  Test -5.html",
         "folders":  [
@@ -831,8 +796,7 @@
                         "Arithmetic",
                         "3.Profit \u0026 Loss"
                     ],
-        "minutes":  95,
-        "questions":  0
+        "minutes":  95
     },
     {
         "title":  "Practice Exercise 1 - Profit and Loss Test",
@@ -844,8 +808,7 @@
                         "Arithmetic",
                         "3.Profit \u0026 Loss"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Profit, Loss and Discount - Full Secure Test",
@@ -857,8 +820,7 @@
                         "Arithmetic",
                         "3.Profit \u0026 Loss"
                     ],
-        "minutes":  90,
-        "questions":  0
+        "minutes":  90
     },
     {
         "title":  "DPP 10 - Profit, Loss and Discount CAT Desktop Test",
@@ -870,11 +832,10 @@
                         "Arithmetic",
                         "3.Profit \u0026 Loss"
                     ],
-        "minutes":  30,
-        "questions":  0
+        "minutes":  30
     },
     {
-        "title":  "SI \u0026amp; CI Test -1 40 Minute Test",
+        "title":  "SI \u0026 CI Test -1 40 Minute Test",
         "file":  "tests/Topic Test/QA/Arithmetic/4.SI \u0026 CI/SI \u0026 CI Test -1.html",
         "original":  "SI \u0026 CI Test -1.html",
         "folders":  [
@@ -883,8 +844,7 @@
                         "Arithmetic",
                         "4.SI \u0026 CI"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "SICI Advance Test -2 60 Minute Test",
@@ -896,8 +856,7 @@
                         "Arithmetic",
                         "4.SI \u0026 CI"
                     ],
-        "minutes":  60,
-        "questions":  0
+        "minutes":  60
     },
     {
         "title":  "Avrage Test -1 40 Minute Test",
@@ -909,8 +868,7 @@
                         "Arithmetic",
                         "5. Average"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Average Test -2 40 Minute Test",
@@ -922,8 +880,7 @@
                         "Arithmetic",
                         "5. Average"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Average Test -3 40 Minute Test",
@@ -936,7 +893,7 @@
                         "5. Average"
                     ],
         "minutes":  40,
-        "questions":  0
+        "questions":  1
     },
     {
         "title":  "Average Test -4 40 Minute Test",
@@ -948,8 +905,7 @@
                         "Arithmetic",
                         "5. Average"
                     ],
-        "minutes":  40,
-        "questions":  0
+        "minutes":  40
     },
     {
         "title":  "Average Test 5 75 Minute Test",
@@ -961,46 +917,42 @@
                         "Arithmetic",
                         "5. Average"
                     ],
-        "minutes":  75,
-        "questions":  0
+        "minutes":  75
     },
     {
         "title":  "Number System Properties of Numbers Basic Test",
-        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
-        "original":  "Properties Of Number Test -1.html",
+        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
+        "original":  "Number System - Properties of Numbers  Test -2 (2).html",
         "folders":  [
                         "Topic Test",
                         "QA",
                         "Number System",
                         "1.Properties Of Number"
                     ],
-        "minutes":  45,
-        "questions":  30
+        "minutes":  45
     },
     {
         "title":  "Number System Properties of Numbers Intermediate Test",
-        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
-        "original":  "Properties Of Number Test -2.html",
+        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
+        "original":  "Number System - Properties of Numbers  Test -2.html",
         "folders":  [
                         "Topic Test",
                         "QA",
                         "Number System",
                         "1.Properties Of Number"
                     ],
-        "minutes":  60,
-        "questions":  30
+        "minutes":  60
     },
     {
         "title":  "Number System Properties of Numbers Advance Test",
-        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
-        "original":  "Properties Of Number Test -3.html",
+        "file":  "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
+        "original":  "number-system-properties-of-numbers Test -3.html",
         "folders":  [
                         "Topic Test",
                         "QA",
                         "Number System",
                         "1.Properties Of Number"
                     ],
-        "minutes":  75,
-        "questions":  30
+        "minutes":  75
     }
 ]

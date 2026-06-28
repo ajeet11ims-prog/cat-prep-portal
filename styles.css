@@ -65,7 +65,7 @@ a { color: inherit; }
   box-shadow: 0 10px 22px rgba(248, 200, 78, 0.22);
 }
 .brand strong { display: block; font-size: 20px; line-height: 1.1; }
-.brand small { display: block; margin-top: 3px; color: #98a2b3; font-size: 12px; }
+.brand small { display: block; margin-top: 3px; color: #d0d5dd; font-size: 12px; font-weight: 850; }
 .find-box {
   display: flex;
   align-items: center;
