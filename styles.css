@@ -264,3 +264,101 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
   }
 }
 
+
+/* ===== Final V7 FORCE: show Think Without Ink banner even if index.html still has old text hero ===== */
+
+/* If the homepage still has the old .hero-card text block, convert that block into the image banner */
+.dashboard-panel .hero-card{
+  display:block !important;
+  width:100% !important;
+  min-height:0 !important;
+  height:auto !important;
+  aspect-ratio:3/1 !important;
+  padding:0 !important;
+  margin:0 0 22px 0 !important;
+  border:0 !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  background:
+    url("think-without-ink-header.webp"),
+    url("think-without-ink-header.png") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  box-shadow:0 24px 54px rgba(8,42,84,.24) !important;
+}
+
+/* Hide old text/buttons inside old hero card */
+.dashboard-panel .hero-card > *,
+.dashboard-panel .hero-card::before,
+.dashboard-panel .hero-card::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* If index.html has already been updated, this keeps the new banner perfect */
+.hero-banner-card{
+  display:block !important;
+  width:100% !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  background:#071b38 !important;
+  box-shadow:0 24px 54px rgba(8,42,84,.24) !important;
+  border:0 !important;
+  margin-bottom:22px !important;
+  line-height:0 !important;
+}
+.hero-banner-card img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:3/1 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+/* If the site is using older .dashboard-hero / .hero-copy-block classes, also force that layout */
+.dashboard-hero{
+  display:block !important;
+}
+.dashboard-hero .hero-copy-block{
+  display:block !important;
+  width:100% !important;
+  aspect-ratio:3/1 !important;
+  min-height:0 !important;
+  padding:0 !important;
+  margin:0 0 22px 0 !important;
+  border:0 !important;
+  border-radius:24px !important;
+  overflow:hidden !important;
+  background:
+    url("think-without-ink-header.webp"),
+    url("think-without-ink-header.png") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  box-shadow:0 24px 54px rgba(8,42,84,.24) !important;
+}
+.dashboard-hero .hero-copy-block > *,
+.dashboard-hero .hero-copy-block::before,
+.dashboard-hero .hero-copy-block::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* Hide old right stats panel only if it sits beside the old hero */
+.dashboard-hero .stats-panel{
+  display:none !important;
+}
+
+@media(max-width:760px){
+  .dashboard-panel .hero-card,
+  .hero-banner-card img,
+  .dashboard-hero .hero-copy-block{
+    aspect-ratio:16/9 !important;
+    border-radius:18px !important;
+    background-position:left center !important;
+    object-position:left center !important;
+  }
+}
+
