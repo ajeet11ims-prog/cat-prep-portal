@@ -24,6 +24,16 @@
     { key: "Full Length", label: "Full Length", icon: ICONS.flag, description: "Complete mock practice" }
   ];
 
+  const HOME_EMOJI = {
+    "Topic Test": "📚",
+    "Area Wise Test": "🎯",
+    "PYQ": "📁",
+    "Daily LRDI": "🧩",
+    "Daily RC": "📰",
+    "Sectional Test": "⏱️",
+    "Full Length": "🏁"
+  };
+
   const state = { tests: [], folders: [], folderKeys: new Set(), path: [], search: "" };
   const $ = (id) => document.getElementById(id);
   const els = {
@@ -162,8 +172,19 @@
       const count = rootCount(module.key);
       if (!count && !hasFolder(module.key)) return;
       const card = document.createElement("button");
-      card.type = "button"; card.className = "module-card";
-      card.innerHTML = `<div><span class="module-icon" aria-hidden="true">${module.icon}</span><strong>${escapeHtml(module.label)}</strong><span>${escapeHtml(module.description)}</span></div><span>${count ? count + " test" + (count === 1 ? "" : "s") : "0 tests"} →</span>`;
+      card.type = "button";
+      card.className = "module-card dashboard-style-card";
+      const countLine = count ? `${count} test${count === 1 ? "" : "s"} →` : "Coming soon →";
+      const emoji = HOME_EMOJI[module.key] || "📘";
+      card.innerHTML = `
+        <div class="dashboard-card-top">
+          <span class="dashboard-emoji" aria-hidden="true">${emoji}</span>
+        </div>
+        <div class="dashboard-card-copy">
+          <strong>${escapeHtml(module.label)}</strong>
+          <span>${escapeHtml(module.description)}</span>
+          <em>${escapeHtml(countLine)}</em>
+        </div>`;
       card.addEventListener("click", () => setPath([module.key]));
       els.homeModules.appendChild(card);
     });
