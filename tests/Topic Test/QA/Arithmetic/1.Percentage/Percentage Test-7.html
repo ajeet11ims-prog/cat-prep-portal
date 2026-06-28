@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise - Percentage Part III</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}
+    .qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}
+    .qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}
+    .qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}
+    .qbtn.correct{background:#72bd3b!important;color:#fff!important;border-color:#4f9727!important}
+    .qbtn.wrong{background:#e55b25!important;color:#fff!important;border-color:#b02a37!important}
+    .legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px;white-space:pre-wrap}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Practice Exercise - 2</h1><div class="meta">Percentage & Mixture | 25 Questions | 40 Minutes | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+      {
+        level: "Mixtures",
+        q: "A solution contains 15% of salt, from which 30 kg of water is removed. The quantity of salt remains 20% in that solution. Find the initial quantity of solution.",
+        type: "mcq",
+        options: ["90 kg", "100 kg", "120 kg", "150 kg"],
+        answer: 2,
+        solution: "Let the initial quantity of the solution be S kg.\nThe amount of salt remains constant before and after removing water:\n15% of S = 20% of (S - 30)\n0.15 * S = 0.20 * S - 6\n0.05 * S = 6 => S = 120 kg."
+      },
+      {
+        level: "Mixtures",
+        q: "Fresh fruit contains 68% water and dry fruit contains 20% water. How much dry fruit can be obtained from 55 kg of fresh fruits.",
+        type: "mcq",
+        options: ["20 kg", "22 kg", "25 kg", "30 kg"],
+        answer: 1,
+        solution: "Pulp content in fresh fruit = 100% - 68% = 32%.\nPulp content in dry fruit = 100% - 20% = 80%.\nThe mass of pulp remains constant:\n32% of 55 = 80% of Dry Fruit (D)\n0.32 * 55 = 0.80 * D => D = 22 kg."
+      },
+      {
+        level: "Taxation",
+        q: "Income of a person is increased by Rs. 4800. Tax rate decreases from 12% to 10%. Payable tax is same as before. If in both conditions 20% of income is tax free. Find his current income.",
+        type: "mcq",
+        options: ["Rs. 24000", "Rs. 26800", "Rs. 28800", "Rs. 30000"],
+        answer: 2,
+        solution: "Let the initial income be I. Current income = I + 4800.\nIn both cases, 20% of income is tax-free, meaning tax is computed on 80% of income.\nTax paid is the same:\n12% of (0.80 * I) = 10% of (0.80 * (I + 4800))\n12 * I = 10 * (I + 4800) => 2 * I = 48000 => I = 24000.\nCurrent Income = 24000 + 4800 = Rs. 28,800."
+      },
+      {
+        level: "Taxation",
+        q: "Income of a man is increased by Rs. 1800 and payable tax is decreased from 18% to 15%. In both cases 29.95% of income is tax free. Find his initial income if the tax paid remains unchanged.",
+        type: "mcq",
+        options: ["Rs. 8000", "Rs. 9000", "Rs. 10000", "Rs. 12000"],
+        answer: 1,
+        solution: "Tax remains unchanged, and the tax-free percentage is the same in both cases.\n18% of I = 15% of (I + 1800)\n18 * I = 15 * I + 27000 => 3 * I = 27000 => I = 9,000."
+      },
+      {
+        level: "Taxation",
+        q: "Income of a person decreased by 3000 Rs. and rate of income tax increased from 15% to 18%. The ratio of paid tax is 3 : 2. 26.5% of income is tax free. Find his initial income.",
+        type: "mcq",
+        options: ["Rs. 6000", "Rs. 6750", "Rs. 7200", "Rs. 7500"],
+        answer: 1,
+        solution: "Let initial income be I_1. Final income = I_1 - 3000.\nTaxable income fraction remains the same (100% - 26.5%).\nRatio of paid tax = [15% * I_1] / [18% * (I_1 - 3000)] = 3 / 2\n(15 * I_1) / (18 * (I_1 - 3000)) = 3/2\n5 * I_1 / (6 * (I_1 - 3000)) = 3/2\n10 * I_1 = 18 * I_1 - 54000 => 8 * I_1 = 54000 => I_1 = 6,750."
+      },
+      {
+        level: "Income & Savings",
+        q: "My income is Rs 20000. I spent 80% of my income. When my income increased by 20% then I spent Rs. 5000 more. Find the increase in my savings.",
+        type: "mcq",
+        options: ["Rs. 1000 decrease", "Rs. 1000 increase", "Rs. 500 decrease", "No change"],
+        answer: 0,
+        solution: "Initially: Income = 20000. Expenditure = 80% of 20000 = 16000. Savings = Rs. 4000.\nNew condition: Income = 20000 * 1.2 = 24000. Expenditure = 16000 + 5000 = 21000.\nNew Savings = 24000 - 21000 = Rs. 3000.\nSavings changed from 4000 to 3000, which is a decrease of Rs. 1000."
+      },
+      {
+        level: "Successive Spent",
+        q: "A father gives 1% of his monthly income to his 2 sons. He gives 80% of that amount to his elder son. From which he spends 80% of the amount that he acquires and his monthly saving remains Rs 20. Find the income of father.",
+        type: "mcq",
+        options: ["Rs. 10000", "Rs. 12500", "Rs. 15000", "Rs. 20000"],
+        answer: 1,
+        solution: "Let the father's income be I.\nAmount given to sons = 0.01 * I.\nElder son receives = 80% of 0.01 * I = 0.008 * I.\nElder son saves 20% of his portion = 0.20 * 0.008 * I = 0.0016 * I.\nGiven elder son's saving = 20 => 0.0016 * I = 20 => I = 20 / 0.0016 = Rs. 12,500."
+      },
+      {
+        level: "Successive Spent",
+        q: "A person gave 20% of his income to his elder son, 30% of the remaining to the younger son and 10% of the balance he donated to a trust. He is left with Rs. 10080. What was his income?",
+        type: "mcq",
+        options: ["Rs. 15000", "Rs. 18000", "Rs. 20000", "Rs. 25000"],
+        answer: 2,
+        solution: "Let the income be I.\nAfter elder son: Remaining = 0.80 * I.\nAfter younger son: Remaining = 0.70 * 0.80 * I = 0.56 * I.\nAfter trust: Remaining = 0.90 * 0.56 * I = 0.504 * I.\nGiven: 0.504 * I = 10080 => I = 10080 / 0.504 = Rs. 20,000."
+      },
+      {
+        level: "Averages & Percentages",
+        q: "In a school ratio of number of boys and girls is 4 : 1. 75% of boys and 70% of girls got scholarship. Find the percentage of students who did not get any scholarship.",
+        type: "mcq",
+        options: ["24%", "26%", "28%", "30%"],
+        answer: 1,
+        solution: "Let the number of boys be 400 and girls be 100. Total = 500.\nBoys not getting scholarship = 25% of 400 = 100.\nGirls not getting scholarship = 30% of 100 = 30.\nTotal not getting scholarship = 130.\nPercentage = (130 / 500) * 100 = 26%."
+      },
+      {
+        level: "Averages & Percentages",
+        q: "In an institute 60% of the students are boys and the rest are girls. Further 15% of the boys and 7.5% of the girls are getting a fee waiver. If the number of those getting a fee waiver is 90, find the total number of students getting 50% concessions if it is given that 50% of those not getting a fee waiver are eligible to get half fee concession?",
+        type: "mcq",
+        options: ["300", "330", "360", "400"],
+        answer: 1,
+        solution: "Let total students be 100x. Boys = 60x, Girls = 40x.\nFee waiver students = 15% of 60x + 7.5% of 40x = 9x + 3x = 12x.\nGiven: 12x = 90 => x = 7.5. Total students = 750.\nStudents not getting waiver = 750 - 90 = 660.\nStudents getting 50% concession = 50% of 660 = 330."
+      },
+      {
+        level: "Income & Savings",
+        q: "The sum of income of A, B and C is Rs. 72000. A, B and C spends 80%, 85% and 75% of his income respectively. The ratio of their savings is 8 : 9 : 20. Find the income of A.",
+        type: "mcq",
+        options: ["Rs. 16000", "Rs. 24000", "Rs. 32000", "Rs. 20000"],
+        answer: 0,
+        solution: "Savings percentage of A = 20%, B = 15%, C = 25%.\nRatio of savings: 20% of Ia : 15% of Ib : 25% of Ic = 8 : 9 : 20.\nIa * 0.2 = 8k => Ia = 40k.\nIb * 0.15 = 9k => Ib = 60k.\nIc * 0.25 = 20k => Ic = 80k.\nRatio of incomes Ia : Ib : Ic = 40 : 60 : 80 = 2 : 3 : 4.\nSum of ratios = 9 units => 9 units = 72000 => 1 unit = 8000.\nIncome of A = 2 * 8000 = Rs. 16,000."
+      },
+      {
+        level: "Equations",
+        q: "A number is divided into two parts in such a way that 80% of first part exceeds 60% of second part by 3. 80% of second part exceeds 90% of first part by 6. Find the number.",
+        type: "mcq",
+        options: ["120", "135", "150", "160"],
+        answer: 1,
+        solution: "Let the two parts be x and y.\n0.8x - 0.6y = 3 => 4x - 3y = 15\n0.8y - 0.9x = 6 => -9x + 8y = 60\nSolving these linear equations:\nMultiply Eq 1 by 8: 32x - 24y = 120\nMultiply Eq 2 by 3: -27x + 24y = 180\nAdding both: 5x = 300 => x = 60.\nSubstitute x = 60 into Eq 1: 240 - 3y = 15 => 3y = 225 => y = 75.\nThe number = 60 + 75 = 135."
+      },
+      {
+        level: "Comparisons",
+        q: "In a city 45% of the men are married and 25% of women are married. Considering that nobody is married more than once, what percent of the population is married?",
+        type: "mcq",
+        options: ["30%", "32.14%", "35%", "37.5%"],
+        answer: 1,
+        solution: "Let M be the number of men and W be the number of women.\nSince married men = married women:\n0.45 * M = 0.25 * W => M / W = 5 / 9.\nLet M = 500, W = 900. Total population = 1400.\nMarried men = 45% of 500 = 225.\nTotal married population = 225 + 225 = 450.\nPercentage married = (450 / 1400) * 100 = 32.14%."
+      },
+      {
+        level: "Averages & Percentages",
+        q: "There are 2/3 men in a village and the rest are women. 80% of the number of men and 70% of number of women are literate. 40% of literate men and 30% of literate women are graduate. 20% of graduate men and 25% of graduate women have government jobs. Working population of that village is what percent of total population?",
+        type: "mcq",
+        options: ["4.25%", "5.5%", "6.02%", "7.2%"],
+        answer: 2,
+        solution: "Let total population = 3000.\nMen = 2000, Women = 1000.\nLiterate men = 1600. Literate women = 700.\nGraduate men = 40% of 1600 = 640. Graduate women = 30% of 700 = 210.\nJob men = 20% of 640 = 128. Job women = 25% of 210 = 52.5.\nTotal working = 180.5.\nPercentage = (180.5 / 3000) * 100 = 6.02%."
+      },
+      {
+        level: "Averages & Percentages",
+        q: "In a climate conference, out of 700 men, 500 women, and 800 children present inside the building premises, 20% of the men, 40% of the women and 10% of the children were Indians. Find the percentage of people who were not Indian.",
+        type: "mcq",
+        options: ["75%", "79%", "81%", "85%"],
+        answer: 1,
+        solution: "Total population = 700 + 500 + 800 = 2000.\nIndian men = 140. Indian women = 200. Indian children = 80.\nTotal Indian population = 420.\nNon-Indians = 2000 - 420 = 1580.\nPercentage of non-Indians = (1580 / 2000) * 100 = 79%."
+      },
+      {
+        level: "Fractions",
+        q: "If the numerator of a fraction be increased by 20% and its denominator is decreased by 5%, the fraction becomes 5/2. Find the original fraction.",
+        type: "mcq",
+        options: ["95/48", "95/24", "48/95", "19/12"],
+        answer: 0,
+        solution: "Let the fraction be x/y.\n(1.20 * x) / (0.95 * y) = 5/2\n(120 / 95) * (x/y) = 5/2 => (24 / 19) * (x/y) = 5/2\nx/y = (5 * 19) / (2 * 24) = 95/48."
+      },
+      {
+        level: "Fractions",
+        q: "If the numerator of a fraction be increased by 15% and its denominator be diminished by 8%, the value of the fraction becomes 15/16. Find the original fraction.",
+        type: "mcq",
+        options: ["1/2", "3/4", "5/8", "7/16"],
+        answer: 1,
+        solution: "Let the fraction be x/y.\n(1.15 * x) / (0.92 * y) = 15/16\n(115 / 92) * (x/y) = 15/16 => (5 / 4) * (x/y) = 15/16\nx/y = (15 * 4) / (16 * 5) = 3/4."
+      },
+      {
+        level: "Price & Expenditure",
+        q: "A family consumes Rice, Daal and Wheat. The ratio of its expenditure is 12 : 17 : 3. If the price of those commodities increases by 20%, 30% and 50% respectively, by how much percent will the expenditure of that family increase?",
+        type: "mcq",
+        options: ["25%", "28.125%", "30%", "32.5%"],
+        answer: 1,
+        solution: "Initial expenditures: Rice = 12, Daal = 17, Wheat = 3. Total = 32.\nIncrease in expenses:\nRice = 12 * 0.20 = 2.4.\nDaal = 17 * 0.30 = 5.1.\nWheat = 3 * 0.50 = 1.5.\nTotal increase = 2.4 + 5.1 + 1.5 = 9.0.\nPercentage increase = (9 / 32) * 100 = 28.125%."
+      },
+      {
+        level: "Comparisons",
+        q: "In an examination, A secured 25% more marks than B. B secured 10% less marks than C. C secured 25% more marks than D. If D secured 320 marks out of 500, how many marks did A secure?",
+        type: "mcq",
+        options: ["400", "420", "450", "480"],
+        answer: 2,
+        solution: "D's marks = 320.\nC's marks = 320 * 1.25 = 400.\nB's marks = 400 * 0.90 = 360.\nA's marks = 360 * 1.25 = 450."
+      },
+      {
+        level: "Rebates",
+        q: "There is a rebate of 15% if electric bills are paid in time. A man got a rebate of Rs. 54 by paying the bill in time. His electric bill was:",
+        type: "mcq",
+        options: ["Rs. 300", "Rs. 320", "Rs. 360", "Rs. 400"],
+        answer: 2,
+        solution: "Let the bill be B.\n15% of B = 54 => 0.15 * B = 54 => B = 54 / 0.15 = Rs. 360."
+      },
+      {
+        level: "Exams & Marks",
+        q: "To pass an examination a candidate needs 40% marks. All questions carry equal marks. A candidate just passed by getting 10 answers correct by attempting 15 of the total questions. How many questions are there in the examination?",
+        type: "mcq",
+        options: ["20", "25", "30", "40"],
+        answer: 1,
+        solution: "Getting 10 correct answers yields exactly the passing score of 40%.\nTherefore, 10 questions represent 40% of the test.\nTotal questions = 10 / 0.40 = 25."
+      },
+      {
+        level: "Exams & Marks",
+        q: "In a test consisting of 80 questions, a student answered 75% of the first 60 questions correctly. The percentage of the other questions she needs to answer correctly so that her score on the entire examination be 80% is:",
+        type: "mcq",
+        options: ["85%", "90%", "95%", "100%"],
+        answer: 2,
+        solution: "Total correct answers needed = 80% of 80 = 64.\nFirst 60 questions correct = 75% of 60 = 45.\nCorrect answers needed from the remaining 20 questions = 64 - 45 = 19.\nRequired percentage = (19 / 20) * 100 = 95%."
+      },
+      {
+        level: "Exams & Marks",
+        q: "An examination consists of 80 questions carrying 1 mark each. Arpita answered 65% of the first 40 questions right. Find the percent of questions she needs to get right in the remaining questions to score 75% in the examination.",
+        type: "mcq",
+        options: ["80%", "85%", "90%", "92%"],
+        answer: 1,
+        solution: "Total marks needed = 75% of 80 = 60.\nCorrect answers in first 40 = 65% of 40 = 26.\nCorrect answers needed in remaining 40 = 60 - 26 = 34.\nRequired percentage = (34 / 40) * 100 = 85%."
+      },
+      {
+        level: "Investment & Profit",
+        q: "A businessman had income in the year 1995 such that he earned a profit of 20% on his investment in the business. In the year 1996 his investment was less by Rs. 5000 but still had the same income (Income = Investment + profit) as that in 1995. Thus the percent profit earned in 1996 increased by 26%. What was his investment in 1995?",
+        type: "mcq",
+        options: ["Rs. 25000", "Rs. 28077", "Rs. 30000", "Rs. 35000"],
+        answer: 1,
+        solution: "Let the 1995 investment be x.\n1995 Income = x * 1.20.\n1996 investment = x - 5000.\n1996 profit rate = 20% + 26% = 46%.\n1996 Income = (x - 5000) * 1.46.\nSince both incomes are equal:\n1.20 * x = 1.46 * (x - 5000)\n1.20 * x = 1.46 * x - 7300\n0.26 * x = 7300 => x = 7300 / 0.26 = Rs. 28,076.92."
+      },
+      {
+        level: "Equations",
+        q: "Difference of two numbers is 1660. If 6 <sup>1</sup>/<sub>2</sub>% of one number is equal to 8 <sup>1</sup>/<sub>2</sub>% of the other number, the smaller number is:",
+        type: "mcq",
+        options: ["4200", "5000", "5395", "6200"],
+        answer: 2,
+        solution: "Let the two numbers be A and B (A > B).\n6.5% of A = 8.5% of B => A/B = 8.5 / 6.5 = 17 / 13.\nLet A = 17x, B = 13x.\nDifference = 17x - 13x = 4x = 1660 => x = 415.\nSmaller number B = 13 * 415 = 5395."
+      }
+    ];
+
+    let current = 0, submitted = false, secondsLeft = 40 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function rich(s){return hasHtml(s) ? String(s) : esc(s);}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    
+    function renderBar(){
+      qbar.innerHTML = questions.map((q,i)=>{
+        let cls = '';
+        if (i === current) cls += 'current ';
+        
+        if (submitted) {
+          const r = isCorrect(q, responses[i]);
+          if (r === true) {
+            cls += 'correct answered ';
+          } else if (r === false) {
+            cls += 'wrong answered ';
+          }
+        } else {
+          if (responses[i] !== null && responses[i] !== '') cls += 'answered ';
+          if (marked[i]) cls += 'marked ';
+        }
+        
+        return '<button type="button" class="qbtn ' + cls + '" onclick="go(' + i + ')">' + (i + 1) + '</button>';
+      }).join('');
+    }
+    
+    function correctText(q){
+      return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);
+    }
+    
+    function contentBlock(html, cls){
+      return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';
+    }
+    
+    function control(q,i){
+      if(qType(q)==="mcq") {
+        return '<div class="options">' + (q.options||[]).map((op,j)=>
+          '<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>'
+        ).join('') + '</div>';
+      }
+      return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';
+    }
+    
+    function solutionHtml(q){
+      return rich(q.solution || "Solution not provided.");
+    }
+    
+    function renderQuestion(){
+      const q = questions[current];
+      host.innerHTML = '<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>' +
+        contentBlock(q.direction,'block') + 
+        contentBlock(q.passage,'block') + 
+        '<div class="qtext">'+rich(qText(q))+'</div>' + 
+        control(q,current) + 
+        '<div id="note" class="answer-note"></div>' + 
+        '<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div>' + 
+        '<div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';
+      
+      if(submitted) showReviewForCurrent();
+      bindAnswer();
+      renderBar();
+    }
+    
+    function bindAnswer(){
+      host.querySelectorAll('[name^="answer_"]').forEach(el=>{
+        if(responses[current]===null && el.type==='radio') el.checked = false;
+        el.addEventListener('input',()=>{
+          responses[current] = el.type==='radio' ? el.value : el.value;
+          renderBar();
+        });
+        el.addEventListener('change',()=>{
+          responses[current] = el.type==='radio' ? el.value : el.value;
+          renderBar();
+        });
+      });
+    }
+    
+    function saveCurrent(){
+      const el = host.querySelector('[name^="answer_"]:checked') || host.querySelector('input.typed-answer');
+      if(el && !submitted) responses[current] = el.value || null;
+    }
+    
+    function go(i){ saveCurrent(); current = i; renderQuestion(); }
+    function prevQ(){ if(current>0) go(current-1); }
+    function nextQ(){ if(current<questions.length-1) go(current+1); }
+    function markReviewNext(){ marked[current] = true; if(current<questions.length-1) nextQ(); else renderQuestion(); }
+    function clearResponse(){ responses[current] = null; renderQuestion(); }
+    
+    function isCorrect(q,ans){
+      if(ans===null || ans==='') return null;
+      if(qType(q)==='mcq') return Number(ans)===Number(q.answer);
+      const accepted = (q.accepted && q.accepted.length ? q.accepted : [qAnswer(q)]).map(norm);
+      return accepted.includes(norm(ans));
+    }
+    
+    function showReviewForCurrent(){
+      const q = questions[current], r = isCorrect(q,responses[current]), note = document.getElementById('note'), sol = document.getElementById('solution');
+      sol.style.display = 'block';
+      if(r===null){
+        note.className = 'answer-note muted';
+        note.textContent = 'Unattempted. Correct answer: ' + correctText(q);
+      } else if(r){
+        note.className = 'answer-note ok';
+        note.textContent = 'Correct.';
+      } else {
+        note.className = 'answer-note bad';
+        note.textContent = 'Wrong. Correct answer: ' + correctText(q);
+      }
+    }
+    
+    function submitTest(){
+      if(submitted) return;
+      saveCurrent();
+      submitted = true;
+      let c=0, w=0, u=0;
+      questions.forEach((q,i)=>{
+        const r = isCorrect(q,responses[i]);
+        if(r===null) u++;
+        else if(r) c++;
+        else w++;
+      });
+      const score = c*3 - w;
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = '<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';
+      showReviewForCurrent();
+      renderBar();
+      resultBox.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    
+    function tick(){
+      const m = Math.floor(secondsLeft/60), s = secondsLeft%60;
+      document.getElementById('time').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if(secondsLeft<=0){ submitTest(); return; }
+      secondsLeft--;
+    }
+    
+    function calcEval(expr){
+      if(!/^[0-9+\-*/().%\s]+$/.test(expr)) return 'Error';
+      return Function('return ('+expr.replace(/%/g,'/100')+')')();
+    }
+    
+    function updateCalcSub(){
+      document.getElementById('calcSubDisplay').textContent = document.getElementById('calcDisplay').value || '0';
+    }
+    
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{
+      const d = document.getElementById('calcDisplay'), v = btn.dataset.calc;
+      if(['MC','MR','MS','M+','M-'].includes(v)) return;
+      if(v==='C') d.value='';
+      else if(v==='B') d.value = d.value.slice(0,-1);
+      else if(v==='+/-') { d.value = d.value.startsWith('-') ? d.value.slice(1) : ('-'+d.value); }
+      else if(v==='sqrt') {
+        try { d.value = Math.sqrt(Number(calcEval(d.value||'0'))); } catch(e) { d.value='Error'; }
+      } else if(v==='1/x') {
+        try { d.value = 1/Number(calcEval(d.value||'0')); } catch(e) { d.value='Error'; }
+      } else if(v==='=') {
+        try { d.value = calcEval(d.value); } catch(e) { d.value='Error'; }
+      } else d.value += v;
+      updateCalcSub();
+    }));
+    
+    const calcPopup = document.getElementById('calcPopup'), calcDragHandle = document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{
+      calcPopup.classList.toggle('open');
+      if(calcPopup.classList.contains('open') && !calcPopup.dataset.moved){
+        calcPopup.style.left = '52%'; calcPopup.style.top = '120px';
+      }
+    });
+    
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{ e.stopPropagation(); calcPopup.classList.remove('open'); });
+    
+    let dragCalc = false, calcDx = 0, calcDy = 0;
+    calcDragHandle.addEventListener('pointerdown',e=>{
+      dragCalc = true;
+      calcDragHandle.setPointerCapture(e.pointerId);
+      const r = calcPopup.getBoundingClientRect();
+      calcDx = e.clientX - r.left;
+      calcDy = e.clientY - r.top;
+      calcPopup.style.left = r.left + 'px';
+      calcPopup.style.top = r.top + 'px';
+      calcPopup.style.right = 'auto';
+      calcPopup.dataset.moved = '1';
+      e.preventDefault();
+    });
+    
+    calcDragHandle.addEventListener('pointermove',e=>{
+      if(!dragCalc) return;
+      const maxX = window.innerWidth - calcPopup.offsetWidth - 4, maxY = window.innerHeight - calcPopup.offsetHeight - 4;
+      calcPopup.style.left = Math.max(4, Math.min(maxX, e.clientX - calcDx)) + 'px';
+      calcPopup.style.top = Math.max(4, Math.min(maxY, e.clientY - calcDy)) + 'px';
+    });
+    
+    calcDragHandle.addEventListener('pointerup',e=>{ dragCalc = false; try { calcDragHandle.releasePointerCapture(e.pointerId); } catch(err){} });
+    calcDragHandle.addEventListener('pointercancel',()=>{ dragCalc = false; });
+    
+    renderQuestion();
+    tick();
+    setInterval(tick,1000);
+  </script>
+</body>
+</html>

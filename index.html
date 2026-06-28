@@ -1,57 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CAT Prep With Ajeet Sir</title>
-  <link rel="stylesheet" href="styles.css?v=folder-tree-3" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#home" aria-label="Go to home">
-      <span class="mark">CAT</span>
-      <span>
-        <strong>CAT Prep With Ajeet Sir</strong>
-        <small>Folder-wise student test portal</small>
-      </span>
-    </a>
-    <button class="ghost-link" id="homeButton" type="button">Home</button>
-  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Prep navigation">
+      <a class="brand" href="#home" aria-label="Go to home">
+        <span class="mark">CAT</span>
+        <span>
+          <strong>CAT Prep</strong>
+          <small>with Ajeet Sir</small>
+        </span>
+      </a>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Student Test Portal</p>
-        <h1>Choose a folder and open the test in full-page exam mode.</h1>
-        <p class="subcopy">The portal follows the same folder indexing as the uploaded CAT PREP with Ajeet sir course folder.</p>
-      </div>
-      <div class="hero-panel" aria-label="Portal summary">
-        <div><strong id="totalTests">0</strong><span>Total tests</span></div>
-        <div><strong id="folderBoxCount">0</strong><span>Folder boxes</span></div>
-        <div><strong>Full page</strong><span>Exam mode</span></div>
-      </div>
-    </section>
+      <button class="find-box" id="homeButton" type="button">
+        <span>Dashboard</span>
+        <kbd>Home</kbd>
+      </button>
 
-    <section class="folder-section" aria-labelledby="currentFolderTitle">
-      <div class="section-head with-action">
-        <div>
-          <p class="eyebrow" id="folderPathLabel">Home</p>
-          <h2 id="currentFolderTitle">CAT PREP with Ajeet sir</h2>
-          <p id="folderCountLine" class="muted-line">0 tests</p>
+      <nav class="side-nav" aria-label="Primary">
+        <a href="#folder/topic-test" class="side-link">
+          <span class="nav-icon">T</span>
+          <span>Topic Tests</span>
+        </a>
+        <a href="#folder/pyq" class="side-link">
+          <span class="nav-icon">P</span>
+          <span>Previous Papers</span>
+        </a>
+        <a href="#folder/sectional-test" class="side-link">
+          <span class="nav-icon">S</span>
+          <span>Sectionals</span>
+        </a>
+        <a href="#folder/full-length" class="side-link">
+          <span class="nav-icon">F</span>
+          <span>Full Length</span>
+        </a>
+      </nav>
+
+      <div class="side-note">
+        <span>Exam mode</span>
+        <strong>Full-page tests</strong>
+        <p>Every test opens in a clean attempt window.</p>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="ticker">
+          <strong>CAT Dashboard</strong>
+          <span id="crumbTrail">CAT-MBA</span>
         </div>
-        <button class="back-btn" type="button" id="backButton">Back</button>
-      </div>
+        <div class="top-actions">
+          <a href="#folder/daily-lrdi">Daily LRDI</a>
+          <a href="#folder/topic-test-qa">QA</a>
+          <a href="#folder/topic-test-lrdi">LRDI</a>
+        </div>
+      </header>
 
-      <div class="test-tools">
-        <input id="searchInput" type="search" placeholder="Search tests or folders in this folder..." />
-      </div>
+      <main>
+        <section class="notice-row" aria-label="Prep updates">
+          <div>
+            <strong>Practice queue is live</strong>
+            <span>Open any folder, pick a test, and attempt in full-page exam mode.</span>
+          </div>
+          <a href="#folder/pyq">Open PYQs</a>
+        </section>
 
-      <div id="folderGrid" class="folder-grid"></div>
-      <div id="testGrid" class="test-grid"></div>
-    </section>
-  </main>
+        <section class="dashboard-hero" aria-labelledby="courseTitle">
+          <div class="hero-copy-block">
+            <p class="eyebrow">CAT-MBA Prep Zone</p>
+            <h1 id="courseTitle">One place for topic tests, PYQs, sectionals, and full mocks.</h1>
+            <p class="hero-copy">Built like a study dashboard: quick navigation, clean test cards, folder-wise practice, and no friction before attempting.</p>
+            <div class="hero-actions" aria-label="Study paths">
+              <a href="#folder/topic-test">Topic-wise practice</a>
+              <a href="#folder/pyq">Previous papers</a>
+              <a href="#folder/daily-lrdi">Daily sets</a>
+            </div>
+          </div>
+          <aside class="stats-panel" aria-label="Portal summary">
+            <div>
+              <strong id="totalTests">0</strong>
+              <span>Total tests</span>
+            </div>
+            <div>
+              <strong id="folderCount">0</strong>
+              <span>Folders</span>
+            </div>
+            <div>
+              <strong id="currentCount">0</strong>
+              <span>This view</span>
+            </div>
+          </aside>
+        </section>
 
-  <script src="tests-data.js?v=folder-tree-3"></script>
-  <script src="app.js?v=folder-tree-3"></script>
+        <section class="quick-grid" aria-label="Quick prep areas">
+          <a class="quick-card orange" href="#folder/topic-test-qa">
+            <span>QA</span>
+            <strong>Arithmetic, Algebra, Numbers</strong>
+          </a>
+          <a class="quick-card green" href="#folder/topic-test-lrdi">
+            <span>LRDI</span>
+            <strong>DI sets, LR games, daily drills</strong>
+          </a>
+          <a class="quick-card purple" href="#folder/pyq">
+            <span>PYQ</span>
+            <strong>Previous year question practice</strong>
+          </a>
+          <a class="quick-card blue" href="#folder/area-wise-test">
+            <span>Area Wise</span>
+            <strong>Focused section-level practice</strong>
+          </a>
+        </section>
+
+        <section class="view active-view" aria-label="Test folders and tests">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" id="pathLabel">Course Content</p>
+              <h2 id="sectionTitle">Browse Tests</h2>
+            </div>
+            <button class="back-btn" type="button" id="backButton">Back</button>
+          </div>
+
+          <div class="test-tools">
+            <input id="searchInput" type="search" placeholder="Search tests in this folder...">
+          </div>
+
+          <div id="folderGrid" class="folder-grid"></div>
+          <div id="testGrid" class="test-grid"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="tests-data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
