@@ -1,125 +1,94 @@
 <!doctype html>
 <html lang="en">
-  <!-- index.html -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CAT Prep Portal</title>
-  
-  <!-- Add/Check these links -->
-  <link rel="stylesheet" href="portal-calm-theme.css">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAT Prep with Ajeet Sir</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
- <body>
+<body>
   <div class="app-shell">
     <aside class="sidebar" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Go to dashboard">
+      <a class="brand" href="#home" data-path="home" aria-label="CAT Prep Home">
         <span class="brand-mark">CAT</span>
-        <span class="brand-copy">
-          <strong>CAT Prep</strong>
-          <small>with Ajeet Sir</small>
-        </span>
+        <span class="brand-text"><strong>CAT Prep</strong><small>with Ajeet Sir</small></span>
       </a>
 
-      <nav class="side-nav" id="sideNav">
-        <a class="nav-item" data-route="home" href="#home">
-          <span class="nav-icon">⌂</span>
-          <span class="nav-text">Dashboard</span>
-        </a>
-        <a class="nav-item" data-route="topic-test" href="#folder/topic-test">
-          <span class="nav-icon">T</span>
-          <span class="nav-text">Topic Tests</span>
-          <span class="nav-count" id="topicSideCount">0</span>
-        </a>
-        <a class="nav-item" data-route="area-wise" href="#folder/area-wise">
-          <span class="nav-icon">A</span>
-          <span class="nav-text">Area Wise Test</span>
-          <span class="nav-count" id="areaSideCount">0</span>
-        </a>
-        <a class="nav-item" data-route="previous-papers" href="#folder/previous-papers">
-          <span class="nav-icon">P</span>
-          <span class="nav-text">Previous Papers</span>
-          <span class="nav-count" id="pyqSideCount">0</span>
-        </a>
-        <a class="nav-item" data-route="sectionals" href="#folder/sectionals">
-          <span class="nav-icon">S</span>
-          <span class="nav-text">Sectionals</span>
-          <span class="nav-count" id="sectionalSideCount">0</span>
-        </a>
-        <a class="nav-item" data-route="full-length" href="#folder/full-length">
-          <span class="nav-icon">F</span>
-          <span class="nav-text">Full Length</span>
-          <span class="nav-count" id="fullSideCount">0</span>
-        </a>
+      <nav class="side-nav">
+        <a class="side-link" href="#home" data-path="home"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+        <a class="side-link" href="#folder/topic-test" data-path="Topic Test"><span class="nav-icon">T</span><span>Topic Tests</span><em id="countTopic">0</em></a>
+        <a class="side-link" href="#folder/area-wise-test" data-path="Area Wise Test"><span class="nav-icon">A</span><span>Area Wise Test</span><em id="countArea">0</em></a>
+        <a class="side-link" href="#folder/pyq" data-path="PYQ"><span class="nav-icon">P</span><span>Previous Papers</span><em id="countPyq">0</em></a>
+        <a class="side-link" href="#folder/sectionals" data-path="Sectionals"><span class="nav-icon">S</span><span>Sectionals</span><em id="countSectional">0</em></a>
+        <a class="side-link" href="#folder/full-length" data-path="Full Length"><span class="nav-icon">F</span><span>Full Length</span><em id="countFull">0</em></a>
       </nav>
 
-      <div class="sidebar-note">
-        <span class="note-label">Student mode</span>
+      <div class="student-note">
+        <span>Student Mode</span>
         <strong>Simple path → Start Test</strong>
-        <span>Folder-wise tests with calm exam console.</span>
+        <p>Folder-wise tests with calm exam console.</p>
       </div>
     </aside>
 
-    <main class="main-area">
+    <main class="workspace">
       <header class="top-strip">
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">☰</button>
-        <div class="top-copy">
-          <p class="eyebrow" id="pageEyebrow">STUDENT TEST PORTAL</p>
+        <div>
+          <p class="eyebrow" id="pathLabel">Course Content</p>
           <h1 id="pageTitle">Dashboard</h1>
-          <p class="page-subtitle" id="pageSubtitle">Choose a section, open the folder, and start the test without confusion.</p>
+          <p id="pageSubtitle">Topic-wise practice arranged folder by folder.</p>
         </div>
-        <a class="home-chip" href="#home">Home</a>
+        <a class="home-pill" href="#home">Home</a>
       </header>
 
-      <section class="summary-row" aria-label="Portal summary">
-        <article class="summary-card">
-          <span id="totalTests">0</span>
-          <small>Total Tests</small>
-        </article>
-        <article class="summary-card">
-          <span id="topicCount">0</span>
-          <small>Topic Tests</small>
-        </article>
-        <article class="summary-card">
-          <span id="areaCount">0</span>
-          <small>Area Wise</small>
-        </article>
-        <article class="summary-card">
-          <span id="pyqCount">0</span>
-          <small>PYQs</small>
-        </article>
-        <article class="summary-card">
-          <span id="sectionalCount">0</span>
-          <small>Sectionals</small>
-        </article>
-        <article class="summary-card">
-          <span id="fullCount">0</span>
-          <small>Full Length</small>
-        </article>
+      <section class="metric-row" aria-label="Portal metrics">
+        <article><strong id="totalTests">0</strong><span>Total Tests</span></article>
+        <article><strong id="topicTests">0</strong><span>Topic Tests</span></article>
+        <article><strong id="areaTests">0</strong><span>Area Wise</span></article>
+        <article><strong id="pyqTests">0</strong><span>PYQs</span></article>
+        <article><strong id="sectionalTests">0</strong><span>Sectionals</span></article>
+        <article><strong id="fullTests">0</strong><span>Full Length</span></article>
       </section>
 
-      <section class="content-card">
-        <div class="content-toolbar">
+      <section class="dashboard-panel" id="homePanel">
+        <div class="hero-card">
           <div>
-            <div class="breadcrumb" id="breadcrumb">Dashboard</div>
-            <h2 id="contentTitle">Browse Tests</h2>
-            <p id="contentNote">Use category cards or search any topic/test name.</p>
+            <p class="eyebrow">Premium Practice Dashboard</p>
+            <h2>One clean place for CAT topic tests, PYQs and mocks.</h2>
+            <p>Choose a section, open a topic, and start a test without confusion.</p>
           </div>
-          <label class="search-wrap" id="searchWrap">
-            <span>Quick Search</span>
-            <input id="searchInput" type="search" placeholder="Search Percentage, Ratio, CAT 2023..." autocomplete="off" />
-          </label>
+          <div class="hero-actions">
+            <a href="#folder/topic-test">Open Topic Tests</a>
+            <a href="#folder/area-wise-test">Area Wise Practice</a>
+          </div>
         </div>
 
-        <div id="dashboardView" class="view-panel"></div>
-        <div id="folderView" class="view-panel" hidden></div>
-        <div id="testView" class="view-panel" hidden></div>
+        <div class="module-grid" id="homeModules"></div>
+      </section>
+
+      <section class="content-panel" id="folderPanel" hidden>
+        <div class="panel-head">
+          <div>
+            <p class="breadcrumb" id="crumbTrail">Course Content</p>
+            <h2 id="sectionTitle">Browse Tests</h2>
+            <p id="sectionMeta">Folder-wise tests with calm exam console.</p>
+          </div>
+          <div class="tools">
+            <label>
+              <span>Quick Search</span>
+              <input id="searchInput" type="search" placeholder="Search Percentage, Ratio, CAT 2023..." autocomplete="off" />
+            </label>
+          </div>
+        </div>
+
+        <button class="back-btn" id="backButton" type="button">← Back</button>
+        <div class="folder-grid" id="folderGrid"></div>
+        <div class="test-grid" id="testGrid"></div>
       </section>
     </main>
   </div>
 
   <script src="tests-data.js"></script>
-<script src="profit-loss-tests-addon.js"></script>
-<script src="app.js"></script>
+  <script src="profit-loss-tests-addon.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

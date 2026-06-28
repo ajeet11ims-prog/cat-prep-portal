@@ -1,499 +1,242 @@
-(function () {
-  "use strict";
-
+(function(){
   const tests = Array.isArray(window.CAT_TESTS) ? window.CAT_TESTS : [];
-  const declaredFolders = Array.isArray(window.CAT_FOLDERS) ? window.CAT_FOLDERS : [];
-
-  const ROOTS = {
-    home: { label: "Dashboard", path: [], icon: "⌂", subtitle: "Search or choose a section. Each test opens in the exam console." },
-    "topic-test": { label: "Topic Tests", path: ["Topic Test"], icon: "T", subtitle: "Topic-wise practice arranged folder by folder." },
-    "area-wise": { label: "Area Wise Test", path: ["Area Wise Test"], fallbackNames: ["Area Wise", "Area Wise Tests", "Area wise Test", "Area Wise Test Folder", "Area Wise Section"], icon: "A", subtitle: "Focused area-wise practice folders for QA, LRDI and section-level drills." },
-    "previous-papers": { label: "Previous Papers", path: ["PYQ"], fallbackNames: ["Previous Papers", "Previous Paper", "Past Papers", "Past Year Papers"], icon: "P", subtitle: "Past-year practice papers arranged for quick access." },
-    sectionals: { label: "Sectionals", path: ["Sectional Test"], fallbackNames: ["Sectionals", "Sectional"], icon: "S", subtitle: "Section-wise timed tests for focused practice." },
-    "full-length": { label: "Full Length", path: ["Full Length"], fallbackNames: ["Full Test", "Full Length Test", "Mock Test", "Mocks"], icon: "F", subtitle: "Complete mock tests and full-length practice papers." }
-  };
+  const foldersSeed = Array.isArray(window.CAT_FOLDERS) ? window.CAT_FOLDERS : [];
 
   const els = {
-    sidebar: document.querySelector(".sidebar"),
-    menuToggle: document.getElementById("menuToggle"),
-    pageEyebrow: document.getElementById("pageEyebrow"),
-    pageTitle: document.getElementById("pageTitle"),
-    pageSubtitle: document.getElementById("pageSubtitle"),
-    contentTitle: document.getElementById("contentTitle"),
-    contentNote: document.getElementById("contentNote"),
-    breadcrumb: document.getElementById("breadcrumb"),
-    searchWrap: document.getElementById("searchWrap"),
-    searchInput: document.getElementById("searchInput"),
-    dashboardView: document.getElementById("dashboardView"),
-    folderView: document.getElementById("folderView"),
-    testView: document.getElementById("testView"),
-    totalTests: document.getElementById("totalTests"),
-    topicCount: document.getElementById("topicCount"),
-    areaCount: document.getElementById("areaCount"),
-    pyqCount: document.getElementById("pyqCount"),
-    sectionalCount: document.getElementById("sectionalCount"),
-    fullCount: document.getElementById("fullCount"),
-    topicSideCount: document.getElementById("topicSideCount"),
-    areaSideCount: document.getElementById("areaSideCount"),
-    pyqSideCount: document.getElementById("pyqSideCount"),
-    sectionalSideCount: document.getElementById("sectionalSideCount"),
-    fullSideCount: document.getElementById("fullSideCount")
+    homePanel: document.getElementById('homePanel'),
+    folderPanel: document.getElementById('folderPanel'),
+    pageTitle: document.getElementById('pageTitle'),
+    pageSubtitle: document.getElementById('pageSubtitle'),
+    pathLabel: document.getElementById('pathLabel'),
+    crumbTrail: document.getElementById('crumbTrail'),
+    sectionTitle: document.getElementById('sectionTitle'),
+    sectionMeta: document.getElementById('sectionMeta'),
+    folderGrid: document.getElementById('folderGrid'),
+    testGrid: document.getElementById('testGrid'),
+    searchInput: document.getElementById('searchInput'),
+    backButton: document.getElementById('backButton'),
+    homeModules: document.getElementById('homeModules'),
+    totalTests: document.getElementById('totalTests'),
+    topicTests: document.getElementById('topicTests'),
+    areaTests: document.getElementById('areaTests'),
+    pyqTests: document.getElementById('pyqTests'),
+    sectionalTests: document.getElementById('sectionalTests'),
+    fullTests: document.getElementById('fullTests'),
+    countTopic: document.getElementById('countTopic'),
+    countArea: document.getElementById('countArea'),
+    countPyq: document.getElementById('countPyq'),
+    countSectional: document.getElementById('countSectional'),
+    countFull: document.getElementById('countFull'),
   };
 
   let currentPath = [];
-  let currentRoute = "home";
-  let searchTerm = "";
+  let searchTerm = '';
 
-  function normalize(value) {
-    return String(value || "")
-      .toLowerCase()
-      .replace(/&/g, " and ")
-      .replace(/[^a-z0-9]+/g, " ")
-      .trim();
+  function slug(value){
+    return String(value || '').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  }
+  function norm(value){ return slug(value); }
+  function samePath(a,b){ return a.length === b.length && a.every((x,i)=>x===b[i]); }
+  function escapeHtml(value){
+    return String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function displayName(name){ return String(name || '').replace(/^\d+\s*\.\s*/,'').trim() || String(name || 'Folder'); }
+  function iconFor(name){
+    const clean = displayName(name).trim();
+    if (/qa/i.test(clean)) return '∑';
+    if (/lrdi/i.test(clean)) return '▦';
+    if (/varc/i.test(clean)) return 'A';
+    if (/profit/i.test(clean)) return '₹';
+    if (/percentage/i.test(clean)) return '%';
+    return (clean[0] || 'F').toUpperCase();
   }
 
-  function slug(value) {
-    return normalize(value).replace(/\s+/g, "-");
-  }
-
-  function samePath(a, b) {
-    return a.length === b.length && a.every((part, i) => part === b[i]);
-  }
-
-  function startsWithPath(full, prefix) {
-    return prefix.every((part, i) => full[i] === part);
-  }
-
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>'"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[c]));
-  }
-
-  function folderPath(test) {
-    return Array.isArray(test && test.folders) ? test.folders.filter(Boolean) : [];
-  }
-
-  function allFolderKeys() {
-    const keys = new Set();
-    declaredFolders.forEach(folder => {
-      const path = folderPath({ folders: folder.path });
-      path.forEach((_, i) => keys.add(path.slice(0, i + 1).join(" / ")));
+  function folderPaths(){
+    const map = new Map();
+    foldersSeed.forEach(f=>{
+      const path = Array.isArray(f.path) ? f.path : [];
+      if(path.length) map.set(path.join(' / '), {name:f.name || path[path.length-1], path});
     });
-    tests.forEach(test => {
-      const path = folderPath(test);
-      path.forEach((_, i) => keys.add(path.slice(0, i + 1).join(" / ")));
+    tests.forEach(t=>{
+      const path = Array.isArray(t.folders) ? t.folders : [];
+      path.forEach((_,i)=>{
+        const partial = path.slice(0,i+1);
+        const key = partial.join(' / ');
+        if(!map.has(key)) map.set(key,{name:partial[partial.length-1], path:partial});
+      });
     });
-    return Array.from(keys).filter(Boolean);
+    return Array.from(map.values());
   }
 
-  function folderExists(path) {
-    const key = path.join(" / ");
-    return allFolderKeys().includes(key);
+  function countUnder(path){
+    return tests.filter(t=>samePath((t.folders || []).slice(0,path.length), path)).length;
+  }
+  function findFolderPathBySlug(hashSlug){
+    const all = folderPaths();
+    return (all.find(f=>slug(f.path.join(' / ')) === hashSlug) || {}).path || [];
+  }
+  function pathFromHash(){
+    const raw = decodeURIComponent(location.hash.replace(/^#/,''));
+    if(!raw || raw === 'home') return [];
+    if(!raw.startsWith('folder/')) return [];
+    return findFolderPathBySlug(raw.replace('folder/',''));
+  }
+  function setHash(path){
+    const next = path.length ? '#folder/' + slug(path.join(' / ')) : '#home';
+    if(location.hash !== next) history.replaceState(null,'',next);
   }
 
-  function routeRootPath(routeKey) {
-    const root = ROOTS[routeKey] || ROOTS.home;
-    if (!root.path.length) return [];
-    const exact = folderExists(root.path) || tests.some(t => startsWithPath(folderPath(t), root.path));
-    if (exact) return root.path;
-    for (const name of root.fallbackNames || []) {
-      const path = [name];
-      if (folderExists(path) || tests.some(t => startsWithPath(folderPath(t), path))) return path;
-    }
-    return root.path;
-  }
-
-  function pathSlug(path) {
-    return slug(path.join(" / "));
-  }
-
-  function pathFromHash() {
-    const raw = decodeURIComponent((window.location.hash || "#home").replace(/^#/, ""));
-    if (!raw || raw === "home") return { route: "home", path: [] };
-    if (ROOTS[raw]) return { route: raw, path: routeRootPath(raw) };
-
-    const wanted = raw.startsWith("folder/") ? raw.replace("folder/", "") : raw;
-    const aliasMap = {
-      "topic-test": "topic-test",
-      "topic-tests": "topic-test",
-      "area-wise": "area-wise",
-      "area-wise-test": "area-wise",
-      "area-wise-tests": "area-wise",
-      "area-wise-folder": "area-wise",
-      "areawise": "area-wise",
-      "areawise-test": "area-wise",
-      "previous-papers": "previous-papers",
-      "pyq": "previous-papers",
-      "sectionals": "sectionals",
-      "sectional-test": "sectionals",
-      "full-length": "full-length",
-      "full-length-test": "full-length"
-    };
-    if (aliasMap[wanted]) return { route: aliasMap[wanted], path: routeRootPath(aliasMap[wanted]) };
-
-    const keys = allFolderKeys();
-    const exact = keys.find(key => slug(key) === wanted);
-    if (exact) {
-      const path = exact.split(" / ");
-      return { route: routeForPath(path), path };
-    }
-
-    const routeHit = Object.keys(ROOTS).find(routeKey => routeKey !== "home" && (wanted === routeKey || wanted.startsWith(routeKey + "-")));
-    if (routeHit) {
-      const rootPath = routeRootPath(routeHit);
-      const rootSlug = slug((ROOTS[routeHit].path || [routeHit])[0] || routeHit);
-      const possible = keys
-        .map(key => key.split(" / "))
-        .filter(path => startsWithPath(path, rootPath));
-      const stripped = wanted.replace(routeHit + "-", "");
-      const best = possible.find(path => wanted === pathSlug(path) || wanted.endsWith(pathSlug(path).replace(rootSlug + "-", "")))
-        || possible.find(path => pathSlug(path).includes(stripped));
-      if (best) return { route: routeHit, path: best };
-      return { route: routeHit, path: rootPath };
-    }
-
-    if (wanted.startsWith("topic-qa")) {
-      const translated = wanted.replace(/^topic-qa/, "topic-test-qa");
-      const match = allFolderKeys().find(key => slug(key).includes(translated.replace("topic-test-", "")));
-      if (match) return { route: "topic-test", path: match.split(" / ") };
-      return { route: "topic-test", path: ["Topic Test", "QA"] };
-    }
-
-    return { route: "home", path: [] };
-  }
-
-  function routeForPath(path) {
-    if (!path.length) return "home";
-    for (const routeKey of Object.keys(ROOTS)) {
-      if (routeKey === "home") continue;
-      if (startsWithPath(path, routeRootPath(routeKey))) return routeKey;
-    }
-    return "home";
-  }
-
-  function shouldFlattenFolderName(name) {
-    const clean = normalize(cleanFolderName(name));
-    return clean === "new folder" || clean === "newfolder" || clean === "untitled folder" || clean === "untitled";
-  }
-
-  function childData(path) {
+  function childrenFor(path){
     const folderMap = new Map();
-    const directTests = [];
-    tests.forEach(test => {
-      const tPath = folderPath(test);
-      if (!startsWithPath(tPath, path)) return;
-      if (tPath.length > path.length) {
-        const childName = tPath[path.length];
-
-        // Do not show accidental/generic folders like "New folder" on the portal.
-        // Their tests are flattened into the current folder so students see the test directly.
-        if (shouldFlattenFolderName(childName)) {
-          directTests.push(test);
-          return;
-        }
-
-        const childPath = tPath.slice(0, path.length + 1);
-        const key = childPath.join(" / ");
-        if (!folderMap.has(key)) folderMap.set(key, { name: childPath[childPath.length - 1], path: childPath, count: 0 });
-        folderMap.get(key).count += 1;
-      } else {
-        directTests.push(test);
-      }
+    folderPaths().forEach(f=>{
+      if(!samePath(f.path.slice(0,path.length), path)) return;
+      if(f.path.length !== path.length + 1) return;
+      const key = f.path.join(' / ');
+      folderMap.set(key,{name:f.name, path:f.path, count:countUnder(f.path)});
     });
-    declaredFolders.forEach(folder => {
-      const fPath = folderPath({ folders: folder.path });
-      if (!startsWithPath(fPath, path) || fPath.length !== path.length + 1) return;
-      if (shouldFlattenFolderName(folder.name || fPath[fPath.length - 1])) return;
-      const key = fPath.join(" / ");
-      if (!folderMap.has(key)) folderMap.set(key, { name: folder.name || fPath[fPath.length - 1], path: fPath, count: countTestsUnder(fPath) });
+    const directTests = tests.filter(t=>samePath(t.folders || [], path));
+    const folderList = Array.from(folderMap.values()).sort((a,b)=>displayName(a.name).localeCompare(displayName(b.name),undefined,{numeric:true}));
+    const testList = directTests.sort((a,b)=>String(a.title).localeCompare(String(b.title),undefined,{numeric:true}));
+    return {folders: folderList, tests: testList};
+  }
+
+  function firstPathFor(target){
+    const targetSlug = slug(target);
+    const all = folderPaths();
+    const found = all.find(f=>slug(f.path[f.path.length-1]) === targetSlug || slug(f.name) === targetSlug || slug(f.path.join(' / ')) === targetSlug);
+    return found ? found.path : [];
+  }
+  function hashForPath(path){ return path.length ? '#folder/' + slug(path.join(' / ')) : '#home'; }
+
+  function setMetrics(){
+    const topic = firstPathFor('Topic Test');
+    const area = firstPathFor('Area Wise Test');
+    const pyq = firstPathFor('PYQ');
+    const sectional = firstPathFor('Sectionals');
+    const full = firstPathFor('Full Length');
+    const counts = {
+      total: tests.length,
+      topic: topic.length ? countUnder(topic) : 0,
+      area: area.length ? countUnder(area) : 0,
+      pyq: pyq.length ? countUnder(pyq) : 0,
+      sectional: sectional.length ? countUnder(sectional) : 0,
+      full: full.length ? countUnder(full) : 0
+    };
+    els.totalTests.textContent = counts.total;
+    els.topicTests.textContent = counts.topic;
+    els.areaTests.textContent = counts.area;
+    els.pyqTests.textContent = counts.pyq;
+    els.sectionalTests.textContent = counts.sectional;
+    els.fullTests.textContent = counts.full;
+    els.countTopic.textContent = counts.topic;
+    els.countArea.textContent = counts.area;
+    els.countPyq.textContent = counts.pyq;
+    els.countSectional.textContent = counts.sectional;
+    els.countFull.textContent = counts.full;
+  }
+
+  function renderHomeModules(){
+    const roots = [
+      {label:'QA', path:firstPathFor('QA'), icon:'∑'},
+      {label:'LRDI', path:firstPathFor('LRDI'), icon:'▦'},
+      {label:'VARC', path:firstPathFor('VARC'), icon:'A'},
+    ].filter(x=>x.path.length);
+
+    if(!roots.length){
+      const {folders} = childrenFor([]);
+      roots.push(...folders.slice(0,3).map(f=>({label:displayName(f.name), path:f.path, icon:iconFor(f.name)})));
+    }
+
+    els.homeModules.innerHTML = roots.map(item=>`<button class="module-card" type="button" data-route="${escapeHtml(hashForPath(item.path))}">
+      <span><span class="module-icon">${escapeHtml(item.icon)}</span><strong>${escapeHtml(item.label)}</strong><span>${countUnder(item.path)} tests</span></span>
+    </button>`).join('');
+    els.homeModules.querySelectorAll('[data-route]').forEach(btn=>{
+      btn.addEventListener('click',()=>{ location.hash = btn.dataset.route; });
     });
-    const folders = Array.from(folderMap.values())
-      .filter(folder => !shouldFlattenFolderName(folder.name) && (folder.count > 0 || folderExists(folder.path)))
-      .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-    const sortedTests = directTests.sort((a, b) => displayTestName(a).localeCompare(displayTestName(b), undefined, { numeric: true }));
-    return { folders, tests: sortedTests };
   }
 
-  function countTestsUnder(path) {
-    return tests.filter(test => startsWithPath(folderPath(test), path)).length;
-  }
-
-  function setCounts() {
-    const topic = countTestsUnder(routeRootPath("topic-test"));
-    const area = countTestsUnder(routeRootPath("area-wise"));
-    const pyq = countTestsUnder(routeRootPath("previous-papers"));
-    const sectional = countTestsUnder(routeRootPath("sectionals"));
-    const full = countTestsUnder(routeRootPath("full-length"));
-    if (els.totalTests) els.totalTests.textContent = tests.length;
-    if (els.topicCount) els.topicCount.textContent = topic;
-    if (els.areaCount) els.areaCount.textContent = area;
-    if (els.pyqCount) els.pyqCount.textContent = pyq;
-    if (els.sectionalCount) els.sectionalCount.textContent = sectional;
-    if (els.fullCount) els.fullCount.textContent = full;
-    if (els.topicSideCount) els.topicSideCount.textContent = topic;
-    if (els.areaSideCount) els.areaSideCount.textContent = area;
-    if (els.pyqSideCount) els.pyqSideCount.textContent = pyq;
-    if (els.sectionalSideCount) els.sectionalSideCount.textContent = sectional;
-    if (els.fullSideCount) els.fullSideCount.textContent = full;
-  }
-
-  function setActiveNav(routeKey) {
-    document.querySelectorAll(".nav-item").forEach(item => {
-      item.classList.toggle("active", item.dataset.route === routeKey);
+  function updateActiveNav(){
+    document.querySelectorAll('.side-link,.brand').forEach(a=>a.classList.remove('active'));
+    const key = currentPath[0] || 'home';
+    document.querySelectorAll('[data-path]').forEach(a=>{
+      if(a.dataset.path === key || (!currentPath.length && a.dataset.path === 'home')) a.classList.add('active');
     });
   }
 
-  function showOnly(viewName) {
-    els.dashboardView.hidden = viewName !== "dashboard";
-    els.folderView.hidden = viewName !== "folder";
-    els.testView.hidden = viewName !== "tests";
-  }
+  function renderFolder(){
+    const {folders, tests: directTests} = childrenFor(currentPath);
+    const term = searchTerm.trim().toLowerCase();
+    const visibleTests = directTests.filter(t=>{
+      const hay = `${t.title || ''} ${t.original || ''} ${t.file || ''}`.toLowerCase();
+      return !term || hay.includes(term);
+    });
+    const visibleFolders = folders.filter(f=>!term || displayName(f.name).toLowerCase().includes(term));
+    const currentName = currentPath.length ? displayName(currentPath[currentPath.length-1]) : 'Browse Tests';
 
-  function updateHeader(title, subtitle, eyebrow) {
-    els.pageEyebrow.textContent = eyebrow || "STUDENT TEST PORTAL";
-    els.pageTitle.textContent = title;
-    els.pageSubtitle.textContent = subtitle || "Choose a folder and start practice.";
-  }
+    document.body.classList.toggle('subject-level', currentPath.length === 1 && /topic/i.test(currentPath[0]));
+    els.pathLabel.textContent = currentPath.length ? 'Course Content' : 'Dashboard';
+    els.pageTitle.textContent = currentName;
+    els.pageSubtitle.textContent = currentPath.length ? 'Choose a folder or start a test.' : 'Topic-wise practice arranged folder by folder.';
+    els.crumbTrail.textContent = currentPath.length ? currentPath.map(displayName).join(' / ') : 'Course Content';
+    els.sectionTitle.textContent = currentName;
+    els.sectionMeta.textContent = directTests.length ? `${visibleTests.length} of ${directTests.length} tests shown.` : `${visibleFolders.length} folders available.`;
+    els.searchInput.value = searchTerm;
+    els.searchInput.placeholder = directTests.length ? 'Search Percentage, Ratio, CAT 2023...' : 'Search folder...';
+    els.backButton.style.display = currentPath.length ? 'inline-flex' : 'none';
 
-  function setSearchVisible(visible) {
-    els.searchWrap.hidden = !visible;
-    if (!visible) {
-      searchTerm = "";
-      els.searchInput.value = "";
+    els.folderGrid.innerHTML = visibleFolders.map(f=>`<button class="folder-card" type="button" data-path="${escapeHtml(f.path.join('||'))}">
+      <div><span class="folder-icon">${escapeHtml(iconFor(f.name))}</span><h3>${escapeHtml(displayName(f.name))}</h3><p>${f.count} test${f.count===1?'':'s'} available</p><span class="open-text">Open →</span></div>
+    </button>`).join('');
+    els.folderGrid.querySelectorAll('[data-path]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        currentPath = btn.dataset.path.split('||');
+        searchTerm = '';
+        setHash(currentPath);
+        render();
+      });
+    });
+
+    els.testGrid.innerHTML = visibleTests.map(t=>{
+      const tags = [currentPath[0], currentPath[1], currentPath[currentPath.length-1]].filter(Boolean).map(displayName);
+      const minutes = t.minutes ? `${t.minutes} min` : '';
+      return `<article class="test-card"><div><h3>${escapeHtml(t.title || 'Untitled Test')}</h3><div class="meta-row">
+        ${tags.slice(0,3).map(x=>`<span class="pill">${escapeHtml(x)}</span>`).join('')}${minutes?`<span class="pill">${escapeHtml(minutes)}</span>`:''}
+      </div></div><a class="start-btn" href="${escapeHtml(t.file || '#')}" target="_blank" rel="noopener">Start Test →</a></article>`;
+    }).join('');
+
+    if(!visibleFolders.length && !visibleTests.length){
+      els.testGrid.innerHTML = `<div class="empty">${term ? 'No matching folder or test found.' : 'No tests available in this folder.'}</div>`;
     }
   }
 
-  function cleanFolderName(name) {
-    return String(name || "Folder").replace(/^\d+\.?\s*/, "").replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
-  }
-
-  function decodeText(value) {
-    const raw = String(value || "");
-    try { return decodeURIComponent(raw.replace(/\+/g, " ")); }
-    catch (e) { return raw.replace(/\+/g, " "); }
-  }
-
-  function fileBaseName(filePath) {
-    const clean = decodeText(filePath).split(/[?#]/)[0].split(/[\\/]/).filter(Boolean).pop() || "";
-    return clean.replace(/\.html?$/i, "").replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim();
-  }
-
-  function displayTestName(test) {
-    // Show the exact uploaded HTML file name on the portal.
-    // This keeps portal names synced with names visible inside the tests folder.
-    return fileBaseName(test && test.file) || String((test && (test.title || test.original)) || "Untitled Test").trim();
-  }
-
-  function nicePath(path) {
-    return path.map(cleanFolderName).filter(Boolean).join(" / ");
-  }
-
-  function cardIcon(name) {
-    const clean = cleanFolderName(name);
-    const lower = clean.toLowerCase();
-    if (lower.includes("percent")) return "%";
-    if (lower.includes("ratio")) return "R";
-    if (lower.includes("area")) return "A";
-    if (lower.includes("average")) return "AV";
-    if (lower.includes("profit")) return "P";
-    if (lower.includes("lrdi") || lower.includes("logical")) return "L";
-    if (lower.includes("pyq") || lower.includes("paper")) return "Y";
-    const words = clean.split(/\s+/).filter(Boolean);
-    if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
-    return clean.slice(0, 2).toUpperCase();
-  }
-
-  function folderCard(folder) {
-    return `
-      <a class="folder-card" href="#folder/${pathSlug(folder.path)}">
-        <div>
-          <div class="card-top">
-            <span class="card-icon">${escapeHtml(cardIcon(folder.name))}</span>
-            <span class="pill">${folder.count} ${folder.count === 1 ? "test" : "tests"}</span>
-          </div>
-          <h3 class="card-title">${escapeHtml(cleanFolderName(folder.name))}</h3>
-          <p class="card-desc">${escapeHtml(nicePath(folder.path.slice(0, -1)) || "Main category")}</p>
-        </div>
-        <div class="card-footer"><span>Folder</span><span class="open-link">Open →</span></div>
-      </a>`;
-  }
-
-  function dashboardCard(routeKey) {
-    const root = ROOTS[routeKey];
-    const count = countTestsUnder(routeRootPath(routeKey));
-    return `
-      <a class="dashboard-card" href="#folder/${routeKey}">
-        <div>
-          <div class="card-top">
-            <span class="card-icon">${root.icon}</span>
-            <span class="pill">${count} ${count === 1 ? "test" : "tests"}</span>
-          </div>
-          <h3 class="card-title">${root.label}</h3>
-          <p class="card-desc">${root.subtitle}</p>
-        </div>
-        <div class="card-footer"><span>Category</span><span class="open-link">Open →</span></div>
-      </a>`;
-  }
-
-  function helperStrip() {
-    return `
-      <div class="helper-strip">
-        <div class="helper-card"><strong>1. Choose section</strong><span>Topic Tests, Area Wise, PYQs, Sectionals or Full Length.</span></div>
-        <div class="helper-card"><strong>2. Open folder</strong><span>Drill down by subject and topic.</span></div>
-        <div class="helper-card"><strong>3. Start test</strong><span>The paper opens in a clean exam console.</span></div>
-      </div>`;
-  }
-
-  function allMatchingTests(term) {
-    const q = normalize(term);
-    if (!q) return [];
-    return tests.filter(test => {
-      const text = normalize([displayTestName(test), test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
-      return text.includes(q);
-    }).slice(0, 40);
-  }
-
-  function renderDashboard() {
-    currentPath = [];
-    currentRoute = "home";
-    setActiveNav("home");
-    showOnly("dashboard");
-    setSearchVisible(true);
-    updateHeader("CAT-MBA Prep Zone", "A calm test dashboard for topic tests, area-wise tests, previous papers, sectionals and full-length practice.");
-    els.breadcrumb.textContent = "Dashboard";
-    els.contentTitle.textContent = searchTerm ? "Search Results" : "Browse Tests";
-    els.contentNote.textContent = searchTerm ? "Showing matching tests from all folders." : "Start from a category or type a topic/test name in search.";
-
-    const matches = allMatchingTests(searchTerm);
-    if (searchTerm) {
-      els.dashboardView.innerHTML = matches.length
-        ? `<div class="grid">${matches.map(testCard).join("")}</div>`
-        : `<div class="empty-state"><strong>No test found</strong><span>Try a different spelling or open a category from the left.</span></div>`;
+  function render(){
+    setMetrics();
+    updateActiveNav();
+    if(!currentPath.length){
+      document.body.classList.remove('subject-level');
+      els.homePanel.hidden = false;
+      els.folderPanel.hidden = true;
+      els.pathLabel.textContent = 'Course Content';
+      els.pageTitle.textContent = 'CAT Prep Dashboard';
+      els.pageSubtitle.textContent = 'Topic-wise practice arranged folder by folder.';
+      renderHomeModules();
       return;
     }
-
-    els.dashboardView.innerHTML = `${helperStrip()}<div class="grid">${["topic-test", "area-wise", "previous-papers", "sectionals", "full-length"].map(dashboardCard).join("")}</div>`;
+    els.homePanel.hidden = true;
+    els.folderPanel.hidden = false;
+    renderFolder();
   }
 
-  function renderPath(path, routeKey) {
-    currentPath = path;
-    currentRoute = routeKey || routeForPath(path);
-    setActiveNav(currentRoute);
-
-    const { folders, tests: directTests } = childData(path);
-    const allUnder = countTestsUnder(path);
-    const title = path.length ? cleanFolderName(path[path.length - 1]) : "Dashboard";
-    const route = ROOTS[currentRoute] || ROOTS.home;
-
-    updateHeader(route.label || title, route.subtitle, "COURSE CONTENT");
-    els.breadcrumb.textContent = path.length ? nicePath(path) : "Dashboard";
-    els.contentTitle.textContent = title;
-    els.contentNote.textContent = `${allUnder} ${allUnder === 1 ? "test" : "tests"} available in this section.`;
-
-    const parent = path.slice(0, -1);
-    const backHref = parent.length ? `#folder/${pathSlug(parent)}` : "#home";
-
-    if (folders.length) {
-      showOnly("folder");
-      setSearchVisible(true);
-
-      const folderSection = folders.length
-        ? `<section class="mixed-section"><h3 class="section-label">Folders</h3><div class="grid">${folders.map(folderCard).join("")}</div></section>`
-        : "";
-
-      const testSection = directTests.length
-        ? `<section class="mixed-section"><h3 class="section-label">Tests in this folder</h3><div class="grid">${directTests.map(testCard).join("")}</div></section>`
-        : "";
-
-      els.folderView.innerHTML = `
-        <div class="back-row"><a class="back-btn" href="${backHref}">← Back</a></div>
-        ${folderSection}
-        ${testSection}`;
-      return;
-    }
-
-    renderTests(path, directTests, backHref);
-  }
-
-  function renderTests(path, directTests, backHref) {
-    showOnly("tests");
-    setSearchVisible(true);
-    const term = normalize(searchTerm);
-    const filtered = directTests.filter(test => {
-      const text = normalize([displayTestName(test), test.title, test.original, test.file, folderPath(test).join(" ")].join(" "));
-      return !term || text.includes(term);
-    });
-    els.contentNote.textContent = `${filtered.length} of ${directTests.length} ${directTests.length === 1 ? "test" : "tests"} shown.`;
-
-    if (!filtered.length) {
-      els.testView.innerHTML = `
-        <div class="back-row"><a class="back-btn" href="${backHref}">← Back</a></div>
-        <div class="empty-state"><strong>No test found</strong><span>Try another folder or clear the search box.</span></div>`;
-      return;
-    }
-
-    els.testView.innerHTML = `
-      <div class="back-row"><a class="back-btn" href="${backHref}">← Back</a></div>
-      <div class="grid">${filtered.map(testCard).join("")}</div>`;
-  }
-
-  function attemptUrl(test) {
-    // Open the uploaded/original HTML test file directly.
-    // This preserves the exact layout, timer, question bar and styling already present inside each test file.
-    const file = String((test && test.file) || "").trim();
-    if (!file) return "#";
-    return encodeURI(file);
-  }
-
-  function testCard(test) {
-    const path = folderPath(test);
-    const tags = [];
-    if (path[0]) tags.push(cleanFolderName(path[0]));
-    if (path[1]) tags.push(cleanFolderName(path[1]));
-    if (path[path.length - 1]) tags.push(cleanFolderName(path[path.length - 1]));
-    if (test.questions) tags.push(`${test.questions} Qs`);
-    if (test.minutes) tags.push(`${test.minutes} min`);
-    return `
-      <article class="test-card">
-        <h3>${escapeHtml(displayTestName(test))}</h3>
-        <div class="pill-row">${tags.slice(0, 4).map(tag => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
-        <a class="start-btn" href="${escapeHtml(attemptUrl(test))}" target="_blank" rel="noopener">Start Test →</a>
-      </article>`;
-  }
-
-  function renderFromHash() {
-    const state = pathFromHash();
-    if (els.sidebar) els.sidebar.classList.remove("open");
-    if (!state.path.length) renderDashboard();
-    else renderPath(state.path, state.route);
-  }
-
-  if (els.searchInput) {
-    els.searchInput.addEventListener("input", event => {
-      searchTerm = event.target.value;
-      if (currentRoute === "home" || !currentPath.length) {
-        renderDashboard();
-        return;
-      }
-      const { tests: directTests } = childData(currentPath);
-      const parent = currentPath.slice(0, -1);
-      const backHref = parent.length ? `#folder/${pathSlug(parent)}` : "#home";
-      renderTests(currentPath, directTests, backHref);
-    });
-  }
-
-  if (els.menuToggle) {
-    els.menuToggle.addEventListener("click", () => els.sidebar.classList.toggle("open"));
-  }
-
-  document.querySelectorAll(".nav-item").forEach(item => {
-    item.addEventListener("click", () => {
-      searchTerm = "";
-      if (els.searchInput) els.searchInput.value = "";
-    });
+  els.backButton.addEventListener('click',()=>{
+    currentPath = currentPath.slice(0,-1);
+    searchTerm = '';
+    setHash(currentPath);
+    render();
   });
+  els.searchInput.addEventListener('input',e=>{ searchTerm = e.target.value; render(); });
+  window.addEventListener('hashchange',()=>{ currentPath = pathFromHash(); searchTerm=''; render(); });
 
-  window.addEventListener("hashchange", renderFromHash);
-
-  setCounts();
-  renderFromHash();
+  currentPath = pathFromHash();
+  if(!location.hash) setHash([]);
+  render();
 })();
