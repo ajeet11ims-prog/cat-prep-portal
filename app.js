@@ -170,6 +170,11 @@
     return "home";
   }
 
+  function shouldFlattenFolderName(name) {
+    const clean = normalize(cleanFolderName(name));
+    return clean === "new folder" || clean === "newfolder" || clean === "untitled folder" || clean === "untitled";
+  }
+
   function childData(path) {
     const folderMap = new Map();
     const directTests = [];
@@ -177,6 +182,15 @@
       const tPath = folderPath(test);
       if (!startsWithPath(tPath, path)) return;
       if (tPath.length > path.length) {
+        const childName = tPath[path.length];
+
+        // Do not show accidental/generic folders like "New folder" on the portal.
+        // Their tests are flattened into the current folder so students see the test directly.
+        if (shouldFlattenFolderName(childName)) {
+          directTests.push(test);
+          return;
+        }
+
         const childPath = tPath.slice(0, path.length + 1);
         const key = childPath.join(" / ");
         if (!folderMap.has(key)) folderMap.set(key, { name: childPath[childPath.length - 1], path: childPath, count: 0 });
@@ -188,11 +202,12 @@
     declaredFolders.forEach(folder => {
       const fPath = folderPath({ folders: folder.path });
       if (!startsWithPath(fPath, path) || fPath.length !== path.length + 1) return;
+      if (shouldFlattenFolderName(folder.name || fPath[fPath.length - 1])) return;
       const key = fPath.join(" / ");
       if (!folderMap.has(key)) folderMap.set(key, { name: folder.name || fPath[fPath.length - 1], path: fPath, count: countTestsUnder(fPath) });
     });
     const folders = Array.from(folderMap.values())
-      .filter(folder => folder.count > 0 || folderExists(folder.path))
+      .filter(folder => !shouldFlattenFolderName(folder.name) && (folder.count > 0 || folderExists(folder.path)))
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
     const sortedTests = directTests.sort((a, b) => displayTestName(a).localeCompare(displayTestName(b), undefined, { numeric: true }));
     return { folders, tests: sortedTests };
