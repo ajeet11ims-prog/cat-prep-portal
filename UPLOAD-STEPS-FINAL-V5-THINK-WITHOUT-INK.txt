@@ -1,0 +1,20 @@
+Final V5 - Add Think Without Ink banner to portal homepage
+
+Upload/replace these files/folders in GitHub root:
+
+1. index.html
+2. styles.css
+3. assets/think-without-ink-header.png
+4. assets/think-without-ink-header.webp
+
+Important:
+- Keep your existing tests/ folder.
+- Keep tests-data.js and app.js if you already uploaded Final V4 correctly.
+- If you want a full clean replacement, upload everything from the root-files ZIP.
+
+After Vercel deployment:
+Open https://cat-prep-portal-26.vercel.app/?v=finalv5#home
+Press Ctrl + F5.
+
+Expected result:
+The old text hero "Choose a topic..." is replaced by the Think Without Ink banner.

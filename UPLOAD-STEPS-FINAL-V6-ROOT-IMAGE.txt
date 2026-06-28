@@ -1,0 +1,21 @@
+Final V6 - Think Without Ink header fix
+
+Your GitHub screenshot shows:
+think-without-ink-header.png
+think-without-ink-header.webp
+are uploaded in the REPO ROOT, not inside assets/.
+
+So this version makes index.html load the banner from the ROOT.
+
+Upload/replace these 4 files in GitHub root:
+1. index.html
+2. styles.css
+3. think-without-ink-header.png
+4. think-without-ink-header.webp
+
+Do not upload them inside assets for this version.
+
+After commit and Vercel deploy, open:
+https://cat-prep-portal-26.vercel.app/?v=finalv6#home
+
+Press Ctrl + F5.
