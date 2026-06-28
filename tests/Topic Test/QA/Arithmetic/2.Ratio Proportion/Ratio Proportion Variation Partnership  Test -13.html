@@ -1,29 +1,783 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CAT CBT Exam Console - QA Section</title>
-  <style>
-    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
-    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
-    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
-    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
-    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
-    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.data-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:18px;line-height:1.35;background:#fff}.data-table th,.data-table td{border:1px solid #6f7f8b;padding:8px 10px;text-align:left}.data-table th{background:#dff3fb;font-weight:800}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
-    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
-    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT CBT Exam Console - QA Section</title>
+    <style>
+        :root {
+            --tcs-blue: #1e3d59;
+            --tcs-light-blue: #e8f1f5;
+            --tcs-border: #b2bec3;
+            --tcs-gray-bg: #f5f6fa;
+            --not-visited: #e5e7eb;
+            --not-answered: #e74c3c;
+            --answered: #2ecc71;
+            --marked-review: #9b59b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px; 
+        }
+
+        /* Top Bar */
+        .top-navbar {
+            background-color: #f1f2f6;
+            border-bottom: 2px solid var(--tcs-border);
+            height: 85px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .exam-logo-section h1 {
+            font-size: 26px;
+            color: var(--tcs-blue);
+            font-weight: bold;
+        }
+
+        .exam-logo-section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .candidate-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 2px solid var(--tcs-border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            max-width: 350px;
+        }
+
+        .candidate-photo {
+            width: 48px;
+            height: 60px;
+            background-color: #ddd;
+            border: 1px solid #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .candidate-info p {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        /* Section Tabs Bar */
+        .section-bar {
+            background-color: #dfe4ea;
+            border-bottom: 2px solid var(--tcs-border);
+            display: flex;
+            height: 45px;
+            align-items: flex-end;
+            padding-left: 15px;
+        }
+
+        .section-tab {
+            padding: 6px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid var(--tcs-border);
+            border-bottom: none;
+            background-color: #ced6e0;
+            color: #555;
+            cursor: not-allowed;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            margin-right: 6px;
+        }
+
+        .section-tab.active {
+            background-color: var(--tcs-blue);
+            color: white;
+            border-color: var(--tcs-blue);
+            cursor: default;
+        }
+
+        /* Question Status Header Line */
+        .question-meta-bar {
+            background-color: var(--tcs-light-blue);
+            border-bottom: 2px solid var(--tcs-border);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timer-container {
+            color: #d01c1c;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Split Workspace Window */
+        .workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 190px);
+            overflow: hidden;
+        }
+
+        /* Full-Width CBT Question Panel */
+        .question-section {
+            width: 82%;
+            padding: 30px 45px;
+            overflow-y: auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 18px;
+        }
+
+        .question-header {
+            font-size: 17px;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .question-text {
+            font-size: 21px; 
+            font-weight: bold;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        /* Options Design */
+        .options-container {
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 14px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 18px; 
+        }
+
+        .option-item:hover {
+            background-color: #f1f2f6;
+        }
+
+        .option-item input[type="radio"] {
+            transform: scale(1.4);
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        /* TITA Box Style */
+        .tita-container {
+            margin-top: 5px;
+        }
+
+        .tita-container p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .tita-input {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 20px;
+            border: 2px solid var(--tcs-border);
+            border-radius: 6px;
+        }
+
+        /* Rightmost Area: Expanded Question Palette Grid (Full Mode, No Scroll) */
+        .palette-section {
+            width: 18%;
+            background: #f1f2f6;
+            border-left: 2px solid var(--tcs-border);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .palette-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid var(--tcs-border);
+            padding-bottom: 6px;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin-bottom: 15px;
+            overflow: visible; 
+        }
+
+        .palette-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            font-weight: bold;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-size: 16px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--not-visited);
+            color: #333;
+        }
+
+        .palette-btn.not-visited {
+            background-color: var(--not-visited);
+            color: #333;
+            border-radius: 0;
+        }
+
+        .palette-btn.not-answered {
+            background-color: var(--not-answered);
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .palette-btn.answered {
+            background-color: var(--answered);
+            color: white;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .palette-btn.marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+
+        .palette-btn.ans-marked-review {
+            background-color: var(--marked-review);
+            color: white;
+            border-radius: 50%;
+        }
+        .palette-btn.ans-marked-review::after {
+            content: "✓";
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            background: #2ecc71;
+            color: white;
+            font-size: 9px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+        }
+
+        .palette-btn.active {
+            border: 3px solid #2c3e50 !important;
+            box-shadow: 0 0 4px rgba(0,0,0,0.5);
+        }
+
+        /* Sidebar Legend Container */
+        .legend {
+            font-size: 12px; 
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+            border-top: 2px solid var(--tcs-border);
+            padding-top: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #7f8c8d;
+            display: inline-block;
+        }
+
+        /* Footer Console controls */
+        footer {
+            height: 60px; 
+            background-color: #ced6e0;
+            border-top: 2px solid var(--tcs-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: 1.5px solid #7f8c8d;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px; 
+            border-radius: 4px;
+            background-color: #f1f2f6;
+            color: #333;
+        }
+
+        .btn:active {
+            background-color: #ddd;
+        }
+
+        .btn-blue {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+
+        .btn-green {
+            background-color: var(--answered);
+            color: white;
+            border-color: #27ae60;
+        }
+
+        /* Tables style matching standard data interpretation tests */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 16px; 
+        }
+
+        th, td {
+            border: 2px solid #666;
+            padding: 6px 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        th {
+            background-color: #f1f2f6;
+        }
+
+        /* Popup Real CAT Calculator Style */
+        #calculator-modal {
+            display: none;
+            position: absolute;
+            top: 110px;
+            right: 30px;
+            width: 280px;
+            background: #eaeaea;
+            border: 2px solid #555;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            user-select: none;
+        }
+
+        .calc-header {
+            background: var(--tcs-blue);
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .calc-close {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .calc-screen {
+            background: white;
+            text-align: right;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #888;
+            border-radius: 2px;
+            font-family: monospace;
+            font-size: 20px;
+            min-height: 44px;
+            word-wrap: break-word;
+        }
+
+        .calc-formula {
+            font-size: 12px;
+            color: #777;
+            min-height: 16px;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            padding: 10px;
+        }
+
+        .calc-btn-item {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #999;
+            background: #fcfcfc;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .calc-btn-item:active {
+            background: #ddd;
+        }
+
+        .calc-back {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-clear {
+            background: #ff5252;
+            color: white;
+        }
+
+        .calc-equal {
+            background: #2ecc71;
+            color: white;
+            grid-row: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Results Display CSS */
+        #results-screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        /* Detailed Question Review Cards on submission */
+        .review-section {
+            margin-top: 40px;
+            border-top: 4px solid var(--tcs-blue);
+            padding-top: 25px;
+        }
+
+        .review-card {
+            border: 1.5px solid var(--tcs-border);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+        }
+
+        .review-card-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #ddd;
+            color: var(--tcs-blue);
+        }
+
+        .review-question-text {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .review-option-item {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .review-option-correct {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .review-option-incorrect {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .review-tita-result {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .inline-diagram {
+            margin: 15px 0;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-  <header><div class="topbar"><div class="title"><h1>CAT CBT Exam Console - QA Section</h1><div class="meta">0 Questions | 60 Minutes | +3 correct, -1 wrong | MCQ and numeric entry</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
-  <main>
-    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
-    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
-    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
-  </main>
-  <script>
-    const questions = [
+
+    <!-- Top Info Bar -->
+    <div class="top-navbar">
+        <div class="exam-logo-section">
+            <h1>CAT 2024 Mock Examination</h1>
+            <p>Computer Based Online Section Test</p>
+        </div>
+        <div class="candidate-card">
+            <div class="candidate-photo">PHOTO</div>
+            <div class="candidate-info">
+                <p><strong>John Doe</strong></p>
+                <p>Roll No: 820120</p>
+                <p>Subject: QA Section</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Section Tab bar -->
+    <div class="section-bar">
+        <div class="section-tab">VARC</div>
+        <div class="section-tab">Data Interpretation & LR</div>
+        <div class="section-tab active">Quantitative Ability</div>
+    </div>
+
+    <!-- Question Metadata & Timer Sub-Header -->
+    <div class="question-meta-bar">
+        <div>
+            <span>Section: Quantitative Ability</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <button class="btn" style="background-color: #ff9f43; color: white; border: none; padding: 4px 15px;" onclick="toggleCalculator()">Calculator</button>
+            <div class="timer-container">
+                Time Left: <span id="timer-display">90:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <div class="workspace">
+        <!-- Middle Column: Question details -->
+        <div class="question-section">
+            <div class="question-header">
+                <span id="question-number-title">Question No. 1</span>
+                <span id="question-marks-rule" style="color:#7f8c8d;">Marks: +3, -1</span>
+            </div>
+            <div class="question-text" id="question-text-box">
+                <!-- Question Text -->
+            </div>
+            <div id="answer-inputs">
+                <!-- Input Radio Choices or Text Area dynamically loaded -->
+            </div>
+        </div>
+
+        <!-- Rightmost Column: Palette (Full Mode, No Scroll) -->
+        <div class="palette-section">
+            <div class="palette-title">Question Palette</div>
+            <div class="palette-grid" id="palette-grid-box">
+                <!-- 45 grid buttons generated dynamically -->
+            </div>
+
+            <!-- Authentic Palette Legend Panel -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-visited);"></span> Not Visited
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--not-answered); border-radius: 10px 10px 0 0;"></span> Not Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--answered); border-radius: 0 0 10px 10px;"></span> Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span> Marked for Review
+                </div>
+                <div class="legend-item" style="position: relative;">
+                    <span class="legend-color" style="background: var(--marked-review); border-radius: 50%;"></span>
+                    <span style="font-size: 10px; position: absolute; left: 5px; top: 3px; color: white;">✓</span>
+                    Answered & Marked for Review
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation footer console bar -->
+    <footer>
+        <div class="footer-left">
+            <button class="btn" onclick="clearResponse()">Clear Response</button>
+            <button class="btn" style="background-color: #f39c12; color: white; border-color: #d35400;" onclick="markForReview()">Mark for Review & Next</button>
+        </div>
+        <div>
+            <button class="btn btn-green" onclick="saveAndNext()">Save & Next</button>
+            <button class="btn" style="background-color: #c0392b; color: white; border-color: #a33227; margin-left: 10px;" onclick="confirmSubmit()">Submit</button>
+        </div>
+    </footer>
+
+    <!-- Interactive CAT Calculator Dialog Interface -->
+    <div id="calculator-modal">
+        <div class="calc-header" id="calc-header-drag">
+            <span>Calculator</span>
+            <button class="calc-close" onclick="toggleCalculator()">×</button>
+        </div>
+        <div class="calc-screen">
+            <div class="calc-formula" id="calc-formula"></div>
+            <div id="calc-display">0</div>
+        </div>
+        <div class="calc-buttons">
+            <div class="calc-btn-item" onclick="calcMemory('MC')">MC</div>
+            <div class="calc-btn-item" onclick="calcMemory('MR')">MR</div>
+            <div class="calc-btn-item" onclick="calcMemory('MS')">MS</div>
+            <div class="calc-btn-item" onclick="calcMemory('M+')">M+</div>
+            <div class="calc-btn-item" onclick="calcMemory('M-')">M-</div>
+
+            <div class="calc-btn-item calc-back" onclick="calcBackspace()">←</div>
+            <div class="calc-btn-item calc-clear" onclick="calcClear()">C</div>
+            <div class="calc-btn-item" onclick="calcOperator('pm')">+/-</div>
+            <div class="calc-btn-item" onclick="calcOperator('sqrt')">√</div>
+            <div class="calc-btn-item" onclick="calcOperator('/')">/</div>
+
+            <div class="calc-btn-item" onclick="calcPress('7')">7</div>
+            <div class="calc-btn-item" onclick="calcPress('8')">8</div>
+            <div class="calc-btn-item" onclick="calcPress('9')">9</div>
+            <div class="calc-btn-item" onclick="calcOperator('*')">*</div>
+            <div class="calc-btn-item" onclick="calcOperator('inv')">1/x</div>
+
+            <div class="calc-btn-item" onclick="calcPress('4')">4</div>
+            <div class="calc-btn-item" onclick="calcPress('5')">5</div>
+            <div class="calc-btn-item" onclick="calcPress('6')">6</div>
+            <div class="calc-btn-item" onclick="calcOperator('-')">-</div>
+            <div class="calc-btn-item calc-equal" onclick="calcCalculate()">=</div>
+
+            <div class="calc-btn-item" onclick="calcPress('1')">1</div>
+            <div class="calc-btn-item" onclick="calcPress('2')">2</div>
+            <div class="calc-btn-item" onclick="calcPress('3')">3</div>
+            <div class="calc-btn-item" onclick="calcOperator('+')">+</div>
+
+            <div class="calc-btn-item" style="grid-column: span 2;" onclick="calcPress('0')">0</div>
+            <div class="calc-btn-item" onclick="calcPress('.')">.</div>
+        </div>
+    </div>
+
+    <!-- Final Exam Scoring Screen -->
+    <div id="results-screen">
+        <div class="results-container">
+            <h2>Quantitative Ability - Performance Summary</h2>
+            <hr style="margin: 20px 0;">
+            <div style="display: flex; gap: 40px; margin-bottom: 30px;">
+                <div>
+                    <h3 style="color: #7f8c8d;">Total Score</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: #3498db;" id="final-score">0</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Attempted</h3>
+                    <p style="font-size: 48px; font-weight: bold;" id="attempted-count">0/45</p>
+                </div>
+                <div>
+                    <h3 style="color: #7f8c8d;">Accuracy</h3>
+                    <p style="font-size: 48px; font-weight: bold; color: var(--answered);" id="accuracy-rate">0%</p>
+                </div>
+            </div>
+            
+            <h3>Itemwise Breakdown</h3>
+            <table id="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>Q#</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                        <th>Score Change</th>
+                    </tr>
+                </thead>
+                <tbody id="breakdown-rows">
+                    <!-- Dynamic Rows Injected Here -->
+                </tbody>
+            </table>
+
+            <!-- Dynamic Question-wise Explanations Injected Here -->
+            <div class="review-section">
+                <h3 style="margin-bottom: 20px; font-size: 24px;">Exams Response & Solution Sheets</h3>
+                <div id="detailed-review-cards">
+                    <!-- Detailed cards injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Core Application Setup and Dataset ---
+
+        // Complete 45 questions dataset transcribed from images
+        const questions = [
             {
                 id: 1,
                 type: 'MCQ',
@@ -115,14 +869,14 @@
             {
                 id: 14,
                 type: 'MCQ',
-                text: 'The ratio of the prices of tea, last year and this year is 5 : 6. The ratio of the prices of coffee last year and this year is 7 : 8. The sum of prices of a kg of tea and a kg of coffee this year is â‚¹48. Find the price of tea (in â‚¹) last year if it was 20/21 of the price of coffee last year.',
-                options: ['â‚¹15', 'â‚¹20', 'â‚¹25', 'â‚¹30'],
+                text: 'The ratio of the prices of tea, last year and this year is 5 : 6. The ratio of the prices of coffee last year and this year is 7 : 8. The sum of prices of a kg of tea and a kg of coffee this year is ₹48. Find the price of tea (in ₹) last year if it was 20/21 of the price of coffee last year.',
+                options: ['₹15', '₹20', '₹25', '₹30'],
                 correct: 'B'
             },
             {
                 id: 15,
                 type: 'MCQ',
-                text: 'â‚¹117 was supposed to be divided among Rohan, Sohan and Mohan in the ratio 2 : 3 : 4. By mistake, it was divided in the ratio 1/2 : 1/3 : 1/4. Find the loss / gain of Rohan due to his mistake (in â‚¹).',
+                text: '₹117 was supposed to be divided among Rohan, Sohan and Mohan in the ratio 2 : 3 : 4. By mistake, it was divided in the ratio 1/2 : 1/3 : 1/4. Find the loss / gain of Rohan due to his mistake (in ₹).',
                 options: ['gain, 26', 'loss, 26', 'gain, 28', 'loss, 28'],
                 correct: 'C'
             },
@@ -183,7 +937,7 @@
             {
                 id: 24,
                 type: 'MCQ',
-                text: 'If (a^2 + c^2)/(a + c) = (b^2 + c^2)/(b + c) = k and a â‰  b, which of the following is equal to k?',
+                text: 'If (a^2 + c^2)/(a + c) = (b^2 + c^2)/(b + c) = k and a ≠ b, which of the following is equal to k?',
                 options: ['a + c', 'b + c', 'a + b', 'a - c'],
                 correct: 'C'
             },
@@ -230,7 +984,7 @@
                 id: 30,
                 type: 'MCQ',
                 text: 'The ratio of Ahmed\'s age to Mohammed\'s age is the same as the ratio of the ages of their respective elder brothers. The ratio of the difference of the ages of Ahmed and Mohammed to that of the difference of the ages of their respective brothers is 1 : 2. What is the ratio of the sum of the ages of their respective brothers to the sum of the ages of Ahmed and Mohammed?',
-                options: ['2 : 1', '4 : 1', '3 : 1', 'âˆš2 : 1'],
+                options: ['2 : 1', '4 : 1', '3 : 1', '√2 : 1'],
                 correct: 'A'
             },
             {
@@ -263,7 +1017,7 @@
             {
                 id: 35,
                 type: 'MCQ',
-                text: 'The cost of supply of a commodity equals the sum of three quantities. The first one is a constant, the second varies directly as the price per unit of the commodity and the third varies directly as the square of the price per unit. The costs of supply are â‚¹9, â‚¹24 and â‚¹47 when the prices per unit of commodity is â‚¹1, â‚¹2 and â‚¹3 respectively. Find the cost (in â‚¹) of supply when price per unit of commodity is â‚¹4.',
+                text: 'The cost of supply of a commodity equals the sum of three quantities. The first one is a constant, the second varies directly as the price per unit of the commodity and the third varies directly as the square of the price per unit. The costs of supply are ₹9, ₹24 and ₹47 when the prices per unit of commodity is ₹1, ₹2 and ₹3 respectively. Find the cost (in ₹) of supply when price per unit of commodity is ₹4.',
                 options: ['80', '72', '76', '78'],
                 correct: 'D'
             },
@@ -285,27 +1039,27 @@
             {
                 id: 38,
                 type: 'MCQ',
-                text: 'The heat radiated by a certain body per unit time varies directly with the square root of the excess of the temperature of the body over the ambient temperature which is 20Â°C. The heat radiated by the body in one second is 16 joules when the temperature of the body is 36Â°C. Find the temperature of the body when the heat radiated in one second is 20 joules.',
-                options: ['56Â°C', '45Â°C', '50Â°C', '60Â°C'],
+                text: 'The heat radiated by a certain body per unit time varies directly with the square root of the excess of the temperature of the body over the ambient temperature which is 20°C. The heat radiated by the body in one second is 16 joules when the temperature of the body is 36°C. Find the temperature of the body when the heat radiated in one second is 20 joules.',
+                options: ['56°C', '45°C', '50°C', '60°C'],
                 correct: 'B'
             },
             {
                 id: 39,
                 type: 'TITA',
-                text: 'In a colony, the expenses for yoga classes are partly constant and partly vary directly with the number of members. If there are 50 members, each member has to bear â‚¹110 per month. If there are 30 more members, each member has to bear â‚¹80 per month. How many members are there if the share of each member is â‚¹130 per month?',
+                text: 'In a colony, the expenses for yoga classes are partly constant and partly vary directly with the number of members. If there are 50 members, each member has to bear ₹110 per month. If there are 30 more members, each member has to bear ₹80 per month. How many members are there if the share of each member is ₹130 per month?',
                 correct: '40'
             },
             {
                 id: 40,
                 type: 'MCQ',
-                text: 'The telephone bill consists of a fixed monthly rent and a variable part that varies with the number of units of calls made per month. The monthly rents charged for a telephone connection in Bangalore and Patna are in the ratio 5 : 3. The bill amounts corresponding to 100 calls made from a phone in Patna and 300 calls made from a phone in Bangalore are respectively â‚¹500 and â‚¹1100. What is the difference in the fixed monthly rent of a telephone connection in Bangalore and one in Patna, if call rate per unit is same in both cities?',
-                options: ['â‚¹200', 'â‚¹100', 'â‚¹500', 'â‚¹300'],
+                text: 'The telephone bill consists of a fixed monthly rent and a variable part that varies with the number of units of calls made per month. The monthly rents charged for a telephone connection in Bangalore and Patna are in the ratio 5 : 3. The bill amounts corresponding to 100 calls made from a phone in Patna and 300 calls made from a phone in Bangalore are respectively ₹500 and ₹1100. What is the difference in the fixed monthly rent of a telephone connection in Bangalore and one in Patna, if call rate per unit is same in both cities?',
+                options: ['₹200', '₹100', '₹500', '₹300'],
                 correct: 'A'
             },
             {
                 id: 41,
                 type: 'MCQ',
-                text: 'Directions for Q41 to Q45: DS (Data Sufficiency) Directives:\n- Mark (A) if statement I alone is sufficient\n- Mark (B) if either statement alone is sufficient\n- Mark (C) if statements I & II together are sufficient\n- Mark (D) if statements together are NOT sufficient\n\nA bowl contains â‚¹1, 50 paise and 25 paise coins. What is the total amount in the bowl?\nI. The total number of coins in the bowl is 20.\nII. The total value of â‚¹1 coins is â‚¹6 and the number of 50 paise coins and 25 paise coins are in the ratio 6 : 1.',
+                text: 'Directions for Q41 to Q45: DS (Data Sufficiency) Directives:\n- Mark (A) if statement I alone is sufficient\n- Mark (B) if either statement alone is sufficient\n- Mark (C) if statements I & II together are sufficient\n- Mark (D) if statements together are NOT sufficient\n\nA bowl contains ₹1, 50 paise and 25 paise coins. What is the total amount in the bowl?\nI. The total number of coins in the bowl is 20.\nII. The total value of ₹1 coins is ₹6 and the number of 50 paise coins and 25 paise coins are in the ratio 6 : 1.',
                 options: ['(A)', '(B)', '(C)', '(D)'],
                 correct: 'C'
             },
@@ -338,53 +1092,457 @@
                 correct: 'C'
             }
         ];
-    const optionFixQuestions = new Set(questions.filter(q=>q.type==="mcq").map(q=>q.no));
-    function cleanOptionHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
-    questions.forEach(q=>{if(optionFixQuestions.has(q.no)){q.options=q.options.map(cleanOptionHtml);}});
-    let current = 0, submitted = false, secondsLeft = 60 * 60;
-    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
-    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
-    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
-    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
-    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
-    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
-    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
-    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
-    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
-    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
-    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
-    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
-    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
-    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;return norm(ans)===norm(q.typedAnswer);}
-    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
-    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
-    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
-    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
-    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
-    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
-    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
-    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
-    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
-    let dragCalc=false, calcDx=0, calcDy=0;
-    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
-    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
-    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
-    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
-    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
-    renderQuestion();tick();setInterval(tick,1000);
-  </script>
+
+        let userStates = Array(45).fill(0); 
+        let userAnswers = Array(45).fill(""); 
+        let currentQuestionIdx = 0;
+
+        // --- Core Navigation Engine ---
+
+        function initTest() {
+            const paletteGrid = document.getElementById('palette-grid-box');
+            paletteGrid.innerHTML = '';
+            for(let i = 0; i < 45; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'palette-btn not-visited';
+                btn.id = `palette-btn-${i}`;
+                btn.innerText = i + 1;
+                btn.onclick = () => jumpToQuestion(i);
+                paletteGrid.appendChild(btn);
+            }
+            loadQuestion(0);
+            startSectionTimer(90 * 60); // 90 minutes
+        }
+
+        // Native offline vector graph builder
+        function generateSVG(type) {
+            if(type === 'cylinder') {
+                return `
+                    <svg class="inline-diagram" width="360" height="110" viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background Container Cylinder -->
+                        <rect x="20" y="20" width="300" height="60" rx="10" fill="#f8f9fa" stroke="#2c3e50" stroke-width="3"/>
+                        <!-- Diaphragm 1 -->
+                        <line x1="70" y1="20" x2="70" y2="80" stroke="#ff9f43" stroke-width="4" stroke-dasharray="2,2"/>
+                        <!-- Diaphragm 2 -->
+                        <line x1="170" y1="20" x2="170" y2="80" stroke="#ff9f43" stroke-width="4" stroke-dasharray="2,2"/>
+                        <!-- Text indicators -->
+                        <text x="45" y="55" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Vol: 1</text>
+                        <text x="120" y="55" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Vol: 2</text>
+                        <text x="245" y="55" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Vol: 3</text>
+                        <!-- Labels -->
+                        <text x="170" y="100" font-family="Arial" font-size="11" fill="#777" text-anchor="middle">Cylinder Partition Chamber Matrix (Ratio 1 : 2 : 3)</text>
+                    </svg>
+                `;
+            } else if (type === 'falling') {
+                return `
+                    <svg class="inline-diagram" width="360" height="110" viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Fall line -->
+                        <line x1="40" y1="20" x2="300" y2="20" stroke="#2c3e50" stroke-width="3"/>
+                        <!-- Falling Body nodes -->
+                        <circle cx="40" cy="20" r="8" fill="#3498db" />
+                        <circle cx="120" cy="20" r="8" fill="#3498db" />
+                        <circle cx="300" cy="20" r="8" fill="#e74c3c" />
+                        <!-- Acc arrows -->
+                        <path d="M 50 40 L 110 40" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+                        <path d="M 130 40 L 290 40" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+                        <!-- Labels -->
+                        <text x="40" y="80" font-family="Arial" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">t = 0s</text>
+                        <text x="120" y="80" font-family="Arial" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">t = 9s</text>
+                        <text x="300" y="80" font-family="Arial" font-size="11" font-weight="bold" fill="#e74c3c" text-anchor="middle">t = 10s (500m)</text>
+                        <!-- Markers definition -->
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                              <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
+                            </marker>
+                        </defs>
+                    </svg>
+                `;
+            }
+            return '';
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIdx = index;
+            const question = questions[index];
+
+            if (userStates[index] === 0) {
+                userStates[index] = 1;
+            }
+
+            document.getElementById('question-number-title').innerText = `Question No. ${question.id}`;
+            document.getElementById('question-marks-rule').innerText = (question.type === 'MCQ') ? "Marks: +3, -1" : "Marks: +3, 0";
+
+            document.querySelectorAll('.palette-btn').forEach((btn, idx) => {
+                btn.classList.remove('active');
+                if(idx === index) btn.classList.add('active');
+            });
+
+            syncPaletteUI();
+
+            // Set question text & inject inline dynamic SVG if specified
+            let textOutput = question.text.replace(/\n/g, '<br>');
+            if(question.hasDiagram) {
+                textOutput += '<br>' + generateSVG(question.diagramType);
+            }
+            document.getElementById('question-text-box').innerHTML = textOutput;
+
+            let inputsBox = document.getElementById('answer-inputs');
+            inputsBox.innerHTML = '';
+
+            if (question.type === 'MCQ') {
+                const optLabels = ['A', 'B', 'C', 'D'];
+                let container = document.createElement('div');
+                container.className = 'options-container';
+
+                question.options.forEach((optText, optIdx) => {
+                    let labelStr = optLabels[optIdx];
+                    let itemDiv = document.createElement('div');
+                    itemDiv.className = 'option-item';
+                    itemDiv.onclick = () => selectOption(labelStr);
+
+                    let isChecked = userAnswers[index] === labelStr ? 'checked' : '';
+                    itemDiv.innerHTML = `
+                        <input type="radio" name="mcq-options" value="${labelStr}" ${isChecked}>
+                        <span><strong>(${labelStr})</strong> ${optText}</span>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+                inputsBox.appendChild(container);
+            } else {
+                let container = document.createElement('div');
+                container.className = 'tita-container';
+                container.innerHTML = `
+                    <p>Type in your answer in the box below:</p>
+                    <input type="text" class="tita-input" id="tita-val" value="${userAnswers[index]}" placeholder="Enter response..." oninput="handleTitaInput(this.value)">
+                `;
+                inputsBox.appendChild(container);
+            }
+        }
+
+        function syncPaletteUI() {
+            for(let i = 0; i < 45; i++) {
+                const btn = document.getElementById(`palette-btn-${i}`);
+                btn.className = 'palette-btn'; 
+                if(i === currentQuestionIdx) btn.classList.add('active');
+
+                switch(userStates[i]) {
+                    case 0: btn.classList.add('not-visited'); break;
+                    case 1: btn.classList.add('not-answered'); break;
+                    case 2: btn.classList.add('answered'); break;
+                    case 3: btn.classList.add('marked-review'); break;
+                    case 4: btn.classList.add('ans-marked-review'); break;
+                }
+            }
+        }
+
+        function jumpToQuestion(index) {
+            loadQuestion(index);
+        }
+
+        // --- Handle Input Submissions ---
+
+        function selectOption(label) {
+            userAnswers[currentQuestionIdx] = label;
+            let radios = document.getElementsByName('mcq-options');
+            radios.forEach(radio => {
+                if(radio.value === label) radio.checked = true;
+            });
+        }
+
+        function handleTitaInput(val) {
+            userAnswers[currentQuestionIdx] = val.trim();
+        }
+
+        // --- Action controls ---
+
+        function clearResponse() {
+            userAnswers[currentQuestionIdx] = "";
+            if (userStates[currentQuestionIdx] === 4) {
+                userStates[currentQuestionIdx] = 3; 
+            } else {
+                userStates[currentQuestionIdx] = 1; 
+            }
+            loadQuestion(currentQuestionIdx); 
+        }
+
+        function saveAndNext() {
+            let ans = userAnswers[currentQuestionIdx];
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 2; // Turns Green (Answered)
+            } else {
+                userStates[currentQuestionIdx] = 1; // Turns Red (Not Answered)
+            }
+
+            if (currentQuestionIdx < 44) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        function markForReview() {
+            let ans = userAnswers[currentQuestionIdx];
+            if (ans !== undefined && ans !== null && ans.toString().trim() !== "") {
+                userStates[currentQuestionIdx] = 4; // Answered & Marked for Review
+            } else {
+                userStates[currentQuestionIdx] = 3; // Marked for Review
+            }
+
+            if (currentQuestionIdx < 44) {
+                loadQuestion(currentQuestionIdx + 1);
+            } else {
+                syncPaletteUI();
+            }
+        }
+
+        // --- Test Sectional Timer setup ---
+
+        function startSectionTimer(durationSeconds) {
+            let timeRemaining = durationSeconds;
+            const display = document.getElementById('timer-display');
+
+            const timerInterval = setInterval(() => {
+                let mins = Math.floor(timeRemaining / 60);
+                let secs = timeRemaining % 60;
+
+                mins = mins < 10 ? '0' + mins : mins;
+                secs = secs < 10 ? '0' + secs : secs;
+
+                display.innerText = `${mins}:${secs}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up! Submitting your responses.");
+                    showResults();
+                }
+                timeRemaining--;
+            }, 1000);
+        }
+
+        // --- Final Submission and Analysis ---
+
+        function confirmSubmit() {
+            if (confirm("Are you sure you want to submit the Quantitative Ability section?")) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('results-screen').style.display = 'block';
+
+            let correctCount = 0;
+            let totalScore = 0;
+            let attempted = 0;
+
+            const tbody = document.getElementById('breakdown-rows');
+            const detailContainer = document.getElementById('detailed-review-cards');
+            
+            tbody.innerHTML = '';
+            detailContainer.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                let uAns = userAnswers[idx] || "";
+                let isAttempted = uAns !== "";
+                if (isAttempted) attempted++;
+
+                let change = 0;
+                let statusText = "Unattempted";
+                let statusColor = "color: #7f8c8d;";
+                let isCorrect = false;
+
+                if (isAttempted) {
+                    let normalizedUser = uAns.replace(/[\s:]/g, ',');
+                    let normalizedCorrect = q.correct.replace(/[\s:]/g, ',');
+
+                    if (normalizedUser.toUpperCase() === normalizedCorrect.toUpperCase()) {
+                        correctCount++;
+                        change = 3;
+                        statusText = "Correct";
+                        statusColor = "color: #2ecc71; font-weight: bold;";
+                        isCorrect = true;
+                    } else {
+                        change = (q.type === 'MCQ') ? -1 : 0;
+                        statusText = "Incorrect";
+                        statusColor = "color: #e74c3c; font-weight: bold;";
+                    }
+                }
+                totalScore += change;
+
+                // 1. Generate Brief Summary Table Row
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${q.id}</td>
+                    <td>${q.type}</td>
+                    <td style="${statusColor}">${statusText}</td>
+                    <td style="font-weight:bold;">${uAns || "-"}</td>
+                    <td style="font-weight:bold; color: #2ecc71;">${q.correct}</td>
+                    <td>${change > 0 ? '+' + change : change}</td>
+                `;
+                tbody.appendChild(row);
+
+                // 2. Generate Detailed Question-Wise Review Cards
+                let card = document.createElement('div');
+                card.className = 'review-card';
+                
+                let reviewHeadingColor = isCorrect ? '#2ecc71' : (isAttempted ? '#e74c3c' : '#7f8c8d');
+                let reviewHeadingText = `Question ${q.id} (${q.type}) - ${statusText}`;
+
+                let optionsHTML = '';
+                if (q.type === 'MCQ') {
+                    optionsHTML = `<div class="review-options">`;
+                    const labels = ['A', 'B', 'C', 'D'];
+                    q.options.forEach((optVal, optIdx) => {
+                        let currentLabel = labels[optIdx];
+                        let itemClass = 'review-option-item';
+                        
+                        if (currentLabel === q.correct) {
+                            itemClass += ' review-option-correct'; 
+                        } else if (currentLabel === uAns) {
+                            itemClass += ' review-option-incorrect'; 
+                        }
+                        
+                        optionsHTML += `<div class="${itemClass}"><strong>(${currentLabel})</strong> ${optVal}</div>`;
+                    });
+                    optionsHTML += `</div>`;
+                } else {
+                    let titaStyle = isCorrect ? 'background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;' : 'background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;';
+                    optionsHTML = `
+                        <div class="review-tita-result" style="${titaStyle}">
+                            <p><strong>Your Response:</strong> ${uAns || "No response filled"}</p>
+                            <p><strong>Correct Response Key:</strong> ${q.correct}</p>
+                        </div>
+                    `;
+                }
+
+                let textReview = q.text.replace(/\n/g, '<br>');
+                if(q.hasDiagram) {
+                    textReview += '<br>' + generateSVG(q.diagramType);
+                }
+
+                card.innerHTML = `
+                    <div class="review-card-header" style="color: ${reviewHeadingColor};">
+                        ${reviewHeadingText}
+                    </div>
+                    <div class="review-question-text">
+                        ${textReview}
+                    </div>
+                    ${optionsHTML}
+                `;
+                detailContainer.appendChild(card);
+            });
+
+            document.getElementById('final-score').innerText = totalScore;
+            document.getElementById('attempted-count').innerText = `${attempted}/45`;
+            let accuracy = attempted > 0 ? Math.round((correctCount / attempted) * 100) : 0;
+            document.getElementById('accuracy-rate').innerText = `${accuracy}%`;
+        }
+
+        // --- On-Screen Calculator Logic ---
+
+        let calcVal = "0";
+        let calcFormula = "";
+        let calcMem = 0;
+        let clearOnNext = false;
+
+        function toggleCalculator() {
+            const modal = document.getElementById('calculator-modal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function calcPress(char) {
+            if (calcVal === "0" || clearOnNext) {
+                calcVal = char;
+                clearOnNext = false;
+            } else {
+                calcVal += char;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcOperator(op) {
+            if (op === 'pm') {
+                calcVal = String(parseFloat(calcVal) * -1);
+            } else if (op === 'sqrt') {
+                calcVal = String(Math.sqrt(parseFloat(calcVal)));
+                clearOnNext = true;
+            } else if (op === 'inv') {
+                let v = parseFloat(calcVal);
+                calcVal = v !== 0 ? String(1 / v) : "Error";
+                clearOnNext = true;
+            } else {
+                calcFormula += calcVal + " " + op + " ";
+                clearOnNext = true;
+            }
+            updateCalcDisplay();
+        }
+
+        function calcCalculate() {
+            try {
+                calcFormula += calcVal;
+                let finalVal = eval(calcFormula);
+                calcVal = String(finalVal);
+                calcFormula = "";
+                clearOnNext = true;
+            } catch(e) {
+                calcVal = "Error";
+                calcFormula = "";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcBackspace() {
+            if (calcVal.length > 1) {
+                calcVal = calcVal.slice(0, -1);
+            } else {
+                calcVal = "0";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcClear() {
+            calcVal = "0";
+            calcFormula = "";
+            updateCalcDisplay();
+        }
+
+        function calcMemory(action) {
+            let current = parseFloat(calcVal) || 0;
+            switch(action) {
+                case 'MC': calcMem = 0; break;
+                case 'MR': calcVal = String(calcMem); clearOnNext = true; break;
+                case 'MS': calcMem = current; clearOnNext = true; break;
+                case 'M+': calcMem += current; clearOnNext = true; break;
+                case 'M-': calcMem -= current; clearOnNext = true; break;
+            }
+            updateCalcDisplay();
+        }
+
+        // Drag Support for the calculator modal
+        const dragHeader = document.getElementById("calc-header-drag");
+        const modalEl = document.getElementById("calculator-modal");
+        let activeDrag = false, initX, initY;
+
+        dragHeader.onmousedown = (e) => {
+            activeDrag = true;
+            initX = e.clientX - modalEl.offsetLeft;
+            initY = e.clientY - modalEl.offsetTop;
+        };
+
+        document.onmousemove = (e) => {
+            if (activeDrag) {
+                modalEl.style.left = (e.clientX - initX) + 'px';
+                modalEl.style.top = (e.clientY - initY) + 'px';
+            }
+        };
+
+        document.onmouseup = () => activeDrag = false;
+
+        function updateCalcDisplay() {
+            document.getElementById('calc-display').innerText = calcVal;
+            document.getElementById('calc-formula').innerText = calcFormula;
+        }
+
+        window.onload = initTest;
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
