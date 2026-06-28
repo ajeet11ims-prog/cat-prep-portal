@@ -1,0 +1,20 @@
+Delete these files from GitHub root if present:
+
+portal-calm-theme.css
+profit-loss-tests-addon.js
+index(1).html
+app(1)(1).js
+styles(1)(1).css
+
+Then upload/replace:
+index.html
+styles.css
+app.js
+tests-data.js
+tests.json
+README.md
+admin.html
+admin.css
+admin.js
+attempt.html
+attempt.js
