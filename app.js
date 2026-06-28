@@ -362,10 +362,20 @@
 
     if (folders.length) {
       showOnly("folder");
-      setSearchVisible(false);
+      setSearchVisible(true);
+
+      const folderSection = folders.length
+        ? `<section class="mixed-section"><h3 class="section-label">Folders</h3><div class="grid">${folders.map(folderCard).join("")}</div></section>`
+        : "";
+
+      const testSection = directTests.length
+        ? `<section class="mixed-section"><h3 class="section-label">Tests in this folder</h3><div class="grid">${directTests.map(testCard).join("")}</div></section>`
+        : "";
+
       els.folderView.innerHTML = `
         <div class="back-row"><a class="back-btn" href="${backHref}">← Back</a></div>
-        <div class="grid">${folders.map(folderCard).join("")}</div>`;
+        ${folderSection}
+        ${testSection}`;
       return;
     }
 
