@@ -1104,7 +1104,7 @@ window.CAT_TESTS = [
     "questions": 25
   },
   {
-    "title": "SCI Test -8",
+    "title": "SICI Test -8",
     "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -8.html",
     "original": "SICI Test -8.html",
     "folders": [
