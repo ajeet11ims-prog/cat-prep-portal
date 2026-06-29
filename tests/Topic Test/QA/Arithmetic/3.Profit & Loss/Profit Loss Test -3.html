@@ -3,933 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profit Loss Test -3</title>
+  <title>Profit, Loss and Discount - Full Secure Test</title>
   <style>
-    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
-    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
-    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
-    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
-    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
-    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
-    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
-    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
-
-    body.submitted-mode{overflow:auto;}
-    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
-    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
-    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
-    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
-    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
-    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
-
-    /* Scroll support for laptop/desktop screens */
-    html,body{overflow:auto!important;}
-    body{min-width:1100px;}
-    main{min-width:1100px;overflow:auto;}
-    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
-    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
-    .solution{overflow-x:auto;padding-bottom:120px;}
-    .block,.qtext,.options,.solution{max-width:100%;}
-    .options{min-width:760px;}
-    .navrow{z-index:100;}
-    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
-    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
-    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
-    body.submitted-mode{overflow:auto!important;}
-    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
-    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
-    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
-    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
-    @media(max-width:1100px){body,main{min-width:1100px;}}
-
-  
-    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
-    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
-    .frac span:last-child{padding:0 .18em;}
-
-  .data-table{border-collapse:collapse;margin:12px 0 18px;max-width:560px;width:100%;background:#fff}.data-table th,.data-table td{border:1px solid var(--line);padding:9px 10px;text-align:center}.data-table th{background:#f3f8fb;color:#111;font-weight:700}.q-image{display:block;max-width:620px;width:min(100%,620px);height:auto;margin:12px 0 18px;border:1px solid var(--line);border-radius:6px;background:#fff}
+    :root{--ink:#17202a;--muted:#627386;--line:#d8e0e8;--brand:#087fc1;--brand-dark:#055f92;--brand-soft:#e9f6fc;--paper:#fff;--bg:#f4f7fa;--ok:#157347;--bad:#b02a37}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(20,40,60,.08);backdrop-filter:blur(10px)}
+    .topbar{max-width:1180px;margin:0 auto;padding:14px 18px;display:grid;grid-template-columns:1fr auto auto auto;gap:14px;align-items:center}
+    h1{margin:0;font-size:22px;color:var(--brand)} .meta{color:var(--muted);font-size:14px;margin-top:2px}
+    .pill{min-width:146px;text-align:center;border:1px solid var(--line);background:var(--brand-soft);border-radius:6px;padding:8px 12px;font-weight:700;color:var(--brand)}
+    main{max-width:1180px;margin:22px auto 44px;padding:0 18px;display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}
+    aside{position:sticky;top:84px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px}.panel-title{margin:0 0 10px;font-size:15px;color:var(--brand-dark)}
+    .palette{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.dot{height:34px;border:1px solid var(--line);border-radius:6px;background:#fbfcfd;color:var(--ink);font-weight:700;cursor:pointer}
+    .dot.active{outline:3px solid rgba(8,127,193,.22);border-color:var(--brand)}.dot.answered{background:#eef8f2;border-color:rgba(21,115,71,.45);color:var(--ok)}.dot.correct{background:#dff3e8;border-color:var(--ok)}.dot.wrong{background:#ffe5e7;border-color:var(--bad);color:var(--bad)}.dot.missed{background:#f0f2f5;color:var(--muted)}
+    .instructions,.question,#result{background:var(--paper);border:1px solid var(--line);border-radius:8px}.instructions{padding:16px;margin-bottom:18px}.security-note{margin-top:8px;color:var(--muted);font-size:13px}
+    .question{display:none;min-height:520px;padding:18px;margin-bottom:14px;scroll-margin-top:92px}.question.active{display:block}.question h2{margin:0 0 16px;font-size:18px}.difficulty{display:inline-block;margin:0 0 10px;color:var(--brand);font-weight:700;border-bottom:2px solid var(--brand)}
+    .options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}label.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:6px;padding:10px;cursor:pointer;background:#fbfcfd}label.option:hover{border-color:#9ab7ca}input[type=radio]{margin-top:4px}
+    .text-answer{width:min(420px,100%);border:1px solid var(--line);border-radius:6px;padding:12px;font-size:16px;background:#fbfcfd}
+    .actions,.question-nav{display:flex;justify-content:center;gap:10px;margin:24px 0;flex-wrap:wrap}.question-nav{justify-content:space-between;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px}button.primary,button.secondary{border:0;border-radius:6px;padding:12px 22px;font-size:16px;font-weight:700;cursor:pointer}
+    button.primary{background:var(--brand);color:#fff}button.primary:hover{background:var(--brand-dark)}button.secondary{background:#eef2f6;color:var(--ink);border:1px solid var(--line)}button:disabled{cursor:not-allowed;opacity:.7}
+    .calc-open{border:1px solid var(--brand);border-radius:6px;background:var(--brand);color:#fff;padding:9px 13px;font-size:14px;font-weight:700;cursor:pointer}.calc-open:hover{background:var(--brand-dark)}
+    #result{display:none;padding:16px;margin-bottom:18px}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(110px,1fr));gap:10px;margin-top:12px}.score-box{border:1px solid var(--line);border-radius:6px;padding:10px;background:#fbfcfd}.score-box strong{display:block;font-size:22px;margin-top:2px}
+    .correct{border-color:rgba(21,115,71,.45);background:#eef8f2}.wrong{border-color:rgba(176,42,55,.45);background:#fff1f2}.missed{border-color:rgba(93,109,126,.45);background:#f6f7f9}.answer-note{margin-top:10px;font-weight:700}.answer-note.ok{color:var(--ok)}.answer-note.bad{color:var(--bad)}.answer-note.muted{color:var(--muted)}
+    .solution{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:12px;color:#243447}.solution h3{margin:0 0 8px;font-size:16px;color:var(--brand)}.solution p{margin:6px 0}
+    dialog{border:1px solid var(--line);border-radius:8px;max-width:440px;padding:18px;color:var(--ink);box-shadow:0 24px 80px rgba(20,40,60,.25)}dialog::backdrop{background:rgba(16,28,42,.42)}
+    .calculator-dialog{width:min(360px,calc(100vw - 28px));max-width:360px;margin:0;inset:90px auto auto 50%;transform:translateX(-50%)}.calculator-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;cursor:move;user-select:none}.calculator-head h2{margin:0;color:var(--brand-dark);font-size:18px}
+    .calc-close{border:1px solid var(--line);border-radius:6px;background:#eef2f6;color:var(--ink);width:34px;height:34px;font-size:20px;line-height:1;cursor:pointer}.calc-display{width:100%;border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:10px;background:#fbfcfd;color:var(--ink);font-size:22px;font-weight:700;text-align:right}.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calc-key{min-height:44px;border:1px solid var(--line);border-radius:6px;background:#f8fafc;color:var(--ink);font-size:17px;font-weight:700;cursor:pointer}.calc-key.operator{background:var(--brand-soft);color:var(--brand-dark)}.calc-key.equal{background:var(--brand);color:#fff;grid-column:span 2}.calc-key.clear{color:var(--bad)}
+    @media(max-width:900px){.topbar{grid-template-columns:1fr}main{grid-template-columns:1fr}aside{position:static}.options,.score-grid{grid-template-columns:1fr}.pill,.calc-open{width:100%}}
   </style>
-  <!-- Generated: Profit Loss Test -7 | 25 mixed MCQ/TITA | English only -->
 </head>
 <body>
-  <header><div class="topbar"><div class="title"><h1>Profit Loss Test -3</h1><div class="meta">46 Questions | 90 Minutes | 45 MCQ + 1 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">90:00</span></div></div></header>
-  <main>
-    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
-    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
-    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
-  </main>
+  <header><div class="topbar"><div><h1>Profit, Loss and Discount</h1><div class="meta">46 Questions | 90 Minutes | +3 correct, -1 wrong</div></div><div class="pill">Time Left: <span id="time">90:00</span></div><div class="pill">Answered: <span id="answeredCount">0</span>/46</div><button class="calc-open" type="button" id="openCalculator">Calculator</button></div></header>
+  <main><aside><h2 class="panel-title">Question Palette</h2><div class="palette" id="palette"></div></aside><section><section class="instructions"><strong>Instructions:</strong> Select one option for each MCQ. Type the exact answer for numeric questions. Unattempted questions carry 0 marks. Solutions unlock only after submission.<div class="security-note">Includes locked submission, disabled post-submit edits, hash-based answer checking, and a movable calculator.</div></section><section id="result"></section><form id="testForm"></form></section></main>
+  <dialog class="calculator-dialog" id="calculatorDialog"><div class="calculator-head"><h2>Calculator</h2><button class="calc-close" type="button" id="closeCalculator" aria-label="Close calculator">x</button></div><input class="calc-display" id="calcDisplay" type="text" value="0" inputmode="decimal" aria-label="Calculator display"><div class="calc-grid" id="calcKeys"><button class="calc-key clear" type="button" data-action="clear">C</button><button class="calc-key" type="button" data-action="backspace">DEL</button><button class="calc-key operator" type="button" data-value="%">%</button><button class="calc-key operator" type="button" data-value="/">/</button><button class="calc-key" type="button" data-value="7">7</button><button class="calc-key" type="button" data-value="8">8</button><button class="calc-key" type="button" data-value="9">9</button><button class="calc-key operator" type="button" data-value="*">x</button><button class="calc-key" type="button" data-value="4">4</button><button class="calc-key" type="button" data-value="5">5</button><button class="calc-key" type="button" data-value="6">6</button><button class="calc-key operator" type="button" data-value="-">-</button><button class="calc-key" type="button" data-value="1">1</button><button class="calc-key" type="button" data-value="2">2</button><button class="calc-key" type="button" data-value="3">3</button><button class="calc-key operator" type="button" data-value="+">+</button><button class="calc-key" type="button" data-value="0">0</button><button class="calc-key" type="button" data-value=".">.</button><button class="calc-key equal" type="button" data-action="equals">=</button></div></dialog>
+  <dialog id="confirmDialog"><h2>Submit test?</h2><p id="confirmText">Your answers will be locked and solutions will be shown.</p><div class="actions"><button class="secondary" type="button" id="cancelSubmit">Review</button><button class="primary" type="button" id="confirmSubmit">Submit Test</button></div></dialog>
   <script>
-    const questions = [
-  {
-    "no": 1,
-    "itemId": 80001,
-    "source": "Profit Loss Test -3 | Q1",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A trader makes a profit equal to the selling price of 75 articles when he sold 100 of the articles. What percent did he make in the transaction?</p>",
-    "options": [
-      "<p>33.33%</p>",
-      "<p>75%</p>",
-      "<p>300%</p>",
-      "<p>150%</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 300%",
-    "solution": "<p><strong>Answer:</strong> (C) 300%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 2,
-    "itemId": 80002,
-    "source": "Profit Loss Test -3 | Q2",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>As a part of sales promotion, a trader is offering 1 article free with every pack of 10 articles. By what percentage should he mark-up his goods if he desires a profit of 10%?</p>",
-    "options": [
-      "<p>20%</p>",
-      "<p>21%</p>",
-      "<p>22.22%</p>",
-      "<p>18.18%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 21%",
-    "solution": "<p><strong>Answer:</strong> (B) 21%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 3,
-    "itemId": 80003,
-    "source": "Profit Loss Test -3 | Q3",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A girl sells two bags at Rs. 600 each. If she makes a profit of 20% on one bag and incurs a loss of 25% on the other, find the resultant gain or loss in the transaction.</p>",
-    "options": [
-      "<p>Rs. 100 loss</p>",
-      "<p>Rs. 200 loss</p>",
-      "<p>Rs. 130 gain</p>",
-      "<p>Rs. 240 gain</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) Rs. 100 loss",
-    "solution": "<p><strong>Answer:</strong> (A) Rs. 100 loss</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 4,
-    "itemId": 80004,
-    "source": "Profit Loss Test -3 | Q4",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A person incurs a loss of 40% when he sells 32 oranges at Rs. 1,000. In order to make a profit of 20%, how many oranges should he sell at Rs. 1000?</p>",
-    "options": [
-      "<p>12</p>",
-      "<p>14</p>",
-      "<p>16</p>",
-      "<p>18</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 16",
-    "solution": "<p><strong>Answer:</strong> (C) 16</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 5,
-    "itemId": 80005,
-    "source": "Profit Loss Test -3 | Q5",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A jobber buys an article at Rs. 24 less 12.5%. He then wishes to sell the article at a gain of 33 1/3% of his cost after allowing a 20% discount on his marked price. At what price, in rupees, should the article be marked?</p>",
-    "options": [
-      "<p>30.00</p>",
-      "<p>33.60</p>",
-      "<p>40.00</p>",
-      "<p>none of these</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) none of these",
-    "solution": "<p><strong>Answer:</strong> (D) none of these</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 6,
-    "itemId": 80006,
-    "source": "Profit Loss Test -3 | Q6",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Sohum purchased some mangoes at 5 for Rs. 2 and another lot of the same number of mangoes at 2 for Rs. 1. He sold all the mangoes at 10 for Rs. 3. What is his net profit% or loss%?</p>",
-    "options": [
-      "<p>14 2/7% loss</p>",
-      "<p>25% loss</p>",
-      "<p>14 2/7% profit</p>",
-      "<p>None of these</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) 14 2/7% loss",
-    "solution": "<p><strong>Answer:</strong> (A) 14 2/7% loss</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 7,
-    "itemId": 80007,
-    "source": "Profit Loss Test -3 | Q7",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Sohum purchased some mangoes at 5 for Rs. 2 and another lot of mangoes at 2 for Rs. 1. He sold all the mangoes at 3 for Rs. 2. What is his net profit% or loss% if he spent the same amount on both lots of mangoes?</p>",
-    "options": [
-      "<p>33 1/3% loss</p>",
-      "<p>25% profit</p>",
-      "<p>50% profit</p>",
-      "<p>50% loss</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 50% profit",
-    "solution": "<p><strong>Answer:</strong> (C) 50% profit</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 8,
-    "itemId": 80008,
-    "source": "Profit Loss Test -3 | Q8",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>An article when sold at a certain price results in 10% loss. Had the cost price been Rs. 80 less and had the selling price been Rs. 100 more, then there would have been a profit of 15%. Find the price at which the article was sold.</p>",
-    "options": [
-      "<p>Rs. 868</p>",
-      "<p>Rs. 768</p>",
-      "<p>Rs. 691.2</p>",
-      "<p>Cannot be determined</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) Rs. 691.2",
-    "solution": "<p><strong>Answer:</strong> (C) Rs. 691.2</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 9,
-    "itemId": 80009,
-    "source": "Profit Loss Test -3 | Q9",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A tie and a belt together costs Rs. 200 to a trader. When a trader sells two articles, each for the same amount, he makes a profit of 10% on the first article and a loss of 10% on the second article. If he wants an overall profit of 1% by selling each at the same price, by what amount should he increase the selling price of each article?</p>",
-    "options": [
-      "<p>Rs. 0.5</p>",
-      "<p>Rs. 1</p>",
-      "<p>Rs. 2</p>",
-      "<p>Rs. 0.25</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) Rs. 2",
-    "solution": "<p><strong>Answer:</strong> (C) Rs. 2</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 10,
-    "itemId": 80010,
-    "source": "Profit Loss Test -3 | Q10",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Cost price of 15 oranges is equal to selling price of 9 oranges and the discount on 8 oranges is same as the profit on 4 oranges. Find the percentage point difference between the profit % and the discount %.</p>",
-    "options": [
-      "<p>25</p>",
-      "<p>35</p>",
-      "<p>50</p>",
-      "<p>12</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 50",
-    "solution": "<p><strong>Answer:</strong> (C) 50</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 11,
-    "itemId": 80011,
-    "source": "Profit Loss Test -3 | Q11",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A fruit vendor professes to sell fruits at the cost price, but uses false weights. He gains 30% in this manner. What weight does he substitute for one kilogram?</p>",
-    "options": [
-      "<p>645 1/3 gm</p>",
-      "<p>750 gm</p>",
-      "<p>769 3/13 gm</p>",
-      "<p>800 gm</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 769 3/13 gm",
-    "solution": "<p><strong>Answer:</strong> (C) 769 3/13 gm</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 12,
-    "itemId": 80012,
-    "source": "Profit Loss Test -3 | Q12",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A merchant wants to make profit by selling food grains. Which of the following would maximize his profit? I. Sell product at 30% profit. II. Increase the price by 15% over the cost price and reduce weight by 15%. III. Use 700 gm of weight instead of 1 kg. IV. Mix 30% impurities in grains and sell it at cost price.</p>",
-    "options": [
-      "<p>III</p>",
-      "<p>II and I</p>",
-      "<p>II</p>",
-      "<p>All give the same profit</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) III",
-    "solution": "<p><strong>Answer:</strong> (A) III</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 13,
-    "itemId": 80013,
-    "source": "Profit Loss Test -3 | Q13",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A shopkeeper purchases rice from the wholesale market and then retails it by hiking the selling rate by 10% more than his rate of purchase. 10% of his goods are eaten away by rats at his godown. If he uses a 1 kg weight that actually measures only 909.09 gms, what is his overall profit percentage?</p>",
-    "options": [
-      "<p>10% loss</p>",
-      "<p>10% profit</p>",
-      "<p>11.11% profit</p>",
-      "<p>8.9% profit</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) 8.9% profit",
-    "solution": "<p><strong>Answer:</strong> (D) 8.9% profit</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 14,
-    "itemId": 80014,
-    "source": "Profit Loss Test -3 | Q14",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A salesman sells two kinds of trousers: cotton and woollen. A pair of cotton trousers is sold at 30% profit and a pair of woollen trousers is sold at 50% profit. He sells 100% more woollen trousers than cotton trousers, so his overall profit will be 45%. However he ends up selling 50% more cotton trousers than woollen trousers. What will be his overall profit?</p>",
-    "options": [
-      "<p>37.5%</p>",
-      "<p>40%</p>",
-      "<p>41%</p>",
-      "<p>42.33%</p>",
-      "<p>None of the above</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 40%",
-    "solution": "<p><strong>Answer:</strong> (B) 40%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 15,
-    "itemId": 80015,
-    "source": "Profit Loss Test -3 | Q15",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Ramsukh bhai sells rasgulla at Rs. 15 per kg. A rasgulla is made up of flour and sugar in the ratio 5:3. The ratio of price of sugar and flour is 7:3 per kg. Thus he earns 66 2/3% profit. What is the cost price of sugar?</p>",
-    "options": [
-      "<p>Rs. 10/kg</p>",
-      "<p>Rs. 9/kg</p>",
-      "<p>Rs. 18/kg</p>",
-      "<p>Rs. 14/kg</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) Rs. 14/kg",
-    "solution": "<p><strong>Answer:</strong> (D) Rs. 14/kg</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 16,
-    "itemId": 80016,
-    "source": "Profit Loss Test -3 | Q16",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Rohit bought 20 soaps and 12 toothpastes. He marked-up the soaps by 15% on cost price of each, and the toothpastes by Rs. 20 on the cost price of each. He sold 75% of the soaps and 8 toothpastes and made a profit of Rs. 385. If the cost of a toothpaste is 60% of the cost of a soap and he got no return on unsold items, what was his overall profit or loss?</p>",
-    "options": [
-      "<p>Loss of Rs. 355</p>",
-      "<p>Loss of Rs. 210</p>",
-      "<p>Loss of Rs. 250</p>",
-      "<p>None of the above</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) Loss of Rs. 355",
-    "solution": "<p><strong>Answer:</strong> (A) Loss of Rs. 355</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 17,
-    "itemId": 80017,
-    "source": "Profit Loss Test -3 | Q17",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Books and More sells books, music CDs and film DVDs. In December 2009, they earned 40% profit in music CDs and 25% profit in books. Music CDs contributed 35% towards their total sales in rupees. Total sales from books was 50% more than that of music CDs. If Books and More earned 20% profit overall, then in film DVDs they made:</p>",
-    "options": [
-      "<p>15.2% profit</p>",
-      "<p>10.0% profit</p>",
-      "<p>10.0% loss</p>",
-      "<p>16.3% loss</p>",
-      "<p>23.4% loss</p>"
-    ],
-    "answer": 4,
-    "typedAnswer": "(E) 23.4% loss",
-    "solution": "<p><strong>Answer:</strong> (E) 23.4% loss</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 18,
-    "itemId": 80018,
-    "source": "Profit Loss Test -3 | Q18",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Using the same Books and More information, if Books and More made 50% loss in film DVDs, then overall they made:</p>",
-    "options": [
-      "<p>12.3% profit</p>",
-      "<p>8.7% profit</p>",
-      "<p>0.4% loss</p>",
-      "<p>6.25% loss</p>",
-      "<p>20% loss</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 8.7% profit",
-    "solution": "<p><strong>Answer:</strong> (B) 8.7% profit</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 19,
-    "itemId": 80019,
-    "source": "Profit Loss Test -3 | Q19",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A space research company wants to sell its two products A and B. If product A is sold at 20% loss and product B at 30% gain, the company will not lose anything. If product A is sold at 15% loss and product B at 15% gain, the company will lose Rs. 6 million in the deal. What is the cost of product B?</p>",
-    "options": [
-      "<p>Rs. 140 million</p>",
-      "<p>Rs. 120 million</p>",
-      "<p>Rs. 100 million</p>",
-      "<p>Rs. 80 million</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) Rs. 80 million",
-    "solution": "<p><strong>Answer:</strong> (D) Rs. 80 million</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 20,
-    "itemId": 80020,
-    "source": "Profit Loss Test -3 | Q20",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Two articles are sold individually at profit of 33.33% and 25%. If the selling price of the second article is 16.66% less than the selling price of the first, by what percentage is the cost price of the first article more/less than the cost price of the second article?</p>",
-    "options": [
-      "<p>11.11% less</p>",
-      "<p>12.5% more</p>",
-      "<p>12.5% less</p>",
-      "<p>11.11% more</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 12.5% more",
-    "solution": "<p><strong>Answer:</strong> (B) 12.5% more</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 21,
-    "itemId": 80021,
-    "source": "Profit Loss Test -3 | Q21",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>The selling price of x number of oranges is equal to the cost price of y number of oranges. If this is a case of profit of 18.18%, find the ratio x:y.</p>",
-    "options": [
-      "<p>9:11</p>",
-      "<p>11:9</p>",
-      "<p>11:13</p>",
-      "<p>13:11</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 11:13",
-    "solution": "<p><strong>Answer:</strong> (C) 11:13</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 22,
-    "itemId": 80022,
-    "source": "Profit Loss Test -3 | Q22",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>On selling certain number of oranges, a fruit-seller made a profit equal to the selling price of 3 oranges. If the profit percentage was 25%, find the number of oranges sold.</p>",
-    "options": [
-      "<p>9</p>",
-      "<p>12</p>",
-      "<p>15</p>",
-      "<p>18</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 15",
-    "solution": "<p><strong>Answer:</strong> (C) 15</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 23,
-    "itemId": 80023,
-    "source": "Profit Loss Test -3 | Q23",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A shopkeeper purchases certain number of oranges at the rate of Rs. 1 per orange. He sells exactly half at 3 oranges for Rs. 5 and the other half at Rs. 3 per lot of 5 oranges. What is his overall profit/loss percentage?</p>",
-    "options": [
-      "<p>No profit no loss</p>",
-      "<p>6.66% loss</p>",
-      "<p>6.25% profit</p>",
-      "<p>13.33% profit</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) 13.33% profit",
-    "solution": "<p><strong>Answer:</strong> (D) 13.33% profit</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 24,
-    "itemId": 80024,
-    "source": "Profit Loss Test -3 | Q24",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A trader marks-up his goods by 20% and offers a 10% discount. Another trader who purchases the goods from the same source as the first trader sells at a discount of 4%. What should be his minimum mark-up percentage so that he still makes a profit at least equal to, if not more than, the first trader?</p>",
-    "options": [
-      "<p>14%</p>",
-      "<p>12.5%</p>",
-      "<p>10%</p>",
-      "<p>8.33%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 12.5%",
-    "solution": "<p><strong>Answer:</strong> (B) 12.5%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 25,
-    "itemId": 80025,
-    "source": "Profit Loss Test -3 | Q25",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Even though a cloth merchant sells at a mark-up of 12.5%, his profit is only 4.166...%. What is the actual length of cloth that his meter scale measures?</p>",
-    "options": [
-      "<p>104 cm</p>",
-      "<p>105 cm</p>",
-      "<p>108 cm</p>",
-      "<p>110 cm</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 108 cm",
-    "solution": "<p><strong>Answer:</strong> (C) 108 cm</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 26,
-    "itemId": 80026,
-    "source": "Profit Loss Test -3 | Q26",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A trader allows two successive discounts of 20% and 15%. If he gets Rs. 136 for an item, then its marked cost is:</p>",
-    "options": [
-      "<p>100</p>",
-      "<p>200</p>",
-      "<p>300</p>",
-      "<p>400</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 200",
-    "solution": "<p><strong>Answer:</strong> (B) 200</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 27,
-    "itemId": 80027,
-    "source": "Profit Loss Test -3 | Q27",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>60% goods are sold at 5% loss while rest are sold at 10% profit. If there is a total profit of Rs. 100, then the worth of goods sold is:</p>",
-    "options": [
-      "<p>Rs. 5,000</p>",
-      "<p>Rs. 6,000</p>",
-      "<p>Rs. 10,000</p>",
-      "<p>None of these</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) Rs. 10,000",
-    "solution": "<p><strong>Answer:</strong> (C) Rs. 10,000</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 28,
-    "itemId": 80028,
-    "source": "Profit Loss Test -3 | Q28",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A buys a pen for Rs. 4 and sells it for Rs. 5. He calculates his profit first as a percentage of the buying price and then as the percentage of the selling price. The difference between these two is:</p>",
-    "options": [
-      "<p>20%</p>",
-      "<p>10%</p>",
-      "<p>5%</p>",
-      "<p>15%</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 5%",
-    "solution": "<p><strong>Answer:</strong> (C) 5%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 29,
-    "itemId": 80029,
-    "source": "Profit Loss Test -3 | Q29",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A trader purchases apples at Rs. 60 per hundred. He spends 15% on transportation. What should be the selling price per 100 to earn a profit of 20%?</p>",
-    "options": [
-      "<p>Rs. 72</p>",
-      "<p>Rs. 81.8</p>",
-      "<p>Rs. 83.8</p>",
-      "<p>Rs. 82.8</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) Rs. 82.8",
-    "solution": "<p><strong>Answer:</strong> (D) Rs. 82.8</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 30,
-    "itemId": 80030,
-    "source": "Profit Loss Test -3 | Q30",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>By selling a casserole for Rs. 960, a man incurs a loss of 4%. At what price should he sell the casserole to gain 16%?</p>",
-    "options": [
-      "<p>Rs. 1,160</p>",
-      "<p>Rs. 1,080</p>",
-      "<p>Rs. 1,120</p>",
-      "<p>None of these</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) Rs. 1,160",
-    "solution": "<p><strong>Answer:</strong> (A) Rs. 1,160</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 31,
-    "itemId": 80031,
-    "source": "Profit Loss Test -3 | Q31",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Shyam is a dishonest tea dealer who sells loose tea leaves at 6 1/4% loss on the cost price in Daryagunj market but he uses 12 1/2% less weight. What is his percentage of profit or loss?</p>",
-    "options": [
-      "<p>Loss of 7 1/7%</p>",
-      "<p>Profit of 7 1/7%</p>",
-      "<p>Loss of 5 1/7%</p>",
-      "<p>Profit of 5 1/7%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) Profit of 7 1/7%",
-    "solution": "<p><strong>Answer:</strong> (B) Profit of 7 1/7%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 32,
-    "itemId": 80032,
-    "source": "Profit Loss Test -3 | Q32",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A shopkeeper placed on display some dresses each with a marked price. She then posted a sign '1/4 off on these dresses'. The cost of dresses was 2/3 of the price at which she actually sold them. Then the ratio of the cost to the marked price was:</p>",
-    "options": [
-      "<p>1:2</p>",
-      "<p>2:3</p>",
-      "<p>4:9</p>",
-      "<p>3:5</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) 1:2",
-    "solution": "<p><strong>Answer:</strong> (A) 1:2</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 33,
-    "itemId": 80033,
-    "source": "Profit Loss Test -3 | Q33",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>If an article is sold for Rs. x, there is a loss of 15%. If the same article is sold for Rs. y, there is a profit of 15%. The ratio of (y - x) to (y + x) is:</p>",
-    "options": [
-      "<p>20:23</p>",
-      "<p>20:3</p>",
-      "<p>3:20</p>",
-      "<p>17:23</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 3:20",
-    "solution": "<p><strong>Answer:</strong> (C) 3:20</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 34,
-    "itemId": 80034,
-    "source": "Profit Loss Test -3 | Q34",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>The cost of labour in manufacturing a product is 16.66% of the total cost. Due to improvement in automation, the cost of labour decreased to 12.5% of the total cost, all other costs remaining the same. Find the percentage decrease in the cost of labour.</p>",
-    "options": [
-      "<p>25%</p>",
-      "<p>28.56%</p>",
-      "<p>33.33%</p>",
-      "<p>37.5%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 28.56%",
-    "solution": "<p><strong>Answer:</strong> (B) 28.56%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 35,
-    "itemId": 80035,
-    "source": "Profit Loss Test -3 | Q35",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A trader sells three articles at the same price. On one of them he makes a 10% loss, on each of the other two he makes a 5% profit. Which of the following is true about the overall profit/loss he makes?</p>",
-    "options": [
-      "<p>Overall he makes a loss</p>",
-      "<p>Overall he makes a profit</p>",
-      "<p>Overall he breaks even</p>",
-      "<p>Depends on the selling price</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) Overall he makes a loss",
-    "solution": "<p><strong>Answer:</strong> (A) Overall he makes a loss</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 36,
-    "itemId": 80036,
-    "source": "Profit Loss Test -3 | Q36",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Even though the cost price of goods increases by Rs. 50, a trader manages to increase his selling price by only Rs. 40. This resulted in his profit percentage dropping from 20% to 12%. What was the percentage increase in the selling price?</p>",
-    "options": [
-      "<p>20%</p>",
-      "<p>16.66%</p>",
-      "<p>16.25%</p>",
-      "<p>15.55%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 16.66%",
-    "solution": "<p><strong>Answer:</strong> (B) 16.66%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 37,
-    "itemId": 80037,
-    "source": "Profit Loss Test -3 | Q37",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Renuka bought n articles for Rs. d. She sold 2 of them at half price and rest at a profit of Rs. 8 each. The overall profit is Rs. 72. What is the minimum value of n?</p>",
-    "options": [
-      "<p>12</p>",
-      "<p>24</p>",
-      "<p>20</p>",
-      "<p>32</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) 12",
-    "solution": "<p><strong>Answer:</strong> (A) 12</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 38,
-    "itemId": 80038,
-    "source": "Profit Loss Test -3 | Q38",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A shopkeeper gives some discount to all the customers who purchase 5 or more articles. Vijay went to purchase 4 articles and noticed that if he purchases 4 or 5 articles, he had to pay the same amount. What is the discount offered?</p>",
-    "options": [
-      "<p>15%</p>",
-      "<p>20%</p>",
-      "<p>25%</p>",
-      "<p>33.33%</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 20%",
-    "solution": "<p><strong>Answer:</strong> (B) 20%</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 39,
-    "itemId": 80039,
-    "source": "Profit Loss Test -3 | Q39",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A dishonest trader marks up his goods by 80% and gives a discount of 25%. Besides he gets 20% more quantity per kg from the wholesaler while purchasing and gives 10% less to his customers. Find the overall profit percentage he is making.</p>",
-    "options": [
-      "<p>80</p>",
-      "<p>60</p>",
-      "<p>40</p>",
-      "<p>30</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) 80",
-    "solution": "<p><strong>Answer:</strong> (A) 80</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 40,
-    "itemId": 80040,
-    "source": "Profit Loss Test -3 | Q40",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>The price of an article reduces to Rs. 576 after two equal successive discounts are applied on a markup of 80%. If the cost price is Rs. 500, find the new profit percentage had the price been marked up by same percentages as the discounts were and no further discounts were given.</p>",
-    "options": [
-      "<p>259.2</p>",
-      "<p>59.2</p>",
-      "<p>159.2</p>",
-      "<p>29.2</p>"
-    ],
-    "answer": 2,
-    "typedAnswer": "(C) 159.2",
-    "solution": "<p><strong>Answer:</strong> (C) 159.2</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 41,
-    "itemId": 80041,
-    "source": "Profit Loss Test -3 | Q41",
-    "type": "tita",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Amal purchases some pens at Rs. 8 each. To sell these, he hires an employee at a fixed wage. He sells 100 of these pens at Rs. 12 each. If the remaining pens are sold at Rs. 11 each, then he makes a net profit of Rs. 300, while he makes a net loss of Rs. 300 if the remaining pens are sold at Rs. 9 each. The wage of the employee, in INR, is:</p>",
-    "typedAnswer": "1000",
-    "acceptedAnswers": [
-      "1000"
-    ],
-    "solution": "<p><strong>Answer:</strong> 1000</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 42,
-    "itemId": 80042,
-    "source": "Profit Loss Test -3 | Q42",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Mayank buys some candies for Rs. 15 a dozen and an equal number of different candies for Rs. 12 a dozen. He sells all for Rs. 16.50 a dozen and makes a profit of Rs. 150. How many dozens of candies did he buy altogether?</p>",
-    "options": [
-      "<p>50</p>",
-      "<p>30</p>",
-      "<p>25</p>",
-      "<p>45</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) 50",
-    "solution": "<p><strong>Answer:</strong> (A) 50</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 43,
-    "itemId": 80043,
-    "source": "Profit Loss Test -3 | Q43",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>The manufacturer of a table sells it to a wholesale dealer at a profit of 10%. The wholesale dealer sells the table to a retailer at a profit of 30%. Finally, the retailer sells it to a customer at a profit of 50%. If the customer pays Rs. 4290 for the table, then its manufacturing cost is:</p>",
-    "options": [
-      "<p>1500</p>",
-      "<p>2000</p>",
-      "<p>2500</p>",
-      "<p>3000</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 2000",
-    "solution": "<p><strong>Answer:</strong> (B) 2000</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 44,
-    "itemId": 80044,
-    "source": "Profit Loss Test -3 | Q44",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>A shopkeeper sells two tables, each procured at cost price p, to Amal and Asim at a profit of 20% and at a loss of 20%, respectively. Amal sells his table to Bimal at a profit of 30%, while Asim sells his table to Barun at a loss of 30%. If the amounts paid by Bimal and Barun are x and y, respectively, then (x - y)/p equals:</p>",
-    "options": [
-      "<p>1.0</p>",
-      "<p>1.2</p>",
-      "<p>0.7</p>",
-      "<p>0.5</p>"
-    ],
-    "answer": 1,
-    "typedAnswer": "(B) 1.2",
-    "solution": "<p><strong>Answer:</strong> (B) 1.2</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 45,
-    "itemId": 80045,
-    "source": "Profit Loss Test -3 | Q45",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>Mukesh purchased 10 bicycles in 2017, all at the same price. He sold six of these at a profit of 25% and the remaining four at a loss of 25%. If he made a total profit of Rs. 2000, then his purchase price of a bicycle, in Rupees, was:</p>",
-    "options": [
-      "<p>2000</p>",
-      "<p>6000</p>",
-      "<p>8000</p>",
-      "<p>4000</p>"
-    ],
-    "answer": 3,
-    "typedAnswer": "(D) 4000",
-    "solution": "<p><strong>Answer:</strong> (D) 4000</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  },
-  {
-    "no": 46,
-    "itemId": 80046,
-    "source": "Profit Loss Test -3 | Q46",
-    "type": "mcq",
-    "direction": "<p>Answer the questions independently of each other.</p>",
-    "passage": "",
-    "question": "<p>On selling a pen at 5% loss and a book at 15% gain, Karim gains Rs. 7. If he sells the pen at 5% gain and the book at 10% gain, he gains Rs. 13. What is the cost price of the book in Rupees?</p>",
-    "options": [
-      "<p>Rs. 80</p>",
-      "<p>Rs. 85</p>",
-      "<p>Rs. 100</p>",
-      "<p>Rs. 95</p>"
-    ],
-    "answer": 0,
-    "typedAnswer": "(A) Rs. 80",
-    "solution": "<p><strong>Answer:</strong> (A) Rs. 80</p><p>Detailed solution was not present in the source HTML, so I preserved the correct answer review without fabricating steps.</p>"
-  }
-];
-    const optionFixQuestions = new Set();
-    function cleanOptionHtml(html){return html;}
-    let current = 0, submitted = false, secondsLeft = 90 * 60, timerId = null;
-    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
-    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
-    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
-    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
-    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
-    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
-    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.typedAnswer || q.options[q.answer] || "") : q.typedAnswer;}
-    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
-    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
-    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
-    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
-    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
-    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
-    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
-    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
-    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
-    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
-    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
-    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
-    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
-    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
-    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
-    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
-    let dragCalc=false, calcDx=0, calcDy=0;
-    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
-    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
-    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
-    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
-    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
-    renderQuestion();tick();timerId=setInterval(tick,1000);
+    const H={A:"559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",B:"df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c",C:"6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d",D:"3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43",E:"a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58",N1000:"40510175845988f13f6162ed8526f0b09f73384467fa855e1e79b44a56562a58"};
+    const questions=[
+      {q:"A trader makes a profit equal to the selling price of 75 articles when he sold 100 of the articles. What percent did he make in the transaction?",o:["33.33%","75%","300%","150%"],h:H.C},
+      {q:"As a part of sales promotion, a trader is offering 1 article free with every pack of 10 articles. By what percentage should he mark-up his goods if he desires a profit of 10%?",o:["20%","21%","22.22%","18.18%"],h:H.B},
+      {q:"A girl sells two bags at Rs. 600 each. If she makes a profit of 20% on one bag and incurs a loss of 25% on the other, find the resultant gain or loss in the transaction.",o:["Rs. 100 loss","Rs. 200 loss","Rs. 130 gain","Rs. 240 gain"],h:H.A},
+      {q:"A person incurs a loss of 40% when he sells 32 oranges at Rs. 1,000. In order to make a profit of 20%, how many oranges should he sell at Rs. 1000?",o:["12","14","16","18"],h:H.C},
+      {q:"A jobber buys an article at Rs. 24 less 12.5%. He then wishes to sell the article at a gain of 33 1/3% of his cost after allowing a 20% discount on his marked price. At what price, in rupees, should the article be marked?",o:["30.00","33.60","40.00","none of these"],h:H.D},
+      {q:"Sohum purchased some mangoes at 5 for Rs. 2 and another lot of the same number of mangoes at 2 for Rs. 1. He sold all the mangoes at 10 for Rs. 3. What is his net profit% or loss%?",o:["14 2/7% loss","25% loss","14 2/7% profit","None of these"],h:H.A},
+      {q:"Sohum purchased some mangoes at 5 for Rs. 2 and another lot of mangoes at 2 for Rs. 1. He sold all the mangoes at 3 for Rs. 2. What is his net profit% or loss% if he spent the same amount on both lots of mangoes?",o:["33 1/3% loss","25% profit","50% profit","50% loss"],h:H.C},
+      {q:"An article when sold at a certain price results in 10% loss. Had the cost price been Rs. 80 less and had the selling price been Rs. 100 more, then there would have been a profit of 15%. Find the price at which the article was sold.",o:["Rs. 868","Rs. 768","Rs. 691.2","Cannot be determined"],h:H.C},
+      {q:"A tie and a belt together costs Rs. 200 to a trader. When a trader sells two articles, each for the same amount, he makes a profit of 10% on the first article and a loss of 10% on the second article. If he wants an overall profit of 1% by selling each at the same price, by what amount should he increase the selling price of each article?",o:["Rs. 0.5","Rs. 1","Rs. 2","Rs. 0.25"],h:H.C},
+      {q:"Cost price of 15 oranges is equal to selling price of 9 oranges and the discount on 8 oranges is same as the profit on 4 oranges. Find the percentage point difference between the profit % and the discount %.",o:["25","35","50","12"],h:H.C},
+      {q:"A fruit vendor professes to sell fruits at the cost price, but uses false weights. He gains 30% in this manner. What weight does he substitute for one kilogram?",o:["645 1/3 gm","750 gm","769 3/13 gm","800 gm"],h:H.C},
+      {q:"A merchant wants to make profit by selling food grains. Which of the following would maximize his profit? I. Sell product at 30% profit. II. Increase the price by 15% over the cost price and reduce weight by 15%. III. Use 700 gm of weight instead of 1 kg. IV. Mix 30% impurities in grains and sell it at cost price.",o:["III","II and I","II","All give the same profit"],h:H.A},
+      {q:"A shopkeeper purchases rice from the wholesale market and then retails it by hiking the selling rate by 10% more than his rate of purchase. 10% of his goods are eaten away by rats at his godown. If he uses a 1 kg weight that actually measures only 909.09 gms, what is his overall profit percentage?",o:["10% loss","10% profit","11.11% profit","8.9% profit"],h:H.D},
+      {q:"A salesman sells two kinds of trousers: cotton and woollen. A pair of cotton trousers is sold at 30% profit and a pair of woollen trousers is sold at 50% profit. He sells 100% more woollen trousers than cotton trousers, so his overall profit will be 45%. However he ends up selling 50% more cotton trousers than woollen trousers. What will be his overall profit?",o:["37.5%","40%","41%","42.33%","None of the above"],h:H.B},
+      {q:"Ramsukh bhai sells rasgulla at Rs. 15 per kg. A rasgulla is made up of flour and sugar in the ratio 5:3. The ratio of price of sugar and flour is 7:3 per kg. Thus he earns 66 2/3% profit. What is the cost price of sugar?",o:["Rs. 10/kg","Rs. 9/kg","Rs. 18/kg","Rs. 14/kg"],h:H.D},
+      {q:"Rohit bought 20 soaps and 12 toothpastes. He marked-up the soaps by 15% on cost price of each, and the toothpastes by Rs. 20 on the cost price of each. He sold 75% of the soaps and 8 toothpastes and made a profit of Rs. 385. If the cost of a toothpaste is 60% of the cost of a soap and he got no return on unsold items, what was his overall profit or loss?",o:["Loss of Rs. 355","Loss of Rs. 210","Loss of Rs. 250","None of the above"],h:H.A},
+      {q:"Books and More sells books, music CDs and film DVDs. In December 2009, they earned 40% profit in music CDs and 25% profit in books. Music CDs contributed 35% towards their total sales in rupees. Total sales from books was 50% more than that of music CDs. If Books and More earned 20% profit overall, then in film DVDs they made:",o:["15.2% profit","10.0% profit","10.0% loss","16.3% loss","23.4% loss"],h:H.E},
+      {q:"Using the same Books and More information, if Books and More made 50% loss in film DVDs, then overall they made:",o:["12.3% profit","8.7% profit","0.4% loss","6.25% loss","20% loss"],h:H.B},
+      {q:"A space research company wants to sell its two products A and B. If product A is sold at 20% loss and product B at 30% gain, the company will not lose anything. If product A is sold at 15% loss and product B at 15% gain, the company will lose Rs. 6 million in the deal. What is the cost of product B?",o:["Rs. 140 million","Rs. 120 million","Rs. 100 million","Rs. 80 million"],h:H.D},
+      {q:"Two articles are sold individually at profit of 33.33% and 25%. If the selling price of the second article is 16.66% less than the selling price of the first, by what percentage is the cost price of the first article more/less than the cost price of the second article?",o:["11.11% less","12.5% more","12.5% less","11.11% more"],h:H.B},
+      {q:"The selling price of x number of oranges is equal to the cost price of y number of oranges. If this is a case of profit of 18.18%, find the ratio x:y.",o:["9:11","11:9","11:13","13:11"],h:H.C},
+      {q:"On selling certain number of oranges, a fruit-seller made a profit equal to the selling price of 3 oranges. If the profit percentage was 25%, find the number of oranges sold.",o:["9","12","15","18"],h:H.C},
+      {q:"A shopkeeper purchases certain number of oranges at the rate of Rs. 1 per orange. He sells exactly half at 3 oranges for Rs. 5 and the other half at Rs. 3 per lot of 5 oranges. What is his overall profit/loss percentage?",o:["No profit no loss","6.66% loss","6.25% profit","13.33% profit"],h:H.D},
+      {q:"A trader marks-up his goods by 20% and offers a 10% discount. Another trader who purchases the goods from the same source as the first trader sells at a discount of 4%. What should be his minimum mark-up percentage so that he still makes a profit at least equal to, if not more than, the first trader?",o:["14%","12.5%","10%","8.33%"],h:H.B},
+      {q:"Even though a cloth merchant sells at a mark-up of 12.5%, his profit is only 4.166...%. What is the actual length of cloth that his meter scale measures?",o:["104 cm","105 cm","108 cm","110 cm"],h:H.C},
+      {q:"A trader allows two successive discounts of 20% and 15%. If he gets Rs. 136 for an item, then its marked cost is:",o:["100","200","300","400"],h:H.B},
+      {q:"60% goods are sold at 5% loss while rest are sold at 10% profit. If there is a total profit of Rs. 100, then the worth of goods sold is:",o:["Rs. 5,000","Rs. 6,000","Rs. 10,000","None of these"],h:H.C},
+      {q:"A buys a pen for Rs. 4 and sells it for Rs. 5. He calculates his profit first as a percentage of the buying price and then as the percentage of the selling price. The difference between these two is:",o:["20%","10%","5%","15%"],h:H.C},
+      {q:"A trader purchases apples at Rs. 60 per hundred. He spends 15% on transportation. What should be the selling price per 100 to earn a profit of 20%?",o:["Rs. 72","Rs. 81.8","Rs. 83.8","Rs. 82.8"],h:H.D},
+      {q:"By selling a casserole for Rs. 960, a man incurs a loss of 4%. At what price should he sell the casserole to gain 16%?",o:["Rs. 1,160","Rs. 1,080","Rs. 1,120","None of these"],h:H.A},
+      {q:"Shyam is a dishonest tea dealer who sells loose tea leaves at 6 1/4% loss on the cost price in Daryagunj market but he uses 12 1/2% less weight. What is his percentage of profit or loss?",o:["Loss of 7 1/7%","Profit of 7 1/7%","Loss of 5 1/7%","Profit of 5 1/7%"],h:H.B},
+      {q:"A shopkeeper placed on display some dresses each with a marked price. She then posted a sign '1/4 off on these dresses'. The cost of dresses was 2/3 of the price at which she actually sold them. Then the ratio of the cost to the marked price was:",o:["1:2","2:3","4:9","3:5"],h:H.A},
+      {q:"If an article is sold for Rs. x, there is a loss of 15%. If the same article is sold for Rs. y, there is a profit of 15%. The ratio of (y - x) to (y + x) is:",o:["20:23","20:3","3:20","17:23"],h:H.C},
+      {q:"The cost of labour in manufacturing a product is 16.66% of the total cost. Due to improvement in automation, the cost of labour decreased to 12.5% of the total cost, all other costs remaining the same. Find the percentage decrease in the cost of labour.",o:["25%","28.56%","33.33%","37.5%"],h:H.B},
+      {q:"A trader sells three articles at the same price. On one of them he makes a 10% loss, on each of the other two he makes a 5% profit. Which of the following is true about the overall profit/loss he makes?",o:["Overall he makes a loss","Overall he makes a profit","Overall he breaks even","Depends on the selling price"],h:H.A},
+      {q:"Even though the cost price of goods increases by Rs. 50, a trader manages to increase his selling price by only Rs. 40. This resulted in his profit percentage dropping from 20% to 12%. What was the percentage increase in the selling price?",o:["20%","16.66%","16.25%","15.55%"],h:H.B},
+      {q:"Renuka bought n articles for Rs. d. She sold 2 of them at half price and rest at a profit of Rs. 8 each. The overall profit is Rs. 72. What is the minimum value of n?",o:["12","24","20","32"],h:H.A},
+      {q:"A shopkeeper gives some discount to all the customers who purchase 5 or more articles. Vijay went to purchase 4 articles and noticed that if he purchases 4 or 5 articles, he had to pay the same amount. What is the discount offered?",o:["15%","20%","25%","33.33%"],h:H.B},
+      {q:"A dishonest trader marks up his goods by 80% and gives a discount of 25%. Besides he gets 20% more quantity per kg from the wholesaler while purchasing and gives 10% less to his customers. Find the overall profit percentage he is making.",o:["80","60","40","30"],h:H.A},
+      {q:"The price of an article reduces to Rs. 576 after two equal successive discounts are applied on a markup of 80%. If the cost price is Rs. 500, find the new profit percentage had the price been marked up by same percentages as the discounts were and no further discounts were given.",o:["259.2","59.2","159.2","29.2"],h:H.C},
+      {type:"text",q:"Amal purchases some pens at Rs. 8 each. To sell these, he hires an employee at a fixed wage. He sells 100 of these pens at Rs. 12 each. If the remaining pens are sold at Rs. 11 each, then he makes a net profit of Rs. 300, while he makes a net loss of Rs. 300 if the remaining pens are sold at Rs. 9 each. The wage of the employee, in INR, is:",answerText:"1000",h:H.N1000},
+      {q:"Mayank buys some candies for Rs. 15 a dozen and an equal number of different candies for Rs. 12 a dozen. He sells all for Rs. 16.50 a dozen and makes a profit of Rs. 150. How many dozens of candies did he buy altogether?",o:["50","30","25","45"],h:H.A},
+      {q:"The manufacturer of a table sells it to a wholesale dealer at a profit of 10%. The wholesale dealer sells the table to a retailer at a profit of 30%. Finally, the retailer sells it to a customer at a profit of 50%. If the customer pays Rs. 4290 for the table, then its manufacturing cost is:",o:["1500","2000","2500","3000"],h:H.B},
+      {q:"A shopkeeper sells two tables, each procured at cost price p, to Amal and Asim at a profit of 20% and at a loss of 20%, respectively. Amal sells his table to Bimal at a profit of 30%, while Asim sells his table to Barun at a loss of 30%. If the amounts paid by Bimal and Barun are x and y, respectively, then (x - y)/p equals:",o:["1.0","1.2","0.7","0.5"],h:H.B},
+      {q:"Mukesh purchased 10 bicycles in 2017, all at the same price. He sold six of these at a profit of 25% and the remaining four at a loss of 25%. If he made a total profit of Rs. 2000, then his purchase price of a bicycle, in Rupees, was:",o:["2000","6000","8000","4000"],h:H.D},
+      {q:"On selling a pen at 5% loss and a book at 15% gain, Karim gains Rs. 7. If he sells the pen at 5% gain and the book at 10% gain, he gains Rs. 13. What is the cost price of the book in Rupees?",o:["Rs. 80","Rs. 85","Rs. 100","Rs. 95"],h:H.A}
+    ];
+    const optionLabels=["A","B","C","D","E"],form=document.getElementById("testForm"),resultBox=document.getElementById("result"),palette=document.getElementById("palette"),answeredCount=document.getElementById("answeredCount"),confirmDialog=document.getElementById("confirmDialog"),confirmText=document.getElementById("confirmText"),calculatorDialog=document.getElementById("calculatorDialog"),calcDisplay=document.getElementById("calcDisplay");let submitted=false,secondsLeft=90*60,timerId=null,currentQuestionIndex=0;
+    async function digest(value){const bytes=new TextEncoder().encode(value);const hash=await crypto.subtle.digest("SHA-256",bytes);return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("")}
+    function norm(v){return v.toLowerCase().replace(/rs\.?|₹|,|%/g,"").replace(/[^0-9.\-]/g,"").trim()}
+    function correctAnswerText(item){if(item.type==="text")return `Correct answer: ${item.answerText}`;const label=Object.keys(H).find(key=>H[key]===item.h);const index=optionLabels.indexOf(label);return `Correct answer: (${label}) ${item.o[index]}`}
+    function renderQuestions(){form.innerHTML=questions.map((item,index)=>{const level=index<16?"Level 1":index<34?"Level 2":"Level 3";const levelHtml=(index===0||index===16||index===34)?`<div class="difficulty">${level}</div>`:"";const control=item.type==="text"?`<input class="text-answer" type="text" name="q${index}" placeholder="Write your answer here">`:`<div class="options">${item.o.map((option,i)=>`<label class="option"><input type="radio" name="q${index}" value="${optionLabels[i]}"><span>(${optionLabels[i]}) ${option}</span></label>`).join("")}</div>`;return `<div class="question" id="qcard-${index}">${levelHtml}<h2>Q${index+1}. ${item.q}</h2>${control}<div class="answer-note" id="note-${index}"></div><div class="solution" id="solution-${index}"><h3>Answer</h3><p>${correctAnswerText(item)}</p></div></div>`}).join("")+`<div class="question-nav"><button class="secondary" type="button" id="prevQuestion">Previous</button><button class="secondary" type="button" id="nextQuestion">Save & Next</button></div><div class="actions"><button class="primary" type="submit">Submit Test</button><button class="secondary" type="button" id="clearAnswers">Clear Responses</button></div>`;palette.innerHTML=questions.map((_,i)=>`<button class="dot" type="button" data-target="${i}">${i+1}</button>`).join("");palette.querySelectorAll(".dot").forEach(b=>b.addEventListener("click",()=>showQuestion(Number(b.dataset.target))));form.querySelectorAll("input").forEach(input=>{input.addEventListener("change",updateAnsweredState);input.addEventListener("input",updateAnsweredState)});document.getElementById("prevQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex-1));document.getElementById("nextQuestion").addEventListener("click",()=>showQuestion(currentQuestionIndex+1));document.getElementById("clearAnswers").addEventListener("click",()=>{if(!submitted){form.reset();updateAnsweredState();showQuestion(currentQuestionIndex)}});showQuestion(0)}
+    function updateAnsweredState(){let count=0;questions.forEach((item,index)=>{const answered=item.type==="text"?norm(document.querySelector(`input[name="q${index}"]`)?.value||"").length>0:Boolean(document.querySelector(`input[name="q${index}"]:checked`));palette.querySelector(`[data-target="${index}"]`).classList.toggle("answered",answered);if(answered)count++});answeredCount.textContent=count}
+    function showQuestion(index){if(index<0||index>=questions.length)return;currentQuestionIndex=index;document.querySelectorAll(".question").forEach((card,i)=>card.classList.toggle("active",i===index));palette.querySelectorAll(".dot").forEach((dot,i)=>dot.classList.toggle("active",i===index));const prev=document.getElementById("prevQuestion"),next=document.getElementById("nextQuestion");if(prev)prev.disabled=index===0;if(next)next.disabled=index===questions.length-1;window.scrollTo({top:0,behavior:"smooth"})}
+    function updateTimer(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById("time").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;if(secondsLeft<=0){submitTest();return}secondsLeft--}
+    async function submitTest(){if(submitted)return;submitted=true;if(timerId){clearInterval(timerId);timerId=null}let correct=0,wrong=0,unattempted=0;for(let i=0;i<questions.length;i++){const item=questions[i],card=document.getElementById(`qcard-${i}`),note=document.getElementById(`note-${i}`),solution=document.getElementById(`solution-${i}`),dot=palette.querySelector(`[data-target="${i}"]`),answerText=correctAnswerText(item);solution.style.display="block";dot.classList.remove("answered");let attempted=false,isCorrect=false;if(item.type==="text"){const value=norm(document.querySelector(`input[name="q${i}"]`).value);attempted=value.length>0;isCorrect=attempted&&await digest(value)===item.h}else{const selected=document.querySelector(`input[name="q${i}"]:checked`);attempted=Boolean(selected);isCorrect=attempted&&await digest(selected.value)===item.h}if(!attempted){unattempted++;card.classList.add("missed");dot.classList.add("missed");note.className="answer-note muted";note.textContent=`Unattempted. ${answerText}`}else if(isCorrect){correct++;card.classList.add("correct");dot.classList.add("correct");note.className="answer-note ok";note.textContent=`Correct. ${answerText}`}else{wrong++;card.classList.add("wrong");dot.classList.add("wrong");note.className="answer-note bad";note.textContent=`Wrong. ${answerText}`}}const score=correct*3-wrong;resultBox.style.display="block";resultBox.innerHTML=`<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>${score}</strong></div><div class="score-box">Correct<strong>${correct}</strong></div><div class="score-box">Wrong<strong>${wrong}</strong></div><div class="score-box">Attempted<strong>${correct+wrong}</strong></div><div class="score-box">Unattempted<strong>${unattempted}</strong></div></div>`;document.querySelectorAll("input, button.primary, #clearAnswers").forEach(el=>el.disabled=true);resultBox.scrollIntoView({behavior:"smooth",block:"start"})}
+    form.addEventListener("submit",e=>{e.preventDefault();if(submitted)return;confirmText.textContent=`You have answered ${answeredCount.textContent} out of ${questions.length} questions. Your answers will be locked.`;confirmDialog.showModal?confirmDialog.showModal():submitTest()});document.getElementById("cancelSubmit").addEventListener("click",()=>confirmDialog.close());document.getElementById("confirmSubmit").addEventListener("click",()=>{confirmDialog.close();submitTest()});
+    function appendCalcValue(v){if(calcDisplay.value==="0"||calcDisplay.value==="Error"){calcDisplay.value=v==="."?"0.":v;return}calcDisplay.value+=v}function calculateExpression(){const expression=calcDisplay.value.trim();if(!/^[0-9+\-*/%. ()]+$/.test(expression)){calcDisplay.value="Error";return}try{const result=Function(`"use strict"; return (${expression})`)();calcDisplay.value=Number.isFinite(result)?String(Number(result.toFixed(10))):"Error"}catch(e){calcDisplay.value="Error"}}
+    document.getElementById("openCalculator").addEventListener("click",()=>{calculatorDialog.showModal();if(!calculatorDialog.dataset.moved){calculatorDialog.style.left=`${Math.max(14,(window.innerWidth-calculatorDialog.offsetWidth)/2)}px`;calculatorDialog.style.top="90px";calculatorDialog.style.transform="none"}calcDisplay.focus()});document.getElementById("closeCalculator").addEventListener("click",()=>calculatorDialog.close());document.getElementById("calcKeys").addEventListener("click",e=>{const key=e.target.closest("button");if(!key)return;if(key.dataset.action==="clear")calcDisplay.value="0";else if(key.dataset.action==="backspace")calcDisplay.value=calcDisplay.value.length>1?calcDisplay.value.slice(0,-1):"0";else if(key.dataset.action==="equals")calculateExpression();else if(key.dataset.value)appendCalcValue(key.dataset.value);calcDisplay.focus()});calcDisplay.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();calculateExpression()}});
+    const calculatorHead=calculatorDialog.querySelector(".calculator-head");let calculatorDrag=null;calculatorHead.addEventListener("pointerdown",e=>{if(e.target.closest("button"))return;const rect=calculatorDialog.getBoundingClientRect();calculatorDrag={offsetX:e.clientX-rect.left,offsetY:e.clientY-rect.top};calculatorDialog.style.transform="none";calculatorHead.setPointerCapture(e.pointerId)});calculatorHead.addEventListener("pointermove",e=>{if(!calculatorDrag)return;const maxLeft=window.innerWidth-calculatorDialog.offsetWidth-8,maxTop=window.innerHeight-calculatorDialog.offsetHeight-8;calculatorDialog.style.left=`${Math.min(Math.max(8,e.clientX-calculatorDrag.offsetX),Math.max(8,maxLeft))}px`;calculatorDialog.style.top=`${Math.min(Math.max(8,e.clientY-calculatorDrag.offsetY),Math.max(8,maxTop))}px`;calculatorDialog.dataset.moved="true"});calculatorHead.addEventListener("pointerup",e=>{calculatorDrag=null;calculatorHead.releasePointerCapture(e.pointerId)});calculatorHead.addEventListener("pointercancel",()=>{calculatorDrag=null});
+    renderQuestions();updateAnsweredState();updateTimer();timerId=setInterval(updateTimer,1000);
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -120,6 +120,44 @@ function buildTestsData(tests, folders) {
   return `window.CAT_TESTS = ${JSON.stringify(tests, null, 2)};\n\nwindow.CAT_FOLDERS = ${JSON.stringify(folders, null, 2)};\n`;
 }
 
+function repairedTest(test) {
+  const next = { ...test };
+  const file = String(next.file || "");
+  if (Array.isArray(next.folders) && file.includes("2.Ratio Proportion/New folder/")) {
+    next.folders = next.folders.filter((part) => part !== "New folder");
+    next.file = file.replace("2.Ratio Proportion/New folder/", "2.Ratio Proportion/");
+  }
+  const ratioMatch = file.match(/Ratio Proportion Variation Partnership\s+Test -(\d+)\.html$/i);
+  if (ratioMatch && ["10", "11", "12", "13"].includes(ratioMatch[1])) {
+    next.title = `Ratio Proportion Variation Partnership Test -${ratioMatch[1]}`;
+  }
+  return next;
+}
+
+function repairTests(tests) {
+  const map = new Map();
+  (Array.isArray(tests) ? tests : []).map(repairedTest).forEach((test) => {
+    if (!test.file || !Array.isArray(test.folders)) return;
+    map.set(test.file, test);
+  });
+  return Array.from(map.values());
+}
+
+function buildFoldersFromTests(tests, folders = []) {
+  const folderMap = new Map();
+  function addFolder(path) {
+    if (!Array.isArray(path)) return;
+    path.filter(Boolean).forEach((_, i) => {
+      const p = path.slice(0, i + 1);
+      folderMap.set(folderKey(p), { name: p[p.length - 1], path: p });
+    });
+  }
+  folders.forEach((folder) => addFolder(folder.path));
+  tests.forEach((test) => addFolder(test.folders));
+  presetPaths.forEach(addFolder);
+  return Array.from(folderMap.values()).sort((a, b) => folderKey(a.path).localeCompare(folderKey(b.path), undefined, { numeric: true }));
+}
+
 function cleanNameFromFile(fileName) {
   return String(fileName || "Test").replace(/\.html?$/i, "").replace(/[_]+/g, " ").replace(/\s+/g, " ").trim();
 }
@@ -271,22 +309,27 @@ function buildUpdatedData() {
   };
   if (Number.isFinite(questions)) meta.questions = questions;
 
-  const updatedTests = state.tests.filter((test) => test.file !== filePath);
+  const updatedTests = repairTests(state.tests).filter((test) => test.file !== filePath);
   updatedTests.push(meta);
 
-  const folderMap = new Map();
-  function addFolder(path) {
-    if (!Array.isArray(path)) return;
-    path.forEach((_, i) => {
-      const p = path.slice(0, i + 1);
-      folderMap.set(folderKey(p), { name: p[p.length - 1], path: p });
-    });
-  }
-  state.folders.forEach((folder) => addFolder(folder.path));
-  updatedTests.forEach((test) => addFolder(test.folders));
-  addFolder(state.selectedPath);
-  const updatedFolders = Array.from(folderMap.values()).sort((a, b) => folderKey(a.path).localeCompare(folderKey(b.path), undefined, { numeric: true }));
+  const updatedFolders = buildFoldersFromTests(updatedTests, state.folders);
   return { updatedTests, updatedFolders, meta };
+}
+
+async function loadRemoteData(token) {
+  const dataFile = await githubGet("tests-data.js", token);
+  let tests = state.tests;
+  let folders = state.folders;
+  if (dataFile && dataFile.content) {
+    const jsText = base64ToUtf8(dataFile.content);
+    const remoteTests = extractWindowArray(jsText, "CAT_TESTS");
+    const remoteFolders = extractWindowArray(jsText, "CAT_FOLDERS");
+    if (remoteTests.length) tests = remoteTests;
+    if (remoteFolders.length) folders = remoteFolders;
+  }
+  state.tests = repairTests(tests);
+  state.folders = buildFoldersFromTests(state.tests, folders);
+  return { dataFile, tests: state.tests, folders: state.folders };
 }
 
 async function publishTest() {
@@ -297,14 +340,7 @@ async function publishTest() {
     if ($("rememberToken").checked) localStorage.setItem("catAdminToken", token);
 
     setStatus("Reading latest tests-data.js from GitHub...");
-    const dataFile = await githubGet("tests-data.js", token);
-    if (dataFile && dataFile.content) {
-      const jsText = base64ToUtf8(dataFile.content);
-      const remoteTests = extractWindowArray(jsText, "CAT_TESTS");
-      const remoteFolders = extractWindowArray(jsText, "CAT_FOLDERS");
-      if (remoteTests.length) state.tests = remoteTests;
-      if (remoteFolders.length) state.folders = remoteFolders;
-    }
+    const { dataFile } = await loadRemoteData(token);
 
     const { updatedTests, updatedFolders, meta } = buildUpdatedData();
     const html = await state.selectedFile.text();
@@ -331,6 +367,34 @@ async function publishTest() {
   }
 }
 
+async function repairExistingData() {
+  try {
+    const btn = $("repairDataBtn");
+    btn.disabled = true;
+    const token = $("token").value.trim();
+    if (!token) throw new Error("Paste GitHub token first.");
+    if ($("rememberToken").checked) localStorage.setItem("catAdminToken", token);
+
+    setStatus("Reading latest portal data from GitHub...");
+    const { dataFile, tests, folders } = await loadRemoteData(token);
+    if (!dataFile) throw new Error("tests-data.js was not found in the GitHub repo root.");
+
+    setStatus("Publishing repaired tests-data.js...");
+    await githubPut("tests-data.js", buildTestsData(tests, folders), "Repair test data links and titles", token, dataFile.sha);
+
+    setStatus("Publishing repaired tests.json...");
+    const jsonFile = await githubGet("tests.json", token);
+    await githubPut("tests.json", `${JSON.stringify(tests, null, 2)}\n`, "Repair tests.json links and titles", token, jsonFile ? jsonFile.sha : undefined);
+
+    renderFolders();
+    setStatus(`Success! Existing data repaired.\n\nTests loaded: ${tests.length}\nFolders loaded: ${folders.length}\n\nWait for Vercel deployment, then hard refresh the portal.`, "success");
+  } catch (error) {
+    setStatus(`Repair failed: ${error.message}`, "error");
+  } finally {
+    $("repairDataBtn").disabled = false;
+  }
+}
+
 function downloadText(filename, text) {
   const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
   const a = document.createElement("a");
@@ -344,12 +408,12 @@ function downloadText(filename, text) {
 
 function downloadUpdatedData() {
   try {
-    if (!$("title").value.trim()) throw new Error("Enter test title first.");
-    if (!state.selectedFile) throw new Error("Select HTML file first.");
-    const { updatedTests, updatedFolders } = buildUpdatedData();
+    const hasNewUpload = $("title").value.trim() && state.selectedFile;
+    const updatedTests = hasNewUpload ? buildUpdatedData().updatedTests : repairTests(state.tests);
+    const updatedFolders = buildFoldersFromTests(updatedTests, state.folders);
     downloadText("tests-data.js", buildTestsData(updatedTests, updatedFolders));
     setTimeout(() => downloadText("tests.json", `${JSON.stringify(updatedTests, null, 2)}\n`), 350);
-    setStatus("Downloaded updated tests-data.js and tests.json. Upload them manually if you do not want to use token.", "success");
+    setStatus("Downloaded repaired tests-data.js and tests.json. Upload them manually if you do not want to use token.", "success");
   } catch (error) {
     setStatus(error.message, "error");
   }
@@ -362,6 +426,7 @@ function bindEvents() {
   ["title", "minutes", "questions", "fileName"].forEach((id) => $(id).addEventListener("input", updatePathUI));
   $("htmlFile").addEventListener("change", (e) => handleFile(e.target.files[0]));
   $("publishBtn").addEventListener("click", publishTest);
+  $("repairDataBtn").addEventListener("click", repairExistingData);
   $("downloadBtn").addEventListener("click", downloadUpdatedData);
   $("copyPathBtn").addEventListener("click", async () => {
     await navigator.clipboard.writeText(selectedUploadPath()).catch(() => {});
@@ -379,6 +444,8 @@ function bindEvents() {
 function init() {
   const saved = localStorage.getItem("catAdminToken");
   if (saved) { $("token").value = saved; $("rememberToken").checked = true; }
+  state.tests = repairTests(state.tests);
+  state.folders = buildFoldersFromTests(state.tests, state.folders);
   renderPresets();
   renderSuggestions();
   renderFolders();

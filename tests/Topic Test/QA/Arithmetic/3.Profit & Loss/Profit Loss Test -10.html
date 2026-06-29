@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Loss - 10</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Profit Loss Test -7 | 25 mixed MCQ/TITA | English only -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Profit Loss - 10</h1><div class="meta">25 Questions | 60 Minutes | 15 MCQ + 10 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 71001,
+    "source": "Profit Loss - 10 | Q1 | MCQ | Source Q101",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>C.P. of 12 oranges is equal to S.P. of 9 oranges, and discount on 10 oranges is equal to profit on 5 oranges. Find the difference between profit percent and discount percent.</p>",
+    "options": [
+      "<p>11<span class=\"frac\"><span>1</span><span>9</span></span>%</p>",
+      "<p>22<span class=\"frac\"><span>2</span><span>9</span></span>%</p>",
+      "<p>33<span class=\"frac\"><span>1</span><span>3</span></span>%</p>",
+      "<p>25%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "22 2/9%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let CP per orange be C.</li><li>CP of 12 oranges = 12C = SP of 9 oranges, so SP per orange = 12C/9 = 4C/3.</li><li>Profit per orange = 4C/3 - C = C/3, so profit percent = 33 1/3%.</li><li>Profit on 5 oranges = 5C/3.</li><li>Discount on 10 oranges = 5C/3, so discount per orange = C/6.</li><li>Marked price per orange = SP + discount = 4C/3 + C/6 = 3C/2.</li><li>Discount percent = (C/6)/(3C/2) x 100 = 11 1/9%.</li><li>Required difference = 33 1/3% - 11 1/9% = 22 2/9%.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 71002,
+    "source": "Profit Loss - 10 | Q2 | TITA | Source Q102",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>When a shirt was sold at a discount of 20%, a person gets a profit of 87.5%. Due to some reason, C.P. was increased by 25%, M.P. by Rs. 500, and the discount offered also became 25%. The person gains the same profit percent. Find the final selling price.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "1500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the original CP be C and original MP be M.</li><li>At 20% discount, SP = 80% of M.</li><li>Profit = 87.5% = 7/8, so original SP = 15C/8.</li><li>Therefore 0.80M = 15C/8, so M = 75C/32.</li><li>New CP = 125% of C = 5C/4.</li><li>Since the profit percent remains 87.5%, new SP = (15/8)(5C/4) = 75C/32.</li><li>Thus new SP is equal to the old MP.</li><li>New discount is 25%, and new MP = M + 500, so final SP = 75% of (M + 500).</li><li>Therefore M = 0.75(M + 500), giving M = 1500.</li><li>Final selling price = Rs. 1500.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 71003,
+    "source": "Profit Loss - 10 | Q3 | MCQ | Source Q103",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>M.P. of an article is 50% more than its C.P. If S.P. and M.P. are both increased by 20%, the profit doubles. If initial M.P. was Rs. 300, find initial S.P.</p>",
+    "options": [
+      "<p>Rs. 225</p>",
+      "<p>Rs. 240</p>",
+      "<p>Rs. 250</p>",
+      "<p>Rs. 260</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 250",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>MP is 50% more than CP, so CP = 300/1.5 = Rs. 200.</li><li>Let initial SP be S. Initial profit = S - 200.</li><li>After increasing SP by 20%, new SP = 1.2S.</li><li>New profit = 1.2S - 200.</li><li>Given profit doubles: 1.2S - 200 = 2(S - 200).</li><li>Solving gives S = Rs. 250.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 71004,
+    "source": "Profit Loss - 10 | Q4 | TITA | Source Q104",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person bought a book at 20% discount and sold it at 10% discount. In the whole transaction, he got a profit of Rs. 10. Find the marked price of the book.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "100",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the marked price be M.</li><li>Buying price after 20% discount = 80% of M = 0.8M.</li><li>Selling price after 10% discount = 90% of M = 0.9M.</li><li>Profit = 0.9M - 0.8M = 0.1M.</li><li>Given profit = Rs. 10, so 0.1M = 10.</li><li>Therefore, M = Rs. 100.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 71005,
+    "source": "Profit Loss - 10 | Q5 | TITA | Source Q105",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A shopkeeper purchased some oranges. By selling 50% of the oranges, he recovered his purchasing price. He sold 60% of the remaining oranges at half of the earlier profit percent and threw away the rest. Find the overall profit percent.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "45",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let total cost price be C.</li><li>By selling 50% of the oranges, he recovers the full cost price C.</li><li>Cost of that 50% stock is C/2, so profit on the first sale = C - C/2 = C/2.</li><li>Profit percent in the first sale = 100%.</li><li>Half of the earlier profit percent = 50%.</li><li>Remaining stock is 50% of total; he sells 60% of this remaining stock, i.e. 30% of total stock.</li><li>Cost of this 30% stock = 0.3C. At 50% profit, revenue = 0.45C.</li><li>Total revenue = C + 0.45C = 1.45C.</li><li>Overall profit = 0.45C, so profit percent = 45%.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 71006,
+    "source": "Profit Loss - 10 | Q6 | MCQ | Source Q106",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A shopkeeper purchased some oranges. By selling 40% of the oranges, he recovered his purchasing price. He sold 80% of the remaining oranges at half of the earlier profit percent and threw away the rest. Find the overall profit percent.</p>",
+    "options": [
+      "<p>75%</p>",
+      "<p>80%</p>",
+      "<p>84%</p>",
+      "<p>90%</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "84%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let total cost price be C.</li><li>By selling 40% of the stock, he recovers C.</li><li>Cost of that 40% stock = 0.4C, so profit = 0.6C.</li><li>Profit percent on the first sale = 0.6C/0.4C x 100 = 150%.</li><li>Half of this profit percent = 75%.</li><li>Remaining stock is 60%; he sells 80% of it, i.e. 48% of total stock.</li><li>Cost of this stock = 0.48C. At 75% profit, revenue = 1.75 x 0.48C = 0.84C.</li><li>Total revenue = C + 0.84C = 1.84C.</li><li>Overall profit percent = 84%.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 71007,
+    "source": "Profit Loss - 10 | Q7 | MCQ | Source Q107",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>7% of the S.P. of an article is equal to 8% of its C.P., and 9% of S.P. is Rs. 1 more than 10% of C.P. Find the C.P. of the article.</p>",
+    "options": [
+      "<p>Rs. 250</p>",
+      "<p>Rs. 300</p>",
+      "<p>Rs. 350</p>",
+      "<p>Rs. 400</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 350",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Given 7% of SP = 8% of CP.</li><li>So SP = (8/7)CP.</li><li>Now 9% of SP is Rs. 1 more than 10% of CP.</li><li>9% of SP = 0.09 x (8/7)CP = 18CP/175.</li><li>10% of CP = CP/10 = 17.5CP/175.</li><li>Difference = 0.5CP/175 = CP/350.</li><li>Given CP/350 = 1, so CP = Rs. 350.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 71008,
+    "source": "Profit Loss - 10 | Q8 | MCQ | Source Q108",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Nikita bought 30 kg wheat at Rs. 8.90 per kg and 40 kg wheat at Rs. 9.90 per kg. She sold the whole stock at Rs. 9.50 per kg. Find the profit or loss.</p>",
+    "options": [
+      "<p>Rs. 2 profit</p>",
+      "<p>Rs. 2 loss</p>",
+      "<p>Rs. 5 profit</p>",
+      "<p>No profit no loss</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Rs. 2 profit",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Cost price = 30 x 8.90 + 40 x 9.90.</li><li>Cost price = 267 + 396 = Rs. 663.</li><li>Total wheat = 70 kg.</li><li>Selling price = 70 x 9.50 = Rs. 665.</li><li>Profit = 665 - 663 = Rs. 2.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 71009,
+    "source": "Profit Loss - 10 | Q9 | TITA | Source Q109",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person purchased 76 cows and sold 40 at 19% profit, 16 at 25% profit and 20 at 15% profit. Overall, he got a profit of Rs. 6570. Find the cost price of one cow.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "450",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the cost price of one cow be C.</li><li>Profit from 40 cows = 40 x 19% of C = 7.6C.</li><li>Profit from 16 cows = 16 x 25% of C = 4C.</li><li>Profit from 20 cows = 20 x 15% of C = 3C.</li><li>Total profit = 7.6C + 4C + 3C = 14.6C.</li><li>Given 14.6C = 6570.</li><li>Therefore, C = Rs. 450.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 71010,
+    "source": "Profit Loss - 10 | Q10 | MCQ | Source Q110",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The sale price of an article including sales tax is Rs. 616. The rate of sales tax is 10%. If the shopkeeper has made a profit of 12%, find the cost price of the article.</p>",
+    "options": [
+      "<p>Rs. 450</p>",
+      "<p>Rs. 500</p>",
+      "<p>Rs. 550</p>",
+      "<p>Rs. 560</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "Rs. 500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>The amount including 10% sales tax is Rs. 616.</li><li>Price before tax = 616/1.10 = Rs. 560.</li><li>This is the selling price for the shopkeeper.</li><li>Profit is 12%, so SP = 112% of CP.</li><li>CP = 560/1.12 = Rs. 500.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 71011,
+    "source": "Profit Loss - 10 | Q11 | TITA | Source Q111",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>What percent of selling price would be 34% of cost price if gross profit is 26% of the selling price?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "25.16",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Gross profit = 26% of SP.</li><li>Therefore, CP = 74% of SP.</li><li>34% of CP = 34% of 74% of SP.</li><li>This equals 0.34 x 0.74 x SP = 0.2516SP.</li><li>Hence, it is 25.16% of the selling price.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 71012,
+    "source": "Profit Loss - 10 | Q12 | MCQ | Source Q112",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells a horse to B for Rs. 4860, thereby losing 19%. B sells it to C at a price which would have given A a profit of 17%. Find B's gain percent.</p>",
+    "options": [
+      "<p>40<span class=\"frac\"><span>0</span><span>1</span></span>%</p>",
+      "<p>44<span class=\"frac\"><span>4</span><span>9</span></span>%</p>",
+      "<p>50%</p>",
+      "<p>55<span class=\"frac\"><span>5</span><span>9</span></span>%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "44 4/9%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>A sells at 19% loss, so Rs. 4860 = 81% of A's CP.</li><li>A's CP = 4860/0.81 = Rs. 6000.</li><li>Price that would have given A 17% profit = 117% of 6000 = Rs. 7020.</li><li>B's CP = Rs. 4860 and B's SP = Rs. 7020.</li><li>B's profit = 7020 - 4860 = Rs. 2160.</li><li>B's gain percent = 2160/4860 x 100 = 44<span class=\"frac\"><span>4</span><span>9</span></span>%.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 71013,
+    "source": "Profit Loss - 10 | Q13 | MCQ | Source Q113",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells a good to B at a profit of 20%, and B sells it to C at a profit of 25%. If C pays Rs. 225 for it, what was the cost price for A?</p>",
+    "options": [
+      "<p>Rs. 120</p>",
+      "<p>Rs. 140</p>",
+      "<p>Rs. 150</p>",
+      "<p>Rs. 180</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 150",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A's cost price be C.</li><li>After A's 20% profit, B's cost price = 1.20C.</li><li>After B's 25% profit, C pays = 1.25 x 1.20C = 1.50C.</li><li>Given 1.50C = 225.</li><li>Therefore, C = Rs. 150.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 71014,
+    "source": "Profit Loss - 10 | Q14 | MCQ | Source Q114",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells a bicycle to B at a profit of 30%, and B sells it to C at a loss of 20%. If C pays Rs. 520 for it, at what price did A buy it?</p>",
+    "options": [
+      "<p>Rs. 400</p>",
+      "<p>Rs. 450</p>",
+      "<p>Rs. 500</p>",
+      "<p>Rs. 550</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A's cost price be C.</li><li>B's cost price = 1.30C.</li><li>C pays after B sells at 20% loss = 0.80 x 1.30C = 1.04C.</li><li>Given 1.04C = 520.</li><li>Therefore, C = Rs. 500.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 71015,
+    "source": "Profit Loss - 10 | Q15 | MCQ | Source Q115",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A man sells a scooter to his friend at 10% loss. The friend sells it for Rs. 54000 and gains 20%. Find the original cost price of the scooter.</p>",
+    "options": [
+      "<p>Rs. 45000</p>",
+      "<p>Rs. 48000</p>",
+      "<p>Rs. 50000</p>",
+      "<p>Rs. 54000</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 50000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>The friend's selling price is Rs. 54000 at 20% profit.</li><li>So the friend's cost price = 54000/1.20 = Rs. 45000.</li><li>This is the first man's selling price.</li><li>The first man sold at 10% loss, so Rs. 45000 = 90% of original CP.</li><li>Original CP = 45000/0.90 = Rs. 50000.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 71016,
+    "source": "Profit Loss - 10 | Q16 | TITA | Source Q116",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells an article to B at a profit of 20%. B sells it to C at 10% profit, and C sells it to D at 12<span class=\"frac\"><span>1</span><span>2</span></span>% profit. If D paid Rs. 29.70, at what price had A purchased it?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A's purchase price be C.</li><li>Successive multipliers are 1.20, 1.10 and 1.125.</li><li>Final price = C x 1.20 x 1.10 x 1.125.</li><li>The product of multipliers = 1.485.</li><li>Given 1.485C = 29.70.</li><li>Therefore, C = Rs. 20.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 71017,
+    "source": "Profit Loss - 10 | Q17 | MCQ | Source Q117",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells an article to B at 20% profit. B sells it to C at 25% profit. If C has paid Rs. 225, at what price had A purchased it?</p>",
+    "options": [
+      "<p>Rs. 120</p>",
+      "<p>Rs. 150</p>",
+      "<p>Rs. 175</p>",
+      "<p>Rs. 180</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "Rs. 150",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A's purchase price be C.</li><li>Final price paid by C = C x 1.20 x 1.25 = 1.50C.</li><li>Given 1.50C = 225.</li><li>Therefore, C = Rs. 150.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 71018,
+    "source": "Profit Loss - 10 | Q18 | TITA | Source Q118",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sells an article to B making a profit of <span class=\"frac\"><span>1</span><span>5</span></span> of his outlay. B sells it to C, gaining 20%. If C sells it for Rs. 600 and incurs a loss of <span class=\"frac\"><span>1</span><span>6</span></span> of his outlay, find the cost price of A.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>C sells for Rs. 600 at a loss of 1/6 of his outlay.</li><li>Therefore, Rs. 600 = 5/6 of C's cost price.</li><li>C's cost price = 600 x 6/5 = Rs. 720.</li><li>This is B's selling price. B gains 20%, so B's cost price = 720/1.20 = Rs. 600.</li><li>A sells to B at a profit of 1/5 of his outlay, i.e. 20% profit.</li><li>So B's cost price = 1.20 x A's cost price.</li><li>A's cost price = 600/1.20 = Rs. 500.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 71019,
+    "source": "Profit Loss - 10 | Q19 | MCQ | Source Q119",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A bicycle passes through the hands of three dealers, each of whom loses 5%. If the third dealer sells it for Rs. 6859, what did the first dealer pay?</p>",
+    "options": [
+      "<p>Rs. 7600</p>",
+      "<p>Rs. 7800</p>",
+      "<p>Rs. 8000</p>",
+      "<p>Rs. 8200</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Rs. 8000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the first dealer's purchase price be C.</li><li>After three successive losses of 5%, final price = C x 0.95 x 0.95 x 0.95.</li><li>So final price = 0.857375C.</li><li>Given 0.857375C = 6859.</li><li>Therefore, C = Rs. 8000.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 71020,
+    "source": "Profit Loss - 10 | Q20 | TITA | Source Q120",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The cost price of an article, which on being sold at a gain of 12% yields Rs. 6 more than when it is sold at a loss of 12%, is?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the cost price be C.</li><li>Selling price at 12% gain = 1.12C.</li><li>Selling price at 12% loss = 0.88C.</li><li>Difference = 1.12C - 0.88C = 0.24C.</li><li>Given difference = Rs. 6.</li><li>Therefore, 0.24C = 6 and C = Rs. 25.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 71021,
+    "source": "Profit Loss - 10 | Q21 | MCQ | Source Q121",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>When the price of a pressure cooker was increased by 15%, its sale went down by 15%. What was the effect on money receipt?</p>",
+    "options": [
+      "<p>2.25% decrease</p>",
+      "<p>2.5% decrease</p>",
+      "<p>No change</p>",
+      "<p>2.25% increase</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "2.25% decrease",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Revenue factor = price factor x quantity factor.</li><li>Price factor = 1.15 and sale quantity factor = 0.85.</li><li>Revenue factor = 1.15 x 0.85 = 0.9775.</li><li>Thus revenue becomes 97.75% of the original.</li><li>Decrease = 2.25%.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 71022,
+    "source": "Profit Loss - 10 | Q22 | MCQ | Source Q122",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Subhash purchased a tape recorder at <span class=\"frac\"><span>9</span><span>10</span></span> of its selling price and sold it at 8% more than its selling price. Find his gain percent.</p>",
+    "options": [
+      "<p>15%</p>",
+      "<p>18%</p>",
+      "<p>20%</p>",
+      "<p>25%</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "20%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the referred selling price be S.</li><li>Cost price = 9S/10 = 0.90S.</li><li>Actual selling price = 108% of S = 1.08S.</li><li>Gain = 1.08S - 0.90S = 0.18S.</li><li>Gain percent = 0.18S/0.90S x 100 = 20%.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 71023,
+    "source": "Profit Loss - 10 | Q23 | TITA | Source Q123",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A man bought a car for Rs. 60000 and spent 10% of the cost of the car on four new tyres. At what price should he sell the car to make a gain of 15%?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "75900",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Cost price of the car = Rs. 60000.</li><li>Amount spent on tyres = 10% of 60000 = Rs. 6000.</li><li>Total cost = 60000 + 6000 = Rs. 66000.</li><li>For 15% gain, selling price = 115% of 66000.</li><li>Required selling price = Rs. 75900.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 71024,
+    "source": "Profit Loss - 10 | Q24 | MCQ | Source Q124",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>If goods are purchased for Rs. 450 and one-third is sold at a loss of 10%, at what gain percent should the remainder be sold to gain 20% on the whole transaction?</p>",
+    "options": [
+      "<p>30%</p>",
+      "<p>35%</p>",
+      "<p>40%</p>",
+      "<p>45%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "35%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Total cost price = Rs. 450.</li><li>For 20% overall gain, required total selling price = 450 x 1.20 = Rs. 540.</li><li>One-third cost = Rs. 150, sold at 10% loss, so SP = Rs. 135.</li><li>Remaining cost = Rs. 300.</li><li>Required SP from the remaining goods = 540 - 135 = Rs. 405.</li><li>Gain on remaining goods = 405 - 300 = Rs. 105.</li><li>Gain percent = 105/300 x 100 = 35%.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 71025,
+    "source": "Profit Loss - 10 | Q25 | TITA | Source Q125",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Two-thirds of a consignment was sold at a profit of 6% and the rest at a loss of 3%. If there was an overall profit of Rs. 540, find the value of the consignment.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "18000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the value of the consignment be C.</li><li>Profit on two-thirds at 6% = (2/3) x 6% = 4% of total value.</li><li>Loss on one-third at 3% = (1/3) x 3% = 1% of total value.</li><li>Net profit percent = 4% - 1% = 3%.</li><li>Given 3% of C = Rs. 540.</li><li>Therefore, C = 540/0.03 = Rs. 18000.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    function cleanOptionHtml(html){return html;}
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.typedAnswer || q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
