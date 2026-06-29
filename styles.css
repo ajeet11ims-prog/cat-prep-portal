@@ -482,3 +482,58 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
   .module-card.old-dashboard-card,
   .module-grid .module-card{min-height:210px !important;}
 }
+
+
+/* ===== Test card cleanup: colored boxes with only time/questions metadata ===== */
+.test-grid{
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr)) !important;
+  gap:18px !important;
+}
+.test-card{
+  min-height:190px !important;
+  border:1px solid #a8d7ff !important;
+  border-radius:18px !important;
+  background:linear-gradient(135deg,#eaf6ff 0%, #f7fbff 54%, #edf8ff 100%) !important;
+  box-shadow:0 14px 30px rgba(24,92,160,.12) !important;
+  padding:20px !important;
+}
+.test-card:nth-child(3n){
+  background:linear-gradient(135deg,#eafbf8 0%, #f7fffd 56%, #e8f8ff 100%) !important;
+  border-color:#9bded5 !important;
+}
+.test-card:nth-child(4n){
+  background:linear-gradient(135deg,#eef4ff 0%, #fbfdff 56%, #eaf3ff 100%) !important;
+  border-color:#adc9ff !important;
+}
+.test-card:nth-child(5n){
+  background:linear-gradient(135deg,#fff7e8 0%, #fffdf8 56%, #eef7ff 100%) !important;
+  border-color:#f5cd86 !important;
+}
+.test-card:hover{
+  transform:translateY(-3px) !important;
+  border-color:#5ca9ef !important;
+  box-shadow:0 22px 42px rgba(24,92,160,.20) !important;
+}
+.test-card:before{
+  top:18px !important;
+  bottom:18px !important;
+  width:5px !important;
+  background:linear-gradient(180deg,#f6b54d 0%, #2f73d6 100%) !important;
+}
+.test-card h3{
+  color:#07172b !important;
+  font-size:17px !important;
+  line-height:1.22 !important;
+}
+.test-card p{
+  display:none !important;
+}
+.test-card .card-meta{
+  margin-top:16px !important;
+}
+.test-card .badge{
+  background:#ffffff !important;
+  border-color:#9ccdf6 !important;
+  color:#0b4f87 !important;
+  box-shadow:0 5px 14px rgba(24,92,160,.08) !important;
+}

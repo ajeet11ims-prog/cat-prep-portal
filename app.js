@@ -213,8 +213,11 @@
   function renderTestCard(test) {
     const card = document.createElement("article");
     card.className = "test-card";
-    const meta = [test.minutes ? `${test.minutes} min` : "", test.questions ? `${test.questions} questions` : "", test.folders.slice(-1)[0] || ""].filter(Boolean);
-    card.innerHTML = `<div class="test-top"><span class="test-icon">${ICONS.test}</span><div><h3>${escapeHtml(test.title)}</h3><p>${escapeHtml(test.folders.join(" / "))}</p><div class="card-meta">${meta.map((item) => `<span class="badge">${escapeHtml(item)}</span>`).join("")}</div></div></div>`;
+    const meta = [
+      test.minutes ? `${test.minutes} min` : "",
+      test.questions ? `${test.questions} questions` : ""
+    ].filter(Boolean);
+    card.innerHTML = `<div class="test-top"><span class="test-icon">${ICONS.test}</span><div><h3>${escapeHtml(test.title)}</h3><div class="card-meta">${meta.map((item) => `<span class="badge">${escapeHtml(item)}</span>`).join("")}</div></div></div>`;
     const link = document.createElement("a");
     link.className = "start-btn"; link.href = encodeURI(test.file); link.target = "_blank"; link.rel = "noopener"; link.textContent = "Start Test →";
     card.appendChild(link); return card;
