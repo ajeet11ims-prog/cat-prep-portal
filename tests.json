@@ -1037,5 +1037,18 @@
       "1.Properties Of Number"
     ],
     "minutes": 45
+  },
+  {
+    "title": "SI & CI Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -3.html",
+    "original": "SI CI Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ]
