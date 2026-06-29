@@ -1050,6 +1050,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 25
+  },
+  {
+    "title": "SI CI TEST -4",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -4.html",
+    "original": "SI CI Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ];
 
