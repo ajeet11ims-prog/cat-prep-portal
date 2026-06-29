@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SICI Test -6</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: SICI Test -6 | Professional Math Layout | 15 MCQ + 10 Integer TITA -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>SICI Test -6</h1><div class="meta">25 Questions | 60 Minutes | 15 MCQ + 10 Integer TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 80401,
+    "source": "SICI Test -6 | Q1 | TITA | Source Q76",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>X invested ₹12000 at 10% simple interest per annum and another amount at 20% simple interest per annum. The total interest earned at the end of one year on the total amount invested became 14% per annum. Find the total amount invested.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20000",
+    "acceptedAnswers": [
+      "20000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the second amount be <span class=\"math\">x</span>.</li><li>Total interest after 1 year = <span class=\"math\">12000 × 10% + x × 20%</span> = <span class=\"math\">1200 + 0.2x</span>.</li><li>Overall rate is 14%, so <span class=\"math\">1200 + 0.2x = 14% of (12000 + x)</span>.</li><li>Thus <span class=\"math\">1200 + 0.2x = 1680 + 0.14x</span>.</li><li>So <span class=\"math\">0.06x = 480</span>, hence <span class=\"math\">x = 8000</span>.</li><li>Therefore, total amount invested = ₹12000 + ₹8000 = ₹20000.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 80402,
+    "source": "SICI Test -6 | Q2 | TITA | Source Q77",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The simple interest on a sum of money will be ₹600 after 10 years. If the principal is trebled after 5 years, what will be the total interest at the end of the tenth year?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "1200",
+    "acceptedAnswers": [
+      "1200"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the original principal be <span class=\"math\">P</span> and the rate be <span class=\"math\">R%</span>.</li><li>Given <span class=\"math\"><span class=\"frac\"><span>P × R × 10</span><span>100</span></span> = 600</span>, so <span class=\"math\">PR = 6000</span>.</li><li>Interest for first 5 years on <span class=\"math\">P</span> = <span class=\"math\">PR × 5/100</span>.</li><li>After 5 years the principal becomes <span class=\"math\">3P</span>, so interest for next 5 years = <span class=\"math\">3PR × 5/100</span>.</li><li>Total interest = <span class=\"math\">PR × 20/100</span> = 0.2PR = 0.2 × 6000 = ₹1200.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 80403,
+    "source": "SICI Test -6 | Q3 | TITA | Source Q78",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>P lent some money to Q at 5% per annum simple interest. Q lent the entire amount to R on the same day at 8<span class=\"frac\"><span>1</span><span>2</span></span>% per annum. In this transaction, after a year Q earned a profit of ₹350. Find the sum of money lent by P to Q.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "10000",
+    "acceptedAnswers": [
+      "10000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Q earns a spread of <span class=\"math\">8.5% - 5% = 3.5%</span> for 1 year.</li><li>Therefore, <span class=\"math\">3.5% of principal = ₹350</span>.</li><li>So principal = <span class=\"math\"><span class=\"frac\"><span>350 × 100</span><span>3.5</span></span></span> = ₹10000.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 80404,
+    "source": "SICI Test -6 | Q4 | MCQ | Source Q79",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Brinda borrowed ₹1000 to build a hut. She pays 5% simple interest. She lets the hut to Ramu and receives the rent of ₹12.5 per month from Ramu. In how many years ought Brinda to clear off the debt?</p>",
+    "options": [
+      "<p>8 years</p>",
+      "<p>10 years</p>",
+      "<p>12 years</p>",
+      "<p>15 years</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "10 years",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Yearly rent received = ₹12.5 × 12 = ₹150.</li><li>On a debt of ₹1000 at 5% p.a., yearly interest = ₹50.</li><li>If Brinda clears the debt after <span class=\"math\">t</span> years, then <span class=\"math\">150t = 1000 + 50t</span>.</li><li>Thus <span class=\"math\">100t = 1000</span>, hence <span class=\"math\">t = 10</span> years.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 80405,
+    "source": "SICI Test -6 | Q5 | TITA | Source Q80",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The rate of interest on a sum of money is 4% per annum for the first 2 years, 6% per annum for the next 4 years and 8% per annum for the period beyond 6 years. If the simple interest accrued on the sum for a total period of 9 years is ₹1120, then find the sum.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "2000",
+    "acceptedAnswers": [
+      "2000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest percentage over 9 years = <span class=\"math\">2 × 4 + 4 × 6 + 3 × 8 = 56%</span>.</li><li>So <span class=\"math\">56% of principal = ₹1120</span>.</li><li>Principal = <span class=\"math\"><span class=\"frac\"><span>1120 × 100</span><span>56</span></span></span> = ₹2000.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 80406,
+    "source": "SICI Test -6 | Q6 | TITA | Source Q81",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Arun borrowed a sum of money from Jayant in the following manner: at 8% for the first 4 years, at 10% for the next 6 years, and at 12% for more than 10 years. He paid a total interest of ₹12160 after 15 years. Find the money borrowed by him.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "8000",
+    "acceptedAnswers": [
+      "8000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>For 15 years, the applicable interest percentages are <span class=\"math\">4 × 8% + 6 × 10% + 5 × 12% = 152%</span>.</li><li>So <span class=\"math\">152% of principal = ₹12160</span>.</li><li>Principal = <span class=\"math\"><span class=\"frac\"><span>12160 × 100</span><span>152</span></span></span> = ₹8000.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 80407,
+    "source": "SICI Test -6 | Q7 | TITA | Source Q82",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person borrows ₹5000 for 2 years at 4% per annum simple interest. He immediately lends it to another person at 6<span class=\"frac\"><span>1</span><span>4</span></span>% per annum simple interest for 2 years. Find his gain in this transaction.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "225",
+    "acceptedAnswers": [
+      "225"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Difference in rates = <span class=\"math\">6.25% - 4% = 2.25%</span>.</li><li>Gain for 2 years = <span class=\"math\"><span class=\"frac\"><span>5000 × 2.25 × 2</span><span>100</span></span></span> = ₹225.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 80408,
+    "source": "SICI Test -6 | Q8 | TITA | Source Q83",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>₹6000 becomes ₹7200 in 4 years. If the rate becomes 1.5 times of itself, the amount of the same principal in 5 years will be:</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "8250",
+    "acceptedAnswers": [
+      "8250"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest in 4 years = ₹7200 − ₹6000 = ₹1200.</li><li>So <span class=\"math\"><span class=\"frac\"><span>6000 × R × 4</span><span>100</span></span> = 1200</span>, hence <span class=\"math\">R = 5%</span>.</li><li>New rate = <span class=\"math\">1.5 × 5% = 7.5%</span>.</li><li>New amount in 5 years = <span class=\"math\">6000\left(1 + <span class=\"frac\"><span>7.5 × 5</span><span>100</span></span>\right)</span> = ₹8250.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 80409,
+    "source": "SICI Test -6 | Q9 | MCQ | Source Q84",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person lends 40% of his sum of money at 15% per annum, 50% of the rest at 10% per annum and the rest at 18% per annum rate of interest. What would be the annual rate of interest, if the interest is calculated on the whole sum?</p>",
+    "options": [
+      "<p>14%</p>",
+      "<p>14.4%</p>",
+      "<p>14.5%</p>",
+      "<p>15%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "14.4%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the total sum be <span class=\"math\">100</span>.</li><li>Then <span class=\"math\">40</span> is lent at 15%, so interest = <span class=\"math\">6</span>.</li><li>Remaining is <span class=\"math\">60</span>; 50% of it means <span class=\"math\">30</span> is lent at 10%, so interest = <span class=\"math\">3</span>.</li><li>The remaining <span class=\"math\">30</span> is lent at 18%, so interest = <span class=\"math\">5.4</span>.</li><li>Total interest on 100 = <span class=\"math\">14.4</span>, hence the annual rate is <span class=\"math\">14.4%</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 80410,
+    "source": "SICI Test -6 | Q10 | MCQ | Source Q85",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Ramesh deposited ₹15600 in a fixed deposit at the rate of 10% per annum simple interest. After every second year, he adds his interest earnings to the principal. Find the interest at the end of the fourth year.</p>",
+    "options": [
+      "<p>₹3120</p>",
+      "<p>₹3744</p>",
+      "<p>₹6864</p>",
+      "<p>₹7488</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "₹3744",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest in first 2 years = <span class=\"math\"><span class=\"frac\"><span>15600 × 10 × 2</span><span>100</span></span></span> = ₹3120.</li><li>New principal after 2 years = ₹15600 + ₹3120 = ₹18720.</li><li>Interest for the next 2 years = <span class=\"math\"><span class=\"frac\"><span>18720 × 10 × 2</span><span>100</span></span></span> = ₹3744.</li><li>Hence, the interest earned at the end of the fourth year is ₹3744.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 80411,
+    "source": "SICI Test -6 | Q11 | MCQ | Source Q86",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A sum of money at a certain rate per annum of simple interest doubles in 5 years and at a different rate becomes three times in 12 years. The lower rate of interest per annum is:</p>",
+    "options": [
+      "<p>15%</p>",
+      "<p>16<span class=\"frac\"><span>2</span><span>3</span></span>%</p>",
+      "<p>18%</p>",
+      "<p>20%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "16<span class=\"frac\"><span>2</span><span>3</span></span>%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>If a sum doubles in 5 years, the interest in 5 years is 100% of principal.</li><li>So the corresponding rate is <span class=\"math\">100/5 = 20%</span>.</li><li>If a sum becomes three times in 12 years, the interest in 12 years is 200% of principal.</li><li>So the corresponding rate is <span class=\"math\">200/12 = 16<span class=\"frac\"><span>2</span><span>3</span></span>%</span>.</li><li>Hence, the lower rate is <span class=\"math\">16<span class=\"frac\"><span>2</span><span>3</span></span>%</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 80412,
+    "source": "SICI Test -6 | Q12 | TITA | Source Q87",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Out of ₹50000, a man lends ₹8000 at 5<span class=\"frac\"><span>1</span><span>2</span></span>% per annum simple interest and ₹24000 at 6% per annum simple interest. He lends the remaining money at a certain rate of interest so that he gets total annual interest of ₹3680. Find the rate of interest per annum, at which the remaining money is lent.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [
+      "10"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest on ₹8000 at 5.5% = ₹440.</li><li>Interest on ₹24000 at 6% = ₹1440.</li><li>Total of these = ₹1880.</li><li>Remaining money = ₹50000 − ₹8000 − ₹24000 = ₹18000.</li><li>Interest needed on remaining part = ₹3680 − ₹1880 = ₹1800.</li><li>Required rate = <span class=\"math\"><span class=\"frac\"><span>1800 × 100</span><span>18000</span></span></span> = 10%.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 80413,
+    "source": "SICI Test -6 | Q13 | MCQ | Source Q88",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person invests ₹12000 as fixed deposit in a bank at 10% per annum simple interest. But due to some compulsion he needs to withdraw the entire money after 3 years, for which the bank allowed him a lower rate of interest. If he gets ₹3320 less than what he would have got at the end of 5 years, the rate of interest allowed by the bank is:</p>",
+    "options": [
+      "<p>7%</p>",
+      "<p>7<span class=\"frac\"><span>4</span><span>9</span></span>%</p>",
+      "<p>8%</p>",
+      "<p>8<span class=\"frac\"><span>1</span><span>3</span></span>%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "7<span class=\"frac\"><span>4</span><span>9</span></span>%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Amount after 5 years at 10% = ₹12000 + ₹6000 = ₹18000.</li><li>He got ₹3320 less, so amount received after 3 years = ₹18000 − ₹3320 = ₹14680.</li><li>Interest received in 3 years = ₹14680 − ₹12000 = ₹2680.</li><li>So <span class=\"math\"><span class=\"frac\"><span>12000 × R × 3</span><span>100</span></span> = 2680</span>.</li><li>Hence <span class=\"math\">R = <span class=\"frac\"><span>2680 × 100</span><span>36000</span></span> = 7<span class=\"frac\"><span>4</span><span>9</span></span>%</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 80414,
+    "source": "SICI Test -6 | Q14 | MCQ | Source Q89",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A person deposited ₹500 for 4 years and ₹600 for 3 years at the same rate of simple interest in a bank. Altogether he received ₹190 as interest. The rate of simple interest per annum was:</p>",
+    "options": [
+      "<p>4%</p>",
+      "<p>5%</p>",
+      "<p>6%</p>",
+      "<p>8%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "5%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Total interest = <span class=\"math\"><span class=\"frac\"><span>500 × R × 4</span><span>100</span></span> + <span class=\"frac\"><span>600 × R × 3</span><span>100</span></span></span> = 190.</li><li>So <span class=\"math\">20R + 18R = 190</span>.</li><li>Thus <span class=\"math\">38R = 190</span>, hence <span class=\"math\">R = 5%</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 80415,
+    "source": "SICI Test -6 | Q15 | TITA | Source Q90",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Nitin borrowed some money at the rate of 6% per annum for the first 3 years, 9% per annum for the next 5 years and 13% per annum for the period beyond eight years. If the total interest paid by him at the end of eleven years is ₹8160, the money borrowed by him (in Rs.) was:</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "8000",
+    "acceptedAnswers": [
+      "8000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Applicable interest percentages over 11 years = <span class=\"math\">3 × 6 + 5 × 9 + 3 × 13 = 102%</span>.</li><li>So <span class=\"math\">102% of principal = ₹8160</span>.</li><li>Principal = <span class=\"math\"><span class=\"frac\"><span>8160 × 100</span><span>102</span></span></span> = ₹8000.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 80416,
+    "source": "SICI Test -6 | Q16 | MCQ | Source Q91",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A and B borrowed ₹2000 and ₹3000 respectively at the same rate of interest for 2<span class=\"frac\"><span>1</span><span>2</span></span> years. If B paid ₹125 more interest than A, find the rate of interest.</p>",
+    "options": [
+      "<p>4%</p>",
+      "<p>5%</p>",
+      "<p>6%</p>",
+      "<p>8%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "5%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Difference in principal = ₹1000.</li><li>Difference in interest = <span class=\"math\"><span class=\"frac\"><span>1000 × R × 2.5</span><span>100</span></span></span> = 125.</li><li>So <span class=\"math\">25R = 125</span>.</li><li>Hence, <span class=\"math\">R = 5%</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 80417,
+    "source": "SICI Test -6 | Q17 | MCQ | Source Q92",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The simple interest on a sum of money is <span class=\"frac\"><span>8</span><span>25</span></span> of the sum. If the number of years is numerically half of the rate percent per annum, then find the rate percent per annum.</p>",
+    "options": [
+      "<p>6%</p>",
+      "<p>8%</p>",
+      "<p>10%</p>",
+      "<p>12%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "8%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the rate be <span class=\"math\">R%</span> and the time be <span class=\"math\">R/2</span> years.</li><li>Then <span class=\"math\"><span class=\"frac\"><span>SI</span><span>P</span></span> = R × (R/2) / 100 = <span class=\"frac\"><span>8</span><span>25</span></span></span>.</li><li>So <span class=\"math\">R²/200 = 8/25</span>.</li><li>Hence <span class=\"math\">R² = 64</span>, therefore <span class=\"math\">R = 8%</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 80418,
+    "source": "SICI Test -6 | Q18 | MCQ | Source Q93",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A man buys a TV priced at ₹16000. He pays ₹4000 at once and the rest after 15 months, on which he is charged a simple interest at the rate of 12% per year. Find the total amount he pays for the TV.</p>",
+    "options": [
+      "<p>₹17200</p>",
+      "<p>₹17600</p>",
+      "<p>₹17800</p>",
+      "<p>₹18000</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "₹17800",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Outstanding amount = ₹16000 − ₹4000 = ₹12000.</li><li>Time = 15 months = <span class=\"math\">15/12 = 1.25</span> years.</li><li>Interest = <span class=\"math\"><span class=\"frac\"><span>12000 × 12 × 1.25</span><span>100</span></span></span> = ₹1800.</li><li>Amount paid later = ₹12000 + ₹1800 = ₹13800.</li><li>Total amount paid = ₹4000 + ₹13800 = ₹17800.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 80419,
+    "source": "SICI Test -6 | Q19 | MCQ | Source Q94",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>A lends ₹2500 to B and a certain sum to C at the same rate of 7% per annum simple interest. If after 4 years, A altogether receives ₹1120 as interest from B and C, then find the sum lent to C.</p>",
+    "options": [
+      "<p>₹1200</p>",
+      "<p>₹1500</p>",
+      "<p>₹1800</p>",
+      "<p>₹2000</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "₹1500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest from B = <span class=\"math\"><span class=\"frac\"><span>2500 × 7 × 4</span><span>100</span></span></span> = ₹700.</li><li>Interest from C = ₹1120 − ₹700 = ₹420.</li><li>Let the amount lent to C be <span class=\"math\">x</span>. Then <span class=\"math\"><span class=\"frac\"><span>x × 7 × 4</span><span>100</span></span> = 420</span>.</li><li>So <span class=\"math\">x = ₹1500</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 80420,
+    "source": "SICI Test -6 | Q20 | MCQ | Source Q95",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The rate of simple interest in two banks A and B are in the ratio 5 : 4. A person wants to deposit his total savings in two banks in such a way that he receives equal half-yearly interest from both. He should deposit the savings in banks A and B in the ratio:</p>",
+    "options": [
+      "<p>5 : 4</p>",
+      "<p>4 : 5</p>",
+      "<p>25 : 16</p>",
+      "<p>16 : 25</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4:5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>For equal interest in the same time, deposited amounts must be inversely proportional to the rates.</li><li>Rates in A and B are <span class=\"math\">5 : 4</span>.</li><li>Hence deposits in A and B must be in the ratio <span class=\"math\">4 : 5</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 80421,
+    "source": "SICI Test -6 | Q21 | MCQ | Source Q96",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>In what time will ₹8100 produce the same income at 3% as ₹225 in 4 years at 3%?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>1</span><span>9</span></span> year</p>",
+      "<p><span class=\"frac\"><span>1</span><span>8</span></span> year</p>",
+      "<p><span class=\"frac\"><span>1</span><span>6</span></span> year</p>",
+      "<p><span class=\"frac\"><span>1</span><span>4</span></span> year</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "<span class=\"frac\"><span>1</span><span>9</span></span> year",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Since the rate is the same in both cases, for equal interest we need <span class=\"math\">P_1T_1 = P_2T_2</span>.</li><li>So <span class=\"math\">8100 × T = 225 × 4</span>.</li><li>Hence <span class=\"math\">T = <span class=\"frac\"><span>225 × 4</span><span>8100</span></span> = <span class=\"frac\"><span>1</span><span>9</span></span></span> year.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 80422,
+    "source": "SICI Test -6 | Q22 | MCQ | Source Q97",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Nikhil invested certain amounts in three different schemes A, B and C with the rate of interest 10% per annum, 12% per annum and 15% per annum respectively. If the total interest in one year was ₹3200 and the amount invested in scheme C was 150% of the amount invested in scheme A and 240% of the amount invested in scheme B, what was the amount invested in scheme B?</p>",
+    "options": [
+      "<p>₹4000</p>",
+      "<p>₹5000</p>",
+      "<p>₹6000</p>",
+      "<p>₹7500</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "₹5000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the amount in scheme C be <span class=\"math\">C</span>.</li><li>Then <span class=\"math\">A = C/1.5 = 2C/3</span> and <span class=\"math\">B = C/2.4 = 5C/12</span>.</li><li>Total one-year interest = <span class=\"math\">10%(2C/3) + 12%(5C/12) + 15%C = 3200</span>.</li><li>This simplifies to <span class=\"math\">4C/15 = 3200</span>, so <span class=\"math\">C = 12000</span>.</li><li>Hence <span class=\"math\">B = 5C/12 = ₹5000</span>.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 80423,
+    "source": "SICI Test -6 | Q23 | MCQ | Source Q98",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>Out of a sum of ₹625, a part was lent at 5% and the other at 10% simple interest. If the interest on the first part after 2 years is equal to the interest on the second part after 4 years, then find the second sum.</p>",
+    "options": [
+      "<p>₹100</p>",
+      "<p>₹125</p>",
+      "<p>₹150</p>",
+      "<p>₹175</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "₹125",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the first part be <span class=\"math\">x</span>. Then the second part is <span class=\"math\">625 - x</span>.</li><li>Given: <span class=\"math\"><span class=\"frac\"><span>x × 5 × 2</span><span>100</span></span> = <span class=\"frac\"><span>(625 - x) × 10 × 4</span><span>100</span></span></span>.</li><li>So <span class=\"math\">10x = 40(625 - x)</span>.</li><li>Thus <span class=\"math\">50x = 25000</span>, hence <span class=\"math\">x = 500</span>.</li><li>Second part = ₹625 − ₹500 = ₹125.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 80424,
+    "source": "SICI Test -6 | Q24 | MCQ | Source Q99",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>The simple interest on ₹1820 from 9 October 2003 to 21 December 2003 at 7<span class=\"frac\"><span>1</span><span>2</span></span>% will be:</p>",
+    "options": [
+      "<p>₹26.30</p>",
+      "<p>₹27.30</p>",
+      "<p>₹28.30</p>",
+      "<p>₹29.30</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "₹27.30",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Number of days from 9 October to 21 December = <span class=\"math\">22 + 30 + 21 = 73</span> days.</li><li>SI = <span class=\"math\"><span class=\"frac\"><span>1820 × 7.5 × 73</span><span>100 × 365</span></span></span>.</span></li><li>This gives simple interest = ₹27.30.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 80425,
+    "source": "SICI Test -6 | Q25 | TITA | Source Q100",
+    "type": "text",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p>₹800 becomes ₹956 in 3 years at a certain simple interest rate. If the rate of interest is increased by 4%, what amount will ₹800 become in 3 years?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "1052",
+    "acceptedAnswers": [
+      "1052"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Interest in 3 years at the original rate = ₹956 − ₹800 = ₹156.</li><li>Thus <span class=\"math\"><span class=\"frac\"><span>800 × R × 3</span><span>100</span></span> = 156</span>, so <span class=\"math\">R = 6.5%</span>.</li><li>New rate = <span class=\"math\">6.5% + 4% = 10.5%</span>.</li><li>New amount in 3 years = <span class=\"math\">800\left(1 + <span class=\"frac\"><span>10.5 × 3</span><span>100</span></span>\right)</span> = ₹1052.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    function cleanOptionHtml(html){return html;}
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
