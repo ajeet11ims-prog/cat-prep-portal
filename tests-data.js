@@ -1037,6 +1037,19 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 45
+  },
+  {
+    "title": "SI & CI Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -3.html",
+    "original": "SI CI Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ];
 
@@ -1158,15 +1171,6 @@ window.CAT_FOLDERS = [
     ]
   },
   {
-    "name": "ParaSummary",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR",
-      "ParaSummary"
-    ]
-  },
-  {
     "name": "Paracompletion",
     "path": [
       "Area Wise Test",
@@ -1182,6 +1186,15 @@ window.CAT_FOLDERS = [
       "VARC",
       "VA - VR",
       "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR",
+      "ParaSummary"
     ]
   },
   {
@@ -1755,16 +1768,6 @@ window.CAT_FOLDERS = [
     ]
   },
   {
-    "name": "ParaSummary",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "ParaSummary"
-    ]
-  },
-  {
     "name": "Paracompletion",
     "path": [
       "PYQ",
@@ -1782,6 +1785,16 @@ window.CAT_FOLDERS = [
       "VARC",
       "VA-VR",
       "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "ParaSummary"
     ]
   },
   {
@@ -2418,15 +2431,6 @@ window.CAT_FOLDERS = [
     ]
   },
   {
-    "name": "ParaSummary",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR",
-      "ParaSummary"
-    ]
-  },
-  {
     "name": "Paracompletion",
     "path": [
       "Topic Test",
@@ -2442,6 +2446,15 @@ window.CAT_FOLDERS = [
       "VARC",
       "VA - VR",
       "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR",
+      "ParaSummary"
     ]
   }
 ];
