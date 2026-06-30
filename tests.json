@@ -1175,5 +1175,31 @@
     ],
     "minutes": 60,
     "questions": 25
+  },
+  {
+    "title": "SICI Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -9.html",
+    "original": "SICI Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test_14",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 32
   }
 ]
