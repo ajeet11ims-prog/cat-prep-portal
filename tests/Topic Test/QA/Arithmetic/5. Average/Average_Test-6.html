@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Average Test 6</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Average Test 6</h1><div class="meta">23 Questions | 50 Minutes | 12 MCQ + 11 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">50:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 96001,
+    "source": "Average Test 6 | Source Q1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> The average of the first ten prime numbers is:</p>",
+    "options": [
+      "<p>10.1</p>",
+      "<p>10</p>",
+      "<p>12.9</p>",
+      "<p>13</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "12.9",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The first ten prime numbers are 2, 3, 5, 7, 11, 13, 17, 19, 23 and 29.</li><li>Their sum is <span class='math'>129</span>.</li><li>Average = <span class='math'>129 ÷ 10 = 12.9</span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 96002,
+    "source": "Average Test 6 | Source Q2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> The average of all odd numbers less than 100 is:</p>",
+    "options": [
+      "<p>49.5</p>",
+      "<p>50</p>",
+      "<p>50.5</p>",
+      "<p>51</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "50",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The odd numbers less than 100 are <span class='math'>1, 3, 5, ..., 99</span>.</li><li>For an arithmetic progression, average = <span class='math'>(first term + last term) ÷ 2</span>.</li><li>Average = <span class='math'>(1+99) ÷ 2 = 50</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 96003,
+    "source": "Average Test 6 | Source Q3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> The average of nine consecutive numbers is <span class='math'>n</span>. If the next two numbers are also included, then the new average will:</p>",
+    "options": [
+      "<p>increase by 2</p>",
+      "<p>remain the same</p>",
+      "<p>increase by 1.5</p>",
+      "<p>increase by 1</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "increase by 1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The 9 consecutive numbers can be written as <span class='math'>n−4, n−3, ..., n+4</span>.</li><li>The next two numbers are <span class='math'>n+5</span> and <span class='math'>n+6</span>.</li><li>New average = <span class='math'>{9n+(n+5)+(n+6)} ÷ 11 = n+1</span>.</li><li>So the average increases by 1.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 96004,
+    "source": "Average Test 6 | Source Q4",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> If the average of 20 observations <span class='math'>x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>20</sub></span> is <span class='math'>y</span>, then the average of <span class='math'>x<sub>1</sub>−101, x<sub>2</sub>−101, ..., x<sub>20</sub>−101</span> is:</p>",
+    "options": [
+      "<p><span class='math'>y−20</span></p>",
+      "<p><span class='math'>y−101</span></p>",
+      "<p><span class='math'>20y</span></p>",
+      "<p><span class='math'>101y</span></p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "y−101",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>If the same number is subtracted from every observation, the average decreases by the same number.</li><li>Here, each observation is reduced by <span class='math'>101</span>.</li><li>New average = <span class='math'>y−101</span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 96005,
+    "source": "Average Test 6 | Source Q5",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> The average of <span class='math'>n</span> numbers <span class='math'>x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub></span> is <span class='math'>x̄</span>. Then the value of <span class='math'>Σ<sub>i=1</sub><sup>n</sup>(x<sub>i</sub>−x̄)</span> is equal to:</p>",
+    "options": [
+      "<p><span class='math'>n</span></p>",
+      "<p><span class='math'>0</span></p>",
+      "<p><span class='math'>nx̄</span></p>",
+      "<p><span class='math'>x̄</span></p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "0",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since <span class='math'>x̄</span> is the average, <span class='math'>x<sub>1</sub>+x<sub>2</sub>+...+x<sub>n</sub> = nx̄</span>.</li><li>Therefore <span class='math'>Σ(x<sub>i</sub>−x̄) = Σx<sub>i</sub> − nx̄ = nx̄ − nx̄ = 0</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 96006,
+    "source": "Average Test 6 | Source Q6",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> The average of <span class='math'>x</span> numbers is <span class='math'>y<sup>2</sup></span> and the average of <span class='math'>y</span> numbers is <span class='math'>x<sup>2</sup></span>. Find the average of all the numbers taken together.</p>",
+    "options": [
+      "<p><span class='math'><span class=\"frac\"><span>x<sup>3</sup>+y<sup>3</sup></span><span>x+y</span></span></span></p>",
+      "<p><span class='math'>xy</span></p>",
+      "<p><span class='math'><span class=\"frac\"><span>x<sup>2</sup>+y<sup>2</sup></span><span>x+y</span></span></span></p>",
+      "<p><span class='math'>xy<sup>2</sup> + yx<sup>2</sup></span></p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "xy",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Sum of the first group = <span class='math'>xy<sup>2</sup></span>.</li><li>Sum of the second group = <span class='math'>yx<sup>2</sup></span>.</li><li>Total sum = <span class='math'>xy<sup>2</sup> + x<sup>2</sup>y = xy(x+y)</span>.</li><li>Total number of observations = <span class='math'>x+y</span>.</li><li>Combined average = <span class='math'>xy</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 96007,
+    "source": "Average Test 6 | Source Q7",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> If the average of <span class='math'>m</span> numbers is <span class='math'>n<sup>2</sup></span> and that of <span class='math'>n</span> numbers is <span class='math'>m<sup>2</sup></span>, then the average of <span class='math'>(m+n)</span> numbers is:</p>",
+    "options": [
+      "<p><span class='math'><span class=\"frac\"><span>m</span><span>n</span></span></span></p>",
+      "<p><span class='math'>m+n</span></p>",
+      "<p><span class='math'>mn</span></p>",
+      "<p><span class='math'>m−n</span></p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "mn",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Sum of <span class='math'>m</span> numbers = <span class='math'>mn<sup>2</sup></span>.</li><li>Sum of <span class='math'>n</span> numbers = <span class='math'>nm<sup>2</sup></span>.</li><li>Total sum = <span class='math'>mn<sup>2</sup> + nm<sup>2</sup> = mn(m+n)</span>.</li><li>Average = <span class='math'>mn(m+n) ÷ (m+n) = mn</span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 96008,
+    "source": "Average Test 6 | Source Q8",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> Fifteen movie theatres average 600 customers per theatre per day. If six theatres close down but the total theatre attendance stays the same, then the average daily attendance per theatre among the remaining theatres is:</p>",
+    "options": [
+      "<p>900</p>",
+      "<p>1000</p>",
+      "<p>1100</p>",
+      "<p>1200</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total attendance = <span class='math'>15 × 600 = 9000</span>.</li><li>Remaining theatres = <span class='math'>15−6 = 9</span>.</li><li>New average = <span class='math'>9000 ÷ 9 = 1000</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 96009,
+    "source": "Average Test 6 | Source Q9",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> The average of 8 numbers is 20. The average of the first two numbers is <span class='math'>15<span class=\"frac\"><span>1</span><span>2</span></span></span> and that of the next three is <span class='math'>21<span class=\"frac\"><span>1</span><span>3</span></span></span>. If the sixth number is less than the seventh and eighth numbers by 4 and 7 respectively, then the eighth number is:</p>",
+    "options": [
+      "<p>18</p>",
+      "<p>22</p>",
+      "<p>25</p>",
+      "<p>27</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total of 8 numbers = <span class='math'>8×20 = 160</span>.</li><li>Sum of first 2 numbers = <span class='math'>2×15<span class=\"frac\"><span>1</span><span>2</span></span> = 31</span>.</li><li>Sum of next 3 numbers = <span class='math'>3×21<span class=\"frac\"><span>1</span><span>3</span></span> = 64</span>.</li><li>Sum of the last 3 numbers = <span class='math'>160−31−64 = 65</span>.</li><li>Let the sixth number be <span class='math'>x</span>. Then seventh = <span class='math'>x+4</span> and eighth = <span class='math'>x+7</span>.</li><li><span class='math'>x+(x+4)+(x+7)=65</span>, so <span class='math'>x=18</span>.</li><li>Eighth number = <span class='math'>18+7 = 25</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 96010,
+    "source": "Average Test 6 | Source Q10",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> The average of 8 readings is 24.3. The average of the first two readings is 18.5 and that of the next three readings is 21.2. If the sixth reading is 3 less than the seventh and 4 more than the eighth, what is the sixth reading?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "31.6",
+    "acceptedAnswers": [
+      "31.6",
+      "31.60"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total of 8 readings = <span class='math'>8×24.3 = 194.4</span>.</li><li>Sum of first 2 readings = <span class='math'>2×18.5 = 37</span>.</li><li>Sum of next 3 readings = <span class='math'>3×21.2 = 63.6</span>.</li><li>Sum of last 3 readings = <span class='math'>194.4−37−63.6 = 93.8</span>.</li><li>Let the sixth reading be <span class='math'>x</span>. Then seventh = <span class='math'>x+3</span> and eighth = <span class='math'>x−4</span>.</li><li><span class='math'>x+(x+3)+(x−4)=93.8</span>, so <span class='math'>3x−1=93.8</span> and <span class='math'>x=31.6</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 96011,
+    "source": "Average Test 6 | Source Q11",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> A student finds the average of ten 2-digit numbers. While copying the numbers, by mistake, he writes one number with its digits interchanged. As a result, his answer is 1.8 less than the correct answer. The difference between the digits of the number in which he made the mistake is:</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>6</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The average is less by 1.8 for 10 numbers, so the total is less by <span class='math'>10×1.8 = 18</span>.</li><li>If <span class='math'>10a+b</span> is written as <span class='math'>10b+a</span>, the difference is <span class='math'>9(a−b)</span>.</li><li>So <span class='math'>9(a−b)=18</span>.</li><li>Hence <span class='math'>a−b=2</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 96012,
+    "source": "Average Test 6 | Source Q12",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> A student calculated the average of 10 three-digit numbers. By mistake, he reversed the digits of one number and thus his average increased by 19.8. Find the difference between the units digit and the hundreds digit of that number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "2",
+    "acceptedAnswers": [
+      "2"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Average increased by 19.8 for 10 numbers, so total increased by <span class='math'>10×19.8 = 198</span>.</li><li>Let the number be <span class='math'>100a+10b+c</span>. Its reverse is <span class='math'>100c+10b+a</span>.</li><li>Increase = <span class='math'>(100c+10b+a)−(100a+10b+c)=99(c−a)</span>.</li><li><span class='math'>99(c−a)=198</span>, so <span class='math'>c−a=2</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 96013,
+    "source": "Average Test 6 | Source Q13",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> In an exam, the average marks obtained by the students was found to be 60. After correction of computational errors, the average marks of 100 candidates had to be changed from 60 to 30, and the overall average came down to 45 marks. The total number of candidates who took the exam was:</p>",
+    "options": [
+      "<p>200</p>",
+      "<p>210</p>",
+      "<p>240</p>",
+      "<p>180</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "200",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For 100 candidates, average changed from 60 to 30, so total marks decreased by <span class='math'>100×(60−30)=3000</span>.</li><li>Overall average decreased from 60 to 45, i.e. by 15.</li><li>If the total number of candidates is <span class='math'>N</span>, then <span class='math'>15N=3000</span>.</li><li>So <span class='math'>N=200</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 96014,
+    "source": "Average Test 6 | Source Q14",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> In an examination, the average marks were found to be 50. While deducting marks for computational errors, the marks of 100 candidates had to be changed from 90 to 60 each, so the average came down to 45. Find the total number of candidates who appeared in the examination.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "600",
+    "acceptedAnswers": [
+      "600"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Each of the 100 candidates lost <span class='math'>90−60=30</span> marks.</li><li>Total decrease = <span class='math'>100×30 = 3000</span>.</li><li>Overall average decreased from 50 to 45, i.e. by 5.</li><li>If total candidates = <span class='math'>N</span>, then <span class='math'>5N=3000</span>.</li><li>Hence <span class='math'>N=600</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 96015,
+    "source": "Average Test 6 | Source Q15",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Find the average of <span class='math'>1; 2,2; 3,3,3; 4,4,4,4; ...; 7,7,7,7,7,7,7</span>.</p>",
+    "options": [
+      "<p>28</p>",
+      "<p>5</p>",
+      "<p>20</p>",
+      "<p>140</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The number <span class='math'>k</span> occurs <span class='math'>k</span> times for <span class='math'>k=1,2,...,7</span>.</li><li>Total observations = <span class='math'>1+2+3+4+5+6+7 = 28</span>.</li><li>Total sum = <span class='math'>1²+2²+3²+4²+5²+6²+7² = 140</span>.</li><li>Average = <span class='math'>140÷28 = 5</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 96016,
+    "source": "Average Test 6 | Source Q16",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> Find the average of <span class='math'>1³, 2³, 3³, ..., 100³</span>.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "255025",
+    "acceptedAnswers": [
+      "255025",
+      "255,025"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Required average = <span class='math'><span class=\"frac\"><span>1³+2³+...+100³</span><span>100</span></span></span>.</li><li>Using <span class='math'>1³+2³+...+n³ = [n(n+1)÷2]²</span>, for <span class='math'>n=100</span>, the sum is <span class='math'>(100×101÷2)² = 5050² = 25,502,500</span>.</li><li>Average = <span class='math'>25,502,500÷100 = 255,025</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 96017,
+    "source": "Average Test 6 | Source Q17",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> The average of 5 consecutive numbers is 23. Find the largest number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "25",
+    "acceptedAnswers": [
+      "25"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For 5 consecutive numbers, the average is the middle number.</li><li>So the numbers are <span class='math'>21, 22, 23, 24, 25</span>.</li><li>Largest number = <span class='math'>25</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 96018,
+    "source": "Average Test 6 | Source Q18",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> The average of 6 consecutive odd numbers is 40. Find the largest number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "45",
+    "acceptedAnswers": [
+      "45"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the six consecutive odd numbers be <span class='math'>a, a+2, a+4, a+6, a+8, a+10</span>.</li><li>Their average is <span class='math'>a+5</span>.</li><li><span class='math'>a+5=40</span>, so <span class='math'>a=35</span>.</li><li>Largest number = <span class='math'>35+10=45</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 96019,
+    "source": "Average Test 6 | Source Q19",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> If the average of 116 consecutive even numbers is 201, find the sum of the first and the last number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "402",
+    "acceptedAnswers": [
+      "402"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For an arithmetic progression, average = <span class='math'>(first number + last number) ÷ 2</span>.</li><li>Given average = <span class='math'>201</span>.</li><li>Therefore, first number + last number = <span class='math'>2×201 = 402</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 96020,
+    "source": "Average Test 6 | Source Q20",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> If the average of 7 consecutive even numbers is 44, find the difference between the first and the last number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "12",
+    "acceptedAnswers": [
+      "12"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Consecutive even numbers have a common difference of 2.</li><li>Difference between first and last = <span class='math'>(7−1)×2 = 12</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 96021,
+    "source": "Average Test 6 | Source Q21",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> If the average of 17 consecutive even numbers is 143, find the difference between the first and the last number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "32",
+    "acceptedAnswers": [
+      "32"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Consecutive even numbers have a common difference of 2.</li><li>Difference between first and last = <span class='math'>(17−1)×2 = 32</span>.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 96022,
+    "source": "Average Test 6 | Source Q22",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> The weights of 5 members are measured one by one. After each measurement, the average weight is calculated, and each time the average increases by 1 kg. Find the difference between the weights of the first and the last member.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "8",
+    "acceptedAnswers": [
+      "8"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the successive averages after measuring 1, 2, 3, 4 and 5 members be <span class='math'>a, a+1, a+2, a+3, a+4</span>.</li><li>Then the first member's weight = <span class='math'>a</span>.</li><li>Total after 5 members = <span class='math'>5(a+4)=5a+20</span>.</li><li>Total after 4 members = <span class='math'>4(a+3)=4a+12</span>.</li><li>Weight of the fifth member = <span class='math'>(5a+20)−(4a+12)=a+8</span>.</li><li>Difference between first and last member = <span class='math'>(a+8)−a=8</span> kg.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 96023,
+    "source": "Average Test 6 | Source Q23",
+    "type": "text",
+    "direction": "<p>Type the exact numeric answer. Decimal answers are allowed where needed.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> Radha was asked to find the average of <span class='math'>N</span> consecutive natural numbers starting from 1. By mistake, he added a number twice but did not notice it. As a result, he obtained a wrong average of <span class='math'>45<span class=\"frac\"><span>11</span><span>18</span></span></span>. Find the number he added twice.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [
+      "10"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The correct sum of <span class='math'>1,2,3,...,N</span> is <span class='math'>N(N+1)÷2</span>.</li><li>Let the repeated number be <span class='math'>k</span>.</li><li>Wrong average = <span class='math'><span class=\"frac\"><span>N(N+1)÷2 + k</span><span>N</span></span> = 45<span class=\"frac\"><span>11</span><span>18</span></span> = <span class=\"frac\"><span>821</span><span>18</span></span></span>.</li><li>Solving gives <span class='math'>N=90</span> and <span class='math'>k=10</span>.</li><li>Therefore, the number added twice is <span class='math'>10</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 50 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
