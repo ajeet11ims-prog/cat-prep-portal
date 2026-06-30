@@ -1240,6 +1240,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 27
+  },
+  {
+    "title": "Average_Test-6",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average_Test-6.html",
+    "original": "Average_Test-6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 23
   }
 ];
 
