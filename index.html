@@ -25,22 +25,16 @@
     </aside>
 
     <main class="workspace">
-      <section class="metric-row" aria-label="Portal metrics">
-        <article><strong id="totalTests">0</strong><span>Total Tests</span></article>
-        <article><strong id="topicTests">0</strong><span>Topic Tests</span></article>
-        <article><strong id="areaTests">0</strong><span>Area Wise</span></article>
-        <article><strong id="pyqTests">0</strong><span>PYQs</span></article>
-        <article><strong id="dailyTests">0</strong><span>Daily LRDI</span></article>
-        <article><strong id="folderTests">0</strong><span>This View</span></article>
-      </section>
-
       <section class="dashboard-panel" id="homePanel">
-        <a class="hero-banner-card" href="#folder/topic-test" aria-label="Open Topic Tests">
-          <picture>
-            <source srcset="homepage-composite-banner.jpg" type="image/jpeg" />
-            <img src="homepage-composite-banner.png" alt="Think Without Ink, Gita shlok, and peacock feather CAT Prep banner" loading="eager" />
-          </picture>
-        </a>
+        <div class="home-banners" aria-label="Homepage banners">
+          <a class="hero-banner-card gita-banner-card" href="#folder/topic-test" aria-label="Open Topic Tests">
+            <img src="gita-shlok-banner.png" alt="Bhagavad Gita shlok banner" loading="eager" />
+          </a>
+
+          <a class="hero-banner-card think-banner-card" href="#folder/topic-test" aria-label="Open Topic Tests">
+            <img src="think-without-ink-banner.png" alt="Think Without Ink - CAT Prep with Ajeet Sir" loading="eager" />
+          </a>
+        </div>
 
         <header class="top-strip">
           <div>
@@ -50,6 +44,15 @@
           </div>
           <a class="home-pill" href="#home">Home</a>
         </header>
+
+        <section class="metric-row" aria-label="Portal metrics">
+          <article><strong id="totalTests">0</strong><span>Total Tests</span></article>
+          <article><strong id="topicTests">0</strong><span>Topic Tests</span></article>
+          <article><strong id="areaTests">0</strong><span>Area Wise</span></article>
+          <article><strong id="pyqTests">0</strong><span>PYQs</span></article>
+          <article><strong id="dailyTests">0</strong><span>Daily LRDI</span></article>
+          <article><strong id="folderTests">0</strong><span>This View</span></article>
+        </section>
 
         <div class="module-grid" id="homeModules"></div>
       </section>
