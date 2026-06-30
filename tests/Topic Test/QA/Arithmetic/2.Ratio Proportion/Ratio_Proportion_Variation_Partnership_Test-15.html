@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratio Proportion Variation Partnership Test -15</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Ratio Proportion Variation Partnership Test -15</h1><div class="meta">27 Questions | 60 Minutes | 27 MCQ | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 28,
+    "itemId": 91501,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q28",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q28.</strong> If <span class='math'>a, b, c &gt; 0</span>, then find the common value of <span class='math'><span class=\"frac\"><span>a</span><span>b+c</span></span> = <span class=\"frac\"><span>b</span><span>c+a</span></span> = <span class=\"frac\"><span>c</span><span>a+b</span></span></span>.</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>1</span><span>2</span></span></p>",
+      "<p><span class=\"frac\"><span>3</span><span>2</span></span></p>",
+      "<p><span class=\"frac\"><span>7</span><span>5</span></span></p>",
+      "<p><span class=\"frac\"><span>5</span><span>3</span></span></p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "1/2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the common value be <span class='math'>k</span>. Then <span class='math'>a=k(b+c),\\; b=k(c+a),\\; c=k(a+b)</span>.</li><li>Adding all three equations gives <span class='math'>a+b+c=2k(a+b+c)</span>.</li><li>Since <span class='math'>a+b+c&gt;0</span>, <span class='math'>2k=1</span> and hence <span class='math'>k=<span class=\"frac\"><span>1</span><span>2</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 29,
+    "itemId": 91502,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q29",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q29.</strong> If <span class='math'>a, b, c &gt; 0</span>, then find the common value of <span class='math'><span class=\"frac\"><span>a</span><span>a+b+c</span></span> = <span class=\"frac\"><span>b</span><span>a+b+c</span></span> = <span class=\"frac\"><span>c</span><span>a+b+c</span></span></span>.</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>5</span><span>9</span></span></p>",
+      "<p><span class=\"frac\"><span>1</span><span>3</span></span></p>",
+      "<p><span class=\"frac\"><span>7</span><span>3</span></span></p>",
+      "<p><span class=\"frac\"><span>2</span><span>3</span></span></p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1/3",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>All three fractions have the same denominator, so equality implies <span class='math'>a=b=c</span>.</li><li>Let <span class='math'>a=b=c=t</span>. Then <span class='math'><span class=\"frac\"><span>a</span><span>a+b+c</span></span>=<span class=\"frac\"><span>t</span><span>3t</span></span>=<span class=\"frac\"><span>1</span><span>3</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 30,
+    "itemId": 91503,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q30",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q30.</strong> If <span class='math'>a, b, c &gt; 0</span>, then find the common value of <span class='math'><span class=\"frac\"><span>a</span><span>2a+b+c</span></span> = <span class=\"frac\"><span>b</span><span>a+2b+c</span></span> = <span class=\"frac\"><span>c</span><span>a+b+2c</span></span></span>.</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>1</p>",
+      "<p>−1</p>",
+      "<p>0</p>",
+      "<p><span class=\"frac\"><span>1</span><span>4</span></span> <em>(corrected option)</em></p>"
+    ],
+    "answer": 4,
+    "typedAnswer": "1/4",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the common value be <span class='math'>k</span>.</li><li>Then <span class='math'>a=k(2a+b+c),\\; b=k(a+2b+c),\\; c=k(a+b+2c)</span>.</li><li>Adding gives <span class='math'>a+b+c=4k(a+b+c)</span>.</li><li>Since <span class='math'>a+b+c&gt;0</span>, <span class='math'>k=<span class=\"frac\"><span>1</span><span>4</span></span></span>. The printed options in the scan did not contain this value, so it is added as the corrected option.</li></ol>"
+  },
+  {
+    "no": 31,
+    "itemId": 91504,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q31",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q31.</strong> If <span class='math'><span class=\"frac\"><span>y</span><span>x−z</span></span> = <span class=\"frac\"><span>y+x</span><span>z</span></span> = <span class=\"frac\"><span>x</span><span>y</span></span></span>, then find <span class='math'>x : y : z</span>.</p>",
+    "options": [
+      "<p>3 : 2 : 4</p>",
+      "<p>4 : 3 : 2</p>",
+      "<p>4 : 2 : 3</p>",
+      "<p>1 : 2 : 3</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4 : 2 : 3",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the common value be <span class='math'>k</span>. From <span class='math'><span class=\"frac\"><span>x</span><span>y</span></span>=k</span>, take <span class='math'>x=ky</span>.</li><li>Using the first relation and the second relation gives <span class='math'>z=<span class=\"frac\"><span>k^2-1</span><span>k</span></span>y</span> and <span class='math'>k+1=k^2-1</span>.</li><li>So <span class='math'>k^2-k-2=0</span> giving the positive value <span class='math'>k=2</span>.</li><li>Thus <span class='math'>x:y:z=2:1:<span class=\"frac\"><span>3</span><span>2</span></span>=4:2:3</span>.</li></ol>"
+  },
+  {
+    "no": 32,
+    "itemId": 91505,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q32",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q32.</strong> If <span class='math'><span class=\"frac\"><span>p</span><span>q</span></span> = <span class=\"frac\"><span>r</span><span>s</span></span></span>, then find <span class='math'>(<span class=\"frac\"><span>p+q</span><span>r+s</span></span>)<sup>2</sup></span>.</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>pq</span><span>rs</span></span></p>",
+      "<p><span class=\"frac\"><span>pr</span><span>qs</span></span></p>",
+      "<p>(<span class=\"frac\"><span>p−r</span><span>q−s</span></span>)<sup>2</sup></p>",
+      "<p>1</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "pq/rs",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let <span class='math'><span class=\"frac\"><span>p</span><span>q</span></span>=<span class=\"frac\"><span>r</span><span>s</span></span>=k</span>. Then <span class='math'>p=kq</span> and <span class='math'>r=ks</span>.</li><li>Therefore <span class='math'><span class=\"frac\"><span>p+q</span><span>r+s</span></span>=<span class=\"frac\"><span>q(k+1)</span><span>s(k+1)</span></span>=<span class=\"frac\"><span>q</span><span>s</span></span></span>.</li><li>Squaring gives <span class='math'>(<span class=\"frac\"><span>q</span><span>s</span></span>)<sup>2</sup></span>. Since <span class='math'><span class=\"frac\"><span>p</span><span>r</span></span>=<span class=\"frac\"><span>q</span><span>s</span></span></span>, this equals <span class='math'><span class=\"frac\"><span>pq</span><span>rs</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 33,
+    "itemId": 91506,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q33",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q33.</strong> The ratio of milk and water in a pot is 3 : 4. If 3 litre water is added, then the ratio becomes 3 : 5. Find the initial quantity of milk.</p>",
+    "options": [
+      "<p>8 litre</p>",
+      "<p>5 litre</p>",
+      "<p>9 litre</p>",
+      "<p>12 litre</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "9 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>3x</span> and <span class='math'>4x</span>.</li><li>After adding 3 litre water, <span class='math'><span class=\"frac\"><span>3x</span><span>4x+3</span></span>=<span class=\"frac\"><span>3</span><span>5</span></span></span>.</li><li>So <span class='math'>15x=12x+9</span>, hence <span class='math'>x=3</span>. Initial milk = <span class='math'>3x=9</span> litre.</li></ol>"
+  },
+  {
+    "no": 34,
+    "itemId": 91507,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q34",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q34.</strong> The ratio of milk and water in a pot is 2 : 5. If 14 litre water is added, then the ratio becomes 1 : 3. Find the initial quantity of milk.</p>",
+    "options": [
+      "<p>14 litre</p>",
+      "<p>20 litre</p>",
+      "<p>28 litre</p>",
+      "<p>24 litre</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "28 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>2x</span> and <span class='math'>5x</span>.</li><li>After adding 14 litre water, <span class='math'><span class=\"frac\"><span>2x</span><span>5x+14</span></span>=<span class=\"frac\"><span>1</span><span>3</span></span></span>.</li><li>Thus <span class='math'>6x=5x+14</span>, so <span class='math'>x=14</span>. Initial milk = <span class='math'>2x=28</span> litre.</li></ol>"
+  },
+  {
+    "no": 35,
+    "itemId": 91508,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q35",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q35.</strong> The ratio of milk and water in a pot is 2 : 3. If we add 5 litre milk and 5 litre water, then the ratio becomes 3 : 4. How much total mixture was present initially?</p>",
+    "options": [
+      "<p>25 litre</p>",
+      "<p>10 litre</p>",
+      "<p>20 litre</p>",
+      "<p>8 litre</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "25 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>2x</span> and <span class='math'>3x</span>. Initial mixture = <span class='math'>5x</span>.</li><li>After adding 5 litre each, <span class='math'><span class=\"frac\"><span>2x+5</span><span>3x+5</span></span>=<span class=\"frac\"><span>3</span><span>4</span></span></span>.</li><li>So <span class='math'>8x+20=9x+15</span>, hence <span class='math'>x=5</span>. Initial mixture = <span class='math'>5x=25</span> litre.</li></ol>"
+  },
+  {
+    "no": 36,
+    "itemId": 91509,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q36",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q36.</strong> The ratio of milk and water in a pot is 1 : 3. If we add 9 litre milk and 9 litre water, then the ratio becomes 2 : 3. How much total mixture was present initially?</p>",
+    "options": [
+      "<p>6 litre</p>",
+      "<p>24 litre</p>",
+      "<p>12 litre</p>",
+      "<p>10 litre</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "12 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>x</span> and <span class='math'>3x</span>. Initial mixture = <span class='math'>4x</span>.</li><li>After adding 9 litre each, <span class='math'><span class=\"frac\"><span>x+9</span><span>3x+9</span></span>=<span class=\"frac\"><span>2</span><span>3</span></span></span>.</li><li>So <span class='math'>3x+27=6x+18</span>, hence <span class='math'>x=3</span>. Initial mixture = <span class='math'>4x=12</span> litre.</li></ol>"
+  },
+  {
+    "no": 37,
+    "itemId": 91510,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q37",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q37.</strong> The ratio of milk and water in a pot is 5 : 7. If we add 5 litre milk and 5 litre water, then the ratio becomes 3 : 4. Find the initial quantity of milk.</p>",
+    "options": [
+      "<p>5 litre</p>",
+      "<p>10 litre</p>",
+      "<p>25 litre</p>",
+      "<p>15 litre</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "25 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>5x</span> and <span class='math'>7x</span>.</li><li>After adding 5 litre each, <span class='math'><span class=\"frac\"><span>5x+5</span><span>7x+5</span></span>=<span class=\"frac\"><span>3</span><span>4</span></span></span>.</li><li>So <span class='math'>20x+20=21x+15</span>, hence <span class='math'>x=5</span>. Initial milk = <span class='math'>5x=25</span> litre.</li></ol>"
+  },
+  {
+    "no": 38,
+    "itemId": 91511,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q38",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q38.</strong> The ratio of milk and water in a pot is 2 : 3. If 3 litre water is subtracted, then the ratio becomes 5 : 7. Find the initial quantity of milk.</p>",
+    "options": [
+      "<p>30 litre</p>",
+      "<p>15 litre</p>",
+      "<p>35 litre</p>",
+      "<p>10 litre</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "30 litre",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let milk and water be <span class='math'>2x</span> and <span class='math'>3x</span>.</li><li>After removing 3 litre water, <span class='math'><span class=\"frac\"><span>2x</span><span>3x−3</span></span>=<span class=\"frac\"><span>5</span><span>7</span></span></span>.</li><li>So <span class='math'>14x=15x−15</span>, hence <span class='math'>x=15</span>. Initial milk = <span class='math'>2x=30</span> litre.</li></ol>"
+  },
+  {
+    "no": 39,
+    "itemId": 91512,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q39",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q39.</strong> The ratio of two numbers is 1 : 2. If 7 is added to both numbers, then the ratio becomes 3 : 5. Find the numbers.</p>",
+    "options": [
+      "<p>7, 14</p>",
+      "<p>21, 42</p>",
+      "<p>14, 28</p>",
+      "<p>8, 40</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "14, 28",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the numbers be <span class='math'>x</span> and <span class='math'>2x</span>.</li><li>After adding 7 to both, <span class='math'><span class=\"frac\"><span>x+7</span><span>2x+7</span></span>=<span class=\"frac\"><span>3</span><span>5</span></span></span>.</li><li>So <span class='math'>5x+35=6x+21</span>, hence <span class='math'>x=14</span>. Numbers are <span class='math'>14, 28</span>.</li></ol>"
+  },
+  {
+    "no": 40,
+    "itemId": 91513,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q40",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q40.</strong> Two numbers are in the ratio 3 : 5. If 9 is subtracted from both, then the ratio becomes 12 : 23. Find the numbers.</p>",
+    "options": [
+      "<p>36, 60</p>",
+      "<p>33, 55</p>",
+      "<p>30, 50</p>",
+      "<p>24, 40</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "33, 55",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the numbers be <span class='math'>3x</span> and <span class='math'>5x</span>.</li><li>After subtracting 9 from both, <span class='math'><span class=\"frac\"><span>3x−9</span><span>5x−9</span></span>=<span class=\"frac\"><span>12</span><span>23</span></span></span>.</li><li>So <span class='math'>69x−207=60x−108</span>, hence <span class='math'>x=11</span>. Numbers are <span class='math'>33, 55</span>.</li></ol>"
+  },
+  {
+    "no": 41,
+    "itemId": 91514,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q41",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q41.</strong> Find the number that must be added to the terms of the ratio 7 and 13 to make it equal to 2 : 3.</p>",
+    "options": [
+      "<p>5</p>",
+      "<p>7</p>",
+      "<p>4</p>",
+      "<p>6</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the number added be <span class='math'>x</span>.</li><li>Then <span class='math'><span class=\"frac\"><span>7+x</span><span>13+x</span></span>=<span class=\"frac\"><span>2</span><span>3</span></span></span>.</li><li>So <span class='math'>21+3x=26+2x</span>, hence <span class='math'>x=5</span>.</li></ol>"
+  },
+  {
+    "no": 42,
+    "itemId": 91515,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q42",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q42.</strong> Find the number that must be subtracted from the terms of the ratio 15 and 19 to make it equal to 3 : 4.</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>5</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "3",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the number subtracted be <span class='math'>x</span>.</li><li>Then <span class='math'><span class=\"frac\"><span>15−x</span><span>19−x</span></span>=<span class=\"frac\"><span>3</span><span>4</span></span></span>.</li><li>So <span class='math'>60−4x=57−3x</span>, hence <span class='math'>x=3</span>.</li></ol>"
+  },
+  {
+    "no": 43,
+    "itemId": 91516,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q43",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q43.</strong> There are officers and assistants in an office. If 15 assistants went on leave, then every assistant has two officers. After that, 45 officers went on leave and now every officer has 5 assistants. Find how many assistants were there initially.</p>",
+    "options": [
+      "<p>30</p>",
+      "<p>40</p>",
+      "<p>25</p>",
+      "<p>35</p>",
+      "<p>No correct option / data inconsistent</p>"
+    ],
+    "answer": 4,
+    "typedAnswer": "No correct option",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the initial numbers of assistants and officers be <span class='math'>A</span> and <span class='math'>O</span>.</li><li>After 15 assistants leave, every assistant has 2 officers, so <span class='math'>O=2(A−15)</span>.</li><li>After 45 officers leave, every officer has 5 assistants, so <span class='math'>A=5(O−45)</span>.</li><li>Solving these gives <span class='math'>A=<span class=\"frac\"><span>125</span><span>3</span></span></span>, which is not a whole number and not among the printed options. Hence the given data/options are inconsistent.</li></ol>"
+  },
+  {
+    "no": 44,
+    "itemId": 91517,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q44",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q44.</strong> The ratio of the number of balls in bags <em>p</em> and <em>q</em> is 2 : 3. Five balls are taken from bag <em>q</em> and dropped into bag <em>p</em>. The number of balls becomes equal in each bag. Find the number of balls in each bag now.</p>",
+    "options": [
+      "<p>45</p>",
+      "<p>20</p>",
+      "<p>30</p>",
+      "<p>25</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the initial numbers of balls be <span class='math'>2x</span> and <span class='math'>3x</span>.</li><li>After transferring 5 from bag q to bag p, <span class='math'>2x+5=3x−5</span>.</li><li>So <span class='math'>x=10</span>. Each bag now has <span class='math'>2x+5=25</span> balls.</li></ol>"
+  },
+  {
+    "no": 45,
+    "itemId": 91518,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q45",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q45.</strong> In a party, the ratio of the number of boys and girls is 1 : 2. If 2 boys and 2 girls went out, then the ratio became 1 : 3. How many boys and girls were present initially?</p>",
+    "options": [
+      "<p>8, 16</p>",
+      "<p>4, 8</p>",
+      "<p>2, 4</p>",
+      "<p>3, 6</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4, 8",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let boys and girls be <span class='math'>x</span> and <span class='math'>2x</span>.</li><li>After 2 boys and 2 girls leave, <span class='math'><span class=\"frac\"><span>x−2</span><span>2x−2</span></span>=<span class=\"frac\"><span>1</span><span>3</span></span></span>.</li><li>So <span class='math'>3x−6=2x−2</span>, hence <span class='math'>x=4</span>. Initially, boys and girls were <span class='math'>4, 8</span>.</li></ol>"
+  },
+  {
+    "no": 46,
+    "itemId": 91519,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q46",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q46.</strong> My grandfather was 8 times my age 16 years ago. He would be 3 times my age 8 years from now. Eight years ago, what was the ratio of my age to that of my grandfather?</p>",
+    "options": [
+      "<p>3 : 8</p>",
+      "<p>1 : 5</p>",
+      "<p>1 : 2</p>",
+      "<p>None</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "None",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let my present age be <span class='math'>x</span> and grandfather's present age be <span class='math'>y</span>.</li><li>Sixteen years ago: <span class='math'>y−16=8(x−16)</span>. Eight years from now: <span class='math'>y+8=3(x+8)</span>.</li><li>Solving gives <span class='math'>x=25.6</span> and <span class='math'>y=92.8</span>.</li><li>Eight years ago the ratio was <span class='math'>17.6:84.8=11:53</span>, which is not in the given options. Hence the answer is None.</li></ol>"
+  },
+  {
+    "no": 47,
+    "itemId": 91520,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q47",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q47.</strong> The incomes of A and B are in the ratio 3 : 5 and their expenses are in the ratio 1 : 5. If each saves ₹100, find their incomes.</p>",
+    "options": [
+      "<p>120, 200</p>",
+      "<p>300, 500</p>",
+      "<p>180, 300</p>",
+      "<p>150, 250</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "120, 200",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let incomes be <span class='math'>3x, 5x</span> and expenses be <span class='math'>y, 5y</span>.</li><li>Savings give <span class='math'>3x−y=100</span> and <span class='math'>5x−5y=100</span>, i.e. <span class='math'>x−y=20</span>.</li><li>From these, <span class='math'>x=40</span>. Hence incomes are <span class='math'>3x,5x=120,200</span>.</li></ol>"
+  },
+  {
+    "no": 48,
+    "itemId": 91521,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q48",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q48.</strong> The incomes of A and B are in the ratio 5 : 3 and their expenses are in the ratio 9 : 5. If they save ₹1300 and ₹900 respectively, find their incomes.</p>",
+    "options": [
+      "<p>4500, 2700</p>",
+      "<p>4000, 2400</p>",
+      "<p>5000, 3000</p>",
+      "<p>1000, 600</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4000, 2400",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let incomes be <span class='math'>5x, 3x</span> and expenses be <span class='math'>9y, 5y</span>.</li><li>Then <span class='math'>5x−9y=1300</span> and <span class='math'>3x−5y=900</span>.</li><li>Solving gives <span class='math'>x=800</span>. Hence incomes are <span class='math'>4000, 2400</span>.</li></ol>"
+  },
+  {
+    "no": 49,
+    "itemId": 91522,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q49",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q49.</strong> The incomes of A and B are in the ratio 5 : 7 and their expenses are in the ratio 9 : 11. If A saves ₹1200 and B saves ₹2000, find their incomes.</p>",
+    "options": [
+      "<p>3000, 4200</p>",
+      "<p>2500, 3500</p>",
+      "<p>4000, 5600</p>",
+      "<p>4500, 6300</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "3000, 4200",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let incomes be <span class='math'>5x, 7x</span> and expenses be <span class='math'>9y, 11y</span>.</li><li>Then <span class='math'>5x−9y=1200</span> and <span class='math'>7x−11y=2000</span>.</li><li>Solving gives <span class='math'>x=600</span>. Hence incomes are <span class='math'>3000, 4200</span>.</li></ol>"
+  },
+  {
+    "no": 50,
+    "itemId": 91523,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q50",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q50.</strong> P and Q earn in the ratio 2 : 1. They spend in the ratio 5 : 3 and save in the ratio 4 : 1. Find the monthly income of each if the total monthly savings of P and Q together is ₹5000.</p>",
+    "options": [
+      "<p>14000, 7000</p>",
+      "<p>10000, 5000</p>",
+      "<p>2000, 1000</p>",
+      "<p>8000, 4000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "14000, 7000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Since savings are in the ratio <span class='math'>4:1</span> and total savings are ₹5000, savings are <span class='math'>4000</span> and <span class='math'>1000</span>.</li><li>Let incomes be <span class='math'>2x, x</span> and expenses be <span class='math'>5y, 3y</span>.</li><li>Then <span class='math'>2x−5y=4000</span> and <span class='math'>x−3y=1000</span>. Solving gives <span class='math'>x=7000</span>.</li><li>Monthly incomes are <span class='math'>14000, 7000</span>.</li></ol>"
+  },
+  {
+    "no": 51,
+    "itemId": 91524,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q51",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q51.</strong> In an examination, the number of those who passed and the number of those who failed were in the ratio 25 : 4. If 5 more had appeared and the number of failures were 2 less than earlier, the ratio of students who passed to the number of students who failed would have been 22 : 3. Find the total number who appeared at the examination.</p>",
+    "options": [
+      "<p>145</p>",
+      "<p>150</p>",
+      "<p>155</p>",
+      "<p>180</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "145",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let passed and failed be <span class='math'>25x</span> and <span class='math'>4x</span>. Original total = <span class='math'>29x</span>.</li><li>New total = <span class='math'>29x+5</span> and new failures = <span class='math'>4x−2</span>. So new passes = <span class='math'>25x+7</span>.</li><li>Given <span class='math'><span class=\"frac\"><span>25x+7</span><span>4x−2</span></span>=<span class=\"frac\"><span>22</span><span>3</span></span></span>.</li><li>Thus <span class='math'>75x+21=88x−44</span>, hence <span class='math'>x=5</span>. Original total = <span class='math'>29x=145</span>.</li></ol>"
+  },
+  {
+    "no": 52,
+    "itemId": 91525,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q52",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q52.</strong> In an examination, the number of those who passed and the number of those who failed were in the ratio 4 : 1. If 35 less had appeared and the number of failures were 9 more than earlier, the ratio of students who passed to the number of students who failed would have been 2 : 1. Find the total number who appeared at the examination.</p>",
+    "options": [
+      "<p>155</p>",
+      "<p>158</p>",
+      "<p>160</p>",
+      "<p>165</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "155",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let passed and failed be <span class='math'>4x</span> and <span class='math'>x</span>. Original total = <span class='math'>5x</span>.</li><li>New total = <span class='math'>5x−35</span> and new failures = <span class='math'>x+9</span>. New passes = <span class='math'>4x−44</span>.</li><li>Given <span class='math'><span class=\"frac\"><span>4x−44</span><span>x+9</span></span>=<span class=\"frac\"><span>2</span><span>1</span></span></span>.</li><li>So <span class='math'>4x−44=2x+18</span>, hence <span class='math'>x=31</span>. Original total = <span class='math'>5x=155</span>.</li></ol>"
+  },
+  {
+    "no": 53,
+    "itemId": 91526,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q53",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q53.</strong> The ratio of the number of boys to the number of girls in a school of 432 pupils is 5 : 4. When some new boys and girls are admitted, the number of boys increases by 12 and the ratio of boys to girls changes to 7 : 6. Find the number of new girls admitted.</p>",
+    "options": [
+      "<p>12</p>",
+      "<p>14</p>",
+      "<p>24</p>",
+      "<p>20</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "24",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Initially, total parts = <span class='math'>5+4=9</span>. Boys = <span class='math'><span class=\"frac\"><span>5</span><span>9</span></span>×432=240</span> and girls = <span class='math'>192</span>.</li><li>After 12 boys are admitted, boys = <span class='math'>252</span>.</li><li>If the new ratio is <span class='math'>7:6</span>, then girls = <span class='math'><span class=\"frac\"><span>6</span><span>7</span></span>×252=216</span>.</li><li>New girls admitted = <span class='math'>216−192=24</span>.</li></ol>"
+  },
+  {
+    "no": 54,
+    "itemId": 91527,
+    "source": "Ratio Proportion Variation Partnership Test -15 | Source Q54",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q54.</strong> The number of students in three classes are in the ratio 2 : 3 : 5. If 40 students are increased in each class, the ratio changes to 4 : 5 : 7. Originally, the total number of students was:</p>",
+    "options": [
+      "<p>100</p>",
+      "<p>180</p>",
+      "<p>200</p>",
+      "<p>400</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "200",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the initial numbers be <span class='math'>2x, 3x, 5x</span>.</li><li>After adding 40 to each, the first two classes satisfy <span class='math'><span class=\"frac\"><span>2x+40</span><span>3x+40</span></span>=<span class=\"frac\"><span>4</span><span>5</span></span></span>.</li><li>So <span class='math'>10x+200=12x+160</span>, hence <span class='math'>x=20</span>.</li><li>Original total = <span class='math'>2x+3x+5x=10x=200</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
