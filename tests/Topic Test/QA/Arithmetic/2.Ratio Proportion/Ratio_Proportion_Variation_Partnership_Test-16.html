@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratio_Proportion_Variation_Partnership_Test-16</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Ratio_Proportion_Variation_Partnership_Test-16</h1><div class="meta">27 Questions | 60 Minutes | 26 MCQ + 1 Integer TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 91601,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q1",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> The total number of students in a school was 660. The ratio of number of boys and girls was 13 : 9. After some days, 30 girls joined the school and some boys left. The new ratio of number of boys and girls became 6 : 5. Find the number of boys who left the school.</p>",
+    "options": [
+      "<p>50</p>",
+      "<p>40</p>",
+      "<p>30</p>",
+      "<p>60</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "30",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Initially boys : girls = 13 : 9 and total students = 660.</li><li>So boys = <span class='math'>660 × 13/22 = 390</span> and girls = <span class='math'>270</span>.</li><li>After 30 girls joined, girls become <span class='math'>300</span>.</li><li>New ratio boys : girls = 6 : 5, so new number of boys = <span class='math'>300 × 6/5 = 360</span>.</li><li>Hence boys who left = <span class='math'>390 − 360 = 30</span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 91602,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q2",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> ₹ 180 is to be divided among 66 persons (men and women). The ratio of the total amount of money received by men and women is 5 : 4. But the ratio of the money received by each man and woman is 3 : 2. Find the number of men.</p>",
+    "options": [
+      "<p>20</p>",
+      "<p>24</p>",
+      "<p>30</p>",
+      "<p>36</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "30",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total amount received by men : women = <span class='math'>5 : 4</span>, so men receive ₹100 and women receive ₹80 out of ₹180.</li><li>Amount received by each man : each woman = <span class='math'>3 : 2</span>.</li><li>Therefore number of men : number of women = <span class='math'>(100/3) : (80/2) = 100 : 120 = 5 : 6</span>.</li><li>Total persons = 66, so men = <span class='math'>66 × 5/11 = 30</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 91603,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q3",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> A sum of ₹ 430 has been distributed among 45 people consisting of men, women and children. The total amount given to men, women and children are in the ratio 12 : 15 : 16. But, the amounts received by each man, woman and child are in the ratio 6 : 5 : 4. Find what each man, woman and child receives (in ₹).</p>",
+    "options": [
+      "<p>12, 10, 8</p>",
+      "<p>18, 15, 12</p>",
+      "<p>120, 150, 160</p>",
+      "<p>60, 75, 80</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "12, 10, 8",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let per head amounts to man, woman, child be <span class='math'>6x, 5x, 4x</span>.</li><li>Total amount ratio is <span class='math'>12 : 15 : 16</span>. Hence numbers of men : women : children = <span class='math'>(12/6) : (15/5) : (16/4) = 2 : 3 : 4</span>.</li><li>Total persons = 45, so actual numbers are <span class='math'>10, 15, 20</span>.</li><li>Now total amount ratio parts sum to <span class='math'>43</span>, and ₹430 corresponds to 43 parts, so one part = ₹10.</li><li>Thus per head amounts are man = <span class='math'>₹12</span>, woman = <span class='math'>₹10</span>, child = <span class='math'>₹8</span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 91604,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q4",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> By an engine the consumption of coal is directly proportional to the square of its velocity. When velocity is 50 mile/hour then consumption is 100 kg. If cost of coal is 25 paise/kg and expenditure is ₹ 9 per hour in second case, then find the consumption in travelling 250 mile.</p>",
+    "options": [
+      "<p>325 kg</p>",
+      "<p>300 kg</p>",
+      "<p>225 kg</p>",
+      "<p>270 kg</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "300 kg",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Coal consumption per hour is directly proportional to square of velocity.</li><li>In the second case, hourly expenditure = ₹9 and cost = ₹0.25 per kg, so hourly consumption = <span class='math'>9/0.25 = 36</span> kg/hour.</li><li>Therefore <span class='math'>v_2/v_1 = √(36/100) = 3/5</span>, so <span class='math'>v_2 = 50 × 3/5 = 30</span> mile/hour.</li><li>Time to travel 250 miles at 30 mph = <span class='math'>250/30</span> hours.</li><li>Total coal consumed = <span class='math'>36 × 250/30 = 300</span> kg.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 91605,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q5",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> The ratio of income of A, B and C is 3 : 4 : 5 and their expenses are in the ratio 4 : 5 : 6. If savings of A is 1/4 of its income, then find the ratio of their savings.</p>",
+    "options": [
+      "<p>12 : 19 : 26</p>",
+      "<p>13 : 20 : 27</p>",
+      "<p>19 : 12 : 26</p>",
+      "<p>14 : 21 : 29</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "12 : 19 : 26",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let incomes be <span class='math'>3x, 4x, 5x</span> and expenses be <span class='math'>4y, 5y, 6y</span>.</li><li>Savings of A = <span class='math'>1/4</span> of income = <span class='math'>3x/4</span>. So expense of A = <span class='math'>3x − 3x/4 = 9x/4</span>.</li><li>Thus <span class='math'>4y = 9x/4</span>, giving <span class='math'>y = 9x/16</span>.</li><li>Savings of B = <span class='math'>4x − 5y = 64x/16 − 45x/16 = 19x/16</span>.</li><li>Savings of C = <span class='math'>5x − 6y = 80x/16 − 54x/16 = 26x/16</span>.</li><li>Therefore savings ratio = <span class='math'>12 : 19 : 26</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 91606,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q6",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> The ratio of income of A, B and C is 7 : 9 : 12. The ratio of expenditure is 8 : 9 : 15. If savings of A is 1/4 of its income, then find the ratio of their savings.</p>",
+    "options": [
+      "<p>56 : 69 : 99</p>",
+      "<p>56 : 99 : 69</p>",
+      "<p>69 : 56 : 99</p>",
+      "<p>56 : 99 : 79</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "56 : 99 : 69",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let incomes be <span class='math'>7x, 9x, 12x</span> and expenses be <span class='math'>8y, 9y, 15y</span>.</li><li>Savings of A = <span class='math'>7x/4</span>, so expense of A = <span class='math'>7x − 7x/4 = 21x/4</span>.</li><li>Hence <span class='math'>8y = 21x/4</span>, so <span class='math'>y = 21x/32</span>.</li><li>Savings of B = <span class='math'>9x − 9y = 288x/32 − 189x/32 = 99x/32</span>.</li><li>Savings of C = <span class='math'>12x − 15y = 384x/32 − 315x/32 = 69x/32</span>.</li><li>A saves <span class='math'>7x/4 = 56x/32</span>. Therefore ratio = <span class='math'>56 : 99 : 69</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 91607,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q7",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> The ratio of income of A, B and C is 2 : 3 : 4 and the ratio of expenditure is 3 : 4 : 5. Savings of A is 1/5 of its income. Then find the ratio of their savings.</p>",
+    "options": [
+      "<p>6 : 13 : 20</p>",
+      "<p>7 : 14 : 22</p>",
+      "<p>13 : 6 : 20</p>",
+      "<p>20 : 13 : 6</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "6 : 13 : 20",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let incomes be <span class='math'>2x, 3x, 4x</span> and expenses be <span class='math'>3y, 4y, 5y</span>.</li><li>Savings of A = <span class='math'>2x/5</span>, so expense of A = <span class='math'>2x − 2x/5 = 8x/5</span>.</li><li>Hence <span class='math'>3y = 8x/5</span>, so <span class='math'>y = 8x/15</span>.</li><li>Savings of B = <span class='math'>3x − 4y = 45x/15 − 32x/15 = 13x/15</span>.</li><li>Savings of C = <span class='math'>4x − 5y = 60x/15 − 40x/15 = 20x/15</span>.</li><li>A saves <span class='math'>2x/5 = 6x/15</span>. So ratio = <span class='math'>6 : 13 : 20</span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 91608,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q8",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> The ratio of salary of 4 men is 3 : 2 : 1 : 4. If they increase their salary by 10%, 15%, 12%, 20% respectively, find the ratio of these new incomes.</p>",
+    "options": [
+      "<p>165 : 115 : 56 : 24</p>",
+      "<p>155 : 110 : 54 : 24</p>",
+      "<p>165 : 156 : 115 : 32</p>",
+      "<p>115 : 165 : 56 : 24</p>",
+      "<p>165 : 115 : 56 : 240 <em>(corrected option)</em></p>"
+    ],
+    "answer": 4,
+    "typedAnswer": "165 : 115 : 56 : 240",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Original salaries are proportional to <span class='math'>3, 2, 1, 4</span>.</li><li>After increase, new salaries become <span class='math'>3×110 = 330</span>, <span class='math'>2×115 = 230</span>, <span class='math'>1×112 = 112</span>, and <span class='math'>4×120 = 480</span>.</li><li>Therefore the required ratio is <span class='math'>330 : 230 : 112 : 480 = 165 : 115 : 56 : 240</span>.</li><li>The scanned options appear to have a printing issue in the last term, so the corrected option has been added.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 91609,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q9",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> The ratio of personal income of A and B of last year is 9 : 12. The ratio of last year's income and current year's income of A and B is 3 : 4 and 4 : 5 respectively. If the sum of current income of both is ₹ 54000, then find out A and B's current income separately.</p>",
+    "options": [
+      "<p>2400, 3000</p>",
+      "<p>3000, 3600</p>",
+      "<p>24000, 30000</p>",
+      "<p>4200, 5400</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "24000, 30000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let last year's incomes of A and B be <span class='math'>9x</span> and <span class='math'>12x</span>.</li><li>For A, last : current = 3 : 4, so current income of A = <span class='math'>9x × 4/3 = 12x</span>.</li><li>For B, last : current = 4 : 5, so current income of B = <span class='math'>12x × 5/4 = 15x</span>.</li><li>Now <span class='math'>12x + 15x = 54000</span>, so <span class='math'>x = 2000</span>.</li><li>Hence current incomes are A = <span class='math'>₹24000</span>, B = <span class='math'>₹30000</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 91610,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q10",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> The ratio of personal income of A and B of last year is 12 : 25. The ratio of last year's income and current year's income of A and B is 4 : 7 and 5 : 2 respectively. The sum of current income of both is ₹ 31000. Then find out A and B's current income separately.</p>",
+    "options": [
+      "<p>21000, 10000</p>",
+      "<p>25000, 7000</p>",
+      "<p>20000, 11000</p>",
+      "<p>19000, 12000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "21000, 10000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let last year's incomes be <span class='math'>12x</span> and <span class='math'>25x</span>.</li><li>For A, current income = <span class='math'>12x × 7/4 = 21x</span>.</li><li>For B, current income = <span class='math'>25x × 2/5 = 10x</span>.</li><li>So <span class='math'>21x + 10x = 31000</span>, giving <span class='math'>x = 1000</span>.</li><li>Therefore A = <span class='math'>₹21000</span> and B = <span class='math'>₹10000</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 91611,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q11",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> The ratio of A, B and C of last year income is 3 : 4 : 5. The ratio of A, B and C last year and current year are 4 : 5, 2 : 3, 3 : 4 respectively. If sum of income of A, B, and C is ₹ 78800, then find out current income of A, B and C separately.</p>",
+    "options": [
+      "<p>18000, 28800, 32000</p>",
+      "<p>18000, 28000, 32000</p>",
+      "<p>18800, 28000, 32000</p>",
+      "<p>18000, 28000, 32000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "18000, 28800, 32000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let last year's incomes of A, B, C be <span class='math'>3x, 4x, 5x</span>.</li><li>Then current incomes are: A = <span class='math'>3x × 5/4 = 15x/4</span>, B = <span class='math'>4x × 3/2 = 6x</span>, C = <span class='math'>5x × 4/3 = 20x/3</span>.</li><li>So <span class='math'>15x/4 + 6x + 20x/3 = 78800</span>.</li><li>Solving gives <span class='math'>x = 4800</span>.</li><li>Hence A = <span class='math'>₹18000</span>, B = <span class='math'>₹28800</span>, C = <span class='math'>₹32000</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 91612,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q12",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> A bag contains 50p, 25p and 10p coins. The ratio of coins is 5 : 9 : 4 and total amount is ₹ 206. Then find number of coins.</p>",
+    "options": [
+      "<p>20, 36, 16</p>",
+      "<p>150, 180, 80</p>",
+      "<p>200, 360, 160</p>",
+      "<p>75, 180, 160</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "200, 360, 160",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the numbers of 50p, 25p and 10p coins be <span class='math'>5x, 9x, 4x</span>.</li><li>Total value = <span class='math'>0.5(5x) + 0.25(9x) + 0.1(4x) = 5.15x</span>.</li><li>Given total value = ₹206, so <span class='math'>5.15x = 206</span> and <span class='math'>x = 40</span>.</li><li>Hence the numbers of coins are <span class='math'>200, 360, 160</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 91613,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q13",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> A sum of ₹ 36.90 is made up of 180 coins which are either 10 paise coins or 25 paise coins. Find the number of 10 paise coins.</p>",
+    "options": [
+      "<p>50</p>",
+      "<p>52</p>",
+      "<p>51</p>",
+      "<p>54</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "54",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of 10p coins be <span class='math'>x</span>. Then 25p coins are <span class='math'>180−x</span>.</li><li>Total value in paise: <span class='math'>10x + 25(180−x) = 3690</span>.</li><li>So <span class='math'>10x + 4500 − 25x = 3690</span> ⇒ <span class='math'>15x = 810</span>.</li><li>Hence <span class='math'>x = 54</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 91614,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q14",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> A bag contains ₹ 180 in which ₹1, 50 paise and 25 paise coins are in the ratio 2 : 3 : 4. Then find number of all types of coins separately.</p>",
+    "options": [
+      "<p>40, 60, 80</p>",
+      "<p>160, 120, 180</p>",
+      "<p>80, 120, 160</p>",
+      "<p>80, 120, 150</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "80, 120, 160",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the numbers of ₹1, 50p and 25p coins be <span class='math'>2x, 3x, 4x</span>.</li><li>Total value = <span class='math'>2x + 1.5x + 1x = 4.5x</span>.</li><li>Given total value = ₹180, so <span class='math'>4.5x = 180</span> and <span class='math'>x = 40</span>.</li><li>Therefore required numbers are <span class='math'>80, 120, 160</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 91615,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q15",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> A box contains ₹ 56 of ₹1, 50p and 25p. The number of 50p coins is double of 25p coins and 4 times of ₹1 coins. Then what is the number of 50p coins?</p>",
+    "options": [
+      "<p>12</p>",
+      "<p>64</p>",
+      "<p>128</p>",
+      "<p>60</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "64",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of 50p coins be <span class='math'>n</span>.</li><li>Then the number of 25p coins is <span class='math'>n/2</span> and the number of ₹1 coins is <span class='math'>n/4</span>.</li><li>Total value = <span class='math'>1(n/4) + 0.5n + 0.25(n/2) = n/4 + n/2 + n/8 = 7n/8</span>.</li><li>Given total value = ₹56, so <span class='math'>7n/8 = 56</span>.</li><li>Hence <span class='math'>n = 64</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 91616,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q16",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> A bag contains 378 coins of ₹1, 50p and 25p. The ratio of their values is 13 : 11 : 7. Then find the number of 50p coins.</p>",
+    "options": [
+      "<p>132</p>",
+      "<p>130</p>",
+      "<p>61</p>",
+      "<p>65</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "132",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the values of ₹1, 50p and 25p coins be <span class='math'>13x, 11x, 7x</span>.</li><li>Then the corresponding numbers of coins are <span class='math'>13x</span>, <span class='math'>22x</span>, and <span class='math'>28x</span>.</li><li>Total number of coins = <span class='math'>13x + 22x + 28x = 63x = 378</span>.</li><li>So <span class='math'>x = 6</span>. Therefore 50p coins = <span class='math'>22x = 132</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 91617,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q17",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> A bag contains 480 coins of 50p, 25p and 10p and the ratio of their values is 5 : 3 : 1. How many coins are there of these three types?</p>",
+    "options": [
+      "<p>75, 90, 75</p>",
+      "<p>150, 180, 150</p>",
+      "<p>100, 99, 75</p>",
+      "<p>150, 120, 60</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "150, 180, 150",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the values of 50p, 25p and 10p coins be <span class='math'>5x, 3x, x</span>.</li><li>Then the corresponding numbers of coins are <span class='math'>10x, 12x, 10x</span>.</li><li>Total number = <span class='math'>10x + 12x + 10x = 32x = 480</span>.</li><li>So <span class='math'>x = 15</span>.</li><li>Hence the required numbers are <span class='math'>150, 180, 150</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 91618,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q18",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> A diamond broke into three parts, the ratio of weight of three parts is 2 : 3 : 4. The price of diamond is directly proportional to its square weight. If the loss after breaking diamond is ₹ 52000, then what was the starting price of diamond?</p>",
+    "options": [
+      "<p>80000</p>",
+      "<p>50000</p>",
+      "<p>60000</p>",
+      "<p>81000</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "81000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the weights of the three pieces be <span class='math'>2x, 3x, 4x</span>. Original weight = <span class='math'>9x</span>.</li><li>Since price ∝ square of weight, original price ∝ <span class='math'>(9x)^2 = 81x²</span>.</li><li>Combined price after breaking ∝ <span class='math'>(2x)^2 + (3x)^2 + (4x)^2 = 4x² + 9x² + 16x² = 29x²</span>.</li><li>Loss ∝ <span class='math'>81x² − 29x² = 52x²</span>, which corresponds to ₹52000.</li><li>Therefore original price = <span class='math'>52000 × 81/52 = 81000</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 91619,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q19",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> A heart is broken in number of feelings 1 : 2 : 3 : 4. The cost of heart is directly proportional to the square of number of feelings. There is loss of ₹ 700 on broken heart. Find the initial cost of the heart.</p>",
+    "options": [
+      "<p>10000</p>",
+      "<p>5000</p>",
+      "<p>1000</p>",
+      "<p>900</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "1000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the four parts have feelings proportional to <span class='math'>1, 2, 3, 4</span>. Then the whole heart corresponds to <span class='math'>1+2+3+4 = 10</span> units.</li><li>Since cost ∝ square of feelings, original cost ∝ <span class='math'>10² = 100</span>.</li><li>Cost after breaking ∝ <span class='math'>1² + 2² + 3² + 4² = 30</span>.</li><li>Loss ∝ <span class='math'>100 − 30 = 70</span>, which equals ₹700.</li><li>So 1 proportional unit = ₹10 and original cost = <span class='math'>100 × 10 = ₹1000</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 91620,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q20",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> The cost of the plyboard varies directly with square of its weight. Plyboard is broken into 3 parts whose weights are in the ratio 9 : 2 : 1. If plyboard had been broken into three parts whose weights were in the ratio 7 : 3 : 2 then there would have been a further loss of ₹ 448. What is the actual cost of original plyboard?</p>",
+    "options": [
+      "<p>896</p>",
+      "<p>2688</p>",
+      "<p>1624</p>",
+      "<p>928</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2688",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let original weight be <span class='math'>12x</span>.</li><li>Actual broken-value proportion = <span class='math'>9² + 2² + 1² = 86</span>.</li><li>Hypothetical broken-value proportion = <span class='math'>7² + 3² + 2² = 62</span>.</li><li>The further loss in the hypothetical case is proportional to <span class='math'>86 − 62 = 24</span>, and this equals ₹448.</li><li>So 1 proportional unit = <span class='math'>448/24</span>.</li><li>Original cost ∝ <span class='math'>12² = 144</span>, hence original cost = <span class='math'>144 × 448/24 = 2688</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 91621,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q21",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> Three person A, B and C spend 75%, 70%, 80% of his income. The saving ratio of theirs is 20 : 9 : 8. The total amount of their income is ₹ 45000. Then their incomes are?</p>",
+    "options": [
+      "<p>24000, 9000, 12000</p>",
+      "<p>12000, 4500, 6000</p>",
+      "<p>48000, 18000, 24000</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "24000, 9000, 12000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>A, B and C save <span class='math'>25%, 30%, 20%</span> of their incomes respectively.</li><li>Let savings be <span class='math'>20x, 9x, 8x</span>.</li><li>Then incomes are A = <span class='math'>20x / 0.25 = 80x</span>, B = <span class='math'>9x / 0.30 = 30x</span>, C = <span class='math'>8x / 0.20 = 40x</span>.</li><li>Total income = <span class='math'>80x + 30x + 40x = 150x = 45000</span>.</li><li>So <span class='math'>x = 300</span> and incomes are <span class='math'>₹24000, ₹9000, ₹12000</span>.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 91622,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q22",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> The sum of income of A, B, C are ₹ 30000. A, B, and C spend 75%, 70% and 62% of their income. If their savings are in ratio 20 : 21 : 19, then what are their salary?</p>",
+    "options": [
+      "<p>12000, 10500, 7500</p>",
+      "<p>12000, 10000, 8000</p>",
+      "<p>10000, 12000, 8000</p>",
+      "<p>8000, 16000, 6000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "12000, 10500, 7500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Savings percentages are A = <span class='math'>25%</span>, B = <span class='math'>30%</span>, C = <span class='math'>38%</span>.</li><li>Let savings be <span class='math'>20x, 21x, 19x</span>.</li><li>Then incomes are A = <span class='math'>20x/0.25 = 80x</span>, B = <span class='math'>21x/0.30 = 70x</span>, C = <span class='math'>19x/0.38 = 50x</span>.</li><li>Total income = <span class='math'>80x + 70x + 50x = 200x = 30000</span>.</li><li>Thus <span class='math'>x = 150</span> and incomes are <span class='math'>₹12000, ₹10500, ₹7500</span>.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 91623,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q23",
+    "type": "text",
+    "direction": "<p>Type only the integer answer. No decimal, sign or commas.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> There are 3 types of expenditure in a car. Ist is raw material, IInd labour expenditure, IIIrd is extra expenditure. The ratio of these expenditure are 4 : 3 : 2. If Ist expenditure is increased by 10%, IInd is increased by 8% and IIIrd is decreased by 5%. Find the percentage change in price of car.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "6",
+    "acceptedAnswers": [
+      "6"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the three expenditures be <span class='math'>4x, 3x, 2x</span>. Original total price = <span class='math'>9x</span>.</li><li>After change, they become <span class='math'>4.4x, 3.24x, 1.9x</span>.</li><li>New total price = <span class='math'>4.4x + 3.24x + 1.9x = 9.54x</span>.</li><li>Increase in price = <span class='math'>9.54x − 9x = 0.54x</span>.</li><li>Percentage increase = <span class='math'>(0.54x / 9x) × 100 = 6%</span>.</li><li>So type <strong>6</strong> as the integer answer.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 91624,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q24",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> On the whole surface of earth the ratio of land and water is 1 : 2. The land and water in northern hemisphere is ratio 2 : 3. Then what is the ratio of land and water in southern hemisphere?</p>",
+    "options": [
+      "<p>4 : 11</p>",
+      "<p>11 : 4</p>",
+      "<p>5 : 12</p>",
+      "<p>4 : 7</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "4 : 11",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let total surface area of earth be <span class='math'>1</span>.</li><li>Then total land = <span class='math'>1/3</span> and total water = <span class='math'>2/3</span>.</li><li>Each hemisphere has area <span class='math'>1/2</span>. In the northern hemisphere, land : water = <span class='math'>2 : 3</span>, so northern land = <span class='math'>2/5 × 1/2 = 1/5</span> and northern water = <span class='math'>3/10</span>.</li><li>Southern land = <span class='math'>1/3 − 1/5 = 2/15</span>.</li><li>Southern water = <span class='math'>2/3 − 3/10 = 11/30</span>.</li><li>So required ratio = <span class='math'>2/15 : 11/30 = 4 : 11</span>.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 91625,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q25",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q25.</strong> On the whole surface of earth the ratio of land and water is 1 : 2. The land and water in northern hemisphere is ratio 3 : 4. Then what is the ratio of land and water in southern hemisphere?</p>",
+    "options": [
+      "<p>5 : 16</p>",
+      "<p>4 : 11</p>",
+      "<p>5 : 11</p>",
+      "<p>4 : 7</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "5 : 16",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let total surface area be <span class='math'>1</span>. Then total land = <span class='math'>1/3</span>, total water = <span class='math'>2/3</span>.</li><li>Each hemisphere has area <span class='math'>1/2</span>. In the northern hemisphere, land : water = <span class='math'>3 : 4</span>.</li><li>So northern land = <span class='math'>3/7 × 1/2 = 3/14</span> and northern water = <span class='math'>4/7 × 1/2 = 2/7</span>.</li><li>Southern land = <span class='math'>1/3 − 3/14 = 5/42</span>.</li><li>Southern water = <span class='math'>2/3 − 2/7 = 8/21</span>.</li><li>Therefore ratio in the southern hemisphere = <span class='math'>5/42 : 8/21 = 5 : 16</span>.</li></ol>"
+  },
+  {
+    "no": 26,
+    "itemId": 91626,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q26",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q26.</strong> <span class='math'>x</span> is inversely proportional to square of <span class='math'>y</span>. When <span class='math'>x = 4</span>, then <span class='math'>y = 3</span>. Find <span class='math'>x</span>, if <span class='math'>y = 6</span>.</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>√2</p>",
+      "<p>1</p>",
+      "<p>3</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since <span class='math'>x</span> is inversely proportional to <span class='math'>y²</span>, we write <span class='math'>x = k/y²</span>.</li><li>Using <span class='math'>x = 4</span> and <span class='math'>y = 3</span>, we get <span class='math'>4 = k/9</span>, so <span class='math'>k = 36</span>.</li><li>When <span class='math'>y = 6</span>, <span class='math'>x = 36/36 = 1</span>.</li></ol>"
+  },
+  {
+    "no": 27,
+    "itemId": 91627,
+    "source": "Ratio_Proportion_Variation_Partnership_Test-16 | Source Q27",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q27.</strong> In a factory the number of labour decrease in the ratio 9 : 8 and their salary increase in the ratio 14 : 15. If total wages of one day decrease by ₹ 6000, then find the present salary of each day.</p>",
+    "options": [
+      "<p>120000</p>",
+      "<p>100000</p>",
+      "<p>160000</p>",
+      "<p>120000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "120000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let original number of labourers and daily salary per labourer be proportional to <span class='math'>9x</span> and <span class='math'>14y</span>.</li><li>After change, number and salary become <span class='math'>8x</span> and <span class='math'>15y</span>.</li><li>Original daily wage bill = <span class='math'>9x × 14y = 126xy</span>.</li><li>Present daily wage bill = <span class='math'>8x × 15y = 120xy</span>.</li><li>Decrease = <span class='math'>126xy − 120xy = 6xy = 6000</span>, so <span class='math'>xy = 1000</span>.</li><li>Present total daily salary = <span class='math'>120xy = 120000</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
