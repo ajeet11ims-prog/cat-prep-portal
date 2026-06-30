@@ -1214,6 +1214,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 27
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test-16",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
   }
 ];
 
