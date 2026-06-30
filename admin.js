@@ -9,6 +9,7 @@ const state = {
   folders: Array.isArray(window.CAT_FOLDERS) ? window.CAT_FOLDERS : [],
   selectedPath: ["Topic Test", "QA", "Arithmetic", "3.Profit & Loss"],
   selectedFile: null,
+  userSelectedPath: false,
 };
 
 const presetPaths = [
@@ -172,6 +173,47 @@ function safeFileName(value) {
 
 function folderKey(path) { return path.join(" / "); }
 
+function compareKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/\.html?$/i, "")
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sameFolder(a, b) {
+  return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((part, index) => part === b[index]);
+}
+
+function pathForFileName(fileName) {
+  const key = compareKey(fileName);
+  const rules = [
+    { words: ["ratio", "proportion"], path: ["Topic Test", "QA", "Arithmetic", "2.Ratio Proportion"] },
+    { words: ["profit", "loss"], path: ["Topic Test", "QA", "Arithmetic", "3.Profit & Loss"] },
+    { words: ["percentage"], path: ["Topic Test", "QA", "Arithmetic", "1.Percentage"] },
+    { words: ["si", "ci"], path: ["Topic Test", "QA", "Arithmetic", "4.SI & CI"] },
+    { words: ["simple", "interest"], path: ["Topic Test", "QA", "Arithmetic", "4.SI & CI"] },
+    { words: ["compound", "interest"], path: ["Topic Test", "QA", "Arithmetic", "4.SI & CI"] },
+    { words: ["average"], path: ["Topic Test", "QA", "Arithmetic", "5. Average"] },
+  ];
+  const match = rules.find((rule) => rule.words.every((word) => key.includes(word)));
+  return match ? match.path : null;
+}
+
+function findReplacementMatches(filePath, title, original) {
+  const titleKey = compareKey(title);
+  const originalKey = compareKey(original);
+  const fileNameKey = compareKey(String(filePath || "").split("/").pop());
+  return repairTests(state.tests).filter((test) => {
+    if (!sameFolder(test.folders, state.selectedPath)) return false;
+    if (test.file === filePath) return true;
+    const keys = [test.title, test.original, String(test.file || "").split("/").pop()].map(compareKey);
+    return keys.some((key) => key && (key === titleKey || key === originalKey || key === fileNameKey));
+  });
+}
+
 function countTests(path) {
   return state.tests.filter((test) => Array.isArray(test.folders) && path.every((p, i) => test.folders[i] === p)).length;
 }
@@ -216,8 +258,9 @@ function updatePathUI() {
   document.querySelectorAll(".folder-pick").forEach((btn) => btn.classList.toggle("active", btn.dataset.path === pathText));
 }
 
-function selectPath(path) {
+function selectPath(path, userAction = false) {
   state.selectedPath = path.filter(Boolean);
+  if (userAction) state.userSelectedPath = true;
   $("rootSelect").value = state.selectedPath[0] || "Topic Test";
   $("level2").value = state.selectedPath[1] || "";
   $("level3").value = state.selectedPath[2] || "";
@@ -234,7 +277,7 @@ function renderPresets() {
     btn.type = "button";
     btn.className = "preset-card";
     btn.innerHTML = `<strong>${escapeHtml(path[path.length - 1])}</strong><span>${escapeHtml(path.slice(0, -1).join(" / ") || path[0])}</span>`;
-    btn.addEventListener("click", () => selectPath(path));
+    btn.addEventListener("click", () => selectPath(path, true));
     grid.appendChild(btn);
   });
 }
@@ -251,7 +294,7 @@ function renderFolders() {
     btn.dataset.path = folderKey(path);
     const count = countTests(path);
     btn.innerHTML = `<strong>${escapeHtml(path[path.length - 1])}</strong><small>${escapeHtml(folderKey(path))}</small><span>${count} test${count === 1 ? "" : "s"}</span>`;
-    btn.addEventListener("click", () => selectPath(path));
+    btn.addEventListener("click", () => selectPath(path, true));
     list.appendChild(btn);
   });
   if (!folders.length) list.innerHTML = `<div class="folder-pick"><strong>No folder found</strong><small>Try another search term.</small></div>`;
@@ -266,7 +309,7 @@ function renderSuggestions() {
 
 function applyBuilder() {
   const path = [$("rootSelect").value, $("level2").value.trim(), $("level3").value.trim(), $("level4").value.trim(), $("level5").value.trim()].filter(Boolean);
-  selectPath(path);
+  selectPath(path, true);
   renderFolders();
 }
 
@@ -281,6 +324,11 @@ function handleFile(file) {
   $("dropSub").textContent = `${Math.ceil(file.size / 1024)} KB selected`;
   if (!$("title").value.trim()) $("title").value = cleanNameFromFile(file.name);
   if (!$("fileName").value.trim()) $("fileName").value = file.name;
+  const suggestedPath = !state.userSelectedPath ? pathForFileName(file.name) : null;
+  if (suggestedPath) {
+    selectPath(suggestedPath);
+    setStatus(`Folder auto-selected from file name.\n${folderKey(suggestedPath)}`, "success");
+  }
   updatePathUI();
 }
 
@@ -309,11 +357,13 @@ function buildUpdatedData() {
   };
   if (Number.isFinite(questions)) meta.questions = questions;
 
-  const updatedTests = repairTests(state.tests).filter((test) => test.file !== filePath);
+  const replacementFiles = new Set(findReplacementMatches(filePath, title, meta.original).map((test) => test.file));
+  replacementFiles.add(filePath);
+  const updatedTests = repairTests(state.tests).filter((test) => !replacementFiles.has(test.file));
   updatedTests.push(meta);
 
   const updatedFolders = buildFoldersFromTests(updatedTests, state.folders);
-  return { updatedTests, updatedFolders, meta };
+  return { updatedTests, updatedFolders, meta, replacedCount: replacementFiles.size - (replacementFiles.has(filePath) ? 1 : 0) };
 }
 
 async function loadRemoteData(token) {
@@ -342,7 +392,7 @@ async function publishTest() {
     setStatus("Reading latest tests-data.js from GitHub...");
     const { dataFile } = await loadRemoteData(token);
 
-    const { updatedTests, updatedFolders, meta } = buildUpdatedData();
+    const { updatedTests, updatedFolders, meta, replacedCount } = buildUpdatedData();
     const html = await state.selectedFile.text();
 
     setStatus(`Uploading HTML file...\n${meta.file}`);
@@ -359,7 +409,8 @@ async function publishTest() {
     state.tests = updatedTests;
     state.folders = updatedFolders;
     renderFolders();
-    setStatus(`Success! Test published.\n\nPortal folder: ${folderKey(meta.folders)}\nFile: ${meta.file}\n\nWait for Vercel deployment, then refresh student portal.`, "success");
+    const action = replacedCount ? `Replaced ${replacedCount} existing portal card.` : "Added a new portal card.";
+    setStatus(`Success! Test published.\n${action}\n\nPortal folder: ${folderKey(meta.folders)}\nFile: ${meta.file}\n\nWait for Vercel deployment, then refresh student portal.`, "success");
   } catch (error) {
     setStatus(`Upload failed: ${error.message}`, "error");
   } finally {

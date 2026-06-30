@@ -1052,74 +1052,9 @@ window.CAT_TESTS = [
     "questions": 25
   },
   {
-    "title": "SICI TEST -5",
+    "title": "SI CI TEST -4",
     "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -4.html",
     "original": "SI CI Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SI CI Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -5.html",
-    "original": "SICI Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -6.html",
-    "original": "SICI Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -7.html",
-    "original": "SICI Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -8.html",
-    "original": "SICI Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -9",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -9.html",
-    "original": "SICI Test -9.html",
     "folders": [
       "Topic Test",
       "QA",
