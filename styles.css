@@ -535,3 +535,307 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
     object-position:center center !important;
   }
 }
+
+/* ===== Professional homepage and folder-page alignment pass ===== */
+.workspace{
+  gap:18px !important;
+}
+.home-banners{
+  gap:14px !important;
+}
+.home-banners .hero-banner-card{
+  border-radius:20px !important;
+}
+.home-banners .gita-banner-card img{
+  aspect-ratio:4.2/1 !important;
+  max-height:260px !important;
+}
+.home-banners .think-banner-card img{
+  aspect-ratio:3.6/1 !important;
+  max-height:360px !important;
+  object-position:center center !important;
+}
+.dashboard-panel .top-strip{
+  padding:24px 28px !important;
+  border-radius:20px !important;
+}
+.dashboard-panel .metric-row{
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  gap:14px !important;
+}
+.dashboard-panel .metric-row article{
+  min-height:78px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+}
+.content-panel{
+  padding:26px !important;
+  border-radius:24px !important;
+}
+.content-panel .panel-head{
+  align-items:center !important;
+  padding-bottom:22px !important;
+  margin-bottom:20px !important;
+}
+.content-panel .panel-head h2{
+  font-size:34px !important;
+}
+.content-panel .tools{
+  margin-left:auto !important;
+}
+.content-panel .tools input{
+  width:min(430px,32vw) !important;
+}
+.content-panel .panel-actions{
+  margin-bottom:16px !important;
+}
+.content-panel .folder-grid{
+  grid-template-columns:repeat(auto-fit,minmax(310px,1fr)) !important;
+  gap:18px !important;
+  margin-bottom:0 !important;
+}
+.content-panel .folder-card{
+  min-height:176px !important;
+  padding:24px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+}
+.content-panel .folder-card .folder-icon{
+  width:58px !important;
+  height:58px !important;
+  margin-bottom:14px !important;
+}
+.content-panel .folder-card h3{
+  font-size:22px !important;
+  margin-bottom:6px !important;
+}
+.content-panel .folder-card p{
+  margin-top:0 !important;
+  min-height:20px !important;
+}
+.content-panel .folder-card .card-meta{
+  margin-top:18px !important;
+}
+@media(max-width:1180px){
+  .dashboard-panel .metric-row{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+  .content-panel .tools input{
+    width:min(430px,40vw) !important;
+  }
+}
+@media(max-width:760px){
+  .home-banners .gita-banner-card img,
+  .home-banners .think-banner-card img{
+    aspect-ratio:16/9 !important;
+    max-height:none !important;
+  }
+  .dashboard-panel .metric-row,
+  .content-panel .folder-grid{
+    grid-template-columns:1fr !important;
+  }
+  .content-panel .panel-head{
+    align-items:flex-start !important;
+  }
+  .content-panel .tools,
+  .content-panel .tools input{
+    width:100% !important;
+  }
+}
+
+/* ===== Match test cards to the portal blue/yellow theme ===== */
+.content-panel .test-grid{
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)) !important;
+  gap:18px !important;
+}
+.content-panel .test-card{
+  min-height:178px !important;
+  padding:22px !important;
+  border:1px solid rgba(255,202,69,.30) !important;
+  border-radius:18px !important;
+  background:linear-gradient(135deg,#073d7d 0%, #05204a 100%) !important;
+  box-shadow:0 18px 34px rgba(3,23,53,.20) !important;
+}
+.content-panel .test-card:nth-child(3n){
+  background:linear-gradient(135deg,#035b8f 0%, #05204a 100%) !important;
+}
+.content-panel .test-card:nth-child(4n){
+  background:linear-gradient(135deg,#0a67b7 0%, #031735 100%) !important;
+}
+.content-panel .test-card:hover{
+  transform:translateY(-3px) !important;
+  box-shadow:0 26px 48px rgba(3,23,53,.28) !important;
+}
+.content-panel .test-card:before{
+  top:18px !important;
+  bottom:18px !important;
+  width:4px !important;
+  background:linear-gradient(180deg,#ffc247 0%, #58b7ff 100%) !important;
+}
+.content-panel .test-icon{
+  width:42px !important;
+  height:42px !important;
+  border-radius:14px !important;
+  background:rgba(255,255,255,.12) !important;
+  border:1px solid rgba(255,255,255,.28) !important;
+  color:#ffc247 !important;
+}
+.content-panel .test-card h3{
+  color:#ffffff !important;
+  font-size:17px !important;
+  font-weight:900 !important;
+  line-height:1.25 !important;
+}
+.content-panel .test-card p{
+  color:#dceeff !important;
+}
+.content-panel .test-card .badge{
+  color:#ffffff !important;
+  border-color:rgba(255,255,255,.35) !important;
+  background:rgba(255,255,255,.12) !important;
+}
+.content-panel .test-card .card-meta{
+  margin-top:12px !important;
+}
+.content-panel .start-btn{
+  background:#ffc247 !important;
+  color:#031735 !important;
+  border:0 !important;
+  border-radius:12px !important;
+  box-shadow:0 10px 22px rgba(0,0,0,.18) !important;
+}
+.content-panel .start-btn:hover{
+  background:#ffd677 !important;
+}
+
+/* ===== Final banner-matched color tuning ===== */
+:root{
+  --banner-navy:#031735;
+  --banner-ink:#05204a;
+  --banner-blue:#073d7d;
+  --banner-cyan:#0b6f9c;
+  --banner-gold:#ffc247;
+  --banner-gold-soft:#ffe3a0;
+}
+.top-strip,
+.dashboard-panel .top-strip{
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255,194,71,.20), transparent 24%),
+    linear-gradient(135deg,var(--banner-navy) 0%, var(--banner-blue) 58%, var(--banner-cyan) 100%) !important;
+  border:1px solid rgba(255,194,71,.34) !important;
+}
+.metric-row article,
+.dashboard-panel .metric-row article{
+  background:linear-gradient(135deg,#ffffff 0%, #f7fbff 100%) !important;
+  border:1px solid rgba(255,194,71,.34) !important;
+  box-shadow:0 12px 28px rgba(3,23,53,.08) !important;
+}
+.metric-row strong,
+.dashboard-panel .metric-row strong{
+  color:var(--banner-navy) !important;
+}
+.metric-row span,
+.dashboard-panel .metric-row span{
+  color:var(--banner-blue) !important;
+}
+.module-card.old-dashboard-card,
+.module-grid .module-card,
+.folder-card,
+.content-panel .folder-card,
+.content-panel .test-card{
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,194,71,.18), transparent 27%),
+    linear-gradient(135deg,var(--banner-navy) 0%, var(--banner-blue) 58%, #064d86 100%) !important;
+  border:1px solid rgba(255,194,71,.32) !important;
+  box-shadow:0 18px 34px rgba(3,23,53,.22) !important;
+}
+.module-grid .module-card:nth-child(3n),
+.folder-card:nth-child(3n),
+.content-panel .folder-card:nth-child(3n),
+.content-panel .test-card:nth-child(3n){
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,194,71,.16), transparent 27%),
+    linear-gradient(135deg,var(--banner-ink) 0%, #075487 64%, var(--banner-cyan) 100%) !important;
+}
+.module-grid .module-card:nth-child(4n),
+.folder-card:nth-child(4n),
+.content-panel .folder-card:nth-child(4n),
+.content-panel .test-card:nth-child(4n){
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,194,71,.17), transparent 27%),
+    linear-gradient(135deg,var(--banner-navy) 0%, #063164 58%, var(--banner-blue) 100%) !important;
+}
+.old-card-icon,
+.module-card .module-icon,
+.folder-card .folder-icon,
+.content-panel .folder-card .folder-icon,
+.content-panel .test-icon{
+  background:rgba(255,255,255,.10) !important;
+  border:2px solid rgba(255,194,71,.62) !important;
+  color:var(--banner-gold) !important;
+}
+.module-card h3,
+.module-card strong,
+.folder-card h3,
+.content-panel .folder-card h3,
+.content-panel .test-card h3{
+  color:#ffffff !important;
+}
+.module-card small,
+.module-card p,
+.folder-card p,
+.content-panel .folder-card p,
+.content-panel .test-card p{
+  color:#dceeff !important;
+}
+.module-card em,
+.folder-card .badge,
+.content-panel .folder-card .badge,
+.content-panel .test-card .badge{
+  color:#ffffff !important;
+  border-color:rgba(255,194,71,.48) !important;
+  background:rgba(255,255,255,.12) !important;
+}
+.content-panel .test-card:before{
+  background:linear-gradient(180deg,var(--banner-gold) 0%, #ffffff 100%) !important;
+}
+.content-panel .start-btn{
+  background:var(--banner-gold) !important;
+  color:var(--banner-navy) !important;
+}
+
+/* ===== Alternate white and gold card text ===== */
+.module-grid .module-card:nth-child(odd) strong,
+.folder-grid .folder-card:nth-child(odd) h3,
+.test-grid .test-card:nth-child(odd) h3{
+  color:var(--banner-gold) !important;
+}
+.module-grid .module-card:nth-child(odd) small,
+.module-grid .module-card:nth-child(odd) p,
+.folder-grid .folder-card:nth-child(odd) p,
+.test-grid .test-card:nth-child(odd) p{
+  color:#ffffff !important;
+}
+.module-grid .module-card:nth-child(even) strong,
+.folder-grid .folder-card:nth-child(even) h3,
+.test-grid .test-card:nth-child(even) h3{
+  color:#ffffff !important;
+}
+.module-grid .module-card:nth-child(even) small,
+.module-grid .module-card:nth-child(even) p,
+.folder-grid .folder-card:nth-child(even) p,
+.test-grid .test-card:nth-child(even) p{
+  color:var(--banner-gold-soft) !important;
+}
+.module-grid .module-card:nth-child(odd) em,
+.folder-grid .folder-card:nth-child(odd) .badge,
+.test-grid .test-card:nth-child(odd) .badge{
+  color:var(--banner-gold-soft) !important;
+}
+.module-grid .module-card:nth-child(even) em,
+.folder-grid .folder-card:nth-child(even) .badge,
+.test-grid .test-card:nth-child(even) .badge{
+  color:#ffffff !important;
+}

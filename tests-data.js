@@ -822,6 +822,30 @@ window.CAT_TESTS = [
     "minutes": 95
   },
   {
+    "title": "Profit Loss Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -2.html",
+    "original": "Profit Loss  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 90
+  },
+  {
+    "title": "Profit Loss Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -5.html",
+    "original": "Profit Loss  Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 95
+  },
+  {
     "title": "Profit Loss Test -6",
     "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -6.html",
     "original": "Profit Loss Test -6.html",
@@ -1037,6 +1061,42 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 45
+  },
+  {
+    "title": "Properties Of Number Test -1",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
+    "original": "Properties Of Number Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Properties Of Number Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
+    "original": "Properties Of Number Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Properties Of Number Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
+    "original": "Properties Of Number Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   },
   {
     "title": "SI & CI Test -3",
