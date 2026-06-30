@@ -839,3 +839,11 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
 .test-grid .test-card:nth-child(even) .badge{
   color:#ffffff !important;
 }
+
+/* Keep routed views separate: dashboard and folder pages must not show together. */
+[hidden],
+.dashboard-panel[hidden],
+.content-panel[hidden],
+.empty-data[hidden]{
+  display:none !important;
+}
