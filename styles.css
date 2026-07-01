@@ -847,3 +847,17 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
 .empty-data[hidden]{
   display:none !important;
 }
+
+/* Final two-banner sizing: show the provided banners cleanly without making the homepage too tall. */
+.home-banners .gita-banner-card img{
+  aspect-ratio:3/1 !important;
+  max-height:270px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+.home-banners .think-banner-card img{
+  aspect-ratio:3/1 !important;
+  max-height:390px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
