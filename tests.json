@@ -1266,5 +1266,18 @@
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "Percentage_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/QA/Arithmetic/3.Profit & Loss/Percentage_CAT_PYQ_2017-2025.html",
+    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60,
+    "questions": 23
   }
 ]
