@@ -1253,5 +1253,18 @@
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "Average Test 7",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/AverageTest-7.html",
+    "original": "AverageTest-7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 23
   }
 ]
