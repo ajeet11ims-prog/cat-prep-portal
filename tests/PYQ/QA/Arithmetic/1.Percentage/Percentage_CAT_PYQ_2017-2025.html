@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage CAT PYQ (2017 - 2025)</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Percentage CAT PYQ (2017 - 2025)</h1><div class="meta">23 Questions | 60 Minutes | 16 MCQ + 7 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 200001,
+    "source": "CAT 2017 Slot 1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> Arun's present age in years is 40% of Barun's. In another few years, Arun's age will be half of Barun's. By what percentage will Barun's age increase during this period?</p>",
+    "typedAnswer": "20",
+    "acceptedAnswers": [
+      "20%",
+      "20 percent"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let Barun's present age be <span class='math'>B</span>. Then Arun's present age is <span class='math'>40% of B = 0.4B</span>.</li><li>After <span class='math'>t</span> years, Arun's age will be half of Barun's age: <span class='math'>0.4B + t = 0.5(B + t)</span>.</li><li>So, <span class='math'>0.8B + 2t = B + t</span>, which gives <span class='math'>t = 0.2B</span>.</li><li>Barun's age increases from <span class='math'>B</span> to <span class='math'>1.2B</span>.</li><li>Required percentage increase = <span class='math'>20%</span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 200002,
+    "source": "CAT 2017 Slot 1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> Ravi invests 50% of his monthly savings in fixed deposits. Thirty percent of the rest of his savings is invested in stocks and the rest goes into Ravi's savings bank account. If the total amount deposited by him in the bank (for savings account and fixed deposits) is Rs. 59500, then Ravi's total monthly savings (in Rs.) is</p>",
+    "typedAnswer": "70000",
+    "acceptedAnswers": [
+      "70,000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let Ravi's total monthly savings be <span class='math'>S</span>.</li><li>Fixed deposit amount = <span class='math'>50% of S = 0.5S</span>.</li><li>Remaining savings = <span class='math'>0.5S</span>.</li><li>Out of the remaining savings, 30% goes to stocks, so 70% goes to the savings account.</li><li>Savings account amount = <span class='math'>70% of 0.5S = 0.35S</span>.</li><li>Total bank deposit = <span class='math'>0.5S + 0.35S = 0.85S</span>.</li><li>Given <span class='math'>0.85S = 59500</span>, so <span class='math'>S = 70000</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 200003,
+    "source": "CAT 2017 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> The number of girls appearing for an admission test is twice the number of boys. If 30% of the girls and 45% of the boys get admission, the percentage of candidates who do not get admission is</p>",
+    "options": [
+      "<p>35</p>",
+      "<p>50</p>",
+      "<p>60</p>",
+      "<p>65</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "65",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of boys be <span class='math'>B</span>. Then the number of girls is <span class='math'>2B</span>.</li><li>Total candidates = <span class='math'>3B</span>.</li><li>Admitted candidates = <span class='math'>45% of B + 30% of 2B = 0.45B + 0.60B = 1.05B</span>.</li><li>Not admitted candidates = <span class='math'>3B - 1.05B = 1.95B</span>.</li><li>Required percentage = <span class='math'>(1.95B ÷ 3B) × 100 = 65%</span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 200004,
+    "source": "CAT 2017 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> Out of the shirts produced in a factory, 15% are defective, while 20% of the rest are sold in the domestic market. If the remaining 8840 shirts are left for export, then the number of shirts produced in the factory is</p>",
+    "options": [
+      "<p>13600</p>",
+      "<p>13000</p>",
+      "<p>13400</p>",
+      "<p>14000</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "13000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the total number of shirts produced be <span class='math'>T</span>.</li><li>After removing 15% defective shirts, non-defective shirts = <span class='math'>85% of T</span>.</li><li>20% of the non-defective shirts are sold domestically, so 80% of them are left for export.</li><li>Export shirts = <span class='math'>80% × 85% of T = 68% of T</span>.</li><li>Given <span class='math'>68% of T = 8840</span>.</li><li>So, <span class='math'>T = 8840 ÷ 0.68 = 13000</span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 200005,
+    "source": "CAT 2017 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> In a village, the production of food grains increased by 40% and the per capita production of food grains increased by 27% during a certain period. The percentage by which the population of the village increased during the same period is nearest to</p>",
+    "options": [
+      "<p>16</p>",
+      "<p>13</p>",
+      "<p>10</p>",
+      "<p>7</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "10",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Population = total production ÷ per capita production.</li><li>Total production factor = <span class='math'>1.40</span>.</li><li>Per capita production factor = <span class='math'>1.27</span>.</li><li>Population factor = <span class='math'>1.40 ÷ 1.27 ≈ 1.102</span>.</li><li>Population increased by approximately <span class='math'>10.2%</span>.</li><li>Nearest option = <span class='math'>10</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 200006,
+    "source": "CAT 2018 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> In an examination, the maximum possible score is <span class='math'>N</span> while the pass mark is 45% of <span class='math'>N</span>. A candidate obtains 36 marks, but falls short of the pass mark by 68%. Which one of the following is then correct?</p>",
+    "options": [
+      "<p>243 ≤ N ≤ 252</p>",
+      "<p>N ≥ 253</p>",
+      "<p>201 ≤ N ≤ 242</p>",
+      "<p>N ≤ 200</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "243 ≤ N ≤ 252",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The candidate falls short of the pass mark by 68%. So, the obtained marks are <span class='math'>32%</span> of the pass mark.</li><li>Thus, pass mark = <span class='math'>36 ÷ 0.32 = 112.5</span>.</li><li>But pass mark = <span class='math'>45% of N</span>.</li><li>So, <span class='math'>0.45N = 112.5</span>, giving <span class='math'>N = 250</span>.</li><li>Therefore, <span class='math'>243 ≤ N ≤ 252</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 200007,
+    "source": "CAT 2019 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> The income of Amala is 20% more than that of Bimala and 20% less than that of Kamala. If Kamala's income goes down by 4% and Bimala's goes up by 10%, then the percentage by which Kamala's income would exceed Bimala's is nearest to</p>",
+    "options": [
+      "<p>29</p>",
+      "<p>28</p>",
+      "<p>31</p>",
+      "<p>32</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "31",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let Bimala's income be <span class='math'>100</span>.</li><li>Amala's income is 20% more than Bimala's, so Amala's income = <span class='math'>120</span>.</li><li>Amala's income is 20% less than Kamala's, so Amala's income is 80% of Kamala's income.</li><li>Kamala's income = <span class='math'>120 ÷ 0.8 = 150</span>.</li><li>After a 4% decrease, Kamala's income = <span class='math'>150 × 0.96 = 144</span>.</li><li>After a 10% increase, Bimala's income = <span class='math'>100 × 1.10 = 110</span>.</li><li>Required percentage = <span class='math'>((144 - 110) ÷ 110) × 100 ≈ 30.91%</span>.</li><li>Nearest option = <span class='math'>31</span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 200008,
+    "source": "CAT 2019 Slot 1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> In a class, 60% of the students are girls and the rest are boys. There are 30 more girls than boys. If 68% of the students, including 30 boys, pass an examination, the percentage of the girls who do not pass is</p>",
+    "typedAnswer": "20",
+    "acceptedAnswers": [
+      "20%",
+      "20 percent"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let total students be <span class='math'>T</span>.</li><li>Girls = <span class='math'>60% of T</span> and boys = <span class='math'>40% of T</span>.</li><li>Difference = <span class='math'>20% of T = 30</span>, so <span class='math'>T = 150</span>.</li><li>Girls = <span class='math'>90</span> and boys = <span class='math'>60</span>.</li><li>Total students who passed = <span class='math'>68% of 150 = 102</span>.</li><li>Passed boys = <span class='math'>30</span>, so passed girls = <span class='math'>102 - 30 = 72</span>.</li><li>Girls who did not pass = <span class='math'>90 - 72 = 18</span>.</li><li>Required percentage = <span class='math'>(18 ÷ 90) × 100 = 20%</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 200009,
+    "source": "CAT 2019 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> Meena scores 40% in an examination and after review, even though her score is increased by 50%, she fails by 35 marks. If her post-review score is increased by 20%, she will have 7 marks more than the passing score. The percentage score needed for passing the examination is</p>",
+    "options": [
+      "<p>75</p>",
+      "<p>60</p>",
+      "<p>80</p>",
+      "<p>70</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "70",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the maximum marks be <span class='math'>M</span>.</li><li>Meena's initial score = <span class='math'>40% of M = 0.4M</span>.</li><li>After review, her score increased by 50%, so new score = <span class='math'>1.5 × 0.4M = 0.6M</span>.</li><li>She still fails by 35 marks, so passing score = <span class='math'>0.6M + 35</span>.</li><li>If her post-review score is increased by 20%, it becomes <span class='math'>1.2 × 0.6M = 0.72M</span>.</li><li>This is 7 marks more than the passing score, so <span class='math'>0.72M = 0.6M + 35 + 7</span>.</li><li>Hence <span class='math'>0.12M = 42</span>, so <span class='math'>M = 350</span>.</li><li>Passing score = <span class='math'>0.6 × 350 + 35 = 245</span>.</li><li>Required percentage = <span class='math'>(245 ÷ 350) × 100 = 70%</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 200010,
+    "source": "CAT 2019 Slot 2",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> In an examination, the score of A was 10% less than that of B, the score of B was 25% more than that of C, and the score of C was 20% less than that of D. If A scored 72, then the score of D was</p>",
+    "typedAnswer": "80",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>A's score = <span class='math'>90% of B = 0.9B</span>.</li><li>B's score = <span class='math'>125% of C = 1.25C</span>.</li><li>C's score = <span class='math'>80% of D = 0.8D</span>.</li><li>Therefore, <span class='math'>A = 0.9 × 1.25 × 0.8D = 0.9D</span>.</li><li>Given <span class='math'>A = 72</span>, so <span class='math'>0.9D = 72</span>.</li><li>Hence <span class='math'>D = 80</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 200011,
+    "source": "CAT 2019 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> In 2010, a library contained a total of 11500 books in two categories - fiction and non-fiction. In 2015, the library contained a total of 12760 books in these two categories. During this period, there was 10% increase in the fiction category while there was 12% increase in the non-fiction category. How many fiction books were in the library in 2015?</p>",
+    "options": [
+      "<p>6600</p>",
+      "<p>6160</p>",
+      "<p>5500</p>",
+      "<p>6000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "6600",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let fiction books in 2010 be <span class='math'>F</span> and non-fiction books be <span class='math'>N</span>.</li><li><span class='math'>F + N = 11500</span>.</li><li>In 2015, total books = <span class='math'>1.10F + 1.12N = 12760</span>.</li><li>Also, <span class='math'>1.12(F + N) = 1.12 × 11500 = 12880</span>.</li><li>Subtracting the actual 2015 total, <span class='math'>12880 - 12760 = 120</span>.</li><li>This difference is <span class='math'>0.02F</span>, so <span class='math'>0.02F = 120</span>.</li><li>Thus, <span class='math'>F = 6000</span>.</li><li>Fiction books in 2015 = <span class='math'>1.10 × 6000 = 6600</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 200012,
+    "source": "CAT 2020 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> In a group of people, 28% of the members are young while the rest are old. If 65% of the members are literates, and 25% of the literates are young, then the percentage of old people among the illiterates is nearest to</p>",
+    "options": [
+      "<p>59</p>",
+      "<p>55</p>",
+      "<p>66</p>",
+      "<p>62</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "66",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Assume total people = <span class='math'>100</span>.</li><li>Young people = <span class='math'>28</span> and old people = <span class='math'>72</span>.</li><li>Literate people = <span class='math'>65</span>.</li><li>Young literates = <span class='math'>25% of 65 = 16.25</span>.</li><li>Young illiterates = <span class='math'>28 - 16.25 = 11.75</span>.</li><li>Total illiterates = <span class='math'>35</span>.</li><li>Old illiterates = <span class='math'>35 - 11.75 = 23.25</span>.</li><li>Required percentage = <span class='math'>(23.25 ÷ 35) × 100 ≈ 66.43%</span>.</li><li>Nearest option = <span class='math'>66</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 200013,
+    "source": "CAT 2020 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> In May, John bought the same amount of rice and the same amount of wheat as he had bought in April, but spent Rs. 150 more due to price increase of rice and wheat by 20% and 12%, respectively. If John had spent Rs. 450 on rice in April, then how much did he spend on wheat in May?</p>",
+    "options": [
+      "<p>Rs. 560</p>",
+      "<p>Rs. 570</p>",
+      "<p>Rs. 580</p>",
+      "<p>Rs. 590</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Rs. 560",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>John spent Rs. 450 on rice in April.</li><li>Due to a 20% increase in rice price, extra spending on rice in May = <span class='math'>20% of 450 = 90</span>.</li><li>Total extra spending in May = <span class='math'>150</span>.</li><li>So extra spending on wheat = <span class='math'>150 - 90 = 60</span>.</li><li>This Rs. 60 is 12% of April's wheat spending.</li><li>April's wheat spending = <span class='math'>60 ÷ 0.12 = 500</span>.</li><li>May's wheat spending = <span class='math'>500 × 1.12 = 560</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 200014,
+    "source": "CAT 2020 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> In the final examination, Bishnu scored 52% and Asha scored 64%. The marks obtained by Bishnu is 23 less, and that by Asha is 34 more than the marks obtained by Ramesh. The marks obtained by Geeta, who scored 84%, is</p>",
+    "options": [
+      "<p>399</p>",
+      "<p>417</p>",
+      "<p>439</p>",
+      "<p>357</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "399",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the maximum marks be <span class='math'>M</span>.</li><li>Bishnu's marks = <span class='math'>52% of M</span>.</li><li>Asha's marks = <span class='math'>64% of M</span>.</li><li>Asha scored 34 more than Ramesh and Bishnu scored 23 less than Ramesh.</li><li>So Asha's marks - Bishnu's marks = <span class='math'>34 + 23 = 57</span>.</li><li>But Asha's marks - Bishnu's marks = <span class='math'>64% of M - 52% of M = 12% of M</span>.</li><li>Hence <span class='math'>12% of M = 57</span>, so <span class='math'>M = 475</span>.</li><li>Geeta's marks = <span class='math'>84% of 475 = 399</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 200015,
+    "source": "CAT 2021 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Raj invested Rs. 10000 in a fund. At the end of first year, he incurred a loss but his balance was more than Rs. 5000. This balance, when invested for another year, grew and the percentage of growth in the second year was five times the percentage of loss in the first year. If the gain of Raj from the initial investment over the two year period is 35%, then the percentage of loss in the first year is</p>",
+    "options": [
+      "<p>10</p>",
+      "<p>15</p>",
+      "<p>70</p>",
+      "<p>5</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "10",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the first-year loss be <span class='math'>p%</span>.</li><li>Then the second-year growth is <span class='math'>5p%</span>.</li><li>Overall gain over two years is 35%, so the final amount is <span class='math'>1.35</span> times the initial amount.</li><li>Thus, <span class='math'>(1 - p/100)(1 + 5p/100) = 1.35</span>.</li><li>Solving this equation gives <span class='math'>p = 10</span> or <span class='math'>p = 70</span>.</li><li>If <span class='math'>p = 70</span>, then the balance after the first year would be Rs. 3000, which is not more than Rs. 5000.</li><li>Therefore, <span class='math'>p = 10</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 200016,
+    "source": "CAT 2021 Slot 2",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> A box has 450 balls, each either white or black, there being as many metallic white balls as metallic black balls. If 40% of the white balls and 50% of the black balls are metallic, then the number of non-metallic balls in the box is</p>",
+    "typedAnswer": "250",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of white balls be <span class='math'>W</span> and black balls be <span class='math'>B</span>.</li><li><span class='math'>W + B = 450</span>.</li><li>Metallic white balls = <span class='math'>40% of W = 0.4W</span>.</li><li>Metallic black balls = <span class='math'>50% of B = 0.5B</span>.</li><li>Given, metallic white balls = metallic black balls, so <span class='math'>0.4W = 0.5B</span>.</li><li>Hence <span class='math'>W : B = 5 : 4</span>.</li><li>So <span class='math'>W = 250</span> and <span class='math'>B = 200</span>.</li><li>Metallic balls = <span class='math'>100 + 100 = 200</span>.</li><li>Non-metallic balls = <span class='math'>450 - 200 = 250</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 200017,
+    "source": "CAT 2021 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> The total of male and female populations in a city increased by 25% from 1970 to 1980. During the same period, the male population increased by 40% while the female population increased by 20%. From 1980 to 1990, the female population increased by 25%. In 1990, if the female population is twice the male population, then the percentage increase in the total of male and female populations in the city from 1970 to 1990 is</p>",
+    "options": [
+      "<p>68.25</p>",
+      "<p>68.50</p>",
+      "<p>69.25</p>",
+      "<p>68.75</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "68.75",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the male and female populations in 1970 be <span class='math'>M</span> and <span class='math'>F</span>.</li><li>From 1970 to 1980, total population increased by 25%, so <span class='math'>1.4M + 1.2F = 1.25(M + F)</span>.</li><li>This gives <span class='math'>0.15M = 0.05F</span>, hence <span class='math'>F = 3M</span>.</li><li>Assume <span class='math'>M = 1</span> and <span class='math'>F = 3</span>. Total population in 1970 = <span class='math'>4</span>.</li><li>In 1980, male population = <span class='math'>1.4</span> and female population = <span class='math'>3.6</span>.</li><li>In 1990, female population = <span class='math'>3.6 × 1.25 = 4.5</span>.</li><li>Given that in 1990, female population is twice the male population, male population = <span class='math'>4.5 ÷ 2 = 2.25</span>.</li><li>Total population in 1990 = <span class='math'>4.5 + 2.25 = 6.75</span>.</li><li>Percentage increase from 1970 to 1990 = <span class='math'>((6.75 - 4) ÷ 4) × 100 = 68.75%</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 200018,
+    "source": "CAT 2021 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> In a tournament, a team has played 40 matches so far and won 30% of them. If they win 60% of the remaining matches, their overall win percentage will be 50%. Suppose they win 90% of the remaining matches, then the total number of matches won by the team in the tournament will be</p>",
+    "options": [
+      "<p>84</p>",
+      "<p>78</p>",
+      "<p>86</p>",
+      "<p>80</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "84",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Matches already played = <span class='math'>40</span>.</li><li>Matches already won = <span class='math'>30% of 40 = 12</span>.</li><li>Let the number of remaining matches be <span class='math'>x</span>.</li><li>If they win 60% of the remaining matches, overall win percentage becomes 50%.</li><li>So, <span class='math'>(12 + 0.6x) ÷ (40 + x) = 0.5</span>.</li><li>This gives <span class='math'>12 + 0.6x = 20 + 0.5x</span>, hence <span class='math'>x = 80</span>.</li><li>If they win 90% of the remaining 80 matches, extra wins = <span class='math'>0.9 × 80 = 72</span>.</li><li>Total wins = <span class='math'>12 + 72 = 84</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 200019,
+    "source": "CAT 2023 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> The population of a town in 2020 was 100000. The population decreased by <span class='math'>y%</span> from the year 2020 to 2021, and increased by <span class='math'>x%</span> from the year 2021 to 2022, where <span class='math'>x</span> and <span class='math'>y</span> are two natural numbers. If population in 2022 was greater than the population in 2020 and the difference between <span class='math'>x</span> and <span class='math'>y</span> is 10, then the lowest possible population of the town in 2021 was</p>",
+    "options": [
+      "<p>72000</p>",
+      "<p>75000</p>",
+      "<p>74000</p>",
+      "<p>73000</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "73000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since the population first decreased and then increased, and the final population was greater than the 2020 population, the increase percentage must be higher than the decrease percentage.</li><li>So, <span class='math'>x = y + 10</span>.</li><li>Population in 2022 must be greater than 100000: <span class='math'>100000(1 - y/100)(1 + x/100) &gt; 100000</span>.</li><li>This simplifies to <span class='math'>(100 - y)(100 + x) &gt; 10000</span>.</li><li>Using <span class='math'>x = y + 10</span>, we get <span class='math'>(100 - y)(110 + y) &gt; 10000</span>.</li><li>This gives <span class='math'>y² + 10y &lt; 1000</span>.</li><li>The greatest natural number satisfying this is <span class='math'>y = 27</span>.</li><li>To make the 2021 population as low as possible, take the greatest possible decrease, i.e. <span class='math'>27%</span>.</li><li>Lowest possible 2021 population = <span class='math'>100000 × 73% = 73000</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 200020,
+    "source": "CAT 2024 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> After two successive increments, Gopal's salary became 187.5% of his initial salary. If the percentage of salary increase in the second increment was twice that in the first increment, then the percentage of salary increase in the first increment was</p>",
+    "options": [
+      "<p>20</p>",
+      "<p>25</p>",
+      "<p>27.5</p>",
+      "<p>30</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the first increment be <span class='math'>r%</span>.</li><li>Then the second increment is <span class='math'>2r%</span>.</li><li>After the two increments, salary becomes <span class='math'>(1 + r/100)(1 + 2r/100)</span> times the initial salary.</li><li>Given final salary = <span class='math'>187.5% = 1.875</span> times the initial salary.</li><li>So, <span class='math'>(1 + r/100)(1 + 2r/100) = 1.875</span>.</li><li>Checking the options, <span class='math'>r = 25</span> gives <span class='math'>1.25 × 1.50 = 1.875</span>.</li><li>Hence the first increment was <span class='math'>25%</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 200021,
+    "source": "CAT 2025 Slot 1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> In a class, there were more than 10 boys and a certain number of girls. After 40% of the girls and 60% of the boys left the class, the remaining number of girls was 8 more than the remaining number of boys. Then, the minimum possible number of students initially in the class was</p>",
+    "typedAnswer": "55",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the initial numbers of boys and girls be <span class='math'>B</span> and <span class='math'>G</span>.</li><li>After 60% of the boys left, remaining boys = <span class='math'>40% of B = 2B/5</span>.</li><li>After 40% of the girls left, remaining girls = <span class='math'>60% of G = 3G/5</span>.</li><li>Given, remaining girls are 8 more than remaining boys: <span class='math'>3G/5 = 2B/5 + 8</span>.</li><li>So, <span class='math'>3G = 2B + 40</span>.</li><li>Since the remaining numbers must be integers, both <span class='math'>B</span> and <span class='math'>G</span> must be multiples of 5.</li><li>Put <span class='math'>B = 5b</span> and <span class='math'>G = 5g</span>. Then <span class='math'>3g = 2b + 8</span>.</li><li>Also, boys were more than 10, so <span class='math'>b &gt; 2</span>.</li><li>The smallest possible value satisfying <span class='math'>b &gt; 2</span> and <span class='math'>3g = 2b + 8</span> is <span class='math'>b = 5</span>, giving <span class='math'>g = 6</span>.</li><li>Therefore, <span class='math'>B = 25</span> and <span class='math'>G = 30</span>.</li><li>Minimum initial number of students = <span class='math'>25 + 30 = 55</span>.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 200022,
+    "source": "CAT 2025 Slot 1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> Kamala divided her investment of Rs 100000 between stocks, bonds, and gold. Her investment in bonds was 25% of her investment in gold. With annual returns of 10%, 6%, 8% on stocks, bonds, and gold, respectively, she gained a total amount of Rs 8200 in one year. The amount, in rupees, that she gained from the bonds, was</p>",
+    "typedAnswer": "900",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the investment in bonds be <span class='math'>x</span>.</li><li>Bonds investment was 25% of gold investment, so gold investment = <span class='math'>4x</span>.</li><li>Hence, stocks investment = <span class='math'>100000 - x - 4x = 100000 - 5x</span>.</li><li>Total gain = <span class='math'>10% of stocks + 6% of bonds + 8% of gold</span>.</li><li>So, <span class='math'>0.10(100000 - 5x) + 0.06x + 0.08(4x) = 8200</span>.</li><li>This gives <span class='math'>10000 - 0.5x + 0.06x + 0.32x = 8200</span>.</li><li>So, <span class='math'>10000 - 0.12x = 8200</span>.</li><li>Therefore, <span class='math'>0.12x = 1800</span>, giving <span class='math'>x = 15000</span>.</li><li>Gain from bonds = <span class='math'>6% of 15000 = 900</span>.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 200023,
+    "source": "CAT 2025 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> A certain amount of money was divided among Pinu, Meena, Rinu and Seema. Pinu received 20% of the total amount and Meena received 40% of the remaining amount. If Seema received 20% less than Pinu, the ratio of the amounts received by Pinu and Rinu is</p>",
+    "options": [
+      "<p>8 : 5</p>",
+      "<p>1 : 2</p>",
+      "<p>5 : 8</p>",
+      "<p>2 : 1</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "5 : 8",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the total amount be <span class='math'>T</span>.</li><li>Pinu received <span class='math'>20% of T = 0.20T</span>.</li><li>Remaining amount = <span class='math'>0.80T</span>.</li><li>Meena received <span class='math'>40% of 0.80T = 0.32T</span>.</li><li>Amount left for Rinu and Seema together = <span class='math'>T - 0.20T - 0.32T = 0.48T</span>.</li><li>Seema received 20% less than Pinu, so Seema received <span class='math'>80% of 0.20T = 0.16T</span>.</li><li>Rinu received <span class='math'>0.48T - 0.16T = 0.32T</span>.</li><li>Required ratio = <span class='math'>Pinu : Rinu = 0.20T : 0.32T = 20 : 32 = 5 : 8</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
