@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SICI CAT PYQ 2017 - 2025</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: SICI CAT PYQ 2017-2025 | Based on Profit & Loss CAT PYQ layout | 10 MCQ + 10 TITA -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>SICI CAT PYQ 2017 - 2025</h1><div class="meta">20 Questions | 60 Minutes | 10 MCQ + 10 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 310001,
+    "source": "CAT 2018 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> John borrowed Rs. 2,10,000 from a bank at an interest rate of 10% per annum, compounded annually. The loan was repaid in two equal installments, the first after one year and the second after another year. The first installment was interest of one year plus part of the principal amount, while the second was the rest of the principal amount plus due interest thereon. Then each installment, in Rs., is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "121000",
+    "acceptedAnswers": [
+      "121000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let each installment be <span class=\"math\">x</span>. Present value of the two installments equals the loan.</li><li><span class=\"math\">210000 = x/1.1 + x/(1.1)^2</span>.</li><li>So <span class=\"math\">210000 = x(10/11 + 100/121) = x(210/121)</span>.</li><li>Hence <span class=\"math\">x = 210000 × 121 / 210 = 121000</span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 310002,
+    "source": "CAT 2018 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> Gopal borrows Rs. <span class=\"math\">X</span> from Ankit at 8% annual interest. He then adds Rs. <span class=\"math\">Y</span> of his own money and lends Rs. <span class=\"math\">X + Y</span> to Ishan at 10% annual interest. At the end of the year, after returning Ankit's dues, the net interest retained by Gopal is the same as that accrued to Ankit. On the other hand, had Gopal lent Rs. <span class=\"math\">X + 2Y</span> to Ishan at 10%, then the net interest retained by him would have increased by Rs. 150. If all interests are compounded annually, then find the value of <span class=\"math\">X + Y</span>.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "4000",
+    "acceptedAnswers": [
+      "4000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Interest paid to Ankit = <span class=\"math\">0.08X</span>.</li><li>Interest earned from Ishan on <span class=\"math\">X + Y</span> = <span class=\"math\">0.10(X+Y)</span>.</li><li>Net interest retained = <span class=\"math\">0.10(X+Y)-0.08X = 0.02X + 0.10Y</span>.</li><li>This equals Ankit's interest, so <span class=\"math\">0.02X + 0.10Y = 0.08X</span>, giving <span class=\"math\">Y = 0.6X</span>.</li><li>Increasing the lent amount from <span class=\"math\">X+Y</span> to <span class=\"math\">X+2Y</span> increases interest by <span class=\"math\">0.10Y = 150</span>, so <span class=\"math\">Y = 1500</span>.</li><li>Then <span class=\"math\">X = 2500</span>, hence <span class=\"math\">X + Y = 4000</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 310003,
+    "source": "CAT 2019 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> A person invested a total amount of Rs 15 lakh. A part of it was invested in a fixed deposit earning 6% annual interest, and the remaining amount was invested in two other deposits in the ratio 2 : 1, earning annual interest at the rates of 4% and 3%, respectively. If the total annual interest income is Rs 76000 then the amount (in Rs lakh) invested in the fixed deposit was</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "9",
+    "acceptedAnswers": [
+      "9"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let <span class=\"math\">x</span> lakh be invested at 6%. The remaining <span class=\"math\">15-x</span> lakh is split in the ratio <span class=\"math\">2:1</span>.</li><li>Interest from the remaining part = <span class=\"math\">(2/3)(15-x)×4% + (1/3)(15-x)×3%</span>.</li><li>Total interest in lakh = <span class=\"math\">0.06x + (11/300)(15-x)</span>.</li><li>Given Rs 76000 = <span class=\"math\">0.76</span> lakh, so <span class=\"math\">0.06x + (11/300)(15-x)=0.76</span>.</li><li>Solving gives <span class=\"math\">x = 9</span> lakh.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 310004,
+    "source": "CAT 2019 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> Amala, Bina, and Gouri invest money in the ratio 3 : 4 : 5 in fixed deposits having respective annual interest rates in the ratio 6 : 5 : 4. What is their total interest income (in Rs) after a year, if Bina's interest income exceeds Amala's by Rs 250?</p>",
+    "options": [
+      "<p>7250</p>",
+      "<p>7000</p>",
+      "<p>6350</p>",
+      "<p>6000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "7250",
+    "acceptedAnswers": [
+      "7250"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the common multiplier for capital and rate products be <span class=\"math\">k</span>.</li><li>Amala's interest is proportional to <span class=\"math\">3×6 = 18</span>, Bina's to <span class=\"math\">4×5 = 20</span>, and Gouri's to <span class=\"math\">5×4 = 20</span>.</li><li>Bina exceeds Amala by <span class=\"math\">2k = 250</span>, so <span class=\"math\">k = 125</span>.</li><li>Total interest = <span class=\"math\">(18+20+20)×125 = 7250</span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 310005,
+    "source": "CAT 2019 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> Amal invests Rs 12000 at 8% interest, compounded annually, and Rs 10000 at 6% interest, compounded semi-annually, both investments being for one year. Bimal invests his money at 7.5% simple interest for one year. If Amal and Bimal get the same amount of interest, then the amount, in Rupees, invested by Bimal is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20920",
+    "acceptedAnswers": [
+      "20920"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Interest on Rs 12000 at 8% for one year = <span class=\"math\">960</span>.</li><li>Interest on Rs 10000 at 6% compounded semi-annually = <span class=\"math\">10000[(1.03)^2-1] = 609</span>.</li><li>Total interest earned by Amal = <span class=\"math\">960 + 609 = 1569</span>.</li><li>If Bimal invests <span class=\"math\">P</span> at 7.5% simple interest, <span class=\"math\">0.075P = 1569</span>.</li><li>So <span class=\"math\">P = 20920</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 310006,
+    "source": "CAT 2020 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> Veeru invested Rs 10000 at 5% simple annual interest, and exactly after two years, Joy invested Rs 8000 at 10% simple annual interest. How many years after Veeru's investment, will their balances, i.e., principal plus accumulated interest, be equal?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "12",
+    "acceptedAnswers": [
+      "12"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the balances be equal <span class=\"math\">t</span> years after Veeru's investment.</li><li>Veeru's balance = <span class=\"math\">10000 + 500t</span>.</li><li>Joy invests after 2 years, so his investment duration is <span class=\"math\">t-2</span> years.</li><li>Joy's balance = <span class=\"math\">8000 + 800(t-2)</span>.</li><li>Equating: <span class=\"math\">10000 + 500t = 8000 + 800(t-2)</span>, giving <span class=\"math\">t = 12</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 310007,
+    "source": "CAT 2020 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> For the same principal amount, the compound interest for two years at 5% per annum exceeds the simple interest for three years at 3% per annum by Rs. 1125. Then the principal amount in rupees is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "90000",
+    "acceptedAnswers": [
+      "90000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Compound interest for 2 years at 5% = <span class=\"math\">P[(1.05)^2-1] = 0.1025P</span>.</li><li>Simple interest for 3 years at 3% = <span class=\"math\">0.09P</span>.</li><li>Difference = <span class=\"math\">0.0125P = 1125</span>.</li><li>Therefore, <span class=\"math\">P = 90000</span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 310008,
+    "source": "CAT 2020 Slot 3 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> A person invested a certain amount of money at 10% annual interest, compounded half-yearly. After one and a half years, the interest and principal together became Rs 18522. The amount, in rupees, that the person had invested is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "16000",
+    "acceptedAnswers": [
+      "16000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>At 10% compounded half-yearly, the half-yearly rate is 5%.</li><li>For one and a half years, there are 3 half-yearly periods.</li><li><span class=\"math\">A = P(1.05)^3 = 18522</span>.</li><li>Since <span class=\"math\">(1.05)^3 = 1.157625</span>, <span class=\"math\">P = 18522/1.157625 = 16000</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 310009,
+    "source": "CAT 2021 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> Anil invests some money at a fixed rate of interest, compounded annually. If the interests accrued during the second and third year are Rs 806.25 and Rs 866.72, respectively, the interest accrued, in INR, during the fourth year is nearest to</p>",
+    "options": [
+      "<p>931.72</p>",
+      "<p>926.84</p>",
+      "<p>934.65</p>",
+      "<p>929.48</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "931.72",
+    "acceptedAnswers": [
+      "931.72"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>In compound interest, successive yearly interests are in the ratio <span class=\"math\">1+r</span>.</li><li><span class=\"math\">1+r ≈ 866.72/806.25 ≈ 1.075</span>.</li><li>Fourth-year interest <span class=\"math\">≈ 866.72 × 1.075 = 931.72</span>.</li><li>The nearest option is <span class=\"math\">931.72</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 310010,
+    "source": "CAT 2021 Slot 3 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> Bank <span class=\"math\">A</span> offers 6% interest rate per annum compounded half yearly. Bank <span class=\"math\">B</span> and Bank <span class=\"math\">C</span> offer simple interest but the annual interest rate offered by Bank <span class=\"math\">C</span> is twice that of Bank <span class=\"math\">B</span>. Raju invests a certain amount in Bank <span class=\"math\">B</span> for a certain period and Rupa invests Rs 10,000 in Bank <span class=\"math\">C</span> for twice that period. The interest that would accrue to Raju during that period is equal to the interest that would have accrued had he invested the same amount in Bank <span class=\"math\">A</span> for one year. The interest accrued, in INR, to Rupa is</p>",
+    "options": [
+      "<p>1436</p>",
+      "<p>3436</p>",
+      "<p>2346</p>",
+      "<p>2436</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "2436",
+    "acceptedAnswers": [
+      "2436"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Bank A gives annual effective interest <span class=\"math\">(1.03)^2-1 = 0.0609 = 6.09%</span>.</li><li>So for Bank B, <span class=\"math\">rate × time = 6.09</span>.</li><li>Bank C has twice Bank B's rate and Rupa invests for twice the time.</li><li>Thus Rupa's interest factor is <span class=\"math\">4 × 6.09% = 24.36%</span>.</li><li>Interest on Rs 10000 = <span class=\"math\">2436</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 310011,
+    "source": "CAT 2022 Slot 1 • Arithmetic > Simple & Compound Interest • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> Alex invested his savings in two parts. The simple interest earned on the first part at 15% per annum for 4 years is the same as the simple interest earned on the second part at 12% per annum for 3 years. Then, the percentage of his savings invested in the first part is</p>",
+    "options": [
+      "<p>62.5%</p>",
+      "<p>40%</p>",
+      "<p>60%</p>",
+      "<p>37.5%</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "37.5%",
+    "acceptedAnswers": [
+      "37.5%"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the two parts be <span class=\"math\">x</span> and <span class=\"math\">y</span>.</li><li>Equal interests give <span class=\"math\">x×15×4 = y×12×3</span>.</li><li>So <span class=\"math\">60x = 36y</span>, hence <span class=\"math\">x:y = 3:5</span>.</li><li>Percentage in first part = <span class=\"math\">3/(3+5) × 100 = 37.5%</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 310012,
+    "source": "CAT 2022 Slot 2 • Arithmetic > Simple & Compound Interest • Easy",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> Mr. Pinto invests one-fifth of his capital at 6%, one-third at 10% and the remaining at 1%, each rate being simple interest per annum. Then, the minimum number of years required for the cumulative interest income from these investments to equal or exceed his initial capital is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20",
+    "acceptedAnswers": [
+      "20"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The remaining capital after one-fifth and one-third is <span class=\"math\">1 - 1/5 - 1/3 = 7/15</span>.</li><li>Annual interest as a percentage of total capital = <span class=\"math\">(1/5)6 + (1/3)10 + (7/15)1</span> percent.</li><li>This equals <span class=\"math\">6/5 + 10/3 + 7/15 = 5%</span>.</li><li>To earn interest equal to 100% of the capital at 5% per year, required time = <span class=\"math\">100/5 = 20</span> years.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 310013,
+    "source": "CAT 2022 Slot 3 • Arithmetic > Simple & Compound Interest • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> Nitu has an initial capital of Rs. 20,000. Out of this, she invests Rs. 8,000 at 5.5% in bank <span class=\"math\">A</span>, Rs. 5,000 at 5.6% in bank <span class=\"math\">B</span> and the remaining amount at <span class=\"math\">x%</span> in bank <span class=\"math\">C</span>, each rate being simple interest per annum. Her combined annual interest income from these investments is equal to 5% of the initial capital. If she had invested her entire initial capital in bank <span class=\"math\">C</span> alone, then her annual interest income, in rupees, would have been</p>",
+    "options": [
+      "<p>800</p>",
+      "<p>700</p>",
+      "<p>1000</p>",
+      "<p>900</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "800",
+    "acceptedAnswers": [
+      "800"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Interest from bank A = <span class=\"math\">8000×5.5% = 440</span>.</li><li>Interest from bank B = <span class=\"math\">5000×5.6% = 280</span>.</li><li>Remaining capital = <span class=\"math\">7000</span>. Total required interest = <span class=\"math\">5% of 20000 = 1000</span>.</li><li>So <span class=\"math\">440 + 280 + 7000x/100 = 1000</span>, giving <span class=\"math\">x = 4</span>.</li><li>If Rs 20000 is invested at 4%, annual interest = <span class=\"math\">800</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 310014,
+    "source": "CAT 2023 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> Anil invests Rs. 22000 for 6 years in a certain scheme with 4% interest per annum, compounded half-yearly. Sunil invests in the same scheme for 5 years, and then reinvests the entire amount received at the end of 5 years for one year at 10% simple interest. If the amounts received by both at the end of 6 years are same, then the initial investment made by Sunil, in rupees, is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20808",
+    "acceptedAnswers": [
+      "20808"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For Anil, half-yearly rate = 2%, and 6 years gives 12 half-years. Amount = <span class=\"math\">22000(1.02)^12</span>.</li><li>Let Sunil invest <span class=\"math\">P</span>. After 5 years in the same scheme, amount = <span class=\"math\">P(1.02)^10</span>.</li><li>After one more year at 10% simple interest, Sunil gets <span class=\"math\">1.1P(1.02)^10</span>.</li><li>Equating, <span class=\"math\">1.1P(1.02)^10 = 22000(1.02)^12</span>.</li><li>Thus <span class=\"math\">P = 22000(1.02)^2/1.1 = 20808</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 310015,
+    "source": "CAT 2023 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Anil borrows Rs 2 lakhs at an interest rate of 8% per annum, compounded half-yearly. He repays Rs 10320 at the end of the first year and closes the loan by paying the outstanding amount at the end of the third year. Then, the total interest, in rupees, paid over the three years is nearest to</p>",
+    "options": [
+      "<p>33130</p>",
+      "<p>45311</p>",
+      "<p>51311</p>",
+      "<p>40991</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "51311",
+    "acceptedAnswers": [
+      "51311"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Half-yearly rate = 4%.</li><li>At the end of the first year, outstanding before repayment = <span class=\"math\">200000(1.04)^2 = 216320</span>.</li><li>After repaying Rs 10320, outstanding = <span class=\"math\">206000</span>.</li><li>This grows for two more years, i.e. 4 half-years: <span class=\"math\">206000(1.04)^4 ≈ 240990.86</span>.</li><li>Total paid = <span class=\"math\">10320 + 240990.86 = 251310.86</span>.</li><li>Total interest = <span class=\"math\">251310.86 - 200000 ≈ 51311</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 310016,
+    "source": "CAT 2024 Slot 1 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> An amount of Rs 10000 is deposited in bank A for a certain number of years at a simple interest of 5% per annum. On maturity, the total amount received is deposited in bank B for another 5 years at a simple interest of 6% per annum. If the interests received from bank A and bank B are in the ratio 10 : 13, then the investment period, in years, in bank A is</p>",
+    "options": [
+      "<p>4</p>",
+      "<p>6</p>",
+      "<p>3</p>",
+      "<p>5</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "6",
+    "acceptedAnswers": [
+      "6"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the investment period in bank A be <span class=\"math\">t</span> years.</li><li>Interest from A = <span class=\"math\">10000×5t/100 = 500t</span>.</li><li>Amount after A = <span class=\"math\">10000 + 500t</span>.</li><li>Interest from B for 5 years at 6% = <span class=\"math\">(10000+500t)×30/100 = 3000 + 150t</span>.</li><li>Given <span class=\"math\">500t : (3000+150t) = 10 : 13</span>.</li><li>Solving gives <span class=\"math\">t = 6</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 310017,
+    "source": "CAT 2024 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> Anil invests Rs 22000 for 6 years in a scheme with 4% interest per annum, compounded half-yearly. Separately, Sunil invests a certain amount in the same scheme for 5 years, and then reinvests the entire amount he receives at the end of 5 years, for one year at 10% simple interest. If the amounts received by both at the end of 6 years are equal, then the initial investment, in rupees, made by Sunil is</p>",
+    "options": [
+      "<p>20860</p>",
+      "<p>20808</p>",
+      "<p>20480</p>",
+      "<p>20640</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "20808",
+    "acceptedAnswers": [
+      "20808"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Anil receives <span class=\"math\">22000(1.02)^12</span>.</li><li>If Sunil invests <span class=\"math\">P</span>, after 5 years he has <span class=\"math\">P(1.02)^10</span>.</li><li>After one year at 10% simple interest, he has <span class=\"math\">1.1P(1.02)^10</span>.</li><li>Equating with Anil's amount: <span class=\"math\">1.1P(1.02)^10 = 22000(1.02)^12</span>.</li><li><span class=\"math\">P = 22000(1.02)^2/1.1 = 20808</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 310018,
+    "source": "CAT 2024 Slot 3 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> Aman invests Rs 4000 in a bank at a certain rate of interest, compounded annually. If the ratio of the value of the investment after 3 years to the value of the investment after 5 years is 25 : 36, then the minimum number of years required for the value of the investment to exceed Rs 20000 is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "9",
+    "acceptedAnswers": [
+      "9"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the annual growth factor be <span class=\"math\">a</span>.</li><li>Given <span class=\"math\">4000a^3 : 4000a^5 = 25 : 36</span>, so <span class=\"math\">1/a^2 = 25/36</span>.</li><li>Thus <span class=\"math\">a = 6/5 = 1.2</span>.</li><li>We need <span class=\"math\">4000(1.2)^n > 20000</span>, i.e. <span class=\"math\">(1.2)^n > 5</span>.</li><li><span class=\"math\">1.2^8 < 5</span> and <span class=\"math\">1.2^9 > 5</span>, so the minimum number of years is <span class=\"math\">9</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 310019,
+    "source": "2025: 2025 Slot 1 • Arithmetic > Simple & Compound Interest • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> At a certain simple rate of interest, a given sum amounts to Rs 13920 in 3 years, and to Rs 18960 in 6 years and 6 months. If the same given sum had been invested for 2 years at the same rate as before but with interest compounded every 6 months, then the total interest earned, in rupees, would have been nearest to</p>",
+    "options": [
+      "<p>3150</p>",
+      "<p>3096</p>",
+      "<p>3180</p>",
+      "<p>3221</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "3221",
+    "acceptedAnswers": [
+      "3221"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Under simple interest, the amount increases by <span class=\"math\">18960 - 13920 = 5040</span> over <span class=\"math\">3.5</span> years.</li><li>So annual simple interest = <span class=\"math\">5040/3.5 = 1440</span>.</li><li>Principal = <span class=\"math\">13920 - 3×1440 = 9600</span>.</li><li>Rate = <span class=\"math\">1440/9600 = 15%</span> per annum.</li><li>Compounded every 6 months means half-yearly rate = <span class=\"math\">7.5%</span>, for 4 periods in 2 years.</li><li>Interest = <span class=\"math\">9600[(1.075)^4 - 1] ≈ 3221</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 310020,
+    "source": "2025: 2025 Slot 2 • Arithmetic > Simple & Compound Interest • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> A loan of Rs 1000 is fully repaid by two installments of Rs 530 and Rs 594, paid at the end of first and second year, respectively. If the interest is compounded annually, then the rate of interest, in percentage, is</p>",
+    "options": [
+      "<p>9</p>",
+      "<p>11</p>",
+      "<p>8</p>",
+      "<p>10</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "8",
+    "acceptedAnswers": [
+      "8"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the annual rate be <span class=\"math\">r</span> and <span class=\"math\">x = 1+r</span>.</li><li>Present value equation: <span class=\"math\">1000 = 530/x + 594/x^2</span>.</li><li>So <span class=\"math\">1000x^2 = 530x + 594</span>.</li><li>Testing <span class=\"math\">x = 1.08</span>: <span class=\"math\">1000(1.08)^2 = 1166.4</span> and <span class=\"math\">530(1.08)+594 = 1166.4</span>.</li><li>Hence <span class=\"math\">r = 8%</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
