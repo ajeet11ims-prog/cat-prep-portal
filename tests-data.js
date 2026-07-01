@@ -1279,6 +1279,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "Percentage_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
+    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 23
   }
 ];
 
@@ -1463,6 +1476,15 @@ window.CAT_FOLDERS = [
       "PYQ",
       "QA",
       "Arithmetic"
+    ]
+  },
+  {
+    "name": "1.Percentage",
+    "path": [
+      "PYQ",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
     ]
   },
   {
