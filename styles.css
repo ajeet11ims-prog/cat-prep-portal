@@ -861,3 +861,15 @@ svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-l
   object-fit:cover !important;
   object-position:center center !important;
 }
+
+/* Show the complete provided banner artwork without cropping. */
+.home-banners .hero-banner-card img,
+.home-banners .gita-banner-card img,
+.home-banners .think-banner-card img{
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:auto !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
