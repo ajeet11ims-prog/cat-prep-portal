@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Average Test -7</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Average Test -7</h1><div class="meta">23 Questions | 50 Minutes | 23 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">50:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 97001,
+    "source": "Average Test -7 | Source Q1",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> If the average of 5 consecutive numbers starting with <span class='math'>m</span> is <span class='math'>n</span>, find the average of 6 consecutive numbers starting with <span class='math'>m+2</span>.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "n+2.5",
+    "acceptedAnswers": [
+      "n+2.5",
+      "n+5/2",
+      "n+2½"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The 5 consecutive numbers are <span class='math'>m, m+1, m+2, m+3, m+4</span>.</li><li>Their average is <span class='math'>m+2</span>. Given <span class='math'>m+2=n</span>.</li><li>The 6 consecutive numbers starting with <span class='math'>m+2</span> are <span class='math'>m+2, m+3, ..., m+7</span>.</li><li>Their average is <span class='math'><span class=\"frac\"><span>(m+2)+(m+7)</span><span>2</span></span> = m+4.5 = n+2.5</span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 97002,
+    "source": "Average Test -7 | Source Q2",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> The numbers <span class='math'>a, b, c, d, e</span> are five consecutive odd numbers. Find the average of all these numbers in terms of <span class='math'>a</span>.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "a+4",
+    "acceptedAnswers": [
+      "a+4"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since they are consecutive odd numbers, they are <span class='math'>a, a+2, a+4, a+6, a+8</span>.</li><li>For 5 equally spaced numbers, the average is the middle term.</li><li>Average = <span class='math'>a+4</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 97003,
+    "source": "Average Test -7 | Source Q3",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> The average of 13 numbers is 52. The average of the first 7 numbers is 51 and the average of the last 7 numbers is 54. Find the 7th number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "59",
+    "acceptedAnswers": [
+      "59"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total of 13 numbers = <span class='math'>13×52 = 676</span>.</li><li>Sum of first 7 numbers = <span class='math'>7×51 = 357</span>.</li><li>Sum of last 7 numbers = <span class='math'>7×54 = 378</span>.</li><li>The 7th number is counted in both groups.</li><li>So 7th number = <span class='math'>357+378−676 = 59</span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 97004,
+    "source": "Average Test -7 | Source Q4",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> The average of 17 numbers is 63. The average of the first 9 numbers is 64 and the average of the last 9 numbers is 61. Find the 9th number.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "54",
+    "acceptedAnswers": [
+      "54"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total of 17 numbers = <span class='math'>17×63 = 1071</span>.</li><li>Sum of first 9 numbers = <span class='math'>9×64 = 576</span>.</li><li>Sum of last 9 numbers = <span class='math'>9×61 = 549</span>.</li><li>The 9th number is counted twice in these two sums.</li><li>So 9th number = <span class='math'>576+549−1071 = 54</span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 97005,
+    "source": "Average Test -7 | Source Q5",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> The average age of 17 students of a class is 16 years. If a new student joins the class, then the average age becomes 20 years. Find the age of the new student.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "88",
+    "acceptedAnswers": [
+      "88"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total age of 17 students = <span class='math'>17×16 = 272</span>.</li><li>Total age of 18 students = <span class='math'>18×20 = 360</span>.</li><li>Age of new student = <span class='math'>360−272 = 88</span> years.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 97006,
+    "source": "Average Test -7 | Source Q6",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> The average weight of 17 players of a team is 22 kg. If one player leaves the team and the average becomes 23 kg, find the weight of that player.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "6",
+    "acceptedAnswers": [
+      "6"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of 17 players = <span class='math'>17×22 = 374</span> kg.</li><li>Total weight of remaining 16 players = <span class='math'>16×23 = 368</span> kg.</li><li>Weight of the player who left = <span class='math'>374−368 = 6</span> kg.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 97007,
+    "source": "Average Test -7 | Source Q7",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> There is some average of 11 innings of a batsman. He scores 90 runs in the 12th innings, and his average decreases by 5 runs. Find his current average.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "145",
+    "acceptedAnswers": [
+      "145"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the average after 11 innings be <span class='math'>x</span>.</li><li>After scoring 90 in the 12th innings, the new average becomes <span class='math'>x−5</span>.</li><li><span class='math'>{11x+90} = 12(x−5)</span>.</li><li><span class='math'>11x+90 = 12x−60</span>, so <span class='math'>x=150</span>.</li><li>Current average = <span class='math'>150−5 = 145</span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 97008,
+    "source": "Average Test -7 | Source Q8",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> There is some average of 8 innings of a batsman. He scores 100 runs in the 9th innings and his average increases by 9 runs. Find his current average.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "28",
+    "acceptedAnswers": [
+      "28"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the average after 8 innings be <span class='math'>x</span>.</li><li>After scoring 100 in the 9th innings, new average = <span class='math'>x+9</span>.</li><li><span class='math'>8x+100 = 9(x+9)</span>.</li><li><span class='math'>8x+100 = 9x+81</span>, so <span class='math'>x=19</span>.</li><li>Current average = <span class='math'>19+9 = 28</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 97009,
+    "source": "Average Test -7 | Source Q9",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> If the average of 64 innings of a batsman is 62 and, after excluding the highest and lowest innings, the average of the remaining 62 innings is 60, and the difference between the highest and lowest innings is 180 runs, find the highest and lowest scores.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "214,34",
+    "acceptedAnswers": [
+      "214,34",
+      "214 34",
+      "214, 34"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total runs in 64 innings = <span class='math'>64×62 = 3968</span>.</li><li>Total runs in remaining 62 innings = <span class='math'>62×60 = 3720</span>.</li><li>So highest + lowest = <span class='math'>3968−3720 = 248</span>.</li><li>Also, highest − lowest = <span class='math'>180</span>.</li><li>Solving, highest = <span class='math'>{(248+180)÷2 = 214}</span> and lowest = <span class='math'>{(248−180)÷2 = 34}</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 97010,
+    "source": "Average Test -7 | Source Q10",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> If the average of 42 innings of a batsman is 30 and, after excluding the highest and lowest innings, the average of the remaining 40 innings is 28, and the difference between the highest and lowest innings is 100 runs, find the highest and lowest scores.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "120,20",
+    "acceptedAnswers": [
+      "120,20",
+      "120 20",
+      "120, 20"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total runs in 42 innings = <span class='math'>42×30 = 1260</span>.</li><li>Total runs in remaining 40 innings = <span class='math'>40×28 = 1120</span>.</li><li>So highest + lowest = <span class='math'>1260−1120 = 140</span>.</li><li>Also, highest − lowest = <span class='math'>100</span>.</li><li>Solving, highest = <span class='math'>120</span> and lowest = <span class='math'>20</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 97011,
+    "source": "Average Test -7 | Source Q11",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> If the average of 40 innings of a batsman is 50 and, after excluding the highest and lowest innings, the average of the remaining 38 innings is 48, and the difference between the highest and lowest innings is 172 runs, find the highest and lowest scores.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "174,2",
+    "acceptedAnswers": [
+      "174,2",
+      "174 2",
+      "174, 2"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total runs in 40 innings = <span class='math'>40×50 = 2000</span>.</li><li>Total runs in remaining 38 innings = <span class='math'>38×48 = 1824</span>.</li><li>So highest + lowest = <span class='math'>2000−1824 = 176</span>.</li><li>Also, highest − lowest = <span class='math'>172</span>.</li><li>Solving, highest = <span class='math'>174</span> and lowest = <span class='math'>2</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 97012,
+    "source": "Average Test -7 | Source Q12",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> The bowling average of a bowler is 12.4. He takes 5 wickets for 26 runs in his last match and his average improves by 0.4. Find the number of wickets he had taken before the last match.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "85",
+    "acceptedAnswers": [
+      "85"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let wickets before the last match be <span class='math'>w</span>.</li><li>Runs conceded before the last match = <span class='math'>12.4w</span>.</li><li>After taking 5 wickets for 26 runs, new average = <span class='math'>12.4−0.4 = 12</span>.</li><li><span class='math'>{12.4w+26} = 12(w+5)</span>.</li><li><span class='math'>12.4w+26 = 12w+60</span>, so <span class='math'>0.4w = 34</span>.</li><li>Hence <span class='math'>w=85</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 97013,
+    "source": "Average Test -7 | Source Q13",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> The bowling average of a bowler is 12.4. He takes 5 wickets for 26 runs in his last match and his average improves by 0.2. Find the number of wickets he had taken before the last match.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "175",
+    "acceptedAnswers": [
+      "175"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let wickets before the last match be <span class='math'>w</span>.</li><li>New average = <span class='math'>12.4−0.2 = 12.2</span>.</li><li><span class='math'>12.4w+26 = 12.2(w+5)</span>.</li><li><span class='math'>12.4w+26 = 12.2w+61</span>.</li><li><span class='math'>0.2w = 35</span>, so <span class='math'>w=175</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 97014,
+    "source": "Average Test -7 | Source Q14",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> A bowler whose bowling average is 24.85 runs per wicket takes 5 wickets for 52 runs in the next inning, and thereby decreases his average by 0.85. Find the number of wickets he had taken before the last match.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "80",
+    "acceptedAnswers": [
+      "80"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let wickets before the last match be <span class='math'>w</span>.</li><li>Runs before the last match = <span class='math'>24.85w</span>.</li><li>New average = <span class='math'>24.85−0.85 = 24</span>.</li><li><span class='math'>24.85w+52 = 24(w+5)</span>.</li><li><span class='math'>24.85w+52 = 24w+120</span>, so <span class='math'>0.85w=68</span>.</li><li>Hence <span class='math'>w=80</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 97015,
+    "source": "Average Test -7 | Source Q15",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> The average weight of 3 men A, B and C is 84 kg. Another man D joins the group and the average becomes 80 kg. Another man E, whose weight is 3 kg more than that of D, replaces A, and the average weight of B, C, D and E becomes 79 kg. Find the weight of A.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "75",
+    "acceptedAnswers": [
+      "75"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of A, B and C = <span class='math'>3×84 = 252</span>.</li><li>Total weight of A, B, C and D = <span class='math'>4×80 = 320</span>.</li><li>So <span class='math'>D = 320−252 = 68</span>.</li><li>Since E is 3 kg more than D, <span class='math'>E = 71</span>.</li><li>Total weight of B, C, D and E = <span class='math'>4×79 = 316</span>.</li><li>Now <span class='math'>B+C+D = 320−A</span>, so <span class='math'>320−A+71=316</span>.</li><li>Therefore <span class='math'>A=75</span> kg.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 97016,
+    "source": "Average Test -7 | Source Q16",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> The average weight of 4 men A, B, C and D is 67 kg. Another man E joins the group and the average becomes 65 kg. Another man F, whose weight is 4 kg more than that of E, replaces A, and the average weight of B, C, D, E and F becomes 64 kg. Find the weight of A.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "66",
+    "acceptedAnswers": [
+      "66"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of A, B, C and D = <span class='math'>4×67 = 268</span>.</li><li>Total weight of A, B, C, D and E = <span class='math'>5×65 = 325</span>.</li><li>So <span class='math'>E = 325−268 = 57</span>.</li><li>Since F is 4 kg more than E, <span class='math'>F=61</span>.</li><li>Total weight of B, C, D, E and F = <span class='math'>5×64 = 320</span>.</li><li><span class='math'>(325−A)+61 = 320</span>.</li><li>Therefore <span class='math'>A=66</span> kg.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 97017,
+    "source": "Average Test -7 | Source Q17",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> The average weight of 5 men A, B, C, D and E is 94 kg. Another man F joins the group and the average becomes 96 kg. The weight of E is 6 kg less than that of F. Now A is replaced by G and the average weight becomes 98 kg. Find the difference between the weights of A and G.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "12",
+    "acceptedAnswers": [
+      "12"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of A, B, C, D and E = <span class='math'>5×94 = 470</span>.</li><li>After F joins, total weight of 6 men = <span class='math'>6×96 = 576</span>.</li><li>When A is replaced by G in this group of 6, the new total becomes <span class='math'>6×98 = 588</span>.</li><li>So <span class='math'>G−A = 588−576 = 12</span>.</li><li>Therefore the difference between the weights of A and G is <span class='math'>12</span> kg.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 97018,
+    "source": "Average Test -7 | Source Q18",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> The average weight of A, B, C and D is 40 kg. A new person E is included in the group, and the average weight of the group increases by 1 kg. Again, a new person F replaces A, and the new average of 5 persons becomes 42 kg. Find the average weight of B, C, D and F.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "41.25",
+    "acceptedAnswers": [
+      "41.25",
+      "41.25 kg"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of A, B, C and D = <span class='math'>4×40 = 160</span>.</li><li>After E joins, average of 5 persons = <span class='math'>41</span>, so total = <span class='math'>5×41 = 205</span>. Hence <span class='math'>E=45</span>.</li><li>When F replaces A, total weight of B, C, D, E and F = <span class='math'>5×42 = 210</span>.</li><li>Thus <span class='math'>B+C+D+F = 210−E = 210−45 = 165</span>.</li><li>Average of B, C, D and F = <span class='math'>165÷4 = 41.25</span> kg.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 97019,
+    "source": "Average Test -7 | Source Q19",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> There are 35 students in a hostel. If the number of students increases by 7, then the expenses of the mess increase by ₹42 per day while the average expenditure per head diminishes by ₹1. Find the original expenditure of the mess.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "420",
+    "acceptedAnswers": [
+      "420"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original expenditure be <span class='math'>x</span>.</li><li>Original average expenditure per head = <span class='math'>x/35</span>.</li><li>New number of students = <span class='math'>42</span> and new expenditure = <span class='math'>x+42</span>.</li><li>Given <span class='math'>{x+42 ​}÷42 = x÷35 − 1</span>.</li><li>Solving gives <span class='math'>x=420</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 97020,
+    "source": "Average Test -7 | Source Q20",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> There are 60 students in a hostel. If the number of students increases by 20, then the expenses of the mess increase by ₹120 per day while the average expenditure per head diminishes by ₹1. Find the original expenditure of the mess.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "600",
+    "acceptedAnswers": [
+      "600"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original expenditure be <span class='math'>x</span>.</li><li>New number of students = <span class='math'>80</span> and new expenditure = <span class='math'>x+120</span>.</li><li>Given <span class='math'>(x+120)÷80 = x÷60 − 1</span>.</li><li>Solving: <span class='math'>60x+7200 = 80x−4800</span>.</li><li>So <span class='math'>20x=12000</span> and <span class='math'>x=600</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 97021,
+    "source": "Average Test -7 | Source Q21",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> There are 42 students in a hostel. If the number of students increases by 7, then the expenses of the mess increase by ₹32.50 per day while the average expenditure per head diminishes by ₹1.50. Find the original expenditure of the mess.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "636",
+    "acceptedAnswers": [
+      "636"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original expenditure be <span class='math'>x</span>.</li><li>New number of students = <span class='math'>49</span> and new expenditure = <span class='math'>x+32.50</span>.</li><li>Given <span class='math'>(x+32.50)÷49 = x÷42 − 1.50</span>.</li><li>Multiplying by <span class='math'>42×49</span>: <span class='math'>42x+1365 = 49x−3087</span>.</li><li>So <span class='math'>7x=4452</span> and <span class='math'>x=636</span>.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 97022,
+    "source": "Average Test -7 | Source Q22",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> There are 320 students in a hostel. If the number of students decreases by 10, then the expenses of the mess decrease by ₹58 per day while the average expenditure per head increases by 20 paise. Find the original expenditure of the mess.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "3840",
+    "acceptedAnswers": [
+      "3840"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original expenditure be <span class='math'>x</span>.</li><li>New number of students = <span class='math'>310</span> and new expenditure = <span class='math'>x−58</span>.</li><li>Average per head increases by ₹0.20, so <span class='math'>(x−58)÷310 = x÷320 + 0.20</span>.</li><li>Solving gives <span class='math'>320x−18560 = 310x+19840</span>.</li><li>So <span class='math'>10x=38400</span> and <span class='math'>x=3840</span>.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 97023,
+    "source": "Average Test -7 | Source Q23",
+    "type": "text",
+    "direction": "<p>Type the exact answer. Expressions are allowed where required.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> There are 30 workers in a factory. If the number of workers increases by 10, then the total wages increase by ₹9000 per day while the average wage per worker decreases by ₹75. Find the original total wages of the factory.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "36000",
+    "acceptedAnswers": [
+      "36000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original total wages be <span class='math'>x</span>.</li><li>Original average wage = <span class='math'>x÷30</span>.</li><li>New number of workers = <span class='math'>40</span> and new total wages = <span class='math'>x+9000</span>.</li><li>Given <span class='math'>(x+9000)÷40 = x÷30 − 75</span>.</li><li>Solving gives <span class='math'>30x+270000 = 40x−90000</span>.</li><li>So <span class='math'>10x=360000</span> and <span class='math'>x=36000</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 50 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
