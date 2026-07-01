@@ -1292,6 +1292,20 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "Percentage_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
+    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 23
   }
 ];
 
