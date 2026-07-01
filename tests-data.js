@@ -1294,6 +1294,20 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 29
+  },
+  {
+    "title": "SICI CAT PYQ 2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
+    "original": "SICI CAT PYQ 2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 20
   }
 ];
 
