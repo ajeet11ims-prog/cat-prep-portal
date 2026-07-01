@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit &amp; Loss CAT PYQ 2017 - 2025</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Ratio Proportion Variation Partnership Test -15 | SICI Test-9 Layout | English Only | 27 MCQ -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Profit &amp; Loss CAT PYQ 2017 - 2025</h1><div class="meta">29 Questions | 60 Minutes | 22 MCQ + 7 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 300001,
+    "source": "CAT 2017 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> If a seller gives a discount of 15% on the retail price, she still makes a profit of 2%. Which of the following ensures that she makes a profit of 20%?</p>",
+    "options": [
+      "<p>Give a discount of 5% on retail price</p>",
+      "<p>Give a discount of 2% on retail price</p>",
+      "<p>Increase the retail price by 2%</p>",
+      "<p>Sell at retail price</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "Sell at retail price",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the retail price be <span class='math'>R</span>.</li><li>After a discount of 15%, selling price = <span class='math'>0.85R</span>.</li><li>This gives a profit of 2%, so <span class='math'>0.85R = 1.02 × CP</span>.</li><li>Hence, <span class='math'>CP = 0.85R / 1.02 = (5/6)R</span>.</li><li>To make a profit of 20%, required selling price = <span class='math'>1.2 × CP = 1.2 × (5/6)R = R</span>.</li><li>So the seller must sell at the retail price.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 300002,
+    "source": "CAT 2017 Slot 1 • Arithmetic > Profit & Loss • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> In a market, the price of medium quality mangoes is half that of good mangoes. A shopkeeper buys 80 kg good mangoes and 40 kg medium quality mangoes from the market and then sells all these at a common price which is 10% less than the price at which he bought the good ones. His overall profit is</p>",
+    "options": [
+      "<p>6%</p>",
+      "<p>8%</p>",
+      "<p>10%</p>",
+      "<p>12%</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "8%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of good mangoes be <span class='math'>G</span> per kg.</li><li>Then the cost price of medium quality mangoes is <span class='math'>G/2</span> per kg.</li><li>Total cost = <span class='math'>80G + 40(G/2) = 80G + 20G = 100G</span>.</li><li>Common selling price = 10% less than <span class='math'>G</span>, so selling price = <span class='math'>0.9G</span> per kg.</li><li>Total quantity sold = <span class='math'>120</span> kg, so total selling price = <span class='math'>120 × 0.9G = 108G</span>.</li><li>Profit = <span class='math'>108G - 100G = 8G</span>, which is <span class='math'>8%</span> of the cost price.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 300003,
+    "source": "CAT 2017 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> If Fatima sells 60 identical toys at a 40% discount on the printed price, then she makes 20% profit. Ten of these toys are destroyed in a fire. While selling the rest, how much discount should be given on the printed price so that she can make the same amount of profit?</p>",
+    "options": [
+      "<p>30%</p>",
+      "<p>25%</p>",
+      "<p>24%</p>",
+      "<p>28%</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "28%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the printed price of each toy be <span class='math'>P</span>.</li><li>A 40% discount means selling price per toy = <span class='math'>0.6P</span>.</li><li>This gives a 20% profit, so cost price per toy = <span class='math'>0.6P/1.2 = 0.5P</span>.</li><li>Total cost of 60 toys = <span class='math'>60 × 0.5P = 30P</span>.</li><li>Required profit amount = <span class='math'>20%  of  30P = 6P</span>.</li><li>So, after 10 toys are destroyed, the total revenue needed from the remaining 50 toys is <span class='math'>30P + 6P = 36P</span>.</li><li>Required selling price per toy = <span class='math'>36P/50 = 0.72P</span>.</li><li>Thus, required discount = <span class='math'>(1 - 0.72) × 100 = 28%</span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 300004,
+    "source": "CAT 2017 Slot 2 • Arithmetic > Profit & Loss • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> The manufacturer of a table sells it to a wholesale dealer at a profit of 10%. The wholesale dealer sells the table to a retailer at a profit of 30%. Finally, the retailer sells it to a customer at a profit of 50%. If the customer pays Rs 4290 for the table, then its manufacturing cost (in Rs) is</p>",
+    "options": [
+      "<p>1500</p>",
+      "<p>2000</p>",
+      "<p>2500</p>",
+      "<p>3000</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the manufacturing cost be <span class='math'>x</span>.</li><li>Customer price = <span class='math'>x × 1.10 × 1.30 × 1.50</span>.</li><li>So, <span class='math'>x × 2.145 = 4290</span>.</li><li>Hence, <span class='math'>x = 4290/2.145 = 2000</span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 300005,
+    "source": "CAT 2017 Slot 2 • Arithmetic > Profit & Loss • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> Mayank buys some candies for Rs 15 a dozen and an equal number of different candies for Rs 12 a dozen. He sells all for Rs 16.50 a dozen and makes a profit of Rs 150. How many dozens of candies did he buy altogether?</p>",
+    "options": [
+      "<p>50</p>",
+      "<p>30</p>",
+      "<p>25</p>",
+      "<p>45</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "50",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let he buy <span class='math'>x</span> dozen of each type.</li><li>Total cost = <span class='math'>15x + 12x = 27x</span>.</li><li>Total number of dozens sold = <span class='math'>2x</span>.</li><li>Total selling price = <span class='math'>16.5 × 2x = 33x</span>.</li><li>Profit = <span class='math'>33x - 27x = 6x</span>.</li><li>Given profit = Rs <span class='math'>150</span>, so <span class='math'>6x = 150</span>.</li><li>Thus, <span class='math'>x = 25</span>, and total dozens = <span class='math'>2x = 50</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 300006,
+    "source": "CAT 2018 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> Two types of tea, A and B, are mixed and then sold at Rs. 40 per kg. The profit is 10% if A and B are mixed in the ratio 3 : 2, and 5% if this ratio is 2 : 3. The cost prices, per kg, of A and B are in the ratio</p>",
+    "options": [
+      "<p>17 : 25</p>",
+      "<p>21 : 25</p>",
+      "<p>18 : 25</p>",
+      "<p>19 : 24</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "19 : 24",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>When the mixture is sold at Rs <span class='math'>40</span> per kg with 10% profit, its cost price per kg is <span class='math'>40/1.10 = 400/11</span>.</li><li>So, if the ratio of A : B is <span class='math'>3 : 2</span>, then <span class='math'>(3a + 2b)/5 = 400/11</span>.</li><li>When the profit is 5%, the cost price per kg is <span class='math'>40/1.05 = 800/21</span>.</li><li>So, if the ratio of A : B is <span class='math'>2 : 3</span>, then <span class='math'>(2a + 3b)/5 = 800/21</span>.</li><li>Solving these two equations gives <span class='math'>a : b = 19 : 24</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 300007,
+    "source": "CAT 2018 Slot 1 • Arithmetic > Profit & Loss • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> A wholesaler bought walnuts and peanuts, the price of walnut per kg being thrice that of peanut per kg. He then sold 8 kg of peanuts at a profit of 10% and 16 kg of walnuts at a profit of 20% to a shopkeeper. However, the shopkeeper lost 5 kg of walnuts and 3 kg of peanuts in transit. He then mixed the remaining nuts and sold the mixture at Rs. 166 per kg, thus making an overall profit of 25%. At what price, in Rs. per kg, did the wholesaler buy the walnuts?</p>",
+    "options": [
+      "<p>86</p>",
+      "<p>96</p>",
+      "<p>84</p>",
+      "<p>98</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "96",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the wholesaler's cost price of peanuts be <span class='math'>p</span> per kg. Then walnuts cost <span class='math'>3p</span> per kg.</li><li>Shopkeeper buys 8 kg peanuts at 10% profit and 16 kg walnuts at 20% profit.</li><li>So his total cost = <span class='math'>8 × 1.1p + 16 × 1.2 × 3p = 8.8p + 57.6p = 66.4p</span>.</li><li>He loses 3 kg peanuts and 5 kg walnuts, so he sells <span class='math'>5 + 11 = 16</span> kg mixture.</li><li>Revenue from mixture = <span class='math'>16 × 166 = 2656</span>.</li><li>He makes an overall profit of 25%, so his cost = <span class='math'>2656/1.25 = 2124.8</span>.</li><li>Hence, <span class='math'>66.4p = 2124.8</span>, giving <span class='math'>p = 32</span>.</li><li>Therefore, walnut price = <span class='math'>3p = 96</span> per kg.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 300008,
+    "source": "CAT 2019 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> On selling a pen at 5% loss and a book at 15% gain, Karim gains Rs. 7. If he sells the pen at 5% gain and the book at 10% gain, he gains Rs. 13. What is the cost price of the book in Rupees?</p>",
+    "options": [
+      "<p>100</p>",
+      "<p>80</p>",
+      "<p>85</p>",
+      "<p>95</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "80",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of the pen be <span class='math'>p</span> and that of the book be <span class='math'>b</span>.</li><li>From the first case: <span class='math'>-5% of p + 15% of b = 7</span>.</li><li>So, <span class='math'>-0.05p + 0.15b = 7</span>.</li><li>From the second case: <span class='math'>5% of p + 10% of b = 13</span>.</li><li>So, <span class='math'>0.05p + 0.10b = 13</span>.</li><li>Adding the two equations gives <span class='math'>0.25b = 20</span>.</li><li>Hence, <span class='math'>b = 80</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 300009,
+    "source": "CAT 2019 Slot 2 • Arithmetic > Profit & Loss • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> Mukesh purchased 10 bicycles in 2017, all at the same price. He sold six of these at a profit of 25% and the remaining four at a loss of 25%. If he made a total profit of Rs. 2000, then his purchase price of a bicycle, in Rupees, was</p>",
+    "options": [
+      "<p>4000</p>",
+      "<p>6000</p>",
+      "<p>8000</p>",
+      "<p>2000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "4000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of one bicycle be <span class='math'>x</span>.</li><li>Profit on 6 bicycles = <span class='math'>6 × 25%  of  x = 1.5x</span>.</li><li>Loss on 4 bicycles = <span class='math'>4 × 25%  of  x = x</span>.</li><li>Net profit = <span class='math'>1.5x - x = 0.5x</span>.</li><li>Given net profit = <span class='math'>2000</span>, so <span class='math'>0.5x = 2000</span>.</li><li>Hence, <span class='math'>x = 4000</span>.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 300010,
+    "source": "CAT 2019 Slot 2 • Arithmetic > Profit & Loss • Easy",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> A shopkeeper sells two tables, each procured at cost price p, to Amal and Asim at a profit of 20% and at a loss of 20%, respectively. Amal sells his table to Bimal at a profit of 30%, while Asim sells his table to Barun at a loss of 30%. If the amounts paid by Bimal and Barun are x and y, respectively, then (x − y)/p equals</p>",
+    "options": [
+      "<p>0.7</p>",
+      "<p>1</p>",
+      "<p>0.50</p>",
+      "<p>1.2</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Shopkeeper sells the first table to Amal for <span class='math'>1.2p</span>.</li><li>Amal sells it to Bimal at 30% profit, so <span class='math'>x = 1.2p × 1.3 = 1.56p</span>.</li><li>Shopkeeper sells the second table to Asim for <span class='math'>0.8p</span>.</li><li>Asim sells it to Barun at 30% loss, so <span class='math'>y = 0.8p × 0.7 = 0.56p</span>.</li><li>Thus, <span class='math'>(x - y)/p = (1.56p - 0.56p)/p = 1</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 300011,
+    "source": "CAT 2020 Slot 1 • Arithmetic > Profit & Loss • Easy",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> A person spent Rs 50000 to purchase a desktop computer and a laptop computer. He sold the desktop at 20% profit and the laptop at 10% loss. If overall he made a 2% profit then the purchase price, in rupees, of the desktop is</p>",
+    "typedAnswer": "20000",
+    "acceptedAnswers": [
+      "20,000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of the desktop be <span class='math'>D</span>. Then the laptop cost is <span class='math'>50000 - D</span>.</li><li>Overall profit is 2%, so total selling price = <span class='math'>50000 × 1.02 = 51000</span>.</li><li>Selling price of the desktop = <span class='math'>1.2D</span>.</li><li>Selling price of the laptop = <span class='math'>0.9(50000 - D)</span>.</li><li>Therefore, <span class='math'>1.2D + 0.9(50000 - D) = 51000</span>.</li><li>This gives <span class='math'>0.3D = 6000</span>.</li><li>Hence, <span class='math'>D = 20000</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 300012,
+    "source": "CAT 2020 Slot 2 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> Anil buys 12 toys and labels each with the same selling price. He sells 8 toys initially at 20% discount on the labeled price. Then he sells the remaining 4 toys at an additional 25% discount on the discounted price. Thus, he gets a total of Rs 2112, and makes a 10% profit. With no discounts, his percentage of profit would have been</p>",
+    "options": [
+      "<p>60</p>",
+      "<p>54</p>",
+      "<p>55</p>",
+      "<p>50</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "50",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the labeled price of each toy be <span class='math'>L</span>.</li><li>For 8 toys, selling price per toy = <span class='math'>0.8L</span>. So revenue = <span class='math'>8 × 0.8L = 6.4L</span>.</li><li>For the remaining 4 toys, there is an additional 25% discount on the discounted price. So selling price per toy = <span class='math'>0.8L × 0.75 = 0.6L</span>. Revenue = <span class='math'>4 × 0.6L = 2.4L</span>.</li><li>Total revenue = <span class='math'>8.8L = 2112</span>, so <span class='math'>L = 240</span>.</li><li>Actual total selling price = <span class='math'>2112</span>, and this is a 10% profit. Hence total cost = <span class='math'>2112/1.1 = 1920</span>.</li><li>Without discounts, total revenue = <span class='math'>12 × 240 = 2880</span>.</li><li>Required profit percentage = <span class='math'>(2880 - 1920)/1920 × 100 = 50%</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 300013,
+    "source": "CAT 2020 Slot 3 • Arithmetic > Profit & Loss • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> A man buys 35 kg of sugar and sets a marked price in order to make a 20% profit. He sells 5 kg at this price, and 15 kg at a 10% discount. Accidentally, 3 kg of sugar is wasted. He sells the remaining sugar by raising the marked price by p percent so as to make an overall profit of 15%. Then p is nearest to</p>",
+    "options": [
+      "<p>25</p>",
+      "<p>22</p>",
+      "<p>31</p>",
+      "<p>35</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of sugar be <span class='math'>c</span> per kg.</li><li>Marked price is set for a 20% profit, so marked price = <span class='math'>1.2c</span> per kg.</li><li>Revenue from 5 kg sold at marked price = <span class='math'>5 × 1.2c = 6c</span>.</li><li>Revenue from 15 kg sold at 10% discount = <span class='math'>15 × 1.2c × 0.9 = 16.2c</span>.</li><li>After selling 20 kg and wasting 3 kg, remaining sugar = <span class='math'>12</span> kg.</li><li>If the marked price is raised by <span class='math'>p%</span>, then the new selling price is <span class='math'>1.2c(1 + p/100)</span> per kg.</li><li>Total revenue required for an overall 15% profit = <span class='math'>35c × 1.15 = 40.25c</span>.</li><li>So, <span class='math'>6c + 16.2c + 12 × 1.2c(1 + p/100) = 40.25c</span>.</li><li>Solving gives <span class='math'>p \u0007pprox 25.35</span>, so the nearest answer is <span class='math'>25</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 300014,
+    "source": "CAT 2021 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> Amal purchases some pens at ₹ 8 each. To sell these, he hires an employee at a fixed wage. He sells 100 of these pens at ₹12 each. If the remaining pens are sold at ₹11 each, then he makes a net profit of ₹ 300, while he makes a net loss of ₹ 300 if the remaining pens are sold at ₹ 9 each. The wage of the employee, in INR, is</p>",
+    "typedAnswer": "1000",
+    "acceptedAnswers": [
+      "1,000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the total number of pens be <span class='math'>n</span> and the employee's wage be <span class='math'>w</span>.</li><li>Total cost = <span class='math'>8n + w</span>.</li><li>If the remaining pens are sold at ₹11 each, total revenue = <span class='math'>100 × 12 + (n - 100) × 11 = 11n + 100</span>.</li><li>Given profit = ₹300, so <span class='math'>11n + 100 - (8n + w) = 300</span>. Hence <span class='math'>w = 3n - 200</span>.</li><li>If the remaining pens are sold at ₹9 each, total revenue = <span class='math'>100 × 12 + (n - 100) × 9 = 9n + 300</span>.</li><li>Given loss = ₹300, so <span class='math'>9n + 300 - (8n + w) = -300</span>. Hence <span class='math'>w = n + 600</span>.</li><li>Equating the two expressions for <span class='math'>w</span>: <span class='math'>3n - 200 = n + 600</span>.</li><li>Thus, <span class='math'>n = 400</span> and <span class='math'>w = 1000</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 300015,
+    "source": "CAT 2021 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Identical chocolate pieces are sold in boxes of two sizes, small and large. The large box is sold for twice the price of the small box. If the selling price per gram of chocolate in the large box is 12% less than that in the small box, then the percentage by which the weight of chocolate in the large box exceeds that in the small box is nearest to</p>",
+    "options": [
+      "<p>127</p>",
+      "<p>124</p>",
+      "<p>144</p>",
+      "<p>135</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "127",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the small box price be <span class='math'>S</span> and its weight be <span class='math'>w</span> grams.</li><li>Then the large box price is <span class='math'>2S</span>.</li><li>Selling price per gram in the small box = <span class='math'>S/w</span>.</li><li>Selling price per gram in the large box is 12% less, so it equals <span class='math'>0.88 × (S/w)</span>.</li><li>If the weight of the large box is <span class='math'>W</span>, then <span class='math'>2S/W = 0.88(S/w)</span>.</li><li>This gives <span class='math'>W/w = 2/0.88 = 25/11</span>.</li><li>Excess percentage = <span class='math'>((25/11)-1) × 100 = (14/11)×100 \u0007pprox 127.27%</span>.</li><li>Nearest answer = <span class='math'>127</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 300016,
+    "source": "CAT 2021 Slot 3 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> One part of a hostel's monthly expenses is fixed, and the other part is proportional to the number of its boarders. The hostel collects 1600 per month from each boarder. When the number of boarders is 50, the profit of the hostel is 200 per boarder, and when the number of boarders is 75, the profit of the hostel is 250 per boarder. When the number of boarders is 80, the total profit of the hostel, in INR, will be</p>",
+    "options": [
+      "<p>20200</p>",
+      "<p>20800</p>",
+      "<p>20500</p>",
+      "<p>20000</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "20500",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the fixed expense be <span class='math'>F</span> and the variable expense per boarder be <span class='math'>v</span>.</li><li>Revenue per boarder = <span class='math'>1600</span>.</li><li>When there are 50 boarders, total revenue = <span class='math'>50 × 1600 = 80000</span>.</li><li>Profit is ₹200 per boarder, so total profit = <span class='math'>50 × 200 = 10000</span>.</li><li>Hence, total expense = <span class='math'>80000 - 10000 = 70000</span>, so <span class='math'>F + 50v = 70000</span>.</li><li>When there are 75 boarders, total revenue = <span class='math'>120000</span> and total profit = <span class='math'>75 × 250 = 18750</span>.</li><li>Thus, total expense = <span class='math'>120000 - 18750 = 101250</span>, so <span class='math'>F + 75v = 101250</span>.</li><li>Subtracting, <span class='math'>25v = 31250</span>, so <span class='math'>v = 1250</span>.</li><li>Then <span class='math'>F = 70000 - 50 × 1250 = 7500</span>.</li><li>For 80 boarders, total expense = <span class='math'>7500 + 80 × 1250 = 107500</span>.</li><li>Total revenue = <span class='math'>80 × 1600 = 128000</span>.</li><li>Profit = <span class='math'>128000 - 107500 = 20500</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 300017,
+    "source": "CAT 2022 Slot 1 • Arithmetic > Profit & Loss • Hard",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> Amal buys 110 kg of syrup and 120 kg of juice, syrup being 20% less costly than juice, per kg. He sells 10 kg of syrup at 10% profit and 20 kg of juice at 20% profit. Mixing the remaining juice and syrup, Amal sells the mixture at Rs. 308.32 per kg and makes an overall profit of 64%. Then, Amal's cost price for syrup, in rupees per kg, is</p>",
+    "typedAnswer": "160",
+    "acceptedAnswers": [
+      "160.0"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price of syrup be <span class='math'>s</span> per kg.</li><li>Syrup is 20% less costly than juice, so juice costs <span class='math'>1.25s</span> per kg.</li><li>Total cost = <span class='math'>110s + 120(1.25s) = 110s + 150s = 260s</span>.</li><li>Revenue from 10 kg syrup sold at 10% profit = <span class='math'>10 × 1.1s = 11s</span>.</li><li>Revenue from 20 kg juice sold at 20% profit = <span class='math'>20 × 1.2 × 1.25s = 30s</span>.</li><li>Remaining mixture = <span class='math'>100 + 100 = 200</span> kg.</li><li>Revenue from the mixture = <span class='math'>200 × 308.32 = 61664</span>.</li><li>Total revenue = <span class='math'>41s + 61664</span>.</li><li>Overall profit is 64%, so total revenue = <span class='math'>1.64 × 260s = 426.4s</span>.</li><li>Therefore, <span class='math'>41s + 61664 = 426.4s</span>.</li><li>Solving gives <span class='math'>s = 160</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 300018,
+    "source": "CAT 2022 Slot 1 • Arithmetic > Profit & Loss • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> Ankita buys 4 kg cashews, 14 kg peanuts and 6 kg almonds when the cost of 7 kg cashews is the same as that of 30 kg peanuts or 9 kg almonds. She mixes all the three nuts and marks a price for the mixture in order to make a profit of Rs.1752. She sells 4 kg of the mixture at this marked price and the remaining at a 20% discount on the marked price, thus making a total profit of Rs. 744. Then the amount, in rupees, that she had spent in buying almonds is</p>",
+    "options": [
+      "<p>1176</p>",
+      "<p>1680</p>",
+      "<p>2520</p>",
+      "<p>1440</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1680",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the common value of 7 kg cashews, 30 kg peanuts and 9 kg almonds be <span class='math'>k</span>.</li><li>Then cost per kg: cashews = <span class='math'>k/7</span>, peanuts = <span class='math'>k/30</span>, almonds = <span class='math'>k/9</span>.</li><li>Total cost = <span class='math'>4(k/7) + 14(k/30) + 6(k/9)</span>.</li><li>Total quantity = <span class='math'>24</span> kg.</li><li>If the whole mixture were sold at marked price, profit would be Rs <span class='math'>1752</span>. So total marked-price revenue = <span class='math'>CP + 1752</span>.</li><li>She sells 4 kg at marked price and the remaining 20 kg at a 20% discount. Since the price per kg is uniform, actual revenue = <span class='math'>(4 + 0.8 × 20)/24</span> times the marked-price revenue = <span class='math'>(20/24)(CP + 1752) = (5/6)(CP + 1752)</span>.</li><li>Actual profit is Rs <span class='math'>744</span>, so <span class='math'>(5/6)(CP + 1752) - CP = 744</span>.</li><li>Solving gives total cost <span class='math'>= 1712</span>.</li><li>Now, <span class='math'>4(k/7) + 14(k/30) + 6(k/9) = 1712</span>, which gives <span class='math'>k = 2520</span>.</li><li>Amount spent on almonds = <span class='math'>6(k/9) = 1680</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 300019,
+    "source": "CAT 2023 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> Gita sells two objects A and B at the same price such that she makes a profit of 20% on object A and a loss of 10% on object B. If she increases the selling price such that objects A and B are still sold at an equal price and a profit of 10% is made on object B, then the profit made on object A will be nearest to</p>",
+    "options": [
+      "<p>42%</p>",
+      "<p>49%</p>",
+      "<p>47%</p>",
+      "<p>45%</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "47%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the initial common selling price be <span class='math'>S</span>.</li><li>For object A, profit is 20%, so cost price of A = <span class='math'>S/1.2 = 5S/6</span>.</li><li>For object B, loss is 10%, so cost price of B = <span class='math'>S/0.9 = 10S/9</span>.</li><li>Now the new common selling price gives a 10% profit on B. So new selling price = <span class='math'>1.1 × 10S/9 = 11S/9</span>.</li><li>Profit on A = <span class='math'>(11S/9 - 5S/6)/(5S/6)</span>.</li><li>Simplifying, profit on A = <span class='math'>7/15 = 46.67%</span>.</li><li>Nearest answer = <span class='math'>47%</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 300020,
+    "source": "CAT 2023 Slot 2 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> Minu purchases a pair of sunglasses at Rs. 1000 and sells to Kanu at 20% profit. Then, Kanu sells it back to Minu at 20% loss. Finally, Minu sells the same pair of sunglasses to Tanu. If the total profit made by Minu from all her transactions is Rs. 500, then the percentage of profit made by Minu when she sold the pair of sunglasses to Tanu is</p>",
+    "options": [
+      "<p>31.25%</p>",
+      "<p>26%</p>",
+      "<p>52%</p>",
+      "<p>35.42%</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "31.25%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Minu buys the sunglasses for Rs <span class='math'>1000</span>.</li><li>She first sells them to Kanu at 20% profit, so she gets Rs <span class='math'>1200</span>. Profit in this step = Rs <span class='math'>200</span>.</li><li>Kanu sells them back to Minu at 20% loss, so Minu buys them for Rs <span class='math'>1200 × 0.8 = 960</span>.</li><li>Total profit made by Minu from all her transactions is Rs <span class='math'>500</span>, so profit in the final sale = <span class='math'>500 - 200 = 300</span>.</li><li>Thus, in the final sale, Minu's cost price = Rs <span class='math'>960</span> and profit = Rs <span class='math'>300</span>.</li><li>Required profit percentage = <span class='math'>300/960 × 100 = 31.25%</span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 300021,
+    "source": "CAT 2023 Slot 2 • Arithmetic > Profit & Loss • Hard",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> Jayant bought a certain number of white shirts at the rate of Rs 1000 per piece and a certain number of blue shirts at the rate of Rs 1125 per piece. For each shirt, he then set a fixed market price which was 25% higher than the average cost of all the shirts. He sold all the shirts at a discount of 10% and made a total profit of Rs 51000. If he bought both colors of shirts, then the maximum possible total number of shirts that he could have bought is</p>",
+    "typedAnswer": "407",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of white shirts be <span class='math'>w</span> and blue shirts be <span class='math'>b</span>.</li><li>Total cost = <span class='math'>1000w + 1125b</span>.</li><li>The marked price per shirt is 25% higher than the average cost. After 10% discount, effective selling price per shirt becomes <span class='math'>90% × 125% = 112.5%</span> of the average cost.</li><li>Hence total revenue is <span class='math'>112.5%</span> of total cost, so profit is <span class='math'>12.5%</span> of total cost.</li><li>Given profit = Rs 51000, so total cost = <span class='math'>51000 ÷ 0.125 = 408000</span>.</li><li>Thus, <span class='math'>1000w + 1125b = 408000</span>.</li><li>Dividing by 125 gives <span class='math'>8w + 9b = 3264</span>.</li><li>To maximize <span class='math'>w + b</span>, minimize <span class='math'>b</span>, but both colors must be bought.</li><li>For <span class='math'>w</span> to be an integer, <span class='math'>b</span> must be a positive multiple of 8. Smallest possible <span class='math'>b = 8</span>.</li><li>Then <span class='math'>w = (3264 - 72) ÷ 8 = 399</span>.</li><li>Maximum total shirts = <span class='math'>399 + 8 = 407</span>.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 300022,
+    "source": "CAT 2023 Slot 3 • Arithmetic > Profit & Loss • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> A merchant purchases a cloth at a rate of Rs. 100 per meter and receives 5 cm length of cloth free for every 100 cm length of cloth purchased by him. He sells the same cloth at a rate of Rs. 110 per meter but cheats his customers by giving 95 cm length of cloth for every 100 cm length of cloth purchased by the customers. If the merchant provides a 5% discount, the resulting profit earned by him is</p>",
+    "options": [
+      "<p>15.5</p>",
+      "<p>4.2</p>",
+      "<p>9.7</p>",
+      "<p>16</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "15.5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For every 100 cm paid for, the merchant receives 105 cm.</li><li>So his effective cost for 100 cm actual cloth = <span class='math'>100 × 100/105 = 2000/21</span>.</li><li>He sells at Rs 110 per meter and gives a 5% discount. So the customer pays <span class='math'>110 × 0.95 = 104.5</span> for a stated meter.</li><li>But he gives only 95 cm as 100 cm. Hence, for 100 cm actual cloth, effective selling price = <span class='math'>104.5 × 100/95 = 110</span>.</li><li>Profit percentage = <span class='math'>((110 - 2000/21) ÷ (2000/21)) × 100 = 15.5%</span>.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 300023,
+    "source": "CAT 2024 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> The selling price of a product is fixed to ensure 40% profit. If the product had cost 40% less and had been sold for 5 rupees less, then the resulting profit would have been 50%. The original selling price, in rupees, of the product is</p>",
+    "options": [
+      "<p>10</p>",
+      "<p>15</p>",
+      "<p>20</p>",
+      "<p>14</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "14",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original cost price be <span class='math'>C</span>.</li><li>Original selling price = <span class='math'>1.4C</span>.</li><li>If the product cost 40% less, new cost price = <span class='math'>0.6C</span>.</li><li>The new selling price would be Rs 5 less, i.e. <span class='math'>1.4C - 5</span>.</li><li>This gives 50% profit, so <span class='math'>1.4C - 5 = 1.5 × 0.6C = 0.9C</span>.</li><li>Thus, <span class='math'>0.5C = 5</span>, so <span class='math'>C = 10</span>.</li><li>Original selling price = <span class='math'>1.4 × 10 = 14</span>.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 300024,
+    "source": "CAT 2024 Slot 2 • Arithmetic > Profit & Loss • Hard",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> A fruit seller has a stock of mangoes, bananas and apples with at least one fruit of each type. At the beginning of a day, the number of mangoes make up 40% of his stock. That day, he sells half of the mangoes, 96 bananas and 40% of the apples. At the end of the day, he ends up selling 50% of the fruits. The smallest possible total number of fruits in the stock at the beginning of the day is</p>",
+    "typedAnswer": "340",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the initial total number of fruits be <span class='math'>N</span>.</li><li>Mangoes = <span class='math'>40% of N = 2N/5</span>. Put <span class='math'>N = 5k</span>, so mangoes = <span class='math'>2k</span>.</li><li>Half of the mangoes sold = <span class='math'>k</span>.</li><li>Bananas and apples together = <span class='math'>3k</span>.</li><li>Let apples = <span class='math'>5a</span>, so 40% of apples is an integer. Then 40% of apples sold = <span class='math'>2a</span>.</li><li>Total fruits sold = <span class='math'>k + 96 + 2a</span>.</li><li>Since 50% of all fruits were sold, <span class='math'>k + 96 + 2a = 5k/2</span>.</li><li>This gives <span class='math'>3k = 192 + 4a</span>.</li><li>For <span class='math'>k</span> to be an integer, <span class='math'>a</span> must be a multiple of 3. The smallest positive value is <span class='math'>a = 3</span>.</li><li>Then <span class='math'>k = (192 + 12) ÷ 3 = 68</span>.</li><li>So, <span class='math'>N = 5k = 340</span>.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 300025,
+    "source": "CAT 2024 Slot 2 • Arithmetic > Profit & Loss • Medium",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q25.</strong> Bina incurs 19% loss when she sells a product at Rs. 4860 to Shyam, who in turn sells this product to Hari. If Bina would have sold this product to Shyam at the purchase price of Hari, she would have obtained 17% profit. Then, the profit, in rupees, made by Shyam is</p>",
+    "typedAnswer": "2160",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Bina sells the product at Rs 4860 and incurs a 19% loss.</li><li>Therefore Rs 4860 is 81% of Bina's cost price.</li><li>Bina's cost price = <span class='math'>4860 ÷ 0.81 = 6000</span>.</li><li>If Bina had sold the product at Hari's purchase price, she would have made 17% profit.</li><li>Hence Hari's purchase price = <span class='math'>117% of 6000 = 7020</span>.</li><li>This is Shyam's selling price. Shyam's cost price = Rs 4860.</li><li>Shyam's profit = <span class='math'>7020 - 4860 = 2160</span>.</li></ol>"
+  },
+  {
+    "no": 26,
+    "itemId": 300026,
+    "source": "CAT 2024 Slot 3 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q26.</strong> Gopi marks a price on a product in order to make 20% profit. Ravi gets 10% discount on that marked price, and thus saves Rs 15. Then, the profit, in rupees, made by Gopi by selling the product to Ravi, is</p>",
+    "options": [
+      "<p>10</p>",
+      "<p>20</p>",
+      "<p>15</p>",
+      "<p>25</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "10",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost price be <span class='math'>C</span>.</li><li>Marked price is set for 20% profit, so marked price = <span class='math'>1.2C</span>.</li><li>Ravi's 10% discount on the marked price is Rs 15. So marked price = <span class='math'>15 ÷ 0.10 = 150</span>.</li><li>Thus, <span class='math'>1.2C = 150</span>, so <span class='math'>C = 125</span>.</li><li>Selling price after discount = <span class='math'>150 - 15 = 135</span>.</li><li>Profit = <span class='math'>135 - 125 = 10</span>.</li></ol>"
+  },
+  {
+    "no": 27,
+    "itemId": 300027,
+    "source": "CAT 2025 Slot 1 • Arithmetic > Profit & Loss • Medium",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q27.</strong> A shopkeeper offers a discount of 22% on the marked price of each chair, and gives 13 chairs to a customer for the discounted price of 12 chairs to earn a profit of 26% on the transaction. If the cost price of each chair is Rs 100, then the marked price, in rupees, of each chair is</p>",
+    "typedAnswer": "175",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the marked price of each chair be <span class='math'>M</span>.</li><li>After 22% discount, discounted price per chair = <span class='math'>78% of M = 0.78M</span>.</li><li>The customer gets 13 chairs for the discounted price of 12 chairs.</li><li>Total revenue for 13 chairs = <span class='math'>12 × 0.78M = 9.36M</span>.</li><li>Cost price of 13 chairs = <span class='math'>13 × 100 = 1300</span>.</li><li>Since profit is 26%, required revenue = <span class='math'>126% of 1300 = 1638</span>.</li><li>So, <span class='math'>9.36M = 1638</span>, giving <span class='math'>M = 175</span>.</li></ol>"
+  },
+  {
+    "no": 28,
+    "itemId": 300028,
+    "source": "CAT 2025 Slot 2 • Arithmetic > Profit & Loss • Hard",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q28.</strong> An item with a cost price of Rs. 1650 is sold at a certain discount on a fixed marked price to earn a profit of 20% on the cost price. If the discount was doubled, the profit would have been Rs. 110. The rate of discount, in percentage, at which the profit percentage would be equal to the rate of discount, is nearest to</p>",
+    "options": [
+      "<p>16</p>",
+      "<p>18</p>",
+      "<p>14</p>",
+      "<p>12</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "14",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Cost price = Rs <span class='math'>1650</span>.</li><li>At the original discount, profit is 20%, so selling price = <span class='math'>1650 × 1.20 = 1980</span>.</li><li>If the discount is doubled, profit is Rs 110, so selling price = <span class='math'>1650 + 110 = 1760</span>.</li><li>Let the marked price be <span class='math'>M</span> and original discount amount be <span class='math'>dM</span>.</li><li>Then <span class='math'>M - dM = 1980</span> and <span class='math'>M - 2dM = 1760</span>.</li><li>Subtracting, <span class='math'>dM = 220</span>. Hence <span class='math'>M = 2200</span>.</li><li>Now let the required discount rate be <span class='math'>r%</span>. Selling price = <span class='math'>2200(1 - r/100)</span>.</li><li>Profit percentage equals discount percentage, so <span class='math'>[2200(1 - r/100) - 1650] ÷ 1650 × 100 = r</span>.</li><li>Solving gives <span class='math'>r ≈ 14.29</span>.</li><li>Nearest option = <span class='math'>14</span>.</li></ol>"
+  },
+  {
+    "no": 29,
+    "itemId": 300029,
+    "source": "CAT 2025 Slot 3 • Arithmetic > Profit & Loss • Medium",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q29.</strong> The monthly sales of a product from January to April were 120, 135, 150 and 165 units, respectively. The cost price of the product was Rs. 240 per unit, and a fixed marked price was used for the product in all the four months. Discounts of 20%, 10% and 5% were given on the marked price per unit in January, February and March, respectively, while no discounts were given in April. If the total profit from January to April was Rs. 138825, then the marked price per unit, in rupees, was</p>",
+    "options": [
+      "<p>515</p>",
+      "<p>510</p>",
+      "<p>520</p>",
+      "<p>525</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "525",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the fixed marked price be <span class='math'>M</span>.</li><li>Revenue from January = <span class='math'>120 × 80% of M = 96M</span>.</li><li>Revenue from February = <span class='math'>135 × 90% of M = 121.5M</span>.</li><li>Revenue from March = <span class='math'>150 × 95% of M = 142.5M</span>.</li><li>Revenue from April = <span class='math'>165M</span>.</li><li>Total revenue = <span class='math'>96M + 121.5M + 142.5M + 165M = 525M</span>.</li><li>Total units sold = <span class='math'>570</span>, so total cost = <span class='math'>570 × 240 = 136800</span>.</li><li>Total profit = Rs <span class='math'>138825</span>, so total revenue = <span class='math'>136800 + 138825 = 275625</span>.</li><li>Hence <span class='math'>525M = 275625</span>, giving <span class='math'>M = 525</span>.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
