@@ -1306,5 +1306,19 @@
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "Profit_Loss_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/3.Profit & Loss/Profit_Loss_CAT_PYQ_2017-2025.html",
+    "original": "Profit_Loss_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60,
+    "questions": 29
   }
 ]
