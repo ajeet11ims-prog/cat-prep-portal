@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Average CAT ( 2017 -2025 )</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Average CAT ( 2017 -2025 ) | Same CAT PYQ layout | Question, options and year/slot only -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Average CAT ( 2017 -2025 )</h1><div class="meta">28 Questions | 60 Minutes | 18 MCQ + 10 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 330001,
+    "source": "CAT 2017 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> A class consists of 20 boys and 30 girls. In the mid-semester examination, the average score of the girls was 5 higher than that of the boys. In the final exam, however, the average score of the girls dropped by 3 while the average score of the entire class increased by 2. The increase in the average score of the boys is</p>",
+    "options": [
+      "<p>9.5</p>",
+      "<p>10</p>",
+      "<p>4.5</p>",
+      "<p>6</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "9.5",
+    "acceptedAnswers": [
+      "9.5"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 2,
+    "itemId": 330002,
+    "source": "CAT 2017 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> The average height of 22 toddlers increases by 2 inches when two of them leave this group. If the average height of these two toddlers is one-third the average height of the original 22, then the average height, in inches, of the remaining 20 toddlers is</p>",
+    "options": [
+      "<p>30</p>",
+      "<p>28</p>",
+      "<p>32</p>",
+      "<p>26</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "32",
+    "acceptedAnswers": [
+      "32"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 3,
+    "itemId": 330003,
+    "source": "CAT 2018 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> In an apartment complex, the number of people aged 51 years and above is 30 and there are at most 39 people whose ages are below 51 years. The average age of all the people in the apartment complex is 38 years. What is the largest possible average age, in years, of the people whose ages are below 51 years?</p>",
+    "options": [
+      "<p>26</p>",
+      "<p>27</p>",
+      "<p>28</p>",
+      "<p>25</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "28",
+    "acceptedAnswers": [
+      "28"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 4,
+    "itemId": 330004,
+    "source": "CAT 2018 Slot 1",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> A CAT aspirant appears for a certain number of tests. His average score increases by 1 if the first 10 tests are not considered, and decreases by 1 if the last 10 tests are not considered. If his average scores for the first 10 and the last 10 tests are 20 and 30, respectively, then the total number of tests taken by him is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "60",
+    "acceptedAnswers": [
+      "60"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 5,
+    "itemId": 330005,
+    "source": "CAT 2018 Slot 2",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> The arithmetic mean of <span class=\"math\">x, y</span> and <span class=\"math\">z</span> is 80, and that of <span class=\"math\">x, y, z, u</span> and <span class=\"math\">v</span> is 75, where <span class=\"math\">u = (x + y)/2</span> and <span class=\"math\">v = (y + z)/2</span>. If <span class=\"math\">x ≥ z</span>, then the minimum possible value of <span class=\"math\">x</span> is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "105",
+    "acceptedAnswers": [
+      "105"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 6,
+    "itemId": 330006,
+    "source": "CAT 2019 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> Ramesh and Gautam are among 22 students who write an examination. Ramesh scores 82.5. The average score of the 21 students other than Gautam is 62. The average score of all the 22 students is one more than the average score of the 21 students other than Ramesh. The score of Gautam is</p>",
+    "options": [
+      "<p>48</p>",
+      "<p>49</p>",
+      "<p>53</p>",
+      "<p>51</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "51",
+    "acceptedAnswers": [
+      "51"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 7,
+    "itemId": 330007,
+    "source": "CAT 2019 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> The average of 30 integers is 5. Among these 30 integers, there are exactly 20 which do not exceed 5. What is the highest possible value of the average of these 20 integers?</p>",
+    "options": [
+      "<p>5</p>",
+      "<p>3.5</p>",
+      "<p>4.5</p>",
+      "<p>4</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4.5",
+    "acceptedAnswers": [
+      "4.5"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 8,
+    "itemId": 330008,
+    "source": "CAT 2020 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> The mean of all 4-digit even natural numbers of the form '<span class='math'>aabb</span>', where <span class='math'>a &gt; 0</span>, is</p>",
+    "options": [
+      "<p>5050</p>",
+      "<p>4864</p>",
+      "<p>5544</p>",
+      "<p>4466</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "5544",
+    "acceptedAnswers": [
+      "5544"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 9,
+    "itemId": 330009,
+    "source": "CAT 2020 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> In a group of 10 students, the mean of the lowest 9 scores is 42 while the mean of the highest 9 scores is 47. For the entire group of 10 students, the maximum possible mean exceeds the minimum possible mean by</p>",
+    "options": [
+      "<p>3</p>",
+      "<p>5</p>",
+      "<p>4</p>",
+      "<p>6</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4",
+    "acceptedAnswers": [
+      "4"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 10,
+    "itemId": 330010,
+    "source": "CAT 2020 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> A batsman played <span class=\"math\">n + 2</span> innings and got out on all occasions. His average score in these <span class=\"math\">n + 2</span> innings was 29 runs and he scored 38 and 15 runs in the last two innings. The batsman scored less than 38 runs in each of the first <span class=\"math\">n</span> innings. In these <span class=\"math\">n</span> innings, his average score was 30 runs and lowest score was <span class=\"math\">x</span> runs. The smallest possible value of <span class=\"math\">x</span> is</p>",
+    "options": [
+      "<p>1</p>",
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2",
+    "acceptedAnswers": [
+      "2"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 11,
+    "itemId": 330011,
+    "source": "CAT 2020 Slot 3",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> Dick is thrice as old as Tom and Harry is twice as old as Dick. If Dick's age is 1 year less than the average age of all three, then Harry's age, in years, is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "18",
+    "acceptedAnswers": [
+      "18"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 12,
+    "itemId": 330012,
+    "source": "CAT 2021 Slot 1",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> Suppose hospital <span class=\"math\">A</span> admitted 21 less Covid infected patients than hospital <span class=\"math\">B</span>, and all eventually recovered. The sum of recovery days for patients in hospitals <span class=\"math\">A</span> and <span class=\"math\">B</span> were 200 and 152, respectively. If the average recovery days for patients admitted in hospital <span class=\"math\">A</span> was 3 more than the average in hospital <span class=\"math\">B</span> then the number admitted in hospital <span class=\"math\">A</span> was</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "35",
+    "acceptedAnswers": [
+      "35"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 13,
+    "itemId": 330013,
+    "source": "CAT 2021 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> Onion is sold for 5 consecutive months at the rate of Rs 10, 20, 25, 25, and 50 per kg, respectively. A family spends a fixed amount of money on onion for each of the first three months, and then spends half that amount on onion for each of the next two months. The average expense for onion, in rupees per kg, for the family over these 5 months is closest to</p>",
+    "options": [
+      "<p>26</p>",
+      "<p>16</p>",
+      "<p>18</p>",
+      "<p>20</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "18",
+    "acceptedAnswers": [
+      "18"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 14,
+    "itemId": 330014,
+    "source": "CAT 2021 Slot 2",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> In a football tournament, a player has played a certain number of matches and 10 more matches are to be played. If he scores a total of one goal over the next 10 matches, his overall average will be 0.15 goals per match. On the other hand, if he scores a total of two goals over the next 10 matches, his overall average will be 0.2 goals per match. The number of matches he has played is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [
+      "10"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 15,
+    "itemId": 330015,
+    "source": "CAT 2021 Slot 3",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> The arithmetic mean of scores of 25 students in an examination is 50. Five of these students top the examination with the same score. If the scores of the other students are distinct integers with the lowest being 30, then the maximum possible score of the toppers is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "92",
+    "acceptedAnswers": [
+      "92"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 16,
+    "itemId": 330016,
+    "source": "CAT 2022 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> The average of three integers is 13. When a natural number <span class=\"math\">n</span> is included, the average of these four integers remains an odd integer. The minimum possible value of <span class=\"math\">n</span> is</p>",
+    "options": [
+      "<p>3</p>",
+      "<p>5</p>",
+      "<p>4</p>",
+      "<p>1</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "5",
+    "acceptedAnswers": [
+      "5"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 17,
+    "itemId": 330017,
+    "source": "CAT 2022 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> The average weight of students in a class increases by 600 gm when some new students join the class. If the average weight of the new students is 3 kg more than the average weight of the original students, then the ratio of the number of original students to the number of new students is</p>",
+    "options": [
+      "<p>1 : 4</p>",
+      "<p>1 : 2</p>",
+      "<p>4 : 1</p>",
+      "<p>3 : 1</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4 : 1",
+    "acceptedAnswers": [
+      "4 : 1"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 18,
+    "itemId": 330018,
+    "source": "CAT 2022 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> Manu earns Rs. 4000 per month and wants to save an average of Rs. 550 per month in a year. In the first nine months, his monthly expense was Rs. 3500, and he foresees that, tenth month onward, his monthly expense will increase to Rs. 3700. In order to meet his yearly savings target, his monthly earnings, in rupees, from the tenth month onward should be</p>",
+    "options": [
+      "<p>4350</p>",
+      "<p>4200</p>",
+      "<p>4300</p>",
+      "<p>4400</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "4400",
+    "acceptedAnswers": [
+      "4400"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 19,
+    "itemId": 330019,
+    "source": "CAT 2022 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> Five students, including Amit, appear for an examination in which possible marks are integers between 0 and 50, both inclusive. The average marks for all the students is 38 and exactly three students got more than 32. If no two students got the same marks and Amit got the least marks among the five students, then the difference between the highest and lowest possible marks of Amit is</p>",
+    "options": [
+      "<p>21</p>",
+      "<p>20</p>",
+      "<p>24</p>",
+      "<p>22</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "20",
+    "acceptedAnswers": [
+      "20"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 20,
+    "itemId": 330020,
+    "source": "CAT 2022 Slot 3",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> In an examination, the average marks of students in sections <span class=\"math\">A</span> and <span class=\"math\">B</span> are 32 and 60, respectively. The number of students in section <span class=\"math\">A</span> is 10 less than that in section <span class=\"math\">B</span>. If the average marks of all the students across both the sections combined is an integer, then the difference between the maximum and minimum possible number of students in section <span class=\"math\">A</span> is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "133",
+    "acceptedAnswers": [
+      "133"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 21,
+    "itemId": 330021,
+    "source": "CAT 2022 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> Consider six distinct natural numbers such that the average of the two smallest numbers is 14, and the average of the two largest numbers is 28. Then, the maximum possible value of the average of these six numbers is</p>",
+    "options": [
+      "<p>22.5</p>",
+      "<p>24</p>",
+      "<p>23</p>",
+      "<p>23.5</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "22.5",
+    "acceptedAnswers": [
+      "22.5"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 22,
+    "itemId": 330022,
+    "source": "CAT 2023 Slot 1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> In an examination, the average marks of 4 girls and 6 boys is 24. Each of the girls has the same marks while each of the boys has the same marks. If the marks of any girl is at most double the marks of any boy, but not less than the marks of any boy, then the number of possible distinct integer values of the total marks of 2 girls and 6 boys is</p>",
+    "options": [
+      "<p>19</p>",
+      "<p>21</p>",
+      "<p>22</p>",
+      "<p>20</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "21",
+    "acceptedAnswers": [
+      "21"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 23,
+    "itemId": 330023,
+    "source": "CAT 2023 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> There are three persons <span class=\"math\">A, B</span> and <span class=\"math\">C</span> in a room. If a person <span class=\"math\">D</span> joins the room, the average weight of the persons in the room reduces by <span class=\"math\">x</span> kg. Instead of <span class=\"math\">D</span>, if person <span class=\"math\">E</span> joins the room, the average weight of the persons in the room increases by <span class=\"math\">2x</span> kg. If the weight of <span class=\"math\">E</span> is 12 kg more than that of <span class=\"math\">D</span>, then the value of <span class=\"math\">x</span> is</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>1</p>",
+      "<p>0.5</p>",
+      "<p>1.5</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1",
+    "acceptedAnswers": [
+      "1"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 24,
+    "itemId": 330024,
+    "source": "CAT 2024 Slot 1",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> There are four numbers such that average of first two numbers is 1 more than the first number, average of first three numbers is 2 more than average of first two numbers, and average of first four numbers is 3 more than average of first three numbers. Then, the difference between the largest and the smallest numbers, is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "15",
+    "acceptedAnswers": [
+      "15"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 25,
+    "itemId": 330025,
+    "source": "CAT 2024 Slot 2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q25.</strong> A company has 40 employees whose names are listed in a certain order. In the year 2022, the average bonus of the first 30 employees was Rs. 40000, of the last 30 employees was Rs. 60000, and of the first 10 and last 10 employees together was Rs. 50000. Next year, the average bonus of the first 10 employees increased by 100%, of the last 10 employees increased by 200% and of the remaining employees was unchanged. Then, the average bonus, in rupees, of all the 40 employees together in the year 2023 was</p>",
+    "options": [
+      "<p>90000</p>",
+      "<p>80000</p>",
+      "<p>95000</p>",
+      "<p>85000</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "95000",
+    "acceptedAnswers": [
+      "95000"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 26,
+    "itemId": 330026,
+    "source": "CAT 2024 Slot 3",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q26.</strong> The average of three distinct real numbers is 28. If the smallest number is increased by 7 and the largest number is reduced by 10, the order of the numbers remains unchanged, and the new arithmetic mean becomes 2 more than the middle number, while the difference between the largest and the smallest numbers becomes 64. Then, the largest number in the original set of three numbers is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "70",
+    "acceptedAnswers": [
+      "70"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 27,
+    "itemId": 330027,
+    "source": "2025: 2025 Slot 2",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q27.</strong> The average number of copies of a book sold per day by a shopkeeper is 60 in the initial seven days and 63 in the initial eight days, after the book launch. On the ninth day, she sells 11 copies less than the eighth day, and the average number of copies sold per day from second day to ninth day becomes 66. The number of copies sold on the first day of the book launch is</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "49",
+    "acceptedAnswers": [
+      "49"
+    ],
+    "solution": ""
+  },
+  {
+    "no": 28,
+    "itemId": 330028,
+    "source": "2025: 2025 Slot 3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p><strong>Q28.</strong> The average salary of 5 managers and 25 engineers in a company is 60000 rupees. If each of the managers received 20% salary increase while the salary of the engineers remained unchanged, the average salary of all 30 employees would have increased by 5%. The average salary, in rupees, of the engineers is</p>",
+    "options": [
+      "<p>54000</p>",
+      "<p>50000</p>",
+      "<p>40000</p>",
+      "<p>45000</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "54000",
+    "acceptedAnswers": [
+      "54000"
+    ],
+    "solution": ""
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
