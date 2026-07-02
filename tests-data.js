@@ -1458,6 +1458,18 @@ window.CAT_TESTS = [
       "Arithmetic"
     ],
     "minutes": 60
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-10",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ];
 
