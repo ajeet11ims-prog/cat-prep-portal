@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic Part -I ( Without TSD & TW )-3</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;color:#627282;font-size:15px;font-weight:800;margin-top:4px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.text-question{font-weight:600;line-height:1.5;max-width:1120px}.text-question p{margin:0 0 11px}.pending-solution{font-size:17px;line-height:1.55}.pending-solution strong{color:#8a5a00}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  
+    .stepwise-solution{font-size:18px;line-height:1.65;background:#fbfdff;border-left:4px solid var(--brand);padding:12px 16px;margin-top:10px}
+    .stepwise-solution .solution-steps{margin:8px 0 0 22px;padding:0}.stepwise-solution li{margin:8px 0}.math-line{font-family:"Cambria Math","STIX Two Math","Times New Roman",Arial,sans-serif;font-weight:600}.solution-warning{margin:0 0 8px;color:#9a5a00;font-weight:700}.option-repair-note{margin:10px 0 0;color:#7a5200;font-weight:700}.review-title{margin:22px 0 10px;font-size:24px;color:#24313a}.full-review{display:grid;gap:16px;margin-top:16px}.review-card{border:1px solid #b8c3cc;background:#fff;border-radius:4px;padding:16px}.review-card h3{margin:0 0 10px;color:#0b75bb}.review-question{font-size:17px;font-weight:700}.review-options{display:grid;gap:6px;margin:10px 0;padding-left:0;list-style:none}.review-options li{padding:7px 10px;border:1px solid #d7dde5;border-radius:3px}.review-options li.correct-choice{border-color:#60b947;background:#f0fff0;font-weight:800}.review-options li.user-wrong{border-color:#e55b25;background:#fff5f0}.review-meta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.review-pill{border:1px solid #c8d2dc;background:#f7fafc;padding:6px 9px;border-radius:999px;font-weight:700}.review-pill.ok{color:#157347}.review-pill.bad{color:#b02a37}.review-pill.muted{color:#5f6f7a}.review-solution{margin-top:8px}.review-solution h4{margin:0 0 6px;color:#24313a;font-size:18px}
+    
+  </style>
+  <!-- Generated: Arithmetic Part -I ( Without TSD & TW )-3 | Text OCR with structured options from Airthmetic 1 (without TSD).pdf -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Arithmetic Part -I ( Without TSD & TW )-3</h1><div class="meta">25 Questions | 60 Minutes | Text-only layout | Structured generated options | Corrected options | Step-by-step solutions after submit</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+    {
+        "no": 1,
+        "itemId": "ARITH-I-3-01",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 1",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Pipe X pours a mixture of acid and water, and pipe Y pours pure water into a bucket. After 1 hour,</p><p>the bucket got filled and the concentration of acid in the bucket was noted to be 8%. If pipe Y was</p><p>closed after 30 minutes and pipe X continued to pour the mixture, concentration of acid in the</p><p>bucket after 1 hour would have been 10%. What is the ratio of acid to water in the mixture coming</p><p>out of pipe X?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let pipe X rate=x, pipe Y rate=y and acid fraction in X=c.</span></li><li><span class=\"math-line\">Normal: cx/(x+y)=8%.</span></li><li><span class=\"math-line\">If Y runs only half hour: cx/(x+0.5y)=10%.</span></li><li><span class=\"math-line\">Dividing gives x:y=3:2, and c×3/5=8%, so c=2/15.</span></li><li><span class=\"math-line\">Acid:water=2:13.</span></li></ol></div>",
+        "options": [
+            "13:2",
+            "2:15",
+            "3:20",
+            "2:13"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 2,
+        "itemId": "ARITH-I-3-02",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 2",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Ram and Laxman are two brothers. Ram purchased a mobile handset from the market and sold it at</p><p>a profit of 10%. Laxman purchased the same handset at 10% lower price and sold it for 60 rupees</p><p>more than Ram did, thereby making 100 rupees more profit than Ram made. What was the ratio of</p><p>selling prices of Ram and Laxman?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let Ram CP=C.</span></li><li><span class=\"math-line\">Ram SP=1.1C.</span></li><li><span class=\"math-line\">Laxman CP=0.9C and SP=1.1C+60.</span></li><li><span class=\"math-line\">His profit is 100 more: (1.1C+60-0.9C)=0.1C+100.</span></li><li><span class=\"math-line\">This gives C=400, so SPs are 440 and 500, ratio 22:25.</span></li></ol></div>",
+        "options": [
+            "22:25",
+            "1 : 1",
+            "2 : 3",
+            "3 : 2"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 3,
+        "itemId": "ARITH-I-3-03",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 3",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Two friends, Mohan and Rohan, start a business by investing Rs. 150,000 and Rs. 200,000</p><p>respectively. After 6 months, Rohan withdrew some amount of his investment. At the same time, a</p><p>third friend, Gaurav, joined the business by investing the same amount which Rohan had</p><p>withdrawn. At the end of the year, Rohan and Gaurav distributed their profits in the ratio 5 : 3. Ifthe</p><p>total profit for the year was Rs. 1.54 lakhs, what was the share of Mohan in the profit (in Rs)?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let Rohan withdraw W after 6 months.</span></li><li><span class=\"math-line\">Rohan capital-time =200000×6+(200000-W)×6; Gaurav=6W.</span></li><li><span class=\"math-line\">Given Rohan:Gaurav=5:3 gives W=150000.</span></li><li><span class=\"math-line\">Capital-time ratio Mohan:Rohan:Gaurav =1800000:1500000:900000=6:5:3.</span></li><li><span class=\"math-line\">Mohan share=6/14 of 154000=66000.</span></li></ol></div>",
+        "options": [
+            "66,000",
+            "84,000",
+            "96,000",
+            "72,000"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 4,
+        "itemId": "ARITH-I-3-04",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 4",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>In a group of teachers, doctors and lawyers, the sum of all their ages is 2160 years and their average</p><p>age is 36 years. If each teacher, each doctor and each lawyer had been older by 1 year, 6 years and 7</p><p>years respectively, then the average age of the entire group would have increased by 5 years. If the</p><p>number of doctors is more than 20, then the number of lawyers cannot be greater than:</p><p>20</p><p>21</p><p>22</p><p>23</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Total people=2160/36=60.</span></li><li><span class=\"math-line\">Let teachers, doctors, lawyers be T,D,L.</span></li><li><span class=\"math-line\">Extra age total is 300, so T+6D+7L=300 and T+D+L=60, giving 5D+6L=240.</span></li><li><span class=\"math-line\">With D&gt;20, maximum possible L is 20.</span></li></ol></div>",
+        "typedAnswer": "20",
+        "acceptedAnswers": [
+            "20"
+        ],
+        "correctAnswerText": "20"
+    },
+    {
+        "no": 5,
+        "itemId": "ARITH-I-3-05",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 5",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>A mixture contains liquids A and B in the ratio 2:3. The ratio of rates at which liquids A and B</p><p>evaporate is 1:2. 50 litres mixture is kept in open. What is the quantity (in litres) of liquid A left in</p><p>the mixture when the quantity of liquid B left is 18 litres?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Initial A=20 L and B=30 L.</span></li><li><span class=\"math-line\">When B left is 18 L, B evaporated 12 L.</span></li><li><span class=\"math-line\">Evaporation rates A:B=1:2, so A evaporated 6 L and A left=14 L.</span></li></ol></div>",
+        "typedAnswer": "14",
+        "acceptedAnswers": [
+            "14"
+        ],
+        "correctAnswerText": "14"
+    },
+    {
+        "no": 6,
+        "itemId": "ARITH-I-3-06",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 6",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>S represents the sum of 8 consecutive natural numbers. M is the largest among the numbers. If the</p><p>ratio of S and M is a natural number, what is the minimum value of the ratio of S to M?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let the numbers be n to n+7.</span></li><li><span class=\"math-line\">S=8n+28 and M=n+7.</span></li><li><span class=\"math-line\">S/M = 8 - 28/(n+7).</span></li><li><span class=\"math-line\">For a natural number, n+7 must divide 28.</span></li><li><span class=\"math-line\">The minimum possible ratio is 6.</span></li></ol></div>",
+        "typedAnswer": "6",
+        "acceptedAnswers": [
+            "6"
+        ],
+        "correctAnswerText": "6"
+    },
+    {
+        "no": 7,
+        "itemId": "ARITH-I-3-07",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 7",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>According to the Hawking equation, the age of a redwood tree is directly proportional to the sum of</p><p>the square roots of its weight in kg and its height in m. A 10-year old redwood tree had a height of</p><p>16 m. After one year, the height of the tree remained the same while the weight increased by 13 kg.</p><p>If A = age, h = height, w = weight of the tree, then what is the Hawking equation?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">A=k(√w+√h).</span></li><li><span class=\"math-line\">Given 10=k(√w+4) and 11=k(√(w+13)+4), solving gives w=36 and k=1.</span></li><li><span class=\"math-line\">Hence A=√w+√h.</span></li><li><span class=\"math-line\">Options are corrupted.</span></li></ol></div>",
+        "options": [
+            "A = √w + √h",
+            "2 : 3",
+            "3 : 2",
+            "4 : 5"
+        ],
+        "answer": 0,
+        "correctAnswerText": "A = √w + √h",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 8,
+        "itemId": "ARITH-I-3-08",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 8",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Five students with efficiencies in the ratio 1 : 2 : 3 : 4 : 5 are working on their final year project.</p><p>They work in such a way that exactly three of them work together. Three-fifths of the project is</p><p>completed when each of the possible group of three students has worked for exactly one day. How</p><p>many more days are required, if the remaining project is completed by all of them working</p><p>together?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Each of the 5 students appears in C(4,2)=6 groups of three.</span></li><li><span class=\"math-line\">Work done in all 10 one-day groups is 6×(1+2+3+4+5)=90 units, which is 3/5 of the project.</span></li><li><span class=\"math-line\">Total project=150, remaining=60.</span></li><li><span class=\"math-line\">All together work 15 units/day, so 4 days.</span></li></ol></div>",
+        "options": [
+            "6",
+            "3",
+            "5",
+            "4"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 9,
+        "itemId": "ARITH-I-3-09",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 9",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A manufacturer sells a product to a wholeseller at 10% profit. Then the wholeseller sells it to the</p><p>dealer and the dealer to the retailer at the margin of 25% each. The retailer marks up the price by</p><p>20% and then offers a 15% discount to the customer. Had the customer bought it from the</p><p>manufacturer directly (the manufacture would still keep his 10% profit), what would have been</p><p>approximate percentage reduction in price at which he bought the product from manufacturer</p><p>compare to the price at which he bought the product from the retailer?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let manufacturer cost be 100.</span></li><li><span class=\"math-line\">Direct from manufacturer costs 110.</span></li><li><span class=\"math-line\">Through chain: 110×1.25×1.25×1.20×0.85=175.3125.</span></li><li><span class=\"math-line\">Reduction if bought directly = (175.3125-110)/175.3125 ≈37.25%.</span></li></ol></div>",
+        "options": [
+            "37.25%",
+            "25.72%",
+            "33.45%",
+            "21.56%"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 10,
+        "itemId": "ARITH-I-3-10",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 10",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A 'table set' consists of a 'table' and a 'table cloth'. For every 'table set', the ratio of price of its 'table</p><p>cloth' to the price of the 'table' is same. The 'table cloths' of two 'table sets' A and B are exchanged.</p><p>The ratio of the prices of the 'table set' A and 'table set' B before and after the exchange of the 'table</p><p>cloths' are 5:1 and 4:1 respectively. If the price of 'table set' C is 8 times that of 'table set' D, then the</p><p>ratio of the prices of 'table set' C and 'table set' D when their respective 'table cloths' are exchanged</p><p>is (A 'table set' is identified by the 'table', and not by the 'table cloth')</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let cloth price be k times table price.</span></li><li><span class=\"math-line\">Before exchange A:B=5:1.</span></li><li><span class=\"math-line\">After exchange, (5+k)/(1+5k)=4, so k=1/19.</span></li><li><span class=\"math-line\">For ratio C:D=8:1, after cloth exchange ratio=(8+1/19)/(1+8/19)=17:3.</span></li></ol></div>",
+        "options": [
+            "1 : 1",
+            "17:3",
+            "2 : 3",
+            "3 : 2"
+        ],
+        "answer": 1
+    },
+    {
+        "no": 11,
+        "itemId": "ARITH-I-3-11",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 11",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>In 2014, the ratio of the number of students in Batch A and Batch B in January and February was 2 :</p><p>3 and 5 : 8 respectively. The rate at which the number of students in Batch A grew in March over the</p><p>previous month was twice the rate at which it increased in February over the previous month. The</p><p>rate at which the number of students in Batch B grew in March over the previous month was thrice</p><p>the rate at which it increased in February over the previous month. If the ratio of the aggregate</p><p>number of students in these two batches put together in February and January was 26 : 5, find the</p><p>ratio of number of students in Batch A and Batch B in March?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">January A:B=2:3, total 5x.</span></li><li><span class=\"math-line\">February total is 26x and A:B=5:8, so A=10x,B=16x.</span></li><li><span class=\"math-line\">Growth rates Jan-Feb are 400% and 433⅓%.</span></li><li><span class=\"math-line\">March rates are double and triple, so A=90x,B=224x, ratio 45:112.</span></li></ol></div>",
+        "options": [
+            "25 : 64",
+            "25 : 84",
+            "45 112",
+            "35 : 92"
+        ],
+        "answer": 2
+    },
+    {
+        "no": 12,
+        "itemId": "ARITH-I-3-12",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 12",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>One morning, Govind Lal, the owner of the local petrol bunk, was adulterating petrol that he sells</p><p>with kerosene. He had two identical tanks — the first being full of pure petrol, and the second being</p><p>empty. First, he transferred an arbitrary amount of petrol from the first tank into the second and</p><p>then replaced the petrol removed from the first tank with kerosene. He then repeated this process</p><p>one more time but this time he ensured that by the end of the process the second tank was exactly</p><p>full. Which of the following statements is/are not true regarding the concentration of petrol in the</p><p>second tank?</p><p>l.</p><p>11.</p><p>Ill.</p><p>It cannot be more than 75%</p><p>It cannot be less than 75%</p><p>It is at most 50%</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">If first transfer is a tank fraction a, petrol concentration in second tank after filling it is a+(1-a)² = a²-a+1.</span></li><li><span class=\"math-line\">This ranges from 75% to 100%.</span></li><li><span class=\"math-line\">Hence statements I and III are not true.</span></li></ol></div>",
+        "options": [
+            "Only I and III",
+            "Only II",
+            "Only I and II",
+            "Only III"
+        ],
+        "answer": 0,
+        "optionRepairNote": "Restored statement-combination options."
+    },
+    {
+        "no": 13,
+        "itemId": "ARITH-I-3-13",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 13",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Two alloys of iron have different percentages of iron in them. The first of them weighs 6 kg and the</p><p>second one weighs 12 kg. One piece each, of equal weight, was cut off from both the alloys. The</p><p>piece from the first was mixed with the leftover part of the second alloy and the piece from the</p><p>second with the leftover part of the first alloy. As a result the percentage of iron became the same in</p><p>both the alloys. What was the weight of each cut out pieces?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let equal piece weight be x and iron fractions be different.</span></li><li><span class=\"math-line\">Equating final iron percentages gives [a(6-x)+bx]/6=[b(12-x)+ax]/12, which simplifies to x=4 kg.</span></li></ol></div>",
+        "options": [
+            "4 kg",
+            "3.5 kg",
+            "3 kg",
+            "None of these"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 14,
+        "itemId": "ARITH-I-3-14",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 14",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>In a garden, 96% flowers are roses and the remaining flowers are carnations. How many roses</p><p>should be added to the garden (as a percentage of the number of roses initially present) so that the</p><p>percentage of carnations drops to one-fourth of what it currently is, if it is known that in addition to</p><p>the new roses, as many carnations are added as the number of carnations initially present in the</p><p>garden?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Start with 100 flowers: 96 roses, 4 carnations.</span></li><li><span class=\"math-line\">Add 4 carnations and R roses.</span></li><li><span class=\"math-line\">Carnation percentage must become 1% (one-fourth of 4%), so final total=800.</span></li><li><span class=\"math-line\">Thus R=696, which is 696/96=725% of initial roses.</span></li></ol></div>",
+        "options": [
+            "425%",
+            "533⅔% 3",
+            "725%",
+            "833⅔% 3"
+        ],
+        "answer": 2
+    },
+    {
+        "no": 15,
+        "itemId": "ARITH-I-3-15",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 15",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>There are 10 students in Class A and 20 students in class B of a school. The average of the marks</p><p>scored by the students of these two classes was 30. If class A had twice the number of students and</p><p>class B had half the number of students of their current numbers respectively, and the average</p><p>marks of students in Class A and that in class B had remained unchanged, the average of the marks</p><p>scored by the students of these two classes would have been 35. What is the difference in the</p><p>average marks scored by students in Class A and that of students in Class B?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let class averages be A and B. (10A+20B)/30=30 gives A+2B=90.</span></li><li><span class=\"math-line\">With changed counts, (20A+10B)/30=35 gives 2A+B=105.</span></li><li><span class=\"math-line\">Solving gives A=40,B=25, difference=15.</span></li></ol></div>",
+        "typedAnswer": "15",
+        "acceptedAnswers": [
+            "15"
+        ],
+        "correctAnswerText": "15"
+    },
+    {
+        "no": 16,
+        "itemId": "ARITH-I-3-16",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 16",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A shopkeeper buys a plate for Rs. 15. If he had bought it for 4% less and sold it for 60 paise more</p><p>than his present selling price, he would have gained 75/4%. At what percentage profit is he</p><p>presently selling?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Alternative CP=15×0.96=14.4.</span></li><li><span class=\"math-line\">Alternative SP is current SP+0.60 and gives 18.75% profit, so current SP+0.60=14.4×1.1875=17.1.</span></li><li><span class=\"math-line\">Current SP=16.5, profit=10%.</span></li></ol></div>",
+        "options": [
+            "9%",
+            "5%",
+            "15%",
+            "10%"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 17,
+        "itemId": "ARITH-I-3-17",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 17",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>To build a children's park in a housing society, donations have to be collected from its residents.</p><p>80% of the required donations have already been collected from the residents, with an average</p><p>donation of Rs. 800 per resident. These people who have already donated represent 75% of the</p><p>total residents in the society. If all the remaining residents also donate such that the cost of building</p><p>the park is exactly met, calculate the average donation (in Rs.) receivable from the remaining</p><p>residents.</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let residents be N.</span></li><li><span class=\"math-line\">Donors so far are 75% of N and average 800, so amount collected=0.75N×800=600N, which is 80% of required.</span></li><li><span class=\"math-line\">Required=750N.</span></li><li><span class=\"math-line\">Remaining amount=150N from 25%N residents, average=600.</span></li></ol></div>",
+        "typedAnswer": "600",
+        "acceptedAnswers": [
+            "600"
+        ],
+        "correctAnswerText": "600"
+    },
+    {
+        "no": 18,
+        "itemId": "ARITH-I-3-18",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 18",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A jar contains 10 litres of an acid solution of 40% concentration. Three quarters of this solution is</p><p>replaced with some pure water and another acid solution with 20% concentration. Find the volume</p><p>of pure water added, if the resulting acid mixture in the jar has 15% concentration.</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Initial acid=4 L.</span></li><li><span class=\"math-line\">After replacing 7.5 L, 2.5 L remains with acid=1 L.</span></li><li><span class=\"math-line\">Add x L water and 7.5-x L of 20% acid.</span></li><li><span class=\"math-line\">Final acid =1+0.2(7.5-x)=1.5, giving x=5 L.</span></li></ol></div>",
+        "options": [
+            "1.5 litres",
+            "2.5 litres",
+            "4.5 litres",
+            "5 litres"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 19,
+        "itemId": "ARITH-I-3-19",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 19",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>A shopkeeper wanting to close his business sells all his goods to a dealer for Rs. 42,80,000. The</p><p>shopkeeper needs to clear the shop so he asks the dealer to remove all the goods in 30 days or pay</p><p>Rs. 4,000 per day penalty for the extra days. The dealer has to normally spend Rs. 28,000 per day in</p><p>removing the goods. The dealer sells the goods for Rs. 76,80,000 and thereby making a profit of</p><p>20%. In all, how many days did he take to remove the goods?</p><p>30</p><p>40</p><p>Cl</p><p>60</p><p>70</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Total cost for 20% profit on sale price 76.8 lakh is 64 lakh.</span></li><li><span class=\"math-line\">Cost equation for d&gt;30 days: 42.8 lakh +28000d +4000(d-30)=64 lakh.</span></li><li><span class=\"math-line\">Solving gives d=70 days.</span></li></ol></div>",
+        "typedAnswer": "70",
+        "acceptedAnswers": [
+            "70"
+        ],
+        "correctAnswerText": "70"
+    },
+    {
+        "no": 20,
+        "itemId": "ARITH-I-3-20",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 20",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>There are 60 students in a class which are divided in three groups A, B and C having 15, 20 and 25</p><p>students respectively. The average weight of groups of students is in the ratio of 20 : 15 : 12</p><p>respectively. Group B is divided into two sub groups viz D and E of equal number of students, and</p><p>their average weights are in the ratio of 2 : 1 respectively. If all students of group E joined group A,</p><p>then what is the percentage change in the average weight of group A?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let averages A:B:C be 20k:15k:12k.</span></li><li><span class=\"math-line\">Group B total=300k.</span></li><li><span class=\"math-line\">Splitting B into equal groups D:E with averages 2:1 gives E average=10k.</span></li><li><span class=\"math-line\">New A average=(15×20k+10×10k)/25=16k, a 20% decrease.</span></li></ol></div>",
+        "typedAnswer": "20% decrease",
+        "acceptedAnswers": [
+            "20% decrease"
+        ],
+        "correctAnswerText": "20% decrease"
+    },
+    {
+        "no": 21,
+        "itemId": "ARITH-I-3-21",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 21",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>A ten litre solution of 20% milk and water is added to twenty litres of a 50% milk solution which</p><p>also contains water and honey. The resultant solution is mixed with 30 L of 30% honey and water</p><p>solution. If the concentration of honey in the final resultant mixture is 20%, then find the</p><p>percentage of water in final mixture.</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">First solution contributes water 8 L.</span></li><li><span class=\"math-line\">In the 20 L solution, milk=10 L; let honey be h.</span></li><li><span class=\"math-line\">Final honey is 20% of 60 L=12 L; the 30 L honey-water solution contributes 9 L honey, so h=3 and water there=7.</span></li><li><span class=\"math-line\">Total water=8+7+21=36 L, i.e. 60%.</span></li></ol></div>",
+        "typedAnswer": "60%",
+        "acceptedAnswers": [
+            "60%"
+        ],
+        "correctAnswerText": "60%"
+    },
+    {
+        "no": 22,
+        "itemId": "ARITH-I-3-22",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 22",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Raghuram left a will of Rs. 35 lakhs between his two daughters aged 5.5 years and 13 years such</p><p>that they get equal amounts when each of them reaches the age of 18 years. The original amount</p><p>has to be invested at 10% p.a. simple interest. How much amount (in Rs.) was invested in the name</p><p>of younger daughter at the time of the will?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Younger daughter has 12.5 years and elder has 5 years to age 18.</span></li><li><span class=\"math-line\">With 10% simple interest, y×2.25=(3500000-y)×1.5.</span></li><li><span class=\"math-line\">Hence y=1400000.</span></li><li><span class=\"math-line\">Options are OCR-corrupted percentages.</span></li></ol></div>",
+        "options": [
+            "8%",
+            "10%",
+            "13%",
+            "Rs. 14,00,000"
+        ],
+        "answer": 3,
+        "correctAnswerText": "Rs. 14,00,000",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 23,
+        "itemId": "ARITH-I-3-23",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 23",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Cost price of 6 'Dairy Milks' is equal to the selling price of 10 'Kitkats' and cost price of 6 'Kitkats' is</p><p>equal to the selling price of 1 'Dairy Milk'. Net profit percent on the sale of a 'Dairy Milk' and a</p><p>'Kitkat' is 50%. Find the profit percentage on the sale of each (Kitkat'.[Assume all 'Dairy Milks' are</p><p>identical and the same applies to 'Kitkats'.]</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let CPs be D=d and K=k.</span></li><li><span class=\"math-line\">SP of K=6d/10=0.6d, SP of D=6k.</span></li><li><span class=\"math-line\">Overall profit on one each is 50%: 6k+0.6d=1.5(d+k), giving d=5k.</span></li><li><span class=\"math-line\">Kitkat SP=3k, so profit=200%.</span></li></ol></div>",
+        "options": [
+            "160%",
+            "200%",
+            "180%",
+            "150%"
+        ],
+        "answer": 1
+    },
+    {
+        "no": 24,
+        "itemId": "ARITH-I-3-24",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 24",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>There are two alloys, A and B, of copper and zinc. The ratio (by weight) of copper and zinc in alloy A</p><p>is 8 : 1 and that in alloy B is 2 : 7. It is found that, if alloy A and alloy B are mixed in a certain ratio,</p><p>the weights of copper and zinc in the resultant alloy are also in that ratio. What is that ratio?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">If alloys A and B are mixed in ratio x:y and copper:zinc in the result is also x:y, then (8x+2y):(x+7y)=x:y.</span></li><li><span class=\"math-line\">This gives x/y=2, so ratio=2:1, not visible in the choices.</span></li></ol></div>",
+        "options": [
+            "2 : 1",
+            "2 : 3",
+            "3 : 2",
+            "4 : 5"
+        ],
+        "answer": 0,
+        "correctAnswerText": "2 : 1",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 25,
+        "itemId": "ARITH-I-3-25",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-3 | Question 25",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>In a certain locality, four-sevenths of total men are widowers and seven-elevenths of total women</p><p>are widows. The number of widowers is twice that of number of widows. What fraction of the total</p><p>population of the locality are not widows?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let men=M and women=W.</span></li><li><span class=\"math-line\">Widowers=4M/7 and widows=7W/11.</span></li><li><span class=\"math-line\">Given widowers are twice widows, M:W=49:22.</span></li><li><span class=\"math-line\">Widows are 14/71 of the population, so not widows =57/71.</span></li></ol></div>",
+        "options": [
+            "4/11",
+            "6/11",
+            "8/71",
+            "57/71"
+        ],
+        "answer": 3
+    }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E","F","G","H"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){if(q.answerUnavailable)return q.correctAnswerText||'Correct option not available/unclear from OCR';return q.type==='mcq'?q.options[q.answer]:(q.typedAnswer||((q.acceptedAnswers||[])[0]||''));}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+esc(op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){let repair=q.optionRepairNote?'<div class="option-repair-note">Option note: '+esc(q.optionRepairNote)+'</div>':'';return '<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong>'+repair+'<div class="block">'+(q.solution||'Solution not provided.')+'</div></div>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div>'+solutionHtml(q)+'<div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(q.answerUnavailable)return null;if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function userAnswerText(q,ans){if(ans===null||ans==='')return 'Not attempted';if(q.type==='mcq'){const idx=Number(ans);return (labels[idx]||'?')+'. '+(q.options&&q.options[idx]!==undefined?q.options[idx]:'');}return ans;}
+    function statusText(q,ans){const r=isCorrect(q,ans);if(r===null)return {cls:'muted',txt:(ans===null||ans===''?'Unattempted':'Not graded')};return r?{cls:'ok',txt:'Correct'}:{cls:'bad',txt:'Wrong'};}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent=(responses[current]===null||responses[current]===''?'Unattempted. ':'Not graded. ')+'Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function reviewCard(q,i){const ans=responses[i],st=statusText(q,ans);let opts='';if(q.type==='mcq'){opts='<ul class="review-options">'+(q.options||[]).map((op,j)=>'<li class="'+((!q.answerUnavailable&&j===q.answer)?'correct-choice ':'')+(String(j)===String(ans)&&j!==q.answer?'user-wrong ':'')+'"><strong>('+labels[j]+')</strong> '+esc(op)+'</li>').join('')+'</ul>';}else{opts='<p><strong>Your typed answer:</strong> '+esc(userAnswerText(q,ans))+'</p>';}
+      let repair=q.optionRepairNote?'<p class="option-repair-note">Option note: '+esc(q.optionRepairNote)+'</p>':'';
+      return '<div class="review-card" id="review-q'+(i+1)+'"><h3>Question '+(i+1)+'</h3><div class="review-question">'+q.question+'</div>'+opts+'<div class="review-meta"><span class="review-pill '+st.cls+'">'+st.txt+'</span><span class="review-pill">Your Answer: '+esc(userAnswerText(q,ans))+'</span><span class="review-pill">Correct Answer: '+esc(correctText(q))+'</span></div>'+repair+'<div class="review-solution"><h4>Step-by-step Solution</h4>'+(q.solution||'Solution not provided.')+'</div></div>';}
+    function fullReviewHtml(){return '<h2 class="review-title">Detailed Solution Review — All Questions</h2><div class="full-review">'+questions.map((q,i)=>reviewCard(q,i)).join('')+'</div>';}
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,ng=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null){if(responses[i]!==null&&responses[i]!==''&&q.answerUnavailable)ng++;else u++;}else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w+ng)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>'+fullReviewHtml();showReviewForCurrent();renderBar();setTimeout(()=>{const rv=document.querySelector('.review-title');if(rv)rv.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
