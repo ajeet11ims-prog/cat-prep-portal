@@ -1364,7 +1364,7 @@ window.CAT_TESTS = [
     "questions": 25
   },
   {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-2",
+    "title": "Arithmetic Part -I ( Without TSD & TW )-3",
     "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-2.html",
     "original": "Arithmetic Part -I ( Without TSD & TW )-2.html",
     "folders": [
