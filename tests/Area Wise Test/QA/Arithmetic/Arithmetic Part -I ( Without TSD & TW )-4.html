@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic Part -I ( Without TSD & TW )-4</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;color:#627282;font-size:15px;font-weight:800;margin-top:4px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.text-question{font-weight:600;line-height:1.5;max-width:1120px}.text-question p{margin:0 0 11px}.pending-solution{font-size:17px;line-height:1.55}.pending-solution strong{color:#8a5a00}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  
+    .stepwise-solution{font-size:18px;line-height:1.65;background:#fbfdff;border-left:4px solid var(--brand);padding:12px 16px;margin-top:10px}
+    .stepwise-solution .solution-steps{margin:8px 0 0 22px;padding:0}.stepwise-solution li{margin:8px 0}.math-line{font-family:"Cambria Math","STIX Two Math","Times New Roman",Arial,sans-serif;font-weight:600}.solution-warning{margin:0 0 8px;color:#9a5a00;font-weight:700}.option-repair-note{margin:10px 0 0;color:#7a5200;font-weight:700}.review-title{margin:22px 0 10px;font-size:24px;color:#24313a}.full-review{display:grid;gap:16px;margin-top:16px}.review-card{border:1px solid #b8c3cc;background:#fff;border-radius:4px;padding:16px}.review-card h3{margin:0 0 10px;color:#0b75bb}.review-question{font-size:17px;font-weight:700}.review-options{display:grid;gap:6px;margin:10px 0;padding-left:0;list-style:none}.review-options li{padding:7px 10px;border:1px solid #d7dde5;border-radius:3px}.review-options li.correct-choice{border-color:#60b947;background:#f0fff0;font-weight:800}.review-options li.user-wrong{border-color:#e55b25;background:#fff5f0}.review-meta{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.review-pill{border:1px solid #c8d2dc;background:#f7fafc;padding:6px 9px;border-radius:999px;font-weight:700}.review-pill.ok{color:#157347}.review-pill.bad{color:#b02a37}.review-pill.muted{color:#5f6f7a}.review-solution{margin-top:8px}.review-solution h4{margin:0 0 6px;color:#24313a;font-size:18px}
+    
+  </style>
+  <!-- Generated: Arithmetic Part -I ( Without TSD & TW )-4 | Text OCR with structured options from Airthmetic 1 (without TSD).pdf -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Arithmetic Part -I ( Without TSD & TW )-4</h1><div class="meta">25 Questions | 60 Minutes | Text-only layout | Structured generated options | Corrected options | Step-by-step solutions after submit</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+    {
+        "no": 1,
+        "itemId": "ARITH-I-4-01",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 1",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>A tank has an inlet pipe attached to it. The inlet pipe can fill the tank such that the tank could be</p><p>completely filled at 10 am if it opened in the morning of the same day. However the tank had a leak,</p><p>which was not noticed, As a result of the leak, the tank was only 60% full at 10 am. What the ratio of</p><p>rate at which the inlet pipe fills and the rate at which the leak empties the tank,</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">In the same time, the inlet alone would fill 100% of the tank, but with leak the net fill is 60%.</span></li><li><span class=\"math-line\">Hence leak empties 40% in that time.</span></li><li><span class=\"math-line\">Inlet:leak =100:40 =5:2.</span></li></ol></div>",
+        "typedAnswer": "5 : 2",
+        "acceptedAnswers": [
+            "5 : 2"
+        ],
+        "correctAnswerText": "5 : 2"
+    },
+    {
+        "no": 2,
+        "itemId": "ARITH-I-4-02",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 2",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>In an acid-water solution, if 20 litres of acid is added, the concentration of acid in the solution</p><p>becomes 50% while if 20 litres of water is added, the concentration of water in the solution</p><p>becomes 66—% . What is the original proportion of water in the solution?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let acid=a and water=w.</span></li><li><span class=\"math-line\">Adding 20 L acid gives (a+20)/(a+w+20)=1/2, so w=a+20.</span></li><li><span class=\"math-line\">Adding 20 L water gives (w+20)/(a+w+20)=2/3, so w=2a-20.</span></li><li><span class=\"math-line\">Hence a=40,w=60; water=60%.</span></li></ol></div>",
+        "options": [
+            "40%",
+            "60%",
+            "42—% 7",
+            "45%"
+        ],
+        "answer": 1
+    },
+    {
+        "no": 3,
+        "itemId": "ARITH-I-4-03",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 3",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>An unscrupulous milk seller bought certain quantity of pure milk. He first sold 20 litres of pure</p><p>milk. He added 20 litres of water to the remaining quantity of milk. He then sold 20 litres of the</p><p>milk-water mixture and added 20 litres of water to the mixture. He again sold 20 litres of this milk-</p><p>water mixture and added 20 litres of water to the mixture. Now, the ratio of milk to water is 8 : 19.</p><p>How much quantity of pure milk (in litres) did he buy in the first place?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let initial milk be V.</span></li><li><span class=\"math-line\">After selling 20 L pure milk and then two 20 L replacement cycles, milk left=(V-20)(1-20/V)^2.</span></li><li><span class=\"math-line\">Given milk:water=8:19, milk=8V/27.</span></li><li><span class=\"math-line\">Solving gives V=60 L.</span></li></ol></div>",
+        "typedAnswer": "60",
+        "acceptedAnswers": [
+            "60"
+        ],
+        "correctAnswerText": "60"
+    },
+    {
+        "no": 4,
+        "itemId": "ARITH-I-4-04",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 4",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A two-digit number x, when increased by x% becomes a perfect square y. Find y.</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Search two-digit x with x increased by x% equal to a square: x(1+x/100).</span></li><li><span class=\"math-line\">The only valid case is x=80, giving 80×1.8=144.</span></li></ol></div>",
+        "options": [
+            "289",
+            "256",
+            "196",
+            "144"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 5,
+        "itemId": "ARITH-I-4-05",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 5",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Ram owns a kennel in which there are many dogs. At present, all the male dogs in the kennel are</p><p>Labradors, while some of the female dogs are Labradors and some are not. Also, all the puppies in</p><p>the kennel are Labradors while some of the adult dogs are Labradors and some are not. The total</p><p>number of dogs in the kennel is 43 of which 27 are Labradors, 15 are male puppies and 25 are adult</p><p>dogs. Which of the following cannot be the ratio of the number of female Labradors to adult</p><p>Labradors?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">There are 43 dogs, 27 Labradors, so 16 non-Labradors.</span></li><li><span class=\"math-line\">Since all puppies are Labradors and all non-Labradors are adult females, adult Labradors=25-16=9.</span></li><li><span class=\"math-line\">Female Labradors can be 12-m where m is adult male Labradors, so possible ratios to adult Labradors include 1:1, 2:3 and 11:9, but not 3:2.</span></li></ol></div>",
+        "options": [
+            "1 : 1",
+            "2 : 3",
+            "11:9",
+            "3 : 2"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 6,
+        "itemId": "ARITH-I-4-06",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 6",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Two cartons P and R contain milk and water in the ratio 1 : p and 1 : r respectively. In what</p><p>proportion should the contents of both the cartons be mixed such that the new mixture has milk</p><p>and water in the ratio 1 : q, where q is the arithmetic mean of p and r?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Milk fractions are 1/(1+p), 1/(1+r), and target 1/(1+q), where q=(p+r)/2.</span></li><li><span class=\"math-line\">Solving the weighted average gives required volume ratio P:R=(p+1):(r+1), not a fixed numerical ratio.</span></li></ol></div>",
+        "options": [
+            "(p+1) : (r+1)",
+            "2 : 3",
+            "3 : 2",
+            "4 : 5"
+        ],
+        "answer": 0,
+        "correctAnswerText": "(p+1) : (r+1)",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 7,
+        "itemId": "ARITH-I-4-07",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 7",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>As a sales gimmick, a cloth merchant began measuring the cloth with a yardstick that was x inches</p><p>longer, because of which his profit reduced from 50% of his cost to 20% of his cost. Find x. (Given: 1</p><p>Yard - 36 Inches)</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Original profit 50% means SP for 36 inches is 1.5 times cost of 36 inches.</span></li><li><span class=\"math-line\">With yardstick 36+x inches, same SP gives 20% profit: 1.5C=1.2C(36+x)/36.</span></li><li><span class=\"math-line\">Thus 36+x=45 and x=9.</span></li></ol></div>",
+        "options": [
+            "8",
+            "9",
+            "10",
+            "Cannot be determined"
+        ],
+        "answer": 1
+    },
+    {
+        "no": 8,
+        "itemId": "ARITH-I-4-08",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 8",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>The average of marks obtained by n students is 50. One student scored 60 marks and if this score is</p><p>removed, the average of remaining students is 49. If the maximum mark that can be scored is 100</p><p>and the minimum mark that can be scored is 45. If it is known that no student scored the maximum</p><p>mark, what is the maximum mark scored by a student?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">50n-60=49(n-1) gives n=11.</span></li><li><span class=\"math-line\">The remaining 10 students have sum 490.</span></li><li><span class=\"math-line\">To maximise one score, keep other 9 at minimum 45, so maximum =490-9×45=85.</span></li></ol></div>",
+        "options": [
+            "85",
+            "94",
+            "95",
+            "96"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 9,
+        "itemId": "ARITH-I-4-09",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 9",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>A box contains a total of 400 tickets that come in five colours : blue, green, red, yellow and violet.</p><p>The ratio of tickets coloured blue, green and red is 1 : 2 : 4 respectively. The ratio of tickets coloured</p><p>green, yellow and violet is 1: 3: 6 respectively. What is the smallest number of tickets that must be</p><p>drawn to ensure that at least 50 tickets of one colour are selected?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let blue:green:red =1:2:4 and green:yellow:violet=1:3:6.</span></li><li><span class=\"math-line\">Counts are 16,32,64,96,192.</span></li><li><span class=\"math-line\">Worst case without 50 of any colour is 16+32+49+49+49=195.</span></li><li><span class=\"math-line\">Hence 196 tickets ensure 50 of a colour.</span></li></ol></div>",
+        "typedAnswer": "196",
+        "acceptedAnswers": [
+            "196"
+        ],
+        "correctAnswerText": "196"
+    },
+    {
+        "no": 10,
+        "itemId": "ARITH-I-4-10",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 10",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Honda, a car manufacturing company, manufactures 'p' units of Honda CRVs and 'q' units of Honda</p><p>Accords on August 17, 2016, where 8q + 16 p = pq + 96 and 0 p 6. The profit made on each</p><p>Honda CRV is Rs. 4 lakhs and that on each Accord is Rs. 2 lakhs. Find the maximum profit that can</p><p>be made by Honda on that day by manufacturing these two types of cars.</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Equation gives integer solution p=4,q=8 under the stated p constraint.</span></li><li><span class=\"math-line\">Profit =4p+2q =16+16=32 lakhs.</span></li></ol></div>",
+        "options": [
+            "Rs. 24 lakhs",
+            "Rs. 36 lakhs",
+            "Rs. 32 lakhs",
+            "Rs. 40 lakhs"
+        ],
+        "answer": 2
+    },
+    {
+        "no": 11,
+        "itemId": "ARITH-I-4-11",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 11",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Veer adds 'x' litres water to pure milk to make a 104-litre milk-water solution. He sells this solution</p><p>at a price that is 10% more than the cost price of pure milk and makes a profit of 43% on this</p><p>transaction. If he adds 'x' litres water to 120 litres pure milk and sells the resulting solution at the</p><p>cost price of pure milk, then what is his profit percentage in this transaction? (Assume that water</p><p>comes free of cost)</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let x L water be added, so pure milk is 104-x.</span></li><li><span class=\"math-line\">Revenue=104×1.10.</span></li><li><span class=\"math-line\">Profit 43% means 104×1.10=1.43(104-x), so x=24.</span></li><li><span class=\"math-line\">With 120 L milk plus 24 L water sold at milk CP, profit=(144-120)/120=20%.</span></li></ol></div>",
+        "options": [
+            "25%",
+            "32%",
+            "30%",
+            "20%"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 12,
+        "itemId": "ARITH-I-4-12",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 12",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A merchant buys 40 articles, each at Rs. 20. He sells a of them at a profit of a0/o and remaining at a</p><p>profit of (100 - a)%. What is the minimum profit the merchant could have made on this trade?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Profit =20[a(a/100)+(40-a)((100-a)/100)] =0.4a²-28a+800.</span></li><li><span class=\"math-line\">This quadratic is minimised at a=35, giving profit Rs.310.</span></li></ol></div>",
+        "options": [
+            "1025",
+            "295",
+            "310",
+            "975"
+        ],
+        "answer": 2
+    },
+    {
+        "no": 13,
+        "itemId": "ARITH-I-4-13",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 13",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>There is an alloy (A) of silver and copper. A certain weight of this alloy is mixed with 15 kg of pure</p><p>silver and melted. The new alloy (B) contains 90% of silver. If the alloy (A) is mixed with 10kg of a</p><p>90% silver alloy, the new alloy (C) is found to contain 84% silver. Find the percentage of silver in a</p><p>alloy (A).</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Let alloy A have weight w and silver fraction s. (sw+15)/(w+15)=90% and (sw+9)/(w+10)=84%.</span></li><li><span class=\"math-line\">Solving gives w=15 and s=80%.</span></li><li><span class=\"math-line\">This option is not visible.</span></li></ol></div>",
+        "options": [
+            "63%",
+            "84%",
+            "75%",
+            "80%"
+        ],
+        "answer": 3,
+        "correctAnswerText": "80%",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 14,
+        "itemId": "ARITH-I-4-14",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 14",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A milkman adds water equal to 10% of the volume of pure milk before he sells the mixture. He</p><p>further marks the price of the adulterated milk up by 10% of price of pure milk. What discount he</p><p>should offer on the marked price so that he will have no-profit no-loss?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">For 10 L milk plus 1 L free water, cost is cost of 10 L milk.</span></li><li><span class=\"math-line\">MP per litre is 10% above pure milk price.</span></li><li><span class=\"math-line\">Break-even SP per litre =10/11 of pure milk price.</span></li><li><span class=\"math-line\">Discount = (1.1-10/11)/1.1 ≈17.4%.</span></li></ol></div>",
+        "options": [
+            "17.4%",
+            "21%",
+            "8%",
+            "10%"
+        ],
+        "answer": 0
+    },
+    {
+        "no": 15,
+        "itemId": "ARITH-I-4-15",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 15",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A scientist requires a mixture consisting of 40 litres of chemical A, 60 litres of chemical B and 40</p><p>litres of chemical C for his experiment. He has three potions, named X, Y and Z. Potion X contains</p><p>25% A, 50% B and 25% C. Potion Y contains 50% A and 50% B only. Potion Z contains 50% B and</p><p>50% C only. In what ratio should he mix the three potions X, Y and Z in order to obtain the mixture</p><p>of required proportion?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">In any mixture of X,Y,Z, chemical B is always 50% of each potion.</span></li><li><span class=\"math-line\">Therefore a mixture with only 60 L B out of total required 140 L is impossible.</span></li><li><span class=\"math-line\">Hence none of these.</span></li></ol></div>",
+        "options": [
+            "1 : 1",
+            "2 : 3",
+            "3 : 2",
+            "None of these"
+        ],
+        "answer": 3
+    },
+    {
+        "no": 16,
+        "itemId": "ARITH-I-4-16",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 16",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>Jatin buys some pencils and erasers such that the cost of an eraser is one and half times the cost of a</p><p>pencil. He sells all the erasers and pencils such that the selling price of an eraser is twice the selling</p><p>price of a pencil. Also, the selling price of a pencil is twice its cost price. Overall, Jatin makes a profit</p><p>of 120%. Find the ratio of the number of erasers and pencils that he bought/sold.</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Let pencil CP=p and eraser CP=1.5p.</span></li><li><span class=\"math-line\">Pencil SP=2p; eraser SP=4p.</span></li><li><span class=\"math-line\">If E erasers and P pencils are sold, (2.5E+P)/(1.5E+P)=120%, giving E:P=2:7.</span></li><li><span class=\"math-line\">This option is not visible.</span></li></ol></div>",
+        "options": [
+            "2 : 7",
+            "2 : 3",
+            "3 : 2",
+            "4 : 5"
+        ],
+        "answer": 0,
+        "correctAnswerText": "2 : 7",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 17,
+        "itemId": "ARITH-I-4-17",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 17",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>Jeevanlal made 10% profit on selling a toy. If he had purchased it for 10% less, and made a profit of</p><p>30%, his selling price would have increased by Rs. 49. What was his original selling price (in Rs.)?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Let original CP=C.</span></li><li><span class=\"math-line\">Original SP=1.1C.</span></li><li><span class=\"math-line\">If CP were 10% less and profit 30%, SP would be 0.9C×1.3=1.17C, which is Rs.49 more.</span></li><li><span class=\"math-line\">Thus 0.07C=49, C=700, original SP=770.</span></li></ol></div>",
+        "typedAnswer": "770",
+        "acceptedAnswers": [
+            "770"
+        ],
+        "correctAnswerText": "770"
+    },
+    {
+        "no": 18,
+        "itemId": "ARITH-I-4-18",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 18",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>There is an acid-water mixture named 'Mixture A'. When one litre of pure acid is added to this</p><p>mixture, we get another mixture named 'Mixture B' with 27.27% acid concentration. When one litre</p><p>of pure water is added to mixture B, we get a third mixture named 'Mixture C' with 25% acid</p><p>concentration. What was the concentration of acid in the original mixture A?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Let mixture A have V litres and acid a.</span></li><li><span class=\"math-line\">After adding 1 L acid, (a+1)/(V+1)=3/11.</span></li><li><span class=\"math-line\">After adding 1 L water, (a+1)/(V+2)=1/4.</span></li><li><span class=\"math-line\">Solving gives V=10,a=2, so original concentration=20%.</span></li></ol></div>",
+        "options": [
+            "20%",
+            "2 : 3",
+            "3 : 2",
+            "4 : 5"
+        ],
+        "answer": 0,
+        "correctAnswerText": "20%",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 19,
+        "itemId": "ARITH-I-4-19",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 19",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>An election was conducted in a school having 800 students to select a principal. The contestants in</p><p>the election were Mrs. Sharma, Mr. D'Souza and Mr. Brar. It is known that 58% of the students</p><p>voted for Mrs. Sharma, 41% of the students voted for Mr. D'Souza and 30% of the students voted for</p><p>Mr. Brar. It is also known that each of the students voted for at least one of the contestants. If 15%</p><p>of the students voted for Mrs. Sharma and Mr. D'Souza and 8% of the students voted for Mrs.</p><p>Sharma and Mr. Brar, then how many students voted for exactly two candidates, Mr.D'souza and Mr.</p><p>Brar?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Using inclusion-exclusion: 58+41+30-15-8-x+t=100, where x is D’Souza &amp; Brar including triple and t is triple.</span></li><li><span class=\"math-line\">Thus x-t=6%.</span></li><li><span class=\"math-line\">Exactly D’Souza and Brar =6% of 800 =48.</span></li></ol></div>",
+        "typedAnswer": "48",
+        "acceptedAnswers": [
+            "48"
+        ],
+        "correctAnswerText": "48"
+    },
+    {
+        "no": 20,
+        "itemId": "ARITH-I-4-20",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 20",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>For Robomate Analytics, the professor decided to find the average weight of all students in a</p><p>particular batch but he wanted to do it differently. He did this by taking the average of the average</p><p>weights of all possible sets of 4 students that could be formed in the batch. He found that the</p><p>average calculated in this manner was n times the correct average. What is the value of n?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">The average of averages of all possible equal-sized subsets is the same as the overall average, because each student appears in the same number of subsets.</span></li><li><span class=\"math-line\">Hence n=1.</span></li></ol></div>",
+        "options": [
+            "12",
+            "1",
+            "14",
+            "None of these"
+        ],
+        "answer": 1
+    },
+    {
+        "no": 21,
+        "itemId": "ARITH-I-4-21",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 21",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>The economy of Xiberia consists of exactly two industries - mining and manufacturing. It was</p><p>expected that the economy would grow by 18% if the mining grew by 10% and manufacturing grew</p><p>by 20%. If the manufacturing grew by 10%, and the economy by 18%, then by what percent did</p><p>mining grow?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">Let mining and manufacturing sizes be M,N.</span></li><li><span class=\"math-line\">Expected: 0.10M+0.20N=0.18(M+N), so N=4M.</span></li><li><span class=\"math-line\">If manufacturing grows 10% and total grows 18%, then mining growth g satisfies gM+0.10×4M=0.18×5M, giving g=50%.</span></li><li><span class=\"math-line\">No matching option.</span></li></ol></div>",
+        "options": [
+            "14%",
+            "37.5%",
+            "18%",
+            "50%"
+        ],
+        "answer": 3,
+        "correctAnswerText": "50%",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 22,
+        "itemId": "ARITH-I-4-22",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 22",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>A milkman has L litres of mixture of milk and water in which the ratio of milk to water is p : q . After</p><p>selling one-third of the mixture, he added L/ 2 litres of milk and L/3 litres of water to the remaining</p><p>mixture. The ratio of milk to water in the resulting mixture is q : p. Find the value of q : p.</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><p class=\"solution-warning\"><strong>Note:</strong> Original option text was OCR-corrupted or incomplete; the corrected answer is shown below.</p><ol class=\"solution-steps\"><li><span class=\"math-line\">After selling one-third, milk and water left are 2p/[3(p+q)]L and 2q/[3(p+q)]L.</span></li><li><span class=\"math-line\">After adding L/2 milk and L/3 water, setting final milk:water=q:p gives q:p=7:6.</span></li><li><span class=\"math-line\">Not visible in options.</span></li></ol></div>",
+        "options": [
+            "2:V5",
+            "7 : 6",
+            "2 : 3",
+            "3 : 2"
+        ],
+        "answer": 1,
+        "correctAnswerText": "7 : 6",
+        "optionRepairNote": "Correct option repaired because uploaded HTML options were OCR-corrupted/missing."
+    },
+    {
+        "no": 23,
+        "itemId": "ARITH-I-4-23",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 23",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>Aman and eight of his friends took a test of 100 marks. Each of them got a different integer score</p><p>and the average of their scores was 86. The score of Aman was 90 and it was more than that of</p><p>exactly three of his friends. What could have been the maximum possible absolute difference</p><p>between the scores of two of his friends?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">The 8 friends sum to 684.</span></li><li><span class=\"math-line\">Exactly three scores are below 90 and five above 90.</span></li><li><span class=\"math-line\">To maximise spread, take scores 17,88,89 and 96,97,98,99,100; sum=684, max-min=83.</span></li></ol></div>",
+        "typedAnswer": "83",
+        "acceptedAnswers": [
+            "83"
+        ],
+        "correctAnswerText": "83"
+    },
+    {
+        "no": 24,
+        "itemId": "ARITH-I-4-24",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 24",
+        "type": "mcq",
+        "question": "<div class=\"text-question\"><p>If Asif offers a 40% discount on the marked price, then he makes a loss of 16.66%. What is the %</p><p>age of impurities that has to be mixed to gain a 10% profit after the discount?</p></div>",
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">A 40% discount gives SP=60% of MP and loss 16⅔%, so MP=25/18 of pure CP.</span></li><li><span class=\"math-line\">For 10% profit after discount with impurities, 0.6×(25/18)(1+r)=1.1, so r=32%.</span></li></ol></div>",
+        "options": [
+            "8%",
+            "24.24%",
+            "32%",
+            "43.25%"
+        ],
+        "answer": 2
+    },
+    {
+        "no": 25,
+        "itemId": "ARITH-I-4-25",
+        "source": "Arithmetic Part -I ( Without TSD & TW )-4 | Question 25",
+        "type": "text",
+        "question": "<div class=\"text-question\"><p>Akash can complete a piece of work in 85 days working alone and Brijesh can do the same work in 51 days, Akash</p><p>completes 1/9 of the work and then Brijesh joins him and they complete the work together, If the payment of the</p><p>work is 85000, how much amount will Akash be paid?</p></div>",
+        "answerUnavailable": false,
+        "solution": "<div class=\"worked-solution stepwise-solution\"><ol class=\"solution-steps\"><li><span class=\"math-line\">Akash first completes 1/9 alone.</span></li><li><span class=\"math-line\">Remaining 8/9 is done together; combined rate=1/85+1/51=8/255, so time together=85/3 days.</span></li><li><span class=\"math-line\">Akash’s total work share =1/9+(85/3)/85=4/9.</span></li><li><span class=\"math-line\">Payment=85000×4/9≈37778.</span></li></ol></div>",
+        "typedAnswer": "37778",
+        "acceptedAnswers": [
+            "37778"
+        ],
+        "correctAnswerText": "37778"
+    }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E","F","G","H"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){if(q.answerUnavailable)return q.correctAnswerText||'Correct option not available/unclear from OCR';return q.type==='mcq'?q.options[q.answer]:(q.typedAnswer||((q.acceptedAnswers||[])[0]||''));}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+esc(op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){let repair=q.optionRepairNote?'<div class="option-repair-note">Option note: '+esc(q.optionRepairNote)+'</div>':'';return '<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong>'+repair+'<div class="block">'+(q.solution||'Solution not provided.')+'</div></div>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div>'+solutionHtml(q)+'<div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(q.answerUnavailable)return null;if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function userAnswerText(q,ans){if(ans===null||ans==='')return 'Not attempted';if(q.type==='mcq'){const idx=Number(ans);return (labels[idx]||'?')+'. '+(q.options&&q.options[idx]!==undefined?q.options[idx]:'');}return ans;}
+    function statusText(q,ans){const r=isCorrect(q,ans);if(r===null)return {cls:'muted',txt:(ans===null||ans===''?'Unattempted':'Not graded')};return r?{cls:'ok',txt:'Correct'}:{cls:'bad',txt:'Wrong'};}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent=(responses[current]===null||responses[current]===''?'Unattempted. ':'Not graded. ')+'Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function reviewCard(q,i){const ans=responses[i],st=statusText(q,ans);let opts='';if(q.type==='mcq'){opts='<ul class="review-options">'+(q.options||[]).map((op,j)=>'<li class="'+((!q.answerUnavailable&&j===q.answer)?'correct-choice ':'')+(String(j)===String(ans)&&j!==q.answer?'user-wrong ':'')+'"><strong>('+labels[j]+')</strong> '+esc(op)+'</li>').join('')+'</ul>';}else{opts='<p><strong>Your typed answer:</strong> '+esc(userAnswerText(q,ans))+'</p>';}
+      let repair=q.optionRepairNote?'<p class="option-repair-note">Option note: '+esc(q.optionRepairNote)+'</p>':'';
+      return '<div class="review-card" id="review-q'+(i+1)+'"><h3>Question '+(i+1)+'</h3><div class="review-question">'+q.question+'</div>'+opts+'<div class="review-meta"><span class="review-pill '+st.cls+'">'+st.txt+'</span><span class="review-pill">Your Answer: '+esc(userAnswerText(q,ans))+'</span><span class="review-pill">Correct Answer: '+esc(correctText(q))+'</span></div>'+repair+'<div class="review-solution"><h4>Step-by-step Solution</h4>'+(q.solution||'Solution not provided.')+'</div></div>';}
+    function fullReviewHtml(){return '<h2 class="review-title">Detailed Solution Review — All Questions</h2><div class="full-review">'+questions.map((q,i)=>reviewCard(q,i)).join('')+'</div>';}
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,ng=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null){if(responses[i]!==null&&responses[i]!==''&&q.answerUnavailable)ng++;else u++;}else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w+ng)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>'+fullReviewHtml();showReviewForCurrent();renderBar();setTimeout(()=>{const rv=document.querySelector('.review-title');if(rv)rv.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
