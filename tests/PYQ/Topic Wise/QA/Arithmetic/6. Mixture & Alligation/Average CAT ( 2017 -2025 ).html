@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixture & Alligation CAT PYQ ( 2017 -2025 )</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;color:#627282;font-size:15px;font-weight:800;margin-top:4px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;max-width:980px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Mixture & Alligation CAT PYQ ( 2017 -2025 ) | Same CAT PYQ layout | Year and slot shown above each question -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Mixture & Alligation CAT PYQ ( 2017 -2025 )</h1><div class="meta">27 Questions | 60 Minutes | 21 MCQ + 6 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+    {
+        "no": 1,
+        "itemId": "MA-2017-S2-01",
+        "source": "CAT 2017 Slot 2",
+        "type": "mcq",
+        "question": "Bottle 1 contains a mixture of milk and water in 7 : 2 ratio and Bottle 2 contains a mixture of milk and water in 9 : 4 ratio. In what ratio of volumes should the liquids in Bottle 1 and Bottle 2 be combined to obtain a mixture of milk and water in 3 : 1 ratio?",
+        "options": [
+            "27 : 14",
+            "27 : 13",
+            "27 : 16",
+            "27 : 18"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Milk fractions in Bottle 1, Bottle 2 and target are 7/9, 9/13 and 3/4.</li><li>By alligation, Bottle 1 : Bottle 2 = (3/4 - 9/13) : (7/9 - 3/4).</li><li>This equals 3/52 : 1/36 = 27 : 14.</li></ol>"
+    },
+    {
+        "no": 2,
+        "itemId": "MA-2017-S2-02",
+        "source": "CAT 2017 Slot 2",
+        "type": "mcq",
+        "question": "Consider three mixtures - the first having water and liquid A in the ratio 1 : 2, the second having water and liquid B in the ratio 1 : 3, and the third having water and liquid C in the ratio 1 : 4. These three mixtures of A, B, and C, respectively, are further mixed in the proportion 4 : 3 : 2. Then the resulting mixture has",
+        "options": [
+            "The same amount of water and liquid B",
+            "The same amount of liquids B and C",
+            "More water than liquid B",
+            "More water than liquid A"
+        ],
+        "answer": 2,
+        "solution": "<ol class=\"solution-steps\"><li>Take 4, 3 and 2 units of the three mixtures.</li><li>Water = 4/3 + 3/4 + 2/5 = 149/60, while liquid B = 3 x 3/4 = 9/4 = 135/60.</li><li>Since 149/60 is greater than 135/60, the mixture has more water than liquid B.</li></ol>"
+    },
+    {
+        "no": 3,
+        "itemId": "MA-2018-S1-01",
+        "source": "CAT 2018 Slot 1",
+        "type": "mcq",
+        "question": "A trader sells 10 litres of a mixture of paints A and B, where the amount of B in the mixture does not exceed that of A. The cost of paint A per litre is Rs. 8 more than that of paint B. If the trader sells the entire mixture for Rs. 264 and makes a profit of 10%, then the highest possible cost of paint B, in Rs. per litre, is",
+        "options": [
+            "20",
+            "22",
+            "16",
+            "26"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Cost price of the 10 litres = 264/1.10 = Rs. 240, so average cost is Rs. 24 per litre.</li><li>Let paint B cost Rs. b per litre, so paint A costs Rs. b + 8.</li><li>Since B does not exceed A, A is at least 5 litres. To maximize b, take A = 5 litres.</li><li>Then average cost = b + 8 x 5/10 = b + 4 = 24, so b = 20.</li></ol>"
+    },
+    {
+        "no": 4,
+        "itemId": "MA-2018-S2-01",
+        "source": "CAT 2018 Slot 2",
+        "type": "mcq",
+        "question": "There are two drums, each containing a mixture of paints A and B. In drum 1, A and B are in the ratio 18 : 7. The mixtures from drums 1 and 2 are mixed in the ratio 3 : 4 and in this final mixture, A and B are in the ratio 13 : 7. In drum 2, then A and B were in the ratio",
+        "options": [
+            "239 : 161",
+            "229 : 141",
+            "251 : 163",
+            "220 : 149"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>A fraction in drum 1 is 18/25 and in the final mixture is 13/20.</li><li>Let A fraction in drum 2 be x. Then (3 x 18/25 + 4x)/7 = 13/20.</li><li>Solving gives x = 239/400. Hence B fraction is 161/400.</li><li>So A : B in drum 2 = 239 : 161.</li></ol>"
+    },
+    {
+        "no": 5,
+        "itemId": "MA-2018-S2-02",
+        "source": "CAT 2018 Slot 2",
+        "type": "mcq",
+        "question": "The strength of a salt solution is p% if 100ml of the solution contains p grams of salt. If three salt solutions A, B, C are mixed in the proportion 1 : 2 : 3, then the resulting solution has strength 20%. If instead the proportion is 3 : 2 : 1, then the resulting solution has strength 30%. A fourth solution, D, is produced by mixing B and C in the ratio 2 : 7. The ratio of the strength of D to that of A is",
+        "options": [
+            "1 : 4",
+            "3 : 10",
+            "1 : 3",
+            "2 : 5"
+        ],
+        "answer": 2,
+        "solution": "<ol class=\"solution-steps\"><li>Let strengths be a, b and c.</li><li>a + 2b + 3c = 120 and 3a + 2b + c = 180.</li><li>Subtracting gives a - c = 30. From the first equation, b = 45 - 2c.</li><li>Strength of D = (2b + 7c)/9 = (90 + 3c)/9 = (c + 30)/3 = a/3.</li><li>Therefore D : A = 1 : 3.</li></ol>"
+    },
+    {
+        "no": 6,
+        "itemId": "MA-2018-S2-03",
+        "source": "CAT 2018 Slot 2",
+        "type": "mcq",
+        "question": "A 20% ethanol solution is mixed with another ethanol solution, say S of unknown concentration in the proportion 1 : 3 by volume. This mixture is then mixed with an equal volume of 20% ethanol solution. If the resultant mixture is a 31.25% ethanol solution, then the unknown concentration of S is",
+        "options": [
+            "48%",
+            "55%",
+            "52%",
+            "50%"
+        ],
+        "answer": 3,
+        "solution": "<ol class=\"solution-steps\"><li>The concentration of the first mixture is (20 + 3S)/4.</li><li>This is mixed equally with a 20% solution, giving [(20 + 3S)/4 + 20]/2 = 31.25.</li><li>Solving gives 20 + 3S = 170, so S = 50%.</li></ol>"
+    },
+    {
+        "no": 7,
+        "itemId": "MA-2018-S2-04",
+        "source": "CAT 2018 Slot 2",
+        "type": "mcq",
+        "question": "A jar contains a mixture of 175ml water and 700ml alcohol. Gopal takes out 10% of the mixture and substitutes it by water of the same amount. The process is repeated once again. The percentage of water in the mixture is now",
+        "options": [
+            "30.3",
+            "20.2",
+            "25.4",
+            "35.2"
+        ],
+        "answer": 3,
+        "solution": "<ol class=\"solution-steps\"><li>Total mixture = 875 ml and initial alcohol = 700 ml.</li><li>After two 10% replacements, alcohol left = 700 x 0.9 x 0.9 = 567 ml.</li><li>Water = 875 - 567 = 308 ml.</li><li>Water percentage = 308/875 x 100 = 35.2%.</li></ol>"
+    },
+    {
+        "no": 8,
+        "itemId": "MA-2019-S1-01",
+        "source": "CAT 2019 Slot 1",
+        "type": "mcq",
+        "question": "A chemist mixes two liquids 1 and 2. One litre of liquid 1 weighs 1 kg and one litre of liquid 2 weighs 800gm. If half litre of the mixture weighs 480gm, then the percentage of liquid 1 in the mixture, in terms of volume, is",
+        "options": [
+            "80",
+            "75",
+            "85",
+            "70"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>The mixture density is 480 gm per half litre, or 960 gm per litre.</li><li>Let the volume fraction of liquid 1 be x. Then 1000x + 800(1 - x) = 960.</li><li>So 200x = 160, hence x = 0.8 = 80%.</li></ol>"
+    },
+    {
+        "no": 9,
+        "itemId": "MA-2019-S2-01",
+        "source": "CAT 2019 Slot 2",
+        "type": "mcq",
+        "question": "The strength of a salt solution is p% if 100ml of the solution contains p grams of salt. Each of three vessels A, B, C contains 500ml of salt solution of strengths 10%, 22%, and 32%, respectively. Now, 100ml of the solution in vessel A is transferred to vessel B. Then, 100ml of the solution in vessel B is transferred to vessel C. Finally, 100ml of the solution in vessel C is transferred to vessel A. The strength, in percentage, of the resulting solution in vessel A is",
+        "options": [
+            "15",
+            "13",
+            "14",
+            "12"
+        ],
+        "answer": 2,
+        "solution": "<ol class=\"solution-steps\"><li>Initial salt in A, B and C is 50, 110 and 160 grams.</li><li>After 100 ml from A to B, A has 400 ml with 40 grams salt; B has 600 ml with 120 grams salt.</li><li>B is now 20%, so 100 ml sent to C carries 20 grams salt. C becomes 600 ml with 180 grams salt, i.e. 30%.</li><li>100 ml from C to A carries 30 grams salt. A now has 500 ml with 70 grams salt.</li><li>Strength of A = 70/500 x 100 = 14%.</li></ol>"
+    },
+    {
+        "no": 10,
+        "itemId": "MA-2020-S1-01",
+        "source": "CAT 2020 Slot 1",
+        "type": "text",
+        "question": "A solution, of volume 40 litres, has dye and water in the proportion 2 : 3. Water is added to the solution to change this proportion to 2 : 5. If one-fourths of this diluted solution is taken out, how many litres of dye must be added to the remaining solution to bring the proportion back to 2 : 3?",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "8"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Initially dye = 16 litres and water = 24 litres.</li><li>To make dye : water = 2 : 5 while dye remains 16, water must become 40 litres. So total is 56 litres.</li><li>One-fourth is removed, leaving dye = 12 litres and water = 30 litres.</li><li>If x litres dye is added, (12 + x) : 30 = 2 : 3, so 12 + x = 20.</li><li>Thus x = 8 litres.</li></ol>"
+    },
+    {
+        "no": 11,
+        "itemId": "MA-2020-S3-01",
+        "source": "CAT 2020 Slot 3",
+        "type": "mcq",
+        "question": "Two alcohol solutions, A and B, are mixed in the proportion 1 : 3 by volume. The volume of the mixture is then doubled by adding solution A such that the resulting mixture has 72% alcohol. If solution A has 60% alcohol, then the percentage of alcohol in solution B is",
+        "options": [
+            "90%",
+            "92%",
+            "94%",
+            "89%"
+        ],
+        "answer": 1,
+        "solution": "<ol class=\"solution-steps\"><li>Use 1 unit of A and 3 units of B, then add 4 more units of A to double the volume.</li><li>The final mixture has 5 units of A and 3 units of B.</li><li>(5 x 60 + 3B)/8 = 72.</li><li>So 300 + 3B = 576, giving B = 92%.</li></ol>"
+    },
+    {
+        "no": 12,
+        "itemId": "MA-2021-S1-01",
+        "source": "CAT 2021 Slot 1",
+        "type": "text",
+        "question": "The strength of an indigo solution in percentage is equal to the amount of indigo in grams per 100cc of water. Two 800cc bottles are filled with indigo solutions of strengths 33% and 17%, respectively. A part of the solution from the first bottle is thrown away and replaced by an equal volume of the solution from the second bottle. If the strength of the indigo solution in the first bottle has now changed to 21% then the volume, in cc, of the solution left in the second bottle is",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "200"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Let x cc be replaced from the first bottle by solution from the second.</li><li>Final strength in first bottle: [33(800 - x) + 17x]/800 = 21.</li><li>So 26400 - 16x = 16800, giving x = 600.</li><li>Volume left in the second bottle = 800 - 600 = 200 cc.</li></ol>"
+    },
+    {
+        "no": 13,
+        "itemId": "MA-2021-S2-01",
+        "source": "CAT 2021 Slot 2",
+        "type": "mcq",
+        "question": "A person buys tea of three different qualities at Rs. 800, Rs. 500, and Rs. 300 per kg, respectively, and the amounts bought are in the proportion 2 : 3 : 5. She mixes all the tea and sells one-sixth of the mixture at Rs. 700 per kg. The price, in INR per kg, at which she should sell the remaining tea, to make an overall profit of 50%, is",
+        "options": [
+            "688",
+            "675",
+            "653",
+            "692"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Take 10 kg tea. Cost = 2 x 800 + 3 x 500 + 5 x 300 = Rs. 4600.</li><li>For 50% profit, total revenue required = Rs. 6900.</li><li>One-sixth of 10 kg is 5/3 kg, sold at Rs. 700, giving revenue Rs. 3500/3.</li><li>Remaining quantity is 25/3 kg. Required revenue from it = 6900 - 3500/3 = 17200/3.</li><li>Required price = (17200/3)/(25/3) = Rs. 688 per kg.</li></ol>"
+    },
+    {
+        "no": 14,
+        "itemId": "MA-2021-S2-02",
+        "source": "CAT 2021 Slot 2",
+        "type": "text",
+        "question": "From a container filled with milk, 9 litres of milk are drawn and replaced with water. Next, from the same container, 9 litres are drawn and again replaced with water. If the volumes of milk and water in the container are now in the ratio of 16 : 9, then the capacity of the container, in litres, is",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "45"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Let the capacity be C litres.</li><li>After two replacements of 9 litres, milk fraction = (1 - 9/C)^2.</li><li>Final milk fraction is 16/(16 + 9) = 16/25.</li><li>Thus (1 - 9/C)^2 = 16/25, so 1 - 9/C = 4/5.</li><li>This gives C = 45 litres.</li></ol>"
+    },
+    {
+        "no": 15,
+        "itemId": "MA-2021-S3-01",
+        "source": "CAT 2021 Slot 3",
+        "type": "mcq",
+        "question": "If a certain weight of an alloy of silver and copper is mixed with 3 kg of pure silver, the resulting alloy will have 90% silver by weight. If the same weight of the initial alloy is mixed with 2 kg of another alloy which has 90% silver by weight, the resulting alloy will have 84% silver by weight. Then, the weight of the initial alloy, in kg, is",
+        "options": [
+            "3",
+            "2.5",
+            "3.5",
+            "4"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Let initial alloy weight be w kg and silver fraction be s.</li><li>(sw + 3)/(w + 3) = 0.90, so sw = 0.90w - 0.30.</li><li>(sw + 1.8)/(w + 2) = 0.84, so sw = 0.84w - 0.12.</li><li>Equating: 0.90w - 0.30 = 0.84w - 0.12.</li><li>So 0.06w = 0.18, hence w = 3 kg.</li></ol>"
+    },
+    {
+        "no": 16,
+        "itemId": "MA-2022-S1-01",
+        "source": "CAT 2022 Slot 1",
+        "type": "mcq",
+        "question": "A mixture contains lemon juice and sugar syrup in equal proportion. If a new mixture is created by adding this mixture and sugar syrup in the ratio 1 : 3, then the ratio of lemon juice and sugar syrup in the new mixture is",
+        "options": [
+            "1 : 4",
+            "1 : 5",
+            "1 : 6",
+            "1 : 7"
+        ],
+        "answer": 3,
+        "solution": "<ol class=\"solution-steps\"><li>Take 1 unit of the original mixture and 3 units of sugar syrup.</li><li>The original mixture contributes 1/2 unit lemon juice and 1/2 unit syrup.</li><li>Total lemon juice = 1/2 and total syrup = 1/2 + 3 = 7/2.</li><li>Ratio = 1/2 : 7/2 = 1 : 7.</li></ol>"
+    },
+    {
+        "no": 17,
+        "itemId": "MA-2022-S2-01",
+        "source": "CAT 2022 Slot 2",
+        "type": "mcq",
+        "question": "There are two containers of the same volume, first container half-filled with sugar syrup and the second container half-filled with milk. Half the content of the first container is transferred to the second container, and then the half of this mixture is transferred back to the first container. Next, half the content of the first container is transferred back to the second container. Then the ratio of sugar syrup and milk in the second container is",
+        "options": [
+            "6 : 5",
+            "5 : 4",
+            "5 : 6",
+            "4 : 5"
+        ],
+        "answer": 2,
+        "solution": "<ol class=\"solution-steps\"><li>Let each container capacity be 2 units. Initially first has 1 unit syrup and second has 1 unit milk.</li><li>Transfer 0.5 syrup to second. Second has 0.5 syrup and 1 milk.</li><li>Half of second goes back: 0.25 syrup and 0.5 milk. First then has 0.75 syrup and 0.5 milk.</li><li>Half of first is transferred to second: 0.375 syrup and 0.25 milk.</li><li>Second finally has 0.25 + 0.375 = 0.625 syrup and 0.5 + 0.25 = 0.75 milk.</li><li>Ratio = 0.625 : 0.75 = 5 : 6.</li></ol>"
+    },
+    {
+        "no": 18,
+        "itemId": "MA-2022-S3-01",
+        "source": "CAT 2022 Slot 3",
+        "type": "mcq",
+        "question": "A glass contains 500cc of milk and a cup contains 500cc of water. From the glass, 150cc of milk is transferred to the cup and mixed thoroughly. Next, 150cc of this mixture is transferred from the cup to the glass. Now, the amount of water in the glass and the amount of milk in the cup are in the ratio",
+        "options": [
+            "10 : 3",
+            "1 : 1",
+            "3 : 10",
+            "10 : 13"
+        ],
+        "answer": 1,
+        "solution": "<ol class=\"solution-steps\"><li>After 150 cc milk is added to the cup, the cup has 150 cc milk and 500 cc water, total 650 cc.</li><li>The 150 cc transferred back contains milk = 150 x 150/650 and water = 150 x 500/650.</li><li>Water in glass = 150 x 500/650 = 1500/13.</li><li>Milk left in cup = 150 - 150 x 150/650 = 1500/13.</li><li>They are equal, so the ratio is 1 : 1.</li></ol>"
+    },
+    {
+        "no": 19,
+        "itemId": "MA-2023-S1-01",
+        "source": "CAT 2023 Slot 1",
+        "type": "mcq",
+        "question": "A mixture P is formed by removing a certain amount of coffee from a coffee jar and replacing the same amount with cocoa powder. The same amount is again removed from mixture P and replaced with same amount of cocoa powder to form a new mixture Q. If the ratio of coffee and cocoa in the mixture Q is 16 : 9, then the ratio of cocoa in mixture P to that in mixture Q is",
+        "options": [
+            "5 : 9",
+            "4 : 9",
+            "1 : 3",
+            "1 : 2"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Let the fraction replaced each time be r.</li><li>After two replacements, coffee fraction in Q is (1 - r)^2.</li><li>Given coffee : cocoa = 16 : 9, coffee fraction = 16/25.</li><li>So (1 - r)^2 = 16/25, hence r = 1/5.</li><li>Cocoa fraction in P is 1/5 and in Q is 9/25. Their ratio is 1/5 : 9/25 = 5 : 9.</li></ol>"
+    },
+    {
+        "no": 20,
+        "itemId": "MA-2023-S2-01",
+        "source": "CAT 2023 Slot 2",
+        "type": "text",
+        "question": "A container has 40 liters of milk. Then, 4 liters are removed from the container and replaced with 4 liters of water. This process of replacing 4 liters of the liquid in the container with an equal volume of water is continued repeatedly. The smallest number of times of doing this process, after which the volume of milk in the container becomes less than that of water, is",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "7"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Each replacement leaves 36/40 = 0.9 of the milk present.</li><li>After n replacements, milk = 40(0.9)^n.</li><li>Milk becomes less than water when milk is less than 20 litres, so (0.9)^n < 0.5.</li><li>(0.9)^6 is about 0.531, while (0.9)^7 is about 0.478.</li><li>Smallest n is 7.</li></ol>"
+    },
+    {
+        "no": 21,
+        "itemId": "MA-2023-S3-01",
+        "source": "CAT 2023 Slot 3",
+        "type": "mcq",
+        "question": "Anil mixes cocoa with sugar in the ratio 3 : 2 to prepare mixture A, and coffee with sugar in the ratio 7 : 3 to prepare mixture B. He combines mixtures A and B in the ratio 2 : 3 to make a new mixture C. If he mixes C with an equal amount of milk to make a drink, then the percentage of sugar in this drink will be",
+        "options": [
+            "17",
+            "24",
+            "16",
+            "21"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Sugar fraction in A is 2/5 and in B is 3/10.</li><li>In C, A : B = 2 : 3, so sugar fraction = [2(2/5) + 3(3/10)]/5 = 1.7/5 = 34%.</li><li>C is mixed with an equal amount of milk, so the sugar percentage halves.</li><li>Final sugar percentage = 17%.</li></ol>"
+    },
+    {
+        "no": 22,
+        "itemId": "MA-2024-S1-01",
+        "source": "CAT 2024 Slot 1",
+        "type": "mcq",
+        "question": "A glass is filled with milk. Two-thirds of its content is poured out and replaced with water. If this process of pouring out two-thirds the content and replacing with water is repeated three more times, then the final ratio of milk to water in the glass, is",
+        "options": [
+            "1: 26",
+            "1:80",
+            "1:27",
+            "1:81"
+        ],
+        "answer": 1,
+        "solution": "<ol class=\"solution-steps\"><li>Each operation leaves one-third of the milk currently present.</li><li>The operation is done 4 times in total.</li><li>Final milk fraction = (1/3)^4 = 1/81.</li><li>Water fraction = 80/81, so milk : water = 1 : 80.</li></ol>"
+    },
+    {
+        "no": 23,
+        "itemId": "MA-2024-S2-01",
+        "source": "CAT 2024 Slot 2",
+        "type": "mcq",
+        "question": "A vessel contained a certain amount of a solution of acid and water. When 2 litres of water was added to it, the new solution had 50% acid concentration. When 15 litres of acid was further added to this new solution, the final solution had 80% acid concentration. The ratio of water and acid in the original solution was",
+        "options": [
+            "4:5",
+            "3:5",
+            "5:3",
+            "5:4"
+        ],
+        "answer": 1,
+        "solution": "<ol class=\"solution-steps\"><li>Let original acid and water be a and w litres.</li><li>After adding 2 litres water: a/(a + w + 2) = 1/2, so a = w + 2.</li><li>After adding 15 litres acid: (a + 15)/(a + w + 17) = 4/5.</li><li>Substitute a = w + 2: (w + 17)/(2w + 19) = 4/5, giving w = 3 and a = 5.</li><li>Original water : acid = 3 : 5.</li></ol>"
+    },
+    {
+        "no": 24,
+        "itemId": "MA-2024-S3-01",
+        "source": "CAT 2024 Slot 3",
+        "type": "text",
+        "question": "A certain amount of water was poured into a 300 litre container and the remaining portion of the container was filled with milk. Then an amount of this solution was taken out from the container which was twice the volume of water that was earlier poured into it, and water was poured to refill the container again. If the resulting solution contains 72% milk, then the amount of water, in litres, that was initially poured into the container was",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "30"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Let initial water be x litres. Then milk is 300 - x litres.</li><li>2x litres of mixture is removed, so milk left is (300 - x)(1 - 2x/300) = (300 - x)(1 - x/150).</li><li>Final milk is 72% of 300 = 216 litres.</li><li>(300 - x)(1 - x/150) = 216 gives x^2 - 450x + 12600 = 0.</li><li>The feasible solution is x = 30 litres.</li></ol>"
+    },
+    {
+        "no": 25,
+        "itemId": "MA-2025-S1-01",
+        "source": "CAT 2025 Slot 1",
+        "type": "mcq",
+        "question": "A container holds 200 litres of a solution of acid and water, having 30% acid by volume. Atul replaces 20% of this solution with water, then replaces 10% of the resulting solution with acid, and finally replaces 15% of the solution thus obtained, with water. The percentage of acid by volume in the final solution obtained after these three replacements, is nearest to",
+        "options": [
+            "27",
+            "25",
+            "29",
+            "23"
+        ],
+        "answer": 0,
+        "solution": "<ol class=\"solution-steps\"><li>Initial acid = 30% of 200 = 60 litres.</li><li>After replacing 20% with water, acid = 60 x 0.8 = 48 litres.</li><li>Then 10% of the solution, i.e. 20 litres, is replaced by acid. Acid removed = 4.8 litres and acid added = 20 litres, so acid = 63.2 litres.</li><li>Finally 15% is replaced with water, so acid left = 63.2 x 0.85 = 53.72 litres.</li><li>Percentage = 53.72/200 x 100 = 26.86%, nearest to 27.</li></ol>"
+    },
+    {
+        "no": 26,
+        "itemId": "MA-2025-S2-01",
+        "source": "CAT 2025 Slot 2",
+        "type": "mcq",
+        "question": "A mixture of coffee and cocoa, 16% of which is coffee, costs Rs 240 per kg. Another mixture of coffee and cocoa, of which 36% is coffee, costs Rs 320 per kg. If a new mixture of coffee and cocoa costs Rs 376 per kg, then the quantity, in kg, of coffee in 10 kg of this new mixture is",
+        "options": [
+            "6",
+            "2.5",
+            "4",
+            "5"
+        ],
+        "answer": 3,
+        "solution": "<ol class=\"solution-steps\"><li>Let pure coffee and pure cocoa cost C and K per kg.</li><li>0.16C + 0.84K = 240 and 0.36C + 0.64K = 320.</li><li>Subtracting gives 0.20(C - K) = 80, so C - K = 400.</li><li>Using the first equation, K = 176 and C = 576.</li><li>For the new mixture, 176 + 400f = 376, so coffee fraction f = 1/2.</li><li>In 10 kg, coffee quantity = 5 kg.</li></ol>"
+    },
+    {
+        "no": 27,
+        "itemId": "MA-2025-S3-01",
+        "source": "CAT 2025 Slot 3",
+        "type": "text",
+        "question": "Vessels A and B contain 60 litres of alcohol and 60 litres of water, respectively. A certain volume is taken out from A and poured into B. After stirring, the same volume is taken out from B and poured into A. If the resultant ratio of alcohol and water in A is 15 : 4, then the volume, in litres, initially taken out from A is",
+        "typedAnswer": "",
+        "acceptedAnswers": [
+            "16"
+        ],
+        "solution": "<ol class=\"solution-steps\"><li>Let x litres be transferred from A to B.</li><li>After stirring B, the fraction of alcohol in B is x/(60 + x) and water fraction is 60/(60 + x).</li><li>When x litres are transferred back to A, water entering A is 60x/(60 + x).</li><li>Alcohol in A becomes 60 - x + x^2/(60 + x). This simplifies the alcohol-to-water ratio in A to 60 : x.</li><li>Given 60 : x = 15 : 4, so x = 16 litres.</li></ol>"
+    }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
