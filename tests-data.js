@@ -1322,6 +1322,20 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 26
+  },
+  {
+    "title": "Average CAT ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/5. Average/Average CAT ( 2017 -2025 ).html",
+    "original": "Average CAT ( 2017 -2025 ).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 28
   }
 ];
 
