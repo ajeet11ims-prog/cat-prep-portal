@@ -1374,6 +1374,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-4",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ];
 
