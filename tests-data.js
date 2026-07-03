@@ -1442,6 +1442,34 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 28
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025)",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "original": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 26
+  },
+  {
+    "title": "SICI CAT PYQ 2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
+    "original": "SICI CAT PYQ 2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 20
   }
 ];
 
