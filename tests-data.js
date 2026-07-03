@@ -1414,6 +1414,34 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation CAT PYQ ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/6. Mixture & Alligation/Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "original": "Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Average CAT ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/5. Average/Average CAT ( 2017 -2025 ).html",
+    "original": "Average CAT ( 2017 -2025 ).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 28
   }
 ];
 
