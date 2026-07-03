@@ -1470,6 +1470,71 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 20
+  },
+  {
+    "title": "Mixture & Alligation Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-1.html",
+    "original": "mixture_alligation_test-1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-2.html",
+    "original": "mixture_alligation_test-2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-3.html",
+    "original": "mixture_alligation_test-3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-4.html",
+    "original": "mixture_alligation_test-4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test_5.html",
+    "original": "mixture_alligation_test_5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
   }
 ];
 

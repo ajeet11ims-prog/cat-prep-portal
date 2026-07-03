@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixture Alligation Test -4</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Mixture Alligation Test -4</h1><div class="meta">24 Questions | 40 Minutes | 13 MCQ | 11 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 96001,
+    "source": "Mixture Alligation Test -4 | Source Q69 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> Radha bought a plot for Rs. 96000. She sold \\(\\frac{1}{3}\\) of it at 10% loss. At what percent profit should the remaining part be sold so that the overall profit becomes 20%?</p>",
+    "typedAnswer": "35",
+    "answerDisplay": "35%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Cost price of the first part = \\(\\frac{1}{3}\\) of 96000 = 32000.</li><li>It is sold at 10% loss, so selling price of the first part = 32000 × 90% = 28800.</li><li>For an overall profit of 20%, total selling price should be 96000 × 120% = 115200.</li><li>Hence, the selling price required for the remaining part = 115200 − 28800 = 86400.</li><li>Cost price of the remaining part = 96000 − 32000 = 64000.</li><li>Required profit % = \\(\\frac{86400-64000}{64000}\\times100 = 35\\%\\).</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 96002,
+    "source": "Mixture Alligation Test -4 | Source Q70 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> A man sold a buffalo and a cow for Rs. 2600. He sold the buffalo at a profit of 25% and the cow at a profit of 20%. In this way, his total profit was \\(23\\frac{1}{13}\\%\\). Find the cost price of the buffalo and the cow.</p>",
+    "options": [
+      "<p>Buffalo = Rs. 1300, Cow = Rs. 812.50</p>",
+      "<p>Buffalo = Rs. 1200, Cow = Rs. 900</p>",
+      "<p>Buffalo = Rs. 1250, Cow = Rs. 850</p>",
+      "<p>Buffalo = Rs. 1400, Cow = Rs. 750</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "Buffalo = Rs. 1300, Cow = Rs. 812.50",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total profit = \\(23\\frac{1}{13}\\% = \\frac{3}{13}\\).</li><li>So total selling price = total cost price × \\(\\frac{16}{13}\\).</li><li>Hence, total cost price = 2600 × \\(\\frac{13}{16}\\) = 2112.50.</li><li>Let the cost prices of buffalo and cow be x and y. Then x + y = 2112.50.</li><li>Also, 1.25x + 1.20y = 2600.</li><li>Solving, x = 1300 and y = 812.50.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 96003,
+    "source": "Mixture Alligation Test -4 | Source Q71 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> The average salary of all employees of a company is Rs. 5000. The average salary of male employees is Rs. 5200 and the average salary of female employees is Rs. 4200. What percentage of the employees are male?</p>",
+    "typedAnswer": "80",
+    "answerDisplay": "80%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Use alligation on the averages 5200 and 4200 to get overall average 5000.</li><li>Male : Female = (5000 − 4200) : (5200 − 5000) = 800 : 200 = 4 : 1.</li><li>Therefore, percentage of males = \\(\\frac{4}{5}\\times100 = 80\\%\\).</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 96004,
+    "source": "Mixture Alligation Test -4 | Source Q72 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> Gold is 19 times heavier than water. Copper is 9 times heavier than water. In which ratio should gold and copper be mixed so that the mixture is 15 times heavier than water?</p>",
+    "options": [
+      "<p>3 : 2</p>",
+      "<p>2 : 3</p>",
+      "<p>1 : 2</p>",
+      "<p>2 : 1</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "3 : 2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Apply alligation to densities 19 and 9 with mean 15.</li><li>Required ratio of gold : copper = (15 − 9) : (19 − 15) = 6 : 4 = 3 : 2.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 96005,
+    "source": "Mixture Alligation Test -4 | Source Q73 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> Liquid P is \\(1\\frac{3}{7}\\) times heavier than water. Water is \\(1\\frac{2}{5}\\) times heavier than another liquid Q. How many litres of liquid P should be mixed with 21 lt of liquid Q so that the average weight of the mixture becomes equal to that of water?</p>",
+    "typedAnswer": "14",
+    "answerDisplay": "14 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>P is \\(1\\frac{3}{7} = \\frac{10}{7}\\) times as heavy as water.</li><li>Since water is \\(1\\frac{2}{5} = \\frac{7}{5}\\) times as heavy as Q, Q is \\(\\frac{5}{7}\\) times as heavy as water.</li><li>Let x lt of P be added to 21 lt of Q.</li><li>For the average weight to equal water, \\(\\frac{\\frac{10}{7}x + \\frac{5}{7}\\times21}{x+21}=1\\).</li><li>So 10x + 105 = 7x + 147, hence 3x = 42 and x = 14.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 96006,
+    "source": "Mixture Alligation Test -4 | Source Q74 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> 450 toys are divided into three types A, B and C. These are sold at profits of 9%, 10% and 12% respectively. The overall profit from A and B together is \\(9\\frac{3}{7}\\%\\), and the overall profit from all three types together is 10%. Find the number of toys in A, B and C respectively.</p>",
+    "options": [
+      "<p>A = 200, B = 150, C = 100</p>",
+      "<p>A = 180, B = 170, C = 100</p>",
+      "<p>A = 150, B = 200, C = 100</p>",
+      "<p>A = 210, B = 140, C = 100</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "A = 200, B = 150, C = 100",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For A and B together, use alligation on 9% and 10% with mean \\(9\\frac{3}{7}\\%\\).</li><li>A : B = \\((10 - 9\\frac{3}{7}) : (9\\frac{3}{7} - 9) = \\frac{4}{7} : \\frac{3}{7} = 4 : 3\\).</li><li>Now combine AB (mean profit \\(9\\frac{3}{7}\\%\\)) with C (12%) to get overall 10%.</li><li>AB : C = (12 − 10) : \\((10 - 9\\frac{3}{7})\\) = 2 : \\(\\frac{4}{7}\\) = 7 : 2.</li><li>Since total toys = 450, AB = \\(\\frac{7}{9}\\times450 = 350\\) and C = 100.</li><li>Within AB, A : B = 4 : 3, so A = 200 and B = 150.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 96007,
+    "source": "Mixture Alligation Test -4 | Source Q75 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> The ratio of the weights of Ram and Shyam is 4 : 5. Ram's weight is increased by 10%. The total weight of Ram and Shyam together increases by 82.5 kg, which is 15% of their original total weight. By what percent is Shyam's weight increased?</p>",
+    "typedAnswer": "19",
+    "answerDisplay": "19%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let original weights be 4x and 5x.</li><li>Total original weight = 9x.</li><li>Given 15% of total original weight = 82.5, so 0.15 × 9x = 82.5 ⇒ 1.35x = 82.5.</li><li>Hence, x = \\(\\frac{82.5}{1.35}\\).</li><li>Ram's increase = 10% of 4x = 0.4x.</li><li>Therefore, Shyam's increase = 82.5 − 0.4x = 0.95x.</li><li>So Shyam's percentage increase = \\(\\frac{0.95x}{5x}\\times100 = 19\\%\\).</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 96008,
+    "source": "Mixture Alligation Test -4 | Source Q76 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> Rs. 960 is received as interest in 5 years on Rs. 3600, while some part is invested at 4% per annum and the remaining part at 6% per annum. Find the two parts.</p>",
+    "options": [
+      "<p>Rs. 1200 at 4% and Rs. 2400 at 6%</p>",
+      "<p>Rs. 1500 at 4% and Rs. 2100 at 6%</p>",
+      "<p>Rs. 1800 at 4% and Rs. 1800 at 6%</p>",
+      "<p>Rs. 2400 at 4% and Rs. 1200 at 6%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "Rs. 1200 at 4% and Rs. 2400 at 6%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total simple interest in 5 years on Rs. 3600 is Rs. 960.</li><li>So the average annual rate = \\(\\frac{960}{3600\\times5}\\times100 = 5\\frac{1}{3}\\%\\).</li><li>Using alligation on 4% and 6% with mean \\(5\\frac{1}{3}\\%\\), the invested amounts are in the ratio 1 : 2.</li><li>Therefore, out of Rs. 3600, the two parts are Rs. 1200 and Rs. 2400.</li><li>The smaller part corresponds to 4% and the larger to 6%.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 96009,
+    "source": "Mixture Alligation Test -4 | Source Q77 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> There are deer and ducks in a zoo. If heads are counted, the total is 180, and if legs are counted, the total is 448. Find the number of deer and ducks.</p>",
+    "options": [
+      "<p>44 deer and 136 ducks</p>",
+      "<p>56 deer and 124 ducks</p>",
+      "<p>40 deer and 140 ducks</p>",
+      "<p>48 deer and 132 ducks</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "44 deer and 136 ducks",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let deer = d and ducks = u.</li><li>Then d + u = 180.</li><li>Legs: 4d + 2u = 448.</li><li>Dividing the second equation by 2 gives 2d + u = 224.</li><li>Subtracting the first equation, d = 44.</li><li>Therefore, u = 180 − 44 = 136.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 96010,
+    "source": "Mixture Alligation Test -4 | Source Q78 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> There are pigeons and rabbits in a zoo. If heads are counted, the total is 90, and if legs are counted, the total is 224. Find the number of pigeons and rabbits.</p>",
+    "options": [
+      "<p>68 pigeons and 22 rabbits</p>",
+      "<p>66 pigeons and 24 rabbits</p>",
+      "<p>70 pigeons and 20 rabbits</p>",
+      "<p>64 pigeons and 26 rabbits</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "68 pigeons and 22 rabbits",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let pigeons = p and rabbits = r.</li><li>Then p + r = 90.</li><li>Legs: 2p + 4r = 224.</li><li>Dividing the second equation by 2 gives p + 2r = 112.</li><li>Subtracting the first equation, r = 22.</li><li>Hence, p = 90 − 22 = 68.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 96011,
+    "source": "Mixture Alligation Test -4 | Source Q79 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> Two vessels contain mixtures of milk and water in the ratios 1 : 3 and 3 : 5. In what ratio should these mixtures be mixed to get a new mixture in which the ratio of milk to water is 1 : 2?</p>",
+    "options": [
+      "<p>1 : 2</p>",
+      "<p>2 : 1</p>",
+      "<p>3 : 2</p>",
+      "<p>2 : 3</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "1 : 2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk fraction in the first mixture = \\(\\frac{1}{4}\\).</li><li>Milk fraction in the second mixture = \\(\\frac{3}{8}\\).</li><li>Required milk fraction = \\(\\frac{1}{3}\\).</li><li>By alligation, first : second = \\(\\left(\\frac{3}{8}-\\frac{1}{3}\\right) : \\left(\\frac{1}{3}-\\frac{1}{4}\\right)\\).</li><li>This equals \\(\\frac{1}{24} : \\frac{1}{12} = 1 : 2\\).</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 96012,
+    "source": "Mixture Alligation Test -4 | Source Q80 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> Two vessels contain mixtures of milk and water in the ratios 7 : 22 and 21 : 37. In what ratio should these mixtures be mixed to get a new mixture in which the ratio of milk to water is 25 : 62?</p>",
+    "options": [
+      "<p>13 : 8</p>",
+      "<p>8 : 13</p>",
+      "<p>5 : 4</p>",
+      "<p>4 : 5</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "13 : 8",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk fraction in the first mixture = \\(\\frac{7}{29}\\).</li><li>Milk fraction in the second mixture = \\(\\frac{21}{58}\\).</li><li>Required milk fraction = \\(\\frac{25}{87}\\).</li><li>By alligation, first : second = \\(\\left(\\frac{21}{58}-\\frac{25}{87}\\right) : \\left(\\frac{25}{87}-\\frac{7}{29}\\right)\\).</li><li>This simplifies to \\(\\frac{377}{5046} : \\frac{232}{5046} = 377 : 232 = 13 : 8\\).</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 96013,
+    "source": "Mixture Alligation Test -4 | Source Q81 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> Two vessels contain milk and water in the ratios 3 : 5 and 11 : 5. What quantity of the second mixture should be mixed with 65 lt of the first mixture to get a new mixture in which the ratio of milk to water is 5 : 7?</p>",
+    "typedAnswer": "10",
+    "answerDisplay": "10 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk fraction in the first mixture = \\(\\frac{3}{8}\\).</li><li>Milk fraction in the second mixture = \\(\\frac{11}{16}\\).</li><li>Required milk fraction = \\(\\frac{5}{12}\\).</li><li>By alligation, first : second = \\(\\left(\\frac{11}{16}-\\frac{5}{12}\\right) : \\left(\\frac{5}{12}-\\frac{3}{8}\\right)\\).</li><li>This becomes \\(\\frac{13}{48} : \\frac{1}{24} = 13 : 2\\).</li><li>If 13 parts = 65 lt, then 1 part = 5 lt, so 2 parts = 10 lt.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 96014,
+    "source": "Mixture Alligation Test -4 | Source Q82 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> A man purchased three types of wheat at Rs. 1.27/kg, Rs. 1.29/kg and Rs. 1.32/kg. In which ratio can these be mixed so that the cost of the mixture becomes Rs. 1.30/kg?</p>",
+    "options": [
+      "<p>1 : 1 : 2</p>",
+      "<p>2 : 1 : 1</p>",
+      "<p>1 : 2 : 2</p>",
+      "<p>2 : 2 : 1</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "1 : 1 : 2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the quantities of the three types be x, y and z.</li><li>For average price Rs. 1.30/kg, we need 127x + 129y + 132z = 130(x + y + z).</li><li>So 3x + y = 2z.</li><li>The least positive integer solution using all three types is x = 1, y = 1 and z = 2.</li><li>Hence, one suitable ratio is 1 : 1 : 2.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 96015,
+    "source": "Mixture Alligation Test -4 | Source Q83 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Two vessels contain milk and water in the ratios 1 : 3 and 2 : 5. Find the ratio in which these should be mixed to get a new mixture in which the ratio of milk to water is 3 : 8.</p>",
+    "options": [
+      "<p>4 : 7</p>",
+      "<p>7 : 4</p>",
+      "<p>3 : 5</p>",
+      "<p>5 : 3</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "4 : 7",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk fraction in the first mixture = \\(\\frac{1}{4}\\).</li><li>Milk fraction in the second mixture = \\(\\frac{2}{7}\\).</li><li>Required milk fraction = \\(\\frac{3}{11}\\).</li><li>By alligation, first : second = \\(\\left(\\frac{2}{7}-\\frac{3}{11}\\right) : \\left(\\frac{3}{11}-\\frac{1}{4}\\right)\\).</li><li>This gives \\(\\frac{1}{77} : \\frac{1}{44} = 4 : 7\\).</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 96016,
+    "source": "Mixture Alligation Test -4 | Source Q84 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> The ratio of boys and girls in a school is 5 : 3. Some students took admission in the ratio 5 : 7. Now the total number of students is 1200 and the ratio becomes 7 : 5. Find the number of students before admission.</p>",
+    "typedAnswer": "960",
+    "answerDisplay": "960",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>After admission, boys : girls = 7 : 5 and total students = 1200.</li><li>Hence, final numbers are 700 boys and 500 girls.</li><li>Let the original numbers be 5x and 3x, and admitted students be 5y and 7y.</li><li>Then 5x + 5y = 700 and 3x + 7y = 500.</li><li>From the first equation, x + y = 140.</li><li>Solving with the second equation gives x = 120.</li><li>Therefore, original total students = 8x = 960.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 96017,
+    "source": "Mixture Alligation Test -4 | Source Q85 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> There are two gold rings weighing 18 gm and 12 gm. Their purities are 20 carat and 15 carat respectively. They are melted together to make a new ring. Find the purity of the new ring in carat.</p>",
+    "typedAnswer": "18",
+    "answerDisplay": "18 carat",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Pure gold in the first ring = 18 × \\(\\frac{20}{24}\\) = 15 gm.</li><li>Pure gold in the second ring = 12 × \\(\\frac{15}{24}\\) = 7.5 gm.</li><li>Total pure gold = 22.5 gm and total weight = 30 gm.</li><li>Purity of the new ring = \\(\\frac{22.5}{30}	imes24 = 18\\) carat.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 96018,
+    "source": "Mixture Alligation Test -4 | Source Q86 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> The average number of people in a market on Sundays is 510, and on the remaining days of the week it is 240. The month has 30 days and starts with a Sunday. Find the average number of people per day in the month.</p>",
+    "typedAnswer": "285",
+    "answerDisplay": "285",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>A 30-day month starting with Sunday has Sundays on days 1, 8, 15, 22 and 29. So there are 5 Sundays.</li><li>Remaining days = 25.</li><li>Total people during Sundays = 5 × 510 = 2550.</li><li>Total people during other days = 25 × 240 = 6000.</li><li>Total people in the month = 8550.</li><li>Average per day = \\(\\frac{8550}{30} = 285\\).</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 96019,
+    "source": "Mixture Alligation Test -4 | Source Q87 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> A person travelled 80 km in 8 hours partly by cycle and partly on foot. The speed of the cycle is 16 km/hr and the speed on foot is 8 km/hr. Find the distance travelled by cycle and on foot respectively.</p>",
+    "options": [
+      "<p>32 km by cycle and 48 km on foot</p>",
+      "<p>48 km by cycle and 32 km on foot</p>",
+      "<p>40 km by cycle and 40 km on foot</p>",
+      "<p>24 km by cycle and 56 km on foot</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "32 km by cycle and 48 km on foot",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let x km be travelled by cycle, so 80 − x km is travelled on foot.</li><li>Total time: \\(\\frac{x}{16} + \\frac{80-x}{8} = 8\\).</li><li>Multiplying by 16: x + 160 − 2x = 128.</li><li>Thus, x = 32.</li><li>Hence, cycle distance = 32 km and foot distance = 48 km.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 96020,
+    "source": "Mixture Alligation Test -4 | Source Q88 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> A person travelled 61 km in 9 hours partly by cycle and partly on foot. The speed of the cycle is 9 km/hr and the speed on foot is 4 km/hr. Find the distance travelled by cycle and on foot respectively.</p>",
+    "options": [
+      "<p>45 km by cycle and 16 km on foot</p>",
+      "<p>36 km by cycle and 25 km on foot</p>",
+      "<p>40 km by cycle and 21 km on foot</p>",
+      "<p>48 km by cycle and 13 km on foot</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "45 km by cycle and 16 km on foot",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let x km be travelled by cycle, so 61 − x km is travelled on foot.</li><li>Total time: \\(\\frac{x}{9} + \\frac{61-x}{4} = 9\\).</li><li>Multiplying by 36: 4x + 549 − 9x = 324.</li><li>So 5x = 225, hence x = 45.</li><li>Therefore, the remaining distance on foot = 61 − 45 = 16 km.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 96021,
+    "source": "Mixture Alligation Test -4 | Source Q89 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> A person travelled 270 km in 9 hours partly by car and partly by train. The speed of the car is 36 km/hr and the speed of the train is 27 km/hr. Find the distance travelled by car and by train respectively.</p>",
+    "options": [
+      "<p>108 km by car and 162 km by train</p>",
+      "<p>162 km by car and 108 km by train</p>",
+      "<p>120 km by car and 150 km by train</p>",
+      "<p>135 km by car and 135 km by train</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "108 km by car and 162 km by train",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let x km be travelled by car, so 270 − x km is travelled by train.</li><li>Total time: \\(\\frac{x}{36} + \\frac{270-x}{27} = 9\\).</li><li>Multiplying by 108: 3x + 1080 − 4x = 972.</li><li>So x = 108.</li><li>Therefore, distance by train = 270 − 108 = 162 km.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 96022,
+    "source": "Mixture Alligation Test -4 | Source Q90 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> A dishonest milkman buys milk at Rs. 10 per litre, mixes 5 lt of water with it, and sells the mixture at Rs. 10 per litre. If he gains 20%, find the quantity of milk that he bought.</p>",
+    "typedAnswer": "25",
+    "answerDisplay": "25 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the quantity of milk bought be x lt.</li><li>Cost price = 10x.</li><li>He sells x + 5 lt of mixture at Rs. 10 per litre, so selling price = 10(x + 5).</li><li>Given profit = 20%, so selling price = 1.2 × cost price = 12x.</li><li>Thus, 10x + 50 = 12x.</li><li>Therefore, x = 25.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 96023,
+    "source": "Mixture Alligation Test -4 | Source Q91 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> A dishonest milkman buys 40 lt of milk at Rs. 193 per litre and mixes some water with it. He then sells the mixture at Rs. 193 per litre and gains 25%. Find the quantity of water mixed.</p>",
+    "typedAnswer": "10",
+    "answerDisplay": "10 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Cost price of 40 lt milk = 40 × 193.</li><li>Since the mixture is sold at the same rate and profit is 25%, the selling quantity must be 25% more than the bought quantity.</li><li>Hence, total mixture sold = 40 × 1.25 = 50 lt.</li><li>Therefore, water mixed = 50 − 40 = 10 lt.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 96024,
+    "source": "Mixture Alligation Test -4 | Source Q92 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> A dishonest milkman buys milk at Rs. 10 per litre, mixes 5 lt of water with it, and sells the mixture at Rs. 12 per litre. If he gains 30%, find the quantity of milk that he bought.</p>",
+    "typedAnswer": "60",
+    "answerDisplay": "60 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the quantity of milk bought be x lt.</li><li>Cost price = 10x.</li><li>Selling price of the mixture = 12(x + 5).</li><li>Given profit = 30%, so selling price = 1.3 × cost price = 13x.</li><li>Hence, 12x + 60 = 13x.</li><li>Therefore, x = 60.</li></ol>"
+  }
+]
+;
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':'Type your answer')+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':'')+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':'');}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3/-1, TITA +3/0. TITA accepts whole-number entry only. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>

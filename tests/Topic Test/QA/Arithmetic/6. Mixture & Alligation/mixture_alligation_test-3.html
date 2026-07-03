@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixture Alligation Test -3</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Mixture Alligation Test -3</h1><div class="meta">24 Questions | 40 Minutes | 19 MCQ + 5 TITA | +3/-1 MCQ, +3/0 TITA</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 95001,
+    "source": "Mixture Alligation Test -3 | Source Q45 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> An empty container is filled with pure alcohol. The alcohol is slowly allowed to run out and when the container is \\(\\frac{1}{4}\\) empty, it is replaced with water. Next, when the container is half empty, it is again filled with water. Finally, when it is \\(\\frac{3}{4}\\) empty, it is again filled with water. What percentage of the container is alcohol now?</p>",
+    "options": [
+      "<p>9.375%</p>",
+      "<p>12.5%</p>",
+      "<p>18.75%</p>",
+      "<p>6.25%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "9.375%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the container capacity be 1 unit.</li><li>After it is \\(\\frac{1}{4}\\) empty, alcohol left =\\(\\frac{3}{4}\\).</li><li>After filling water and then draining till it is half empty, alcohol left =\\(\\frac{3}{4}\\)×\\(\\frac{1}{2}\\)=\\(\\frac{3}{8}\\).</li><li>After filling water and then draining till it is \\(\\frac{3}{4}\\) empty, only \\(\\frac{1}{4}\\) of the mixture remains, so alcohol left =\\(\\frac{3}{8}\\)×\\(\\frac{1}{4}\\)=\\(\\frac{3}{32}\\).</li><li>Required percentage =\\(\\frac{3}{32}\\)×100=9.375%.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 95002,
+    "source": "Mixture Alligation Test -3 | Source Q46 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> Two solutions of milk and water are kept in two vessels A and B. The ratio of the quantity of milk in vessels A and B is 4:5, while the ratio of the quantity of water in vessels A and B is 8:9. It is known that the concentration of milk in one of these vessels is between 60% and 80%. What could be the concentration of milk in the other vessel?</p>",
+    "options": [
+      "<p>Between 57.45% and 81.63%</p>",
+      "<p>Between 60% and 80% only</p>",
+      "<p>Between 62.5% and 78.26%</p>",
+      "<p>Cannot be determined from the data</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "Between 57.45% and 81.63%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let milk quantities in A and B be 4x and 5x, and water quantities be 8y and 9y.</li><li>Milk concentrations are C_A=4x/4x+8y=x/x+2y,    C_B=5x/5x+9y.</li><li>Put t=x/y. Then C_A=t/t+2 and C_B=5t/5t+9. Also, C_B>C_A.</li><li>If C_B is between 60% and 80%, then the other concentration C_A can go from \\(\\frac{27}{47}\\)=57.45% to \\(\\frac{36}{46}\\)=78.26%.</li><li>If C_A is between 60% and 80%, then the other concentration C_B can go from 62.5% to \\(\\frac{40}{49}\\)=81.63%.</li><li>Hence, the other vessel's milk concentration could lie between 57.45% and 81.63%.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 95003,
+    "source": "Mixture Alligation Test -3 | Source Q47 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> Three vessels whose capacities are in the ratio 5:3:2 are completely filled with mixtures of milk and water. The ratios of milk to water in the vessels are 3:2, 2:1 and 3:1, respectively. Find the percentage of water in the new mixture obtained when \\(\\frac{1}{3}\\) of the first, \\(\\frac{1}{2}\\) of the second and \\(\\frac{2}{3}\\) of the third vessel are taken out and mixed together.</p>",
+    "options": [
+      "<p>\\(33\\frac{1}{3}\\%\\)</p>",
+      "<p>30%</p>",
+      "<p>35%</p>",
+      "<p>25%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "\\(33\\frac{1}{3}\\%\\)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the capacities be 5,3,2 units.</li><li>Quantities mixed are \\(\\frac{5}{3}\\),\\(\\frac{3}{2}\\),\\(\\frac{4}{3}\\) units.</li><li>Water taken from the first vessel =\\(\\frac{5}{3}\\)×\\(\\frac{2}{5}\\)=\\(\\frac{2}{3}\\).</li><li>Water taken from the second vessel =\\(\\frac{3}{2}\\)×\\(\\frac{1}{3}\\)=\\(\\frac{1}{2}\\).</li><li>Water taken from the third vessel =\\(\\frac{4}{3}\\)×\\(\\frac{1}{4}\\)=\\(\\frac{1}{3}\\).</li><li>Total water =\\(\\frac{2}{3}\\)+\\(\\frac{1}{2}\\)+\\(\\frac{1}{3}\\)=\\(\\frac{3}{2}\\), and total mixture =\\(\\frac{5}{3}\\)+\\(\\frac{3}{2}\\)+\\(\\frac{4}{3}\\)=\\(\\frac{9}{2}\\).</li><li>Water percentage =\\(\\frac{3}{2}\\)/\\(\\frac{9}{2}\\)×100=\\(33\\frac{1}{3}\\%\\).</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 95004,
+    "source": "Mixture Alligation Test -3 | Source Q48 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> A solution contains 20% petrol, 50% diesel and 30% kerosene. 25% of this solution is replaced with kerosene. Now, \\(\\frac{2}{3}\\) of the solution obtained in the previous step is replaced with petrol. What is the percentage of diesel in the new solution?</p>",
+    "options": [
+      "<p>12.5%</p>",
+      "<p>16.67%</p>",
+      "<p>25%</p>",
+      "<p>37.5%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "12.5%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Assume the initial solution is 100 units.</li><li>Initial diesel =50 units.</li><li>When 25% of the solution is replaced, diesel left =50×\\(\\frac{75}{100}\\)=37.5 units.</li><li>In the next step, \\(\\frac{2}{3}\\) of the solution is replaced with petrol, so only \\(\\frac{1}{3}\\) of diesel remains.</li><li>Final diesel =37.5×\\(\\frac{1}{3}\\)=12.5 units out of 100 units.</li><li>Hence, diesel percentage =12.5%.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 95005,
+    "source": "Mixture Alligation Test -3 | Source Q49 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> A housewife has 1 lt of solution that contains milk and water in the ratio 3:1. She adds 250 ml of a 3:2 solution of milk and water to it and then uses 250 ml of the combined mixture to make curd. How much pure milk is she left with?</p>",
+    "typedAnswer": "720",
+    "answerDisplay": "720 ml",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Initial milk in 1 lt =1000×\\(\\frac{3}{4}\\)=750 ml.</li><li>Milk added through 250 ml of 3:2 solution =250×\\(\\frac{3}{5}\\)=150 ml.</li><li>Total mixture =1250 ml and total milk =750+150=900 ml.</li><li>Milk concentration =\\(\\frac{900}{1250}\\)=\\(\\frac{18}{25}\\).</li><li>Milk removed in 250 ml mixture =250×\\(\\frac{18}{25}\\)=180 ml.</li><li>Milk left =900-180=720 ml.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 95006,
+    "source": "Mixture Alligation Test -3 | Source Q50 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> Some quantity of acid is drawn off from a 54 lt vessel full of acid and an equal amount of water is added. Again, the same volume of the mixture is drawn off and replaced by water. As a result, the vessel contains 24 lt of pure acid. How much acid was drawn off initially?</p>",
+    "typedAnswer": "18",
+    "answerDisplay": "18 lt",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let x lt be drawn off each time.</li><li>After two equal replacements, acid left =54(1-x/54)².</li><li>Given acid left =24, so 54(1-x/54)²=24.</li><li>Thus, (1-x/54)²=\\(\\frac{4}{9}\\)⇒ 1-x/54=\\(\\frac{2}{3}\\).</li><li>Hence, x=18 lt.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 95007,
+    "source": "Mixture Alligation Test -3 | Source Q51 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> Two vessels contain spirit of concentrations 0.5 and 0.75. If 2 lt from the first vessel and 3 lt from the second vessel are mixed, what will be the ratio of spirit to water in the resultant solution?</p>",
+    "options": [
+      "<p>13 : 7</p>",
+      "<p>7 : 13</p>",
+      "<p>3 : 2</p>",
+      "<p>5 : 3</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "13 : 7",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Spirit from the first vessel =2×0.5=1 lt.</li><li>Spirit from the second vessel =3×0.75=2.25 lt.</li><li>Total spirit =1+2.25=3.25=\\(\\frac{13}{4}\\) lt.</li><li>Total mixture =2+3=5 lt, so water =5-3.25=1.75=\\(\\frac{7}{4}\\) lt.</li><li>Required ratio =\\(\\frac{13}{4}\\):\\(\\frac{7}{4}\\)=13:7.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 95008,
+    "source": "Mixture Alligation Test -3 | Source Q52 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> The contents in beakers A and B are 90 lt of milk and 90 lt of water respectively. Now, 30 lt of milk is taken from A and put into B. After thorough mixing, 12 lt of the mixture is taken from B and put into A. Find the percentage of water in beaker A.</p>",
+    "options": [
+      "<p>12.5%</p>",
+      "<p>10%</p>",
+      "<p>15%</p>",
+      "<p>25%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "12.5%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>After 30 lt milk is moved from A to B, A has 60 lt milk.</li><li>B has 30 lt milk and 90 lt water, total 120 lt.</li><li>Water fraction in B =\\(\\frac{90}{120}\\)=\\(\\frac{3}{4}\\).</li><li>When 12 lt of B is transferred to A, water transferred =12×\\(\\frac{3}{4}\\)=9 lt.</li><li>Beaker A now contains 60+12=72 lt mixture, out of which water is 9 lt.</li><li>Water percentage =\\(\\frac{9}{72}\\)×100=12.5%.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 95009,
+    "source": "Mixture Alligation Test -3 | Source Q53 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> 10 lt of mixture A of castrol oil and petrol containing 64% petrol is added to 5 lt of mixture B of castrol oil and petrol containing 55% petrol to get a mixture M. Then, 30 lt of mixture C containing 12% castrol oil is added to M. What is the percentage content of castrol oil in the final mixture?</p>",
+    "typedAnswer": "21",
+    "answerDisplay": "21%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Castrol oil in mixture A =10×36%=3.6 lt.</li><li>Castrol oil in mixture B =5×45%=2.25 lt.</li><li>Castrol oil in mixture C =30×12%=3.6 lt.</li><li>Total castrol oil =3.6+2.25+3.6=9.45 lt.</li><li>Total mixture =10+5+30=45 lt.</li><li>Castrol oil percentage =\\(\\frac{9.45}{45}\\)×100=21%.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 95010,
+    "source": "Mixture Alligation Test -3 | Source Q54 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> Three glasses of capacities 2 lt, 5 lt and 9 lt contain mixtures of milk and water with milk concentrations 90%, 80% and 70%, respectively. The contents of the three glasses are emptied into a large vessel. Find the ratio of milk and water in the resultant mixture.</p>",
+    "options": [
+      "<p>121 : 39</p>",
+      "<p>39 : 121</p>",
+      "<p>31 : 9</p>",
+      "<p>12 : 5</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "121 : 39",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk in the first glass =2×90%=1.8 lt.</li><li>Milk in the second glass =5×80%=4 lt.</li><li>Milk in the third glass =9×70%=6.3 lt.</li><li>Total milk =1.8+4+6.3=12.1 lt.</li><li>Total mixture =16 lt, so water =16-12.1=3.9 lt.</li><li>Required ratio =12.1:3.9=121:39.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 95011,
+    "source": "Mixture Alligation Test -3 | Source Q55 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> A vessel of capacity 2 lt has 25% alcohol and another vessel of capacity 6 lt has 40% alcohol. The total liquid of 8 lt is poured into a vessel of capacity 10 lt and the rest of the vessel is filled with water. What is the concentration of alcohol in the new mixture?</p>",
+    "typedAnswer": "29",
+    "answerDisplay": "29%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Alcohol from the first vessel =2×25%=0.5 lt.</li><li>Alcohol from the second vessel =6×40%=2.4 lt.</li><li>Total alcohol =2.9 lt.</li><li>After adding water, total volume becomes 10 lt.</li><li>Alcohol concentration =\\(\\frac{2.9}{10}\\)×100=29%.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 95012,
+    "source": "Mixture Alligation Test -3 | Source Q56 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> An alloy contains only zinc and copper. One such alloy weighing 15 gm contains zinc and copper in the ratio 2:3 by weight. If 10 gm of zinc is added, then what amount of copper has to be removed from the alloy so that the final alloy has zinc and copper in the ratio 1:4 by weight?</p>",
+    "options": [
+      "<p>Not possible as stated</p>",
+      "<p>5 gm</p>",
+      "<p>10 gm</p>",
+      "<p>55 gm</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "Not possible as stated",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Initially, zinc =15×\\(\\frac{2}{5}\\)=6 gm and copper =15×\\(\\frac{3}{5}\\)=9 gm.</li><li>After adding 10 gm zinc, zinc =16 gm and copper =9 gm.</li><li>To get zinc : copper =1:4, copper must be four times zinc, i.e. copper should be 64 gm.</li><li>But copper is only 9 gm, and removing copper will reduce it further.</li><li>Therefore, the required operation is impossible as stated. If the intended word was <em>added</em> instead of <em>removed</em>, then 55 gm copper would be required.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 95013,
+    "source": "Mixture Alligation Test -3 | Source Q57 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> There is a 20 lt mixture of water and spirit. It consists of 25% spirit. Another mixture of 30 lt consists of water and spirit in the ratio 3:7. If both are poured into a single vessel, find the final ratio of spirit to water in the new mixture.</p>",
+    "options": [
+      "<p>13 : 12</p>",
+      "<p>12 : 13</p>",
+      "<p>7 : 6</p>",
+      "<p>26 : 21</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "13 : 12",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Spirit in the first mixture =20×25%=5 lt; water =15 lt.</li><li>In the second mixture, water : spirit =3:7. So spirit =30×\\(\\frac{7}{10}\\)=21 lt and water =9 lt.</li><li>Total spirit =5+21=26 lt.</li><li>Total water =15+9=24 lt.</li><li>Required ratio =26:24=13:12.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 95014,
+    "source": "Mixture Alligation Test -3 | Source Q58 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> There are three containers A, B and C which contain water, milk and acid respectively in equal quantities. 10% of the content of A is taken out and poured into B. Then the same amount from B is transferred to C. After that, the same amount from C is transferred to A. What is the proportion of milk in container A at the end of the process?</p>",
+    "options": [
+      "<p>\\(\\frac{1}{121}\\)</p>",
+      "<p>\\(\\frac{10}{121}\\)</p>",
+      "<p>\\(\\frac{1}{11}\\)</p>",
+      "<p>\\(\\frac{100}{121}\\)</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "\\(\\frac{1}{121}\\)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let each container initially contain 100 units.</li><li>A has water, B has milk and C has acid.</li><li>After 10 units from A are poured into B, B has 100 units milk and 10 units water, total 110 units.</li><li>Now 10 units from B to C contain milk =10×\\(\\frac{100}{110}\\)=\\(\\frac{100}{11}\\).</li><li>Before the final transfer, C has total 110 units and contains milk \\(\\frac{100}{11}\\).</li><li>Milk transferred from C to A =10×\\(\\frac{100}{11}\\)/110=\\(\\frac{100}{121}\\).</li><li>Final quantity in A is again 100 units, so the proportion of milk in A =\\(\\frac{100}{121}\\)/100=\\(\\frac{1}{121}\\).</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 95015,
+    "source": "Mixture Alligation Test -3 | Source Q59 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> Two types of sugar are priced at Rs. 5.60/kg and Rs. 6.40/kg. What quantity of the second type of sugar should be mixed with 20 kg of the first type of sugar to get a mixture priced at Rs. 6.20/kg?</p>",
+    "typedAnswer": "60",
+    "answerDisplay": "60 kg",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Using alligation, the ratio of cheaper sugar to costlier sugar is (6.40-6.20):(6.20-5.60)=0.20:0.60=1:3.</li><li>The first type is the cheaper sugar. If cheaper sugar =20 kg, then costlier sugar =3×20=60 kg.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 95016,
+    "source": "Mixture Alligation Test -3 | Source Q60 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> Two types of rice are priced at Rs. 11/kg and Rs. 21/kg. Find the ratio in which the two types of rice should be mixed to obtain a mixture priced at Rs. 17/kg.</p>",
+    "options": [
+      "<p>2 : 3</p>",
+      "<p>3 : 2</p>",
+      "<p>4 : 3</p>",
+      "<p>3 : 4</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "2 : 3",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Using alligation, ratio of cheaper rice to costlier rice is (21-17):(17-11)=4:6=2:3.</li><li>Hence, the two types should be mixed in the ratio 2:3.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 95017,
+    "source": "Mixture Alligation Test -3 | Source Q61 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> 600 students took a mock exam in Delhi. 55% of the boys and 75% of the girls cleared the cut-off. If the total percentage of students qualifying is 63%, find the number of boys and girls who appeared in the examination.</p>",
+    "options": [
+      "<p>360 boys, 240 girls</p>",
+      "<p>240 boys, 360 girls</p>",
+      "<p>300 boys, 300 girls</p>",
+      "<p>420 boys, 180 girls</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "360 boys, 240 girls",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of boys be b and girls be g.</li><li>Then b+g=600.</li><li>Qualified students =63% of 600=378.</li><li>So, 0.55b+0.75g=378.</li><li>Using b=600-g: 0.55(600-g)+0.75g=378.</li><li>Thus, 330+0.20g=378, so g=240 and b=360.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 95018,
+    "source": "Mixture Alligation Test -3 | Source Q62 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> A tank contains 80 lt of a mixture of milk and water. 70% of the milk and 30% of the water are withdrawn; therefore, 55% of the tank becomes empty. Find the initial quantities of milk and water in the tank.</p>",
+    "options": [
+      "<p>50 lt milk, 30 lt water</p>",
+      "<p>30 lt milk, 50 lt water</p>",
+      "<p>44 lt milk, 36 lt water</p>",
+      "<p>55 lt milk, 25 lt water</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "50 lt milk, 30 lt water",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let initial milk be m lt and water be w lt.</li><li>Then m+w=80.</li><li>Since 55% of the tank is empty, withdrawn quantity =55% of 80=44 lt.</li><li>So, 0.70m+0.30w=44.</li><li>Using w=80-m: 0.70m+0.30(80-m)=44.</li><li>Thus, 0.40m=20, so m=50 and w=30.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 95019,
+    "source": "Mixture Alligation Test -3 | Source Q63 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> A tank contains 70 lt of a mixture of milk and water. 65% of the milk and 30% of the water are withdrawn. Therefore, 60% of the tank is remaining. Find the initial quantities of milk and water in the tank.</p>",
+    "options": [
+      "<p>20 lt milk, 50 lt water</p>",
+      "<p>50 lt milk, 20 lt water</p>",
+      "<p>28 lt milk, 42 lt water</p>",
+      "<p>35 lt milk, 35 lt water</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "20 lt milk, 50 lt water",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since 60% of the tank remains, 40% is withdrawn.</li><li>Withdrawn quantity =40% of 70=28 lt.</li><li>Let initial milk be m lt and water be 70-m lt.</li><li>Then 0.65m+0.30(70-m)=28.</li><li>So, 0.35m+21=28, hence m=20.</li><li>Water =70-20=50 lt.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 95020,
+    "source": "Mixture Alligation Test -3 | Source Q64 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> Rs. 43 are divided among 50 students. Each boy receives 94 paise and each girl receives 69 paise. How many boys and girls are present in the class?</p>",
+    "options": [
+      "<p>34 boys, 16 girls</p>",
+      "<p>16 boys, 34 girls</p>",
+      "<p>32 boys, 18 girls</p>",
+      "<p>35 boys, 15 girls</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "34 boys, 16 girls",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of boys be b, so girls =50-b.</li><li>Total amount =43 rupees =4300 paise.</li><li>Equation: 94b+69(50-b)=4300.</li><li>So, 25b+3450=4300, hence b=34.</li><li>Girls =50-34=16.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 95021,
+    "source": "Mixture Alligation Test -3 | Source Q65 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> Rs. 41 are divided among 50 students. Each boy receives 90 paise and each girl receives 65 paise. How many boys and girls are present in the class?</p>",
+    "options": [
+      "<p>34 boys, 16 girls</p>",
+      "<p>16 boys, 34 girls</p>",
+      "<p>32 boys, 18 girls</p>",
+      "<p>36 boys, 14 girls</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "34 boys, 16 girls",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of boys be b, so girls =50-b.</li><li>Total amount =41 rupees =4100 paise.</li><li>Equation: 90b+65(50-b)=4100.</li><li>So, 25b+3250=4100, hence b=34.</li><li>Girls =50-34=16.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 95022,
+    "source": "Mixture Alligation Test -3 | Source Q66 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> A bottle of whisky contains 42% alcohol. Some part of this bottle is replaced by another whisky which contains 17% alcohol. Now this mixture contains 27% alcohol. Which part of the bottle has been replaced?</p>",
+    "options": [
+      "<p>\\(\\frac{3}{5}\\)</p>",
+      "<p>\\(\\frac{2}{5}\\)</p>",
+      "<p>\\(\\frac{1}{2}\\)</p>",
+      "<p>\\(\\frac{4}{5}\\)</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "\\(\\frac{3}{5}\\)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let fraction x of the bottle be replaced.</li><li>Final alcohol percentage is the weighted average: 42(1-x)+17x=27.</li><li>So, 42-25x=27, hence 25x=15.</li><li>Therefore, x=\\(\\frac{15}{25}\\)=\\(\\frac{3}{5}\\).</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 95023,
+    "source": "Mixture Alligation Test -3 | Source Q67 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> A bottle of whisky contains 40% alcohol. Some part of this bottle is replaced by another whisky which contains 19% alcohol. Now this mixture contains 26% alcohol. Which part of the bottle has been replaced?</p>",
+    "options": [
+      "<p>\\(\\frac{2}{3}\\)</p>",
+      "<p>\\(\\frac{1}{3}\\)</p>",
+      "<p>\\(\\frac{3}{5}\\)</p>",
+      "<p>\\(\\frac{4}{7}\\)</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "\\(\\frac{2}{3}\\)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let fraction x of the bottle be replaced.</li><li>Final alcohol percentage: 40(1-x)+19x=26.</li><li>So, 40-21x=26, hence 21x=14.</li><li>Therefore, x=\\(\\frac{14}{21}\\)=\\(\\frac{2}{3}\\).</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 95024,
+    "source": "Mixture Alligation Test -3 | Source Q68 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> We bought 100 kg rice. Some quantity is sold at 8% profit and some quantity is sold at 18% profit. Therefore, the overall profit is 14%. Find the quantities of rice sold in both parts.</p>",
+    "options": [
+      "<p>40 kg at 8%, 60 kg at 18%</p>",
+      "<p>60 kg at 8%, 40 kg at 18%</p>",
+      "<p>50 kg at 8%, 50 kg at 18%</p>",
+      "<p>30 kg at 8%, 70 kg at 18%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "40 kg at 8%, 60 kg at 18%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Use alligation on the profit percentages.</li><li>Quantity sold at 8% : quantity sold at 18% =(18-14):(14-8)=4:6=2:3.</li><li>Total quantity =100 kg, so the two parts are \\(\\frac{2}{5}\\)×100=40 kg and \\(\\frac{3}{5}\\)×100=60 kg.</li><li>Hence, 40 kg was sold at 8% profit and 60 kg at 18% profit.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':'Type your answer')+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':'')+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':'');}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3/-1, TITA +3/0. TITA accepts whole-number entry only. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
