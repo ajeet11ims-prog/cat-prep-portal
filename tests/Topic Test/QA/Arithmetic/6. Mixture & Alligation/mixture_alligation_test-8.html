@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixture &amp; Alligation Test - 8</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Mixture &amp; Alligation Test - 8</h1><div class="meta">42 Questions | 60 Minutes | 30 MCQ | 12 TITA | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 108001,
+    "source": "Mixture & Alligation Test - 8 | Q1 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> A’s weight equals the average weight of B, C and D. B’s weight equals the average weight of A, C and D. The average weight of C and D is 30 kg. Find the average weight of A and B.</p>",
+    "options": [
+      "<p>15 kg</p>",
+      "<p>30 kg</p>",
+      "<p>60 kg</p>",
+      "<p>45 kg</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "30 kg",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the weights of A, B, C and D be \\(a, b, c, d\\) respectively.</li><li>Given \\(a = (b+c+d)/3\\), so \\(3a = b + c + d\\).</li><li>Also \\(b = (a+c+d)/3\\), so \\(3b = a + c + d\\).</li><li>Adding these two equations, \\(3a+3b = a+b+2c+2d\\), hence \\(a+b = c+d\\).</li><li>The average of C and D is 30 kg, so \\((c+d)/2 = 30\\), therefore \\((a+b)/2 = 30\\).</li><li>Hence, the average weight of A and B is 30 kg.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 108002,
+    "source": "Mixture & Alligation Test - 8 | Q2 | TITA",
+    "type": "tita",
+    "titaMode": "decimal",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> The average weight of 18 students of a class is 15 kg. If a student leaves the class, the average weight of the class drops by 0.8 kg. Find the weight of the student (in kg) who left the class.</p>",
+    "typedAnswer": "28.6",
+    "answerDisplay": "28.6",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total weight of 18 students = \\(18\times15 = 270\\) kg.</li><li>New average after one student leaves = \\(15 - 0.8 = 14.2\\) kg.</li><li>Total weight of the remaining 17 students = \\(17\times14.2 = 241.4\\) kg.</li><li>Weight of the student who left = \\(270 - 241.4 = 28.6\\) kg.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 108003,
+    "source": "Mixture & Alligation Test - 8 | Q3 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> In a group of 11 people, x is 32 years old and y is 4 years younger than x. If x and y are replaced by two other people, the average age of the group drops by 1 year. Find the average age of the two people replacing x and y.</p>",
+    "options": [
+      "<p>26 years</p>",
+      "<p>28 years</p>",
+      "<p>29 years</p>",
+      "<p>24.5 years</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "24.5 years",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>x = 32 years and y = 28 years, so their total age is 60 years.</li><li>If the average age of 11 people drops by 1 year, the total age drops by \\(11\times1 = 11\\) years.</li><li>Therefore, the sum of the ages of the two replacing people = \\(60 - 11 = 49\\).</li><li>Their average age = \\(49/2 = 24.5\\) years.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 108004,
+    "source": "Mixture & Alligation Test - 8 | Q4 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> A basket ball player played nine matches. The average number of points he scored per match was 16. His points in the <em>i</em><sup>th</sup> match were two less than that in the \\((i-1)\\)<sup>th</sup> match. Find the average number of points scored in the second and the eighth matches.</p>",
+    "options": [
+      "<p>8</p>",
+      "<p>12</p>",
+      "<p>16</p>",
+      "<p>18</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "16",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the score in the first match be \\(a\\).</li><li>Since consecutive terms differ by 2, the nine scores form an arithmetic progression: \\(a, a+2, a+4, \\dots, a+16\\) (equivalently the second and eighth are equidistant from the middle term).</li><li>The average of 9 terms of an arithmetic progression is its 5th term, so \\(a+8 = 16\\).</li><li>The 2nd and 8th terms are \\(a+2\\) and \\(a+14\\). Their average is \\((a+2+a+14)/2 = a+8 = 16\\).</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 108005,
+    "source": "Mixture & Alligation Test - 8 | Q5 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> There are nine two-digit numbers with distinct tens digits. The units digit of each number is one less than its tens digit. Find the average of the units digits.</p>",
+    "typedAnswer": "4",
+    "answerDisplay": "4",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Since the tens digits are distinct, they must be 1, 2, 3, ..., 9.</li><li>The corresponding units digits are 0, 1, 2, ..., 8.</li><li>The sum of these units digits is \\(0+1+2+\\cdots+8 = 36\\).</li><li>Average = \\(36/9 = 4\\).</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 108006,
+    "source": "Mixture & Alligation Test - 8 | Q6 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> The average score in Mathematics of a class of 36 students is 60. If the top two scores are excluded, the average goes down by 2. If the second highest score of the class is 90, find the highest score of the class.</p>",
+    "options": [
+      "<p>98</p>",
+      "<p>96</p>",
+      "<p>97</p>",
+      "<p>95</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "98",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total score of 36 students = \\(36\times60 = 2160\\).</li><li>After excluding the top two scores, the average becomes 58 for 34 students.</li><li>So, the total of the remaining 34 students = \\(34\times58 = 1972\\).</li><li>Therefore, the sum of the top two scores = \\(2160 - 1972 = 188\\).</li><li>The second highest score is 90, so the highest score = \\(188 - 90 = 98\\).</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 108007,
+    "source": "Mixture & Alligation Test - 8 | Q7 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> The average score of a class of 32 students is 70. If the top score and the least score, which differ by 70, are excluded, the average score of the class drops by 1. Find the top score.</p>",
+    "typedAnswer": "120",
+    "answerDisplay": "120",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total score of 32 students = \\(32\times70 = 2240\\).</li><li>After excluding the highest and the least scores, 30 students remain and their average becomes 69.</li><li>So, total of the remaining 30 students = \\(30\times69 = 2070\\).</li><li>Hence, highest score + least score = \\(2240 - 2070 = 170\\).</li><li>Given their difference is 70.</li><li>Solving \\(H+L=170\\) and \\(H-L=70\\), we get \\(H=120\\).</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 108008,
+    "source": "Mixture & Alligation Test - 8 | Q8 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> Of five numbers, the first number is thrice the third, the fourth number is two less than the first, the fifth number is one-seventh of the second and the second number is three less than thrice the first. Find the fifth number, if the average of the numbers is 16.2.</p>",
+    "options": [
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>5</p>",
+      "<p>6</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "6",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the fifth number be \\(x\\). Then the second number is \\(7x\\).</li><li>Given the second number is three less than thrice the first, so first number = \\((7x+3)/3\\).</li><li>Third number = one-third of the first = \\((7x+3)/9\\).</li><li>Fourth number = first number minus 2 = \\((7x+3)/3 - 2\\).</li><li>Since the average of five numbers is 16.2, their sum is \\(81\\).</li><li>Substituting all five numbers and solving gives \\(x=6\\).</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 108009,
+    "source": "Mixture & Alligation Test - 8 | Q9 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> There are eleven people in a group. The average age of the oldest and the youngest is 11 years. If any one person leaves the group, the maximum and the minimum average of the remaining are 12 years and 11 years respectively. Find the average age of the entire group, in years.</p>",
+    "options": [
+      "<p>9</p>",
+      "<p>10</p>",
+      "<p>\\(11\\dfrac{7}{11}\\)</p>",
+      "<p>\\(11\\dfrac{5}{11}\\)</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "\\(11\\dfrac{5}{11}\\)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the average age of all 11 people be \\(A\\), and let the youngest and oldest be \\(y\\) and \\(x\\).</li><li>Given \\((x+y)/2 = 11\\), so \\(x+y = 22\\).</li><li>The maximum average of the remaining 10 occurs when the youngest leaves: \\((11A - y)/10 = 12\\), so \\(11A - y = 120\\).</li><li>The minimum average of the remaining 10 occurs when the oldest leaves: \\((11A - x)/10 = 11\\), so \\(11A - x = 110\\).</li><li>Adding the two equations: \\(22A - (x+y)/?\\) More directly, \\(22A - (x+y) = 230\\).</li><li>Using \\(x+y=22\\), we get \\(22A = 252\\), hence \\(11A = 126\\) and \\(A = 126/11 = 11\\dfrac{5}{11}\\).</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 108010,
+    "source": "Mixture & Alligation Test - 8 | Q10 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> A boy finds the average of ten positive integers. Each integer is a two-digit number. By mistake, the boy interchanges the digits of one of the numbers. Due to this, the average becomes 1.8 less than the previous one. Find the difference between the two digits of the number.</p>",
+    "options": [
+      "<p>1</p>",
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>If the average of 10 numbers decreases by 1.8, the total decreases by \\(10\times1.8 = 18\\).</li><li>Let the incorrectly altered number be \\(10a+b\\). After reversing digits it becomes \\(10b+a\\).</li><li>The difference between the original and reversed numbers is \\((10a+b)-(10b+a)=9(a-b)\\).</li><li>This change equals 18, so \\(9(a-b)=18\\).</li><li>Therefore, \\(a-b=2\\).</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 108011,
+    "source": "Mixture & Alligation Test - 8 | Q11 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> There are 60 persons. The age of each person (in years) is a two digit number. The average age of the persons is A years. One of the persons whose age is ‘ab’ is replaced by a new person whose age is ‘ba’. If the average age of the new group is 0.8A years. Find the maximum value of A.</p>",
+    "options": [
+      "<p>12</p>",
+      "<p>10.8</p>",
+      "<p>11.4</p>",
+      "<p>Data inconsistent</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "Data inconsistent",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the sum of the ages of the remaining 59 persons be \\(x\\).</li><li>Then \\((10a+b)+x = 60A\\) and \\((10b+a)+x = 60(0.8A)=48A\\).</li><li>Subtracting, \\(9(a-b)=12A\\), so \\(A = \\dfrac{3}{4}(a-b)\\).</li><li>The maximum possible value of \\(a-b\\) for a two-digit age is 9.</li><li>So the maximum possible \\(A\\) from this relation is \\(27/4 = 6.75\\).</li><li>But the average age of 60 people, all of whom have two-digit ages, cannot be less than 10.</li><li>Hence, the data is inconsistent.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 108012,
+    "source": "Mixture & Alligation Test - 8 | Q12 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> Just before the last match of a season, the total runs of Rahul for the season added up to 1200. In his last match, he scored 20 runs and his average (Number of runs / Total matches) remained unchanged. Find the number of matches that he played in all.</p>",
+    "typedAnswer": "61",
+    "answerDisplay": "61",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the total number of matches be \\(N\\).</li><li>Before the last match, Rahul had played \\(N-1\\) matches and scored 1200 runs.</li><li>After the last match, his total runs became 1220.</li><li>Since the average remained unchanged, \\(1200/(N-1) = 1220/N\\).</li><li>Cross-multiplying, \\(1200N = 1220N - 1220\\).</li><li>So, \\(20N = 1220\\), giving \\(N = 61\\).</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 108013,
+    "source": "Mixture & Alligation Test - 8 | Q13 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> The members of a club meet for lunch every Monday. Last week, just before the bill was presented, six of the members were called for an official meeting and hence they left. The remaining members were presented with a bill of ₹2160. It was customary to divide the bill equally. To cover the share of those who left, each member had to pay ₹81 more. How many members met for lunch?</p>",
+    "options": [
+      "<p>16</p>",
+      "<p>12</p>",
+      "<p>18</p>",
+      "<p>24</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "16",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original number of members be \\(N\\).</li><li>Original share per member = \\(2160/N\\).</li><li>After 6 members left, each remaining member paid \\(2160/(N-6)\\).</li><li>Given the increase in share was ₹81.</li><li>So, \\(2160/(N-6) = 2160/N + 81\\).</li><li>Solving this equation gives \\(N = 16\\).</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 108014,
+    "source": "Mixture & Alligation Test - 8 | Q14 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> Arjun ate a number of chocolates on each of the 5 week days of a certain week. On Tuesday, he ate 2 more than on Monday and 8 less than on Wednesday. On Friday, he ate 4 more than on Thursday and 6 less than on Wednesday. The average number of chocolates he ate on the first three days and the last two days are in the ratio 4 : 3. Find the number of chocolates he ate on Thursday.</p>",
+    "options": [
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>5</p>",
+      "<p>6</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "4",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the chocolates eaten on Monday be \\(a\\).</li><li>Then Tuesday = \\(a+2\\) and Wednesday = \\(a+10\\) (because Tuesday is 8 less than Wednesday).</li><li>Friday is 6 less than Wednesday, so Friday = \\(a+4\\).</li><li>Since Friday is 4 more than Thursday, Thursday = \\(a\\).</li><li>Average of the first three days = \\((a + a+2 + a+10)/3 = (3a+12)/3 = a+4\\).</li><li>Average of the last two days = \\((a + a+4)/2 = a+2\\).</li><li>Given \\((a+4):(a+2) = 4:3\\). Solving gives \\(a=4\\).</li><li>Therefore, Thursday = 4.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 108015,
+    "source": "Mixture & Alligation Test - 8 | Q15 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> There are nine three-digits numbers with distinct units digits. Each number is reversed and the reversed number is subtracted from the original number. The results were found to have an average of 0. If for each number, the hundreds digit is not less than its units digit, find the average of the hundreds digits of the greatest and the least numbers.</p>",
+    "options": [
+      "<p>4</p>",
+      "<p>5</p>",
+      "<p>6</p>",
+      "<p>7</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>If a three-digit number is \\(100a+10b+c\\), then original minus reversed = \\(99(a-c)\\).</li><li>The average of these differences is 0, so the average of \\(a-c\\) is 0.</li><li>Given for every number \\(a \\ge c\\), the only way the average of \\(a-c\\) can be 0 is when \\(a=c\\) for each number.</li><li>The units digits are distinct, so they must be 1 to 9 (0 cannot be the hundreds digit of a three-digit number).</li><li>Thus, the smallest hundreds digit is 1 and the largest is 9.</li><li>The required average = \\((1+9)/2 = 5\\).</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 108016,
+    "source": "Mixture & Alligation Test - 8 | Q16 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> The average of the ages of a man and his only son exceeds the average of the ages of his wife and his son by 25%. The age of his son is 30 years less than the age of his wife whose age is 10 years less than his age. Find the age of his son (in years).</p>",
+    "typedAnswer": "5",
+    "answerDisplay": "5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the present ages of the man, wife and son be \\(f, m, s\\) years.</li><li>Given wife is 10 years younger than the man, so \\(m=f-10\\).</li><li>Son is 30 years younger than the wife, so \\(s=m-30=f-40\\).</li><li>The average of the ages of the man and son exceeds the average of the wife and son by 25%:</li><li>\\(\\dfrac{f+s}{2} = 1.25\times\\dfrac{m+s}{2}\\).</li><li>This gives \\(4(f+s)=5(m+s)\\).</li><li>Substituting \\(m=f-10\\) and \\(s=f-40\\) and solving gives \\(f=45\\).</li><li>Therefore, \\(s = f-40 = 5\\).</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 108017,
+    "source": "Mixture & Alligation Test - 8 | Q17 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> There are two classes A and B. The average weight of the students in class A is 40 kg. The average weight of the students in class B is 60 kg. A student, whose weight is x kg, left A and joined B. As a result, the average weight of A, as well as that of B decreased. Which of the following must be true?</p>",
+    "options": [
+      "<p>35 &lt; x \\le 40</p>",
+      "<p>40 &lt; x &lt; 60</p>",
+      "<p>60 \\le x &lt; 65</p>",
+      "<p>30 &lt; x \\le 35</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "40 < x < 60",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>For class A, when the student leaves and the average decreases, the student's weight must be more than the average of A.</li><li>So, \\(x &gt; 40\\).</li><li>For class B, when the student joins and the average also decreases, the student's weight must be less than the average of B.</li><li>So, \\(x &lt; 60\\).</li><li>Therefore, \\(40 &lt; x &lt; 60\\).</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 108018,
+    "source": "Mixture & Alligation Test - 8 | Q18 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 18 and 19:</strong> Each of four persons A, B, C and D has a certain sum of money. The average amount with them is ₹200. If the money with A increases by 100% and that with B increases by 200%, then the average money with the four increases by ₹62.50. If the percentage increases of the amounts with A and B gets swapped, average money with A and B will be ₹275.</p>",
+    "question": "<p><strong>Q18.</strong> Find the money A originally has.</p>",
+    "options": [
+      "<p>₹150</p>",
+      "<p>₹200</p>",
+      "<p>₹175</p>",
+      "<p>₹180</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "₹150",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the original amounts of A and B be \\(a\\) and \\(b\\).</li><li>The average amount is ₹200, so the total amount is \\(4\times200 = 800\\).</li><li>If A increases by 100% and B by 200%, then the total increase is \\(a + 2b\\).</li><li>The average increases by ₹62.50, so the total increases by \\(4\times62.5 = 250\\). Hence, \\(a+2b=250\\).</li><li>When the percentage increases are swapped, the new average of all four becomes ₹275, so the new total is \\(4\times275 = 1100\\).</li><li>Thus, the total increase is 300, which equals \\(2a+b\\). So \\(2a+b=300\\).</li><li>Solving \\(a+2b=250\\) and \\(2a+b=300\\), we get \\(a=150\\).</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 108019,
+    "source": "Mixture & Alligation Test - 8 | Q19 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 18 and 19:</strong> Each of four persons A, B, C and D has a certain sum of money. The average amount with them is ₹200. If the money with A increases by 100% and that with B increases by 200%, then the average money with the four increases by ₹62.50. If the percentage increases of the amounts with A and B gets swapped, average money with A and B will be ₹275.</p>",
+    "question": "<p><strong>Q19.</strong> If C gives ₹50 to D, he will have twice the money that D would then have. Find the amount that C originally has.</p>",
+    "options": [
+      "<p>₹500</p>",
+      "<p>₹400</p>",
+      "<p>₹475</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "None of these",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>From Question 18, \\(A=150\\) and solving further gives \\(B=50\\).</li><li>Since the total money is ₹800, we have \\(C + D = 800 - (150 + 50) = 600\\).</li><li>Given that after C gives ₹50 to D, \\(C-50 = 2(D+50)\\).</li><li>This simplifies to \\(C = 2D + 150\\).</li><li>Using \\(C + D = 600\\), we get \\(3D = 450\\), so \\(D = 150\\).</li><li>Therefore, \\(C = 450\\), which is not among the first three options.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 108020,
+    "source": "Mixture & Alligation Test - 8 | Q20 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> In an office, the average salary of the employees is ₹8000. If the average salary of all the 50 clerks is ₹3000 and the average salary of all the managers is ₹10000, find the difference in the number of clerks and the number of managers.</p>",
+    "typedAnswer": "75",
+    "answerDisplay": "75",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Using alligation on the average salaries:</li><li>Number of clerks : number of managers = \\((10000-8000):(8000-3000) = 2000:5000 = 2:5\\).</li><li>Let the numbers be \\(2k\\) and \\(5k\\).</li><li>There are 50 clerks, so \\(2k=50\\), hence \\(k=25\\).</li><li>Therefore, number of managers = \\(5k=125\\).</li><li>Required difference = \\(125 - 50 = 75\\).</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 108021,
+    "source": "Mixture & Alligation Test - 8 | Q21 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> The average cost per fruit of 5 apples and 4 mangoes is ₹48 and the average cost per fruit of 7 apples and 8 mangoes is ₹60. Find the total cost of 24 apples and 24 mangoes.</p>",
+    "options": [
+      "<p>₹1332</p>",
+      "<p>₹2424</p>",
+      "<p>₹2664</p>",
+      "<p>₹3996</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "₹2664",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the cost of one apple be \\(A\\) and of one mango be \\(M\\).</li><li>From the first condition: \\(5A + 4M = 9\times48 = 432\\).</li><li>From the second condition: \\(7A + 8M = 15\times60 = 900\\).</li><li>Doubling the first equation: \\(10A + 8M = 864\\).</li><li>Subtracting from the second appropriately / solving the system gives the total for \\(24A + 24M\\).</li><li>Add the two given equations: \\(12A + 12M = 1332\\).</li><li>Therefore, \\(24A + 24M = 2664\\).</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 108022,
+    "source": "Mixture & Alligation Test - 8 | Q22 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> The students of three classes P, Q and R take a test. The average mark per student of P and Q put together is 60. The average mark per student of Q and R put together is 64. The average mark per student of P and R put together is 72. If the average mark per student of all the three classes put together is \\(x\\), which of the following is a possible value of \\(x\\)?</p>",
+    "options": [
+      "<p>61.5</p>",
+      "<p>61.9</p>",
+      "<p>62.5</p>",
+      "<p>68.3</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "62.5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the numbers of students in P, Q and R be \\(p, q, r\\).</li><li>Then total marks of \\(P+Q\\), \\(Q+R\\) and \\(P+R\\) are \\(60(p+q), 64(q+r), 72(p+r)\\) respectively.</li><li>Adding these three expressions gives twice the total marks of all three classes.</li><li>So, combined average \\(x = \\dfrac{60(p+q)+64(q+r)+72(p+r)}{2(p+q+r)}\\).</li><li>This simplifies to \\(x = \\dfrac{66p + 62q + 68r}{p+q+r}\\).</li><li>Hence, \\(x\\) is a weighted average of 66, 62 and 68, so it must lie strictly between 62 and 68.</li><li>Among the options, 62.5 is possible.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 108023,
+    "source": "Mixture & Alligation Test - 8 | Q23 | TITA",
+    "type": "tita",
+    "titaMode": "decimal",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> Four classes P, Q, R and S take up a test. The ratio of the number of students in P, Q, R and S is 2 : 3 : 6 : 4. The ratio of the average marks of P, Q, R and S is 5 : 4 : 3 : 2. If the average marks of all combinations of three sections are considered, the greatest is 52. Find the least.</p>",
+    "typedAnswer": "41.8",
+    "answerDisplay": "41.8",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of students in P, Q, R, S be \\(2x, 3x, 6x, 4x\\).</li><li>Let their average marks be \\(5y, 4y, 3y, 2y\\).</li><li>The weighted average of P, Q and R is \\(\\dfrac{10y+12y+18y}{2+3+6} = \\dfrac{40}{11}y\\).</li><li>The weighted averages of the other combinations are \\(\\dfrac{30}{9}y = \\dfrac{10}{3}y\\), \\(\\dfrac{38}{13}y\\), and \\(3y\\).</li><li>The greatest of these is \\(\\dfrac{40}{11}y\\), and it equals 52.</li><li>So, \\(y = 52\times\\dfrac{11}{40} = 14.3\\).</li><li>The least weighted average is \\(\\dfrac{38}{13}y\\).</li><li>Thus, the least = \\(\\dfrac{38}{13}\times14.3 = 41.8\\).</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 108024,
+    "source": "Mixture & Alligation Test - 8 | Q24 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> A sum of ₹7.75 is made up of 100 coins, which are in the denominations of 5 paise and 10 paise. Find the number of 5 paise coins.</p>",
+    "options": [
+      "<p>50</p>",
+      "<p>55</p>",
+      "<p>75</p>",
+      "<p>45</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "45",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total value = 775 paise in 100 coins, so the average value per coin = 7.75 paise.</li><li>Using alligation with coin values 5 paise and 10 paise to get mean 7.75 paise:</li><li>Number of 5 paise coins : number of 10 paise coins = \\((10-7.75):(7.75-5) = 2.25:2.75 = 9:11\\).</li><li>Total parts = 20, corresponding to 100 coins.</li><li>Hence, 5 paise coins = \\(\\dfrac{9}{20}\times100 = 45\\).</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 108025,
+    "source": "Mixture & Alligation Test - 8 | Q25 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q25.</strong> ₹8000 is lent in two parts. A part is lent at 10% p.a. and the other part at 20% p.a. Both parts are lent at simple interest for a year. The total interest realized from them is ₹960. Find the difference of the parts (in ₹).</p>",
+    "options": [
+      "<p>4800</p>",
+      "<p>2400</p>",
+      "<p>1600</p>",
+      "<p>6400</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "4800",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Overall rate of interest = \\(960/8000\times100 = 12\\%\\).</li><li>Using alligation between 10% and 20% to get 12%:</li><li>Amount at 10% : amount at 20% = \\((20-12):(12-10) = 8:2 = 4:1\\).</li><li>Total amount = ₹8000, so the two parts are ₹6400 and ₹1600.</li><li>Their difference is ₹4800.</li></ol>"
+  },
+  {
+    "no": 26,
+    "itemId": 108026,
+    "source": "Mixture & Alligation Test - 8 | Q26 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q26.</strong> A businessman lends ₹1800 in two parts, one at 10% and the other at 12% interest. At the end of the year, the average interest he obtained worked out to be 10.5%. Find the interest earned by the part which was lent at 10%.</p>",
+    "options": [
+      "<p>₹135</p>",
+      "<p>₹150</p>",
+      "<p>₹200</p>",
+      "<p>₹250</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "₹135",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Using alligation between 10% and 12% for mean 10.5%:</li><li>Amount at 10% : amount at 12% = \\((12-10.5):(10.5-10) = 1.5:0.5 = 3:1\\).</li><li>Therefore, the amount lent at 10% is \\(\\dfrac{3}{4}\times1800 = 1350\\).</li><li>Interest on this part = \\(10\\%\\) of 1350 = ₹135.</li></ol>"
+  },
+  {
+    "no": 27,
+    "itemId": 108027,
+    "source": "Mixture & Alligation Test - 8 | Q27 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q27.</strong> Raju covered a part of a total distance of 250 km at 30 kmph and the remaining part at 80 kmph. He covered the entire distance in 5 hours. Find the distance he covered at 80 kmph (in km).</p>",
+    "typedAnswer": "160",
+    "answerDisplay": "160",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Average speed for the whole trip = \\(250/5 = 50\\) kmph.</li><li>Using alligation on speeds 30 kmph and 80 kmph for mean 50 kmph gives the time ratio at 30 kmph : at 80 kmph = \\((80-50):(50-30)=30:20=3:2\\).</li><li>Total time is 5 hours, so time spent at 80 kmph = 2 hours.</li><li>Distance covered at 80 kmph = \\(80\times2 = 160\\) km.</li></ol>"
+  },
+  {
+    "no": 28,
+    "itemId": 108028,
+    "source": "Mixture & Alligation Test - 8 | Q28 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q28.</strong> A person travels 250 km in 5 hours in two parts. He travels the first part of the journey by scooter at an average speed of 45 kmph and the second part by car at an average speed of 70 kmph. Find the distance travelled by scooter.</p>",
+    "options": [
+      "<p>160 km</p>",
+      "<p>180 km</p>",
+      "<p>150 km</p>",
+      "<p>200 km</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "180 km",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Overall average speed = \\(250/5 = 50\\) kmph.</li><li>Let the times spent by scooter and car be \\(t_1\\) and \\(t_2\\).</li><li>For different speeds, \\(t_1:t_2 = (70-50):(50-45) = 20:5 = 4:1\\).</li><li>Total time = 5 hours, so time by scooter = 4 hours.</li><li>Distance by scooter = \\(45\times4 = 180\\) km.</li></ol>"
+  },
+  {
+    "no": 29,
+    "itemId": 108029,
+    "source": "Mixture & Alligation Test - 8 | Q29 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q29.</strong> A litre of pure milk is added to 6 litres of 30% milk. Find the percentage water in the solution.</p>",
+    "options": [
+      "<p>50%</p>",
+      "<p>55%</p>",
+      "<p>65%</p>",
+      "<p>60%</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "60%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>In 6 litres of 30% milk, milk = \\(0.3\times6 = 1.8\\) litres.</li><li>Adding 1 litre pure milk gives total milk = 2.8 litres.</li><li>Total mixture = 7 litres.</li><li>So, water = \\(7 - 2.8 = 4.2\\) litres.</li><li>Percentage of water = \\((4.2/7)\times100 = 60\\%\\).</li></ol>"
+  },
+  {
+    "no": 30,
+    "itemId": 108030,
+    "source": "Mixture & Alligation Test - 8 | Q30 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q30.</strong> A 350 ml solution contains 10% of milk. How much water should be added to it in order to bring down the percentage of milk to 7% in the solution?</p>",
+    "options": [
+      "<p>15 ml</p>",
+      "<p>80 ml</p>",
+      "<p>125 ml</p>",
+      "<p>150 ml</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "150 ml",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Amount of milk initially = \\(10\\%\\) of 350 ml = 35 ml.</li><li>After adding water, milk becomes 7% of the new mixture.</li><li>So, new total volume = \\(35/0.07 = 500\\) ml.</li><li>Water to be added = \\(500 - 350 = 150\\) ml.</li></ol>"
+  },
+  {
+    "no": 31,
+    "itemId": 108031,
+    "source": "Mixture & Alligation Test - 8 | Q31 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q31.</strong> A vessel contains pure milk costing ₹20 per litre. A certain quantity of water, which is free of cost, is added to it. As a result, the cost of the mixture becomes ₹18 per litre. Find the ratio of milk and water in the mixture.</p>",
+    "options": [
+      "<p>8 : 1</p>",
+      "<p>1 : 9</p>",
+      "<p>1 : 8</p>",
+      "<p>9 : 1</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "9 : 1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk costs ₹20 per litre and water costs ₹0.</li><li>The mean cost of the mixture is ₹18.</li><li>By alligation, milk : water = \\((18-0):(20-18) = 18:2 = 9:1\\).</li></ol>"
+  },
+  {
+    "no": 32,
+    "itemId": 108032,
+    "source": "Mixture & Alligation Test - 8 | Q32 | TITA",
+    "type": "tita",
+    "titaMode": "decimal",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q32.</strong> A milkman buys milk at ₹5 per litre. He mixes it with water and sells the mixture at the cost price and thereby makes a profit of 25%. Find the quantity of water mixed with each litre of milk (in litres).</p>",
+    "typedAnswer": "0.25",
+    "answerDisplay": "0.25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The mixture is sold at the cost price of pure milk, i.e. ₹5 per litre.</li><li>If the profit is 25%, then the cost price of 1 litre of the mixture = \\(5/1.25 = 4\\) rupees.</li><li>Now mix milk costing ₹5 with water costing ₹0 to get a mean cost of ₹4.</li><li>By alligation, water : milk = \\((5-4):(4-0) = 1:4\\).</li><li>Hence, with each 1 litre of milk, water mixed = \\(1/4 = 0.25\\) litres.</li></ol>"
+  },
+  {
+    "no": 33,
+    "itemId": 108033,
+    "source": "Mixture & Alligation Test - 8 | Q33 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q33.</strong> Vessels A and B contain mixtures of milk and water. The ratios of milk and water in A and B is 4 : 5 and 3 : 1 respectively. In what ratio should the contents of A and B be drawn and mixed, to obtain a mixture having milk and water in the ratio 3 : 2?</p>",
+    "options": [
+      "<p>27 : 28</p>",
+      "<p>23 : 24</p>",
+      "<p>11 : 12</p>",
+      "<p>35 : 36</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "27 : 28",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk fraction in A = \\(4/9\\).</li><li>Milk fraction in B = \\(3/4\\).</li><li>Required milk fraction in the final mixture = \\(3/5\\).</li><li>By alligation, quantity from A : quantity from B = \\((3/4 - 3/5):(3/5 - 4/9)\\).</li><li>This equals \\((3/20):(7/45) = 27:28\\).</li></ol>"
+  },
+  {
+    "no": 34,
+    "itemId": 108034,
+    "source": "Mixture & Alligation Test - 8 | Q34 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q34.</strong> Two vessels contain alcohol and water in the ratio 3 : 4 and 65 : 79. In what ratio should the solution in the first vessel be mixed with the solution in the second, so as to get a solution with alcohol and water in the ratio 4 : 5?</p>",
+    "options": [
+      "<p>7 : 16</p>",
+      "<p>16 : 7</p>",
+      "<p>36 : 85</p>",
+      "<p>85 : 36</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "7 : 16",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Alcohol fraction in the first vessel = \\(3/(3+4)=3/7\\).</li><li>Alcohol fraction in the second vessel = \\(65/(65+79)=65/144\\).</li><li>Required alcohol fraction = \\(4/(4+5)=4/9\\).</li><li>By alligation, quantity from first : quantity from second = \\((65/144 - 4/9):(4/9 - 3/7)\\).</li><li>This simplifies to \\((1/144):(1/63) = 63:144 = 7:16\\).</li></ol>"
+  },
+  {
+    "no": 35,
+    "itemId": 108035,
+    "source": "Mixture & Alligation Test - 8 | Q35 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 35 and 36:</strong> A grocer had two varieties of rice, A and B. A and B were priced at ₹20 per kg and ₹30 per kg respectively. He mixed them in the same ratio as their prices and sold the mixture at ₹39 per kg.</p>",
+    "question": "<p><strong>Q35.</strong> Find the cost of the mixture which he would have obtained if he had interchanged the quantities of A and B (in ₹ per kg).</p>",
+    "options": [
+      "<p>20</p>",
+      "<p>22</p>",
+      "<p>24</p>",
+      "<p>26</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "24",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>He mixed A and B in the same ratio as their prices, so quantities are in the ratio \\(20:30 = 2:3\\).</li><li>Current cost price of the mixture = \\((2\times20 + 3\times30)/5 = 26\\) rupees per kg.</li><li>If the quantities were interchanged, the ratio would become \\(3:2\\).</li><li>Then the new cost price = \\((3\times20 + 2\times30)/5 = 24\\) rupees per kg.</li></ol>"
+  },
+  {
+    "no": 36,
+    "itemId": 108036,
+    "source": "Mixture & Alligation Test - 8 | Q36 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 35 and 36:</strong> A grocer had two varieties of rice, A and B. A and B were priced at ₹20 per kg and ₹30 per kg respectively. He mixed them in the same ratio as their prices and sold the mixture at ₹39 per kg.</p>",
+    "question": "<p><strong>Q36.</strong> Using the same data, find the percentage profit that he currently makes.</p>",
+    "options": [
+      "<p>40%</p>",
+      "<p>45%</p>",
+      "<p>50%</p>",
+      "<p>62.5%</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "50%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>From Question 35, the current cost price of the mixture is ₹26 per kg.</li><li>Selling price = ₹39 per kg.</li><li>Profit percentage = \\((39-26)/26\times100 = 50\\%\\).</li></ol>"
+  },
+  {
+    "no": 37,
+    "itemId": 108037,
+    "source": "Mixture & Alligation Test - 8 | Q37 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q37.</strong> Three varieties of rice, A, B and C costing ₹6/kg, ₹9/kg and ₹12/kg are mixed together in a certain ratio. The mixture is sold at \\(66\\dfrac{2}{3}\\%\\) profit for ₹15/kg. Of the total 100 kg of the mixture, 50 kg is variety B. Find the quantity of variety A (in kg).</p>",
+    "typedAnswer": "25",
+    "answerDisplay": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Selling price of the mixture is ₹15/kg at \\(66\\dfrac{2}{3}\\%\\) profit, so the cost price of the mixture = \\(15 \times \\dfrac{100}{166\\dfrac{2}{3}} = 9\\) rupees per kg.</li><li>Let quantities of A, B and C be \\(a, b, c\\) kg.</li><li>Given total quantity = 100 kg and \\(b = 50\\) kg.</li><li>Total cost = \\(9\times100 = 900\\) rupees.</li><li>Thus, \\(6a + 9\times50 + 12c = 900\\), and also \\(a + c = 50\\).</li><li>So, \\(6a + 450 + 12c = 900\\) => \\(a + 2c = 75\\).</li><li>Using \\(a+c=50\\), we get \\(c=25\\) and hence \\(a=25\\).</li></ol>"
+  },
+  {
+    "no": 38,
+    "itemId": 108038,
+    "source": "Mixture & Alligation Test - 8 | Q38 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q38.</strong> Two varieties of tea costing ₹280 per kg and ₹180 per kg are mixed in certain ratio to form varieties P and Q. P and Q are mixed in the ratio 1 : 2 to form variety R which is sold for ₹288 per kg at 20% profit. If P costs ₹200 per kg, in what ratio were the two varieties mixed to form Q?</p>",
+    "options": [
+      "<p>2 : 1</p>",
+      "<p>5 : 2</p>",
+      "<p>4 : 1</p>",
+      "<p>8 : 3</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "4 : 1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Variety R is sold at ₹288/kg at 20% profit, so its cost price is ₹240/kg.</li><li>P and Q are mixed in the ratio 1:2 to form R. If P costs ₹200/kg and Q costs ₹q/kg, then \\((200 + 2q)/3 = 240\\).</li><li>Solving gives \\(q = 260\\). So Q costs ₹260/kg.</li><li>Now Q is formed by mixing tea costing ₹280/kg and ₹180/kg.</li><li>By alligation, quantity of ₹280 tea : quantity of ₹180 tea = \\((260-180):(280-260) = 80:20 = 4:1\\).</li></ol>"
+  },
+  {
+    "no": 39,
+    "itemId": 108039,
+    "source": "Mixture & Alligation Test - 8 | Q39 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q39.</strong> A local grocer mixed three qualities of coffee T<sub>1</sub>, T<sub>2</sub> and T<sub>3</sub> at ₹56 per kg, ₹64 per kg and ₹80 per kg in the ratio 1 : 2 : 4. To 4 kg of this mixture, he added \\(p\\) kg of T<sub>1</sub> and \\(4p\\) kg of T<sub>3</sub>. The final mixture so formed is sold for ₹87.60 per kg at 20% profit. Find \\(p\\).</p>",
+    "options": [
+      "<p>1/3</p>",
+      "<p>5/9</p>",
+      "<p>2/3</p>",
+      "<p>4/11</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "4/11",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Cost price of the initial mixture = \\((56\times1 + 64\times2 + 80\times4)/7 = 72\\) rupees per kg.</li><li>So 4 kg of this mixture costs \\(4\times72 = 288\\) rupees.</li><li>The final selling price is ₹87.60/kg at 20% profit, so the final cost price = \\(87.6/1.2 = 73\\) rupees per kg.</li><li>After adding \\(p\\) kg of T<sub>1</sub> and \\(4p\\) kg of T<sub>3</sub>, final quantity = \\(4 + 5p\\).</li><li>Final total cost = \\(288 + 56p + 80(4p) = 288 + 376p\\).</li><li>Thus, \\((288 + 376p)/(4 + 5p) = 73\\).</li><li>Solving gives \\(p = 4/11\\).</li></ol>"
+  },
+  {
+    "no": 40,
+    "itemId": 108040,
+    "source": "Mixture & Alligation Test - 8 | Q40 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q40.</strong> A vessel is full of a mixture of milk and water, with 9% milk. Nine litres are withdrawn and then replaced with pure water. If the milk is now 6%, how much does the vessel hold?</p>",
+    "options": [
+      "<p>27 litres</p>",
+      "<p>18 litres</p>",
+      "<p>36 litres</p>",
+      "<p>40 litres</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "27 litres",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the capacity of the vessel be \\(V\\) litres.</li><li>Initially, milk = \\(9\\%\\) of \\(V\\).</li><li>When 9 litres are withdrawn, \\(9/V\\) of the vessel is removed, so the fraction of milk left becomes \\((V-9)/V\\) times the original fraction.</li><li>Hence, the final milk percentage is \\(9\\%\times\\dfrac{V-9}{V}\\).</li><li>Given this becomes 6%.</li><li>So, \\(9\times\\dfrac{V-9}{V} = 6\\).</li><li>This gives \\(3V - 27 = 2V\\), hence \\(V = 27\\) litres.</li></ol>"
+  },
+  {
+    "no": 41,
+    "itemId": 108041,
+    "source": "Mixture & Alligation Test - 8 | Q41 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 41 and 42:</strong> A vessel is filled to its capacity with pure milk. Nine litres are withdrawn from the vessel and replaced by an equal amount of water. Nine litres of the mixture is again withdrawn and then replaced by an equal amount of water. After these changes, the vessel contains 17.1 litres of milk less than it did initially.</p>",
+    "question": "<p><strong>Q41.</strong> Find the capacity of the vessel (in litres).</p>",
+    "typedAnswer": "90",
+    "answerDisplay": "90",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the capacity of the vessel be \\(x\\) litres.</li><li>After one replacement of 9 litres, milk left = \\(x\\left(\\dfrac{x-9}{x}\right)\\).</li><li>After the second identical replacement, milk left = \\(x\\left(\\dfrac{x-9}{x}\right)^2\\).</li><li>Given the milk left is 17.1 litres less than initially, so \\(x\\left(\\dfrac{x-9}{x}\right)^2 = x - 17.1\\).</li><li>Simplifying gives \\((x-9)^2 = x(x-17.1)\\).</li><li>Solving this equation yields \\(x = 90\\).</li></ol>"
+  },
+  {
+    "no": 42,
+    "itemId": 108042,
+    "source": "Mixture & Alligation Test - 8 | Q42 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "<p><strong>Common data for Questions 41 and 42:</strong> A vessel is filled to its capacity with pure milk. Nine litres are withdrawn from the vessel and replaced by an equal amount of water. Nine litres of the mixture is again withdrawn and then replaced by an equal amount of water. After these changes, the vessel contains 17.1 litres of milk less than it did initially.</p>",
+    "question": "<p><strong>Q42.</strong> Using the same vessel after the two replacements already described, what is the least number of such <em>additional</em> replacements required so that the vessel contains less than 75% milk?</p>",
+    "typedAnswer": "1",
+    "answerDisplay": "1",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>From Question 41, the capacity is 90 litres.</li><li>Each replacement removes 9 out of 90 litres, so the milk fraction gets multiplied by \\(\\dfrac{81}{90} = 0.9\\) each time.</li><li>After the first two replacements already completed, milk fraction = \\((0.9)^2 = 0.81\\), i.e. 81%.</li><li>We need the milk percentage to become less than 75%.</li><li>After one more replacement, milk fraction becomes \\(0.81\times0.9 = 0.729 = 72.9\\%\\), which is less than 75%.</li><li>Therefore, the least number of additional replacements required is 1.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole", dec=q.titaMode==="decimal"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':(dec?'Type numeric answer':'Type your answer'))+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':(dec?'inputmode="decimal"':''))+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':(dec?'<div class="typed-answer-hint">TITA accepts numeric answer only. Do not write unit or percentage sign.</div>':''));}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}if(q.titaMode==='decimal'){const a=Number(norm(ans)), b=Number(norm(q.typedAnswer));return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3/-1, TITA +3/0. TITA accepts numeric entry. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>

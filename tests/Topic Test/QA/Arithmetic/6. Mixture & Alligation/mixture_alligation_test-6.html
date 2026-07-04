@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mixture Alligation Test -6</title>
+<style>
+:root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#1e333d;--brand-mid:#2d89d2;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#8d4ea3;--paper:#fff;--bg:#eef3f7}
+*{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:auto}
+header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:0;background:#fff;position:relative;min-width:1100px}section{min-width:0;min-height:0;border-right:2px solid #41515c;overflow:auto}.panel{padding:14px;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}
+.qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a}.qbtn.current{background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21}.dot.answered{background:#72bd3b}.dot.marked{background:#7950a5;border-radius:50%}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#54c7ea;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+.question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.option p{margin:0 0 10px}.options{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));column-gap:28px;row-gap:10px;padding:0 24px 14px;min-width:760px;align-items:start}.option{border:0;padding:4px 0;display:flex;gap:10px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700;min-width:0}.option input{margin-top:7px;transform:scale(1.25);flex:0 0 auto}.option span{min-width:0}.option .opt-text{display:inline-block;white-space:normal;overflow-wrap:anywhere}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6;z-index:100}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important}
+.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+.calc-toggle{align-self:center;justify-self:center;width:54px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;gap:3px;padding:0}.calc-toggle svg{width:16px;height:16px;display:block;flex:0 0 auto}.calc-toggle .calc-label{font-size:10px;letter-spacing:.2px;line-height:1}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;background:#eee}.calc-wrap.open{display:block}.calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}
+body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:auto;min-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px}body.submitted-mode .solution{display:block;max-width:100%;line-height:1.55}body.submitted-mode .navrow{position:sticky;bottom:0}
+@media(max-width:980px){.options{grid-template-columns:repeat(2,minmax(180px,1fr));min-width:0}.calc-toggle{width:54px}}
+</style>
+</head>
+<body>
+<header><div class="topbar"><div class="title"><h1>Mixture Alligation Test -6</h1><div class="meta">35 Questions | 60 Minutes | 23 MCQ | 12 TITA | +3/-1 MCQ, +3/0 TITA</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg><span class="calc-label">CALC</span></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+<main><section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section><aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside><aside class="calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title"><span>Normal Calculator</span><button type="button" class="calc-close" id="calcClose">×</button></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-grid"><button type="button" data-calc="MC" class="">MC</button> <button type="button" data-calc="MR" class="">MR</button> <button type="button" data-calc="MS" class="">MS</button> <button type="button" data-calc="M+" class="">M+</button> <button type="button" data-calc="M-" class="">M-</button> <button type="button" data-calc="B" class="red">B</button> <button type="button" data-calc="C" class="red">C</button> <button type="button" data-calc="+/-" class="">+/-</button> <button type="button" data-calc="sqrt" class="">sqrt</button> <button type="button" data-calc="%" class="">%</button> <button type="button" data-calc="7" class="">7</button> <button type="button" data-calc="8" class="">8</button> <button type="button" data-calc="9" class="">9</button> <button type="button" data-calc="/" class="">/</button> <button type="button" data-calc="1/x" class="">1/x</button> <button type="button" data-calc="4" class="">4</button> <button type="button" data-calc="5" class="">5</button> <button type="button" data-calc="6" class="">6</button> <button type="button" data-calc="*" class="">*</button> <button type="button" data-calc="=" class="eq">=</button> <button type="button" data-calc="1" class="">1</button> <button type="button" data-calc="2" class="">2</button> <button type="button" data-calc="3" class="">3</button> <button type="button" data-calc="-" class="">-</button> <button type="button" data-calc="0" class="">0</button> <button type="button" data-calc="." class="">.</button> <button type="button" data-calc="+" class="">+</button></div></div></aside></main>
+<script>
+const questions = [
+  {
+    "no": 1,
+    "itemId": 98001,
+    "source": "Mixture Alligation Test -6 | Q1 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q1.</strong> The average of the numbers 41, 45, 49, 53, 57, 61, 65, 69 and 73 is</p>",
+    "typedAnswer": "57",
+    "answerDisplay": "57",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The numbers form an arithmetic progression.</li><li>Average of equally spaced numbers = middle term.</li><li>The middle term is 57.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 98002,
+    "source": "Mixture Alligation Test -6 | Q2 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q2.</strong> Find x, if the average of 17, 26 and x is 22.</p>",
+    "typedAnswer": "23",
+    "answerDisplay": "23",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total of three numbers = 22 × 3 = 66.</li><li>17 + 26 = 43.</li><li>Therefore, x = 66 − 43 = 23.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 98003,
+    "source": "Mixture Alligation Test -6 | Q3 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q3.</strong> The average of N numbers is x. If each number is doubled, find the new average.</p>",
+    "options": [
+      "<p>x</p>",
+      "<p>2x</p>",
+      "<p>x/2</p>",
+      "<p>x + 2</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "2x",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>If every observation is multiplied by 2, the average is also multiplied by 2.</li><li>New average = 2x.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 98004,
+    "source": "Mixture Alligation Test -6 | Q4 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q4.</strong> The average of a set of numbers is b. If each number is decreased by 50%, find the new average.</p>",
+    "options": [
+      "<p>b</p>",
+      "<p>2b</p>",
+      "<p>b/2</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "b/2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Every number becomes half after a 50% decrease.</li><li>Hence, the average also becomes half.</li><li>New average = b/2.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 98005,
+    "source": "Mixture Alligation Test -6 | Q5 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q5.</strong> Find the average of the numbers from 21 to 30.</p>",
+    "options": [
+      "<p>24.5</p>",
+      "<p>25.5</p>",
+      "<p>26</p>",
+      "<p>26.5</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "25.5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The numbers from 21 to 30 are equally spaced.</li><li>Average = (first number + last number) / 2.</li><li>Average = (21 + 30) / 2 = 25.5.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 98006,
+    "source": "Mixture Alligation Test -6 | Q6 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q6.</strong> Find the average of all the two-digit numbers divisible by 10.</p>",
+    "typedAnswer": "50",
+    "answerDisplay": "50",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The numbers are 10, 20, 30, ..., 90.</li><li>Average = (10 + 90) / 2 = 50.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 98007,
+    "source": "Mixture Alligation Test -6 | Q7 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q7.</strong> Find the average of all odd numbers less than 50.</p>",
+    "typedAnswer": "25",
+    "answerDisplay": "25",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The odd numbers are 1, 3, 5, ..., 49.</li><li>Average = (1 + 49) / 2 = 25.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 98008,
+    "source": "Mixture Alligation Test -6 | Q8 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q8.</strong> Find the average of all the multiples of 12 less than 100.</p>",
+    "options": [
+      "<p>48</p>",
+      "<p>54</p>",
+      "<p>60</p>",
+      "<p>66</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "54",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The multiples are 12, 24, 36, 48, 60, 72, 84, 96.</li><li>Average = (12 + 96) / 2 = 54.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 98009,
+    "source": "Mixture Alligation Test -6 | Q9 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q9.</strong> The average age of a class of 15 students is 15 years. A student whose age is 15 years joins the class. Find the new average age of the class.</p>",
+    "typedAnswer": "15",
+    "answerDisplay": "15",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Initial total age = 15 × 15 = 225.</li><li>New total age = 225 + 15 = 240.</li><li>New number of students = 16.</li><li>New average = 240 / 16 = 15.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 98010,
+    "source": "Mixture Alligation Test -6 | Q10 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q10.</strong> The average age of a class of 20 students is 20 years. A student whose age is 20 years leaves the class. Find the new average age of the class.</p>",
+    "options": [
+      "<p>20</p>",
+      "<p>21</p>",
+      "<p>22</p>",
+      "<p>19</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "20",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The leaving student has age equal to the existing average.</li><li>Therefore, the average remains unchanged.</li><li>New average = 20 years.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 98011,
+    "source": "Mixture Alligation Test -6 | Q11 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q11.</strong> There are five members in a family. Their present average age is 25 years. Find their average age after five years.</p>",
+    "options": [
+      "<p>26 years</p>",
+      "<p>27 years</p>",
+      "<p>30 years</p>",
+      "<p>35 years</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "30 years",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>After 5 years, every member will be 5 years older.</li><li>The average also increases by 5 years.</li><li>New average = 25 + 5 = 30 years.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 98012,
+    "source": "Mixture Alligation Test -6 | Q12 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q12.</strong> The present average age of a group of friends is 65 years. What is their average age thirty years ago, given that all the friends are at least 35 years old now?</p>",
+    "options": [
+      "<p>35 years</p>",
+      "<p>30 years</p>",
+      "<p>40 years</p>",
+      "<p>25 years</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "35 years",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Thirty years ago, every person was 30 years younger.</li><li>So the average was also 30 years less.</li><li>Required average = 65 − 30 = 35 years.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 98013,
+    "source": "Mixture Alligation Test -6 | Q13 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q13.</strong> The monthly income of Amar, Bhavan and Chetan in January 2005 were ₹4000, ₹4500 and ₹6500 respectively. Find their average monthly income in that month.</p>",
+    "options": [
+      "<p>₹5000</p>",
+      "<p>₹6000</p>",
+      "<p>₹5500</p>",
+      "<p>₹6500</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "₹5000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total income = 4000 + 4500 + 6500 = 15000.</li><li>Average = 15000 / 3 = 5000.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 98014,
+    "source": "Mixture Alligation Test -6 | Q14 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q14.</strong> Sachin wrote a total of six tests. His average mark in those six tests was 65. His average mark in the first five tests was 60. Find his mark in the sixth test.</p>",
+    "typedAnswer": "90",
+    "answerDisplay": "90",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total marks in 6 tests = 6 × 65 = 390.</li><li>Total marks in first 5 tests = 5 × 60 = 300.</li><li>Sixth test mark = 390 − 300 = 90.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 98015,
+    "source": "Mixture Alligation Test -6 | Q15 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q15.</strong> The average age of a class of twenty students is 15 years. The average increases by three years, if the age of a teacher is included. What is the age of the teacher?</p>",
+    "options": [
+      "<p>68 years</p>",
+      "<p>86 years</p>",
+      "<p>78 years</p>",
+      "<p>87 years</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "78 years",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total age of 20 students = 20 × 15 = 300.</li><li>New average = 18 for 21 people.</li><li>New total = 21 × 18 = 378.</li><li>Teacher's age = 378 − 300 = 78 years.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 98016,
+    "source": "Mixture Alligation Test -6 | Q16 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q16.</strong> The average age of a group of students is 16 years. If a 66-year-old teacher joins the group, the average increases by one year. What is the number of students in the group?</p>",
+    "typedAnswer": "49",
+    "answerDisplay": "49",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let the number of students be n.</li><li>16n + 66 = 17(n + 1).</li><li>16n + 66 = 17n + 17.</li><li>n = 49.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 98017,
+    "source": "Mixture Alligation Test -6 | Q17 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q17.</strong> A total of 55 chocolates were distributed among 13 children such that each girl gets 3 chocolates and each boy gets 5 chocolates. Which of the following is the number of girls?</p>",
+    "options": [
+      "<p>8</p>",
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>5</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "5",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let girls = g, so boys = 13 − g.</li><li>3g + 5(13 − g) = 55.</li><li>3g + 65 − 5g = 55.</li><li>2g = 10, so g = 5.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 98018,
+    "source": "Mixture Alligation Test -6 | Q18 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q18.</strong> The average salary per month of a man for the first four months, next four months and the last four months of a year are ₹6000, ₹8000 and ₹13000 respectively. Find his average salary per month in that year.</p>",
+    "typedAnswer": "9000",
+    "answerDisplay": "9000",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Each average is for 4 months.</li><li>Overall average = (6000 + 8000 + 13000) / 3.</li><li>Average = 27000 / 3 = 9000.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 98019,
+    "source": "Mixture Alligation Test -6 | Q19 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q19.</strong> In an office there are 20 employees. The average height of the male employees is 180 cm. The average height of the female employees is 170 cm. Find the average height of all the employees.</p>",
+    "options": [
+      "<p>172</p>",
+      "<p>174</p>",
+      "<p>176</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "Cannot be determined",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The number of male and female employees is not given.</li><li>Without their counts, the weighted average cannot be found.</li><li>Hence, it cannot be determined.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 98020,
+    "source": "Mixture Alligation Test -6 | Q20 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q20.</strong> In a class, there are 90 students. 30 of them are boys. Their average mark in a test is 75. The average mark of the girls in the test is 90. Find the average mark of the class in the test.</p>",
+    "typedAnswer": "85",
+    "answerDisplay": "85",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Girls = 90 − 30 = 60.</li><li>Total marks of boys = 30 × 75 = 2250.</li><li>Total marks of girls = 60 × 90 = 5400.</li><li>Class average = (2250 + 5400) / 90 = 85.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 98021,
+    "source": "Mixture Alligation Test -6 | Q21 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q21.</strong> In a class, there are 50 students. The average weight of all the girls is 30 kg. The average weight of 30 of the boys is 40 kg. Which of the following can be a possible value of the average weight of the entire class?</p>",
+    "options": [
+      "<p>31</p>",
+      "<p>33</p>",
+      "<p>35</p>",
+      "<p>37</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "37",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>The question asks for a possible value.</li><li>For example, let there be 10 girls and 40 boys.</li><li>Total weight of girls = 10 × 30 = 300.</li><li>Weight of 30 boys = 30 × 40 = 1200.</li><li>If remaining 10 boys average 35 kg, their weight = 350.</li><li>Total weight = 1850, average = 1850 / 50 = 37.</li><li>Thus, 37 is possible.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 98022,
+    "source": "Mixture Alligation Test -6 | Q22 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q22.</strong> The average age of the boys in a class is ten years. The average age of the girls in the class is eight years. There are 50% more boys than girls in the class. Find the average age of the class.</p>",
+    "options": [
+      "<p>9</p>",
+      "<p>9.2</p>",
+      "<p>9.4</p>",
+      "<p>10</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "9.2",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Boys are 50% more than girls, so boys : girls = 3 : 2.</li><li>Class average = (3 × 10 + 2 × 8) / 5.</li><li>Average = (30 + 16) / 5 = 46 / 5 = 9.2.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 98023,
+    "source": "Mixture Alligation Test -6 | Q23 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q23.</strong> In a class, there are 50 boys and 30 girls. The heights of boys and girls are in the ratio 4 : 3. Find the average height of the boys and girls in the class.</p>",
+    "options": [
+      "<p>155</p>",
+      "<p>160</p>",
+      "<p>165</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "Cannot be determined",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Only the ratio of heights is given.</li><li>No actual height value is given.</li><li>Therefore, the actual average height cannot be determined.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 98024,
+    "source": "Mixture Alligation Test -6 | Q24 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q24.</strong> The average weight of all the students in a class equals the average of the average weight of the boys and that of the girls. Which of the following holds true?</p>",
+    "options": [
+      "<p>The numbers of boys and girls in the class are equal.</p>",
+      "<p>The average weights of the boys and the girls are equal.</p>",
+      "<p>At least one of (A) and (B)</p>",
+      "<p>Neither (A) nor (B)</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "At least one of (A) and (B)",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Let number of boys and girls be m and n, and their average weights be B and G.</li><li>Overall average = (mB + nG) / (m + n).</li><li>Given this equals (B + G) / 2.</li><li>On simplification, (m − n)(B − G) = 0.</li><li>So either m = n or B = G. Hence, at least one of (A) and (B) is true.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 98025,
+    "source": "Mixture Alligation Test -6 | Q25 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q25.</strong> A vessel has 20 litres of a mixture of milk and water having 60% milk. Five litres of pure milk is added to the vessel. Find the percentage of milk in the new solution.</p>",
+    "typedAnswer": "68",
+    "answerDisplay": "68%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Initial milk = 60% of 20 = 12 litres.</li><li>Milk added = 5 litres.</li><li>Total milk = 17 litres, total mixture = 25 litres.</li><li>Milk percentage = (17 / 25) × 100 = 68%.</li></ol>"
+  },
+  {
+    "no": 26,
+    "itemId": 98026,
+    "source": "Mixture Alligation Test -6 | Q26 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q26.</strong> In what ratio must two kinds of coffee which cost ₹80 per kg and ₹108 per kg be mixed such that the resultant mixture costs ₹96 per kg?</p>",
+    "options": [
+      "<p>1 : 2</p>",
+      "<p>2 : 3</p>",
+      "<p>3 : 4</p>",
+      "<p>2 : 1</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "3 : 4",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>By alligation, cheaper : dearer = (108 − 96) : (96 − 80).</li><li>Ratio = 12 : 16 = 3 : 4.</li></ol>"
+  },
+  {
+    "no": 27,
+    "itemId": 98027,
+    "source": "Mixture Alligation Test -6 | Q27 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q27.</strong> A trader mixes two varieties of rice, one costing ₹15 per kg and the other ₹25 per kg, so that by selling the mixture at ₹30 per kg he makes a profit. In what ratio did he mix them?</p>",
+    "options": [
+      "<p>1 : 2</p>",
+      "<p>1 : 1</p>",
+      "<p>2 : 1</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "Cannot be determined",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Any mixture of ₹15 and ₹25 rice will have cost price between ₹15 and ₹25.</li><li>Selling it at ₹30 per kg will always give profit.</li><li>Since the exact profit percentage is not given, the ratio cannot be determined.</li></ol>"
+  },
+  {
+    "no": 28,
+    "itemId": 98028,
+    "source": "Mixture Alligation Test -6 | Q28 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q28.</strong> Five kilograms of sugar costing ₹15 per kg is mixed with ten kilograms of sugar costing ₹12 per kg. The mixture is sold at 20% profit. Find the selling price of the mixture in ₹/kg.</p>",
+    "options": [
+      "<p>15.20</p>",
+      "<p>15.60</p>",
+      "<p>15.80</p>",
+      "<p>16.00</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "15.60",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Total cost = 5 × 15 + 10 × 12 = 195.</li><li>Total quantity = 15 kg.</li><li>Cost price per kg = 195 / 15 = 13.</li><li>Selling price at 20% profit = 13 × 1.20 = 15.60.</li></ol>"
+  },
+  {
+    "no": 29,
+    "itemId": 98029,
+    "source": "Mixture Alligation Test -6 | Q29 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q29.</strong> In what ratio should water and 84% milk solution be mixed to obtain 48% milk solution?</p>",
+    "options": [
+      "<p>4 : 3</p>",
+      "<p>9 : 13</p>",
+      "<p>2 : 3</p>",
+      "<p>3 : 4</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "3 : 4",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Water has 0% milk and the solution has 84% milk.</li><li>Required ratio water : solution = (84 − 48) : (48 − 0).</li><li>Ratio = 36 : 48 = 3 : 4.</li></ol>"
+  },
+  {
+    "no": 30,
+    "itemId": 98030,
+    "source": "Mixture Alligation Test -6 | Q30 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q30.</strong> Vessel A has 20 litres of a mixture of milk and water having 75% milk. Vessel B has x litres of a mixture of milk and water having 60% milk. The contents of the vessels are mixed to form a mixture having 66% milk. Find x.</p>",
+    "typedAnswer": "30",
+    "answerDisplay": "30",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk in A = 75% of 20 = 15 litres.</li><li>Milk in B = 0.6x litres.</li><li>(15 + 0.6x) / (20 + x) = 0.66.</li><li>15 + 0.6x = 13.2 + 0.66x.</li><li>1.8 = 0.06x, so x = 30.</li></ol>"
+  },
+  {
+    "no": 31,
+    "itemId": 98031,
+    "source": "Mixture Alligation Test -6 | Q31 | TITA",
+    "type": "tita",
+    "titaMode": "whole",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q31.</strong> A vessel has 30 litres of a mixture of milk and water containing 80% milk. How many litres of water must be added to the vessel to reverse the ratio of milk and water?</p>",
+    "typedAnswer": "90",
+    "answerDisplay": "90",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Milk = 80% of 30 = 24 litres; water = 6 litres.</li><li>Initial milk : water = 24 : 6 = 4 : 1.</li><li>Reversed ratio should be 1 : 4.</li><li>Milk remains 24 litres, so water should be 96 litres.</li><li>Water to be added = 96 − 6 = 90 litres.</li></ol>"
+  },
+  {
+    "no": 32,
+    "itemId": 98032,
+    "source": "Mixture Alligation Test -6 | Q32 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q32.</strong> Two solutions of sulphuric acid are mixed in the ratio 2 : 3. The concentrations of sulphuric acid in the first and second solutions are 10% and 20% respectively. Find the concentration of sulphuric acid in the final mixture.</p>",
+    "options": [
+      "<p>16%</p>",
+      "<p>14%</p>",
+      "<p>12%</p>",
+      "<p>18%</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "16%",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Use weighted average.</li><li>Concentration = (2 × 10 + 3 × 20) / (2 + 3).</li><li>Concentration = 80 / 5 = 16%.</li></ol>"
+  },
+  {
+    "no": 33,
+    "itemId": 98033,
+    "source": "Mixture Alligation Test -6 | Q33 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q33.</strong> A milkman has 15 litres of pure milk. How many litres of water have to be added to it so that he gets a 60% profit by selling at cost price?</p>",
+    "options": [
+      "<p>9</p>",
+      "<p>10</p>",
+      "<p>8</p>",
+      "<p>12</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "9",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Assume cost price of milk is ₹1 per litre.</li><li>Cost of 15 litres = ₹15.</li><li>For 60% profit, selling amount needed = ₹24.</li><li>At ₹1 per litre, he must sell 24 litres of mixture.</li><li>Water added = 24 − 15 = 9 litres.</li></ol>"
+  },
+  {
+    "no": 34,
+    "itemId": 98034,
+    "source": "Mixture Alligation Test -6 | Q34 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q34.</strong> From 90 litres of pure milk, 9 litres is withdrawn and replaced by water. 9 litres of the mixture is then withdrawn and replaced by water. Find the ratio of milk and water in the present mixture.</p>",
+    "options": [
+      "<p>19 : 81</p>",
+      "<p>19 : 100</p>",
+      "<p>81 : 19</p>",
+      "<p>81 : 100</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "81 : 19",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>Each time, 9/90 = 1/10 of the mixture is removed.</li><li>Fraction of milk left after two operations = (9/10) × (9/10) = 81/100.</li><li>Water fraction = 19/100.</li><li>Therefore, milk : water = 81 : 19.</li></ol>"
+  },
+  {
+    "no": 35,
+    "itemId": 98035,
+    "source": "Mixture Alligation Test -6 | Q35 | MCQ",
+    "type": "mcq",
+    "direction": "<p>Answer the questions independently of each other.</p>",
+    "passage": "",
+    "question": "<p><strong>Q35.</strong> In the above question, find the quantity of milk in the final mixture in litres.</p>",
+    "options": [
+      "<p>71.9</p>",
+      "<p>72.9</p>",
+      "<p>73.8</p>",
+      "<p>74.9</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "72.9",
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class='solution-steps'><li>From the previous question, fraction of milk left = 81/100.</li><li>Initial milk = 90 litres.</li><li>Final milk = 90 × 81/100 = 72.9 litres.</li></ol>"
+  }
+];
+const labels = ["A","B","C","D"];
+let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false);
+const qbar = document.getElementById('qbar'), host = document.getElementById('questionHost'), resultBox = document.getElementById('result');
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function stripHtml(s){const d=document.createElement('div');d.innerHTML=s;return d.textContent||d.innerText||'';}
+function saveCurrent(){const q=questions[current]; if(!q)return; if(q.type==='mcq'){const c=document.querySelector('input[name="answer_'+current+'"]:checked');responses[current]=c?c.value:null;}else{const inp=document.querySelector('input[name="answer_'+current+'"]');responses[current]=inp?inp.value.trim():null;} renderPalette();}
+function control(q,i){if(q.type==='mcq')return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+op+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type whole number only" inputmode="numeric" pattern="[0-9]*" data-whole="1" '+(submitted?'disabled':'')+'><div class="typed-answer-hint">TITA accepts whole numbers only. Do not write unit, decimal, fraction, or ratio.</div>';}
+function renderQuestion(){const q=questions[current]; const ans=isCorrect(q,responses[current]); const note=submitted?'<div class="answer-note '+(ans?'ok':(ans===false?'bad':'muted'))+'">Your Answer: '+(responses[current]!==null&&responses[current]!==''?esc(displayResponse(q,responses[current])):'Not Answered')+' | Correct Answer: '+q.answerDisplay+'</div>':''; host.innerHTML='<div class="qhead"><div class="qnum">Question '+q.no+' of '+questions.length+'</div><div class="source">'+q.source+'</div></div><div class="qtext">'+q.question+'</div>'+control(q,current)+note+'<div class="solution"><h3>Solution</h3>'+q.solution+'</div><div class="navrow"><button type="button" onclick="prevQ()">Previous</button><button type="button" class="mark" onclick="toggleMark()">Mark for Review</button><button type="button" onclick="clearAns()">Clear</button><button type="button" onclick="nextQ()">Next</button><button type="button" class="submit" onclick="submitTest()">Submit</button></div>'; renderPalette();}
+function displayResponse(q,r){if(q.type==='mcq')return labels[Number(r)]+'. '+stripHtml(q.options[Number(r)]||'');return r;}
+function renderPalette(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]?'answered ':'')+(marked[i]?'marked':'')+'" onclick="jumpQ('+i+')">'+q.no+'</button>').join('');}
+function jumpQ(i){saveCurrent();current=i;renderQuestion();} function nextQ(){saveCurrent();if(current<questions.length-1)current++;renderQuestion();} function prevQ(){saveCurrent();if(current>0)current--;renderQuestion();} function toggleMark(){marked[current]=!marked[current];renderPalette();} function clearAns(){responses[current]=null;renderQuestion();}
+function norm(v){return String(v??'').trim().replace(/,/g,'');}
+function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}
+function submitTest(){saveCurrent();submitted=true;document.body.classList.add('submitted-mode');clearInterval(timerId);let correct=0,wrong=0,unanswered=0,score=0;questions.forEach((q,i)=>{const ok=isCorrect(q,responses[i]);if(ok===null)unanswered++;else if(ok){correct++;score+=3;}else{wrong++; if(q.type==='mcq')score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+correct+'</strong></div><div class="score-box">Wrong<strong>'+wrong+'</strong></div><div class="score-box">Unanswered<strong>'+unanswered+'</strong></div><div class="score-box">Total<strong>'+questions.length+'</strong></div></div>';renderQuestion();window.scrollTo(0,0);}
+function updateTimer(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0'); if(secondsLeft<=0)submitTest(); secondsLeft--;}
+timerId=setInterval(updateTimer,1000); updateTimer(); renderQuestion();
+// calculator
+const popup=document.getElementById('calcPopup'), toggle=document.getElementById('calcToggle'), closeBtn=document.getElementById('calcClose'), disp=document.getElementById('calcDisplay');let expr='';toggle.onclick=()=>popup.classList.toggle('open');closeBtn.onclick=()=>popup.classList.remove('open');document.querySelectorAll('[data-calc]').forEach(b=>b.onclick=()=>{let v=b.dataset.calc;if(v==='C')expr='';else if(v==='B')expr=expr.slice(0,-1);else if(v==='='){try{expr=String(Function('return ('+expr.replace(/%/g,'/100')+')')());}catch(e){expr='Error';}}else if(['MC','MR','MS','M+','M-','sqrt','1/x','+/-'].includes(v)){if(v==='sqrt')expr='Math.sqrt('+expr+')';else if(v==='1/x')expr='1/('+expr+')';else if(v==='+/-')expr='-('+expr+')';}else expr+=v;disp.value=expr;});
+</script>
+</body></html>
