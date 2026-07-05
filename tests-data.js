@@ -1691,6 +1691,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 23
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-4",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-4.html",
+    "original": "logical_reasoning_arrangement_test-4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 19
   }
 ];
 
