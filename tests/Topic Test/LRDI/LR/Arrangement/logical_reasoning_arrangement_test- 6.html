@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logical Reasoning Arrangement Test - 6</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.block ul{margin:8px 0 0 22px;padding:0}.block li{margin:7px 0}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+
+    .common-info{font-weight:800;background:#fffdf4;border-left:6px solid var(--brand-mid);font-size:19px;line-height:1.52;color:#111}
+    .common-info p,.common-info li{font-weight:800}.common-info li{margin-bottom:8px}.common-info strong{font-weight:900;color:#101820}
+    .solution-summary{margin:0 0 8px;font-size:18px;color:#0b4f7a}.solution-table-wrap{overflow-x:auto;margin:10px 0 14px;border:1px solid #9eadb9;background:#fff}
+    table.solution-table{width:100%;border-collapse:collapse;min-width:640px;font-size:16px;background:#fff;color:#101820}
+    .solution-table th{background:#24313a;color:#fff;text-align:left;padding:9px 10px;border:1px solid #6f7c86;font-weight:800;white-space:nowrap}
+    .solution-table td{padding:9px 10px;border:1px solid #c8d2da;font-weight:700;vertical-align:top}
+    .solution-table tbody tr:nth-child(even) td{background:#f3f8fb}.solution-points{margin:10px 0 0 20px;padding:0;font-size:16px}.solution-points li{margin:7px 0}.therefore{margin:12px 0 0;font-size:17px;font-weight:800;color:#102030}
+    .common-info{font-weight:800!important;font-size:19px;line-height:1.52;background:#fffef8;border-left:7px solid var(--brand-mid);padding:16px 22px;color:#101820}
+    .common-info p,.common-info li,.common-info strong{font-weight:800!important}
+    .common-info>p:first-child{font-size:21px;color:#0b4f7a;margin-bottom:12px;text-transform:uppercase;letter-spacing:.2px}
+    .common-info li{margin:8px 0}.common-info ul{margin-left:24px}
+    .solution .block{background:#fbfdff;border:1px solid #d6e2ea;border-radius:4px;padding:16px 18px}
+    .solution-table-wrap{border-radius:4px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .solution-table caption{caption-side:top;text-align:left;font-weight:900;font-size:17px;color:#0b4f7a;margin-bottom:6px}
+  
+
+    /* Hybrid update: CAT-style question area + original header/sidebar/calculator layout */
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}
+    .cat-question-layout{display:grid;grid-template-columns:minmax(420px,52%) minmax(420px,48%);min-height:calc(100vh - 150px);border-bottom:1px solid #c9d1d8;background:#fff}
+    .cat-common-pane{border-right:1px solid #9aa6ae;background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-question-pane{background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-pane-title{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-pane-body{padding:12px 14px 24px;background:#fff}
+    .cat-question-number{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-question-layout .block{border:0;border-bottom:0;padding:0;background:#fff;margin:0;font-size:17px}
+    .cat-question-layout .common-info{border-left:0!important;background:#fff!important;padding:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:#111!important}
+    .cat-question-layout .common-info>p:first-child{font-size:20px!important;color:#111!important;text-transform:none!important;margin:0 0 10px!important;letter-spacing:0!important}
+    .cat-question-layout .common-info p,.cat-question-layout .common-info li{font-weight:800!important}
+    .cat-question-layout .common-info ul{margin:0 0 0 24px;padding:0}.cat-question-layout .common-info li{margin:7px 0}
+    .cat-question-layout .qtext{font-size:19px;font-weight:500;margin:0;padding:0 0 14px;min-height:0;line-height:1.45}.cat-question-layout .qtext strong{font-weight:800}.cat-question-layout .qtext p{margin:0 0 10px}
+    .cat-question-layout .options{display:grid;gap:12px;padding:0 0 18px;min-width:0}.cat-question-layout .option{border:0;border-radius:0;padding:4px 0;display:flex;gap:10px;cursor:pointer;background:#fff;align-items:flex-start;font-size:18px;font-weight:500;line-height:1.4}.cat-question-layout .option input{margin-top:6px;transform:scale(1.05);flex:0 0 auto}.cat-question-layout .option span{display:inline}.cat-question-layout .opt-label{font-weight:500;margin-right:6px}.cat-question-layout .opt-text{font-weight:500;color:#111;display:inline}.cat-question-layout .opt-text p{display:inline!important;margin:0!important;padding:0!important}.cat-question-layout .opt-text p+p{display:inline!important}
+    .cat-question-layout .solution{margin:12px 0 0;padding-top:12px;border-top:1px solid #b7c1ca;font-size:16px;line-height:1.5}.cat-question-layout .solution h3{font-size:18px;margin:0 0 8px;color:#111}.cat-question-layout .solution .block{background:#fff;border:0;border-radius:0;padding:8px 0 0;overflow:auto}
+    .solution-summary{font-size:17px!important;color:#111!important;text-decoration:underline;margin:8px 0 10px!important}.solution-table-wrap{border:0!important;box-shadow:none!important;background:#fff!important;margin:10px 0 14px!important;overflow-x:auto!important}table.solution-table{border-collapse:collapse!important;width:auto!important;min-width:560px!important;background:#fff!important;font-size:15px!important;color:#111!important;margin:0 auto!important}.solution-table th{background:#f2f2f2!important;color:#111!important;text-align:center!important;padding:7px 9px!important;border:2px solid #333!important;font-weight:800!important;white-space:normal!important}.solution-table td{padding:7px 9px!important;border:2px solid #333!important;font-weight:700!important;vertical-align:middle!important;background:#fff!important;text-align:center!important}.solution-table tbody tr:nth-child(even) td{background:#fff!important}.solution-points{margin:10px 0 0 22px!important;font-size:16px!important}.solution-points li{margin:7px 0!important}.therefore{font-size:17px!important;color:#111!important;font-weight:900!important}.answer-note{margin:8px 0 8px!important}
+    .navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6;z-index:100}.navrow .nav-left{display:flex;gap:10px;margin-right:auto}.navrow .nav-right{display:flex;gap:10px;margin-left:auto}.navrow button{white-space:nowrap}
+    .calc-toggle{width:56px!important;height:42px!important;gap:2px!important;flex-direction:column!important;font-size:10px!important}.calc-toggle::after{content:"CALC";font-size:9px;font-weight:900;line-height:1;color:#774d00}.calc-toggle svg{width:17px!important;height:17px!important}
+    @media(max-width:980px){.cat-question-layout{grid-template-columns:1fr;min-height:0}.cat-common-pane,.cat-question-pane{max-height:none;border-right:0}.navrow{position:static;right:auto}.cat-question-layout .options{min-width:0}}
+
+  
+    .cat-question-layout .option{align-items:center!important;gap:10px!important;margin:8px 0!important;}
+    .cat-question-layout .option span{display:inline!important;}
+    .cat-question-layout .option .opt-label{margin-right:6px!important;}
+    .cat-question-layout .option .opt-text p{display:inline!important;margin:0!important;}
+    .cat-question-layout .option .opt-text{display:inline!important;}
+    .solution-table caption{caption-side:top;text-align:left!important;font-weight:900!important;text-decoration:underline!important;font-size:17px!important;color:#111!important;margin:8px 0 10px!important;}
+    table.solution-table{font-size:15px!important;}
+    .solution-table th{background:#eeeeee!important;color:#111!important;border:2px solid #222!important;}
+    .solution-table td{border:2px solid #222!important;}
+
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style id="circle-solution-css">
+.circle-solution{display:flex;justify-content:center;align-items:center;margin:12px auto 16px;max-width:540px}
+.circle-solution svg{max-width:100%;height:auto;background:#fff}
+.circle-note{font-size:15px;font-weight:700;text-align:center;margin-top:-4px;color:#111}
+</style>
+
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Logical Reasoning Arrangement Test - 6</h1><div class="meta">30 Questions | 60 Minutes | 30 MCQ | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 116000001,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q1",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Nine people A, B, C, D, E, F, G, H and I are sitting in a straight line facing to the north but not necessarily in the same order. Following information is also given:</p>\n<ol>\n  <li>B is seated exactly between F and H. There is only 1 person seated between F and H.</li>\n  <li>H sits to the left of G.</li>\n  <li>I is the only immediate neighbour of E.</li>\n  <li>Three people sit between F and G.</li>\n  <li>F sits at the extreme end of the row.</li>\n  <li>More than one person sits between A and D, who does not sit near G.</li>\n</ol>",
+    "question": "<p><strong>Q1.</strong> Four of the following five are alike in a certain way based on their position. Which of the following does not belong to that group?</p>",
+    "options": [
+      "AG",
+      "HD",
+      "BI",
+      "FE"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) AG",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n  <li>F sits at an extreme end. Two cases are possible.</li>\n  <li>Since B is exactly between F and H and H must be to the left of G, the case where F is at the right end is ruled out.</li>\n  <li>I is the only immediate neighbour of E, hence E sits at the right end.</li>\n  <li>More than one person sits between A and D and D does not sit near G, so A is to the left of D.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.1 to Q.5</caption>\n  <thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>F</td><td>B</td><td>H</td><td>A</td><td>G</td><td>C</td><td>D</td><td>I</td><td>E</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The person in the middle is G. The person immediately right of G is C. A is immediately left of G.</p>"
+  },
+  {
+    "no": 2,
+    "itemId": 116000002,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q2",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Nine people A, B, C, D, E, F, G, H and I are sitting in a straight line facing to the north but not necessarily in the same order. Following information is also given:</p>\n<ol>\n  <li>B is seated exactly between F and H. There is only 1 person seated between F and H.</li>\n  <li>H sits to the left of G.</li>\n  <li>I is the only immediate neighbour of E.</li>\n  <li>Three people sit between F and G.</li>\n  <li>F sits at the extreme end of the row.</li>\n  <li>More than one person sits between A and D, who does not sit near G.</li>\n</ol>",
+    "question": "<p><strong>Q2.</strong> Who sits third to the left of the person who sits immediately right to the person sitting in the middle?</p>",
+    "options": [
+      "F",
+      "I",
+      "A",
+      "H"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) H",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n  <li>F sits at an extreme end. Two cases are possible.</li>\n  <li>Since B is exactly between F and H and H must be to the left of G, the case where F is at the right end is ruled out.</li>\n  <li>I is the only immediate neighbour of E, hence E sits at the right end.</li>\n  <li>More than one person sits between A and D and D does not sit near G, so A is to the left of D.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.1 to Q.5</caption>\n  <thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>F</td><td>B</td><td>H</td><td>A</td><td>G</td><td>C</td><td>D</td><td>I</td><td>E</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The person in the middle is G. The person immediately right of G is C. A is immediately left of G.</p>"
+  },
+  {
+    "no": 3,
+    "itemId": 116000003,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q3",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Nine people A, B, C, D, E, F, G, H and I are sitting in a straight line facing to the north but not necessarily in the same order. Following information is also given:</p>\n<ol>\n  <li>B is seated exactly between F and H. There is only 1 person seated between F and H.</li>\n  <li>H sits to the left of G.</li>\n  <li>I is the only immediate neighbour of E.</li>\n  <li>Three people sit between F and G.</li>\n  <li>F sits at the extreme end of the row.</li>\n  <li>More than one person sits between A and D, who does not sit near G.</li>\n</ol>",
+    "question": "<p><strong>Q3.</strong> How many people are sitting between the person who sits to the immediate left of H and the person who sits between D and E?</p>",
+    "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Five",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n  <li>F sits at an extreme end. Two cases are possible.</li>\n  <li>Since B is exactly between F and H and H must be to the left of G, the case where F is at the right end is ruled out.</li>\n  <li>I is the only immediate neighbour of E, hence E sits at the right end.</li>\n  <li>More than one person sits between A and D and D does not sit near G, so A is to the left of D.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.1 to Q.5</caption>\n  <thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>F</td><td>B</td><td>H</td><td>A</td><td>G</td><td>C</td><td>D</td><td>I</td><td>E</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The person in the middle is G. The person immediately right of G is C. A is immediately left of G.</p>"
+  },
+  {
+    "no": 4,
+    "itemId": 116000004,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q4",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Nine people A, B, C, D, E, F, G, H and I are sitting in a straight line facing to the north but not necessarily in the same order. Following information is also given:</p>\n<ol>\n  <li>B is seated exactly between F and H. There is only 1 person seated between F and H.</li>\n  <li>H sits to the left of G.</li>\n  <li>I is the only immediate neighbour of E.</li>\n  <li>Three people sit between F and G.</li>\n  <li>F sits at the extreme end of the row.</li>\n  <li>More than one person sits between A and D, who does not sit near G.</li>\n</ol>",
+    "question": "<p><strong>Q4.</strong> Who sits immediately left of the person who sits in the middle?</p>",
+    "options": [
+      "I",
+      "H",
+      "A",
+      "C"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) A",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n  <li>F sits at an extreme end. Two cases are possible.</li>\n  <li>Since B is exactly between F and H and H must be to the left of G, the case where F is at the right end is ruled out.</li>\n  <li>I is the only immediate neighbour of E, hence E sits at the right end.</li>\n  <li>More than one person sits between A and D and D does not sit near G, so A is to the left of D.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.1 to Q.5</caption>\n  <thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>F</td><td>B</td><td>H</td><td>A</td><td>G</td><td>C</td><td>D</td><td>I</td><td>E</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The person in the middle is G. The person immediately right of G is C. A is immediately left of G.</p>"
+  },
+  {
+    "no": 5,
+    "itemId": 116000005,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q5",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Nine people A, B, C, D, E, F, G, H and I are sitting in a straight line facing to the north but not necessarily in the same order. Following information is also given:</p>\n<ol>\n  <li>B is seated exactly between F and H. There is only 1 person seated between F and H.</li>\n  <li>H sits to the left of G.</li>\n  <li>I is the only immediate neighbour of E.</li>\n  <li>Three people sit between F and G.</li>\n  <li>F sits at the extreme end of the row.</li>\n  <li>More than one person sits between A and D, who does not sit near G.</li>\n</ol>",
+    "question": "<p><strong>Q5.</strong> Four of the following five are alike in a certain way based on their position. Which of the following does not belong to that group?</p>",
+    "options": [
+      "DI",
+      "IE",
+      "AG",
+      "FH"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) FH",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n  <li>F sits at an extreme end. Two cases are possible.</li>\n  <li>Since B is exactly between F and H and H must be to the left of G, the case where F is at the right end is ruled out.</li>\n  <li>I is the only immediate neighbour of E, hence E sits at the right end.</li>\n  <li>More than one person sits between A and D and D does not sit near G, so A is to the left of D.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.1 to Q.5</caption>\n  <thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>F</td><td>B</td><td>H</td><td>A</td><td>G</td><td>C</td><td>D</td><td>I</td><td>E</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The person in the middle is G. The person immediately right of G is C. A is immediately left of G.</p>"
+  },
+  {
+    "no": 6,
+    "itemId": 116000006,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q6",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Eight people, A through H, are placed in a straight row. The seat numbers are assigned from left to right where the leftmost seat is 0 and the rightmost seat is 7. Following information is known:</p>\n<ol>\n  <li>C, G and A's seat numbers are prime numbers and are sitting in the same order from left to right.</li>\n  <li>E seats 2nd to the left of H.</li>\n  <li>D's seat number is 7 less than that of F.</li>\n</ol>",
+    "question": "<p><strong>Q6.</strong> Who is seated 3rd to the right of B?</p>",
+    "options": [
+      "C",
+      "G",
+      "E",
+      "A"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) E",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n  <li>D's seat number is 7 less than F's seat number; hence D is at seat 0 and F is at seat 7.</li>\n  <li>C, G and A occupy prime numbered seats in the same order from left to right, so they occupy seats 2, 3 and 5 respectively.</li>\n  <li>E is two places to the left of H, therefore E is at seat 4 and H is at seat 6. The remaining seat goes to B.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.6 to Q.10</caption>\n  <thead><tr><th>Seat</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>D</td><td>B</td><td>C</td><td>G</td><td>E</td><td>A</td><td>H</td><td>F</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>After exchanging equidistant positions from the two edges, the order becomes F, H, A, E, G, C, B, D; hence seat 2 has A.</p>"
+  },
+  {
+    "no": 7,
+    "itemId": 116000007,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q7",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Eight people, A through H, are placed in a straight row. The seat numbers are assigned from left to right where the leftmost seat is 0 and the rightmost seat is 7. Following information is known:</p>\n<ol>\n  <li>C, G and A's seat numbers are prime numbers and are sitting in the same order from left to right.</li>\n  <li>E seats 2nd to the left of H.</li>\n  <li>D's seat number is 7 less than that of F.</li>\n</ol>",
+    "question": "<p><strong>Q7.</strong> What is the seat number of the person who sits immediately to the right of H?</p>",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) 7",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n  <li>D's seat number is 7 less than F's seat number; hence D is at seat 0 and F is at seat 7.</li>\n  <li>C, G and A occupy prime numbered seats in the same order from left to right, so they occupy seats 2, 3 and 5 respectively.</li>\n  <li>E is two places to the left of H, therefore E is at seat 4 and H is at seat 6. The remaining seat goes to B.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.6 to Q.10</caption>\n  <thead><tr><th>Seat</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>D</td><td>B</td><td>C</td><td>G</td><td>E</td><td>A</td><td>H</td><td>F</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>After exchanging equidistant positions from the two edges, the order becomes F, H, A, E, G, C, B, D; hence seat 2 has A.</p>"
+  },
+  {
+    "no": 8,
+    "itemId": 116000008,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q8",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Eight people, A through H, are placed in a straight row. The seat numbers are assigned from left to right where the leftmost seat is 0 and the rightmost seat is 7. Following information is known:</p>\n<ol>\n  <li>C, G and A's seat numbers are prime numbers and are sitting in the same order from left to right.</li>\n  <li>E seats 2nd to the left of H.</li>\n  <li>D's seat number is 7 less than that of F.</li>\n</ol>",
+    "question": "<p><strong>Q8.</strong> How many people are seating between C and E?</p>",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) 1",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n  <li>D's seat number is 7 less than F's seat number; hence D is at seat 0 and F is at seat 7.</li>\n  <li>C, G and A occupy prime numbered seats in the same order from left to right, so they occupy seats 2, 3 and 5 respectively.</li>\n  <li>E is two places to the left of H, therefore E is at seat 4 and H is at seat 6. The remaining seat goes to B.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.6 to Q.10</caption>\n  <thead><tr><th>Seat</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>D</td><td>B</td><td>C</td><td>G</td><td>E</td><td>A</td><td>H</td><td>F</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>After exchanging equidistant positions from the two edges, the order becomes F, H, A, E, G, C, B, D; hence seat 2 has A.</p>"
+  },
+  {
+    "no": 9,
+    "itemId": 116000009,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q9",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Eight people, A through H, are placed in a straight row. The seat numbers are assigned from left to right where the leftmost seat is 0 and the rightmost seat is 7. Following information is known:</p>\n<ol>\n  <li>C, G and A's seat numbers are prime numbers and are sitting in the same order from left to right.</li>\n  <li>E seats 2nd to the left of H.</li>\n  <li>D's seat number is 7 less than that of F.</li>\n</ol>",
+    "question": "<p><strong>Q9.</strong> If the pair of people who are equidistant from the two edges exchange positions, then who seats on the seat numbered 2?</p>",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) A",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n  <li>D's seat number is 7 less than F's seat number; hence D is at seat 0 and F is at seat 7.</li>\n  <li>C, G and A occupy prime numbered seats in the same order from left to right, so they occupy seats 2, 3 and 5 respectively.</li>\n  <li>E is two places to the left of H, therefore E is at seat 4 and H is at seat 6. The remaining seat goes to B.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.6 to Q.10</caption>\n  <thead><tr><th>Seat</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>D</td><td>B</td><td>C</td><td>G</td><td>E</td><td>A</td><td>H</td><td>F</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>After exchanging equidistant positions from the two edges, the order becomes F, H, A, E, G, C, B, D; hence seat 2 has A.</p>"
+  },
+  {
+    "no": 10,
+    "itemId": 116000010,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q10",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Eight people, A through H, are placed in a straight row. The seat numbers are assigned from left to right where the leftmost seat is 0 and the rightmost seat is 7. Following information is known:</p>\n<ol>\n  <li>C, G and A's seat numbers are prime numbers and are sitting in the same order from left to right.</li>\n  <li>E seats 2nd to the left of H.</li>\n  <li>D's seat number is 7 less than that of F.</li>\n</ol>",
+    "question": "<p><strong>Q10.</strong> Who is/are seating the prime number seats?</p>",
+    "options": [
+      "A",
+      "C",
+      "E",
+      "Both options A and B are true"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Both options A and B are true",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n  <li>D's seat number is 7 less than F's seat number; hence D is at seat 0 and F is at seat 7.</li>\n  <li>C, G and A occupy prime numbered seats in the same order from left to right, so they occupy seats 2, 3 and 5 respectively.</li>\n  <li>E is two places to the left of H, therefore E is at seat 4 and H is at seat 6. The remaining seat goes to B.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.6 to Q.10</caption>\n  <thead><tr><th>Seat</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>D</td><td>B</td><td>C</td><td>G</td><td>E</td><td>A</td><td>H</td><td>F</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>After exchanging equidistant positions from the two edges, the order becomes F, H, A, E, G, C, B, D; hence seat 2 has A.</p>"
+  },
+  {
+    "no": 11,
+    "itemId": 116000011,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q11",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Eight people, A through H, are seating in a row. The seats are numbered from the left as 1, 2, 3 and so on to 8. Following information are known:</p>\n<ol>\n  <li>H is seated 4th to the right of the person whose seat number is a perfect square of an even number and is not C.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D's seat numbers are factors of E's seat number but none of them are 1.</li>\n  <li>The person who is to the immediate left of A has exactly one neighbour.</li>\n  <li>Person B, which occupies seat number 5, is 2 places to the left of F.</li>\n</ol>",
+    "question": "<p><strong>Q11.</strong> Which person is occupying the second seat?</p>",
+    "options": [
+      "B",
+      "C",
+      "D",
+      "A"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) A",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n  <li>The even perfect square seat number is 4; H is 4th to the right of it, so H is at seat 8.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D occupy factors of 6, but neither is at seat 1, so they occupy seats 2 and 3.</li>\n  <li>The person immediately left of A has exactly one neighbour, so A must be at seat 2 and D at seat 3.</li>\n  <li>B is at seat 5 and is 2 places to the left of F, so F is at seat 7. The remaining seats give C at 1 and G at 4.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.11 to Q.15</caption>\n  <thead><tr><th>Seat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>C</td><td>A</td><td>D</td><td>G</td><td>B</td><td>E</td><td>F</td><td>H</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>C and H are at the extreme ends. The person to the immediate right of the person having only one neighbour is A.</p>"
+  },
+  {
+    "no": 12,
+    "itemId": 116000012,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q12",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Eight people, A through H, are seating in a row. The seats are numbered from the left as 1, 2, 3 and so on to 8. Following information are known:</p>\n<ol>\n  <li>H is seated 4th to the right of the person whose seat number is a perfect square of an even number and is not C.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D's seat numbers are factors of E's seat number but none of them are 1.</li>\n  <li>The person who is to the immediate left of A has exactly one neighbour.</li>\n  <li>Person B, which occupies seat number 5, is 2 places to the left of F.</li>\n</ol>",
+    "question": "<p><strong>Q12.</strong> Which person is placed 3 places to the right of the person occupying the second seat?</p>",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) B",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n  <li>The even perfect square seat number is 4; H is 4th to the right of it, so H is at seat 8.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D occupy factors of 6, but neither is at seat 1, so they occupy seats 2 and 3.</li>\n  <li>The person immediately left of A has exactly one neighbour, so A must be at seat 2 and D at seat 3.</li>\n  <li>B is at seat 5 and is 2 places to the left of F, so F is at seat 7. The remaining seats give C at 1 and G at 4.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.11 to Q.15</caption>\n  <thead><tr><th>Seat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>C</td><td>A</td><td>D</td><td>G</td><td>B</td><td>E</td><td>F</td><td>H</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>C and H are at the extreme ends. The person to the immediate right of the person having only one neighbour is A.</p>"
+  },
+  {
+    "no": 13,
+    "itemId": 116000013,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q13",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Eight people, A through H, are seating in a row. The seats are numbered from the left as 1, 2, 3 and so on to 8. Following information are known:</p>\n<ol>\n  <li>H is seated 4th to the right of the person whose seat number is a perfect square of an even number and is not C.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D's seat numbers are factors of E's seat number but none of them are 1.</li>\n  <li>The person who is to the immediate left of A has exactly one neighbour.</li>\n  <li>Person B, which occupies seat number 5, is 2 places to the left of F.</li>\n</ol>",
+    "question": "<p><strong>Q13.</strong> Which persons are occupying the extreme ends?</p>",
+    "options": [
+      "A, H",
+      "C, H",
+      "A, F",
+      "C, F"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) C, H",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n  <li>The even perfect square seat number is 4; H is 4th to the right of it, so H is at seat 8.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D occupy factors of 6, but neither is at seat 1, so they occupy seats 2 and 3.</li>\n  <li>The person immediately left of A has exactly one neighbour, so A must be at seat 2 and D at seat 3.</li>\n  <li>B is at seat 5 and is 2 places to the left of F, so F is at seat 7. The remaining seats give C at 1 and G at 4.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.11 to Q.15</caption>\n  <thead><tr><th>Seat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>C</td><td>A</td><td>D</td><td>G</td><td>B</td><td>E</td><td>F</td><td>H</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>C and H are at the extreme ends. The person to the immediate right of the person having only one neighbour is A.</p>"
+  },
+  {
+    "no": 14,
+    "itemId": 116000014,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q14",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Eight people, A through H, are seating in a row. The seats are numbered from the left as 1, 2, 3 and so on to 8. Following information are known:</p>\n<ol>\n  <li>H is seated 4th to the right of the person whose seat number is a perfect square of an even number and is not C.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D's seat numbers are factors of E's seat number but none of them are 1.</li>\n  <li>The person who is to the immediate left of A has exactly one neighbour.</li>\n  <li>Person B, which occupies seat number 5, is 2 places to the left of F.</li>\n</ol>",
+    "question": "<p><strong>Q14.</strong> Which of the pair is not alike with respect to other pairs?</p>",
+    "options": [
+      "C, A",
+      "A, G",
+      "B, E",
+      "F, H"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) A, G",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n  <li>The even perfect square seat number is 4; H is 4th to the right of it, so H is at seat 8.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D occupy factors of 6, but neither is at seat 1, so they occupy seats 2 and 3.</li>\n  <li>The person immediately left of A has exactly one neighbour, so A must be at seat 2 and D at seat 3.</li>\n  <li>B is at seat 5 and is 2 places to the left of F, so F is at seat 7. The remaining seats give C at 1 and G at 4.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.11 to Q.15</caption>\n  <thead><tr><th>Seat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>C</td><td>A</td><td>D</td><td>G</td><td>B</td><td>E</td><td>F</td><td>H</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>C and H are at the extreme ends. The person to the immediate right of the person having only one neighbour is A.</p>"
+  },
+  {
+    "no": 15,
+    "itemId": 116000015,
+    "source": "Logical Reasoning Arrangement Test - 6 | Original Q15",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Eight people, A through H, are seating in a row. The seats are numbered from the left as 1, 2, 3 and so on to 8. Following information are known:</p>\n<ol>\n  <li>H is seated 4th to the right of the person whose seat number is a perfect square of an even number and is not C.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D's seat numbers are factors of E's seat number but none of them are 1.</li>\n  <li>The person who is to the immediate left of A has exactly one neighbour.</li>\n  <li>Person B, which occupies seat number 5, is 2 places to the left of F.</li>\n</ol>",
+    "question": "<p><strong>Q15.</strong> Which person is seated to the immediate right of the person having only one neighbour?</p>",
+    "options": [
+      "G",
+      "D",
+      "A",
+      "B"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) A",
+    "solution": "<p class='solution-summary'><strong>Final arrangement for Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n  <li>The even perfect square seat number is 4; H is 4th to the right of it, so H is at seat 8.</li>\n  <li>E's seat number is 6.</li>\n  <li>A and D occupy factors of 6, but neither is at seat 1, so they occupy seats 2 and 3.</li>\n  <li>The person immediately left of A has exactly one neighbour, so A must be at seat 2 and D at seat 3.</li>\n  <li>B is at seat 5 and is 2 places to the left of F, so F is at seat 7. The remaining seats give C at 1 and G at 4.</li>\n</ul>\n<div class='solution-table-wrap'>\n<table class='solution-table'>\n  <caption>For Q.11 to Q.15</caption>\n  <thead><tr><th>Seat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n  <tbody><tr><td><strong>Person</strong></td><td>C</td><td>A</td><td>D</td><td>G</td><td>B</td><td>E</td><td>F</td><td>H</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>C and H are at the extreme ends. The person to the immediate right of the person having only one neighbour is A.</p>"
+  },
+  {
+    "no": 16,
+    "itemId": 115300016,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q16",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 1</strong></p>\n<p>Six people P, Q, R, S, T and U are seated around a circular table facing towards the center. The following points are known about their positions along the table:</p>\n<ul>\n<li>P is sitting opposite to Q.</li>\n<li>R is not adjacent to Q.</li>\n<li>S and T sit together.</li>\n<li>S is not adjacent to P.</li>\n<li>U is sitting to the left of Q.</li>\n</ul>",
+    "question": "<p><strong>Q16.</strong> Which of the following pairs is not sitting opposite to each other?</p>",
+    "options": [
+      "P and Q",
+      "T and U",
+      "R and S",
+      "R and T"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) R and T",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n  <li>Put P opposite Q.</li>\n  <li>R is not adjacent to Q.</li>\n  <li>S and T sit together, and S is not adjacent to P. The possible case where S comes next to P is eliminated.</li>\n  <li>U is to the left of Q. Hence the final circular order is fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for P Q R S T U'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>P</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>T</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>S</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Q</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>U</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>R</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.16 to Q.20</caption>\n<thead><tr><th>Clockwise order</th><th>P</th><th>T</th><th>S</th><th>Q</th><th>U</th><th>R</th></tr></thead>\n<tbody><tr><td><strong>Opposite pairs</strong></td><td colspan='2'>P-Q</td><td colspan='2'>T-U</td><td colspan='2'>R-S</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>Thus R and T are not opposite; P is second to the left of U; S is second to the right of U; Q is between S and U; and T is second to the right of Q.</p>"
+  },
+  {
+    "no": 17,
+    "itemId": 115300017,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q17",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 1</strong></p>\n<p>Six people P, Q, R, S, T and U are seated around a circular table facing towards the center. The following points are known about their positions along the table:</p>\n<ul>\n<li>P is sitting opposite to Q.</li>\n<li>R is not adjacent to Q.</li>\n<li>S and T sit together.</li>\n<li>S is not adjacent to P.</li>\n<li>U is sitting to the left of Q.</li>\n</ul>",
+    "question": "<p><strong>Q17.</strong> Who sits second to the left of U?</p>",
+    "options": [
+      "P",
+      "R",
+      "T",
+      "S"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) P",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n  <li>Put P opposite Q.</li>\n  <li>R is not adjacent to Q.</li>\n  <li>S and T sit together, and S is not adjacent to P. The possible case where S comes next to P is eliminated.</li>\n  <li>U is to the left of Q. Hence the final circular order is fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for P Q R S T U'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>P</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>T</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>S</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Q</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>U</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>R</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.16 to Q.20</caption>\n<thead><tr><th>Clockwise order</th><th>P</th><th>T</th><th>S</th><th>Q</th><th>U</th><th>R</th></tr></thead>\n<tbody><tr><td><strong>Opposite pairs</strong></td><td colspan='2'>P-Q</td><td colspan='2'>T-U</td><td colspan='2'>R-S</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>Thus R and T are not opposite; P is second to the left of U; S is second to the right of U; Q is between S and U; and T is second to the right of Q.</p>"
+  },
+  {
+    "no": 18,
+    "itemId": 115300018,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q18",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 1</strong></p>\n<p>Six people P, Q, R, S, T and U are seated around a circular table facing towards the center. The following points are known about their positions along the table:</p>\n<ul>\n<li>P is sitting opposite to Q.</li>\n<li>R is not adjacent to Q.</li>\n<li>S and T sit together.</li>\n<li>S is not adjacent to P.</li>\n<li>U is sitting to the left of Q.</li>\n</ul>",
+    "question": "<p><strong>Q18.</strong> Who sits second to the right of U?</p>",
+    "options": [
+      "P",
+      "R",
+      "T",
+      "S"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) S",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n  <li>Put P opposite Q.</li>\n  <li>R is not adjacent to Q.</li>\n  <li>S and T sit together, and S is not adjacent to P. The possible case where S comes next to P is eliminated.</li>\n  <li>U is to the left of Q. Hence the final circular order is fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for P Q R S T U'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>P</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>T</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>S</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Q</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>U</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>R</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.16 to Q.20</caption>\n<thead><tr><th>Clockwise order</th><th>P</th><th>T</th><th>S</th><th>Q</th><th>U</th><th>R</th></tr></thead>\n<tbody><tr><td><strong>Opposite pairs</strong></td><td colspan='2'>P-Q</td><td colspan='2'>T-U</td><td colspan='2'>R-S</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>Thus R and T are not opposite; P is second to the left of U; S is second to the right of U; Q is between S and U; and T is second to the right of Q.</p>"
+  },
+  {
+    "no": 19,
+    "itemId": 115300019,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q19",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 1</strong></p>\n<p>Six people P, Q, R, S, T and U are seated around a circular table facing towards the center. The following points are known about their positions along the table:</p>\n<ul>\n<li>P is sitting opposite to Q.</li>\n<li>R is not adjacent to Q.</li>\n<li>S and T sit together.</li>\n<li>S is not adjacent to P.</li>\n<li>U is sitting to the left of Q.</li>\n</ul>",
+    "question": "<p><strong>Q19.</strong> Q sits between which two people?</p>",
+    "options": [
+      "S and U",
+      "S and T",
+      "S and R",
+      "Cannot be determined"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) S and U",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n  <li>Put P opposite Q.</li>\n  <li>R is not adjacent to Q.</li>\n  <li>S and T sit together, and S is not adjacent to P. The possible case where S comes next to P is eliminated.</li>\n  <li>U is to the left of Q. Hence the final circular order is fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for P Q R S T U'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>P</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>T</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>S</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Q</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>U</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>R</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.16 to Q.20</caption>\n<thead><tr><th>Clockwise order</th><th>P</th><th>T</th><th>S</th><th>Q</th><th>U</th><th>R</th></tr></thead>\n<tbody><tr><td><strong>Opposite pairs</strong></td><td colspan='2'>P-Q</td><td colspan='2'>T-U</td><td colspan='2'>R-S</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>Thus R and T are not opposite; P is second to the left of U; S is second to the right of U; Q is between S and U; and T is second to the right of Q.</p>"
+  },
+  {
+    "no": 20,
+    "itemId": 115300020,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q20",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 1</strong></p>\n<p>Six people P, Q, R, S, T and U are seated around a circular table facing towards the center. The following points are known about their positions along the table:</p>\n<ul>\n<li>P is sitting opposite to Q.</li>\n<li>R is not adjacent to Q.</li>\n<li>S and T sit together.</li>\n<li>S is not adjacent to P.</li>\n<li>U is sitting to the left of Q.</li>\n</ul>",
+    "question": "<p><strong>Q20.</strong> Who sits second to the right of Q?</p>",
+    "options": [
+      "P",
+      "T",
+      "R",
+      "S"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) T",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n  <li>Put P opposite Q.</li>\n  <li>R is not adjacent to Q.</li>\n  <li>S and T sit together, and S is not adjacent to P. The possible case where S comes next to P is eliminated.</li>\n  <li>U is to the left of Q. Hence the final circular order is fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for P Q R S T U'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>P</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>T</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>S</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Q</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>U</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>R</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.16 to Q.20</caption>\n<thead><tr><th>Clockwise order</th><th>P</th><th>T</th><th>S</th><th>Q</th><th>U</th><th>R</th></tr></thead>\n<tbody><tr><td><strong>Opposite pairs</strong></td><td colspan='2'>P-Q</td><td colspan='2'>T-U</td><td colspan='2'>R-S</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>Thus R and T are not opposite; P is second to the left of U; S is second to the right of U; Q is between S and U; and T is second to the right of Q.</p>"
+  },
+  {
+    "no": 21,
+    "itemId": 115300021,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q21",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 2</strong></p>\n<p>During placement in a college, eight placement officers A, B, C, D, E, F, G and H from different companies like TCS, Wipro, Google, IBM, Microsoft, Intel, Infosys and Bosch, not necessarily in the same order, are seated in a circular table facing the centre.</p>\n<ol>\n<li>B sits third to the left of one from Google.</li>\n<li>Only one person sits between B and the one from Microsoft.</li>\n<li>The one from Wipro sits second to the right of C.</li>\n<li>C is neither from Microsoft nor from Google.</li>\n<li>C is not an immediate neighbour of either B or the one from Google.</li>\n<li>Only three people sit between C and the one from Bosch.</li>\n<li>Only one person sits between the one from Wipro and H.</li>\n<li>F sits to the immediate right of the one from TCS.</li>\n<li>C is not from TCS.</li>\n<li>The one from IBM sits to the immediate right of the one from Intel.</li>\n<li>Only two people sit between E and the one from IBM.</li>\n<li>Neither E nor D is from Microsoft.</li>\n<li>A is not an immediate neighbour of C.</li>\n</ol>",
+    "question": "<p><strong>Q21.</strong> Which of the following is true with respect to the given information?</p>",
+    "options": [
+      "D sits second to the left of A",
+      "D is from Wipro",
+      "The one from Infosys is an immediate neighbour of H.",
+      "Only two sit between C and F when counted from the left of F"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) The one from Infosys is an immediate neighbour of H.",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n  <li>B is third to the left of the one from Google.</li>\n  <li>Only one person sits between B and the person from Microsoft.</li>\n  <li>After applying all the company and neighbour conditions, the valid circular arrangement is obtained as below.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for companies'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><line x1='180' y1='160' x2='180' y2='36' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='84' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='318' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='180' y2='284' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='42' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='84' stroke='#c7d1d9' stroke-width='1'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>D - Intel</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>F - Google</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>E - TCS</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>H - Bosch</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>B - Infosys</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>A - Wipro</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>G - Microsoft</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>C - IBM</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.21 to Q.25</caption>\n<thead><tr><th>Person</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>\n<tbody><tr><td><strong>Company</strong></td><td>Wipro</td><td>Infosys</td><td>IBM</td><td>Intel</td><td>TCS</td><td>Google</td><td>Microsoft</td><td>Bosch</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The one from Infosys is an immediate neighbour of H. C is from IBM. H is third to the left of D. G is from Microsoft. Two people sit between G and Bosch while counting anti-clockwise.</p>"
+  },
+  {
+    "no": 22,
+    "itemId": 115300022,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q22",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 2</strong></p>\n<p>During placement in a college, eight placement officers A, B, C, D, E, F, G and H from different companies like TCS, Wipro, Google, IBM, Microsoft, Intel, Infosys and Bosch, not necessarily in the same order, are seated in a circular table facing the centre.</p>\n<ol>\n<li>B sits third to the left of one from Google.</li>\n<li>Only one person sits between B and the one from Microsoft.</li>\n<li>The one from Wipro sits second to the right of C.</li>\n<li>C is neither from Microsoft nor from Google.</li>\n<li>C is not an immediate neighbour of either B or the one from Google.</li>\n<li>Only three people sit between C and the one from Bosch.</li>\n<li>Only one person sits between the one from Wipro and H.</li>\n<li>F sits to the immediate right of the one from TCS.</li>\n<li>C is not from TCS.</li>\n<li>The one from IBM sits to the immediate right of the one from Intel.</li>\n<li>Only two people sit between E and the one from IBM.</li>\n<li>Neither E nor D is from Microsoft.</li>\n<li>A is not an immediate neighbour of C.</li>\n</ol>",
+    "question": "<p><strong>Q22.</strong> Who amongst the following is from IBM?</p>",
+    "options": [
+      "C",
+      "B",
+      "H",
+      "E"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) C",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n  <li>B is third to the left of the one from Google.</li>\n  <li>Only one person sits between B and the person from Microsoft.</li>\n  <li>After applying all the company and neighbour conditions, the valid circular arrangement is obtained as below.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for companies'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><line x1='180' y1='160' x2='180' y2='36' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='84' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='318' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='180' y2='284' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='42' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='84' stroke='#c7d1d9' stroke-width='1'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>D - Intel</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>F - Google</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>E - TCS</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>H - Bosch</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>B - Infosys</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>A - Wipro</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>G - Microsoft</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>C - IBM</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.21 to Q.25</caption>\n<thead><tr><th>Person</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>\n<tbody><tr><td><strong>Company</strong></td><td>Wipro</td><td>Infosys</td><td>IBM</td><td>Intel</td><td>TCS</td><td>Google</td><td>Microsoft</td><td>Bosch</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The one from Infosys is an immediate neighbour of H. C is from IBM. H is third to the left of D. G is from Microsoft. Two people sit between G and Bosch while counting anti-clockwise.</p>"
+  },
+  {
+    "no": 23,
+    "itemId": 115300023,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q23",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 2</strong></p>\n<p>During placement in a college, eight placement officers A, B, C, D, E, F, G and H from different companies like TCS, Wipro, Google, IBM, Microsoft, Intel, Infosys and Bosch, not necessarily in the same order, are seated in a circular table facing the centre.</p>\n<ol>\n<li>B sits third to the left of one from Google.</li>\n<li>Only one person sits between B and the one from Microsoft.</li>\n<li>The one from Wipro sits second to the right of C.</li>\n<li>C is neither from Microsoft nor from Google.</li>\n<li>C is not an immediate neighbour of either B or the one from Google.</li>\n<li>Only three people sit between C and the one from Bosch.</li>\n<li>Only one person sits between the one from Wipro and H.</li>\n<li>F sits to the immediate right of the one from TCS.</li>\n<li>C is not from TCS.</li>\n<li>The one from IBM sits to the immediate right of the one from Intel.</li>\n<li>Only two people sit between E and the one from IBM.</li>\n<li>Neither E nor D is from Microsoft.</li>\n<li>A is not an immediate neighbour of C.</li>\n</ol>",
+    "question": "<p><strong>Q23.</strong> Who amongst the following sits third to the left of D?</p>",
+    "options": [
+      "B",
+      "H",
+      "The one from TCS",
+      "The one from Google"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) H",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n  <li>B is third to the left of the one from Google.</li>\n  <li>Only one person sits between B and the person from Microsoft.</li>\n  <li>After applying all the company and neighbour conditions, the valid circular arrangement is obtained as below.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for companies'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><line x1='180' y1='160' x2='180' y2='36' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='84' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='318' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='180' y2='284' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='42' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='84' stroke='#c7d1d9' stroke-width='1'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>D - Intel</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>F - Google</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>E - TCS</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>H - Bosch</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>B - Infosys</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>A - Wipro</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>G - Microsoft</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>C - IBM</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.21 to Q.25</caption>\n<thead><tr><th>Person</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>\n<tbody><tr><td><strong>Company</strong></td><td>Wipro</td><td>Infosys</td><td>IBM</td><td>Intel</td><td>TCS</td><td>Google</td><td>Microsoft</td><td>Bosch</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The one from Infosys is an immediate neighbour of H. C is from IBM. H is third to the left of D. G is from Microsoft. Two people sit between G and Bosch while counting anti-clockwise.</p>"
+  },
+  {
+    "no": 24,
+    "itemId": 115300024,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q24",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 2</strong></p>\n<p>During placement in a college, eight placement officers A, B, C, D, E, F, G and H from different companies like TCS, Wipro, Google, IBM, Microsoft, Intel, Infosys and Bosch, not necessarily in the same order, are seated in a circular table facing the centre.</p>\n<ol>\n<li>B sits third to the left of one from Google.</li>\n<li>Only one person sits between B and the one from Microsoft.</li>\n<li>The one from Wipro sits second to the right of C.</li>\n<li>C is neither from Microsoft nor from Google.</li>\n<li>C is not an immediate neighbour of either B or the one from Google.</li>\n<li>Only three people sit between C and the one from Bosch.</li>\n<li>Only one person sits between the one from Wipro and H.</li>\n<li>F sits to the immediate right of the one from TCS.</li>\n<li>C is not from TCS.</li>\n<li>The one from IBM sits to the immediate right of the one from Intel.</li>\n<li>Only two people sit between E and the one from IBM.</li>\n<li>Neither E nor D is from Microsoft.</li>\n<li>A is not an immediate neighbour of C.</li>\n</ol>",
+    "question": "<p><strong>Q24.</strong> G is from which company?</p>",
+    "options": [
+      "Intel",
+      "Google",
+      "TCS",
+      "Microsoft"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Microsoft",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n  <li>B is third to the left of the one from Google.</li>\n  <li>Only one person sits between B and the person from Microsoft.</li>\n  <li>After applying all the company and neighbour conditions, the valid circular arrangement is obtained as below.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for companies'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><line x1='180' y1='160' x2='180' y2='36' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='84' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='318' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='180' y2='284' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='42' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='84' stroke='#c7d1d9' stroke-width='1'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>D - Intel</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>F - Google</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>E - TCS</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>H - Bosch</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>B - Infosys</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>A - Wipro</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>G - Microsoft</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>C - IBM</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.21 to Q.25</caption>\n<thead><tr><th>Person</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>\n<tbody><tr><td><strong>Company</strong></td><td>Wipro</td><td>Infosys</td><td>IBM</td><td>Intel</td><td>TCS</td><td>Google</td><td>Microsoft</td><td>Bosch</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The one from Infosys is an immediate neighbour of H. C is from IBM. H is third to the left of D. G is from Microsoft. Two people sit between G and Bosch while counting anti-clockwise.</p>"
+  },
+  {
+    "no": 25,
+    "itemId": 115300025,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q25",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 2</strong></p>\n<p>During placement in a college, eight placement officers A, B, C, D, E, F, G and H from different companies like TCS, Wipro, Google, IBM, Microsoft, Intel, Infosys and Bosch, not necessarily in the same order, are seated in a circular table facing the centre.</p>\n<ol>\n<li>B sits third to the left of one from Google.</li>\n<li>Only one person sits between B and the one from Microsoft.</li>\n<li>The one from Wipro sits second to the right of C.</li>\n<li>C is neither from Microsoft nor from Google.</li>\n<li>C is not an immediate neighbour of either B or the one from Google.</li>\n<li>Only three people sit between C and the one from Bosch.</li>\n<li>Only one person sits between the one from Wipro and H.</li>\n<li>F sits to the immediate right of the one from TCS.</li>\n<li>C is not from TCS.</li>\n<li>The one from IBM sits to the immediate right of the one from Intel.</li>\n<li>Only two people sit between E and the one from IBM.</li>\n<li>Neither E nor D is from Microsoft.</li>\n<li>A is not an immediate neighbour of C.</li>\n</ol>",
+    "question": "<p><strong>Q25.</strong> How many people sit between G and the one from Bosch while counting anti-clockwise?</p>",
+    "options": [
+      "5",
+      "4",
+      "3",
+      "2"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) 2",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n  <li>B is third to the left of the one from Google.</li>\n  <li>Only one person sits between B and the person from Microsoft.</li>\n  <li>After applying all the company and neighbour conditions, the valid circular arrangement is obtained as below.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for companies'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><line x1='180' y1='160' x2='180' y2='36' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='84' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='318' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='285' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='180' y2='284' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='236' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='42' y2='160' stroke='#c7d1d9' stroke-width='1'/><line x1='180' y1='160' x2='75' y2='84' stroke='#c7d1d9' stroke-width='1'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>D - Intel</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>F - Google</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>E - TCS</text><text x='285' y='236' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>H - Bosch</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>B - Infosys</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>A - Wipro</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>G - Microsoft</text><text x='75' y='84' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>C - IBM</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.21 to Q.25</caption>\n<thead><tr><th>Person</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>\n<tbody><tr><td><strong>Company</strong></td><td>Wipro</td><td>Infosys</td><td>IBM</td><td>Intel</td><td>TCS</td><td>Google</td><td>Microsoft</td><td>Bosch</td></tr></tbody>\n</table>\n</div>\n<p class='therefore'>The one from Infosys is an immediate neighbour of H. C is from IBM. H is third to the left of D. G is from Microsoft. Two people sit between G and Bosch while counting anti-clockwise.</p>"
+  },
+  {
+    "no": 26,
+    "itemId": 115300026,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q26",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 3</strong></p>\n<p>Six friends Ashneer, Bharat, Chandu, Daymond, Emma and Finn were seated around a circular table. Some were facing outside the circle while some were facing inside the circle.</p>\n<ul>\n<li>Bharat and Finn were seated opposite to each other and were facing the same direction.</li>\n<li>Ashneer was to the immediate right of Daymond and opposite to Chandu, who was facing outside.</li>\n<li>Emma was facing towards the centre.</li>\n<li>The immediate neighbours of Finn were facing opposite directions.</li>\n<li>Ashneer was second to the left of Bharat and immediate neighbours of Bharat will face the opposite direction.</li>\n</ul>",
+    "question": "<p><strong>Q26.</strong> Who was second to the left of Emma?</p>",
+    "options": [
+      "Bharat",
+      "Ashneer",
+      "Chandu",
+      "Daymond"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) Ashneer",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n  <li>Ashneer is to the immediate right of Daymond and opposite Chandu, who faces outside.</li>\n  <li>Bharat and Finn are opposite each other and face the same direction.</li>\n  <li>Ashneer is second to the left of Bharat. The immediate neighbours of Bharat face opposite directions.</li>\n  <li>Emma faces towards the centre. Hence Ashneer faces outside and the final arrangement becomes fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for friends facing directions'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Chandu ↑</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Emma ↙</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Finn →</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Ashneer ↓</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Daymond ↗</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Bharat ←</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Bottom</th><th>Lower-left</th><th>Left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Chandu</td><td>Emma</td><td>Finn</td><td>Ashneer</td><td>Daymond</td><td>Bharat</td></tr>\n<tr><td><strong>Facing</strong></td><td>Outside</td><td>Inside</td><td>Outside</td><td>Outside</td><td>Inside</td><td>Outside</td></tr>\n</tbody>\n</table>\n</div>\n<p class='therefore'>Ashneer is second to the left of Emma; Daymond is third to the right of Emma; Bharat and Chandu face the same direction; Bharat is second to the right of Ashneer; and Chandu is to the immediate right of Bharat.</p>"
+  },
+  {
+    "no": 27,
+    "itemId": 115300027,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q27",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 3</strong></p>\n<p>Six friends Ashneer, Bharat, Chandu, Daymond, Emma and Finn were seated around a circular table. Some were facing outside the circle while some were facing inside the circle.</p>\n<ul>\n<li>Bharat and Finn were seated opposite to each other and were facing the same direction.</li>\n<li>Ashneer was to the immediate right of Daymond and opposite to Chandu, who was facing outside.</li>\n<li>Emma was facing towards the centre.</li>\n<li>The immediate neighbours of Finn were facing opposite directions.</li>\n<li>Ashneer was second to the left of Bharat and immediate neighbours of Bharat will face the opposite direction.</li>\n</ul>",
+    "question": "<p><strong>Q27.</strong> Who was third to the right of Emma?</p>",
+    "options": [
+      "Bharat",
+      "Chandu",
+      "Daymond",
+      "Finn"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Daymond",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n  <li>Ashneer is to the immediate right of Daymond and opposite Chandu, who faces outside.</li>\n  <li>Bharat and Finn are opposite each other and face the same direction.</li>\n  <li>Ashneer is second to the left of Bharat. The immediate neighbours of Bharat face opposite directions.</li>\n  <li>Emma faces towards the centre. Hence Ashneer faces outside and the final arrangement becomes fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for friends facing directions'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Chandu ↑</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Emma ↙</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Finn →</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Ashneer ↓</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Daymond ↗</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Bharat ←</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Bottom</th><th>Lower-left</th><th>Left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Chandu</td><td>Emma</td><td>Finn</td><td>Ashneer</td><td>Daymond</td><td>Bharat</td></tr>\n<tr><td><strong>Facing</strong></td><td>Outside</td><td>Inside</td><td>Outside</td><td>Outside</td><td>Inside</td><td>Outside</td></tr>\n</tbody>\n</table>\n</div>\n<p class='therefore'>Ashneer is second to the left of Emma; Daymond is third to the right of Emma; Bharat and Chandu face the same direction; Bharat is second to the right of Ashneer; and Chandu is to the immediate right of Bharat.</p>"
+  },
+  {
+    "no": 28,
+    "itemId": 115300028,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q28",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 3</strong></p>\n<p>Six friends Ashneer, Bharat, Chandu, Daymond, Emma and Finn were seated around a circular table. Some were facing outside the circle while some were facing inside the circle.</p>\n<ul>\n<li>Bharat and Finn were seated opposite to each other and were facing the same direction.</li>\n<li>Ashneer was to the immediate right of Daymond and opposite to Chandu, who was facing outside.</li>\n<li>Emma was facing towards the centre.</li>\n<li>The immediate neighbours of Finn were facing opposite directions.</li>\n<li>Ashneer was second to the left of Bharat and immediate neighbours of Bharat will face the opposite direction.</li>\n</ul>",
+    "question": "<p><strong>Q28.</strong> Who among the following were facing in the same direction?<br>1. Chandu<br>2. Bharat<br>3. Daymond</p>",
+    "options": [
+      "1 and 2",
+      "2 and 3",
+      "1 and 3",
+      "All three are facing the same direction"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) 1 and 2",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n  <li>Ashneer is to the immediate right of Daymond and opposite Chandu, who faces outside.</li>\n  <li>Bharat and Finn are opposite each other and face the same direction.</li>\n  <li>Ashneer is second to the left of Bharat. The immediate neighbours of Bharat face opposite directions.</li>\n  <li>Emma faces towards the centre. Hence Ashneer faces outside and the final arrangement becomes fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for friends facing directions'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Chandu ↑</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Emma ↙</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Finn →</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Ashneer ↓</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Daymond ↗</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Bharat ←</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Bottom</th><th>Lower-left</th><th>Left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Chandu</td><td>Emma</td><td>Finn</td><td>Ashneer</td><td>Daymond</td><td>Bharat</td></tr>\n<tr><td><strong>Facing</strong></td><td>Outside</td><td>Inside</td><td>Outside</td><td>Outside</td><td>Inside</td><td>Outside</td></tr>\n</tbody>\n</table>\n</div>\n<p class='therefore'>Ashneer is second to the left of Emma; Daymond is third to the right of Emma; Bharat and Chandu face the same direction; Bharat is second to the right of Ashneer; and Chandu is to the immediate right of Bharat.</p>"
+  },
+  {
+    "no": 29,
+    "itemId": 115300029,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q29",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 3</strong></p>\n<p>Six friends Ashneer, Bharat, Chandu, Daymond, Emma and Finn were seated around a circular table. Some were facing outside the circle while some were facing inside the circle.</p>\n<ul>\n<li>Bharat and Finn were seated opposite to each other and were facing the same direction.</li>\n<li>Ashneer was to the immediate right of Daymond and opposite to Chandu, who was facing outside.</li>\n<li>Emma was facing towards the centre.</li>\n<li>The immediate neighbours of Finn were facing opposite directions.</li>\n<li>Ashneer was second to the left of Bharat and immediate neighbours of Bharat will face the opposite direction.</li>\n</ul>",
+    "question": "<p><strong>Q29.</strong> Who was seated second to the right of Ashneer?</p>",
+    "options": [
+      "Bharat",
+      "Chandu",
+      "Daymond",
+      "Emma"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Bharat",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n  <li>Ashneer is to the immediate right of Daymond and opposite Chandu, who faces outside.</li>\n  <li>Bharat and Finn are opposite each other and face the same direction.</li>\n  <li>Ashneer is second to the left of Bharat. The immediate neighbours of Bharat face opposite directions.</li>\n  <li>Emma faces towards the centre. Hence Ashneer faces outside and the final arrangement becomes fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for friends facing directions'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Chandu ↑</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Emma ↙</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Finn →</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Ashneer ↓</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Daymond ↗</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Bharat ←</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Bottom</th><th>Lower-left</th><th>Left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Chandu</td><td>Emma</td><td>Finn</td><td>Ashneer</td><td>Daymond</td><td>Bharat</td></tr>\n<tr><td><strong>Facing</strong></td><td>Outside</td><td>Inside</td><td>Outside</td><td>Outside</td><td>Inside</td><td>Outside</td></tr>\n</tbody>\n</table>\n</div>\n<p class='therefore'>Ashneer is second to the left of Emma; Daymond is third to the right of Emma; Bharat and Chandu face the same direction; Bharat is second to the right of Ashneer; and Chandu is to the immediate right of Bharat.</p>"
+  },
+  {
+    "no": 30,
+    "itemId": 115300030,
+    "source": "Logical Reasoning Arrangement Test - 6 | Added Set | Q30",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Study the information carefully and answer the questions given below.</p>",
+    "passage": "<p><strong>Common Information — Circular Arrangement Set 3</strong></p>\n<p>Six friends Ashneer, Bharat, Chandu, Daymond, Emma and Finn were seated around a circular table. Some were facing outside the circle while some were facing inside the circle.</p>\n<ul>\n<li>Bharat and Finn were seated opposite to each other and were facing the same direction.</li>\n<li>Ashneer was to the immediate right of Daymond and opposite to Chandu, who was facing outside.</li>\n<li>Emma was facing towards the centre.</li>\n<li>The immediate neighbours of Finn were facing opposite directions.</li>\n<li>Ashneer was second to the left of Bharat and immediate neighbours of Bharat will face the opposite direction.</li>\n</ul>",
+    "question": "<p><strong>Q30.</strong> What is the position of Chandu with respect to Bharat?</p>",
+    "options": [
+      "2nd to the right",
+      "2nd to the left",
+      "Immediate right",
+      "Immediate left"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Immediate right",
+    "solution": "\n<p class='solution-summary'><strong>Final arrangement for Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n  <li>Ashneer is to the immediate right of Daymond and opposite Chandu, who faces outside.</li>\n  <li>Bharat and Finn are opposite each other and face the same direction.</li>\n  <li>Ashneer is second to the left of Bharat. The immediate neighbours of Bharat face opposite directions.</li>\n  <li>Emma faces towards the centre. Hence Ashneer faces outside and the final arrangement becomes fixed.</li>\n</ul>\n<div class='circle-solution'><svg viewBox='0 0 360 320' role='img' aria-label='Arrangement for friends facing directions'><circle cx='180' cy='160' r='92' fill='white' stroke='#123' stroke-width='2'/><text x='180' y='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Chandu ↑</text><text x='285' y='84' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Emma ↙</text><text x='318' y='160' text-anchor='start' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Finn →</text><text x='180' y='284' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Ashneer ↓</text><text x='75' y='236' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Daymond ↗</text><text x='42' y='160' text-anchor='end' dominant-baseline='middle' font-family='Arial' font-size='16' font-weight='700' fill='#08294a'>Bharat ←</text></svg></div><div class='solution-table-wrap'>\n<table class='solution-table'><caption>For Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Bottom</th><th>Lower-left</th><th>Left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Chandu</td><td>Emma</td><td>Finn</td><td>Ashneer</td><td>Daymond</td><td>Bharat</td></tr>\n<tr><td><strong>Facing</strong></td><td>Outside</td><td>Inside</td><td>Outside</td><td>Outside</td><td>Inside</td><td>Outside</td></tr>\n</tbody>\n</table>\n</div>\n<p class='therefore'>Ashneer is second to the left of Emma; Daymond is third to the right of Emma; Bharat and Chandu face the same direction; Bharat is second to the right of Ashneer; and Chandu is to the immediate right of Bharat.</p>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole", dec=q.titaMode==="decimal"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':(dec?'Type numeric answer':'Type your answer'))+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':(dec?'inputmode="decimal"':''))+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':(dec?'<div class="typed-answer-hint">TITA accepts numeric answer only. Do not write unit or percentage sign.</div>':''));}
+    function renderQuestion(){
+      const q=questions[current];
+      host.innerHTML='<div class="cat-question-layout">'
+        +'<div class="cat-common-pane"><div class="cat-pane-title">Common Information</div><div class="cat-pane-body">'
+          +contentBlock(q.direction,'block')+contentBlock(q.passage,'block common-info')
+        +'</div></div>'
+        +'<div class="cat-question-pane"><div class="cat-question-number">Question No. '+(current+1)+'</div><div class="cat-pane-body">'
+          +'<div class="source">'+esc(q.source)+'</div>'
+          +'<div class="qtext">'+q.question+'</div>'
+          +control(q,current)
+          +'<div id="note" class="answer-note"></div>'
+          +'<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div>'
+        +'</div></div>'
+      +'</div>'
+      +'<div class="navrow"><div class="nav-left"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review &amp; Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button></div><div class="nav-right"><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save &amp; Next</button></div></div>';
+      if(submitted)showReviewForCurrent();
+      bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);
+    }
+        function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}if(q.titaMode==='decimal'){const a=Number(norm(ans)), b=Number(norm(q.typedAnswer));return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3 correct, -1 wrong. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
