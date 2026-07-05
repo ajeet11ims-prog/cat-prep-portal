@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logical Reasoning Arrangement Test - 1</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.block ul{margin:8px 0 0 22px;padding:0}.block li{margin:7px 0}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+
+    .common-info{font-weight:800;background:#fffdf4;border-left:6px solid var(--brand-mid);font-size:19px;line-height:1.52;color:#111}
+    .common-info p,.common-info li{font-weight:800}.common-info li{margin-bottom:8px}.common-info strong{font-weight:900;color:#101820}
+    .solution-summary{margin:0 0 8px;font-size:18px;color:#0b4f7a}.solution-table-wrap{overflow-x:auto;margin:10px 0 14px;border:1px solid #9eadb9;background:#fff}
+    table.solution-table{width:100%;border-collapse:collapse;min-width:640px;font-size:16px;background:#fff;color:#101820}
+    .solution-table th{background:#24313a;color:#fff;text-align:left;padding:9px 10px;border:1px solid #6f7c86;font-weight:800;white-space:nowrap}
+    .solution-table td{padding:9px 10px;border:1px solid #c8d2da;font-weight:700;vertical-align:top}
+    .solution-table tbody tr:nth-child(even) td{background:#f3f8fb}.solution-points{margin:10px 0 0 20px;padding:0;font-size:16px}.solution-points li{margin:7px 0}.therefore{margin:12px 0 0;font-size:17px;font-weight:800;color:#102030}
+    .common-info{font-weight:800!important;font-size:19px;line-height:1.52;background:#fffef8;border-left:7px solid var(--brand-mid);padding:16px 22px;color:#101820}
+    .common-info p,.common-info li,.common-info strong{font-weight:800!important}
+    .common-info>p:first-child{font-size:21px;color:#0b4f7a;margin-bottom:12px;text-transform:uppercase;letter-spacing:.2px}
+    .common-info li{margin:8px 0}.common-info ul{margin-left:24px}
+    .solution .block{background:#fbfdff;border:1px solid #d6e2ea;border-radius:4px;padding:16px 18px}
+    .solution-table-wrap{border-radius:4px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .solution-table caption{caption-side:top;text-align:left;font-weight:900;font-size:17px;color:#0b4f7a;margin-bottom:6px}
+  
+
+    /* Hybrid update: CAT-style question area + original header/sidebar/calculator layout */
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}
+    .cat-question-layout{display:grid;grid-template-columns:minmax(420px,52%) minmax(420px,48%);min-height:calc(100vh - 150px);border-bottom:1px solid #c9d1d8;background:#fff}
+    .cat-common-pane{border-right:1px solid #9aa6ae;background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-question-pane{background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-pane-title{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-pane-body{padding:12px 14px 24px;background:#fff}
+    .cat-question-number{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-question-layout .block{border:0;border-bottom:0;padding:0;background:#fff;margin:0;font-size:17px}
+    .cat-question-layout .common-info{border-left:0!important;background:#fff!important;padding:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:#111!important}
+    .cat-question-layout .common-info>p:first-child{font-size:20px!important;color:#111!important;text-transform:none!important;margin:0 0 10px!important;letter-spacing:0!important}
+    .cat-question-layout .common-info p,.cat-question-layout .common-info li{font-weight:800!important}
+    .cat-question-layout .common-info ul{margin:0 0 0 24px;padding:0}.cat-question-layout .common-info li{margin:7px 0}
+    .cat-question-layout .qtext{font-size:19px;font-weight:500;margin:0;padding:0 0 14px;min-height:0;line-height:1.45}.cat-question-layout .qtext strong{font-weight:800}.cat-question-layout .qtext p{margin:0 0 10px}
+    .cat-question-layout .options{display:grid;gap:12px;padding:0 0 18px;min-width:0}.cat-question-layout .option{border:0;border-radius:0;padding:4px 0;display:flex;gap:10px;cursor:pointer;background:#fff;align-items:flex-start;font-size:18px;font-weight:500;line-height:1.4}.cat-question-layout .option input{margin-top:6px;transform:scale(1.05);flex:0 0 auto}.cat-question-layout .option span{display:inline}.cat-question-layout .opt-label{font-weight:500;margin-right:6px}.cat-question-layout .opt-text{font-weight:500;color:#111;display:inline}.cat-question-layout .opt-text p{display:inline!important;margin:0!important;padding:0!important}.cat-question-layout .opt-text p+p{display:inline!important}
+    .cat-question-layout .solution{margin:12px 0 0;padding-top:12px;border-top:1px solid #b7c1ca;font-size:16px;line-height:1.5}.cat-question-layout .solution h3{font-size:18px;margin:0 0 8px;color:#111}.cat-question-layout .solution .block{background:#fff;border:0;border-radius:0;padding:8px 0 0;overflow:auto}
+    .solution-summary{font-size:17px!important;color:#111!important;text-decoration:underline;margin:8px 0 10px!important}.solution-table-wrap{border:0!important;box-shadow:none!important;background:#fff!important;margin:10px 0 14px!important;overflow-x:auto!important}table.solution-table{border-collapse:collapse!important;width:auto!important;min-width:560px!important;background:#fff!important;font-size:15px!important;color:#111!important;margin:0 auto!important}.solution-table th{background:#f2f2f2!important;color:#111!important;text-align:center!important;padding:7px 9px!important;border:2px solid #333!important;font-weight:800!important;white-space:normal!important}.solution-table td{padding:7px 9px!important;border:2px solid #333!important;font-weight:700!important;vertical-align:middle!important;background:#fff!important;text-align:center!important}.solution-table tbody tr:nth-child(even) td{background:#fff!important}.solution-points{margin:10px 0 0 22px!important;font-size:16px!important}.solution-points li{margin:7px 0!important}.therefore{font-size:17px!important;color:#111!important;font-weight:900!important}.answer-note{margin:8px 0 8px!important}
+    .navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6;z-index:100}.navrow .nav-left{display:flex;gap:10px;margin-right:auto}.navrow .nav-right{display:flex;gap:10px;margin-left:auto}.navrow button{white-space:nowrap}
+    .calc-toggle{width:56px!important;height:42px!important;gap:2px!important;flex-direction:column!important;font-size:10px!important}.calc-toggle::after{content:"CALC";font-size:9px;font-weight:900;line-height:1;color:#774d00}.calc-toggle svg{width:17px!important;height:17px!important}
+    @media(max-width:980px){.cat-question-layout{grid-template-columns:1fr;min-height:0}.cat-common-pane,.cat-question-pane{max-height:none;border-right:0}.navrow{position:static;right:auto}.cat-question-layout .options{min-width:0}}
+
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Logical Reasoning Arrangement Test - 1</h1><div class="meta">30 Questions | 60 Minutes | 30 MCQ | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 111701001,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q8",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 1</strong></p><ul><li>Six persons — Mr. Ajay Deo, Ms. Veena Murali, Mrs. Suprabha Sen, Mr. Roshan Singh, Mr. Dushyant Vaidya and Mrs. Vama Chitnis — are working in three different branches of the same company.</li><li>Two each are working at Mumbai, Bangalore and Pune offices. Three of them are Supervisors, one is Manager and the remaining two are Assistant Managers.</li><li>One person is in Personnel Department, two are in Accounts Department, and the remaining three are in Marketing Department.</li><li>Mrs. Suprabha Sen is neither in Mumbai branch nor in Bangalore branch.</li><li>Mr. Roshan Singh holds the position of Assistant Manager. However, he does not work at Bangalore branch.</li><li>Mr. Ajay Deo is Supervisor in Accounts Department at Mumbai branch.</li><li>Ms. Veena Murali is the Assistant Manager (Marketing) at Bangalore branch.</li><li>One of the gentlemen working in the Accounts Department is at Pune branch. He is the Senior Supervisor.</li><li>Mrs. Vama Chitnis works as a Manager. She is neither in Marketing nor in Accounts Department.</li></ul>",
+    "question": "<p><strong>Q1.</strong> Which of the following groups consists of Supervisors?</p>",
+    "options": [
+      "<p>Veena Murali, Roshan Singh and Vama Chitnis</p>",
+      "<p>Ajay Deo, Suprabha Sen and Roshan Singh</p>",
+      "<p>Ajay Deo, Dushyant Vaidya and Suprabha Sen</p>",
+      "<p>Ajay Deo, Roshan Singh and Dushyant Vaidya</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Ajay Deo, Dushyant Vaidya and Suprabha Sen",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Branch</th><th>Department</th><th>Designation</th></tr></thead><tbody><tr><td>Mr. Ajay Deo</td><td>Mumbai</td><td>Accounts</td><td>Supervisor</td></tr><tr><td>Ms. Veena Murali</td><td>Bangalore</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Roshan Singh</td><td>Mumbai</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Dushyant Vaidya</td><td>Pune</td><td>Accounts</td><td>Senior Supervisor</td></tr><tr><td>Mrs. Suprabha Sen</td><td>Pune</td><td>Marketing</td><td>Supervisor</td></tr><tr><td>Mrs. Vama Chitnis</td><td>Bangalore</td><td>Personnel</td><td>Manager</td></tr></tbody></table></div><ul class='solution-points'><li>Suprabha cannot be in Mumbai or Bangalore, so she is in Pune.</li><li>The gentleman in Accounts at Pune is the Senior Supervisor, so Dushyant becomes Pune–Accounts–Senior Supervisor.</li><li>Roshan is an Assistant Manager and not in Bangalore; hence he goes to Mumbai and Vama goes to Bangalore as Personnel Manager.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) Ajay Deo, Dushyant Vaidya and Suprabha Sen.</p>"
+  },
+  {
+    "no": 2,
+    "itemId": 111701002,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q9",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 1</strong></p><ul><li>Six persons — Mr. Ajay Deo, Ms. Veena Murali, Mrs. Suprabha Sen, Mr. Roshan Singh, Mr. Dushyant Vaidya and Mrs. Vama Chitnis — are working in three different branches of the same company.</li><li>Two each are working at Mumbai, Bangalore and Pune offices. Three of them are Supervisors, one is Manager and the remaining two are Assistant Managers.</li><li>One person is in Personnel Department, two are in Accounts Department, and the remaining three are in Marketing Department.</li><li>Mrs. Suprabha Sen is neither in Mumbai branch nor in Bangalore branch.</li><li>Mr. Roshan Singh holds the position of Assistant Manager. However, he does not work at Bangalore branch.</li><li>Mr. Ajay Deo is Supervisor in Accounts Department at Mumbai branch.</li><li>Ms. Veena Murali is the Assistant Manager (Marketing) at Bangalore branch.</li><li>One of the gentlemen working in the Accounts Department is at Pune branch. He is the Senior Supervisor.</li><li>Mrs. Vama Chitnis works as a Manager. She is neither in Marketing nor in Accounts Department.</li></ul>",
+    "question": "<p><strong>Q2.</strong> Who among the following is the Personnel Manager?</p>",
+    "options": [
+      "<p>Vama Chitnis</p>",
+      "<p>Ajay Deo</p>",
+      "<p>Veena Murali</p>",
+      "<p>Roshan Singh</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Vama Chitnis",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Branch</th><th>Department</th><th>Designation</th></tr></thead><tbody><tr><td>Mr. Ajay Deo</td><td>Mumbai</td><td>Accounts</td><td>Supervisor</td></tr><tr><td>Ms. Veena Murali</td><td>Bangalore</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Roshan Singh</td><td>Mumbai</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Dushyant Vaidya</td><td>Pune</td><td>Accounts</td><td>Senior Supervisor</td></tr><tr><td>Mrs. Suprabha Sen</td><td>Pune</td><td>Marketing</td><td>Supervisor</td></tr><tr><td>Mrs. Vama Chitnis</td><td>Bangalore</td><td>Personnel</td><td>Manager</td></tr></tbody></table></div><ul class='solution-points'><li>Suprabha cannot be in Mumbai or Bangalore, so she is in Pune.</li><li>The gentleman in Accounts at Pune is the Senior Supervisor, so Dushyant becomes Pune–Accounts–Senior Supervisor.</li><li>Roshan is an Assistant Manager and not in Bangalore; hence he goes to Mumbai and Vama goes to Bangalore as Personnel Manager.</li></ul><p class='therefore'><strong>Correct answer:</strong> (A) Vama Chitnis.</p>"
+  },
+  {
+    "no": 3,
+    "itemId": 111701003,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q10",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 1</strong></p><ul><li>Six persons — Mr. Ajay Deo, Ms. Veena Murali, Mrs. Suprabha Sen, Mr. Roshan Singh, Mr. Dushyant Vaidya and Mrs. Vama Chitnis — are working in three different branches of the same company.</li><li>Two each are working at Mumbai, Bangalore and Pune offices. Three of them are Supervisors, one is Manager and the remaining two are Assistant Managers.</li><li>One person is in Personnel Department, two are in Accounts Department, and the remaining three are in Marketing Department.</li><li>Mrs. Suprabha Sen is neither in Mumbai branch nor in Bangalore branch.</li><li>Mr. Roshan Singh holds the position of Assistant Manager. However, he does not work at Bangalore branch.</li><li>Mr. Ajay Deo is Supervisor in Accounts Department at Mumbai branch.</li><li>Ms. Veena Murali is the Assistant Manager (Marketing) at Bangalore branch.</li><li>One of the gentlemen working in the Accounts Department is at Pune branch. He is the Senior Supervisor.</li><li>Mrs. Vama Chitnis works as a Manager. She is neither in Marketing nor in Accounts Department.</li></ul>",
+    "question": "<p><strong>Q3.</strong> From which branch does Mr. Dushyant Vaidya operate?</p>",
+    "options": [
+      "<p>Mumbai</p>",
+      "<p>Pune</p>",
+      "<p>Bangalore</p>",
+      "<p>Either Pune or Mumbai</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) Pune",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Branch</th><th>Department</th><th>Designation</th></tr></thead><tbody><tr><td>Mr. Ajay Deo</td><td>Mumbai</td><td>Accounts</td><td>Supervisor</td></tr><tr><td>Ms. Veena Murali</td><td>Bangalore</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Roshan Singh</td><td>Mumbai</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Dushyant Vaidya</td><td>Pune</td><td>Accounts</td><td>Senior Supervisor</td></tr><tr><td>Mrs. Suprabha Sen</td><td>Pune</td><td>Marketing</td><td>Supervisor</td></tr><tr><td>Mrs. Vama Chitnis</td><td>Bangalore</td><td>Personnel</td><td>Manager</td></tr></tbody></table></div><ul class='solution-points'><li>Suprabha cannot be in Mumbai or Bangalore, so she is in Pune.</li><li>The gentleman in Accounts at Pune is the Senior Supervisor, so Dushyant becomes Pune–Accounts–Senior Supervisor.</li><li>Roshan is an Assistant Manager and not in Bangalore; hence he goes to Mumbai and Vama goes to Bangalore as Personnel Manager.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) Pune.</p>"
+  },
+  {
+    "no": 4,
+    "itemId": 111701004,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q11",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 1</strong></p><ul><li>Six persons — Mr. Ajay Deo, Ms. Veena Murali, Mrs. Suprabha Sen, Mr. Roshan Singh, Mr. Dushyant Vaidya and Mrs. Vama Chitnis — are working in three different branches of the same company.</li><li>Two each are working at Mumbai, Bangalore and Pune offices. Three of them are Supervisors, one is Manager and the remaining two are Assistant Managers.</li><li>One person is in Personnel Department, two are in Accounts Department, and the remaining three are in Marketing Department.</li><li>Mrs. Suprabha Sen is neither in Mumbai branch nor in Bangalore branch.</li><li>Mr. Roshan Singh holds the position of Assistant Manager. However, he does not work at Bangalore branch.</li><li>Mr. Ajay Deo is Supervisor in Accounts Department at Mumbai branch.</li><li>Ms. Veena Murali is the Assistant Manager (Marketing) at Bangalore branch.</li><li>One of the gentlemen working in the Accounts Department is at Pune branch. He is the Senior Supervisor.</li><li>Mrs. Vama Chitnis works as a Manager. She is neither in Marketing nor in Accounts Department.</li></ul>",
+    "question": "<p><strong>Q4.</strong> Which of the following statements is true?</p>",
+    "options": [
+      "<p>Mr. Ajay Deo is Supervisor in Marketing Department</p>",
+      "<p>Mr. Roshan Singh is Assistant Manager operating from Bangalore Branch</p>",
+      "<p>One of the persons working from Bangalore Branch is in Accounts Department</p>",
+      "<p>Both the Assistant Managers work in Marketing Department</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Both the Assistant Managers work in Marketing Department",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Branch</th><th>Department</th><th>Designation</th></tr></thead><tbody><tr><td>Mr. Ajay Deo</td><td>Mumbai</td><td>Accounts</td><td>Supervisor</td></tr><tr><td>Ms. Veena Murali</td><td>Bangalore</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Roshan Singh</td><td>Mumbai</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Dushyant Vaidya</td><td>Pune</td><td>Accounts</td><td>Senior Supervisor</td></tr><tr><td>Mrs. Suprabha Sen</td><td>Pune</td><td>Marketing</td><td>Supervisor</td></tr><tr><td>Mrs. Vama Chitnis</td><td>Bangalore</td><td>Personnel</td><td>Manager</td></tr></tbody></table></div><ul class='solution-points'><li>Suprabha cannot be in Mumbai or Bangalore, so she is in Pune.</li><li>The gentleman in Accounts at Pune is the Senior Supervisor, so Dushyant becomes Pune–Accounts–Senior Supervisor.</li><li>Roshan is an Assistant Manager and not in Bangalore; hence he goes to Mumbai and Vama goes to Bangalore as Personnel Manager.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Both the Assistant Managers work in Marketing Department.</p>"
+  },
+  {
+    "no": 5,
+    "itemId": 111701005,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q12",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 1</strong></p><ul><li>Six persons — Mr. Ajay Deo, Ms. Veena Murali, Mrs. Suprabha Sen, Mr. Roshan Singh, Mr. Dushyant Vaidya and Mrs. Vama Chitnis — are working in three different branches of the same company.</li><li>Two each are working at Mumbai, Bangalore and Pune offices. Three of them are Supervisors, one is Manager and the remaining two are Assistant Managers.</li><li>One person is in Personnel Department, two are in Accounts Department, and the remaining three are in Marketing Department.</li><li>Mrs. Suprabha Sen is neither in Mumbai branch nor in Bangalore branch.</li><li>Mr. Roshan Singh holds the position of Assistant Manager. However, he does not work at Bangalore branch.</li><li>Mr. Ajay Deo is Supervisor in Accounts Department at Mumbai branch.</li><li>Ms. Veena Murali is the Assistant Manager (Marketing) at Bangalore branch.</li><li>One of the gentlemen working in the Accounts Department is at Pune branch. He is the Senior Supervisor.</li><li>Mrs. Vama Chitnis works as a Manager. She is neither in Marketing nor in Accounts Department.</li></ul>",
+    "question": "<p><strong>Q5.</strong> Which of the following combinations is not true?</p>",
+    "options": [
+      "<p>Veena Murali, Assistant Manager, Bangalore</p>",
+      "<p>Vama Chitnis, Personnel Department, Bangalore</p>",
+      "<p>Ajay Deo, Supervisor, Mumbai</p>",
+      "<p>Roshan Singh, Manager, Marketing</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Roshan Singh, Manager, Marketing",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Branch</th><th>Department</th><th>Designation</th></tr></thead><tbody><tr><td>Mr. Ajay Deo</td><td>Mumbai</td><td>Accounts</td><td>Supervisor</td></tr><tr><td>Ms. Veena Murali</td><td>Bangalore</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Roshan Singh</td><td>Mumbai</td><td>Marketing</td><td>Assistant Manager</td></tr><tr><td>Mr. Dushyant Vaidya</td><td>Pune</td><td>Accounts</td><td>Senior Supervisor</td></tr><tr><td>Mrs. Suprabha Sen</td><td>Pune</td><td>Marketing</td><td>Supervisor</td></tr><tr><td>Mrs. Vama Chitnis</td><td>Bangalore</td><td>Personnel</td><td>Manager</td></tr></tbody></table></div><ul class='solution-points'><li>Suprabha cannot be in Mumbai or Bangalore, so she is in Pune.</li><li>The gentleman in Accounts at Pune is the Senior Supervisor, so Dushyant becomes Pune–Accounts–Senior Supervisor.</li><li>Roshan is an Assistant Manager and not in Bangalore; hence he goes to Mumbai and Vama goes to Bangalore as Personnel Manager.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Roshan Singh, Manager, Marketing.</p>"
+  },
+  {
+    "no": 6,
+    "itemId": 111701006,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q13",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 2</strong></p><ul><li>Aurbindo, Bubblo, Chitranjan, Dwarka, Enjalina and Farooq are six students in a class.</li><li>Bubblo and Chitranjan are shorter than Farooq but heavier than Aurbindo.</li><li>Dwarka is heavier than Bubblo and taller than Chitranjan.</li><li>Enjalina is shorter than Dwarka but taller than Farooq.</li><li>Farooq is heavier than Dwarka.</li><li>Aurbindo is shorter than Enjalina but taller than Farooq.</li></ul>",
+    "question": "<p><strong>Q6.</strong> Who among them is the tallest?</p>",
+    "options": [
+      "<p>Aurbindo</p>",
+      "<p>Bubblo</p>",
+      "<p>Dwarka</p>",
+      "<p>Enjalina</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Dwarka",
+    "solution": "<p class='solution-summary'><strong>Order table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Parameter</th><th>Final order / deduction</th></tr></thead><tbody><tr><td>Height</td><td>Dwarka &gt; Enjalina &gt; Aurbindo &gt; Farooq &gt; Bubblo / Chitranjan</td></tr><tr><td>Weight</td><td>Farooq &gt; Dwarka &gt; Bubblo &gt; Aurbindo; Chitranjan &gt; Aurbindo; Enjalina is not fixed</td></tr></tbody></table></div><ul class='solution-points'><li>Dwarka is taller than Enjalina, and Enjalina is taller than Aurbindo.</li><li>Aurbindo is taller than Farooq, while Bubblo and Chitranjan are shorter than Farooq.</li><li>For weight-based questions, the printed data fixes only partial weight relations, so use the answer key carefully.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) Dwarka.</p>"
+  },
+  {
+    "no": 7,
+    "itemId": 111701007,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q14",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 2</strong></p><ul><li>Aurbindo, Bubblo, Chitranjan, Dwarka, Enjalina and Farooq are six students in a class.</li><li>Bubblo and Chitranjan are shorter than Farooq but heavier than Aurbindo.</li><li>Dwarka is heavier than Bubblo and taller than Chitranjan.</li><li>Enjalina is shorter than Dwarka but taller than Farooq.</li><li>Farooq is heavier than Dwarka.</li><li>Aurbindo is shorter than Enjalina but taller than Farooq.</li></ul>",
+    "question": "<p><strong>Q7.</strong> Who is third from the top when they are arranged in descending order of their heights?</p>",
+    "options": [
+      "<p>Aurbindo</p>",
+      "<p>Bubblo</p>",
+      "<p>Chitranjan</p>",
+      "<p>Enjalina</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Aurbindo",
+    "solution": "<p class='solution-summary'><strong>Order table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Parameter</th><th>Final order / deduction</th></tr></thead><tbody><tr><td>Height</td><td>Dwarka &gt; Enjalina &gt; Aurbindo &gt; Farooq &gt; Bubblo / Chitranjan</td></tr><tr><td>Weight</td><td>Farooq &gt; Dwarka &gt; Bubblo &gt; Aurbindo; Chitranjan &gt; Aurbindo; Enjalina is not fixed</td></tr></tbody></table></div><ul class='solution-points'><li>Dwarka is taller than Enjalina, and Enjalina is taller than Aurbindo.</li><li>Aurbindo is taller than Farooq, while Bubblo and Chitranjan are shorter than Farooq.</li><li>For weight-based questions, the printed data fixes only partial weight relations, so use the answer key carefully.</li></ul><p class='therefore'><strong>Correct answer:</strong> (A) Aurbindo.</p>"
+  },
+  {
+    "no": 8,
+    "itemId": 111701008,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q15",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 2</strong></p><ul><li>Aurbindo, Bubblo, Chitranjan, Dwarka, Enjalina and Farooq are six students in a class.</li><li>Bubblo and Chitranjan are shorter than Farooq but heavier than Aurbindo.</li><li>Dwarka is heavier than Bubblo and taller than Chitranjan.</li><li>Enjalina is shorter than Dwarka but taller than Farooq.</li><li>Farooq is heavier than Dwarka.</li><li>Aurbindo is shorter than Enjalina but taller than Farooq.</li></ul>",
+    "question": "<p><strong>Q8.</strong> Which of the following groups of friends is shorter than Aurbindo?</p>",
+    "options": [
+      "<p>Bubblo, Chitranjan only</p>",
+      "<p>Dwarka, Bubblo, Chitranjan only</p>",
+      "<p>Enjalina, Bubblo, Chitranjan only</p>",
+      "<p>Farooq, Bubblo, Chitranjan only</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Farooq, Bubblo, Chitranjan only",
+    "solution": "<p class='solution-summary'><strong>Order table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Parameter</th><th>Final order / deduction</th></tr></thead><tbody><tr><td>Height</td><td>Dwarka &gt; Enjalina &gt; Aurbindo &gt; Farooq &gt; Bubblo / Chitranjan</td></tr><tr><td>Weight</td><td>Farooq &gt; Dwarka &gt; Bubblo &gt; Aurbindo; Chitranjan &gt; Aurbindo; Enjalina is not fixed</td></tr></tbody></table></div><ul class='solution-points'><li>Dwarka is taller than Enjalina, and Enjalina is taller than Aurbindo.</li><li>Aurbindo is taller than Farooq, while Bubblo and Chitranjan are shorter than Farooq.</li><li>For weight-based questions, the printed data fixes only partial weight relations, so use the answer key carefully.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Farooq, Bubblo, Chitranjan only.</p>"
+  },
+  {
+    "no": 9,
+    "itemId": 111701009,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q16",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 2</strong></p><ul><li>Aurbindo, Bubblo, Chitranjan, Dwarka, Enjalina and Farooq are six students in a class.</li><li>Bubblo and Chitranjan are shorter than Farooq but heavier than Aurbindo.</li><li>Dwarka is heavier than Bubblo and taller than Chitranjan.</li><li>Enjalina is shorter than Dwarka but taller than Farooq.</li><li>Farooq is heavier than Dwarka.</li><li>Aurbindo is shorter than Enjalina but taller than Farooq.</li></ul>",
+    "question": "<p><strong>Q9.</strong> Who among them is the lightest?</p>",
+    "options": [
+      "<p>Aurbindo</p>",
+      "<p>Bubblo or Chitranjan</p>",
+      "<p>Chitranjan</p>",
+      "<p>Data inadequate</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Data inadequate",
+    "solution": "<p class='solution-summary'><strong>Order table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Parameter</th><th>Final order / deduction</th></tr></thead><tbody><tr><td>Height</td><td>Dwarka &gt; Enjalina &gt; Aurbindo &gt; Farooq &gt; Bubblo / Chitranjan</td></tr><tr><td>Weight</td><td>Farooq &gt; Dwarka &gt; Bubblo &gt; Aurbindo; Chitranjan &gt; Aurbindo; Enjalina is not fixed</td></tr></tbody></table></div><ul class='solution-points'><li>Dwarka is taller than Enjalina, and Enjalina is taller than Aurbindo.</li><li>Aurbindo is taller than Farooq, while Bubblo and Chitranjan are shorter than Farooq.</li><li>For weight-based questions, the printed data fixes only partial weight relations, so use the answer key carefully.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Data inadequate.</p>"
+  },
+  {
+    "no": 10,
+    "itemId": 111701010,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q17",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 2</strong></p><ul><li>Aurbindo, Bubblo, Chitranjan, Dwarka, Enjalina and Farooq are six students in a class.</li><li>Bubblo and Chitranjan are shorter than Farooq but heavier than Aurbindo.</li><li>Dwarka is heavier than Bubblo and taller than Chitranjan.</li><li>Enjalina is shorter than Dwarka but taller than Farooq.</li><li>Farooq is heavier than Dwarka.</li><li>Aurbindo is shorter than Enjalina but taller than Farooq.</li></ul>",
+    "question": "<p><strong>Q10.</strong> Which of the following statements is true for Farooq as regards height and weight?</p>",
+    "options": [
+      "<p>He is lighter than Enjalina and taller than Enjalina</p>",
+      "<p>He is heavier than Bubblo and taller than Enjalina</p>",
+      "<p>He is heavier than Bubblo and Chitranjan but shorter than Dwarka</p>",
+      "<p>He is lighter than Enjalina and also shorter than Enjalina</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) He is heavier than Bubblo and Chitranjan but shorter than Dwarka",
+    "solution": "<p class='solution-summary'><strong>Order table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Parameter</th><th>Final order / deduction</th></tr></thead><tbody><tr><td>Height</td><td>Dwarka &gt; Enjalina &gt; Aurbindo &gt; Farooq &gt; Bubblo / Chitranjan</td></tr><tr><td>Weight</td><td>Farooq &gt; Dwarka &gt; Bubblo &gt; Aurbindo; Chitranjan &gt; Aurbindo; Enjalina is not fixed</td></tr></tbody></table></div><ul class='solution-points'><li>Dwarka is taller than Enjalina, and Enjalina is taller than Aurbindo.</li><li>Aurbindo is taller than Farooq, while Bubblo and Chitranjan are shorter than Farooq.</li><li>For weight-based questions, the printed data fixes only partial weight relations, so use the answer key carefully.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) He is heavier than Bubblo and Chitranjan but shorter than Dwarka.</p>"
+  },
+  {
+    "no": 11,
+    "itemId": 111701011,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q18",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 3</strong></p><ul><li>Six people, named A, B, C, D, E and F, are in the dining car of a train. They are one each from New York City, Chicago, Tulsa, St. Louis, Milwaukee and Atlanta.</li><li>A and the man from New York City are physicians.</li><li>E and the woman from Chicago are teachers.</li><li>The person from Tulsa and C are engineers.</li><li>B and F are veterans of the Gulf war, but the person from Tulsa has never served in the military.</li><li>The person from Milwaukee is older than A.</li><li>The person from Atlanta is older than C.</li><li>At St. Louis, B and the man from New York got off.</li><li>At San Francisco, C and the man from Milwaukee got off.</li></ul>",
+    "question": "<p><strong>Q11.</strong> Who stays in Milwaukee?</p>",
+    "options": [
+      "<p>A</p>",
+      "<p>E</p>",
+      "<p>C</p>",
+      "<p>B</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) E",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>City</th><th>Profession / Role</th><th>Important clue</th></tr></thead><tbody><tr><td>A</td><td>Atlanta</td><td>Physician</td><td>Older than C; younger than E</td></tr><tr><td>B</td><td>Chicago</td><td>Teacher</td><td>Woman from Chicago; got down with F at St. Louis</td></tr><tr><td>C</td><td>St. Louis</td><td>Engineer</td><td>Got down with E at San Francisco</td></tr><tr><td>D</td><td>Tulsa</td><td>Engineer</td><td>Never served in military</td></tr><tr><td>E</td><td>Milwaukee</td><td>Teacher</td><td>Man from Milwaukee; older than A</td></tr><tr><td>F</td><td>New York City</td><td>Physician</td><td>Man from New York City</td></tr></tbody></table></div><ul class='solution-points'><li>Tulsa cannot be B or F because both are veterans, while the Tulsa person never served in military.</li><li>C is an engineer and cannot be Tulsa, Milwaukee, Chicago or New York; hence C is from St. Louis and D is from Tulsa.</li><li>E cannot be Chicago or New York, so E is from Milwaukee and F is the man from New York City.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) E.</p>"
+  },
+  {
+    "no": 12,
+    "itemId": 111701012,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q19",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 3</strong></p><ul><li>Six people, named A, B, C, D, E and F, are in the dining car of a train. They are one each from New York City, Chicago, Tulsa, St. Louis, Milwaukee and Atlanta.</li><li>A and the man from New York City are physicians.</li><li>E and the woman from Chicago are teachers.</li><li>The person from Tulsa and C are engineers.</li><li>B and F are veterans of the Gulf war, but the person from Tulsa has never served in the military.</li><li>The person from Milwaukee is older than A.</li><li>The person from Atlanta is older than C.</li><li>At St. Louis, B and the man from New York got off.</li><li>At San Francisco, C and the man from Milwaukee got off.</li></ul>",
+    "question": "<p><strong>Q12.</strong> Which of the following is a Teacher and Engineer combination?</p>",
+    "options": [
+      "<p>E and B</p>",
+      "<p>C and D</p>",
+      "<p>A and D</p>",
+      "<p>B and C</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) B and C",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>City</th><th>Profession / Role</th><th>Important clue</th></tr></thead><tbody><tr><td>A</td><td>Atlanta</td><td>Physician</td><td>Older than C; younger than E</td></tr><tr><td>B</td><td>Chicago</td><td>Teacher</td><td>Woman from Chicago; got down with F at St. Louis</td></tr><tr><td>C</td><td>St. Louis</td><td>Engineer</td><td>Got down with E at San Francisco</td></tr><tr><td>D</td><td>Tulsa</td><td>Engineer</td><td>Never served in military</td></tr><tr><td>E</td><td>Milwaukee</td><td>Teacher</td><td>Man from Milwaukee; older than A</td></tr><tr><td>F</td><td>New York City</td><td>Physician</td><td>Man from New York City</td></tr></tbody></table></div><ul class='solution-points'><li>Tulsa cannot be B or F because both are veterans, while the Tulsa person never served in military.</li><li>C is an engineer and cannot be Tulsa, Milwaukee, Chicago or New York; hence C is from St. Louis and D is from Tulsa.</li><li>E cannot be Chicago or New York, so E is from Milwaukee and F is the man from New York City.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) B and C.</p>"
+  },
+  {
+    "no": 13,
+    "itemId": 111701013,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q20",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 3</strong></p><ul><li>Six people, named A, B, C, D, E and F, are in the dining car of a train. They are one each from New York City, Chicago, Tulsa, St. Louis, Milwaukee and Atlanta.</li><li>A and the man from New York City are physicians.</li><li>E and the woman from Chicago are teachers.</li><li>The person from Tulsa and C are engineers.</li><li>B and F are veterans of the Gulf war, but the person from Tulsa has never served in the military.</li><li>The person from Milwaukee is older than A.</li><li>The person from Atlanta is older than C.</li><li>At St. Louis, B and the man from New York got off.</li><li>At San Francisco, C and the man from Milwaukee got off.</li></ul>",
+    "question": "<p><strong>Q13.</strong> Who got down with B at St. Louis?</p>",
+    "options": [
+      "<p>A</p>",
+      "<p>D</p>",
+      "<p>F</p>",
+      "<p>E</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) F",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>City</th><th>Profession / Role</th><th>Important clue</th></tr></thead><tbody><tr><td>A</td><td>Atlanta</td><td>Physician</td><td>Older than C; younger than E</td></tr><tr><td>B</td><td>Chicago</td><td>Teacher</td><td>Woman from Chicago; got down with F at St. Louis</td></tr><tr><td>C</td><td>St. Louis</td><td>Engineer</td><td>Got down with E at San Francisco</td></tr><tr><td>D</td><td>Tulsa</td><td>Engineer</td><td>Never served in military</td></tr><tr><td>E</td><td>Milwaukee</td><td>Teacher</td><td>Man from Milwaukee; older than A</td></tr><tr><td>F</td><td>New York City</td><td>Physician</td><td>Man from New York City</td></tr></tbody></table></div><ul class='solution-points'><li>Tulsa cannot be B or F because both are veterans, while the Tulsa person never served in military.</li><li>C is an engineer and cannot be Tulsa, Milwaukee, Chicago or New York; hence C is from St. Louis and D is from Tulsa.</li><li>E cannot be Chicago or New York, so E is from Milwaukee and F is the man from New York City.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) F.</p>"
+  },
+  {
+    "no": 14,
+    "itemId": 111701014,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q21",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 3</strong></p><ul><li>Six people, named A, B, C, D, E and F, are in the dining car of a train. They are one each from New York City, Chicago, Tulsa, St. Louis, Milwaukee and Atlanta.</li><li>A and the man from New York City are physicians.</li><li>E and the woman from Chicago are teachers.</li><li>The person from Tulsa and C are engineers.</li><li>B and F are veterans of the Gulf war, but the person from Tulsa has never served in the military.</li><li>The person from Milwaukee is older than A.</li><li>The person from Atlanta is older than C.</li><li>At St. Louis, B and the man from New York got off.</li><li>At San Francisco, C and the man from Milwaukee got off.</li></ul>",
+    "question": "<p><strong>Q14.</strong> Which of the following is the right pair of Physicians?</p>",
+    "options": [
+      "<p>A and D</p>",
+      "<p>A and F</p>",
+      "<p>A and B</p>",
+      "<p>A and E</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) A and F",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>City</th><th>Profession / Role</th><th>Important clue</th></tr></thead><tbody><tr><td>A</td><td>Atlanta</td><td>Physician</td><td>Older than C; younger than E</td></tr><tr><td>B</td><td>Chicago</td><td>Teacher</td><td>Woman from Chicago; got down with F at St. Louis</td></tr><tr><td>C</td><td>St. Louis</td><td>Engineer</td><td>Got down with E at San Francisco</td></tr><tr><td>D</td><td>Tulsa</td><td>Engineer</td><td>Never served in military</td></tr><tr><td>E</td><td>Milwaukee</td><td>Teacher</td><td>Man from Milwaukee; older than A</td></tr><tr><td>F</td><td>New York City</td><td>Physician</td><td>Man from New York City</td></tr></tbody></table></div><ul class='solution-points'><li>Tulsa cannot be B or F because both are veterans, while the Tulsa person never served in military.</li><li>C is an engineer and cannot be Tulsa, Milwaukee, Chicago or New York; hence C is from St. Louis and D is from Tulsa.</li><li>E cannot be Chicago or New York, so E is from Milwaukee and F is the man from New York City.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) A and F.</p>"
+  },
+  {
+    "no": 15,
+    "itemId": 111701015,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q22",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 3</strong></p><ul><li>Six people, named A, B, C, D, E and F, are in the dining car of a train. They are one each from New York City, Chicago, Tulsa, St. Louis, Milwaukee and Atlanta.</li><li>A and the man from New York City are physicians.</li><li>E and the woman from Chicago are teachers.</li><li>The person from Tulsa and C are engineers.</li><li>B and F are veterans of the Gulf war, but the person from Tulsa has never served in the military.</li><li>The person from Milwaukee is older than A.</li><li>The person from Atlanta is older than C.</li><li>At St. Louis, B and the man from New York got off.</li><li>At San Francisco, C and the man from Milwaukee got off.</li></ul>",
+    "question": "<p><strong>Q15.</strong> Which of the following statements is true?</p>",
+    "options": [
+      "<p>A belongs to St. Louis</p>",
+      "<p>D is a teacher</p>",
+      "<p>A is younger than E</p>",
+      "<p>A is younger than C</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) A is younger than E",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>City</th><th>Profession / Role</th><th>Important clue</th></tr></thead><tbody><tr><td>A</td><td>Atlanta</td><td>Physician</td><td>Older than C; younger than E</td></tr><tr><td>B</td><td>Chicago</td><td>Teacher</td><td>Woman from Chicago; got down with F at St. Louis</td></tr><tr><td>C</td><td>St. Louis</td><td>Engineer</td><td>Got down with E at San Francisco</td></tr><tr><td>D</td><td>Tulsa</td><td>Engineer</td><td>Never served in military</td></tr><tr><td>E</td><td>Milwaukee</td><td>Teacher</td><td>Man from Milwaukee; older than A</td></tr><tr><td>F</td><td>New York City</td><td>Physician</td><td>Man from New York City</td></tr></tbody></table></div><ul class='solution-points'><li>Tulsa cannot be B or F because both are veterans, while the Tulsa person never served in military.</li><li>C is an engineer and cannot be Tulsa, Milwaukee, Chicago or New York; hence C is from St. Louis and D is from Tulsa.</li><li>E cannot be Chicago or New York, so E is from Milwaukee and F is the man from New York City.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) A is younger than E.</p>"
+  },
+  {
+    "no": 16,
+    "itemId": 111701016,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q31",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 4</strong></p><ul><li>Five professors Dr. Joshi, Dr. Davar, Dr. Natrajan, Dr. Choudhary and Dr. Zia teach five different subjects — Zoology, Physics, Botany, Geology and History — in four Universities: Delhi, Gujarat, Bombay and Osmania.</li><li>Dr. Choudhary teaches Zoology in Bombay University.</li><li>Dr. Natrajan is neither in Osmania University nor in Delhi University, and he neither teaches Geology nor History.</li><li>Dr. Zia teaches Physics but neither in Bombay University nor in Osmania University.</li><li>Dr. Joshi teaches History in Delhi University.</li><li>Two professors are from Gujarat University.</li></ul>",
+    "question": "<p><strong>Q16.</strong> Who teaches Geology?</p>",
+    "options": [
+      "<p>Dr. Natrajan</p>",
+      "<p>Dr. Zia</p>",
+      "<p>Dr. Davar</p>",
+      "<p>Dr. Joshi</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Dr. Davar",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Professor</th><th>Subject</th><th>University</th></tr></thead><tbody><tr><td>Dr. Choudhary</td><td>Zoology</td><td>Bombay University</td></tr><tr><td>Dr. Natrajan</td><td>Botany</td><td>Gujarat University</td></tr><tr><td>Dr. Zia</td><td>Physics</td><td>Gujarat University</td></tr><tr><td>Dr. Joshi</td><td>History</td><td>Delhi University</td></tr><tr><td>Dr. Davar</td><td>Geology</td><td>Osmania University</td></tr></tbody></table></div><ul class='solution-points'><li>Choudhary and Joshi are directly fixed from the information.</li><li>Natrajan cannot teach Geology or History, so he teaches Botany; hence Davar teaches Geology.</li><li>Zia cannot be in Bombay or Osmania; with two professors from Gujarat, Zia and Natrajan are from Gujarat.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) Dr. Davar.</p>"
+  },
+  {
+    "no": 17,
+    "itemId": 111701017,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q32",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 4</strong></p><ul><li>Five professors Dr. Joshi, Dr. Davar, Dr. Natrajan, Dr. Choudhary and Dr. Zia teach five different subjects — Zoology, Physics, Botany, Geology and History — in four Universities: Delhi, Gujarat, Bombay and Osmania.</li><li>Dr. Choudhary teaches Zoology in Bombay University.</li><li>Dr. Natrajan is neither in Osmania University nor in Delhi University, and he neither teaches Geology nor History.</li><li>Dr. Zia teaches Physics but neither in Bombay University nor in Osmania University.</li><li>Dr. Joshi teaches History in Delhi University.</li><li>Two professors are from Gujarat University.</li></ul>",
+    "question": "<p><strong>Q17.</strong> Dr. Zia is from which University?</p>",
+    "options": [
+      "<p>Gujarat</p>",
+      "<p>Bombay</p>",
+      "<p>Delhi</p>",
+      "<p>Osmania</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Gujarat",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Professor</th><th>Subject</th><th>University</th></tr></thead><tbody><tr><td>Dr. Choudhary</td><td>Zoology</td><td>Bombay University</td></tr><tr><td>Dr. Natrajan</td><td>Botany</td><td>Gujarat University</td></tr><tr><td>Dr. Zia</td><td>Physics</td><td>Gujarat University</td></tr><tr><td>Dr. Joshi</td><td>History</td><td>Delhi University</td></tr><tr><td>Dr. Davar</td><td>Geology</td><td>Osmania University</td></tr></tbody></table></div><ul class='solution-points'><li>Choudhary and Joshi are directly fixed from the information.</li><li>Natrajan cannot teach Geology or History, so he teaches Botany; hence Davar teaches Geology.</li><li>Zia cannot be in Bombay or Osmania; with two professors from Gujarat, Zia and Natrajan are from Gujarat.</li></ul><p class='therefore'><strong>Correct answer:</strong> (A) Gujarat.</p>"
+  },
+  {
+    "no": 18,
+    "itemId": 111701018,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q33",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 4</strong></p><ul><li>Five professors Dr. Joshi, Dr. Davar, Dr. Natrajan, Dr. Choudhary and Dr. Zia teach five different subjects — Zoology, Physics, Botany, Geology and History — in four Universities: Delhi, Gujarat, Bombay and Osmania.</li><li>Dr. Choudhary teaches Zoology in Bombay University.</li><li>Dr. Natrajan is neither in Osmania University nor in Delhi University, and he neither teaches Geology nor History.</li><li>Dr. Zia teaches Physics but neither in Bombay University nor in Osmania University.</li><li>Dr. Joshi teaches History in Delhi University.</li><li>Two professors are from Gujarat University.</li></ul>",
+    "question": "<p><strong>Q18.</strong> Who teaches Botany?</p>",
+    "options": [
+      "<p>Dr. Zia</p>",
+      "<p>Dr. Davar</p>",
+      "<p>Dr. Joshi</p>",
+      "<p>Dr. Natrajan</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Dr. Natrajan",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Professor</th><th>Subject</th><th>University</th></tr></thead><tbody><tr><td>Dr. Choudhary</td><td>Zoology</td><td>Bombay University</td></tr><tr><td>Dr. Natrajan</td><td>Botany</td><td>Gujarat University</td></tr><tr><td>Dr. Zia</td><td>Physics</td><td>Gujarat University</td></tr><tr><td>Dr. Joshi</td><td>History</td><td>Delhi University</td></tr><tr><td>Dr. Davar</td><td>Geology</td><td>Osmania University</td></tr></tbody></table></div><ul class='solution-points'><li>Choudhary and Joshi are directly fixed from the information.</li><li>Natrajan cannot teach Geology or History, so he teaches Botany; hence Davar teaches Geology.</li><li>Zia cannot be in Bombay or Osmania; with two professors from Gujarat, Zia and Natrajan are from Gujarat.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Dr. Natrajan.</p>"
+  },
+  {
+    "no": 19,
+    "itemId": 111701019,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q34",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 4</strong></p><ul><li>Five professors Dr. Joshi, Dr. Davar, Dr. Natrajan, Dr. Choudhary and Dr. Zia teach five different subjects — Zoology, Physics, Botany, Geology and History — in four Universities: Delhi, Gujarat, Bombay and Osmania.</li><li>Dr. Choudhary teaches Zoology in Bombay University.</li><li>Dr. Natrajan is neither in Osmania University nor in Delhi University, and he neither teaches Geology nor History.</li><li>Dr. Zia teaches Physics but neither in Bombay University nor in Osmania University.</li><li>Dr. Joshi teaches History in Delhi University.</li><li>Two professors are from Gujarat University.</li></ul>",
+    "question": "<p><strong>Q19.</strong> Who is from Osmania University?</p>",
+    "options": [
+      "<p>Dr. Natrajan</p>",
+      "<p>Dr. Davar</p>",
+      "<p>Dr. Joshi</p>",
+      "<p>Dr. Zia</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) Dr. Davar",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Professor</th><th>Subject</th><th>University</th></tr></thead><tbody><tr><td>Dr. Choudhary</td><td>Zoology</td><td>Bombay University</td></tr><tr><td>Dr. Natrajan</td><td>Botany</td><td>Gujarat University</td></tr><tr><td>Dr. Zia</td><td>Physics</td><td>Gujarat University</td></tr><tr><td>Dr. Joshi</td><td>History</td><td>Delhi University</td></tr><tr><td>Dr. Davar</td><td>Geology</td><td>Osmania University</td></tr></tbody></table></div><ul class='solution-points'><li>Choudhary and Joshi are directly fixed from the information.</li><li>Natrajan cannot teach Geology or History, so he teaches Botany; hence Davar teaches Geology.</li><li>Zia cannot be in Bombay or Osmania; with two professors from Gujarat, Zia and Natrajan are from Gujarat.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) Dr. Davar.</p>"
+  },
+  {
+    "no": 20,
+    "itemId": 111701020,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q35",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 4</strong></p><ul><li>Five professors Dr. Joshi, Dr. Davar, Dr. Natrajan, Dr. Choudhary and Dr. Zia teach five different subjects — Zoology, Physics, Botany, Geology and History — in four Universities: Delhi, Gujarat, Bombay and Osmania.</li><li>Dr. Choudhary teaches Zoology in Bombay University.</li><li>Dr. Natrajan is neither in Osmania University nor in Delhi University, and he neither teaches Geology nor History.</li><li>Dr. Zia teaches Physics but neither in Bombay University nor in Osmania University.</li><li>Dr. Joshi teaches History in Delhi University.</li><li>Two professors are from Gujarat University.</li></ul>",
+    "question": "<p><strong>Q20.</strong> Which of the following combinations is correct?</p>",
+    "options": [
+      "<p>Dr. Zia – Delhi University</p>",
+      "<p>Dr. Choudhary – Geology</p>",
+      "<p>Dr. Davar – Bombay University</p>",
+      "<p>Dr. Natrajan – Gujarat University</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Dr. Natrajan – Gujarat University",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Professor</th><th>Subject</th><th>University</th></tr></thead><tbody><tr><td>Dr. Choudhary</td><td>Zoology</td><td>Bombay University</td></tr><tr><td>Dr. Natrajan</td><td>Botany</td><td>Gujarat University</td></tr><tr><td>Dr. Zia</td><td>Physics</td><td>Gujarat University</td></tr><tr><td>Dr. Joshi</td><td>History</td><td>Delhi University</td></tr><tr><td>Dr. Davar</td><td>Geology</td><td>Osmania University</td></tr></tbody></table></div><ul class='solution-points'><li>Choudhary and Joshi are directly fixed from the information.</li><li>Natrajan cannot teach Geology or History, so he teaches Botany; hence Davar teaches Geology.</li><li>Zia cannot be in Bombay or Osmania; with two professors from Gujarat, Zia and Natrajan are from Gujarat.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Dr. Natrajan – Gujarat University.</p>"
+  },
+  {
+    "no": 21,
+    "itemId": 111701021,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q36",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 5</strong></p><ul><li>Six candidates A, B, C, D, E and F are appearing for a competitive examination. Two of them are females and the rest are males.</li><li>One candidate is in high income group, two are from lower income group and the remaining three are from middle income group.</li><li>Two candidates belong to Open category, two to OBC category and one each to SC and ST category respectively.</li><li>Two candidates hail from non-metro city, two from village area, while one candidate each comes from metro city and taluka place respectively.</li><li>Mr. A comes from non-metro city. He is from lower income group.</li><li>Mr. B is neither SC nor ST. He comes neither from a non-metro city nor from a metro city.</li><li>Ms. C is from metro city. She is from higher income group and belongs to Open category.</li><li>Mrs. F is neither from OBC Category nor from SC category. She comes from taluka place.</li><li>Mr. D is from OBC category. He does not live in village.</li><li>Both the ladies are from Open category. The ST candidate is from village and belongs to lower income group.</li></ul>",
+    "question": "<p><strong>Q21.</strong> Who among the following are from middle income group?</p>",
+    "options": [
+      "<p>B, D & E</p>",
+      "<p>B, F & E</p>",
+      "<p>D, C & E</p>",
+      "<p>B, D & F</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) B, D & F",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Candidate</th><th>Gender</th><th>Income Group</th><th>Category</th><th>Place</th></tr></thead><tbody><tr><td>A</td><td>Male</td><td>Lower</td><td>SC</td><td>Non-metro city</td></tr><tr><td>B</td><td>Male</td><td>Middle</td><td>OBC</td><td>Village</td></tr><tr><td>C</td><td>Female</td><td>Higher</td><td>Open</td><td>Metro city</td></tr><tr><td>D</td><td>Male</td><td>Middle</td><td>OBC</td><td>Non-metro city</td></tr><tr><td>E</td><td>Male</td><td>Lower</td><td>ST</td><td>Village</td></tr><tr><td>F</td><td>Female</td><td>Middle</td><td>Open</td><td>Taluka</td></tr></tbody></table></div><ul class='solution-points'><li>Both ladies are Open category; hence C and F are Open.</li><li>The ST candidate is from village and lower income group; this becomes E.</li><li>D is OBC and B is neither SC nor ST, so B and D are OBC; A becomes SC by elimination.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) B, D &amp; F.</p>"
+  },
+  {
+    "no": 22,
+    "itemId": 111701022,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q37",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 5</strong></p><ul><li>Six candidates A, B, C, D, E and F are appearing for a competitive examination. Two of them are females and the rest are males.</li><li>One candidate is in high income group, two are from lower income group and the remaining three are from middle income group.</li><li>Two candidates belong to Open category, two to OBC category and one each to SC and ST category respectively.</li><li>Two candidates hail from non-metro city, two from village area, while one candidate each comes from metro city and taluka place respectively.</li><li>Mr. A comes from non-metro city. He is from lower income group.</li><li>Mr. B is neither SC nor ST. He comes neither from a non-metro city nor from a metro city.</li><li>Ms. C is from metro city. She is from higher income group and belongs to Open category.</li><li>Mrs. F is neither from OBC Category nor from SC category. She comes from taluka place.</li><li>Mr. D is from OBC category. He does not live in village.</li><li>Both the ladies are from Open category. The ST candidate is from village and belongs to lower income group.</li></ul>",
+    "question": "<p><strong>Q22.</strong> Which place does Mr. B hail from?</p>",
+    "options": [
+      "<p>Non-metro city</p>",
+      "<p>Metro city</p>",
+      "<p>Village</p>",
+      "<p>Taluka</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) Village",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Candidate</th><th>Gender</th><th>Income Group</th><th>Category</th><th>Place</th></tr></thead><tbody><tr><td>A</td><td>Male</td><td>Lower</td><td>SC</td><td>Non-metro city</td></tr><tr><td>B</td><td>Male</td><td>Middle</td><td>OBC</td><td>Village</td></tr><tr><td>C</td><td>Female</td><td>Higher</td><td>Open</td><td>Metro city</td></tr><tr><td>D</td><td>Male</td><td>Middle</td><td>OBC</td><td>Non-metro city</td></tr><tr><td>E</td><td>Male</td><td>Lower</td><td>ST</td><td>Village</td></tr><tr><td>F</td><td>Female</td><td>Middle</td><td>Open</td><td>Taluka</td></tr></tbody></table></div><ul class='solution-points'><li>Both ladies are Open category; hence C and F are Open.</li><li>The ST candidate is from village and lower income group; this becomes E.</li><li>D is OBC and B is neither SC nor ST, so B and D are OBC; A becomes SC by elimination.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) Village.</p>"
+  },
+  {
+    "no": 23,
+    "itemId": 111701023,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q38",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 5</strong></p><ul><li>Six candidates A, B, C, D, E and F are appearing for a competitive examination. Two of them are females and the rest are males.</li><li>One candidate is in high income group, two are from lower income group and the remaining three are from middle income group.</li><li>Two candidates belong to Open category, two to OBC category and one each to SC and ST category respectively.</li><li>Two candidates hail from non-metro city, two from village area, while one candidate each comes from metro city and taluka place respectively.</li><li>Mr. A comes from non-metro city. He is from lower income group.</li><li>Mr. B is neither SC nor ST. He comes neither from a non-metro city nor from a metro city.</li><li>Ms. C is from metro city. She is from higher income group and belongs to Open category.</li><li>Mrs. F is neither from OBC Category nor from SC category. She comes from taluka place.</li><li>Mr. D is from OBC category. He does not live in village.</li><li>Both the ladies are from Open category. The ST candidate is from village and belongs to lower income group.</li></ul>",
+    "question": "<p><strong>Q23.</strong> Who among the following is from SC category?</p>",
+    "options": [
+      "<p>Mr. E</p>",
+      "<p>Mrs. F</p>",
+      "<p>Ms. C</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) None of these",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Candidate</th><th>Gender</th><th>Income Group</th><th>Category</th><th>Place</th></tr></thead><tbody><tr><td>A</td><td>Male</td><td>Lower</td><td>SC</td><td>Non-metro city</td></tr><tr><td>B</td><td>Male</td><td>Middle</td><td>OBC</td><td>Village</td></tr><tr><td>C</td><td>Female</td><td>Higher</td><td>Open</td><td>Metro city</td></tr><tr><td>D</td><td>Male</td><td>Middle</td><td>OBC</td><td>Non-metro city</td></tr><tr><td>E</td><td>Male</td><td>Lower</td><td>ST</td><td>Village</td></tr><tr><td>F</td><td>Female</td><td>Middle</td><td>Open</td><td>Taluka</td></tr></tbody></table></div><ul class='solution-points'><li>Both ladies are Open category; hence C and F are Open.</li><li>The ST candidate is from village and lower income group; this becomes E.</li><li>D is OBC and B is neither SC nor ST, so B and D are OBC; A becomes SC by elimination.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) None of these.</p>"
+  },
+  {
+    "no": 24,
+    "itemId": 111701024,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q39",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 5</strong></p><ul><li>Six candidates A, B, C, D, E and F are appearing for a competitive examination. Two of them are females and the rest are males.</li><li>One candidate is in high income group, two are from lower income group and the remaining three are from middle income group.</li><li>Two candidates belong to Open category, two to OBC category and one each to SC and ST category respectively.</li><li>Two candidates hail from non-metro city, two from village area, while one candidate each comes from metro city and taluka place respectively.</li><li>Mr. A comes from non-metro city. He is from lower income group.</li><li>Mr. B is neither SC nor ST. He comes neither from a non-metro city nor from a metro city.</li><li>Ms. C is from metro city. She is from higher income group and belongs to Open category.</li><li>Mrs. F is neither from OBC Category nor from SC category. She comes from taluka place.</li><li>Mr. D is from OBC category. He does not live in village.</li><li>Both the ladies are from Open category. The ST candidate is from village and belongs to lower income group.</li></ul>",
+    "question": "<p><strong>Q24.</strong> Who among the following are from OBC category?</p>",
+    "options": [
+      "<p>D & F</p>",
+      "<p>B & D</p>",
+      "<p>C & D</p>",
+      "<p>B & C</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) B & D",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Candidate</th><th>Gender</th><th>Income Group</th><th>Category</th><th>Place</th></tr></thead><tbody><tr><td>A</td><td>Male</td><td>Lower</td><td>SC</td><td>Non-metro city</td></tr><tr><td>B</td><td>Male</td><td>Middle</td><td>OBC</td><td>Village</td></tr><tr><td>C</td><td>Female</td><td>Higher</td><td>Open</td><td>Metro city</td></tr><tr><td>D</td><td>Male</td><td>Middle</td><td>OBC</td><td>Non-metro city</td></tr><tr><td>E</td><td>Male</td><td>Lower</td><td>ST</td><td>Village</td></tr><tr><td>F</td><td>Female</td><td>Middle</td><td>Open</td><td>Taluka</td></tr></tbody></table></div><ul class='solution-points'><li>Both ladies are Open category; hence C and F are Open.</li><li>The ST candidate is from village and lower income group; this becomes E.</li><li>D is OBC and B is neither SC nor ST, so B and D are OBC; A becomes SC by elimination.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) B &amp; D.</p>"
+  },
+  {
+    "no": 25,
+    "itemId": 111701025,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q40",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 5</strong></p><ul><li>Six candidates A, B, C, D, E and F are appearing for a competitive examination. Two of them are females and the rest are males.</li><li>One candidate is in high income group, two are from lower income group and the remaining three are from middle income group.</li><li>Two candidates belong to Open category, two to OBC category and one each to SC and ST category respectively.</li><li>Two candidates hail from non-metro city, two from village area, while one candidate each comes from metro city and taluka place respectively.</li><li>Mr. A comes from non-metro city. He is from lower income group.</li><li>Mr. B is neither SC nor ST. He comes neither from a non-metro city nor from a metro city.</li><li>Ms. C is from metro city. She is from higher income group and belongs to Open category.</li><li>Mrs. F is neither from OBC Category nor from SC category. She comes from taluka place.</li><li>Mr. D is from OBC category. He does not live in village.</li><li>Both the ladies are from Open category. The ST candidate is from village and belongs to lower income group.</li></ul>",
+    "question": "<p><strong>Q25.</strong> Which of the following combinations is correct?</p>",
+    "options": [
+      "<p>Mr. E - Lower income group - ST category</p>",
+      "<p>Mr. B - Taluka - Middle income group</p>",
+      "<p>Miss C - Higher income group - OBC category</p>",
+      "<p>Mr. F - Taluka - Middle income group</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Mr. E - Lower income group - ST category",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Candidate</th><th>Gender</th><th>Income Group</th><th>Category</th><th>Place</th></tr></thead><tbody><tr><td>A</td><td>Male</td><td>Lower</td><td>SC</td><td>Non-metro city</td></tr><tr><td>B</td><td>Male</td><td>Middle</td><td>OBC</td><td>Village</td></tr><tr><td>C</td><td>Female</td><td>Higher</td><td>Open</td><td>Metro city</td></tr><tr><td>D</td><td>Male</td><td>Middle</td><td>OBC</td><td>Non-metro city</td></tr><tr><td>E</td><td>Male</td><td>Lower</td><td>ST</td><td>Village</td></tr><tr><td>F</td><td>Female</td><td>Middle</td><td>Open</td><td>Taluka</td></tr></tbody></table></div><ul class='solution-points'><li>Both ladies are Open category; hence C and F are Open.</li><li>The ST candidate is from village and lower income group; this becomes E.</li><li>D is OBC and B is neither SC nor ST, so B and D are OBC; A becomes SC by elimination.</li></ul><p class='therefore'><strong>Correct answer:</strong> (A) Mr. E - Lower income group - ST category.</p>"
+  },
+  {
+    "no": 26,
+    "itemId": 111701026,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q41",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 6</strong></p><ul><li>Six persons are travelling by a train which runs between X and Y. Three are males and the remaining three are females.</li><li>Two are travelling for Business purpose, two for Domestic reasons, one for Tourism purpose and one for Study Tour.</li><li>Two boarded at Pune, and one each boarded at Coimbatore, Bijapur, Mysore and Solapur.</li><li>One is going to Jammu, one to Agra, one to Bhusawal and the remaining three to New Delhi.</li><li>Three of them are businessmen/women, one is Medical Practitioner, one is Lecturer and one is Chartered Engineer.</li><li>Mr. Ashwin Mehta boarded at Bijapur. He is neither going to Bhusawal nor to Agra. He is neither going for Domestic reason nor for Tourism purpose.</li><li>The medical practitioner, Dr. S. S. Shastri, boarded at Mysore. He is travelling for Domestic reasons, while Miss Manjiri Kulkarni boarded at Pune for going to Agra.</li><li>The person who boarded at Mysore is going neither to Delhi nor to Agra.</li><li>Mrs. Juhi Patel boarded at Pune. She is travelling for Domestic reasons to New Delhi.</li><li>Mr. Vinayak Rao boarded at Coimbatore. He is going for business purposes to New Delhi. He is a Chartered Engineer.</li><li>Miss Nalini Pandit is a lecturer in a college in Solapur. She boarded at Solapur to proceed on the Study Tour to Jammu.</li></ul>",
+    "question": "<p><strong>Q26.</strong> Which of the following is the purpose of travel of Miss Manjiri Kulkarni?</p>",
+    "options": [
+      "<p>Business</p>",
+      "<p>Domestic</p>",
+      "<p>Education</p>",
+      "<p>Tourism</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Tourism",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Boarded at</th><th>Travel purpose</th><th>Destination</th><th>Profession</th></tr></thead><tbody><tr><td>Mr. Ashwin Mehta</td><td>Bijapur</td><td>Business</td><td>New Delhi</td><td>Businessman</td></tr><tr><td>Dr. S. S. Shastri</td><td>Mysore</td><td>Domestic</td><td>Bhusawal</td><td>Medical Practitioner</td></tr><tr><td>Miss Manjiri Kulkarni</td><td>Pune</td><td>Tourism</td><td>Agra</td><td>Businesswoman</td></tr><tr><td>Mrs. Juhi Patel</td><td>Pune</td><td>Domestic</td><td>New Delhi</td><td>Businesswoman</td></tr><tr><td>Mr. Vinayak Rao</td><td>Coimbatore</td><td>Business</td><td>New Delhi</td><td>Chartered Engineer</td></tr><tr><td>Miss Nalini Pandit</td><td>Solapur</td><td>Study Tour</td><td>Jammu</td><td>Lecturer</td></tr></tbody></table></div><ul class='solution-points'><li>Shastri boarded at Mysore and is not going to Delhi or Agra, so he is going to Bhusawal.</li><li>Nalini is fixed as Solapur–Study Tour–Jammu and Vinayak is fixed as Coimbatore–Business–New Delhi.</li><li>Manjiri boarded at Pune and is going to Agra; the remaining single purpose is Tourism.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Tourism.</p>"
+  },
+  {
+    "no": 27,
+    "itemId": 111701027,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q42",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 6</strong></p><ul><li>Six persons are travelling by a train which runs between X and Y. Three are males and the remaining three are females.</li><li>Two are travelling for Business purpose, two for Domestic reasons, one for Tourism purpose and one for Study Tour.</li><li>Two boarded at Pune, and one each boarded at Coimbatore, Bijapur, Mysore and Solapur.</li><li>One is going to Jammu, one to Agra, one to Bhusawal and the remaining three to New Delhi.</li><li>Three of them are businessmen/women, one is Medical Practitioner, one is Lecturer and one is Chartered Engineer.</li><li>Mr. Ashwin Mehta boarded at Bijapur. He is neither going to Bhusawal nor to Agra. He is neither going for Domestic reason nor for Tourism purpose.</li><li>The medical practitioner, Dr. S. S. Shastri, boarded at Mysore. He is travelling for Domestic reasons, while Miss Manjiri Kulkarni boarded at Pune for going to Agra.</li><li>The person who boarded at Mysore is going neither to Delhi nor to Agra.</li><li>Mrs. Juhi Patel boarded at Pune. She is travelling for Domestic reasons to New Delhi.</li><li>Mr. Vinayak Rao boarded at Coimbatore. He is going for business purposes to New Delhi. He is a Chartered Engineer.</li><li>Miss Nalini Pandit is a lecturer in a college in Solapur. She boarded at Solapur to proceed on the Study Tour to Jammu.</li></ul>",
+    "question": "<p><strong>Q27.</strong> To which of the following places is Dr. S. S. Shastri going?</p>",
+    "options": [
+      "<p>Agra</p>",
+      "<p>Bhusawal</p>",
+      "<p>New Delhi</p>",
+      "<p>Jammu</p>"
+    ],
+    "answer": 1,
+    "answerDisplay": "(B) Bhusawal",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Boarded at</th><th>Travel purpose</th><th>Destination</th><th>Profession</th></tr></thead><tbody><tr><td>Mr. Ashwin Mehta</td><td>Bijapur</td><td>Business</td><td>New Delhi</td><td>Businessman</td></tr><tr><td>Dr. S. S. Shastri</td><td>Mysore</td><td>Domestic</td><td>Bhusawal</td><td>Medical Practitioner</td></tr><tr><td>Miss Manjiri Kulkarni</td><td>Pune</td><td>Tourism</td><td>Agra</td><td>Businesswoman</td></tr><tr><td>Mrs. Juhi Patel</td><td>Pune</td><td>Domestic</td><td>New Delhi</td><td>Businesswoman</td></tr><tr><td>Mr. Vinayak Rao</td><td>Coimbatore</td><td>Business</td><td>New Delhi</td><td>Chartered Engineer</td></tr><tr><td>Miss Nalini Pandit</td><td>Solapur</td><td>Study Tour</td><td>Jammu</td><td>Lecturer</td></tr></tbody></table></div><ul class='solution-points'><li>Shastri boarded at Mysore and is not going to Delhi or Agra, so he is going to Bhusawal.</li><li>Nalini is fixed as Solapur–Study Tour–Jammu and Vinayak is fixed as Coimbatore–Business–New Delhi.</li><li>Manjiri boarded at Pune and is going to Agra; the remaining single purpose is Tourism.</li></ul><p class='therefore'><strong>Correct answer:</strong> (B) Bhusawal.</p>"
+  },
+  {
+    "no": 28,
+    "itemId": 111701028,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q43",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 6</strong></p><ul><li>Six persons are travelling by a train which runs between X and Y. Three are males and the remaining three are females.</li><li>Two are travelling for Business purpose, two for Domestic reasons, one for Tourism purpose and one for Study Tour.</li><li>Two boarded at Pune, and one each boarded at Coimbatore, Bijapur, Mysore and Solapur.</li><li>One is going to Jammu, one to Agra, one to Bhusawal and the remaining three to New Delhi.</li><li>Three of them are businessmen/women, one is Medical Practitioner, one is Lecturer and one is Chartered Engineer.</li><li>Mr. Ashwin Mehta boarded at Bijapur. He is neither going to Bhusawal nor to Agra. He is neither going for Domestic reason nor for Tourism purpose.</li><li>The medical practitioner, Dr. S. S. Shastri, boarded at Mysore. He is travelling for Domestic reasons, while Miss Manjiri Kulkarni boarded at Pune for going to Agra.</li><li>The person who boarded at Mysore is going neither to Delhi nor to Agra.</li><li>Mrs. Juhi Patel boarded at Pune. She is travelling for Domestic reasons to New Delhi.</li><li>Mr. Vinayak Rao boarded at Coimbatore. He is going for business purposes to New Delhi. He is a Chartered Engineer.</li><li>Miss Nalini Pandit is a lecturer in a college in Solapur. She boarded at Solapur to proceed on the Study Tour to Jammu.</li></ul>",
+    "question": "<p><strong>Q28.</strong> Who among the following are going to New Delhi?</p>",
+    "options": [
+      "<p>Mr. Vinayak Rao, Mr. Ashwin Mehta and Miss Nalini Pandit</p>",
+      "<p>Miss Nalini Pandit, Mr. Ashwin Mehta and Mrs. Juhi Patel</p>",
+      "<p>Mr. Ashwin Mehta, Mrs. Juhi Patel and Miss Manjiri Kulkarni</p>",
+      "<p>Mr. Vinayak Rao, Mrs. Juhi Patel and Mr. Ashwin Mehta</p>"
+    ],
+    "answer": 3,
+    "answerDisplay": "(D) Mr. Vinayak Rao, Mrs. Juhi Patel and Mr. Ashwin Mehta",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Boarded at</th><th>Travel purpose</th><th>Destination</th><th>Profession</th></tr></thead><tbody><tr><td>Mr. Ashwin Mehta</td><td>Bijapur</td><td>Business</td><td>New Delhi</td><td>Businessman</td></tr><tr><td>Dr. S. S. Shastri</td><td>Mysore</td><td>Domestic</td><td>Bhusawal</td><td>Medical Practitioner</td></tr><tr><td>Miss Manjiri Kulkarni</td><td>Pune</td><td>Tourism</td><td>Agra</td><td>Businesswoman</td></tr><tr><td>Mrs. Juhi Patel</td><td>Pune</td><td>Domestic</td><td>New Delhi</td><td>Businesswoman</td></tr><tr><td>Mr. Vinayak Rao</td><td>Coimbatore</td><td>Business</td><td>New Delhi</td><td>Chartered Engineer</td></tr><tr><td>Miss Nalini Pandit</td><td>Solapur</td><td>Study Tour</td><td>Jammu</td><td>Lecturer</td></tr></tbody></table></div><ul class='solution-points'><li>Shastri boarded at Mysore and is not going to Delhi or Agra, so he is going to Bhusawal.</li><li>Nalini is fixed as Solapur–Study Tour–Jammu and Vinayak is fixed as Coimbatore–Business–New Delhi.</li><li>Manjiri boarded at Pune and is going to Agra; the remaining single purpose is Tourism.</li></ul><p class='therefore'><strong>Correct answer:</strong> (D) Mr. Vinayak Rao, Mrs. Juhi Patel and Mr. Ashwin Mehta.</p>"
+  },
+  {
+    "no": 29,
+    "itemId": 111701029,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q44",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 6</strong></p><ul><li>Six persons are travelling by a train which runs between X and Y. Three are males and the remaining three are females.</li><li>Two are travelling for Business purpose, two for Domestic reasons, one for Tourism purpose and one for Study Tour.</li><li>Two boarded at Pune, and one each boarded at Coimbatore, Bijapur, Mysore and Solapur.</li><li>One is going to Jammu, one to Agra, one to Bhusawal and the remaining three to New Delhi.</li><li>Three of them are businessmen/women, one is Medical Practitioner, one is Lecturer and one is Chartered Engineer.</li><li>Mr. Ashwin Mehta boarded at Bijapur. He is neither going to Bhusawal nor to Agra. He is neither going for Domestic reason nor for Tourism purpose.</li><li>The medical practitioner, Dr. S. S. Shastri, boarded at Mysore. He is travelling for Domestic reasons, while Miss Manjiri Kulkarni boarded at Pune for going to Agra.</li><li>The person who boarded at Mysore is going neither to Delhi nor to Agra.</li><li>Mrs. Juhi Patel boarded at Pune. She is travelling for Domestic reasons to New Delhi.</li><li>Mr. Vinayak Rao boarded at Coimbatore. He is going for business purposes to New Delhi. He is a Chartered Engineer.</li><li>Miss Nalini Pandit is a lecturer in a college in Solapur. She boarded at Solapur to proceed on the Study Tour to Jammu.</li></ul>",
+    "question": "<p><strong>Q29.</strong> Which of the following statements is false?</p>",
+    "options": [
+      "<p>Miss Nalini Pandit is a lecturer</p>",
+      "<p>Miss Manjiri Kulkarni is travelling for tourism purposes</p>",
+      "<p>The person who boarded at Mysore is going to Jammu</p>",
+      "<p>One of the ladies who boarded at Pune is going to Agra</p>"
+    ],
+    "answer": 2,
+    "answerDisplay": "(C) The person who boarded at Mysore is going to Jammu",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Boarded at</th><th>Travel purpose</th><th>Destination</th><th>Profession</th></tr></thead><tbody><tr><td>Mr. Ashwin Mehta</td><td>Bijapur</td><td>Business</td><td>New Delhi</td><td>Businessman</td></tr><tr><td>Dr. S. S. Shastri</td><td>Mysore</td><td>Domestic</td><td>Bhusawal</td><td>Medical Practitioner</td></tr><tr><td>Miss Manjiri Kulkarni</td><td>Pune</td><td>Tourism</td><td>Agra</td><td>Businesswoman</td></tr><tr><td>Mrs. Juhi Patel</td><td>Pune</td><td>Domestic</td><td>New Delhi</td><td>Businesswoman</td></tr><tr><td>Mr. Vinayak Rao</td><td>Coimbatore</td><td>Business</td><td>New Delhi</td><td>Chartered Engineer</td></tr><tr><td>Miss Nalini Pandit</td><td>Solapur</td><td>Study Tour</td><td>Jammu</td><td>Lecturer</td></tr></tbody></table></div><ul class='solution-points'><li>Shastri boarded at Mysore and is not going to Delhi or Agra, so he is going to Bhusawal.</li><li>Nalini is fixed as Solapur–Study Tour–Jammu and Vinayak is fixed as Coimbatore–Business–New Delhi.</li><li>Manjiri boarded at Pune and is going to Agra; the remaining single purpose is Tourism.</li></ul><p class='therefore'><strong>Correct answer:</strong> (C) The person who boarded at Mysore is going to Jammu.</p>"
+  },
+  {
+    "no": 30,
+    "itemId": 111701030,
+    "source": "Logical Reasoning Arrangement Test - 1 | Original Q45",
+    "type": "mcq",
+    "direction": "<p><strong>Directions:</strong> Read the following common information and answer the question.</p>",
+    "passage": "<p><strong>Common Information — Set 6</strong></p><ul><li>Six persons are travelling by a train which runs between X and Y. Three are males and the remaining three are females.</li><li>Two are travelling for Business purpose, two for Domestic reasons, one for Tourism purpose and one for Study Tour.</li><li>Two boarded at Pune, and one each boarded at Coimbatore, Bijapur, Mysore and Solapur.</li><li>One is going to Jammu, one to Agra, one to Bhusawal and the remaining three to New Delhi.</li><li>Three of them are businessmen/women, one is Medical Practitioner, one is Lecturer and one is Chartered Engineer.</li><li>Mr. Ashwin Mehta boarded at Bijapur. He is neither going to Bhusawal nor to Agra. He is neither going for Domestic reason nor for Tourism purpose.</li><li>The medical practitioner, Dr. S. S. Shastri, boarded at Mysore. He is travelling for Domestic reasons, while Miss Manjiri Kulkarni boarded at Pune for going to Agra.</li><li>The person who boarded at Mysore is going neither to Delhi nor to Agra.</li><li>Mrs. Juhi Patel boarded at Pune. She is travelling for Domestic reasons to New Delhi.</li><li>Mr. Vinayak Rao boarded at Coimbatore. He is going for business purposes to New Delhi. He is a Chartered Engineer.</li><li>Miss Nalini Pandit is a lecturer in a college in Solapur. She boarded at Solapur to proceed on the Study Tour to Jammu.</li></ul>",
+    "question": "<p><strong>Q30.</strong> Which of the following combinations is true?</p>",
+    "options": [
+      "<p>Dr. S. S. Shastri, Mysore, Bhusawal</p>",
+      "<p>Miss Juhi Patel, Businesswoman, Jammu</p>",
+      "<p>Miss Nalini Pandit, Lecturer, Coimbatore</p>",
+      "<p>Mr. Ashwin Mehta, Chartered Engineer, New Delhi</p>"
+    ],
+    "answer": 0,
+    "answerDisplay": "(A) Dr. S. S. Shastri, Mysore, Bhusawal",
+    "solution": "<p class='solution-summary'><strong>Final arrangement table</strong></p><div class='solution-table-wrap'><table class='solution-table'><thead><tr><th>Person</th><th>Boarded at</th><th>Travel purpose</th><th>Destination</th><th>Profession</th></tr></thead><tbody><tr><td>Mr. Ashwin Mehta</td><td>Bijapur</td><td>Business</td><td>New Delhi</td><td>Businessman</td></tr><tr><td>Dr. S. S. Shastri</td><td>Mysore</td><td>Domestic</td><td>Bhusawal</td><td>Medical Practitioner</td></tr><tr><td>Miss Manjiri Kulkarni</td><td>Pune</td><td>Tourism</td><td>Agra</td><td>Businesswoman</td></tr><tr><td>Mrs. Juhi Patel</td><td>Pune</td><td>Domestic</td><td>New Delhi</td><td>Businesswoman</td></tr><tr><td>Mr. Vinayak Rao</td><td>Coimbatore</td><td>Business</td><td>New Delhi</td><td>Chartered Engineer</td></tr><tr><td>Miss Nalini Pandit</td><td>Solapur</td><td>Study Tour</td><td>Jammu</td><td>Lecturer</td></tr></tbody></table></div><ul class='solution-points'><li>Shastri boarded at Mysore and is not going to Delhi or Agra, so he is going to Bhusawal.</li><li>Nalini is fixed as Solapur–Study Tour–Jammu and Vinayak is fixed as Coimbatore–Business–New Delhi.</li><li>Manjiri boarded at Pune and is going to Agra; the remaining single purpose is Tourism.</li></ul><p class='therefore'><strong>Correct answer:</strong> (A) Dr. S. S. Shastri, Mysore, Bhusawal.</p>"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole", dec=q.titaMode==="decimal"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':(dec?'Type numeric answer':'Type your answer'))+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':(dec?'inputmode="decimal"':''))+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':(dec?'<div class="typed-answer-hint">TITA accepts numeric answer only. Do not write unit or percentage sign.</div>':''));}
+    function renderQuestion(){
+      const q=questions[current];
+      host.innerHTML='<div class="cat-question-layout">'
+        +'<div class="cat-common-pane"><div class="cat-pane-title">Common Information</div><div class="cat-pane-body">'
+          +contentBlock(q.direction,'block')+contentBlock(q.passage,'block common-info')
+        +'</div></div>'
+        +'<div class="cat-question-pane"><div class="cat-question-number">Question No. '+(current+1)+'</div><div class="cat-pane-body">'
+          +'<div class="source">'+esc(q.source)+'</div>'
+          +'<div class="qtext">'+q.question+'</div>'
+          +control(q,current)
+          +'<div id="note" class="answer-note"></div>'
+          +'<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div>'
+        +'</div></div>'
+      +'</div>'
+      +'<div class="navrow"><div class="nav-left"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review &amp; Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button></div><div class="nav-right"><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save &amp; Next</button></div></div>';
+      if(submitted)showReviewForCurrent();
+      bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);
+    }
+        function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}if(q.titaMode==='decimal'){const a=Number(norm(ans)), b=Number(norm(q.typedAnswer));return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3 correct, -1 wrong. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
