@@ -1,4 +1,4 @@
-﻿window.CAT_TESTS = [
+window.CAT_TESTS = [
   {
     "title": "Area wise Logical Reasoning Test -1",
     "file": "tests/Area Wise Test/LRDI/LR/Area wise  Logical Reasoning Test -1.html",
@@ -1717,6 +1717,19 @@
     ],
     "minutes": 60,
     "questions": 28
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-7",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-7.html",
+    "original": "logical_reasoning_arrangement_test-7.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
   }
 ];
 
@@ -3125,4 +3138,3 @@ window.CAT_FOLDERS = [
     ]
   }
 ];
-
