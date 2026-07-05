@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logical Reasoning Arrangement Test - 7 With Solutions</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.block ul{margin:8px 0 0 22px;padding:0}.block li{margin:7px 0}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px;min-width:620px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 24px;padding:0}.solution-steps li{margin:8px 0;padding-left:2px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .qtext,.option,.solution,.answer-note{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container,.solution mjx-container,.answer-note mjx-container{font-size:105%!important}.solution mjx-container[display="true"]{margin:.55em 0!important;overflow-x:auto;overflow-y:hidden;max-width:100%}.qtext .MathJax,.option .MathJax,.solution .MathJax{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+    body.submitted-mode{overflow:auto!important}body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto}body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px)}body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px}body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;line-height:1.55}
+    html,body{overflow:auto!important}body{min-width:1100px}main{min-width:1100px;overflow:auto}main>section{overflow:auto!important;max-height:calc(100vh - 84px)}.question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges}.solution{overflow-x:auto;padding-bottom:120px}.block,.qtext,.options,.solution{max-width:100%}.navrow{z-index:100}main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px}main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc}main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc}@media(max-width:1100px){body,main{min-width:1100px}}
+
+    .common-info{font-weight:800;background:#fffdf4;border-left:6px solid var(--brand-mid);font-size:19px;line-height:1.52;color:#111}
+    .common-info p,.common-info li{font-weight:800}.common-info li{margin-bottom:8px}.common-info strong{font-weight:900;color:#101820}
+    .solution-summary{margin:0 0 8px;font-size:18px;color:#0b4f7a}.solution-table-wrap{overflow-x:auto;margin:10px 0 14px;border:1px solid #9eadb9;background:#fff}
+    table.solution-table{width:100%;border-collapse:collapse;min-width:640px;font-size:16px;background:#fff;color:#101820}
+    .solution-table th{background:#24313a;color:#fff;text-align:left;padding:9px 10px;border:1px solid #6f7c86;font-weight:800;white-space:nowrap}
+    .solution-table td{padding:9px 10px;border:1px solid #c8d2da;font-weight:700;vertical-align:top}
+    .solution-table tbody tr:nth-child(even) td{background:#f3f8fb}.solution-points{margin:10px 0 0 20px;padding:0;font-size:16px}.solution-points li{margin:7px 0}.therefore{margin:12px 0 0;font-size:17px;font-weight:800;color:#102030}
+    .common-info{font-weight:800!important;font-size:19px;line-height:1.52;background:#fffef8;border-left:7px solid var(--brand-mid);padding:16px 22px;color:#101820}
+    .common-info p,.common-info li,.common-info strong{font-weight:800!important}
+    .common-info>p:first-child{font-size:21px;color:#0b4f7a;margin-bottom:12px;text-transform:uppercase;letter-spacing:.2px}
+    .common-info li{margin:8px 0}.common-info ul{margin-left:24px}
+    .solution .block{background:#fbfdff;border:1px solid #d6e2ea;border-radius:4px;padding:16px 18px}
+    .solution-table-wrap{border-radius:4px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .solution-table caption{caption-side:top;text-align:left;font-weight:900;font-size:17px;color:#0b4f7a;margin-bottom:6px}
+  
+
+    /* Hybrid update: CAT-style question area + original header/sidebar/calculator layout */
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}
+    .cat-question-layout{display:grid;grid-template-columns:minmax(420px,52%) minmax(420px,48%);min-height:calc(100vh - 150px);border-bottom:1px solid #c9d1d8;background:#fff}
+    .cat-common-pane{border-right:1px solid #9aa6ae;background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-question-pane{background:#fff;min-width:0;overflow:auto;max-height:calc(100vh - 150px)}
+    .cat-pane-title{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-pane-body{padding:12px 14px 24px;background:#fff}
+    .cat-question-number{padding:8px 12px;border-bottom:1px solid #b7c1ca;background:#f8f8f8;font-size:16px;font-weight:800;color:#111}
+    .cat-question-layout .block{border:0;border-bottom:0;padding:0;background:#fff;margin:0;font-size:17px}
+    .cat-question-layout .common-info{border-left:0!important;background:#fff!important;padding:0!important;font-size:18px!important;line-height:1.5!important;font-weight:800!important;color:#111!important}
+    .cat-question-layout .common-info>p:first-child{font-size:20px!important;color:#111!important;text-transform:none!important;margin:0 0 10px!important;letter-spacing:0!important}
+    .cat-question-layout .common-info p,.cat-question-layout .common-info li{font-weight:800!important}
+    .cat-question-layout .common-info ul{margin:0 0 0 24px;padding:0}.cat-question-layout .common-info li{margin:7px 0}
+    .cat-question-layout .qtext{font-size:19px;font-weight:500;margin:0;padding:0 0 14px;min-height:0;line-height:1.45}.cat-question-layout .qtext strong{font-weight:800}.cat-question-layout .qtext p{margin:0 0 10px}
+    .cat-question-layout .options{display:grid;gap:12px;padding:0 0 18px;min-width:0}.cat-question-layout .option{border:0;border-radius:0;padding:4px 0;display:flex;gap:10px;cursor:pointer;background:#fff;align-items:flex-start;font-size:18px;font-weight:500;line-height:1.4}.cat-question-layout .option input{margin-top:6px;transform:scale(1.05);flex:0 0 auto}.cat-question-layout .option span{display:inline}.cat-question-layout .opt-label{font-weight:500;margin-right:6px}.cat-question-layout .opt-text{font-weight:500;color:#111;display:inline}.cat-question-layout .opt-text p{display:inline!important;margin:0!important;padding:0!important}.cat-question-layout .opt-text p+p{display:inline!important}
+    .cat-question-layout .solution{margin:12px 0 0;padding-top:12px;border-top:1px solid #b7c1ca;font-size:16px;line-height:1.5}.cat-question-layout .solution h3{font-size:18px;margin:0 0 8px;color:#111}.cat-question-layout .solution .block{background:#fff;border:0;border-radius:0;padding:8px 0 0;overflow:auto}
+    .solution-summary{font-size:17px!important;color:#111!important;text-decoration:underline;margin:8px 0 10px!important}.solution-table-wrap{border:0!important;box-shadow:none!important;background:#fff!important;margin:10px 0 14px!important;overflow-x:auto!important}table.solution-table{border-collapse:collapse!important;width:auto!important;min-width:560px!important;background:#fff!important;font-size:15px!important;color:#111!important;margin:0 auto!important}.solution-table th{background:#f2f2f2!important;color:#111!important;text-align:center!important;padding:7px 9px!important;border:2px solid #333!important;font-weight:800!important;white-space:normal!important}.solution-table td{padding:7px 9px!important;border:2px solid #333!important;font-weight:700!important;vertical-align:middle!important;background:#fff!important;text-align:center!important}.solution-table tbody tr:nth-child(even) td{background:#fff!important}.solution-points{margin:10px 0 0 22px!important;font-size:16px!important}.solution-points li{margin:7px 0!important}.therefore{font-size:17px!important;color:#111!important;font-weight:900!important}.answer-note{margin:8px 0 8px!important}
+    .navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6;z-index:100}.navrow .nav-left{display:flex;gap:10px;margin-right:auto}.navrow .nav-right{display:flex;gap:10px;margin-left:auto}.navrow button{white-space:nowrap}
+    .calc-toggle{width:56px!important;height:42px!important;gap:2px!important;flex-direction:column!important;font-size:10px!important}.calc-toggle::after{content:"CALC";font-size:9px;font-weight:900;line-height:1;color:#774d00}.calc-toggle svg{width:17px!important;height:17px!important}
+    @media(max-width:980px){.cat-question-layout{grid-template-columns:1fr;min-height:0}.cat-common-pane,.cat-question-pane{max-height:none;border-right:0}.navrow{position:static;right:auto}.cat-question-layout .options{min-width:0}}
+
+  
+    .cat-question-layout .option{align-items:center!important;gap:10px!important;margin:8px 0!important;}
+    .cat-question-layout .option span{display:inline!important;}
+    .cat-question-layout .option .opt-label{margin-right:6px!important;}
+    .cat-question-layout .option .opt-text p{display:inline!important;margin:0!important;}
+    .cat-question-layout .option .opt-text{display:inline!important;}
+    .solution-table caption{caption-side:top;text-align:left!important;font-weight:900!important;text-decoration:underline!important;font-size:17px!important;color:#111!important;margin:8px 0 10px!important;}
+    table.solution-table{font-size:15px!important;}
+    .solution-table th{background:#eeeeee!important;color:#111!important;border:2px solid #222!important;}
+    .solution-table td{border:2px solid #222!important;}
+
+  </style>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true, packages: {'[+]': ['ams']} }, options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<style id="circle-solution-css">
+.circle-solution{display:flex;justify-content:center;align-items:center;margin:12px auto 16px;max-width:540px}
+.circle-solution svg{max-width:100%;height:auto;background:#fff}
+.circle-note{font-size:15px;font-weight:700;text-align:center;margin-top:-4px;color:#111}
+</style>
+
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Logical Reasoning Arrangement Test - 7</h1><div class="meta">30 Questions • Arrangement & Seating • CAT-style Practice</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 117000001,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q1",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Rahul, Sonia, Priyanka, Pawan, Kharge, Jairam, Kapil and Manish are attending a round table conference. Some of them are facing towards the centre and some of them are facing away from the centre. The following information is known about them:</p>\n<ol type='i'>\n<li>Priyanka sits third to the right of Sonia.</li>\n<li>Neighbours of Priyanka are not facing the same direction.</li>\n<li>Kharge sits second to the left of Rahul.</li>\n<li>Pawan is facing towards the centre and sits second to the left of Kapil.</li>\n<li>Rahul sits to the immediate left of Pawan but is not the neighbour of Kapil.</li>\n<li>Neighbours of Jairam are facing the same direction as Rahul is facing.</li>\n<li>Sonia is the neighbour of Rahul and Manish.</li>\n</ol>",
+    "question": "<p><strong>Q1.</strong> Who sits diametrically opposite to Sonia?</p>",
+    "answerDisplay": "(C) Kapil",
+    "solution": "<p class='solution-summary'><strong>For Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n<li>Pawan faces the centre and is second to the left of Kapil. Since Rahul is immediately left of Pawan and is not Kapil's neighbour, Kapil must face the centre.</li>\n<li>Sonia is neighbour of Rahul and Manish. Priyanka is third to the right of Sonia, so Priyanka can be near Kapil in two possible cases.</li>\n<li>Kharge is second to the left of Rahul, which eliminates one case. The remaining arrangement is fixed, but Kharge's facing direction is not fixed.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.1 to Q.5, clockwise</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Lower-right</th><th>Bottom</th><th>Lower-left</th><th>Left</th><th>Upper-left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Jairam</td><td>Priyanka</td><td>Kapil</td><td>Kharge</td><td>Pawan</td><td>Rahul</td><td>Sonia</td><td>Manish</td></tr>\n<tr><td><strong>Facing</strong></td><td>Away</td><td>Away</td><td>Centre</td><td>Cannot be determined</td><td>Centre</td><td>Away</td><td>Away</td><td>Away</td></tr>\n</tbody></table></div><p class='therefore'>Kapil is diametrically opposite Sonia. Hence option (C).</p>",
+    "options": [
+      "Manish",
+      "Priyanka",
+      "Kapil",
+      "Kharge"
+    ],
+    "answer": 2
+  },
+  {
+    "no": 2,
+    "itemId": 117000002,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q2",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Rahul, Sonia, Priyanka, Pawan, Kharge, Jairam, Kapil and Manish are attending a round table conference. Some of them are facing towards the centre and some of them are facing away from the centre. The following information is known about them:</p>\n<ol type='i'>\n<li>Priyanka sits third to the right of Sonia.</li>\n<li>Neighbours of Priyanka are not facing the same direction.</li>\n<li>Kharge sits second to the left of Rahul.</li>\n<li>Pawan is facing towards the centre and sits second to the left of Kapil.</li>\n<li>Rahul sits to the immediate left of Pawan but is not the neighbour of Kapil.</li>\n<li>Neighbours of Jairam are facing the same direction as Rahul is facing.</li>\n<li>Sonia is the neighbour of Rahul and Manish.</li>\n</ol>",
+    "question": "<p><strong>Q2.</strong> Who sits second to the left of Kharge?</p>",
+    "answerDisplay": "(C) Either Rahul or Priyanka",
+    "solution": "<p class='solution-summary'><strong>For Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n<li>Pawan faces the centre and is second to the left of Kapil. Since Rahul is immediately left of Pawan and is not Kapil's neighbour, Kapil must face the centre.</li>\n<li>Sonia is neighbour of Rahul and Manish. Priyanka is third to the right of Sonia, so Priyanka can be near Kapil in two possible cases.</li>\n<li>Kharge is second to the left of Rahul, which eliminates one case. The remaining arrangement is fixed, but Kharge's facing direction is not fixed.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.1 to Q.5, clockwise</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Lower-right</th><th>Bottom</th><th>Lower-left</th><th>Left</th><th>Upper-left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Jairam</td><td>Priyanka</td><td>Kapil</td><td>Kharge</td><td>Pawan</td><td>Rahul</td><td>Sonia</td><td>Manish</td></tr>\n<tr><td><strong>Facing</strong></td><td>Away</td><td>Away</td><td>Centre</td><td>Cannot be determined</td><td>Centre</td><td>Away</td><td>Away</td><td>Away</td></tr>\n</tbody></table></div><p class='therefore'>Depending on Kharge's facing direction, either Rahul or Priyanka can be second to the left of Kharge. Hence option (C).</p>",
+    "options": [
+      "Rahul",
+      "Priyanka",
+      "Either Rahul or Priyanka",
+      "Pawan"
+    ],
+    "answer": 2
+  },
+  {
+    "no": 3,
+    "itemId": 117000003,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q3",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Rahul, Sonia, Priyanka, Pawan, Kharge, Jairam, Kapil and Manish are attending a round table conference. Some of them are facing towards the centre and some of them are facing away from the centre. The following information is known about them:</p>\n<ol type='i'>\n<li>Priyanka sits third to the right of Sonia.</li>\n<li>Neighbours of Priyanka are not facing the same direction.</li>\n<li>Kharge sits second to the left of Rahul.</li>\n<li>Pawan is facing towards the centre and sits second to the left of Kapil.</li>\n<li>Rahul sits to the immediate left of Pawan but is not the neighbour of Kapil.</li>\n<li>Neighbours of Jairam are facing the same direction as Rahul is facing.</li>\n<li>Sonia is the neighbour of Rahul and Manish.</li>\n</ol>",
+    "question": "<p><strong>Q3.</strong> How many persons are facing away from the centre?</p>",
+    "answerDisplay": "(D) Cannot be determined",
+    "solution": "<p class='solution-summary'><strong>For Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n<li>Pawan faces the centre and is second to the left of Kapil. Since Rahul is immediately left of Pawan and is not Kapil's neighbour, Kapil must face the centre.</li>\n<li>Sonia is neighbour of Rahul and Manish. Priyanka is third to the right of Sonia, so Priyanka can be near Kapil in two possible cases.</li>\n<li>Kharge is second to the left of Rahul, which eliminates one case. The remaining arrangement is fixed, but Kharge's facing direction is not fixed.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.1 to Q.5, clockwise</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Lower-right</th><th>Bottom</th><th>Lower-left</th><th>Left</th><th>Upper-left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Jairam</td><td>Priyanka</td><td>Kapil</td><td>Kharge</td><td>Pawan</td><td>Rahul</td><td>Sonia</td><td>Manish</td></tr>\n<tr><td><strong>Facing</strong></td><td>Away</td><td>Away</td><td>Centre</td><td>Cannot be determined</td><td>Centre</td><td>Away</td><td>Away</td><td>Away</td></tr>\n</tbody></table></div><p class='therefore'>Kharge's facing direction is not known, so the number of persons facing away can be five or six. Hence option (D).</p>",
+    "options": [
+      "6",
+      "5",
+      "4",
+      "Cannot be determined"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 4,
+    "itemId": 117000004,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q4",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Rahul, Sonia, Priyanka, Pawan, Kharge, Jairam, Kapil and Manish are attending a round table conference. Some of them are facing towards the centre and some of them are facing away from the centre. The following information is known about them:</p>\n<ol type='i'>\n<li>Priyanka sits third to the right of Sonia.</li>\n<li>Neighbours of Priyanka are not facing the same direction.</li>\n<li>Kharge sits second to the left of Rahul.</li>\n<li>Pawan is facing towards the centre and sits second to the left of Kapil.</li>\n<li>Rahul sits to the immediate left of Pawan but is not the neighbour of Kapil.</li>\n<li>Neighbours of Jairam are facing the same direction as Rahul is facing.</li>\n<li>Sonia is the neighbour of Rahul and Manish.</li>\n</ol>",
+    "question": "<p><strong>Q4.</strong> Who sits third to the right of Manish?</p>",
+    "answerDisplay": "(B) Kapil",
+    "solution": "<p class='solution-summary'><strong>For Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n<li>Pawan faces the centre and is second to the left of Kapil. Since Rahul is immediately left of Pawan and is not Kapil's neighbour, Kapil must face the centre.</li>\n<li>Sonia is neighbour of Rahul and Manish. Priyanka is third to the right of Sonia, so Priyanka can be near Kapil in two possible cases.</li>\n<li>Kharge is second to the left of Rahul, which eliminates one case. The remaining arrangement is fixed, but Kharge's facing direction is not fixed.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.1 to Q.5, clockwise</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Lower-right</th><th>Bottom</th><th>Lower-left</th><th>Left</th><th>Upper-left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Jairam</td><td>Priyanka</td><td>Kapil</td><td>Kharge</td><td>Pawan</td><td>Rahul</td><td>Sonia</td><td>Manish</td></tr>\n<tr><td><strong>Facing</strong></td><td>Away</td><td>Away</td><td>Centre</td><td>Cannot be determined</td><td>Centre</td><td>Away</td><td>Away</td><td>Away</td></tr>\n</tbody></table></div><p class='therefore'>Kapil sits third to the right of Manish. Hence option (B).</p>",
+    "options": [
+      "Pawan",
+      "Kapil",
+      "Kharge",
+      "Priyanka"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 5,
+    "itemId": 117000005,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q5",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 1 to 5</strong></p>\n<p>Rahul, Sonia, Priyanka, Pawan, Kharge, Jairam, Kapil and Manish are attending a round table conference. Some of them are facing towards the centre and some of them are facing away from the centre. The following information is known about them:</p>\n<ol type='i'>\n<li>Priyanka sits third to the right of Sonia.</li>\n<li>Neighbours of Priyanka are not facing the same direction.</li>\n<li>Kharge sits second to the left of Rahul.</li>\n<li>Pawan is facing towards the centre and sits second to the left of Kapil.</li>\n<li>Rahul sits to the immediate left of Pawan but is not the neighbour of Kapil.</li>\n<li>Neighbours of Jairam are facing the same direction as Rahul is facing.</li>\n<li>Sonia is the neighbour of Rahul and Manish.</li>\n</ol>",
+    "question": "<p><strong>Q5.</strong> How many people are sitting between Rahul and Kapil, counting from the right side of Rahul?</p>",
+    "answerDisplay": "(A) 4",
+    "solution": "<p class='solution-summary'><strong>For Q.1 to Q.5</strong></p>\n<ul class='solution-points'>\n<li>Pawan faces the centre and is second to the left of Kapil. Since Rahul is immediately left of Pawan and is not Kapil's neighbour, Kapil must face the centre.</li>\n<li>Sonia is neighbour of Rahul and Manish. Priyanka is third to the right of Sonia, so Priyanka can be near Kapil in two possible cases.</li>\n<li>Kharge is second to the left of Rahul, which eliminates one case. The remaining arrangement is fixed, but Kharge's facing direction is not fixed.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.1 to Q.5, clockwise</caption>\n<thead><tr><th>Position</th><th>Top</th><th>Upper-right</th><th>Right</th><th>Lower-right</th><th>Bottom</th><th>Lower-left</th><th>Left</th><th>Upper-left</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Jairam</td><td>Priyanka</td><td>Kapil</td><td>Kharge</td><td>Pawan</td><td>Rahul</td><td>Sonia</td><td>Manish</td></tr>\n<tr><td><strong>Facing</strong></td><td>Away</td><td>Away</td><td>Centre</td><td>Cannot be determined</td><td>Centre</td><td>Away</td><td>Away</td><td>Away</td></tr>\n</tbody></table></div><p class='therefore'>Counting from the right side of Rahul, four persons sit between Rahul and Kapil. Hence option (A).</p>",
+    "options": [
+      "4",
+      "3",
+      "2",
+      "1"
+    ],
+    "answer": 0
+  },
+  {
+    "no": 6,
+    "itemId": 117000006,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q6",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Ten persons are sitting in a circular manner equidistant from each other, all facing away from the centre.</p>\n<ul>\n<li>C and D sit together.</li>\n<li>I is second to the right of H, who is not an immediate neighbour of D.</li>\n<li>Only one person sits between A and B, taken from the left side of A.</li>\n<li>J is sitting at the same distance from A as F is sitting from H.</li>\n<li>G sits immediately to the right of J, who is sitting third to the right of B.</li>\n<li>F is third to the left of E.</li>\n</ul>",
+    "question": "<p><strong>Q6.</strong> Who is sitting sixth to the left of A?</p>",
+    "answerDisplay": "(B) C",
+    "solution": "<p class='solution-summary'><strong>For Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n<li>All persons face away from the centre, so left/right are taken with respect to an outward-facing person.</li>\n<li>Using the clues for I-H, A-B, J-G and F-E, four cases are formed.</li>\n<li>Cases in which C and D are not together or H becomes adjacent to D are ruled out.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.6 to Q.10, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>A</td><td>J</td><td>G</td><td>D</td><td>C</td><td>H</td><td>F</td><td>I</td><td>B</td><td>E</td></tr></tbody>\n</table></div><p class='therefore'>C is sitting sixth to the left of A. Hence option (B).</p>",
+    "options": [
+      "F",
+      "C",
+      "Either option A or B",
+      "None of these"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 7,
+    "itemId": 117000007,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q7",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Ten persons are sitting in a circular manner equidistant from each other, all facing away from the centre.</p>\n<ul>\n<li>C and D sit together.</li>\n<li>I is second to the right of H, who is not an immediate neighbour of D.</li>\n<li>Only one person sits between A and B, taken from the left side of A.</li>\n<li>J is sitting at the same distance from A as F is sitting from H.</li>\n<li>G sits immediately to the right of J, who is sitting third to the right of B.</li>\n<li>F is third to the left of E.</li>\n</ul>",
+    "question": "<p><strong>Q7.</strong> Find the odd pair.</p>",
+    "answerDisplay": "(B) H, D",
+    "solution": "<p class='solution-summary'><strong>For Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n<li>All persons face away from the centre, so left/right are taken with respect to an outward-facing person.</li>\n<li>Using the clues for I-H, A-B, J-G and F-E, four cases are formed.</li>\n<li>Cases in which C and D are not together or H becomes adjacent to D are ruled out.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.6 to Q.10, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>A</td><td>J</td><td>G</td><td>D</td><td>C</td><td>H</td><td>F</td><td>I</td><td>B</td><td>E</td></tr></tbody>\n</table></div><p class='therefore'>In all pairs except H-D, the second person is second to the right of the first person. Hence option (B).</p>",
+    "options": [
+      "G, C",
+      "H, D",
+      "F, B",
+      "I, E"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 8,
+    "itemId": 117000008,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q8",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Ten persons are sitting in a circular manner equidistant from each other, all facing away from the centre.</p>\n<ul>\n<li>C and D sit together.</li>\n<li>I is second to the right of H, who is not an immediate neighbour of D.</li>\n<li>Only one person sits between A and B, taken from the left side of A.</li>\n<li>J is sitting at the same distance from A as F is sitting from H.</li>\n<li>G sits immediately to the right of J, who is sitting third to the right of B.</li>\n<li>F is third to the left of E.</li>\n</ul>",
+    "question": "<p><strong>Q8.</strong> What is the position of I with respect to C?</p>",
+    "answerDisplay": "(B) Third to the right",
+    "solution": "<p class='solution-summary'><strong>For Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n<li>All persons face away from the centre, so left/right are taken with respect to an outward-facing person.</li>\n<li>Using the clues for I-H, A-B, J-G and F-E, four cases are formed.</li>\n<li>Cases in which C and D are not together or H becomes adjacent to D are ruled out.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.6 to Q.10, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>A</td><td>J</td><td>G</td><td>D</td><td>C</td><td>H</td><td>F</td><td>I</td><td>B</td><td>E</td></tr></tbody>\n</table></div><p class='therefore'>I is third to the right of C. Hence option (B).</p>",
+    "options": [
+      "Second to left",
+      "Third to the right",
+      "Fifth to the left",
+      "Second to the right"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 9,
+    "itemId": 117000009,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q9",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Ten persons are sitting in a circular manner equidistant from each other, all facing away from the centre.</p>\n<ul>\n<li>C and D sit together.</li>\n<li>I is second to the right of H, who is not an immediate neighbour of D.</li>\n<li>Only one person sits between A and B, taken from the left side of A.</li>\n<li>J is sitting at the same distance from A as F is sitting from H.</li>\n<li>G sits immediately to the right of J, who is sitting third to the right of B.</li>\n<li>F is third to the left of E.</li>\n</ul>",
+    "question": "<p><strong>Q9.</strong> Which of the following statement(s) is/are correct?<br>I. J and G do not sit immediately next to each other.<br>II. C is not sitting immediately to the left of D.<br>III. If A and C interchange their positions, then A will be second to right of F.</p>",
+    "answerDisplay": "(D) None of them",
+    "solution": "<p class='solution-summary'><strong>For Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n<li>All persons face away from the centre, so left/right are taken with respect to an outward-facing person.</li>\n<li>Using the clues for I-H, A-B, J-G and F-E, four cases are formed.</li>\n<li>Cases in which C and D are not together or H becomes adjacent to D are ruled out.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.6 to Q.10, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>A</td><td>J</td><td>G</td><td>D</td><td>C</td><td>H</td><td>F</td><td>I</td><td>B</td><td>E</td></tr></tbody>\n</table></div><p class='therefore'>None of the given statements is correct. Hence option (D).</p>",
+    "options": [
+      "Only I",
+      "Both II and III",
+      "Only II",
+      "None of them"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 10,
+    "itemId": 117000010,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q10",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 6 to 10</strong></p>\n<p>Ten persons are sitting in a circular manner equidistant from each other, all facing away from the centre.</p>\n<ul>\n<li>C and D sit together.</li>\n<li>I is second to the right of H, who is not an immediate neighbour of D.</li>\n<li>Only one person sits between A and B, taken from the left side of A.</li>\n<li>J is sitting at the same distance from A as F is sitting from H.</li>\n<li>G sits immediately to the right of J, who is sitting third to the right of B.</li>\n<li>F is third to the left of E.</li>\n</ul>",
+    "question": "<p><strong>Q10.</strong> If positions of A and B, C and D, E and F, G and H, I and J are interchanged with each other, then how many such pairs are there who sit together and also appear consecutively in English alphabetical series?</p>",
+    "answerDisplay": "(B) 2",
+    "solution": "<p class='solution-summary'><strong>For Q.6 to Q.10</strong></p>\n<ul class='solution-points'>\n<li>All persons face away from the centre, so left/right are taken with respect to an outward-facing person.</li>\n<li>Using the clues for I-H, A-B, J-G and F-E, four cases are formed.</li>\n<li>Cases in which C and D are not together or H becomes adjacent to D are ruled out.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.6 to Q.10, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>A</td><td>J</td><td>G</td><td>D</td><td>C</td><td>H</td><td>F</td><td>I</td><td>B</td><td>E</td></tr></tbody>\n</table></div><p class='therefore'>After interchanging A-B, C-D, E-F, G-H and I-J, only H-I and C-D sit together and are consecutive alphabetically. Hence option (B).</p>",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 11,
+    "itemId": 117000011,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q11",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Yudhishthir, Bheem, Arjun, Nakul, Sahdev, Shakuni, Dronacharya and Eklabya are sitting around a circular table, facing towards the centre, not necessarily in the same order. Each of them is wearing a crown of different colours among Red, White, Black, Blue, Brown, Yellow, Green and Purple.</p>\n<p>The following information is known about them:</p>\n<ol type='i'>\n<li>Arjun sits third to the left of the person who is wearing a Green crown.</li>\n<li>Only two persons sit between Nakul and the person who is wearing a Green crown.</li>\n<li>The person wearing a Brown crown is a neighbour of either Arjun or Nakul, but not both.</li>\n<li>Eklabya is second to the left of the person wearing a Purple crown, who is also adjacent to Arjun.</li>\n<li>Bheem, who wears a Black crown, is two places away from the one who wears a Yellow crown.</li>\n<li>Neither Arjun nor Eklabya is wearing a Yellow or Blue crown.</li>\n<li>The persons wearing Yellow and Blue crowns sit adjacent to each other.</li>\n<li>Sahdev sits second to the right of the person wearing a Red crown.</li>\n<li>Neither Yudhishthir nor Dronacharya is wearing a Purple crown.</li>\n<li>Dronacharya is not wearing a Blue crown.</li>\n</ol>",
+    "question": "<p><strong>Q11.</strong> Who sits second to the right of Arjun?</p>",
+    "answerDisplay": "(D) Sahdev",
+    "solution": "<p class='solution-summary'><strong>For Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n<li>Using Arjun-Green-Nakul and the Brown crown clue, three cases are possible.</li>\n<li>The Yellow-Blue adjacency and the restrictions on Arjun/Eklabya eliminate two cases.</li>\n<li>The remaining case fixes all persons and crown colours.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.11 to Q.15, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Eklabya</td><td>Bheem</td><td>Dronacharya</td><td>Sahdev</td><td>Yudhishthir</td><td>Arjun</td><td>Shakuni</td><td>Nakul</td></tr>\n<tr><td><strong>Crown</strong></td><td>Brown</td><td>Black</td><td>Green</td><td>Yellow</td><td>Blue</td><td>Red</td><td>Purple</td><td>White</td></tr>\n</tbody></table></div><p class='therefore'>Sahdev sits second to the right of Arjun. Hence option (D).</p>",
+    "options": [
+      "The person who is wearing a Blue crown",
+      "The person who is wearing a White crown",
+      "Shakuni",
+      "Sahdev"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 12,
+    "itemId": 117000012,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q12",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Yudhishthir, Bheem, Arjun, Nakul, Sahdev, Shakuni, Dronacharya and Eklabya are sitting around a circular table, facing towards the centre, not necessarily in the same order. Each of them is wearing a crown of different colours among Red, White, Black, Blue, Brown, Yellow, Green and Purple.</p>\n<p>The following information is known about them:</p>\n<ol type='i'>\n<li>Arjun sits third to the left of the person who is wearing a Green crown.</li>\n<li>Only two persons sit between Nakul and the person who is wearing a Green crown.</li>\n<li>The person wearing a Brown crown is a neighbour of either Arjun or Nakul, but not both.</li>\n<li>Eklabya is second to the left of the person wearing a Purple crown, who is also adjacent to Arjun.</li>\n<li>Bheem, who wears a Black crown, is two places away from the one who wears a Yellow crown.</li>\n<li>Neither Arjun nor Eklabya is wearing a Yellow or Blue crown.</li>\n<li>The persons wearing Yellow and Blue crowns sit adjacent to each other.</li>\n<li>Sahdev sits second to the right of the person wearing a Red crown.</li>\n<li>Neither Yudhishthir nor Dronacharya is wearing a Purple crown.</li>\n<li>Dronacharya is not wearing a Blue crown.</li>\n</ol>",
+    "question": "<p><strong>Q12.</strong> How many persons sit between Yudhishthir and the person who is wearing a White crown, when counted from the right of Yudhishthir?</p>",
+    "answerDisplay": "(A) Four",
+    "solution": "<p class='solution-summary'><strong>For Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n<li>Using Arjun-Green-Nakul and the Brown crown clue, three cases are possible.</li>\n<li>The Yellow-Blue adjacency and the restrictions on Arjun/Eklabya eliminate two cases.</li>\n<li>The remaining case fixes all persons and crown colours.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.11 to Q.15, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Eklabya</td><td>Bheem</td><td>Dronacharya</td><td>Sahdev</td><td>Yudhishthir</td><td>Arjun</td><td>Shakuni</td><td>Nakul</td></tr>\n<tr><td><strong>Crown</strong></td><td>Brown</td><td>Black</td><td>Green</td><td>Yellow</td><td>Blue</td><td>Red</td><td>Purple</td><td>White</td></tr>\n</tbody></table></div><p class='therefore'>Counting from the right of Yudhishthir up to the person wearing the White crown, there are four persons. Hence option (A).</p>",
+    "options": [
+      "Four",
+      "Three",
+      "Two",
+      "One"
+    ],
+    "answer": 0
+  },
+  {
+    "no": 13,
+    "itemId": 117000013,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q13",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Yudhishthir, Bheem, Arjun, Nakul, Sahdev, Shakuni, Dronacharya and Eklabya are sitting around a circular table, facing towards the centre, not necessarily in the same order. Each of them is wearing a crown of different colours among Red, White, Black, Blue, Brown, Yellow, Green and Purple.</p>\n<p>The following information is known about them:</p>\n<ol type='i'>\n<li>Arjun sits third to the left of the person who is wearing a Green crown.</li>\n<li>Only two persons sit between Nakul and the person who is wearing a Green crown.</li>\n<li>The person wearing a Brown crown is a neighbour of either Arjun or Nakul, but not both.</li>\n<li>Eklabya is second to the left of the person wearing a Purple crown, who is also adjacent to Arjun.</li>\n<li>Bheem, who wears a Black crown, is two places away from the one who wears a Yellow crown.</li>\n<li>Neither Arjun nor Eklabya is wearing a Yellow or Blue crown.</li>\n<li>The persons wearing Yellow and Blue crowns sit adjacent to each other.</li>\n<li>Sahdev sits second to the right of the person wearing a Red crown.</li>\n<li>Neither Yudhishthir nor Dronacharya is wearing a Purple crown.</li>\n<li>Dronacharya is not wearing a Blue crown.</li>\n</ol>",
+    "question": "<p><strong>Q13.</strong> Which coloured crown is Yudhishthir wearing?</p>",
+    "answerDisplay": "(B) Blue",
+    "solution": "<p class='solution-summary'><strong>For Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n<li>Using Arjun-Green-Nakul and the Brown crown clue, three cases are possible.</li>\n<li>The Yellow-Blue adjacency and the restrictions on Arjun/Eklabya eliminate two cases.</li>\n<li>The remaining case fixes all persons and crown colours.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.11 to Q.15, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Eklabya</td><td>Bheem</td><td>Dronacharya</td><td>Sahdev</td><td>Yudhishthir</td><td>Arjun</td><td>Shakuni</td><td>Nakul</td></tr>\n<tr><td><strong>Crown</strong></td><td>Brown</td><td>Black</td><td>Green</td><td>Yellow</td><td>Blue</td><td>Red</td><td>Purple</td><td>White</td></tr>\n</tbody></table></div><p class='therefore'>Yudhishthir is wearing a Blue crown. Hence option (B).</p>",
+    "options": [
+      "Red",
+      "Blue",
+      "Green",
+      "Brown"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 14,
+    "itemId": 117000014,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q14",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Yudhishthir, Bheem, Arjun, Nakul, Sahdev, Shakuni, Dronacharya and Eklabya are sitting around a circular table, facing towards the centre, not necessarily in the same order. Each of them is wearing a crown of different colours among Red, White, Black, Blue, Brown, Yellow, Green and Purple.</p>\n<p>The following information is known about them:</p>\n<ol type='i'>\n<li>Arjun sits third to the left of the person who is wearing a Green crown.</li>\n<li>Only two persons sit between Nakul and the person who is wearing a Green crown.</li>\n<li>The person wearing a Brown crown is a neighbour of either Arjun or Nakul, but not both.</li>\n<li>Eklabya is second to the left of the person wearing a Purple crown, who is also adjacent to Arjun.</li>\n<li>Bheem, who wears a Black crown, is two places away from the one who wears a Yellow crown.</li>\n<li>Neither Arjun nor Eklabya is wearing a Yellow or Blue crown.</li>\n<li>The persons wearing Yellow and Blue crowns sit adjacent to each other.</li>\n<li>Sahdev sits second to the right of the person wearing a Red crown.</li>\n<li>Neither Yudhishthir nor Dronacharya is wearing a Purple crown.</li>\n<li>Dronacharya is not wearing a Blue crown.</li>\n</ol>",
+    "question": "<p><strong>Q14.</strong> Who is wearing a Brown crown?</p>",
+    "answerDisplay": "(C) Eklabya",
+    "solution": "<p class='solution-summary'><strong>For Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n<li>Using Arjun-Green-Nakul and the Brown crown clue, three cases are possible.</li>\n<li>The Yellow-Blue adjacency and the restrictions on Arjun/Eklabya eliminate two cases.</li>\n<li>The remaining case fixes all persons and crown colours.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.11 to Q.15, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Eklabya</td><td>Bheem</td><td>Dronacharya</td><td>Sahdev</td><td>Yudhishthir</td><td>Arjun</td><td>Shakuni</td><td>Nakul</td></tr>\n<tr><td><strong>Crown</strong></td><td>Brown</td><td>Black</td><td>Green</td><td>Yellow</td><td>Blue</td><td>Red</td><td>Purple</td><td>White</td></tr>\n</tbody></table></div><p class='therefore'>Eklabya is wearing a Brown crown. Hence option (C).</p>",
+    "options": [
+      "Nakul",
+      "Dronacharya",
+      "Eklabya",
+      "Sahdev"
+    ],
+    "answer": 2
+  },
+  {
+    "no": 15,
+    "itemId": 117000015,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q15",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 11 to 15</strong></p>\n<p>Yudhishthir, Bheem, Arjun, Nakul, Sahdev, Shakuni, Dronacharya and Eklabya are sitting around a circular table, facing towards the centre, not necessarily in the same order. Each of them is wearing a crown of different colours among Red, White, Black, Blue, Brown, Yellow, Green and Purple.</p>\n<p>The following information is known about them:</p>\n<ol type='i'>\n<li>Arjun sits third to the left of the person who is wearing a Green crown.</li>\n<li>Only two persons sit between Nakul and the person who is wearing a Green crown.</li>\n<li>The person wearing a Brown crown is a neighbour of either Arjun or Nakul, but not both.</li>\n<li>Eklabya is second to the left of the person wearing a Purple crown, who is also adjacent to Arjun.</li>\n<li>Bheem, who wears a Black crown, is two places away from the one who wears a Yellow crown.</li>\n<li>Neither Arjun nor Eklabya is wearing a Yellow or Blue crown.</li>\n<li>The persons wearing Yellow and Blue crowns sit adjacent to each other.</li>\n<li>Sahdev sits second to the right of the person wearing a Red crown.</li>\n<li>Neither Yudhishthir nor Dronacharya is wearing a Purple crown.</li>\n<li>Dronacharya is not wearing a Blue crown.</li>\n</ol>",
+    "question": "<p><strong>Q15.</strong> Who is sitting diametrically opposite to the person wearing Purple Crown?</p>",
+    "answerDisplay": "(D) Dronacharya",
+    "solution": "<p class='solution-summary'><strong>For Q.11 to Q.15</strong></p>\n<ul class='solution-points'>\n<li>Using Arjun-Green-Nakul and the Brown crown clue, three cases are possible.</li>\n<li>The Yellow-Blue adjacency and the restrictions on Arjun/Eklabya eliminate two cases.</li>\n<li>The remaining case fixes all persons and crown colours.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.11 to Q.15, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Person</strong></td><td>Eklabya</td><td>Bheem</td><td>Dronacharya</td><td>Sahdev</td><td>Yudhishthir</td><td>Arjun</td><td>Shakuni</td><td>Nakul</td></tr>\n<tr><td><strong>Crown</strong></td><td>Brown</td><td>Black</td><td>Green</td><td>Yellow</td><td>Blue</td><td>Red</td><td>Purple</td><td>White</td></tr>\n</tbody></table></div><p class='therefore'>Dronacharya is diametrically opposite to the person wearing the Purple crown. Hence option (D).</p>",
+    "options": [
+      "Nakul",
+      "Sahdev",
+      "Bheem",
+      "Dronacharya"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 16,
+    "itemId": 117000016,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q16",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 16 to 20</strong></p>\n<p>Ten students A, B, V, N, Q, P, G, J, S and F are sitting around a circular table but not necessarily in the same order. All are facing the centre of the table and they are sitting at equal distance from each other. The circumference of the table is 50 m.</p>\n<p>A is sitting second to the right of V. N is sitting 20 m to the right of F, who is sitting fifth to the right of V. The distance between A and B is 30 m. G sits third to the left of N, who is not a neighbour of J. The number of students between J and S is the same as the number of students between Q and J. J sits 5 m to the left of F.</p>",
+    "question": "<p><strong>Q16.</strong> If S sits immediately to the left of B, then who is 3rd to the right of Q?</p>",
+    "answerDisplay": "(D) J",
+    "solution": "<p class='solution-summary'><strong>For Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n<li>The circumference is 50 m and there are 10 equal gaps, so each adjacent gap is 5 m.</li>\n<li>From V, F is fifth to the right and A is second to the right. J is 5 m to the left of F.</li>\n<li>N is 20 m to the right of F, and B must be placed 30 m away from A. Q and S remain interchangeable in two positions.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.16 to Q.20, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>F</td><td>J</td><td>P</td><td>A</td><td>S/Q</td><td>V</td><td>N</td><td>B</td><td>Q/S</td><td>G</td></tr></tbody>\n</table></div><p class='therefore'>If S is immediately to the left of B, then Q takes the other possible position; third to the right of Q is J. Hence option (D).</p>",
+    "options": [
+      "B",
+      "G",
+      "F",
+      "J"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 17,
+    "itemId": 117000017,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q17",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 16 to 20</strong></p>\n<p>Ten students A, B, V, N, Q, P, G, J, S and F are sitting around a circular table but not necessarily in the same order. All are facing the centre of the table and they are sitting at equal distance from each other. The circumference of the table is 50 m.</p>\n<p>A is sitting second to the right of V. N is sitting 20 m to the right of F, who is sitting fifth to the right of V. The distance between A and B is 30 m. G sits third to the left of N, who is not a neighbour of J. The number of students between J and S is the same as the number of students between Q and J. J sits 5 m to the left of F.</p>",
+    "question": "<p><strong>Q17.</strong> Who sits 4th to the right of P?</p>",
+    "answerDisplay": "(D) Either (B) or (C)",
+    "solution": "<p class='solution-summary'><strong>For Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n<li>The circumference is 50 m and there are 10 equal gaps, so each adjacent gap is 5 m.</li>\n<li>From V, F is fifth to the right and A is second to the right. J is 5 m to the left of F.</li>\n<li>N is 20 m to the right of F, and B must be placed 30 m away from A. Q and S remain interchangeable in two positions.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.16 to Q.20, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>F</td><td>J</td><td>P</td><td>A</td><td>S/Q</td><td>V</td><td>N</td><td>B</td><td>Q/S</td><td>G</td></tr></tbody>\n</table></div><p class='therefore'>The fourth person to the right of P can be either Q or S. Hence option (D).</p>",
+    "options": [
+      "G",
+      "Q",
+      "S",
+      "Either (B) or (C)"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 18,
+    "itemId": 117000018,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q18",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 16 to 20</strong></p>\n<p>Ten students A, B, V, N, Q, P, G, J, S and F are sitting around a circular table but not necessarily in the same order. All are facing the centre of the table and they are sitting at equal distance from each other. The circumference of the table is 50 m.</p>\n<p>A is sitting second to the right of V. N is sitting 20 m to the right of F, who is sitting fifth to the right of V. The distance between A and B is 30 m. G sits third to the left of N, who is not a neighbour of J. The number of students between J and S is the same as the number of students between Q and J. J sits 5 m to the left of F.</p>",
+    "question": "<p><strong>Q18.</strong> What is the distance between N and F from the right side of N?</p>",
+    "answerDisplay": "(B) 30 m",
+    "solution": "<p class='solution-summary'><strong>For Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n<li>The circumference is 50 m and there are 10 equal gaps, so each adjacent gap is 5 m.</li>\n<li>From V, F is fifth to the right and A is second to the right. J is 5 m to the left of F.</li>\n<li>N is 20 m to the right of F, and B must be placed 30 m away from A. Q and S remain interchangeable in two positions.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.16 to Q.20, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>F</td><td>J</td><td>P</td><td>A</td><td>S/Q</td><td>V</td><td>N</td><td>B</td><td>Q/S</td><td>G</td></tr></tbody>\n</table></div><p class='therefore'>From the right side of N to F, the distance is 30 m. Hence option (B).</p>",
+    "options": [
+      "15 m",
+      "30 m",
+      "25 m",
+      "35 m"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 19,
+    "itemId": 117000019,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q19",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 16 to 20</strong></p>\n<p>Ten students A, B, V, N, Q, P, G, J, S and F are sitting around a circular table but not necessarily in the same order. All are facing the centre of the table and they are sitting at equal distance from each other. The circumference of the table is 50 m.</p>\n<p>A is sitting second to the right of V. N is sitting 20 m to the right of F, who is sitting fifth to the right of V. The distance between A and B is 30 m. G sits third to the left of N, who is not a neighbour of J. The number of students between J and S is the same as the number of students between Q and J. J sits 5 m to the left of F.</p>",
+    "question": "<p><strong>Q19.</strong> Find the odd one from the given alternatives.</p>",
+    "answerDisplay": "(D) J–V",
+    "solution": "<p class='solution-summary'><strong>For Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n<li>The circumference is 50 m and there are 10 equal gaps, so each adjacent gap is 5 m.</li>\n<li>From V, F is fifth to the right and A is second to the right. J is 5 m to the left of F.</li>\n<li>N is 20 m to the right of F, and B must be placed 30 m away from A. Q and S remain interchangeable in two positions.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.16 to Q.20, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>F</td><td>J</td><td>P</td><td>A</td><td>S/Q</td><td>V</td><td>N</td><td>B</td><td>Q/S</td><td>G</td></tr></tbody>\n</table></div><p class='therefore'>The distance pattern shows that J-V is the odd pair. Hence option (D).</p>",
+    "options": [
+      "V–P",
+      "N–A",
+      "G–P",
+      "J–V"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 20,
+    "itemId": 117000020,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q20",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 16 to 20</strong></p>\n<p>Ten students A, B, V, N, Q, P, G, J, S and F are sitting around a circular table but not necessarily in the same order. All are facing the centre of the table and they are sitting at equal distance from each other. The circumference of the table is 50 m.</p>\n<p>A is sitting second to the right of V. N is sitting 20 m to the right of F, who is sitting fifth to the right of V. The distance between A and B is 30 m. G sits third to the left of N, who is not a neighbour of J. The number of students between J and S is the same as the number of students between Q and J. J sits 5 m to the left of F.</p>",
+    "question": "<p><strong>Q20.</strong> If F and N interchange their positions, then who sits second to the right of N?</p>",
+    "answerDisplay": "(D) Cannot be determined",
+    "solution": "<p class='solution-summary'><strong>For Q.16 to Q.20</strong></p>\n<ul class='solution-points'>\n<li>The circumference is 50 m and there are 10 equal gaps, so each adjacent gap is 5 m.</li>\n<li>From V, F is fifth to the right and A is second to the right. J is 5 m to the left of F.</li>\n<li>N is 20 m to the right of F, and B must be placed 30 m away from A. Q and S remain interchangeable in two positions.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.16 to Q.20, clockwise</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead>\n<tbody><tr><td><strong>Person</strong></td><td>F</td><td>J</td><td>P</td><td>A</td><td>S/Q</td><td>V</td><td>N</td><td>B</td><td>Q/S</td><td>G</td></tr></tbody>\n</table></div><p class='therefore'>After interchanging F and N, second to the right of N may be Q or S. Hence it cannot be determined. Option (D).</p>",
+    "options": [
+      "B",
+      "S",
+      "Q",
+      "Cannot be determined"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 21,
+    "itemId": 117000021,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q21",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 21 to 25</strong></p>\n<p>The Election Commission of India held a round table conference on upcoming state elections. Six delegates from different political parties — Rahul, Yogi, Modi, Arvind, Thakre and Hemanta — attended the conference. Each delegate is from a different state among Delhi, Punjab, Haryana, Uttar Pradesh, Madhya Pradesh and Rajasthan. The number of languages that each delegate can speak is a natural number from 1 to 6.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The number of languages that the delegate from Haryana can speak is two more than the number of languages that the delegate sitting opposite him can speak.</li>\n<li>Yogi, who is from Delhi, is sitting opposite the delegate who can speak six languages.</li>\n<li>The delegate who can speak the lowest number of languages is from Rajasthan but is not Thakre, while the delegate who can speak the highest number of languages is not Hemanta.</li>\n<li>The delegate who can speak exactly three languages is sitting two places to the left of the delegate from Rajasthan.</li>\n<li>Arvind, who is from Uttar Pradesh, can speak exactly 2 languages and is sitting to the left of the delegate from Haryana.</li>\n<li>Hemanta, who is not from Madhya Pradesh, is sitting to the left of Modi.</li>\n</ol>",
+    "question": "<p><strong>Q21.</strong> Who can speak the highest number of languages?</p>",
+    "answerDisplay": "(B) Thakre",
+    "solution": "<p class='solution-summary'><strong>For Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n<li>Let the six positions around the circular table be numbered 1 to 6.</li>\n<li>Arvind from Uttar Pradesh speaks 2 languages. Rajasthan must speak the lowest number, i.e. 1, and Haryana must speak 6.</li>\n<li>Yogi from Delhi is opposite the person who speaks 6 languages. Hemanta cannot be from Madhya Pradesh, so Hemanta is from Punjab and Modi is from Madhya Pradesh.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.21 to Q.25</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>\n<tbody>\n<tr><td><strong>Delegate</strong></td><td>Yogi</td><td>Modi</td><td>Hemanta</td><td>Thakre</td><td>Arvind</td><td>Rahul</td></tr>\n<tr><td><strong>State</strong></td><td>Delhi</td><td>Madhya Pradesh</td><td>Punjab</td><td>Haryana</td><td>Uttar Pradesh</td><td>Rajasthan</td></tr>\n<tr><td><strong>Languages</strong></td><td>4</td><td>3</td><td>5</td><td>6</td><td>2</td><td>1</td></tr>\n</tbody></table></div><p class='therefore'>Thakre speaks the highest number of languages: 6. Hence option (B).</p>",
+    "options": [
+      "Rahul",
+      "Thakre",
+      "Modi",
+      "Yogi"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 22,
+    "itemId": 117000022,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q22",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 21 to 25</strong></p>\n<p>The Election Commission of India held a round table conference on upcoming state elections. Six delegates from different political parties — Rahul, Yogi, Modi, Arvind, Thakre and Hemanta — attended the conference. Each delegate is from a different state among Delhi, Punjab, Haryana, Uttar Pradesh, Madhya Pradesh and Rajasthan. The number of languages that each delegate can speak is a natural number from 1 to 6.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The number of languages that the delegate from Haryana can speak is two more than the number of languages that the delegate sitting opposite him can speak.</li>\n<li>Yogi, who is from Delhi, is sitting opposite the delegate who can speak six languages.</li>\n<li>The delegate who can speak the lowest number of languages is from Rajasthan but is not Thakre, while the delegate who can speak the highest number of languages is not Hemanta.</li>\n<li>The delegate who can speak exactly three languages is sitting two places to the left of the delegate from Rajasthan.</li>\n<li>Arvind, who is from Uttar Pradesh, can speak exactly 2 languages and is sitting to the left of the delegate from Haryana.</li>\n<li>Hemanta, who is not from Madhya Pradesh, is sitting to the left of Modi.</li>\n</ol>",
+    "question": "<p><strong>Q22.</strong> Who speaks three languages?</p>",
+    "answerDisplay": "(D) Delegate from Madhya Pradesh",
+    "solution": "<p class='solution-summary'><strong>For Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n<li>Let the six positions around the circular table be numbered 1 to 6.</li>\n<li>Arvind from Uttar Pradesh speaks 2 languages. Rajasthan must speak the lowest number, i.e. 1, and Haryana must speak 6.</li>\n<li>Yogi from Delhi is opposite the person who speaks 6 languages. Hemanta cannot be from Madhya Pradesh, so Hemanta is from Punjab and Modi is from Madhya Pradesh.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.21 to Q.25</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>\n<tbody>\n<tr><td><strong>Delegate</strong></td><td>Yogi</td><td>Modi</td><td>Hemanta</td><td>Thakre</td><td>Arvind</td><td>Rahul</td></tr>\n<tr><td><strong>State</strong></td><td>Delhi</td><td>Madhya Pradesh</td><td>Punjab</td><td>Haryana</td><td>Uttar Pradesh</td><td>Rajasthan</td></tr>\n<tr><td><strong>Languages</strong></td><td>4</td><td>3</td><td>5</td><td>6</td><td>2</td><td>1</td></tr>\n</tbody></table></div><p class='therefore'>The delegate who speaks 3 languages is Modi, who is from Madhya Pradesh. Hence option (D).</p>",
+    "options": [
+      "Delegate from Haryana",
+      "Delegate from Punjab",
+      "Delegate from Uttar Pradesh",
+      "Delegate from Madhya Pradesh"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 23,
+    "itemId": 117000023,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q23",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 21 to 25</strong></p>\n<p>The Election Commission of India held a round table conference on upcoming state elections. Six delegates from different political parties — Rahul, Yogi, Modi, Arvind, Thakre and Hemanta — attended the conference. Each delegate is from a different state among Delhi, Punjab, Haryana, Uttar Pradesh, Madhya Pradesh and Rajasthan. The number of languages that each delegate can speak is a natural number from 1 to 6.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The number of languages that the delegate from Haryana can speak is two more than the number of languages that the delegate sitting opposite him can speak.</li>\n<li>Yogi, who is from Delhi, is sitting opposite the delegate who can speak six languages.</li>\n<li>The delegate who can speak the lowest number of languages is from Rajasthan but is not Thakre, while the delegate who can speak the highest number of languages is not Hemanta.</li>\n<li>The delegate who can speak exactly three languages is sitting two places to the left of the delegate from Rajasthan.</li>\n<li>Arvind, who is from Uttar Pradesh, can speak exactly 2 languages and is sitting to the left of the delegate from Haryana.</li>\n<li>Hemanta, who is not from Madhya Pradesh, is sitting to the left of Modi.</li>\n</ol>",
+    "question": "<p><strong>Q23.</strong> From which state is the delegate sitting opposite the delegate from Punjab?</p>",
+    "answerDisplay": "(C) Rajasthan",
+    "solution": "<p class='solution-summary'><strong>For Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n<li>Let the six positions around the circular table be numbered 1 to 6.</li>\n<li>Arvind from Uttar Pradesh speaks 2 languages. Rajasthan must speak the lowest number, i.e. 1, and Haryana must speak 6.</li>\n<li>Yogi from Delhi is opposite the person who speaks 6 languages. Hemanta cannot be from Madhya Pradesh, so Hemanta is from Punjab and Modi is from Madhya Pradesh.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.21 to Q.25</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>\n<tbody>\n<tr><td><strong>Delegate</strong></td><td>Yogi</td><td>Modi</td><td>Hemanta</td><td>Thakre</td><td>Arvind</td><td>Rahul</td></tr>\n<tr><td><strong>State</strong></td><td>Delhi</td><td>Madhya Pradesh</td><td>Punjab</td><td>Haryana</td><td>Uttar Pradesh</td><td>Rajasthan</td></tr>\n<tr><td><strong>Languages</strong></td><td>4</td><td>3</td><td>5</td><td>6</td><td>2</td><td>1</td></tr>\n</tbody></table></div><p class='therefore'>The delegate opposite Punjab is from Rajasthan. Hence option (C).</p>",
+    "options": [
+      "Madhya Pradesh",
+      "Haryana",
+      "Rajasthan",
+      "Uttar Pradesh"
+    ],
+    "answer": 2
+  },
+  {
+    "no": 24,
+    "itemId": 117000024,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q24",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 21 to 25</strong></p>\n<p>The Election Commission of India held a round table conference on upcoming state elections. Six delegates from different political parties — Rahul, Yogi, Modi, Arvind, Thakre and Hemanta — attended the conference. Each delegate is from a different state among Delhi, Punjab, Haryana, Uttar Pradesh, Madhya Pradesh and Rajasthan. The number of languages that each delegate can speak is a natural number from 1 to 6.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The number of languages that the delegate from Haryana can speak is two more than the number of languages that the delegate sitting opposite him can speak.</li>\n<li>Yogi, who is from Delhi, is sitting opposite the delegate who can speak six languages.</li>\n<li>The delegate who can speak the lowest number of languages is from Rajasthan but is not Thakre, while the delegate who can speak the highest number of languages is not Hemanta.</li>\n<li>The delegate who can speak exactly three languages is sitting two places to the left of the delegate from Rajasthan.</li>\n<li>Arvind, who is from Uttar Pradesh, can speak exactly 2 languages and is sitting to the left of the delegate from Haryana.</li>\n<li>Hemanta, who is not from Madhya Pradesh, is sitting to the left of Modi.</li>\n</ol>",
+    "question": "<p><strong>Q24.</strong> How many languages can the delegate sitting to the left of the delegate from Rajasthan speak?</p>",
+    "answerDisplay": "(B) 4",
+    "solution": "<p class='solution-summary'><strong>For Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n<li>Let the six positions around the circular table be numbered 1 to 6.</li>\n<li>Arvind from Uttar Pradesh speaks 2 languages. Rajasthan must speak the lowest number, i.e. 1, and Haryana must speak 6.</li>\n<li>Yogi from Delhi is opposite the person who speaks 6 languages. Hemanta cannot be from Madhya Pradesh, so Hemanta is from Punjab and Modi is from Madhya Pradesh.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.21 to Q.25</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>\n<tbody>\n<tr><td><strong>Delegate</strong></td><td>Yogi</td><td>Modi</td><td>Hemanta</td><td>Thakre</td><td>Arvind</td><td>Rahul</td></tr>\n<tr><td><strong>State</strong></td><td>Delhi</td><td>Madhya Pradesh</td><td>Punjab</td><td>Haryana</td><td>Uttar Pradesh</td><td>Rajasthan</td></tr>\n<tr><td><strong>Languages</strong></td><td>4</td><td>3</td><td>5</td><td>6</td><td>2</td><td>1</td></tr>\n</tbody></table></div><p class='therefore'>The delegate sitting to the left of Rajasthan speaks 4 languages. Hence option (B).</p>",
+    "options": [
+      "5",
+      "4",
+      "3",
+      "2"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 25,
+    "itemId": 117000025,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q25",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 21 to 25</strong></p>\n<p>The Election Commission of India held a round table conference on upcoming state elections. Six delegates from different political parties — Rahul, Yogi, Modi, Arvind, Thakre and Hemanta — attended the conference. Each delegate is from a different state among Delhi, Punjab, Haryana, Uttar Pradesh, Madhya Pradesh and Rajasthan. The number of languages that each delegate can speak is a natural number from 1 to 6.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The number of languages that the delegate from Haryana can speak is two more than the number of languages that the delegate sitting opposite him can speak.</li>\n<li>Yogi, who is from Delhi, is sitting opposite the delegate who can speak six languages.</li>\n<li>The delegate who can speak the lowest number of languages is from Rajasthan but is not Thakre, while the delegate who can speak the highest number of languages is not Hemanta.</li>\n<li>The delegate who can speak exactly three languages is sitting two places to the left of the delegate from Rajasthan.</li>\n<li>Arvind, who is from Uttar Pradesh, can speak exactly 2 languages and is sitting to the left of the delegate from Haryana.</li>\n<li>Hemanta, who is not from Madhya Pradesh, is sitting to the left of Modi.</li>\n</ol>",
+    "question": "<p><strong>Q25.</strong> For any pair of delegates sitting opposite each other, what is the maximum difference between the number of languages that they speak?</p>",
+    "answerDisplay": "(B) 4",
+    "solution": "<p class='solution-summary'><strong>For Q.21 to Q.25</strong></p>\n<ul class='solution-points'>\n<li>Let the six positions around the circular table be numbered 1 to 6.</li>\n<li>Arvind from Uttar Pradesh speaks 2 languages. Rajasthan must speak the lowest number, i.e. 1, and Haryana must speak 6.</li>\n<li>Yogi from Delhi is opposite the person who speaks 6 languages. Hemanta cannot be from Madhya Pradesh, so Hemanta is from Punjab and Modi is from Madhya Pradesh.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.21 to Q.25</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr></thead>\n<tbody>\n<tr><td><strong>Delegate</strong></td><td>Yogi</td><td>Modi</td><td>Hemanta</td><td>Thakre</td><td>Arvind</td><td>Rahul</td></tr>\n<tr><td><strong>State</strong></td><td>Delhi</td><td>Madhya Pradesh</td><td>Punjab</td><td>Haryana</td><td>Uttar Pradesh</td><td>Rajasthan</td></tr>\n<tr><td><strong>Languages</strong></td><td>4</td><td>3</td><td>5</td><td>6</td><td>2</td><td>1</td></tr>\n</tbody></table></div><p class='therefore'>The maximum opposite-pair difference is between Rajasthan and Punjab: 5 − 1 = 4. Hence option (B).</p>",
+    "options": [
+      "5",
+      "4",
+      "3",
+      "2"
+    ],
+    "answer": 1
+  },
+  {
+    "no": 26,
+    "itemId": 117000026,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q26",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 26 to 30</strong></p>\n<p>Eight cricketers having distinct weights were sitting around a circle facing towards the centre. They were Saurabh, Rahul, Dravid, Sachin, Sehwag, Dhoni, Yuvi and Gawaskar.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The sum of the weights of any two cricketers sitting opposite each other was the same.</li>\n<li>Saurabh weighs 75 kg, while Yuvi was sitting opposite the cricketer who weighs 45 kg.</li>\n<li>Rahul was two places to the left of Dravid, while Dhoni was sitting to the right of the cricketer who weighs 55 kg.</li>\n<li>Both the cricketers who were sitting adjacent to Dhoni were lighter than him, while both the cricketers sitting adjacent to Gawaskar were heavier than him.</li>\n<li>Dravid was sitting opposite a cricketer who weighs 10 kg less than Yuvi, while the cricketer sitting opposite Rahul weighs 20 kg more than Dravid.</li>\n<li>Sachin was 60 kg heavier than Sehwag, while Gawaskar was not sitting adjacent to Saurabh.</li>\n<li>The difference in weight between Dhoni and the cricketer sitting two places to the left of him is 10 kg.</li>\n</ol>",
+    "question": "<p><strong>Q26.</strong> What is the weight (in kg) of the heaviest cricketer among the eight cricketers?</p>",
+    "answerDisplay": "(A) 125",
+    "solution": "<p class='solution-summary'><strong>For Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n<li>Because the opposite-pair weight sum is constant, the positions and weights can be fixed using Yuvi, Dravid and Rahul's opposite-pair clues.</li>\n<li>Gawaskar cannot be adjacent to Saurabh and must be the lightest. Sachin is 60 kg heavier than Sehwag.</li>\n<li>Dhoni must be heavier than Saurabh and Dravid and finally takes 125 kg.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Cricketer</strong></td><td>Sachin</td><td>Sehwag</td><td>Saurabh</td><td>Dhoni</td><td>Dravid</td><td>Yuvi</td><td>Rahul</td><td>Gawaskar</td></tr>\n<tr><td><strong>Weight</strong></td><td>105 kg</td><td>45 kg</td><td>75 kg</td><td>125 kg</td><td>55 kg</td><td>115 kg</td><td>85 kg</td><td>35 kg</td></tr>\n</tbody></table></div><p class='therefore'>The heaviest cricketer is Dhoni, weighing 125 kg. Hence option (A).</p>",
+    "options": [
+      "125",
+      "105",
+      "85",
+      "75"
+    ],
+    "answer": 0
+  },
+  {
+    "no": 27,
+    "itemId": 117000027,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q27",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 26 to 30</strong></p>\n<p>Eight cricketers having distinct weights were sitting around a circle facing towards the centre. They were Saurabh, Rahul, Dravid, Sachin, Sehwag, Dhoni, Yuvi and Gawaskar.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The sum of the weights of any two cricketers sitting opposite each other was the same.</li>\n<li>Saurabh weighs 75 kg, while Yuvi was sitting opposite the cricketer who weighs 45 kg.</li>\n<li>Rahul was two places to the left of Dravid, while Dhoni was sitting to the right of the cricketer who weighs 55 kg.</li>\n<li>Both the cricketers who were sitting adjacent to Dhoni were lighter than him, while both the cricketers sitting adjacent to Gawaskar were heavier than him.</li>\n<li>Dravid was sitting opposite a cricketer who weighs 10 kg less than Yuvi, while the cricketer sitting opposite Rahul weighs 20 kg more than Dravid.</li>\n<li>Sachin was 60 kg heavier than Sehwag, while Gawaskar was not sitting adjacent to Saurabh.</li>\n<li>The difference in weight between Dhoni and the cricketer sitting two places to the left of him is 10 kg.</li>\n</ol>",
+    "question": "<p><strong>Q27.</strong> What is the weight (in kg) of the lightest cricketer among them?</p>",
+    "answerDisplay": "(A) 35",
+    "solution": "<p class='solution-summary'><strong>For Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n<li>Because the opposite-pair weight sum is constant, the positions and weights can be fixed using Yuvi, Dravid and Rahul's opposite-pair clues.</li>\n<li>Gawaskar cannot be adjacent to Saurabh and must be the lightest. Sachin is 60 kg heavier than Sehwag.</li>\n<li>Dhoni must be heavier than Saurabh and Dravid and finally takes 125 kg.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Cricketer</strong></td><td>Sachin</td><td>Sehwag</td><td>Saurabh</td><td>Dhoni</td><td>Dravid</td><td>Yuvi</td><td>Rahul</td><td>Gawaskar</td></tr>\n<tr><td><strong>Weight</strong></td><td>105 kg</td><td>45 kg</td><td>75 kg</td><td>125 kg</td><td>55 kg</td><td>115 kg</td><td>85 kg</td><td>35 kg</td></tr>\n</tbody></table></div><p class='therefore'>The lightest cricketer is Gawaskar, weighing 35 kg. Hence option (A).</p>",
+    "options": [
+      "35",
+      "45",
+      "55",
+      "75"
+    ],
+    "answer": 0
+  },
+  {
+    "no": 28,
+    "itemId": 117000028,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q28",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 26 to 30</strong></p>\n<p>Eight cricketers having distinct weights were sitting around a circle facing towards the centre. They were Saurabh, Rahul, Dravid, Sachin, Sehwag, Dhoni, Yuvi and Gawaskar.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The sum of the weights of any two cricketers sitting opposite each other was the same.</li>\n<li>Saurabh weighs 75 kg, while Yuvi was sitting opposite the cricketer who weighs 45 kg.</li>\n<li>Rahul was two places to the left of Dravid, while Dhoni was sitting to the right of the cricketer who weighs 55 kg.</li>\n<li>Both the cricketers who were sitting adjacent to Dhoni were lighter than him, while both the cricketers sitting adjacent to Gawaskar were heavier than him.</li>\n<li>Dravid was sitting opposite a cricketer who weighs 10 kg less than Yuvi, while the cricketer sitting opposite Rahul weighs 20 kg more than Dravid.</li>\n<li>Sachin was 60 kg heavier than Sehwag, while Gawaskar was not sitting adjacent to Saurabh.</li>\n<li>The difference in weight between Dhoni and the cricketer sitting two places to the left of him is 10 kg.</li>\n</ol>",
+    "question": "<p><strong>Q28.</strong> How many people heavier than Saurabh are sitting between Rahul and Dravid in the clockwise direction, from Rahul to Dravid?</p>",
+    "answerDisplay": "(D) 2",
+    "solution": "<p class='solution-summary'><strong>For Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n<li>Because the opposite-pair weight sum is constant, the positions and weights can be fixed using Yuvi, Dravid and Rahul's opposite-pair clues.</li>\n<li>Gawaskar cannot be adjacent to Saurabh and must be the lightest. Sachin is 60 kg heavier than Sehwag.</li>\n<li>Dhoni must be heavier than Saurabh and Dravid and finally takes 125 kg.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Cricketer</strong></td><td>Sachin</td><td>Sehwag</td><td>Saurabh</td><td>Dhoni</td><td>Dravid</td><td>Yuvi</td><td>Rahul</td><td>Gawaskar</td></tr>\n<tr><td><strong>Weight</strong></td><td>105 kg</td><td>45 kg</td><td>75 kg</td><td>125 kg</td><td>55 kg</td><td>115 kg</td><td>85 kg</td><td>35 kg</td></tr>\n</tbody></table></div><p class='therefore'>Between Rahul and Dravid in the clockwise direction, two cricketers are heavier than Saurabh. Hence option (D).</p>",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "2"
+    ],
+    "answer": 3
+  },
+  {
+    "no": 29,
+    "itemId": 117000029,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q29",
+    "type": "mcq",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 26 to 30</strong></p>\n<p>Eight cricketers having distinct weights were sitting around a circle facing towards the centre. They were Saurabh, Rahul, Dravid, Sachin, Sehwag, Dhoni, Yuvi and Gawaskar.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The sum of the weights of any two cricketers sitting opposite each other was the same.</li>\n<li>Saurabh weighs 75 kg, while Yuvi was sitting opposite the cricketer who weighs 45 kg.</li>\n<li>Rahul was two places to the left of Dravid, while Dhoni was sitting to the right of the cricketer who weighs 55 kg.</li>\n<li>Both the cricketers who were sitting adjacent to Dhoni were lighter than him, while both the cricketers sitting adjacent to Gawaskar were heavier than him.</li>\n<li>Dravid was sitting opposite a cricketer who weighs 10 kg less than Yuvi, while the cricketer sitting opposite Rahul weighs 20 kg more than Dravid.</li>\n<li>Sachin was 60 kg heavier than Sehwag, while Gawaskar was not sitting adjacent to Saurabh.</li>\n<li>The difference in weight between Dhoni and the cricketer sitting two places to the left of him is 10 kg.</li>\n</ol>",
+    "question": "<p><strong>Q29.</strong> Who among the following is sitting adjacent to the lightest person?</p>",
+    "answerDisplay": "(C) Rahul",
+    "solution": "<p class='solution-summary'><strong>For Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n<li>Because the opposite-pair weight sum is constant, the positions and weights can be fixed using Yuvi, Dravid and Rahul's opposite-pair clues.</li>\n<li>Gawaskar cannot be adjacent to Saurabh and must be the lightest. Sachin is 60 kg heavier than Sehwag.</li>\n<li>Dhoni must be heavier than Saurabh and Dravid and finally takes 125 kg.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Cricketer</strong></td><td>Sachin</td><td>Sehwag</td><td>Saurabh</td><td>Dhoni</td><td>Dravid</td><td>Yuvi</td><td>Rahul</td><td>Gawaskar</td></tr>\n<tr><td><strong>Weight</strong></td><td>105 kg</td><td>45 kg</td><td>75 kg</td><td>125 kg</td><td>55 kg</td><td>115 kg</td><td>85 kg</td><td>35 kg</td></tr>\n</tbody></table></div><p class='therefore'>Rahul is adjacent to the lightest person, Gawaskar. Hence option (C).</p>",
+    "options": [
+      "Dravid",
+      "Saurabh",
+      "Rahul",
+      "Yuvi"
+    ],
+    "answer": 2
+  },
+  {
+    "no": 30,
+    "itemId": 117000030,
+    "source": "Logical Reasoning Arrangement Test - 7 | Q30",
+    "type": "tita",
+    "direction": "<p><strong>DILR</strong></p>",
+    "passage": "<p><strong>Common Information — Questions 26 to 30</strong></p>\n<p>Eight cricketers having distinct weights were sitting around a circle facing towards the centre. They were Saurabh, Rahul, Dravid, Sachin, Sehwag, Dhoni, Yuvi and Gawaskar.</p>\n<p>It is also known that:</p>\n<ol>\n<li>The sum of the weights of any two cricketers sitting opposite each other was the same.</li>\n<li>Saurabh weighs 75 kg, while Yuvi was sitting opposite the cricketer who weighs 45 kg.</li>\n<li>Rahul was two places to the left of Dravid, while Dhoni was sitting to the right of the cricketer who weighs 55 kg.</li>\n<li>Both the cricketers who were sitting adjacent to Dhoni were lighter than him, while both the cricketers sitting adjacent to Gawaskar were heavier than him.</li>\n<li>Dravid was sitting opposite a cricketer who weighs 10 kg less than Yuvi, while the cricketer sitting opposite Rahul weighs 20 kg more than Dravid.</li>\n<li>Sachin was 60 kg heavier than Sehwag, while Gawaskar was not sitting adjacent to Saurabh.</li>\n<li>The difference in weight between Dhoni and the cricketer sitting two places to the left of him is 10 kg.</li>\n</ol>",
+    "question": "<p><strong>Q30.</strong> What is the sum of the weights (in kg) of Dhoni and the cricketer sitting opposite him?</p>",
+    "answerDisplay": "160",
+    "solution": "<p class='solution-summary'><strong>For Q.26 to Q.30</strong></p>\n<ul class='solution-points'>\n<li>Because the opposite-pair weight sum is constant, the positions and weights can be fixed using Yuvi, Dravid and Rahul's opposite-pair clues.</li>\n<li>Gawaskar cannot be adjacent to Saurabh and must be the lightest. Sachin is 60 kg heavier than Sehwag.</li>\n<li>Dhoni must be heavier than Saurabh and Dravid and finally takes 125 kg.</li>\n</ul>\n<div class='solution-table-wrap'><table class='solution-table'>\n<caption>Final arrangement for Q.26 to Q.30</caption>\n<thead><tr><th>Position</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead>\n<tbody>\n<tr><td><strong>Cricketer</strong></td><td>Sachin</td><td>Sehwag</td><td>Saurabh</td><td>Dhoni</td><td>Dravid</td><td>Yuvi</td><td>Rahul</td><td>Gawaskar</td></tr>\n<tr><td><strong>Weight</strong></td><td>105 kg</td><td>45 kg</td><td>75 kg</td><td>125 kg</td><td>55 kg</td><td>115 kg</td><td>85 kg</td><td>35 kg</td></tr>\n</tbody></table></div><p class='therefore'>Dhoni sits opposite Gawaskar, so the required sum is 125 + 35 = 160.</p>",
+    "typedAnswer": "160",
+    "titaMode": "whole"
+  }
+];
+    const optionFixQuestions = new Set();
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? '').trim().toLowerCase().replace(/−/g,'-').replace(/litres?|liters?|ltrs?|ltr|lt\.?/g,'').replace(/[₹,%\s]/g,'').replace(/ /g,'');}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.answerDisplay || (q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer);}
+    function answerHtml(q){return q.answerDisplay || esc(correctText(q));}
+    function typesetMath(el){
+      if(!el) return;
+      const run = () => {
+        if(window.MathJax && MathJax.typesetPromise){
+          MathJax.typesetPromise([el]).catch(()=>{});
+        }
+      };
+      if(window.MathJax && MathJax.startup && MathJax.startup.promise){
+        MathJax.startup.promise.then(run).catch(()=>{});
+      }else{
+        setTimeout(run,150);
+      }
+    }
+    function scoreOf(q,r){if(r===null)return 0;if(r)return 3;return q.type === "mcq" ? -1 : 0;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; const whole=q.titaMode==="whole", dec=q.titaMode==="decimal"; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="'+(whole?'Type whole number only':(dec?'Type numeric answer':'Type your answer'))+'" '+(whole?'inputmode="numeric" pattern="[0-9]*" data-whole="1"':(dec?'inputmode="decimal"':''))+' '+(submitted?'disabled':'')+'>'+(whole?'<div class="typed-answer-hint">TITA accepts digits only. Do not write unit, decimal, fraction, or ratio.</div>':(dec?'<div class="typed-answer-hint">TITA accepts numeric answer only. Do not write unit or percentage sign.</div>':''));}
+    function renderQuestion(){
+      const q=questions[current];
+      host.innerHTML='<div class="cat-question-layout">'
+        +'<div class="cat-common-pane"><div class="cat-pane-title">Common Information</div><div class="cat-pane-body">'
+          +contentBlock(q.direction,'block')+contentBlock(q.passage,'block common-info')
+        +'</div></div>'
+        +'<div class="cat-question-pane"><div class="cat-question-number">Question No. '+(current+1)+'</div><div class="cat-pane-body">'
+          +'<div class="source">'+esc(q.source)+'</div>'
+          +'<div class="qtext">'+q.question+'</div>'
+          +control(q,current)
+          +'<div id="note" class="answer-note"></div>'
+          +'<div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+answerHtml(q)+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div>'
+        +'</div></div>'
+      +'</div>'
+      +'<div class="navrow"><div class="nav-left"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review &amp; Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button></div><div class="nav-right"><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save &amp; Next</button></div></div>';
+      if(submitted)showReviewForCurrent();
+      bindAnswer();renderBar();setTimeout(()=>typesetMath(host),0);
+    }
+        function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{if(el.dataset.whole==='1')el.value=el.value.replace(/\D/g,'');responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;if(q.titaMode==='whole'){const raw=String(ans).trim();return /^\d+$/.test(raw)&&raw===String(q.typedAnswer).trim();}if(q.titaMode==='decimal'){const a=Number(norm(ans)), b=Number(norm(q.typedAnswer));return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9;}const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.innerHTML='Unattempted. Correct answer: '+answerHtml(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.innerHTML='Wrong. Correct answer: '+answerHtml(q);} typesetMath(host); }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);score+=scoreOf(q,r);if(r===null)u++;else if(r)c++;else w++;});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div><p class="muted"><strong>Scoring:</strong> MCQ +3 correct, -1 wrong. Use the Question Bar to review detailed solutions question-wise.</p>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
