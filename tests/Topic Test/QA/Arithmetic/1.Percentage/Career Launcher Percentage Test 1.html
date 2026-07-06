@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Career Launcher Percentage Test 1</title>
+<style>
+:root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto}button,input{font-family:inherit}
+header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:stretch}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;background:#fff}.work{min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column}.side{padding:14px;background:#e5f6fc;display:flex;flex-direction:column;overflow:auto;-webkit-overflow-scrolling:touch}.side h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff}.qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a}.qbtn.current{background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21}.dot.answered{background:#72bd3b}.dot.marked{background:#7950a5;border-radius:50%}
+.question-card{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;padding-bottom:76px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border-bottom:1px solid #d7dde5;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}
+.qtext,.option{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container{font-size:105%!important}.qtext .MathJax,.option .MathJax,.qtext mjx-container,.option mjx-container{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}.math,.frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;font-size:.82em;line-height:1;margin:0 .05em}.frac .top{border-bottom:1px solid currentColor;padding:0 .12em .08em}.frac .bottom{padding:.08em .12em 0}
+@media(max-width:980px){html,body{overflow:auto;height:auto}header{height:auto}.topbar{grid-template-columns:1fr}.title{padding:12px 14px}.title h1{font-size:19px}.timer{min-height:54px}main{height:auto;display:flex;flex-direction:column}.work{border-right:0;min-height:auto}.question-card{min-height:58vh;padding-bottom:16px}.side{min-height:220px;order:2}.qbar{grid-template-columns:repeat(5,1fr)}.qtext{font-size:18px;padding:18px 16px 12px}.block{font-size:16px;padding:10px 14px}.options{padding:0 16px 14px;gap:12px}.option{font-size:18px}.typed-answer{width:calc(100% - 32px);margin-left:16px;font-size:18px}.navrow{position:static;right:auto;height:auto;display:grid;grid-template-columns:1fr;align-items:stretch;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}.navrow button{width:100%;min-height:44px}.qbtn{height:42px;font-size:16px}}
+</style>
+</head>
+<body>
+<header><div class="topbar"><div class="title"><h1>Career Launcher Percentage Test 1</h1><div class="meta">10 Questions | 20 Minutes | QA Arithmetic</div></div><div class="timer">Time Left: <span id="time">20:00</span></div></div></header>
+<main><section class="work"><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section><aside class="side"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div></aside></main>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"]],processEscapes:true,packages:{"[+]": ["ams"]}},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]},svg:{fontCache:"global"}};</script><script id="questions-data" type="application/json">
+[
+    {
+        "no":  1,
+        "itemId":  16968491129299,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "Hardik earns ₹ 28000 per month at the start of the year, and wants to save an average of ₹ 5000 per month during this year. In the first three months, his monthly expense was ₹ 24500, and he foresees that, from April onwards, his monthly expense will increase to ₹ 29500. By what percentage should his monthly earnings grow if he wishes to meet his yearly savings target?",
+        "options":  [
+                        "20",
+                        "23.33",
+                        "26.67",
+                        "25"
+                    ]
+    },
+    {
+        "no":  2,
+        "itemId":  16945209826025,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "text",
+        "direction":  "",
+        "passage":  "",
+        "question":  "\u003cp\u003eDue to excess supply, the price of mangoes reduced by 25%. As a result, Reshma could purchase 400 gm extra mangoes with the fixed budget she allotted for mangoes. What was the quantity (in grams) of mangoes that Reshma had initially planned to purchase?\u003cbr /\u003e\u003cbr /\u003eEnter your response (as an integer) using the virtual keyboard in the box provided below.\u003cbr /\u003e\u003cbr /\u003e[quizky-text]\u003c/p\u003e"
+    },
+    {
+        "no":  3,
+        "itemId":  169452098261612,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Medium | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "Among all the students of a school, 30% belong to ‘A’ ethnicity, 20% belong to ‘B’ ethnicity, 12.5% belong to ‘C’ ethnicity, and the rest belong to ‘D’ ethnicity. A single student cannot belong to more than one ethnicity. Among the students in the school 15% of A, 10% of B, 20% of C and 12% of D can speak in English. What percentage of English speaking students in the school belong to ‘D’ ethnicity?",
+        "options":  [
+                        "22\\({2 \\over {9}}\\)%",
+                        "27\\({3 \\over {11}}\\)%",
+                        "33\\({1 \\over {3}}\\)%",
+                        "37\\({3 \\over {7}}\\)%"
+                    ]
+    },
+    {
+        "no":  4,
+        "itemId":  16923578726864,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "text",
+        "direction":  "",
+        "passage":  "",
+        "question":  "A cricket ball weighs only 25% of a football. A tennis ball and a cricket ball together weighs 40% of the weight of a football and a tennis ball together. What is the weight of a tennis ball as a percentage of the weight of a football?\u003cbr\u003e\u003cbr\u003eEnter your response (as an integer) using the virtual keyboard in the box provided below.\u003cbr\u003e\u003cbr\u003e[quizky-text]"
+    },
+    {
+        "no":  5,
+        "itemId":  16928518622367,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Medium | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "Neeraj is the sole earner of his family. He saves a certain amount from his salary after taking care of the household expenses. Every month, out of his savings, he deposits 25% in a recurring bank deposit, gives 33\\({1 \\over {3}}\\)% of the remaining amount to his mother and he equally divides the remaining amount among his sisters for their pocket money. If the total monthly amount distributed by him among his family members (his mother and sisters) is Rs. 3000, then the amount (in Rs.) he deposits in his recurring bank deposit account in one year is _______.",
+        "options":  [
+                        "1000",
+                        "4000",
+                        "6000",
+                        "12000"
+                    ]
+    },
+    {
+        "no":  6,
+        "itemId":  16817169941252,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "In a locality, over a period of 5 years, the total income of the households increased by 35% and the per capita income increased by 25% during the same time. The percentage by which the population of the locality increased during the same period is _______________.",
+        "options":  [
+                        "\u003cspan style=\"font-family: ;color: #000000;\"\u003e12\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: ;color: #000000;\"\u003e10\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: ;color: #000000;\"\u003e8\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: ;color: #000000;\"\u003e6\u003c/span\u003e"
+                    ]
+    },
+    {
+        "no":  7,
+        "itemId":  168509374068812,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "\u003cspan style=\"font-family: Calibri;\"\u003e\u003c/span\u003e\tA trader buys potatoes and onions in equal quantities every month. He had to spend Rs. 3000 extra this month as the prices of potatoes and onions increased by 25% and 20% respectively. If the trader used to buy potatoes worth Rs. 8000 every month before the price increase, then the amount he had to spend on buying onions this month, in INR, is___________.",
+        "options":  [
+                        "\u003cspan style=\"font-family: Calibri;\"\u003e 4500\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: Calibri;\"\u003e 5000\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: Calibri;\"\u003e 5500\u003c/span\u003e",
+                        "\u003cspan style=\"font-family: Calibri;\"\u003e 6000\u003c/span\u003e"
+                    ]
+    },
+    {
+        "no":  8,
+        "itemId":  168509374069618,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "text",
+        "direction":  "",
+        "passage":  "",
+        "question":  "\u003cspan style=\"font-family: Calibri;\"\u003e\u003c/span\u003e\tIn a garden, 59% of the trees are coconut trees and the rest are mango trees. The number of coconut trees exceeds that of mango trees by 180. If 54% trees, including 245 mango trees, in the garden are older than 10 years, then the percentage of coconut trees, which are ten years or less older, is __________ .\u003cbr\u003e\u003cbr\u003e\u003cspan style=\"font-family: Calibri;\"\u003eEnter your response (as an integer) using the virtual keyboard in the box provided below.\u003c/span\u003e\u003cbr\u003e\u003cbr\u003e\u003cspan style=\"font-family: Calibri;\"\u003e[quizky-text]\u003c/span\u003e"
+    },
+    {
+        "no":  9,
+        "itemId":  169840248183011,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Medium | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "\u003cp\u003eThe income tax rule of a country has three slabs: no tax to be paid up to 500000, 10% tax on the income more than 500000 to 1000000, 20% tax on the income beyond 1000000 (all income slabs mentioned above are annual income and has been expressed in the respective currency of the country). Raja had a net annual earning of 992000 after paying the income tax on his annual gross income. The amount of his gross annual income is _________ . (Net annual income = annual gross income - tax paid)\u003c/p\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e",
+        "options":  [
+                        "1052500",
+                        "1054500",
+                        "1052000",
+                        "1054000"
+                    ]
+    },
+    {
+        "no":  10,
+        "itemId":  16894068208504,
+        "source":  "Career Launcher Jaipur | SimCAT 2023 | QA | Easy | Concept of Percentages",
+        "type":  "mcq",
+        "direction":  "",
+        "passage":  "",
+        "question":  "Naveen expected that his annual electricity consumption (in units) for the year 2023 will be in the ratio of 3 : 7 : 6 : 4 in the first, second, third and the fourth quarter respectively, and accordingly he allotted Rs. 14000 for the annual electricity bill.  The actual bills for the first three quarters deviated from his expectations by +10%, +5%, and –4%, respectively. By what percentage should Naveen reduce his electricity consumption in the fourth quarter to meet the allotted annual budget assuming that electricity bill is directly proportional to units consumed?",
+        "options":  [
+                        "10\\({1 \\over {4}}\\)",
+                        "12\\({2 \\over {3}}\\)",
+                        "14\\({1 \\over {2}}\\)",
+                        "18\\({1 \\over {3}}\\)"
+                    ]
+    }
+]
+</script><script>
+(function(){
+  var questions = JSON.parse(document.getElementById('questions-data').textContent || document.getElementById('questions-data').innerText);
+  var labels = ['A','B','C','D'];
+  var responses = [];
+  var marked = [];
+  for (var r = 0; r < questions.length; r++) {
+    responses[r] = null;
+    marked[r] = false;
+  }
+  var current = 0;
+  var secondsLeft = 20 * 60;
+  var qbar = document.getElementById('qbar');
+  var host = document.getElementById('questionHost');
+  function valueOrEmpty(s){return s === null || typeof s === 'undefined' ? '' : s;}
+  function esc(s){return String(valueOrEmpty(s)).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(valueOrEmpty(s)));}
+  function fractionHtml(top,bottom){return '<span class="frac"><span class="top">'+esc(top)+'</span><span class="bottom">'+esc(bottom)+'</span></span>';}
+  function normalizeMathHtml(s){
+    return String(valueOrEmpty(s))
+      .replace(/\\\(\s*\{([^{}]+)\s+\\over\s+\{?([^{}]+)\}?\}\s*\\\)/g,function(_,top,bottom){return fractionHtml(top,bottom);})
+      .replace(/\{([^{}]+)\s+\\over\s+\{?([^{}]+)\}?\}/g,function(_,top,bottom){return fractionHtml(top,bottom);})
+      .replace(/\u0026nbsp;/g,'&nbsp;');
+  }
+  function rich(s){return normalizeMathHtml(hasHtml(s) ? String(s) : esc(s));}
+  function typesetMath(el){
+    var run=function(){ if(window.MathJax && MathJax.typesetPromise){ MathJax.typesetPromise([el]).catch(function(){}); } };
+    if(window.MathJax && MathJax.startup && MathJax.startup.promise){ MathJax.startup.promise.then(run).catch(function(){}); } else { run(); }
+  }
+  function qType(q){return q.type || ((q.options && q.options.length) ? 'mcq' : 'text');}
+  function saveCurrent(){
+    var checked = host.querySelector('[name^="answer_"]:checked');
+    var typed = host.querySelector('input.typed-answer');
+    responses[current] = checked ? checked.value : (typed ? typed.value : responses[current]);
+  }
+  function renderBar(){
+    var html = [];
+    for (var i = 0; i < questions.length; i++) {
+      html.push('<button type="button" class="qbtn '+(i===current?'current ':'')+(marked[i]?'marked ':'')+((responses[i]!==null&&responses[i]!==''&&!marked[i])?'answered ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>');
+    }
+    qbar.innerHTML = html.join('');
+  }
+  function renderQuestion(){
+    var q = questions[current];
+    host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source||'')+'</div></div></div>'+(q.direction?'<div class="block">'+rich(q.direction)+'</div>':'')+(q.passage?'<div class="block">'+rich(q.passage)+'</div>':'')+'<div class="qtext">'+rich(q.question||'')+'</div>'+answerInput(q)+'<div class="navrow"><button type="button" onclick="clearResponse()">Clear Response</button><button type="button" onclick="markReviewNext()">Mark for Review & Next</button><button type="button" onclick="nextQ()">Save & Next</button></div>';
+    bindAnswer();
+    renderBar();
+    typesetMath(host);
+  }
+  function answerInput(q){
+    if(qType(q)==='mcq'){
+      var items = [];
+      var options = q.options || [];
+      for (var j = 0; j < options.length; j++) {
+        items.push('<label class="option"><input type="radio" name="answer_'+current+'" value="'+j+'" '+(responses[current]===String(j)?'checked':'')+'> <span><span>('+labels[j]+')</span> <span>'+rich(options[j])+'</span></span></label>');
+      }
+      return '<div class="options">'+items.join('')+'</div>';
+    }
+    return '<input class="typed-answer" name="answer_'+current+'" value="'+esc(responses[current]||'')+'" placeholder="Type your answer" inputmode="numeric">';
+  }
+  function bindAnswer(){
+    var inputs = host.querySelectorAll('[name^="answer_"]');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('input',function(){responses[current]=this.value;renderBar();});
+      inputs[i].addEventListener('change',function(){responses[current]=this.value;renderBar();});
+    }
+  }
+  function pad2(n){return n < 10 ? '0' + n : String(n);}
+  function tick(){var m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=pad2(m)+':'+pad2(s);if(secondsLeft>0)secondsLeft--;}
+  window.go=function(i){saveCurrent();current=i;renderQuestion();};window.nextQ=function(){saveCurrent();if(current<questions.length-1)current++;renderQuestion();};window.markReviewNext=function(){saveCurrent();marked[current]=true;if(current<questions.length-1)current++;renderQuestion();};window.clearResponse=function(){responses[current]=null;renderQuestion();};
+  renderQuestion();tick();setInterval(tick,1000);
+})();
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></body>
+</html>
