@@ -9,9 +9,10 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden;-webkit-text-size-adjust:100%}img{max-width:100%;height:auto}button,input{font-family:inherit}
 header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:stretch}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
 main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;background:#fff}.work{min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column}.side{padding:14px;background:#e5f6fc;display:flex;flex-direction:column;overflow:auto;-webkit-overflow-scrolling:touch}.side h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff}.qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a}.qbtn.current{background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21}.dot.answered{background:#72bd3b}.dot.marked{background:#7950a5;border-radius:50%}
-.question-card{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;padding-bottom:76px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border-bottom:1px solid #d7dde5;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}
+.question-card{flex:1;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;padding-bottom:76px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border-bottom:1px solid #d7dde5;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom));background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.navrow .submit-btn{background:#167a43;color:#fff;border-color:#116233}
+.result-panel{padding:18px 20px 92px;background:#f8fbfd}.score-box{border:1px solid #bad0df;background:#fff;padding:14px 16px;margin-bottom:16px}.score-box h2{font-size:24px;margin:0 0 6px;color:#17232d}.score-box p{margin:0;color:#3e4d57;font-size:16px}.answer-key{width:100%;border-collapse:collapse;background:#fff;margin:12px 0 18px;font-size:15px}.answer-key th,.answer-key td{border:1px solid #c7d3dc;padding:8px;text-align:left;vertical-align:top}.answer-key th{background:#e6f2f8;color:#1d333f}.solution-card{border:1px solid #ccd7df;background:#fff;margin:12px 0;padding:14px 16px}.solution-card h3{margin:0 0 8px;font-size:18px;color:#17232d}.answer-line{display:flex;flex-wrap:wrap;gap:8px 16px;margin:6px 0 10px;font-size:15px}.answer-line b{color:#22313b}.correct{color:#177445;font-weight:700}.wrong{color:#bd3a16;font-weight:700}.solution-text{font-size:16px;color:#18242d}.solution-text p{margin:0 0 8px}
 .qtext,.option{font-feature-settings:"kern" 1,"liga" 1}.qtext mjx-container,.option mjx-container{font-size:105%!important}.qtext .MathJax,.option .MathJax,.qtext mjx-container,.option mjx-container{font-family:"Cambria Math","STIX Two Math","Latin Modern Math","Times New Roman",serif}.math,.frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}.frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;font-size:.82em;line-height:1;margin:0 .05em}.frac .top{border-bottom:1px solid currentColor;padding:0 .12em .08em}.frac .bottom{padding:.08em .12em 0}
-@media(max-width:980px){html,body{overflow:auto;height:auto}header{height:auto}.topbar{grid-template-columns:1fr}.title{padding:12px 14px}.title h1{font-size:19px}.timer{min-height:54px}main{height:auto;display:flex;flex-direction:column}.work{border-right:0;min-height:auto}.question-card{min-height:58vh;padding-bottom:16px}.side{min-height:220px;order:2}.qbar{grid-template-columns:repeat(5,1fr)}.qtext{font-size:18px;padding:18px 16px 12px}.block{font-size:16px;padding:10px 14px}.options{padding:0 16px 14px;gap:12px}.option{font-size:18px}.typed-answer{width:calc(100% - 32px);margin-left:16px;font-size:18px}.navrow{position:static;right:auto;height:auto;display:grid;grid-template-columns:1fr;align-items:stretch;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}.navrow button{width:100%;min-height:44px}.qbtn{height:42px;font-size:16px}}
+@media(max-width:980px){html,body{overflow:auto;height:auto}header{height:auto}.topbar{grid-template-columns:1fr}.title{padding:12px 14px}.title h1{font-size:19px}.timer{min-height:54px}main{height:auto;display:flex;flex-direction:column}.work{border-right:0;min-height:auto}.question-card{min-height:58vh;padding-bottom:16px}.side{min-height:220px;order:2}.qbar{grid-template-columns:repeat(5,1fr)}.qtext{font-size:18px;padding:18px 16px 12px}.block{font-size:16px;padding:10px 14px}.options{padding:0 16px 14px;gap:12px}.option{font-size:18px}.typed-answer{width:calc(100% - 32px);margin-left:16px;font-size:18px}.navrow{position:static;right:auto;height:auto;display:grid;grid-template-columns:1fr;align-items:stretch;padding:10px 14px calc(10px + env(safe-area-inset-bottom))}.navrow button{width:100%;min-height:44px}.qbtn{height:42px;font-size:16px}.result-panel{padding:14px}.answer-key{font-size:13px}.answer-key th,.answer-key td{padding:6px}.score-box h2{font-size:21px}}
 </style>
 </head>
 <body>
@@ -156,6 +157,18 @@ main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-temp
 (function(){
   var questions = JSON.parse(document.getElementById('questions-data').textContent || document.getElementById('questions-data').innerText);
   var labels = ['A','B','C','D'];
+  var answerKey = [
+    {type:'mcq', value:'3', display:'D) 25', solution:'<p>Total yearly expense = 3 x 24500 + 9 x 29500 = 339000.</p><p>To save 60000, total income required = 399000. First 3 months income = 84000, so next 9 months income must be 315000.</p><p>Required monthly income from April = 315000 / 9 = 35000. Increase over 28000 = 7000, which is 25%.</p>'},
+    {type:'text', value:'1200', display:'1200', solution:'<p>After a 25% price fall, the new price is 75% of the old price, so quantity becomes 4/3 of the original quantity.</p><p>Extra quantity = 1/3 of original = 400 gm. Original quantity = 400 x 3 = 1200 gm.</p>'},
+    {type:'mcq', value:'2', display:'C) 33 1/3%', solution:'<p>Let total students be 100. A, B, C and D are 30, 20, 12.5 and 37.5 respectively.</p><p>English speakers: A = 4.5, B = 2, C = 2.5, D = 4.5. Total = 13.5.</p><p>Share from D = 4.5 / 13.5 = 1/3 = 33 1/3%.</p>'},
+    {type:'text', value:'25', display:'25', solution:'<p>Let football weight be F. Cricket ball = 25% of F = 0.25F.</p><p>Given T + 0.25F = 40% of (F + T). So T + 0.25F = 0.4F + 0.4T.</p><p>0.6T = 0.15F, hence T = 0.25F. The tennis ball is 25% of the football.</p>'},
+    {type:'mcq', value:'3', display:'D) 12000', solution:'<p>Let monthly savings be S. Recurring deposit = 25% of S, so remaining = 75% of S.</p><p>Mother gets 33 1/3% of the remaining = 25% of S. Sisters together get the balance = 50% of S.</p><p>Total family distribution = 75% of S = 3000, so S = 4000. Monthly RD = 1000, yearly RD = 12000.</p>'},
+    {type:'mcq', value:'2', display:'C) 8', solution:'<p>Total income = population x per capita income.</p><p>Population factor = 1.35 / 1.25 = 1.08. So population increased by 8%.</p>'},
+    {type:'mcq', value:'3', display:'D) 6000', solution:'<p>Old potato spend was 8000. A 25% increase adds 2000 extra.</p><p>Total extra spend is 3000, so onion extra spend is 1000. This is 20% of old onion spend, so old onion spend = 5000.</p><p>New onion spend = 5000 + 20% = 6000.</p>'},
+    {type:'text', value:'50', display:'50', solution:'<p>Coconut trees are 59% and mango trees are 41%, so the difference is 18% of total = 180. Total trees = 1000.</p><p>Coconut trees = 590 and mango trees = 410. Trees older than 10 years = 54% of 1000 = 540.</p><p>Older mango trees = 245, so older coconut trees = 295. Coconut trees aged 10 years or less = 590 - 295 = 295.</p><p>Percentage = 295 / 590 x 100 = 50%.</p>'},
+    {type:'mcq', value:'0', display:'A) 1052500', solution:'<p>For income above 1000000, tax = 50000 + 20% of income above 1000000.</p><p>So tax = 50000 + 0.2(G - 1000000) = 0.2G - 150000.</p><p>Net income = G - tax = 0.8G + 150000 = 992000. Hence G = 1052500.</p>'},
+    {type:'mcq', value:'0', display:'A) 10 1/4', solution:'<p>Expected quarterly units are in the ratio 3 : 7 : 6 : 4, total 20 parts.</p><p>Actual first three quarters = 3 x 1.10 + 7 x 1.05 + 6 x 0.96 = 3.3 + 7.35 + 5.76 = 16.41 parts.</p><p>Allowed fourth quarter = 20 - 16.41 = 3.59 parts. Expected fourth quarter was 4 parts.</p><p>Reduction = (4 - 3.59) / 4 x 100 = 10.25% = 10 1/4%.</p>'}
+  ];
   var responses = [];
   var marked = [];
   for (var r = 0; r < questions.length; r++) {
@@ -164,6 +177,7 @@ main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-temp
   }
   var current = 0;
   var secondsLeft = 20 * 60;
+  var submitted = false;
   var qbar = document.getElementById('qbar');
   var host = document.getElementById('questionHost');
   function valueOrEmpty(s){return s === null || typeof s === 'undefined' ? '' : s;}
@@ -195,8 +209,12 @@ main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-temp
     qbar.innerHTML = html.join('');
   }
   function renderQuestion(){
+    if (submitted) {
+      renderResults();
+      return;
+    }
     var q = questions[current];
-    host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source||'')+'</div></div></div>'+(q.direction?'<div class="block">'+rich(q.direction)+'</div>':'')+(q.passage?'<div class="block">'+rich(q.passage)+'</div>':'')+'<div class="qtext">'+rich(q.question||'')+'</div>'+answerInput(q)+'<div class="navrow"><button type="button" onclick="clearResponse()">Clear Response</button><button type="button" onclick="markReviewNext()">Mark for Review & Next</button><button type="button" onclick="nextQ()">Save & Next</button></div>';
+    host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source||'')+'</div></div></div>'+(q.direction?'<div class="block">'+rich(q.direction)+'</div>':'')+(q.passage?'<div class="block">'+rich(q.passage)+'</div>':'')+'<div class="qtext">'+rich(q.question||'')+'</div>'+answerInput(q)+'<div class="navrow"><button type="button" onclick="clearResponse()">Clear Response</button><button type="button" onclick="markReviewNext()">Mark for Review & Next</button><button type="button" onclick="nextQ()">Save & Next</button><button type="button" class="submit-btn" onclick="submitTest()">Submit Test</button></div>';
     bindAnswer();
     renderBar();
     typesetMath(host);
@@ -219,9 +237,40 @@ main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-temp
       inputs[i].addEventListener('change',function(){responses[current]=this.value;renderBar();});
     }
   }
+  function normalizedAnswer(v){return String(valueOrEmpty(v)).replace(/,/g,'').replace(/^\s+|\s+$/g,'').toLowerCase();}
+  function isCorrect(i){
+    if (responses[i] === null || responses[i] === '') { return false; }
+    return normalizedAnswer(responses[i]) === normalizedAnswer(answerKey[i].value);
+  }
+  function answerHtml(i){
+    var q = questions[i];
+    var v = responses[i];
+    if (v === null || v === '') { return 'Not answered'; }
+    if (qType(q) === 'mcq') {
+      var idx = parseInt(v,10);
+      if (!isNaN(idx) && q.options && q.options[idx]) {
+        return labels[idx] + ') ' + rich(q.options[idx]);
+      }
+    }
+    return esc(v);
+  }
+  function renderResults(){
+    var score = 0;
+    var rows = [];
+    var cards = [];
+    for (var i = 0; i < questions.length; i++) {
+      var ok = isCorrect(i);
+      if (ok) { score++; }
+      rows.push('<tr><td>'+(i+1)+'</td><td>'+answerHtml(i)+'</td><td>'+rich(answerKey[i].display)+'</td><td class="'+(ok?'correct':'wrong')+'">'+(ok?'Correct':'Wrong')+'</td></tr>');
+      cards.push('<div class="solution-card"><h3>Question '+(i+1)+'</h3><div class="answer-line"><span><b>Your answer:</b> '+answerHtml(i)+'</span><span><b>Correct answer:</b> '+rich(answerKey[i].display)+'</span><span class="'+(ok?'correct':'wrong')+'">'+(ok?'Correct':'Wrong')+'</span></div><div class="solution-text">'+rich(answerKey[i].solution)+'</div></div>');
+    }
+    host.innerHTML = '<div class="result-panel"><div class="score-box"><h2>Score: '+score+' / '+questions.length+'</h2><p>Answer key and solutions are shown below.</p></div><table class="answer-key"><thead><tr><th>Q</th><th>Your Answer</th><th>Correct Answer</th><th>Status</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>'+cards.join('')+'<div class="navrow"><button type="button" onclick="reviewTest()">Back to Questions</button></div></div>';
+    renderBar();
+    typesetMath(host);
+  }
   function pad2(n){return n < 10 ? '0' + n : String(n);}
   function tick(){var m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=pad2(m)+':'+pad2(s);if(secondsLeft>0)secondsLeft--;}
-  window.go=function(i){saveCurrent();current=i;renderQuestion();};window.nextQ=function(){saveCurrent();if(current<questions.length-1)current++;renderQuestion();};window.markReviewNext=function(){saveCurrent();marked[current]=true;if(current<questions.length-1)current++;renderQuestion();};window.clearResponse=function(){responses[current]=null;renderQuestion();};
+  window.go=function(i){if(!submitted){saveCurrent();}current=i;submitted=false;renderQuestion();};window.nextQ=function(){saveCurrent();if(current<questions.length-1)current++;renderQuestion();};window.markReviewNext=function(){saveCurrent();marked[current]=true;if(current<questions.length-1)current++;renderQuestion();};window.clearResponse=function(){responses[current]=null;renderQuestion();};window.submitTest=function(){saveCurrent();submitted=true;renderResults();};window.reviewTest=function(){submitted=false;renderQuestion();};
   renderQuestion();tick();setInterval(tick,1000);
 })();
 </script>
