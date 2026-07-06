@@ -214,7 +214,7 @@ main{height:calc(100vh - 84px);height:calc(100dvh - 84px);display:grid;grid-temp
       return;
     }
     var q = questions[current];
-    host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source||'')+'</div></div></div>'+(q.direction?'<div class="block">'+rich(q.direction)+'</div>':'')+(q.passage?'<div class="block">'+rich(q.passage)+'</div>':'')+'<div class="qtext">'+rich(q.question||'')+'</div>'+answerInput(q)+'<div class="navrow"><button type="button" onclick="clearResponse()">Clear Response</button><button type="button" onclick="markReviewNext()">Mark for Review & Next</button><button type="button" onclick="nextQ()">Save & Next</button><button type="button" class="submit-btn" onclick="submitTest()">Submit Test</button></div>';
+    host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div></div></div>'+(q.direction?'<div class="block">'+rich(q.direction)+'</div>':'')+(q.passage?'<div class="block">'+rich(q.passage)+'</div>':'')+'<div class="qtext">'+rich(q.question||'')+'</div>'+answerInput(q)+'<div class="navrow"><button type="button" onclick="clearResponse()">Clear Response</button><button type="button" onclick="markReviewNext()">Mark for Review & Next</button><button type="button" onclick="nextQ()">Save & Next</button><button type="button" class="submit-btn" onclick="submitTest()">Submit Test</button></div>';
     bindAnswer();
     renderBar();
     typesetMath(host);
