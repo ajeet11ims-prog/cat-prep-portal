@@ -1743,6 +1743,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 30
+  },
+  {
+    "title": "Career Launcher Percentage Test 1",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
+    "original": "Career Launcher Percentage Test 1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 20,
+    "questions": 10
   }
 ];
 
