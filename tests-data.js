@@ -1771,9 +1771,9 @@ window.CAT_TESTS = [
     "questions": 30
   },
   {
-    "title": "Puzzle & Analytical Reasoning Test  -2",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning Test -2.html",
-    "original": "Puzzle & Analytical Reasoning Test -2.html",
+    "title": "Puzzle & Analytical Reasoning Test -2",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning -2.html",
+    "original": "Puzzle & Analytical Reasoning -2.html",
     "folders": [
       "Topic Test",
       "LRDI",
