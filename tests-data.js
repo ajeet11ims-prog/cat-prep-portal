@@ -1756,6 +1756,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 20,
     "questions": 10
+  },
+  {
+    "title": "Puzzle & Analytical Reasoning Test -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning Test -1.html",
+    "original": "Puzzle & Analytical Reasoning Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 40,
+    "questions": 30
   }
 ];
 
