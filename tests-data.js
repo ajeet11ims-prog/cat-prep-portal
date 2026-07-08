@@ -1808,6 +1808,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 21,
     "questions": 32
+  },
+  {
+    "title": "miscellaneous -2",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -2.html",
+    "original": "miscellaneous -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 21,
+    "questions": 32
   }
 ];
 
