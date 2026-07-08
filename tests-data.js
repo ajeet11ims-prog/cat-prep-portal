@@ -1782,6 +1782,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 30
+  },
+  {
+    "title": "Family Tree & Direction -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Family Tree & Direction -1.html",
+    "original": "Family Tree & Direction -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 81,
+    "questions": 54
   }
 ];
 
