@@ -531,18 +531,6 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "Percentage Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-5.html",
-    "original": "Percentage Test-5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "questions": 1
-  },
-  {
     "title": "Percentage Test -6",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-6.html",
     "original": "Percentage Test-6.html",
@@ -1836,6 +1824,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 60,
     "questions": 30
+  },
+  {
+    "title": "Percentage Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -5.html",
+    "original": "Percentage Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 26
   }
 ];
 
