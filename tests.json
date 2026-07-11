@@ -567,18 +567,6 @@
     "minutes": 40
   },
   {
-    "title": "Ratio Proportion Variation Partnership Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -1.html",
-    "original": "Ratio Proportion Variation Partnership  Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 40
-  },
-  {
     "title": "Ratio Proportion Variation Partnership Test -2",
     "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
     "original": "Ratio Proportion Variation Partnership  Test -2.html",
@@ -1837,5 +1825,18 @@
     ],
     "minutes": 60,
     "questions": 26
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Percentage Test -5.html",
+    "original": "Percentage Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 40,
+    "questions": 15
   }
 ]
