@@ -1828,8 +1828,8 @@ window.CAT_TESTS = [
   },
   {
     "title": "Ratio Proportion Variation Partnership Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Percentage Test -5.html",
-    "original": "Percentage Test -5.html",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership Test -1.html",
+    "original": "Ratio Proportion Variation Partnership Test -1.html",
     "folders": [
       "Topic Test",
       "QA",
