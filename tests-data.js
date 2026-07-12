@@ -1890,6 +1890,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 20
+  },
+  {
+    "title": "DI Line Graph Test -3",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -3.html",
+    "original": "DI Line Graph Test -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 30,
+    "questions": 20
   }
 ];
 
