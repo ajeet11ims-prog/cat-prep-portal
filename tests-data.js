@@ -1877,6 +1877,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 20
+  },
+  {
+    "title": "DI - Table test -6",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -6.html",
+    "original": "DI - Table test -6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40,
+    "questions": 20
   }
 ];
 
