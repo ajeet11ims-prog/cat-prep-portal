@@ -1866,7 +1866,7 @@ window.CAT_TESTS = [
     "questions": 15
   },
   {
-    "title": "DI - Table test -5",
+    "title": "DI - Table Test -5",
     "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
     "original": "DI - Table test -5.html",
     "folders": [
