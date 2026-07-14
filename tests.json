@@ -1994,5 +1994,18 @@
     ],
     "minutes": 40,
     "questions": 23
+  },
+  {
+    "title": "Time & Work Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -5.html",
+    "original": "Time & Work Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 40,
+    "questions": 27
   }
 ]
