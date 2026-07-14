@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time &amp; Work Test -4</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}main>section>#result{flex:0 0 auto}main>section>#testForm{flex:1 1 auto;min-height:0;overflow:hidden}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 24px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    .formula-box{margin:14px 0;padding:12px 14px;border:2px solid #2d7fb8;background:#f4fbff;font-size:17px;font-weight:700}
+    .shortcut-box{margin:14px 0;padding:12px 14px;border-left:5px solid #60b947;background:#f5fbf2}
+    .final-answer{margin-top:14px;padding:10px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}
+    .solution-step{margin:0 0 10px}
+    .mixed-number{display:inline-flex;align-items:center;gap:.18em;white-space:nowrap}.math-frac{display:inline-grid;grid-template-rows:auto auto;min-width:1.35em;margin:0 .1em;vertical-align:middle;text-align:center;font-size:.82em;line-height:1}.math-frac .frac-num{padding:0 .12em .08em;border-bottom:1.5px solid currentColor}.math-frac .frac-den{padding:.08em .12em 0}.option .math-frac{font-size:.78em}.formula-box .math-frac,.final-answer .math-frac{font-size:.86em}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Time &amp; Work Test -4</h1><div class="meta">Quantitative Aptitude | 23 Questions | 40 Minutes | 9 TITA + 14 MCQ | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+      {
+            "q": "A can do a piece of work in 30 days and B can do the same work in 60 days. In how many days will A and B complete the work together?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "20",
+            "accepted": [
+                  "20"
+            ]
+      },
+      {
+            "q": "A, B and C can do a piece of work in 12, 15 and 20 days respectively. In how many days will all three complete the work together?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "5",
+            "accepted": [
+                  "5"
+            ]
+      },
+      {
+            "q": "A and B together can do a piece of work in 20 days, while A alone can do the same work in 60 days. In how many days will B alone complete the work?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "30",
+            "accepted": [
+                  "30"
+            ]
+      },
+      {
+            "q": "A can do a piece of work in 10 days and B can do the same work in 15 days. They start together, but B leaves after 3 days. In how many more days will A complete the remaining work?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "5",
+            "accepted": [
+                  "5"
+            ]
+      },
+      {
+            "q": "A can do a piece of work in 20 days and B can do the same work in 25 days. They start together, but A leaves after 8 days. In how many days from the start will the entire work be completed?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "15",
+            "accepted": [
+                  "15"
+            ]
+      },
+      {
+            "q": "A can do a piece of work in 12 days and B can do the same work in 18 days. They start together. After some days A leaves, and B completes the remaining work in 8 days. After how many days did A leave?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "4",
+            "accepted": [
+                  "4"
+            ]
+      },
+      {
+            "q": "A can do a piece of work in 20 days and B can do the same work in 15 days. They start together. After some days B leaves, and A completes the remaining work in 6 days. After how many days did B leave?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "6",
+            "accepted": [
+                  "6"
+            ]
+      },
+      {
+            "q": "A and B together can do a piece of work in 10 days. A works for 2 <sup>1</sup>/<sub>2</sub> days and B works for 8 <sup>1</sup>/<sub>2</sub> days; in all, half of the work is completed. In how many days can B alone complete the work?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "24",
+            "accepted": [
+                  "24"
+            ]
+      },
+      {
+            "q": "A and B together can do a piece of work in 14 days. A works for 3 <sup>1</sup>/<sub>2</sub> days and B works for 11 <sup>1</sup>/<sub>2</sub> days; in all, half of the work is completed. In how many days can B alone complete the work?",
+            "type": "text",
+            "source": "Time & Work | TITA — Natural Number",
+            "answer": "32",
+            "accepted": [
+                  "32"
+            ]
+      },
+      {
+            "q": "A and B together can do a piece of work in 5 days. If A works at twice his normal efficiency and B works at one-third of his normal efficiency, the work is completed in 3 days. In how many days can A alone complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "5 <sup>1</sup>/<sub>2</sub> days",
+                  "6 <sup>1</sup>/<sub>4</sub> days",
+                  "7 <sup>1</sup>/<sub>2</sub> days",
+                  "8 days"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A and B together can do a piece of work in 5 days. If A works at twice his normal efficiency and B works at half of his normal efficiency, the work is completed in 4 days. In how many days can A and B complete the work individually?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "A: 8 days, B: 12 days",
+                  "A: 10 days, B: 10 days",
+                  "A: 12 days, B: 8 days",
+                  "A: 15 days, B: 15 days"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A can do a piece of work in 4 hours. B and C together can do the same work in 3 hours, while A and C together can do it in 2 hours. In how many hours can B alone complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "6 hours",
+                  "8 hours",
+                  "12 hours",
+                  "16 hours"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A can complete 1/3 of a wall in 9 days, while B can complete 2/3 of the wall in 9 days. In how many days will A and B together complete the entire wall?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "6 days",
+                  "9 days",
+                  "12 days",
+                  "18 days"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A can complete 13/56 of a work in 111 days, while B can complete 43/56 of the work in 111 days. In how many days will A and B together complete the whole work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "56 days",
+                  "84 days",
+                  "111 days",
+                  "222 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A can complete 1/4 of a work in 21 days, while B can complete 1/4 of the same work in 7 days. In how many days will A and B together complete the whole work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "14 days",
+                  "18 days",
+                  "21 days",
+                  "28 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A and B together can complete a work in 12 days, while B and C together can complete it in 16 days. A works for 5 days, B for 7 days, and C completes the remaining work in 13 days. In how many days can A, B and C individually complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "A: 16 days, B: 48 days, C: 24 days",
+                  "A: 24 days, B: 48 days, C: 16 days",
+                  "A: 16 days, B: 24 days, C: 48 days",
+                  "A: 48 days, B: 16 days, C: 24 days"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "A and B together can complete a work in 12 days, while B and C together can complete it in 6 <sup>2</sup>/<sub>3</sub> days. A works for 3 days, B for 4 days, and C completes the remaining work in 7 days. In how many days can A, B and C individually complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "A: 20 days, B: 30 days, C: 10 days",
+                  "A: 30 days, B: 10 days, C: 20 days",
+                  "A: 30 days, B: 20 days, C: 10 days",
+                  "A: 10 days, B: 20 days, C: 30 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A works for 2 days and B completes the remaining work in 9 days. If A works for 3 days, B completes the remaining work in 6 days. In how many days can A and B individually complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "A: 5 days, B: 15 days",
+                  "A: 15 days, B: 5 days",
+                  "A: 10 days, B: 30 days",
+                  "A: 6 days, B: 12 days"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "A can do a piece of work in 80 days. A works for 10 days and then B completes the remaining work in 42 days. In how many days will A and B complete the work together?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "20 days",
+                  "24 days",
+                  "30 days",
+                  "40 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A and B can do a piece of work in 45 days and 40 days respectively. They start together, but A leaves after some days and B completes the remaining work in 23 days. After how many days did A leave?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "7 days",
+                  "8 days",
+                  "9 days",
+                  "10 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A and B can do a piece of work in 20 days and 30 days respectively. A starts the work, and thereafter they work on alternate days. In how many days will the work be completed?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "22 days",
+                  "23 days",
+                  "24 days",
+                  "25 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A and B can do a piece of work in 20 days and 25 days respectively. A starts the work, and thereafter they work on alternate days. In how many days will the work be completed?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "21 <sup>4</sup>/<sub>5</sub> days",
+                  "22 <sup>1</sup>/<sub>5</sub> days",
+                  "22 <sup>4</sup>/<sub>5</sub> days",
+                  "23 <sup>1</sup>/<sub>5</sub> days"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A, B and C can complete a work in 12, 15 and 20 days respectively. At most two persons may work on any day, and the same pair cannot work on two consecutive days. What is the minimum time required to complete the work?",
+            "type": "mcq",
+            "source": "Time & Work | MCQ",
+            "options": [
+                  "6 days",
+                  "7 days",
+                  "8 days",
+                  "9 days"
+            ],
+            "answer": 1
+      }
+];
+
+    const solutionText = [
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take the total work as 60 units.</p><div class=\"formula-box\">A's rate = 60/30 = 2 units/day<br>B's rate = 60/60 = 1 unit/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Their combined rate is 2 + 1 = 3 units/day.</p><div class=\"formula-box\">Required time = 60/3 = 20 days</div><div class=\"final-answer\">Final Answer: 20 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take the total work as LCM(12, 15, 20) = 60 units.</p><div class=\"formula-box\">A's rate = 5, B's rate = 4, C's rate = 3 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Combined rate = 5 + 4 + 3 = 12 units/day.</p><div class=\"formula-box\">Required time = 60/12 = 5 days</div><div class=\"final-answer\">Final Answer: 5 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take the total work as 60 units.</p><div class=\"formula-box\">Rate of A + B = 60/20 = 3 units/day<br>Rate of A = 60/60 = 1 unit/day</div><p class=\"solution-step\"><strong>Step 2:</strong> B's rate = 3 − 1 = 2 units/day.</p><div class=\"formula-box\">B's time = 60/2 = 30 days</div><div class=\"final-answer\">Final Answer: 30 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take the total work as LCM(10, 15) = 30 units.</p><div class=\"formula-box\">A's rate = 3 units/day; B's rate = 2 units/day<br>Together they do 5 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> In 3 days they complete 3 × 5 = 15 units, leaving 15 units.</p><div class=\"formula-box\">Time taken by A for the remaining work = 15/3 = 5 days</div><div class=\"final-answer\">Final Answer: 5 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take the total work as LCM(20, 25) = 100 units.</p><div class=\"formula-box\">A's rate = 5 units/day; B's rate = 4 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> In the first 8 days they complete 8 × 9 = 72 units. The remaining work is 28 units.</p><div class=\"formula-box\">B takes 28/4 = 7 more days<br>Total time = 8 + 7 = 15 days</div><div class=\"final-answer\">Final Answer: 15 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(12, 18) = 36 units.</p><div class=\"formula-box\">A's rate = 3 units/day; B's rate = 2 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> B completes the final 8 × 2 = 16 units. Hence A and B together completed 36 − 16 = 20 units before A left.</p><div class=\"formula-box\">Days worked together = 20/(3 + 2) = 4 days</div><div class=\"final-answer\">Final Answer: A left after 4 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(20, 15) = 60 units.</p><div class=\"formula-box\">A's rate = 3 units/day; B's rate = 4 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> A completes the remaining work in 6 days, so the remaining work was 6 × 3 = 18 units.</p><p class=\"solution-step\">Therefore, the work completed together was 60 − 18 = 42 units.</p><div class=\"formula-box\">Days worked together = 42/(3 + 4) = 6 days</div><div class=\"final-answer\">Final Answer: B left after 6 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 120 units. Since A and B together finish it in 10 days:</p><div class=\"formula-box\">A's rate + B's rate = 12 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Let A's rate be x; then B's rate is 12 − x. Half the work is 60 units.</p><div class=\"formula-box\">2 <sup>1</sup>/<sub>2</sub>x + 8 <sup>1</sup>/<sub>2</sub>(12 − x) = 60<br>2.5x + 102 − 8.5x = 60<br>6x = 42 ⇒ x = 7</div><p class=\"solution-step\">Thus B's rate = 12 − 7 = 5 units/day.</p><div class=\"formula-box\">B's time = 120/5 = 24 days</div><div class=\"final-answer\">Final Answer: 24 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 224 units. Since A and B together finish it in 14 days:</p><div class=\"formula-box\">A's rate + B's rate = 16 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Let B's rate be b; then A's rate is 16 − b. Half the work is 112 units.</p><div class=\"formula-box\">3 <sup>1</sup>/<sub>2</sub>(16 − b) + 11 <sup>1</sup>/<sub>2</sub>b = 112<br>56 − 3.5b + 11.5b = 112<br>8b = 56 ⇒ b = 7</div><div class=\"formula-box\">B's time = 224/7 = 32 days</div><div class=\"final-answer\">Final Answer: 32 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 75 units. At normal efficiency, A and B together do 75/5 = 15 units/day.</p><p class=\"solution-step\">Let A's normal rate be x, so B's normal rate is 15 − x.</p><div class=\"formula-box\">At changed efficiencies: 2x + (15 − x)/3 = 75/3 = 25</div><div class=\"formula-box\">2x + 5 − x/3 = 25<br>5x/3 = 20 ⇒ x = 12 units/day</div><p class=\"solution-step\">Therefore A's normal time is 75/12 days.</p><div class=\"final-answer\">Final Answer: 25/4 days = 6 <sup>1</sup>/<sub>4</sub> days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 20 units. Then A + B = 20/5 = 4 units/day.</p><p class=\"solution-step\">Let A's rate be x, so B's rate is 4 − x. Under the changed efficiencies, the combined rate is 20/4 = 5 units/day.</p><div class=\"formula-box\">2x + (4 − x)/2 = 5<br>2x + 2 − x/2 = 5<br>3x/2 = 3 ⇒ x = 2</div><p class=\"solution-step\">Thus B's rate is also 2 units/day.</p><div class=\"formula-box\">A's time = 20/2 = 10 days<br>B's time = 20/2 = 10 days</div><div class=\"final-answer\">Final Answer: A = 10 days, B = 10 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 12 units.</p><div class=\"formula-box\">A's rate = 12/4 = 3 units/hour<br>B + C = 12/3 = 4 units/hour<br>A + C = 12/2 = 6 units/hour</div><p class=\"solution-step\"><strong>Step 2:</strong> Since A = 3, from A + C = 6 we get C = 3. Therefore B = 4 − 3 = 1 unit/hour.</p><div class=\"formula-box\">B's time = 12/1 = 12 hours</div><div class=\"final-answer\">Final Answer: 12 hours</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> A completes 1/3 in 9 days, so A's daily rate is 1/27 of the wall.</p><p class=\"solution-step\">B completes 2/3 in 9 days, so B's daily rate is 2/27.</p><div class=\"formula-box\">Combined rate = 1/27 + 2/27 = 3/27 = 1/9</div><div class=\"final-answer\">Final Answer: 9 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> A's daily work is (13/56)/111 and B's daily work is (43/56)/111.</p><div class=\"formula-box\">Combined daily work = 13/(56 × 111) + 43/(56 × 111)<br>= 56/(56 × 111) = 1/111</div><p class=\"solution-step\">Hence together they complete 1/111 of the work each day.</p><div class=\"final-answer\">Final Answer: 111 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> A completes 1/4 in 21 days.</p><div class=\"formula-box\">A's rate = (1/4)/21 = 1/84</div><p class=\"solution-step\">B completes 1/4 in 7 days.</p><div class=\"formula-box\">B's rate = (1/4)/7 = 1/28 = 3/84</div><p class=\"solution-step\">Combined rate = 4/84 = 1/21.</p><div class=\"final-answer\">Final Answer: 21 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 48 units.</p><div class=\"formula-box\">A + B = 48/12 = 4 units/day<br>B + C = 48/16 = 3 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Let B's rate be b. Then A = 4 − b and C = 3 − b.</p><div class=\"formula-box\">5A + 7B + 13C = 48<br>5(4 − b) + 7b + 13(3 − b) = 48<br>59 − 11b = 48 ⇒ b = 1</div><p class=\"solution-step\">Therefore A = 3 and C = 2 units/day.</p><div class=\"formula-box\">A's time = 48/3 = 16 days<br>B's time = 48/1 = 48 days<br>C's time = 48/2 = 24 days</div><div class=\"final-answer\">Final Answer: A = 16 days, B = 48 days, C = 24 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 60 units.</p><div class=\"formula-box\">A + B = 60/12 = 5 units/day<br>B + C = 60/(20/3) = 9 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> Let B's rate be b. Then A = 5 − b and C = 9 − b.</p><div class=\"formula-box\">3A + 4B + 7C = 60<br>3(5 − b) + 4b + 7(9 − b) = 60<br>78 − 6b = 60 ⇒ b = 3</div><p class=\"solution-step\">Thus A = 2 and C = 6 units/day.</p><div class=\"formula-box\">A's time = 60/2 = 30 days<br>B's time = 60/3 = 20 days<br>C's time = 60/6 = 10 days</div><div class=\"final-answer\">Final Answer: A = 30 days, B = 20 days, C = 10 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 30 units. Let A and B work at a and b units/day.</p><div class=\"formula-box\">2a + 9b = 30<br>3a + 6b = 30</div><p class=\"solution-step\"><strong>Step 2:</strong> Subtracting the first equation from the second gives a − 3b = 0, so a = 3b.</p><div class=\"formula-box\">2(3b) + 9b = 30<br>15b = 30 ⇒ b = 2 and a = 6</div><div class=\"formula-box\">A's time = 30/6 = 5 days<br>B's time = 30/2 = 15 days</div><div class=\"final-answer\">Final Answer: A = 5 days, B = 15 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as 240 units. A's rate is 240/80 = 3 units/day.</p><p class=\"solution-step\">A works for 10 days, so A completes 30 units. B completes the remaining 210 units in 42 days.</p><div class=\"formula-box\">B's rate = 210/42 = 5 units/day</div><p class=\"solution-step\">Together their rate is 3 + 5 = 8 units/day.</p><div class=\"formula-box\">Time together = 240/8 = 30 days</div><div class=\"final-answer\">Final Answer: 30 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(45, 40) = 360 units.</p><div class=\"formula-box\">A's rate = 8 units/day; B's rate = 9 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> B works alone for the last 23 days and completes 23 × 9 = 207 units.</p><p class=\"solution-step\">Therefore A and B together completed 360 − 207 = 153 units.</p><div class=\"formula-box\">Days worked together = 153/(8 + 9) = 153/17 = 9 days</div><div class=\"final-answer\">Final Answer: A left after 9 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(20, 30) = 60 units.</p><div class=\"formula-box\">A's rate = 3 units/day; B's rate = 2 units/day<br>Work in each two-day cycle = 5 units</div><p class=\"solution-step\"><strong>Step 2:</strong> In 22 days, there are 11 complete cycles, so 55 units are completed.</p><p class=\"solution-step\">On day 23, A completes 3 more units, leaving 2 units. B completes these 2 units on day 24.</p><div class=\"final-answer\">Final Answer: 24 days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(20, 25) = 100 units.</p><div class=\"formula-box\">A's rate = 5 units/day; B's rate = 4 units/day<br>Work in each two-day cycle = 9 units</div><p class=\"solution-step\"><strong>Step 2:</strong> In 22 days, 11 cycles complete 11 × 9 = 99 units.</p><p class=\"solution-step\">One unit remains. A works next and completes 5 units per day.</p><div class=\"formula-box\">Time for the last unit = 1/5 day<br>Total time = 22 <sup>1</sup>/<sub>5</sub> days</div><div class=\"final-answer\">Final Answer: 22 <sup>1</sup>/<sub>5</sub> days</div>",
+      "<p class=\"solution-step\"><strong>Step 1:</strong> Take total work as LCM(12, 15, 20) = 60 units.</p><div class=\"formula-box\">A's rate = 5, B's rate = 4, C's rate = 3 units/day<br>AB = 9, AC = 8, BC = 7 units/day</div><p class=\"solution-step\"><strong>Step 2:</strong> To minimize time, use the two fastest pairs, AB and AC, alternately so that the same pair is not repeated on consecutive days.</p><div class=\"formula-box\">Work in 6 days = 3(AB + AC) = 3(9 + 8) = 51 units</div><p class=\"solution-step\">Even the best possible six-day schedule completes only 51 units, so at least 7 days are necessary.</p><p class=\"solution-step\">On day 7, pair AB completes the remaining 9 units exactly.</p><div class=\"final-answer\">Final Answer: 7 days</div>"
+];
+
+    questions.forEach((q, i) => { q.solution = solutionText[i] || 'Solution not provided.'; });
+    let current = 0, submitted = false, secondsLeft = 40 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function mathFractions(s){let v=String(s ?? "");v=v.replace(/(\d+)\s*<sup>(\d+)<\/sup>\/<sub>(\d+)<\/sub>/g,'<span class="mixed-number">$1 <span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span></span>');return v.replace(/(^|[^A-Za-z0-9.²>])([A-Za-z0-9.²]+)\/([A-Za-z0-9.²]+)/g,'$1<span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span>');}
+    function rich(s){return mathFractions(hasHtml(s) ? String(s) : esc(s));}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function correctText(q){return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';}
+    function control(q,i){if(qType(q)==="mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>').join('')+'</div>'; return '<input type="number" min="1" step="1" inputmode="numeric" class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type a natural number" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){const sol=q.solution || "Solution not provided.";return rich(sol);}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+rich(qText(q))+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+rich(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(qType(q)==='mcq')return Number(ans)===Number(q.answer);const accepted=(q.accepted&&q.accepted.length?q.accepted:[qAnswer(q)]).map(norm);return accepted.includes(norm(ans));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';host.scrollTop=0;if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
+    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    renderQuestion();tick();setInterval(tick,1000);
+  </script>
+</body>
+</html>
