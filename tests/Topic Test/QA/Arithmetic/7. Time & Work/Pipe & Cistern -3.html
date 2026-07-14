@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipe &amp; Cistern -3</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}main>section>#result{flex:0 0 auto}main>section>#testForm{flex:1 1 auto;min-height:0;overflow:hidden}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 24px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    .formula-box{margin:14px 0;padding:12px 14px;border:2px solid #2d7fb8;background:#f4fbff;font-size:17px;font-weight:700}
+    .shortcut-box{margin:14px 0;padding:12px 14px;border-left:5px solid #60b947;background:#f5fbf2}
+    .final-answer{margin-top:14px;padding:10px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}
+    .solution-step{margin:0 0 10px}
+    .mixed-number{display:inline-flex;align-items:center;gap:.18em;white-space:nowrap}.math-frac{display:inline-grid;grid-template-rows:auto auto;min-width:1.35em;margin:0 .1em;vertical-align:middle;text-align:center;font-size:.82em;line-height:1}.math-frac .frac-num{padding:0 .12em .08em;border-bottom:1.5px solid currentColor}.math-frac .frac-den{padding:.08em .12em 0}.option .math-frac{font-size:.78em}.formula-box .math-frac,.final-answer .math-frac{font-size:.86em}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Pipe &amp; Cistern -3</h1><div class="meta">Quantitative Aptitude | 17 Questions | 30 Minutes | 12 TITA + 5 MCQ | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">30:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+      {
+            "q": "Taps A and B can fill a tank in 10 hours and 12 hours, respectively. An outlet tap C is also connected to the tank. If all three taps are opened together, the tank gets filled in 30 hours. In how many hours can tap C alone empty the full tank?",
+            "type": "mcq",
+            "options": [
+                  "6 <sup>2</sup>/<sub>3</sub> hours",
+                  "7 <sup>1</sup>/<sub>2</sub> hours",
+                  "8 hours",
+                  "10 hours"
+            ],
+            "answer": 0,
+            "source": "Pipe & Cistern | MCQ | Source Question 39"
+      },
+      {
+            "q": "Taps A and B can fill a tank in 1 hour and 75 minutes, respectively. An outlet tap C is also connected to the tank. If all three taps are opened together, the tank gets filled in 50 minutes. In how many minutes can tap C alone empty the full tank?",
+            "type": "text",
+            "answer": "100",
+            "accepted": [
+                  "100"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 40"
+      },
+      {
+            "q": "Two inlet pipes can fill a tank separately in 5 hours and 20 hours. A third pipe empties the tank. Because the operator does not know that the outlet pipe is open, the tank takes 1 hour longer than the normal time to fill. In how many hours can the outlet pipe alone empty the full tank?",
+            "type": "text",
+            "answer": "20",
+            "accepted": [
+                  "20"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 41"
+      },
+      {
+            "q": "Two inlet pipes can fill a tank separately in 14 hours and 16 hours. Both are opened together, but because of a leak at the bottom, the tank takes 92 minutes longer than the normal filling time. When the tank is full, in how many hours can the leak alone empty it?",
+            "type": "mcq",
+            "options": [
+                  "43 <sup>19</sup>/<sub>23</sub> hours",
+                  "42 <sup>20</sup>/<sub>23</sub> hours",
+                  "44 hours",
+                  "40 hours"
+            ],
+            "answer": 0,
+            "source": "Pipe & Cistern | MCQ | Source Question 42"
+      },
+      {
+            "q": "Three pipes are connected to a tank. Two of them can fill the tank in 30 hours and 20 hours, respectively, while the third pipe drains water at 45 litres per minute. If all three pipes are opened together, the tank gets filled in 15 hours. Find the capacity of the tank in litres.",
+            "type": "text",
+            "answer": "162000",
+            "accepted": [
+                  "162000"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 43"
+      },
+      {
+            "q": "A tank has 8 taps. Some taps fill the tank and the remaining taps empty it. Each inlet tap can fill the tank in 12 hours, and each outlet tap can empty it in 36 hours. If all 8 taps are opened together, the tank gets filled in 3 hours. Find the number of inlet and outlet taps.",
+            "type": "mcq",
+            "options": [
+                  "5 inlet taps and 3 outlet taps",
+                  "4 inlet taps and 4 outlet taps",
+                  "6 inlet taps and 2 outlet taps",
+                  "3 inlet taps and 5 outlet taps"
+            ],
+            "answer": 0,
+            "source": "Pipe & Cistern | MCQ | Source Question 44"
+      },
+      {
+            "q": "A tank has 12 taps. Some taps fill the tank and the remaining taps empty it. Each inlet tap can fill the tank in 6 hours, and each outlet tap can empty it in 12 hours. If all 12 taps are opened together, the tank gets filled in 4 hours. How many inlet taps are there?",
+            "type": "text",
+            "answer": "5",
+            "accepted": [
+                  "5"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 45"
+      },
+      {
+            "q": "Pipes A and B can fill a tank separately in 10 hours and 15 hours, while pipe C can empty it in 20 hours. A and B are opened together, but C is accidentally left open. At the time when the tank should normally have been full, the mistake is discovered and C is closed. How much additional time will A and B take to fill the remaining part of the tank?",
+            "type": "mcq",
+            "options": [
+                  "1 <sup>4</sup>/<sub>5</sub> hours",
+                  "1 <sup>1</sup>/<sub>2</sub> hours",
+                  "2 hours",
+                  "2 <sup>1</sup>/<sub>5</sub> hours"
+            ],
+            "answer": 0,
+            "source": "Pipe & Cistern | MCQ | Source Question 46 (wording clarified)"
+      },
+      {
+            "q": "A cold-water pipe and a hot-water pipe can fill a tank separately in 10 minutes and 15 minutes. Both pipes are opened together, and a person returns at the time when the tank should normally have been full. He then discovers that an outlet pipe had also been left open. After closing the outlet, the tank gets filled in the next 4 minutes. In how many minutes can the outlet pipe alone empty the full tank?",
+            "type": "text",
+            "answer": "9",
+            "accepted": [
+                  "9"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 47"
+      },
+      {
+            "q": "Pipes A and B can fill a tank separately in 20 minutes and 30 minutes, while pipe C empties it. A and B are opened together, and a person returns at the time when the tank should normally have been full. He discovers that C had also been left open. After closing C, the tank gets filled in the next 3 minutes. In how many minutes can C alone empty the full tank?",
+            "type": "text",
+            "answer": "48",
+            "accepted": [
+                  "48"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 48"
+      },
+      {
+            "q": "A monkey has to climb a 100-metre-high pole. In the first minute it climbs 6 metres, and in the second minute it slips down 4 metres. This pattern continues. In how many minutes will the monkey reach the top?",
+            "type": "text",
+            "answer": "95",
+            "accepted": [
+                  "95"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 49"
+      },
+      {
+            "q": "A monkey has to climb a 60-metre-high pole. In the first minute it climbs 5 metres, and in the second minute it slips down 4 metres. This pattern continues. In how many minutes will the monkey reach the top?",
+            "type": "text",
+            "answer": "111",
+            "accepted": [
+                  "111"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 50"
+      },
+      {
+            "q": "A tank has three pipes A, B and C. Pipes A and B can fill the tank separately in 20 minutes and 30 minutes, while pipe C can empty it in 15 minutes. If A, B and C are opened one after another for 1 minute each in the repeating order A, B, C, how many minutes will the tank take to fill?",
+            "type": "text",
+            "answer": "180",
+            "accepted": [
+                  "180"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 51"
+      },
+      {
+            "q": "Pipes A and B can fill a tank separately in 10 hours and 20 hours, while pipe C can empty it in 12 hours. If A, B and C are opened one after another for 1 hour each in the repeating order A, B, C, how many hours will the tank take to fill?",
+            "type": "text",
+            "answer": "45",
+            "accepted": [
+                  "45"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 52"
+      },
+      {
+            "q": "A tank has three pipes A, B and C. Pipes A and B can fill the tank separately in 20 hours and 30 hours, while pipe C can empty it in 60 hours. During the first hour A and C are opened together; during the second hour B and C are opened together. This two-hour pattern is repeated. In how many hours will the tank be filled?",
+            "type": "text",
+            "answer": "40",
+            "accepted": [
+                  "40"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 53"
+      },
+      {
+            "q": "Three pipes with diameters 1 cm, 2 cm and 4 cm are connected to a tank. The largest pipe alone can fill the tank in 1 <sup>1</sup>/<sub>20</sub> hours. The quantity of water flowing through each pipe is proportional to the square of its diameter. In how much time will all three pipes together fill the tank?",
+            "type": "mcq",
+            "options": [
+                  "48 minutes",
+                  "50 minutes",
+                  "45 minutes",
+                  "54 minutes"
+            ],
+            "answer": 0,
+            "source": "Pipe & Cistern | MCQ | Source Question 54"
+      },
+      {
+            "q": "Pipe A alone takes 3 minutes more than the time taken by A and B together to fill a tank. Pipe B alone takes 21 <sup>1</sup>/<sub>3</sub> minutes more than the time taken by A and B together. In how many minutes will A and B together fill the tank?",
+            "type": "text",
+            "answer": "8",
+            "accepted": [
+                  "8"
+            ],
+            "source": "Pipe & Cistern | TITA | Source Question 55"
+      }
+]
+
+    const solutionText = [
+      "<p class=\"solution-step\">Let the outlet tap C empty the tank in x hours.</p><div class=\"formula-box\">1/10 + 1/12 - 1/x = 1/30</div><p class=\"solution-step\">The two inlet rates add to 11/60, while the net filling rate is 1/30 = 2/60.</p><div class=\"formula-box\">1/x = 11/60 - 2/60 = 9/60 = 3/20</div><div class=\"final-answer\">Final Answer: 20/3 hours = 6 <sup>2</sup>/<sub>3</sub> hours</div>",
+      "<p class=\"solution-step\">Convert all rates into tanks per hour.</p><div class=\"formula-box\">A = 1 tank/hour<br>B = 60/75 = 4/5 tank/hour<br>Net rate = 60/50 = 6/5 tank/hour</div><p class=\"solution-step\">Therefore the outlet rate is:</p><div class=\"formula-box\">C = 1 + 4/5 - 6/5 = 3/5 tank/hour</div><p class=\"solution-step\">Time taken by C alone:</p><div class=\"formula-box\">1 ÷ (3/5) = 5/3 hours = 100 minutes</div><div class=\"final-answer\">Final Answer: 100 minutes</div>",
+      "<p class=\"solution-step\">Without the outlet, the two inlet pipes together fill at:</p><div class=\"formula-box\">1/5 + 1/20 = 1/4 tank/hour</div><p class=\"solution-step\">So the normal filling time is 4 hours. Because of the outlet, the tank takes 1 hour longer, i.e. 5 hours.</p><div class=\"formula-box\">Outlet rate = 1/4 - 1/5 = 1/20 tank/hour</div><div class=\"final-answer\">Final Answer: 20 hours</div>",
+      "<p class=\"solution-step\">The normal combined rate of the two inlet pipes is:</p><div class=\"formula-box\">1/14 + 1/16 = 15/112 tank/hour</div><p class=\"solution-step\">Normal filling time = 112/15 hours = 7 hours 28 minutes. The leak adds 92 minutes, so the actual filling time is 9 hours.</p><div class=\"formula-box\">Leak rate = 15/112 - 1/9 = (135 - 112)/1008 = 23/1008</div><p class=\"solution-step\">Therefore the leak alone empties the tank in:</p><div class=\"formula-box\">1008/23 hours = 43 <sup>19</sup>/<sub>23</sub> hours</div><div class=\"final-answer\">Final Answer: 43 <sup>19</sup>/<sub>23</sub> hours</div>",
+      "<p class=\"solution-step\">Let the capacity of the tank be C litres. Work in litres per hour.</p><div class=\"formula-box\">First inlet = C/30<br>Second inlet = C/20<br>Outlet = 45 × 60 = 2700 litres/hour<br>Net filling rate = C/15</div><p class=\"solution-step\">Therefore:</p><div class=\"formula-box\">C/30 + C/20 - 2700 = C/15</div><p class=\"solution-step\">Since 1/30 + 1/20 - 1/15 = 1/60:</p><div class=\"formula-box\">C/60 = 2700 ⇒ C = 162000</div><div class=\"final-answer\">Final Answer: 162000 litres</div>",
+      "<p class=\"solution-step\">Let x be the number of inlet taps and y the number of outlet taps.</p><div class=\"formula-box\">x + y = 8</div><p class=\"solution-step\">The net filling rate is 1/3 tank per hour.</p><div class=\"formula-box\">x/12 - y/36 = 1/3</div><p class=\"solution-step\">Multiply by 36:</p><div class=\"formula-box\">3x - y = 12</div><p class=\"solution-step\">Using x + y = 8 gives 4x = 20, so x = 5 and y = 3.</p><div class=\"final-answer\">Final Answer: 5 inlet taps and 3 outlet taps</div>",
+      "<p class=\"solution-step\">Let x be the number of inlet taps and 12 - x the number of outlet taps.</p><div class=\"formula-box\">x/6 - (12 - x)/12 = 1/4</div><p class=\"solution-step\">Multiply by 12:</p><div class=\"formula-box\">2x - (12 - x) = 3<br>3x = 15</div><div class=\"final-answer\">Final Answer: 5 inlet taps</div>",
+      "<p class=\"solution-step\">The normal combined filling rate of A and B is:</p><div class=\"formula-box\">1/10 + 1/15 = 1/6 tank/hour</div><p class=\"solution-step\">So the tank should normally be full in 6 hours. With C accidentally open, the net rate is:</p><div class=\"formula-box\">1/10 + 1/15 - 1/20 = 7/60</div><p class=\"solution-step\">Work completed in 6 hours:</p><div class=\"formula-box\">6 × 7/60 = 7/10</div><p class=\"solution-step\">Remaining work = 3/10. After C is closed, A and B fill at 1/6 tank per hour.</p><div class=\"formula-box\">Additional time = (3/10) ÷ (1/6) = 9/5 hours</div><div class=\"final-answer\">Final Answer: 1 <sup>4</sup>/<sub>5</sub> hours</div>",
+      "<p class=\"solution-step\">The two inlet pipes together fill at:</p><div class=\"formula-box\">1/10 + 1/15 = 1/6 tank/minute</div><p class=\"solution-step\">They should normally fill the tank in 6 minutes. After the outlet is closed, they take 4 more minutes, so the remaining work is:</p><div class=\"formula-box\">4 × 1/6 = 2/3</div><p class=\"solution-step\">Thus only 1/3 of the tank was filled during the first 6 minutes. The net rate with the outlet open was 1/18.</p><div class=\"formula-box\">Outlet rate = 1/6 - 1/18 = 1/9</div><div class=\"final-answer\">Final Answer: 9 minutes</div>",
+      "<p class=\"solution-step\">A and B together fill at:</p><div class=\"formula-box\">1/20 + 1/30 = 1/12 tank/minute</div><p class=\"solution-step\">They should normally fill the tank in 12 minutes. After C is closed, they take another 3 minutes, so the remaining work is:</p><div class=\"formula-box\">3 × 1/12 = 1/4</div><p class=\"solution-step\">Hence 3/4 of the tank was filled in the first 12 minutes, giving a net rate of 1/16.</p><div class=\"formula-box\">C's rate = 1/12 - 1/16 = 1/48</div><div class=\"final-answer\">Final Answer: 48 minutes</div>",
+      "<p class=\"solution-step\">In every two minutes, the monkey gains:</p><div class=\"formula-box\">6 - 4 = 2 metres</div><p class=\"solution-step\">After 94 minutes, i.e. 47 complete cycles, it is at 94 metres.</p><p class=\"solution-step\">In the 95th minute, it climbs the remaining 6 metres and reaches the top before slipping.</p><div class=\"final-answer\">Final Answer: 95 minutes</div>",
+      "<p class=\"solution-step\">In every two minutes, the monkey gains:</p><div class=\"formula-box\">5 - 4 = 1 metre</div><p class=\"solution-step\">After 110 minutes, i.e. 55 complete cycles, it is at 55 metres.</p><p class=\"solution-step\">In the 111th minute, it climbs 5 metres and reaches the top.</p><div class=\"final-answer\">Final Answer: 111 minutes</div>",
+      "<p class=\"solution-step\">The work done in one 3-minute cycle A, B, C is:</p><div class=\"formula-box\">1/20 + 1/30 - 1/15 = (3 + 2 - 4)/60 = 1/60</div><p class=\"solution-step\">Therefore 60 such cycles are required.</p><div class=\"formula-box\">Total time = 60 × 3 = 180 minutes</div><div class=\"final-answer\">Final Answer: 180 minutes</div>",
+      "<p class=\"solution-step\">The work done in one 3-hour cycle A, B, C is:</p><div class=\"formula-box\">1/10 + 1/20 - 1/12 = (6 + 3 - 5)/60 = 1/15</div><p class=\"solution-step\">Therefore 15 such cycles are required.</p><div class=\"formula-box\">Total time = 15 × 3 = 45 hours</div><div class=\"final-answer\">Final Answer: 45 hours</div>",
+      "<p class=\"solution-step\">During the first hour, A and C work together:</p><div class=\"formula-box\">A + C = 1/20 - 1/60 = 1/30</div><p class=\"solution-step\">During the second hour, B and C work together:</p><div class=\"formula-box\">B + C = 1/30 - 1/60 = 1/60</div><p class=\"solution-step\">Work completed in each 2-hour cycle:</p><div class=\"formula-box\">1/30 + 1/60 = 1/20</div><p class=\"solution-step\">Twenty cycles are required.</p><div class=\"formula-box\">Total time = 20 × 2 = 40 hours</div><div class=\"final-answer\">Final Answer: 40 hours</div>",
+      "<p class=\"solution-step\">Flow is proportional to the square of the diameter.</p><div class=\"formula-box\">Rate ratio = 1² : 2² : 4² = 1 : 4 : 16</div><p class=\"solution-step\">The largest pipe alone fills the tank in 1 <sup>1</sup>/<sub>20</sub> hours = 21/20 hours, so its rate is 20/21 tank per hour.</p><p class=\"solution-step\">The largest pipe represents 16 rate-parts. Therefore one part is 5/84, and all three pipes together represent 21 parts.</p><div class=\"formula-box\">Combined rate = 21 × 5/84 = 5/4 tank/hour</div><div class=\"formula-box\">Time = 1 ÷ (5/4) = 4/5 hour = 48 minutes</div><div class=\"final-answer\">Final Answer: 48 minutes</div>",
+      "<p class=\"solution-step\">Let A and B together fill the tank in x minutes.</p><div class=\"formula-box\">A alone = x + 3 minutes<br>B alone = x + 21 <sup>1</sup>/<sub>3</sub> = x + 64/3 minutes</div><p class=\"solution-step\">Their rates satisfy:</p><div class=\"formula-box\">1/(x + 3) + 1/(x + 64/3) = 1/x</div><p class=\"solution-step\">For two workers, this simplifies to:</p><div class=\"formula-box\">x² = 3 × 64/3 = 64</div><div class=\"final-answer\">Final Answer: 8 minutes</div>"
+]
+
+    questions.forEach((q, i) => { q.solution = solutionText[i] || 'Solution not provided.'; });
+    let current = 0, submitted = false, secondsLeft = 30 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function mathFractions(s){let v=String(s ?? "");v=v.replace(/(\d+)\s*<sup>(\d+)<\/sup>\/<sub>(\d+)<\/sub>/g,'<span class="mixed-number">$1 <span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span></span>');return v.replace(/(^|[^A-Za-z0-9.²>])([A-Za-z0-9.²]+)\/([A-Za-z0-9.²]+)/g,'$1<span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span>');}
+    function rich(s){return mathFractions(hasHtml(s) ? String(s) : esc(s));}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function correctText(q){return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';}
+    function control(q,i){if(qType(q)==="mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>').join('')+'</div>'; return '<input type="number" min="1" step="1" inputmode="numeric" class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type a natural number" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){const sol=q.solution || "Solution not provided.";return rich(sol);}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+rich(qText(q))+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+rich(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(qType(q)==='mcq')return Number(ans)===Number(q.answer);const accepted=(q.accepted&&q.accepted.length?q.accepted:[qAnswer(q)]).map(norm);return accepted.includes(norm(ans));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';host.scrollTop=0;if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
+    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    renderQuestion();tick();setInterval(tick,1000);
+  </script>
+</body>
+</html>
