@@ -1942,6 +1942,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 45,
     "questions": 20
+  },
+  {
+    "title": "Time & Work Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -1.html",
+    "original": "Time & Work Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 13
   }
 ];
 
