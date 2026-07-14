@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Sheet L2 - Time &amp; Work, Pipe &amp; Cistern Test -4</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}main>section>#result{flex:0 0 auto}main>section>#testForm{flex:1 1 auto;min-height:0;overflow:hidden}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 24px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    .formula-box{margin:14px 0;padding:12px 14px;border:2px solid #2d7fb8;background:#f4fbff;font-size:17px;font-weight:700}
+    .shortcut-box{margin:14px 0;padding:12px 14px;border-left:5px solid #60b947;background:#f5fbf2}
+    .final-answer{margin-top:14px;padding:10px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}
+    .solution-step{margin:0 0 10px}
+    .mixed-number{display:inline-flex;align-items:center;gap:.18em;white-space:nowrap}.math-frac{display:inline-grid;grid-template-rows:auto auto;min-width:1.35em;margin:0 .1em;vertical-align:middle;text-align:center;font-size:.82em;line-height:1}.math-frac .frac-num{padding:0 .12em .08em;border-bottom:1.5px solid currentColor}.math-frac .frac-den{padding:.08em .12em 0}.option .math-frac{font-size:.78em}.formula-box .math-frac,.final-answer .math-frac{font-size:.86em}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Home Sheet L2 - Time &amp; Work, Pipe &amp; Cistern Test -4</h1><div class="meta">Quantitative Aptitude | 25 Questions | 45 Minutes | 3 TITA + 22 MCQ | +3 correct, -1 MCQ wrong, 0 TITA wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">45:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+      {
+            "q": "Pipes A and B fill a cistern in 7.5 minutes and 5 minutes, while pipe C empties 60% of the cistern in 9 minutes. All three are opened together for one minute, after which C is closed. How many more minutes will the cistern take to fill?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "2 <sup>1</sup>/<sub>5</sub> minutes",
+                  "3 <sup>1</sup>/<sub>5</sub> minutes",
+                  "2.5 minutes",
+                  "None of these"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "Three taps fill a tank separately in p minutes and q minutes, while a third tap empties it in r minutes. Which condition ensures the tank fills when all three are opened together?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "p + q > r",
+                  "p − q < r",
+                  "pq < qr + rp",
+                  "p + q > r/2"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "Three friends Asit, Arnold and Afzal complete chores together. Their joint time is 6 hours less than Asit’s individual time, 1 hour less than Arnold’s time, and half of Afzal’s individual time. How long do they take together?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "20 minutes",
+                  "30 minutes",
+                  "40 minutes",
+                  "50 minutes"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A, B and C can independently finish a task in 6, 8 and 12 hours. C works for 2 hours, then A and B work together for 2 hours, after which B stops. How many more hours must A work alone?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "2",
+                  "1.5",
+                  "3",
+                  "4"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A contractor plans to complete a project in 56 days using 100 men. After 46 days, 100 additional men are deployed and the project is completed on time. If the additional men had not been deployed, by how many days would the project have been delayed?",
+            "type": "text",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "answer": "10",
+            "accepted": [
+                  "10"
+            ]
+      },
+      {
+            "q": "A cistern is filled by two pipes. The smaller pipe alone takes 30 minutes longer than the larger pipe. It also takes 40 minutes longer than the two pipes working together. How long does the larger pipe take alone?",
+            "type": "text",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "answer": "30",
+            "accepted": [
+                  "30"
+            ]
+      },
+      {
+            "q": "One man does in one day the work a woman does in two days. A child does one-third of a woman’s daily work. An estate owner hires 39 workers in the ratio men:women:children = 6:5:2 and pays ₹1113 total daily wages proportional to work. What is one child’s daily wage?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "₹14",
+                  "₹5",
+                  "₹20",
+                  "₹7"
+            ],
+            "answer": 3
+      },
+      {
+            "q": "Taps A and B fill a tank in 15 and 20 minutes, while tap C empties it in 30 minutes. They operate one after another for one minute each in the order A, B, C, repeating. Starting with A, when will the empty tank be full?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "35 minutes",
+                  "34 <sup>1</sup>/<sub>2</sub> minutes",
+                  "34 <sup>1</sup>/<sub>3</sub> minutes",
+                  "Never"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A full 100 m-high tank has five identical leaks at heights 20 m, 40 m, 60 m and 80 m from the top, and one at the bottom. Each leak alone can empty the full tank in 200 hours. Approximately how long will the tank take to empty?",
+            "type": "text",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "answer": "91.33",
+            "accepted": [
+                  "91.33",
+                  "91.333",
+                  "91.3333",
+                  "274/3"
+            ]
+      },
+      {
+            "q": "Four tanks A, B, C and D each contain 1000 litres. Transfers occur simultaneously: A→B at 20 L/min, C→A at 90 L/min, A→D at 10 L/min, C→D at 50 L/min, B→C at 100 L/min, and D→B at 110 L/min. Which tank empties first, and after how many minutes?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "A, 16.66 min",
+                  "C, 20 min",
+                  "D, 20 min",
+                  "D, 25 min"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "Twenty-four men can complete a digging job in 16 days. Thirty-two women can complete it in 24 days. Sixteen men and sixteen women work for 12 days. How many additional men are required to finish the remaining work in 2 days?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "48",
+                  "24",
+                  "36",
+                  "16"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "In Bilaspur, 12 men and 18 boys build a health centre in 60 days at 7.5 hours/day. Harigarh’s centre is twice as large. One man does the work of two boys. How many boys must join 21 men to finish in 50 days at 9 hours/day?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "45 boys",
+                  "48 boys",
+                  "40 boys",
+                  "42 boys"
+            ],
+            "answer": 3
+      },
+      {
+            "q": "A contract is planned for 56 days with 104 men working 8 hours/day. After 30 days, only 2/5 of the work is complete. How many additional men are needed to finish on time if everyone now works 9 hours/day?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "56 men",
+                  "65 men",
+                  "46 men",
+                  "None of the above"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "Twelve men complete a work in 10 days and 20 women complete it in 12 days. Eight men and four women work for 9 days; then 10 more women join. How many more days are needed to finish?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "2 days",
+                  "5 days",
+                  "8 days",
+                  "10 days"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "P, Q and R can finish a work alone in 4, 5 and 8 days. Due to illness, their efficiencies fall by 40%, 50% and 20%, respectively. They work in pairs in the repeating order P+Q, Q+R, R+P. How long will the work take?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "4 <sup>1</sup>/<sub>2</sub> days",
+                  "4 <sup>3</sup>/<sub>8</sub> days",
+                  "4 <sup>1</sup>/<sub>4</sub> days",
+                  "4 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "Twenty pipes are connected to a tank. Each inlet fills it in 8 hours and each outlet empties it in 24 hours. With all pipes open, the empty tank overflows in 2 hours. How many pipes are inlets?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "4",
+                  "6",
+                  "8",
+                  "10"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "A woman takes twice as many days as a man to complete the same work. A contractor hires 90 workers with men:women = 7:11 and pays total daily wages of ₹13,750 in proportion to work. What is one woman’s daily wage?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "₹80",
+                  "₹90",
+                  "₹100",
+                  "₹110"
+            ],
+            "answer": 3
+      },
+      {
+            "q": "Tap A is 80% less efficient than tap B. Together they fill a tank in 60 hours. How long will tap A alone take?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "83.33 hours",
+                  "360 hours",
+                  "240 hours",
+                  "180 hours"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "Eighteen men complete a work in 12 days. Twenty-four women complete the same work in 18 days. Twelve men and twelve women work for 9 days. How many additional women are needed to finish the remaining work in one day?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "36",
+                  "72",
+                  "108",
+                  "None of these"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "Anand and Shiva can complete a work in 18 and 22 days. They start together, but Shiva leaves after some days and Anand finishes the remaining work in 14 days. After how many days did Shiva leave?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "14 days",
+                  "2.2 days",
+                  "35.5 days",
+                  "6.6 days"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "Sahil is twice as efficient as Giraj. Sahil builds a wall in 6 days and demolishes it in 4 days. Giraj alternates between building and demolishing on his successive workdays. Sahil works on odd-numbered days and Giraj on even-numbered days. Sahil starts by building. On which day will the wall be completed?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "11",
+                  "12",
+                  "13",
+                  "None of the above"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "A is 40% more efficient than B, and B is 20% more efficient than C. A takes 10 days less than B. A works alone for 10 days, then B alone for 15 days. How many days must C work alone to finish the remaining work?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "7.2 days",
+                  "8.5 days",
+                  "6.8 days",
+                  "None of these"
+            ],
+            "answer": 0
+      },
+      {
+            "q": "A skilled worker finishes a job in 15 hours and an unskilled worker in 60 hours. A nonzero number of each type work together and finish in 3 hours. If the total number of workers is odd, what is the minimum possible total?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "9",
+                  "11",
+                  "13",
+                  "15"
+            ],
+            "answer": 1
+      },
+      {
+            "q": "A can build a project in 10 days and B can destroy it in 15 days. A works alone for 3 days, then B alone for 3 days. Next, A and B work together for 3 days, after which A alone finishes the remainder in x days. Find x.",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "10 days",
+                  "7 days",
+                  "8 days",
+                  "12 days"
+            ],
+            "answer": 2
+      },
+      {
+            "q": "Four pipes A, B, C and D fill a cistern in 10, 15, 30 and 45 hours. A opens at 4:00 a.m., B at 6:00 a.m., C at 7:00 a.m. and D at 8:00 a.m. Approximately when will the cistern be full?",
+            "type": "mcq",
+            "source": "Home Sheet L2 | Time & Work, Pipe & Cistern",
+            "options": [
+                  "9:30 a.m.",
+                  "10:00 a.m.",
+                  "10:30 a.m.",
+                  "11:00 a.m."
+            ],
+            "answer": 1
+      }
+]
+
+    const solutionText = [
+      "<p class=\"solution-step\">Take tank capacity as 15 units. A fills 2 units/min, B fills 3 units/min, and C empties 1 unit/min.</p><p class=\"solution-step\">In the first minute, net work = 2+3−1 = 4 units, leaving 11 units.</p><div class=\"formula-box\">After C closes, A+B fill 5 units/min. Time = 11/5 = 2 1/5 minutes</div><div class=\"final-answer\">Final Answer: 2 <sup>1</sup>/<sub>5</sub> minutes</div>",
+      "<div class=\"formula-box\">Net filling requires 1/p + 1/q > 1/r</div><p class=\"solution-step\">Multiplying by pqr gives qr + pr > pq, or pq < qr + rp.</p><div class=\"final-answer\">Final Answer: pq < qr + rp</div>",
+      "<p class=\"solution-step\">Let their joint time be t hours. Then individual times are t+6, t+1 and 2t.</p><div class=\"formula-box\">1/(t+6) + 1/(t+1) + 1/(2t) = 1/t</div><p class=\"solution-step\">Solving gives 3t² + 7t − 6 = 0, so t=2/3 hour.</p><div class=\"final-answer\">Final Answer: 40 minutes</div>",
+      "<p class=\"solution-step\">C completes 2/12 = 1/6. A and B then complete 2(1/6+1/8)=7/12.</p><div class=\"formula-box\">Completed = 1/6 + 7/12 = 3/4; remaining = 1/4</div><div class=\"formula-box\">A alone time = (1/4)/(1/6) = 3/2 hours</div><div class=\"final-answer\">Final Answer: 1.5 hours</div>",
+      "<p class=\"solution-step\">After 46 days, 10 days remain. During those 10 days, 200 men finish the remaining work.</p><p class=\"solution-step\">The same remaining work would take 20 days for 100 men.</p><p class=\"solution-step\">Instead of finishing in 56 days, it would finish after 46+20=66 days.</p><div class=\"final-answer\">Final Answer: 10 days</div>",
+      "<p class=\"solution-step\">Let the larger pipe take t minutes, so the smaller takes t+30 minutes. Together they take t−10 minutes.</p><div class=\"formula-box\">1/t + 1/(t+30) = 1/(t-10)</div><p class=\"solution-step\">This simplifies to t² − 20t − 300 = 0, giving t=30.</p><div class=\"final-answer\">Final Answer: 30 minutes</div>",
+      "<p class=\"solution-step\">The numbers are 18 men, 15 women and 6 children. Their work rates are in the ratio 6:3:1.</p><div class=\"formula-box\">Total work-units = 18×6 + 15×3 + 6×1 = 159</div><p class=\"solution-step\">The 6 children together receive 6/159 of ₹1113 = ₹42.</p><div class=\"formula-box\">One child = 42/6 = ₹7</div><div class=\"final-answer\">Final Answer: ₹7</div>",
+      "<p class=\"solution-step\">In each 3-minute cycle, work done is 1/15 + 1/20 − 1/30 = 1/12.</p><p class=\"solution-step\">After 33 minutes, 11 cycles complete 11/12, leaving 1/12.</p><p class=\"solution-step\">Minute 34: A fills 1/15, leaving 1/60. B then fills the remainder in (1/60)/(1/20)=1/3 minute.</p><div class=\"final-answer\">Final Answer: 34 <sup>1</sup>/<sub>3</sub> minutes</div>",
+      "<p class=\"solution-step\">Each leak empties water at an equivalent vertical rate of 100/200 = 0.5 m per hour.</p><div class=\"formula-box\">Top 20 m: 5 leaks ⇒ 20/(2.5)=8 h<br>Next 20 m: 4 leaks ⇒ 20/2=10 h<br>Next: 3 leaks ⇒ 20/1.5=13.33 h<br>Next: 2 leaks ⇒ 20/1=20 h<br>Last: 1 leak ⇒ 20/0.5=40 h</div><div class=\"formula-box\">Total = 8 + 10 + 13.33 + 20 + 40 = 91.33 hours</div><div class=\"final-answer\">Final Answer: Approximately 91.33 hours</div>",
+      "<p class=\"solution-step\">Compute each tank’s net rate.</p><div class=\"formula-box\">A: +90−20−10 = +60 L/min<br>B: +20+110−100 = +30 L/min<br>C: +100−90−50 = −40 L/min<br>D: +10+50−110 = −50 L/min</div><p class=\"solution-step\">D loses fastest and empties in 1000/50=20 minutes.</p><div class=\"final-answer\">Final Answer: Tank D, 20 minutes</div>",
+      "<p class=\"solution-step\">Total work = 24×16 = 384 man-days. Since 32 women×24 days equals the same work, 1 man = 2 woman-days.</p><p class=\"solution-step\">Sixteen men + sixteen women = 16 + 8 = 24 men-equivalent. In 12 days they complete 288 man-days, leaving 96.</p><div class=\"formula-box\">(16+x + 8)×2 = 96 ⇒ x=24</div><div class=\"final-answer\">Final Answer: 24 additional men</div>",
+      "<p class=\"solution-step\">Replace 18 boys by 9 men. Bilaspur work = 21 men × 7.5 × 60.</p><p class=\"solution-step\">Harigarh work is twice this amount.</p><p class=\"solution-step\">Let a boys join 21 men. Their man-equivalent workforce is 21 + a/2.</p><div class=\"formula-box\">(21+a/2)×9×50 = 2×21×7.5×60</div><p class=\"solution-step\">Solving gives a=42.</p><div class=\"final-answer\">Final Answer: 42 boys</div>",
+      "<p class=\"solution-step\">The completed 2/5 equals 104×8×30 man-hours. The remaining 3/5 is therefore this amount multiplied by 3/2.</p><div class=\"formula-box\">Remaining work = 104×8×30×3/2</div><p class=\"solution-step\">There are 26 days left at 9 hours/day. Let additional men be a.</p><div class=\"formula-box\">(104+a)×9×26 = 104×8×30×3/2</div><p class=\"solution-step\">Solving gives a=56.</p><div class=\"final-answer\">Final Answer: 56 men</div>",
+      "<p class=\"solution-step\">One man’s rate is 1/120 and one woman’s rate is 1/240.</p><p class=\"solution-step\">Initial daily rate = 8/120 + 4/240 = 1/12. In 9 days they complete 3/4, leaving 1/4.</p><p class=\"solution-step\">After 10 women join, daily rate = 8/120 + 14/240 = 1/8.</p><div class=\"formula-box\">Time = (1/4)/(1/8)=2 days</div><div class=\"final-answer\">Final Answer: 2 days</div>",
+      "<p class=\"solution-step\">Take total work as 40 units. Normal daily rates are P=10, Q=8, R=5.</p><p class=\"solution-step\">Reduced rates are P=6, Q=4, R=4.</p><div class=\"formula-box\">Day 1 P+Q=10 units<br>Day 2 Q+R=8<br>Day 3 R+P=10<br>Day 4 P+Q=10</div><p class=\"solution-step\">After 4 days, 38 units are complete. Q+R finish the remaining 2 units at 8 units/day in 1/4 day.</p><div class=\"final-answer\">Final Answer: 4 <sup>1</sup>/<sub>4</sub> days</div>",
+      "<p class=\"solution-step\">Let x be inlet pipes and 20−x outlet pipes.</p><div class=\"formula-box\">x/8 - (20-x)/24 = 1/2</div><p class=\"solution-step\">Multiplying by 24 gives 3x−20+x=12, so x=8.</p><div class=\"final-answer\">Final Answer: 8 inlet pipes</div>",
+      "<p class=\"solution-step\">There are 35 men and 55 women. A man’s daily work is twice a woman’s, so wage ratio per worker is 2:1.</p><div class=\"formula-box\">Total wage-units = 35×2 + 55×1 = 125</div><div class=\"formula-box\">One woman’s wage = 13,750/125 = ₹110</div><div class=\"final-answer\">Final Answer: ₹110</div>",
+      "<p class=\"solution-step\">If B’s efficiency is 1 unit/hour, A’s is 0.2 unit/hour. Together they work at 1.2 units/hour.</p><p class=\"solution-step\">In 60 hours, tank capacity is 72 units.</p><div class=\"formula-box\">A alone time = 72/0.2 = 360 hours</div><div class=\"final-answer\">Final Answer: 360 hours</div>",
+      "<p class=\"solution-step\">From 18 men×12 days = 24 women×18 days, one man equals two women.</p><p class=\"solution-step\">Twelve men + twelve women = 24+12=36 women-equivalent. In 9 days they complete 324 woman-days.</p><p class=\"solution-step\">Total work = 24×18=432 woman-days, leaving 108.</p><p class=\"solution-step\">Current 12 men+12 women already equal 36 women, so additional women needed =108−36=72.</p><div class=\"final-answer\">Final Answer: 72 women</div>",
+      "<p class=\"solution-step\">Anand works a total of 14 days after Shiva leaves plus the common working time x. Shiva works only x days.</p><div class=\"formula-box\">(x+14)/18 + x/22 = 1</div><p class=\"solution-step\">Solving gives x = 11/5 = 2.2 days.</p><div class=\"final-answer\">Final Answer: 2.2 days</div>",
+      "<p class=\"solution-step\">Giraj is half as efficient: he builds in 12 days and demolishes in 8 days.</p><p class=\"solution-step\">Over the first 8 days, the repeating contributions are 1/6, 1/12, 1/6, −1/8, giving 7/24 per 4 days; twice gives 14/24.</p><p class=\"solution-step\">Remaining after day 8 is 10/24. Day 9 Sahil adds 1/6, day 10 Giraj builds 1/12, and day 11 Sahil adds 1/6.</p><div class=\"formula-box\">14/24 + 4/24 + 2/24 + 4/24 = 1</div><div class=\"final-answer\">Final Answer: 11th day</div>",
+      "<p class=\"solution-step\">If A takes x days, B takes 1.4x days because A is 40% more efficient. Given B takes 10 days more: 1.4x=x+10, so x=25 and B=35 days.</p><p class=\"solution-step\">Since B is 20% more efficient than C, C takes 1.2×35=42 days.</p><p class=\"solution-step\">Take total work LCM(25,35,42)=1050 units. Rates are A=42, B=30, C=25 units/day.</p><div class=\"formula-box\">Work done by A and B = 10×42 + 15×30 = 870<br>Remaining = 180 units</div><div class=\"formula-box\">C time = 180/25 = 7.2 days</div><div class=\"final-answer\">Final Answer: 7.2 days</div>",
+      "<p class=\"solution-step\">Let skilled and unskilled workers be S and U.</p><div class=\"formula-box\">S/15 + U/60 = 1/3 ⇒ 4S + U = 20</div><p class=\"solution-step\">Positive integer solutions are (S,U)=(1,16),(2,12),(3,8),(4,4). Odd totals occur for 17 and 11.</p><div class=\"final-answer\">Final Answer: 11 workers</div>",
+      "<p class=\"solution-step\">A’s first 3 days complete 3/10. B’s next 3 days destroy 3/15=1/5. Net after 6 days =1/10.</p><p class=\"solution-step\">In the next 3 days together, net rate is 1/10−1/15=1/30, so they add 1/10. Total completed =1/5.</p><p class=\"solution-step\">Remaining work =4/5. A alone at 1/10 per day needs 8 days.</p><div class=\"final-answer\">Final Answer: 8 days</div>",
+      "<p class=\"solution-step\">Take total work as 90 units. Hourly rates are A=9, B=6, C=3 and D=2 units.</p><p class=\"solution-step\">By 8:00 a.m.: A works 4 hours (36 units), B 2 hours (12), C 1 hour (3), total 51 units. Remaining =39 units.</p><p class=\"solution-step\">After 8:00 a.m. all four work at 20 units/hour, requiring 39/20≈1.95 hours.</p><div class=\"final-answer\">Final Answer: Approximately 10:00 a.m.</div>"
+]
+
+    questions.forEach((q, i) => { q.solution = solutionText[i] || 'Solution not provided.'; });
+    let current = 0, submitted = false, secondsLeft = 45 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function mathFractions(s){let v=String(s ?? "");v=v.replace(/(\d+)\s*<sup>(\d+)<\/sup>\/<sub>(\d+)<\/sub>/g,'<span class="mixed-number">$1 <span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span></span>');return v.replace(/(^|[^A-Za-z0-9.²>])([A-Za-z0-9.²]+)\/([A-Za-z0-9.²]+)/g,'$1<span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span>');}
+    function rich(s){return mathFractions(hasHtml(s) ? String(s) : esc(s));}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function correctText(q){return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';}
+    function control(q,i){if(qType(q)==="mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>').join('')+'</div>'; return '<input type="text" inputmode="decimal" class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your numerical answer" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){const sol=q.solution || "Solution not provided.";return rich(sol);}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+rich(qText(q))+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+rich(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(qType(q)==='mcq')return Number(ans)===Number(q.answer);const accepted=(q.accepted&&q.accepted.length?q.accepted:[qAnswer(q)]).map(norm);return accepted.includes(norm(ans));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';host.scrollTop=0;if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;let score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r){c++;score+=3;}else{w++;if(qType(q)==='mcq')score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
+    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    renderQuestion();tick();setInterval(tick,1000);
+  </script>
+</body>
+</html>
