@@ -2046,6 +2046,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 30,
     "questions": 23
+  },
+  {
+    "title": "Pipe & Cistern -3",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -3.html",
+    "original": "Pipe & Cistern -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 17
   }
 ];
 
