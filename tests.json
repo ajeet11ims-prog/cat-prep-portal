@@ -2085,5 +2085,18 @@
     ],
     "minutes": 15,
     "questions": 30
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -3.html",
+    "original": "Time & Work Pipe & Cistern Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 20
   }
 ]
