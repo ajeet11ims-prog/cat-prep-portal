@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Sheet L2 - Time &amp; Work, Pipe &amp; Cistern Test -7</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}main>section>#result{flex:0 0 auto}main>section>#testForm{flex:1 1 auto;min-height:0;overflow:hidden}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 24px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    .formula-box{margin:14px 0;padding:12px 14px;border:2px solid #2d7fb8;background:#f4fbff;font-size:17px;font-weight:700}
+    .shortcut-box{margin:14px 0;padding:12px 14px;border-left:5px solid #60b947;background:#f5fbf2}
+    .final-answer{margin-top:14px;padding:10px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}
+    .solution-step{margin:0 0 10px}
+    .mixed-number{display:inline-flex;align-items:center;gap:.18em;white-space:nowrap}.math-frac{display:inline-grid;grid-template-rows:auto auto;min-width:1.35em;margin:0 .1em;vertical-align:middle;text-align:center;font-size:.82em;line-height:1}.math-frac .frac-num{padding:0 .12em .08em;border-bottom:1.5px solid currentColor}.math-frac .frac-den{padding:.08em .12em 0}.option .math-frac{font-size:.78em}.formula-box .math-frac,.final-answer .math-frac{font-size:.86em}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Home Sheet L2 - Time &amp; Work, Pipe &amp; Cistern Test -7</h1><div class="meta">Quantitative Aptitude | 50 Questions | 90 Minutes | 20 TITA + 30 MCQ | +3 correct, -1 MCQ wrong, 0 TITA wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">90:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "q": "If x men can produce p units in k days working h hours a day, then how many men can produce m units in h days working k hours a day?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "p/x",
+      "mpx",
+      "mx/p",
+      "mx"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "30 men working 7 hours per day can do a piece of work in 18 days. In how many days can 21 men working 8 hours a day do the same piece of work?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "22 <sup>3</sup>/<sub>5</sub> days",
+      "22 <sup>2</sup>/<sub>5</sub> days",
+      "22 <sup>1</sup>/<sub>2</sub> days",
+      "None of these"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A tap can fill a tank in 3 hours and another tap can empty it in 4 hours. When the tank is empty and both taps are opened simultaneously, how long will it take to fill the tank (in hours)?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "12",
+    "accepted": [
+      "12",
+      "12 hours",
+      "12hours"
+    ]
+  },
+  {
+    "q": "Two pipes A and B can fill a tank in 10 minutes and 20 minutes respectively. If both pipes are opened simultaneously, after how many minutes should B be closed so that the tank is full in 8 minutes?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "4",
+    "accepted": [
+      "4",
+      "4 minutes",
+      "4minutes"
+    ]
+  },
+  {
+    "q": "A and B can do a piece of work in 12 days, B and C can do it in 15 days, and C and A can do it in 20 days. They all work together for 4 days and then C leaves. In how many days can A and B finish the remaining work?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "36/7",
+      "18/4",
+      "36/5",
+      "36/3"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A and B can do a piece of work in 15 days and 20 days respectively. They work on alternate days with A starting the work. In how many days will the work be completed?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "17",
+    "accepted": [
+      "17",
+      "17 days",
+      "17days"
+    ]
+  },
+  {
+    "q": "A and B together can do a piece of work in 12 days, while B and C together can do it in 16 days. All three start the work together. After working for 5 days, A leaves. B works for another 2 days and leaves. C completes the remaining work after having worked for a total of 13 days. In how many days can C alone complete the work?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "22 days",
+      "23 days",
+      "24 days",
+      "None of these"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A man, a woman and a boy can do a piece of work in 3, 4 and 12 days respectively. How many boys must assist one man and one woman to complete the work in one and a half days?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "12",
+      "6",
+      "1",
+      "3"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "20 workers can reap 120 acres of land in 30 days working 6 hours a day. How many more acres of land can 30 workers working 12 hours a day reap in 15 days?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "60",
+    "accepted": [
+      "60",
+      "60 acres",
+      "60acres"
+    ]
+  },
+  {
+    "q": "20 men can finish a piece of work in 30 days. After how many days should 5 men leave the work so that it is finished in 35 days?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "15",
+    "accepted": [
+      "15",
+      "15 days",
+      "15days"
+    ]
+  },
+  {
+    "q": "A group of 25 workers is assigned a task of 330 units. Each worker can do 1 unit per day. They start the task, and after every day one more worker joins the group. The task is completed in x days. Find x.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "10",
+      "9",
+      "11",
+      "12"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A and B together complete a job in 9 days. Had A worked at half his speed and B worked at twice his speed, it would have taken 6 days to complete the job. How much time would B alone take to do the job?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "27/4 days",
+      "27/5 days",
+      "27/2 days",
+      "27 days"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Hari can finish a work in 18 days working 6 hours a day. Raghu can finish the same work in 12 days working 3 hours a day. In how many days can they finish it working together 2 <sup>1</sup>/<sub>2</sub> hours a day?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "10.8",
+    "accepted": [
+      "10.8",
+      "10.8 days",
+      "54/5"
+    ]
+  },
+  {
+    "q": "P can complete a piece of work in 24 days. P works for 4 days and then Q joins him. The two persons work for 4 more days and then R takes over from them. R finishes the remaining one-third of the work in 2 <sup>2</sup>/<sub>3</sub> days. In how many days can Q alone complete the work?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "12",
+    "accepted": [
+      "12",
+      "12 days",
+      "12days"
+    ]
+  },
+  {
+    "q": "A work is started by a certain number of men, who complete the work in 15 days. Had there been 4 men less, they would have taken 3 more days to complete the work. Find the number of men.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "24",
+      "28",
+      "32",
+      "35"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "A is 20% more efficient than B. If B can complete a piece of work in 30 days, in how many days can both A and B complete the work together?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "11 <sup>5</sup>/<sub>11</sub> days",
+      "13 <sup>7</sup>/<sub>11</sub> days",
+      "15 <sup>7</sup>/<sub>11</sub> days",
+      "17 <sup>5</sup>/<sub>11</sub> days"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "Sanjay can do in 16 hours as much work as Vijay can do in 24 hours. Ajay can do the same work in 32 hours. If the three of them together can complete a certain work in 24 hours, in how many hours can Ajay alone complete that work?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "104",
+    "accepted": [
+      "104",
+      "104 hours",
+      "104hours"
+    ]
+  },
+  {
+    "q": "Pankaj, who is twice as efficient as Vinod, takes 30 days less to complete a piece of work. In how many days can the two complete the work together?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "20",
+    "accepted": [
+      "20",
+      "20 days",
+      "20days"
+    ]
+  },
+  {
+    "q": "There is a group of persons, each of whom can complete a piece of work in 16 days when working individually. On the first day one person works, on the second day another person joins him, on the third day one more person joins them, and this process continues until the work is completed. In how many days will the work be completed?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "3 <sup>1</sup>/<sub>4</sub> days",
+      "4 <sup>1</sup>/<sub>3</sub> days",
+      "5 <sup>1</sup>/<sub>5</sub> days",
+      "6 <sup>1</sup>/<sub>5</sub> days"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "3 men and 5 women can complete a work in 12 days, while 5 men and 12 women can complete it in 6 days. In how many days can 4 men and 4 women complete the same work?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "11",
+    "accepted": [
+      "11",
+      "11 days",
+      "11days"
+    ]
+  },
+  {
+    "q": "9 men and 24 women can do a work in 8 days. 8 men and 32 boys can do the same work in 9 days. If 30 women can do the work in 12 days, then how many boys can do the same work in 18 days?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "18",
+    "accepted": [
+      "18",
+      "18 boys",
+      "18boys",
+      "30",
+      "30 boys",
+      "30boys"
+    ]
+  },
+  {
+    "q": "A can complete a piece of work in 40 days and B in 60 days. A starts the work and works for two days, then B takes over for the next two days, and the process continues until the completion of the work. In how many days is the work completed?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "40",
+      "42",
+      "48",
+      "54"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A can eat 3 apples in 5 days, while B can eat 6 apples in 4 days. In how many days can the two persons consume 21 apples?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "10",
+    "accepted": [
+      "10",
+      "10 days",
+      "10days"
+    ]
+  },
+  {
+    "q": "X, Y and Z can complete a piece of work individually in 8, 12 and 20 hours respectively. In how much time can Y and Z together complete a work that X alone can complete in 64 hours?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "25 hours",
+      "40 hours",
+      "60 hours",
+      "80 hours"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A piece of work can be completed by 10 men in a certain number of days. If there were 2 men less, it would have taken 3 more days to complete the work. In how many days can 24 men complete the same work?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "5",
+    "accepted": [
+      "5",
+      "5 days",
+      "5days"
+    ]
+  },
+  {
+    "q": "Four persons A, B, C and D produced 256 pieces of item P in 8 hours. B is twice as efficient as A. D is 25% less efficient than A but is three times as efficient as C. How many pieces of P did B produce?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "128",
+      "64",
+      "48",
+      "16"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Ram, Shyam and Tarun can complete a job in 4 days, 8 days and 16 days respectively. They start the work and Ram leaves after a day. The other two complete the job. Tarun gets ₹24,000 out of the total ₹90,000 paid to the three. As Ram was unwell on the first day, find the percentage of his usual capacity at which he worked on the first day.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "60%",
+      "75%",
+      "80%",
+      "90%"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A, B and C working individually can complete a piece of work in 16, 18 and 20 days respectively. If they work together and earn ₹1089 for the work, what is the share of B (in ₹)?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "360",
+    "accepted": [
+      "360",
+      "₹360",
+      "Rs 360",
+      "Rs. 360"
+    ]
+  },
+  {
+    "q": "A, B and C working individually can complete a piece of work in 10, 15 and 20 days respectively. They complete the work in 4 days with the help of D. If they earn ₹3750 for the entire work, how much does D earn for his work (in ₹)?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "500",
+    "accepted": [
+      "500",
+      "₹500",
+      "Rs 500",
+      "Rs. 500"
+    ]
+  },
+  {
+    "q": "20 cows and 40 goats can be kept for 10 days for ₹460. What would be the cost of keeping 50 cows and 30 goats for 12 days if the cost of keeping 5 goats is the same as the cost of keeping 1 cow?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "₹888",
+      "₹965",
+      "₹1007",
+      "₹1104"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "Two pipes can fill a tank in 18 minutes and 27 minutes. A third pipe can empty the tank, when full, in 6 minutes. All three pipes are opened when the tank is two-thirds full. In how many minutes will the tank become empty?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "9",
+    "accepted": [
+      "9",
+      "9 minutes",
+      "9minutes"
+    ]
+  },
+  {
+    "q": "Pipes P and Q can fill a tank in 20 minutes and 25 minutes respectively. Both are opened simultaneously. After 4 minutes, P is closed. Find the time taken from then to fill the tank (in minutes).",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "16",
+    "accepted": [
+      "16",
+      "16 minutes",
+      "16minutes"
+    ]
+  },
+  {
+    "q": "Pipes X and Y can fill a tank in 12 minutes and 18 minutes respectively. Pipe Z can empty it in 24 minutes. All the pipes are opened simultaneously. After 1 minute, Z is closed. The tank would be filled in another:",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "5 minutes",
+      "5 <sup>1</sup>/<sub>2</sub> minutes",
+      "6 <sup>1</sup>/<sub>2</sub> minutes",
+      "6 <sup>1</sup>/<sub>3</sub> minutes"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Pipe A can fill a tank in 8 hours. Due to a leak at the bottom, it takes 10 hours to fill the tank. In how many hours can the leak empty three-fifths of the tank?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "24",
+    "accepted": [
+      "24",
+      "24 hours",
+      "24hours"
+    ]
+  },
+  {
+    "q": "Pipe A can fill a tank in 12 hours and pipe B can empty the tank in 18 hours. Both pipes are opened at 6 a.m. After some time B is closed, and the tank is full at 8 p.m. on the same day. At what time was B closed?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "10 a.m.",
+      "8 a.m.",
+      "9 a.m.",
+      "11 a.m."
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Three taps A, B and C together can fill a tank in 6 hours. All the taps are opened simultaneously. After 2 hours, C is closed, and the tank is filled in 8 more hours. Find the time (in hours) in which C alone can fill the tank.",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "12",
+    "accepted": [
+      "12",
+      "12 hours",
+      "12hours"
+    ]
+  },
+  {
+    "q": "Pipes A and B can fill a tank in 20 minutes and 30 minutes respectively, and C can empty it in 15 minutes. A is opened for one minute and then closed. B is then opened for one minute and closed. C is then opened for one minute and closed. This process is repeated until the tank is filled. Find the time taken to fill the tank (in minutes).",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "169",
+      "170",
+      "167",
+      "166"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A is 80% more efficient than B, who is 60% more efficient than C. A takes 40 days less than B to complete a work. A starts the work and works for 25 days, then B works for the next 30 days, and then C takes over. In how much more time can C complete the remaining work?",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "20 days",
+      "24 days",
+      "32 days",
+      "40 days"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "A piece of work can be completed by A and B in 10 days, B and C in 12 days, and C and A in 15 days. A, B and C start working together and then B leaves after 4 days. C leaves 3 days after that, and then B immediately joins A again to complete the remaining work. In how many days is the work completed?",
+    "type": "text",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "answer": "10",
+    "accepted": [
+      "10",
+      "10 days",
+      "10days"
+    ]
+  },
+  {
+    "q": "P, Q and R are three small pumps fitted to a tank. S is a large pump fitted to the tank. Q is 50% more efficient than P. R is 33 <sup>1</sup>/<sub>3</sub>% more efficient than Q. S is 50% more efficient than R. Find the ratio of the time taken by the four pumps working together to fill the tank and the time taken by the large pump alone to fill it.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "2/5",
+      "3/5",
+      "3/10",
+      "7/20"
+    ],
+    "answer": 0
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "A water pump functions at a uniform rate. How long does it take to fill the tank?<br><br><strong>I.</strong> The water pump is switched on at 8:00 a.m.<br><strong>II.</strong> By 9:30 a.m., 3/8 of the tank is filled by the pump. By 11:00 a.m., 3/4 of the tank is filled.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 0
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "In how many days can a man make 100 pots?<br><br><strong>I.</strong> A man, a woman and a child together make 10 pots a day, while a woman and a child together make 15 pots in 3 days.<br><strong>II.</strong> 10 men together take 1 more day than 25 children to make 100 pots. A man can make twice as many pots as a child in a day.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 1
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "10 soldier ants take 6 hours to build an anthill. How long do 5 queen ants take to build the anthill?<br><br><strong>I.</strong> A queen ant works at half the rate of a soldier ant.<br><strong>II.</strong> 5 soldier ants and 5 queen ants together take 7 <sup>1</sup>/<sub>2</sub> hours to build the anthill.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 1
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "How long did Tarun work to construct the wall?<br><br><strong>I.</strong> Piyush, Rohan, Saurabh and Tarun can individually construct the wall in 10, 15, 20 and 30 days respectively.<br><strong>II.</strong> Initially Piyush started the work. After three days, Rohan and Saurabh joined him. The three together worked for two days, then Tarun joined them, and all of them worked until the wall was constructed.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 2
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "Who among Arun, Bhargav and Chadda is the most efficient?<br><br><strong>I.</strong> Chadda takes 5 times as much time as Arun and Bhargav take working together.<br><strong>II.</strong> Arun takes as much time as Bhargav and Chadda take working together.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 0
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "How long would Vidya and Asha take to complete a work if they work on alternate days?<br><br><strong>I.</strong> They work for six days a week, and if one works on the first day of one week, the other works on the first day of the next week.<br><strong>II.</strong> Asha, working alone on alternate days, completes the work in 35 days, while Vidya, working alone on every third day, completes the work in 25 days.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 0
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "Varun and Sameer together complete a project in 25 days and earn ₹5000. What is Sameer’s share?<br><br><strong>I.</strong> Working individually, Sameer takes thrice the time taken by Varun to complete the project.<br><strong>II.</strong> Varun alone can complete the project in 40 days.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 1
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "How long does it take to fill a 330-litre tank?<br><br><strong>I.</strong> There are a total of 6 taps. First one tap is turned on, and every half an hour an additional tap is turned on until all the taps are on.<br><strong>II.</strong> A tap can fill a 20-litre tank in one hour.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 2
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "Rishab’s cow and Shrayan’s cow together can eat the grass on a farm in 30 days. How long does Rishab’s cow alone take?<br><br><strong>I.</strong> The two cows along with Vashist’s cow can eat the grass on the farm in 20 days.<br><strong>II.</strong> Vashist’s cow eats twice as fast as Shrayan’s cow.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 2
+  },
+  {
+    "direction": "<strong>Directions for Questions 41 to 50:</strong> Each question is followed by two statements, I and II. Mark:<br><strong>(A)</strong> if exactly one statement alone is sufficient;<br><strong>(B)</strong> if either statement alone is sufficient;<br><strong>(C)</strong> if both statements together are required;<br><strong>(D)</strong> if even both statements together are insufficient.",
+    "q": "Pipes A, B, C and D have their filling capacities in descending order. Together they take 2 <sup>2</sup>/<sub>7</sub> hours to fill a tank. Find the time taken by B and C together to fill it.<br><br><strong>I.</strong> The maximum time in which the tank can be filled by three of the pipes is 3 <sup>9</sup>/<sub>13</sub> hours.<br><strong>II.</strong> The minimum time in which the tank can be filled by three of the pipes is 2 <sup>2</sup>/<sub>3</sub> hours.",
+    "type": "mcq",
+    "source": "Home Sheet L2 | Time & Work, Pipe & Cistern | Test -7",
+    "options": [
+      "Exactly one statement alone is sufficient.",
+      "Either statement alone is sufficient.",
+      "Both statements together are required.",
+      "Even both statements together are insufficient."
+    ],
+    "answer": 2
+  }
+];
+
+    const solutionText = [
+  "<div class=\"formula-box\">Work ∝ men × days × hours</div><p class=\"solution-step\">Equating productivity: p/(xkh) = m/(n·h·k).</p><div class=\"formula-box\">n = mx/p</div><div class=\"final-answer\">Final Answer: mx/p</div>",
+  "<div class=\"formula-box\">30 × 7 × 18 = 21 × 8 × d</div><p class=\"solution-step\">d = 3780/168 = 22.5 days.</p><div class=\"final-answer\">Final Answer: 22 <sup>1</sup>/<sub>2</sub> days</div>",
+  "<div class=\"formula-box\">Net rate = 1/3 − 1/4 = 1/12 tank per hour</div><div class=\"final-answer\">Final Answer: 12 hours</div>",
+  "<p class=\"solution-step\">A works for all 8 minutes and fills 8/10 = 4/5 of the tank. B must fill the remaining 1/5.</p><div class=\"formula-box\">Time for B = (1/5) ÷ (1/20) = 4 minutes</div><div class=\"final-answer\">Final Answer: 4 minutes</div>",
+  "<p class=\"solution-step\">Adding pair rates gives 2(A+B+C) = 1/12 + 1/15 + 1/20 = 1/5, so all three work at 1/10 per day.</p><p class=\"solution-step\">In 4 days they complete 2/5, leaving 3/5.</p><div class=\"formula-box\">Time by A+B = (3/5) ÷ (1/12) = 36/5 days</div><div class=\"final-answer\">Final Answer: 36/5 days</div>",
+  "<p class=\"solution-step\">In a two-day cycle, A and B complete 1/15 + 1/20 = 7/60.</p><p class=\"solution-step\">After 16 days, 14/15 is complete. A completes the remaining 1/15 in one day.</p><div class=\"final-answer\">Final Answer: 17 days</div>",
+  "<p class=\"solution-step\">Let C’s rate be c. Using A+B = 1/12 and B+C = 1/16:</p><div class=\"formula-box\">5(A+B) + 2B + 13C = 1</div><p class=\"solution-step\">Substituting B = 1/16 − C gives C = 1/24.</p><div class=\"final-answer\">Final Answer: 24 days</div>",
+  "<p class=\"solution-step\">In 1.5 days, the man and woman complete 1.5(1/3 + 1/4) = 7/8. The remaining 1/8 is exactly what one boy completes in 1.5 days.</p><div class=\"final-answer\">Final Answer: 1 boy</div>",
+  "<p class=\"solution-step\">New output compared with the old output:</p><div class=\"formula-box\">(30×12×15)/(20×6×30) = 3/2</div><p class=\"solution-step\">New area = 120×3/2 = 180 acres, which is 60 acres more.</p><div class=\"final-answer\">Final Answer: 60 acres</div>",
+  "<div class=\"formula-box\">20x + 15(35 − x) = 20×30</div><p class=\"solution-step\">Solving gives x = 15.</p><div class=\"final-answer\">Final Answer: 15 days</div>",
+  "<p class=\"solution-step\">The daily workforce is 25, 26, 27, …</p><div class=\"formula-box\">x(49+x)/2 = 330</div><p class=\"solution-step\">x = 11 satisfies the equation.</p><div class=\"final-answer\">Final Answer: 11 days</div>",
+  "<div class=\"formula-box\">A+B = 1/9<br>A/2 + 2B = 1/6</div><p class=\"solution-step\">Solving gives B = 2/27.</p><div class=\"final-answer\">Final Answer: 27/2 days</div>",
+  "<p class=\"solution-step\">Hari requires 108 working hours and Raghu requires 36 working hours.</p><div class=\"formula-box\">Combined hourly rate = 1/108 + 1/36 = 1/27</div><p class=\"solution-step\">At 2.5 hours per day, daily work = 2.5/27.</p><div class=\"formula-box\">Days = 27/2.5 = 10.8</div><div class=\"final-answer\">Final Answer: 10.8 days</div>",
+  "<p class=\"solution-step\">R completes one-third in 8/3 days, so R’s rate is 1/8.</p><p class=\"solution-step\">Before R starts, two-thirds is complete. P contributes 8/24 = 1/3 during his 8 days, so Q contributes the other 1/3 in 4 days.</p><div class=\"formula-box\">Q’s rate = 1/12</div><div class=\"final-answer\">Final Answer: 12 days</div>",
+  "<div class=\"formula-box\">15n = 18(n − 4)</div><p class=\"solution-step\">3n = 72, so n = 24.</p><div class=\"final-answer\">Final Answer: 24 men</div>",
+  "<p class=\"solution-step\">If B takes 30 days, A takes 25 days because A is 20% more efficient.</p><div class=\"formula-box\">Combined rate = 1/30 + 1/25 = 11/150</div><div class=\"formula-box\">Time = 150/11 = 13 7/11 days</div><div class=\"final-answer\">Final Answer: 13 <sup>7</sup>/<sub>11</sub> days</div>",
+  "<p class=\"solution-step\">For the same reference work, rates are Sanjay:Vijay:Ajay = 1/16:1/24:1/32 = 6:4:3.</p><p class=\"solution-step\">Ajay contributes 3/13 of the combined rate.</p><div class=\"formula-box\">Ajay-alone time = 24×13/3 = 104 hours</div><div class=\"final-answer\">Final Answer: 104 hours</div>",
+  "<p class=\"solution-step\">Let Vinod take t days. Pankaj takes t/2 days. Since the difference is 30, t/2 = 30, so Vinod takes 60 days and Pankaj 30 days.</p><div class=\"formula-box\">Combined rate = 1/60 + 1/30 = 1/20</div><div class=\"final-answer\">Final Answer: 20 days</div>",
+  "<p class=\"solution-step\">After 4 complete days, the work done is (1+2+3+4)/16 = 10/16. The remaining 6/16 is completed on day 5 by five persons.</p><div class=\"formula-box\">Fraction of day 5 = (6/16)/(5/16) = 6/5</div><p class=\"solution-step\">Total time = 4 + 6/5 = 5 1/5 days.</p><div class=\"final-answer\">Final Answer: 5 <sup>1</sup>/<sub>5</sub> days</div>",
+  "<div class=\"formula-box\">3m+5w = 1/12<br>5m+12w = 1/6</div><p class=\"solution-step\">Solving gives m = 1/66 and w = 1/132.</p><div class=\"formula-box\">4m+4w = 1/11</div><div class=\"final-answer\">Final Answer: 11 days</div>",
+  "<p class=\"solution-step\">The supplied answer key marks 18. Direct calculation from the printed data gives 30 boys, so both 18 and 30 are accepted in this HTML test.</p><div class=\"final-answer\">Supplied Key Answer: 18</div>",
+  "<p class=\"solution-step\">Every four days, A and B complete 2/40 + 2/60 = 1/12.</p><p class=\"solution-step\">After 44 days, 11/12 is complete. A works for two more days and B then needs two days to finish.</p><div class=\"final-answer\">Final Answer: 48 days</div>",
+  "<div class=\"formula-box\">Combined apple rate = 3/5 + 6/4 = 21/10 apples per day</div><div class=\"formula-box\">Time = 21 ÷ 21/10 = 10 days</div><div class=\"final-answer\">Final Answer: 10 days</div>",
+  "<p class=\"solution-step\">The new work is eight times the reference work because X needs 64 hours instead of 8.</p><div class=\"formula-box\">Y+Z rate = 1/12 + 1/20 = 2/15</div><div class=\"formula-box\">Time = 8 ÷ 2/15 = 60 hours</div><div class=\"final-answer\">Final Answer: 60 hours</div>",
+  "<p class=\"solution-step\">Let 10 men take d days. Then 8 men take d+3 days.</p><div class=\"formula-box\">10d = 8(d+3) ⇒ d = 12</div><p class=\"solution-step\">Total work = 120 man-days.</p><div class=\"formula-box\">Time for 24 men = 120/24 = 5 days</div><div class=\"final-answer\">Final Answer: 5 days</div>",
+  "<p class=\"solution-step\">Let A’s efficiency be 1. Then B=2, D=3/4 and C=1/4. Total efficiency = 4.</p><p class=\"solution-step\">B contributes 2/4 = half the total output.</p><div class=\"formula-box\">B’s production = 256/2 = 128</div><div class=\"final-answer\">Final Answer: 128 pieces</div>",
+  "<p class=\"solution-step\">Tarun’s wage share is 24000/90000 = 4/15, so he completes 4/15 of the work. At his normal rate 1/16, the total project duration is 64/15 days.</p><p class=\"solution-step\">Shyam completes 8/15, so Ram completes 1/5 on day 1. Ram’s normal daily work is 1/4.</p><div class=\"formula-box\">Capacity used = (1/5)/(1/4) = 4/5 = 80%</div><div class=\"final-answer\">Final Answer: 80%</div>",
+  "<p class=\"solution-step\">Efficiency ratio = 1/16 : 1/18 : 1/20 = 45 : 40 : 36.</p><div class=\"formula-box\">B’s share = 1089×40/(45+40+36) = 1089×40/121 = ₹360</div><div class=\"final-answer\">Final Answer: ₹360</div>",
+  "<p class=\"solution-step\">A+B+C rate = 1/10 + 1/15 + 1/20 = 13/60. In 4 days they complete 13/15, so D completes 2/15.</p><div class=\"formula-box\">D’s wage = 3750×2/15 = ₹500</div><div class=\"final-answer\">Final Answer: ₹500</div>",
+  "<p class=\"solution-step\">Let one goat’s daily cost be g. One cow costs 5g.</p><div class=\"formula-box\">10(20×5g + 40g) = 460 ⇒ 1400g = 460</div><div class=\"formula-box\">New cost = 12(50×5g + 30g) = 3360g = ₹1104</div><div class=\"final-answer\">Final Answer: ₹1104</div>",
+  "<div class=\"formula-box\">Net emptying rate = 1/6 − 1/18 − 1/27 = 2/27 tank per minute</div><div class=\"formula-box\">Time to empty 2/3 = (2/3) ÷ (2/27) = 9 minutes</div><div class=\"final-answer\">Final Answer: 9 minutes</div>",
+  "<p class=\"solution-step\">In the first 4 minutes, P and Q fill 4(1/20 + 1/25) = 9/25. The remaining part is 16/25.</p><div class=\"formula-box\">Time by Q = (16/25) ÷ (1/25) = 16 minutes</div><div class=\"final-answer\">Final Answer: 16 minutes</div>",
+  "<p class=\"solution-step\">In the first minute, net work = 1/12 + 1/18 − 1/24 = 7/72. Remaining = 65/72.</p><div class=\"formula-box\">X+Y rate = 1/12 + 1/18 = 5/36</div><div class=\"formula-box\">Additional time = (65/72) ÷ (5/36) = 13/2 = 6 1/2 minutes</div><div class=\"final-answer\">Final Answer: 6 <sup>1</sup>/<sub>2</sub> minutes</div>",
+  "<div class=\"formula-box\">Leak rate = 1/8 − 1/10 = 1/40 tank per hour</div><div class=\"formula-box\">Time to empty 3/5 = (3/5) ÷ (1/40) = 24 hours</div><div class=\"final-answer\">Final Answer: 24 hours</div>",
+  "<p class=\"solution-step\">From 6 a.m. to 8 p.m. is 14 hours. Let both pipes run for x hours.</p><div class=\"formula-box\">x(1/12−1/18) + (14−x)/12 = 1</div><p class=\"solution-step\">Solving gives x = 3 hours.</p><div class=\"final-answer\">Final Answer: B was closed at 9 a.m.</div>",
+  "<p class=\"solution-step\">All three fill 1/3 in the first 2 hours. A and B then fill the remaining 2/3 in 8 hours, so A+B rate = 1/12.</p><div class=\"formula-box\">C’s rate = 1/6 − 1/12 = 1/12</div><div class=\"final-answer\">Final Answer: 12 hours</div>",
+  "<p class=\"solution-step\">Each three-minute cycle adds 1/20 + 1/30 − 1/15 = 1/60.</p><p class=\"solution-step\">After 55 cycles, 11/12 is filled in 165 minutes. A then adds 1/20 and B adds 1/30, completing the tank at minute 167.</p><div class=\"final-answer\">Final Answer: 167 minutes</div>",
+  "<p class=\"solution-step\">Let C’s efficiency be 1. Then B=1.6 and A=2.88. From the 40-day difference, B takes 90 days, A 50 days and C 144 days.</p><p class=\"solution-step\">A does 25/50 = 1/2 and B does 30/90 = 1/3. Remaining = 1/6.</p><div class=\"formula-box\">C’s time = (1/6)×144 = 24 days</div><div class=\"final-answer\">Final Answer: 24 days</div>",
+  "<p class=\"solution-step\">All three together work at 1/8. In the first 4 days they complete 1/2. Then A+C work for 3 days at 1/15 and complete 1/5. Remaining = 3/10.</p><div class=\"formula-box\">A+B finish at 1/10, requiring 3 days</div><div class=\"formula-box\">Total time = 4+3+3 = 10 days</div><div class=\"final-answer\">Final Answer: 10 days</div>",
+  "<p class=\"solution-step\">Let P=1. Then Q=1.5, R=2 and S=3. All four together have rate 7.5.</p><div class=\"formula-box\">Time ratio = (1/7.5)/(1/3) = 3/7.5 = 2/5</div><div class=\"final-answer\">Final Answer: 2/5</div>",
+  "<p class=\"solution-step\">Statement I gives only the starting time and is insufficient. Statement II gives a uniform rate: 3/8 tank in 1.5 hours = 1/4 tank per hour, so the remaining 1/4 after 11 a.m. takes one hour.</p><div class=\"final-answer\">Final Answer: (A) Exactly one statement alone is sufficient</div>",
+  "<p class=\"solution-step\">From Statement I, man = 10 − 5 = 5 pots/day, so 100 pots take 20 days. From Statement II, using man = 2×child also determines the man’s rate. Each statement alone is sufficient.</p><div class=\"final-answer\">Final Answer: (B) Either statement alone is sufficient</div>",
+  "<p class=\"solution-step\">The stem gives the soldier-ant rate. Statement I directly gives the queen-ant rate. Statement II also determines the queen-ant rate because the mixed-team time and soldier rate are known. Either statement alone is sufficient.</p><div class=\"final-answer\">Final Answer: (B) Either statement alone is sufficient</div>",
+  "<p class=\"solution-step\">Statement I gives individual rates but not Tarun’s joining time. Statement II gives the schedule but not rates. Together they determine the remaining work when Tarun joins and therefore how long he works.</p><div class=\"final-answer\">Final Answer: (C) Both statements together are required</div>",
+  "<p class=\"solution-step\">Statement I only shows that Chadda is less efficient than the combined Arun-Bhargav team; it cannot distinguish Arun from Bhargav. Statement II gives Arun’s rate as Bhargav+Chadda, so Arun is individually the most efficient.</p><div class=\"final-answer\">Final Answer: (A) Exactly one statement alone is sufficient</div>",
+  "<p class=\"solution-step\">Statement I provides only the alternation schedule. Statement II determines the effective individual work rates from their completion patterns and is sufficient to determine the alternating completion time.</p><div class=\"final-answer\">Final Answer: (A) Exactly one statement alone is sufficient</div>",
+  "<p class=\"solution-step\">Statement I gives the efficiency ratio Varun:Sameer = 3:1, so Sameer’s share is determined. Statement II, together with the 25-day combined time, also determines Sameer’s rate. Either statement alone is sufficient.</p><div class=\"final-answer\">Final Answer: (B) Either statement alone is sufficient</div>",
+  "<p class=\"solution-step\">Statement I gives the staggered opening pattern but not tap capacity. Statement II gives tap capacity but not the schedule. Both are needed.</p><div class=\"final-answer\">Final Answer: (C) Both statements together are required</div>",
+  "<p class=\"solution-step\">Statement I determines Vashist’s rate but not the split between Rishab and Shrayan. Statement II relates Vashist and Shrayan. Together they determine Shrayan and then Rishab.</p><div class=\"final-answer\">Final Answer: (C) Both statements together are required</div>",
+  "<p class=\"solution-step\">The total rate is known from the stem. Statement I gives B+C+D and Statement II gives A+B+C. Both are needed to isolate B+C.</p><div class=\"formula-box\">B+C = 13/48 + 3/8 − 7/17 = 191/816</div><div class=\"final-answer\">Final Answer: (C) Both statements together are required</div>"
+];
+
+    questions.forEach((q, i) => { q.solution = solutionText[i] || 'Solution not provided.'; });
+    let current = 0, submitted = false, secondsLeft = 90 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function mathFractions(s){let v=String(s ?? "");v=v.replace(/(\d+)\s*<sup>(\d+)<\/sup>\/<sub>(\d+)<\/sub>/g,'<span class="mixed-number">$1 <span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span></span>');return v.replace(/(^|[^A-Za-z0-9.²>])([A-Za-z0-9.²]+)\/([A-Za-z0-9.²]+)/g,'$1<span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span>');}
+    function rich(s){return mathFractions(hasHtml(s) ? String(s) : esc(s));}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(q.palette || (i+1))+'</button>').join('');}
+    function correctText(q){return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';}
+    function control(q,i){if(qType(q)==="mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>').join('')+'</div>'; return '<input type="text" inputmode="decimal" class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your numerical answer" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){const sol=q.solution || "Solution not provided.";return rich(sol);}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(q.display || (current+1))+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+rich(qText(q))+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+rich(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(qType(q)==='mcq')return Number(ans)===Number(q.answer);const accepted=(q.accepted&&q.accepted.length?q.accepted:[qAnswer(q)]).map(norm);return accepted.includes(norm(ans));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';host.scrollTop=0;if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;let score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r){c++;score+=3;}else{w++;if(qType(q)==='mcq')score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
+    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    renderQuestion();tick();setInterval(tick,1000);
+  </script>
+</body>
+</html>
