@@ -2061,19 +2061,6 @@ window.CAT_TESTS = [
     "questions": 15
   },
   {
-    "title": "Time & Work Pipe & Cistern Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -1.html",
-    "original": "Time & Work Pipe & Cistern Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 15,
-    "questions": 10
-  },
-  {
     "title": "Time & Work Pipe & Cistern Test -2",
     "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -2.html",
     "original": "Time & Work Pipe & Cistern Test -2.html",
@@ -2111,6 +2098,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 45,
     "questions": 25
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -1.html",
+    "original": "Time & Work Pipe & Cistern Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 15,
+    "questions": 10
   }
 ];
 
