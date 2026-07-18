@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LRDI CAT 2017 SLOT -1 Set -7 | CL Jaipur</title>
+  <style>
+    :root {
+      --navy: #132b46;
+      --navy-2: #1d3f63;
+      --blue: #1677c8;
+      --blue-dark: #0d5d9e;
+      --orange: #f28c28;
+      --paper: #f5f7fa;
+      --line: #cbd3dd;
+      --text: #1e2936;
+      --muted: #637083;
+      --green: #2e9c5b;
+      --purple: #7045a8;
+      --red: #c94242;
+      --shadow: 0 2px 9px rgba(19,43,70,.14);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible {
+      outline: 3px solid rgba(22,119,200,.3);
+      outline-offset: 2px;
+    }
+
+    .app { height: 100vh; display: flex; flex-direction: column; min-width: 960px; }
+    .topbar {
+      height: 64px;
+      color: white;
+      background: linear-gradient(100deg, #10263e, #1a456a);
+      display: grid;
+      grid-template-columns: 250px 1fr 275px;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.24);
+      z-index: 3;
+    }
+
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-mark {
+      width: 39px; height: 39px; border-radius: 7px;
+      display: grid; place-items: center;
+      background: var(--orange); color: white;
+      font-weight: 900; font-size: 19px; letter-spacing: -.8px;
+      border: 2px solid rgba(255,255,255,.9);
+    }
+    .brand-text strong { display: block; font-size: 17px; letter-spacing: .2px; }
+    .brand-text span { font-size: 11px; color: #dbe9f7; letter-spacing: .8px; }
+    .test-title { text-align: center; }
+    .test-title strong { font-size: 17px; }
+    .test-title small { display: block; margin-top: 3px; color: #d9e6f3; }
+    .timer-box { justify-self: end; text-align: right; }
+    .timer-box span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #cfe0ef; }
+    .timer { margin-top: 2px; font: 700 24px/1 monospace; letter-spacing: 1px; }
+    .timer.warning { color: #ffd36c; }
+    .timer.danger { color: #ff8585; animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: .55; } }
+
+    .sectionbar {
+      height: 39px; display: flex; align-items: stretch;
+      background: white; border-bottom: 1px solid var(--line);
+      padding-left: 18px;
+    }
+    .section-tab {
+      display: flex; align-items: center; padding: 0 19px;
+      font-size: 13px; font-weight: 700; color: var(--blue);
+      border-bottom: 3px solid var(--blue); background: #eef7ff;
+    }
+    .section-meta { margin-left: auto; align-self: center; padding-right: 20px; font-size: 12px; color: var(--muted); }
+
+    .workspace { flex: 1; display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 0; }
+    .sidebar {
+      min-height: 0; overflow-y: auto; background: #eef2f6;
+      border-right: 1px solid var(--line); padding: 15px 14px 12px;
+    }
+    .candidate {
+      display: flex; align-items: center; gap: 10px; padding: 7px 5px 14px;
+      border-bottom: 1px solid #d4dbe3; margin-bottom: 12px;
+    }
+    .avatar { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: white; font-weight: 700; }
+    .candidate strong { display: block; font-size: 13px; }
+    .candidate small { color: var(--muted); font-size: 11px; }
+    .palette-title { font-size: 13px; font-weight: 700; margin: 8px 0 11px; }
+    .palette { display: grid; grid-template-columns: repeat(4, 42px); gap: 11px 13px; justify-content: center; }
+    .q-chip {
+      position: relative; width: 42px; height: 36px; border: 1px solid #aeb8c3;
+      background: white; border-radius: 4px; color: #263444; font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0,0,0,.06);
+    }
+    .q-chip.current { box-shadow: 0 0 0 3px rgba(22,119,200,.3); }
+    .q-chip.answered { color: white; background: var(--green); border-color: #237c47; border-radius: 50% 50% 8px 8px; }
+    .q-chip.review { color: white; background: var(--purple); border-color: #573185; border-radius: 50%; }
+    .q-chip.review.answered::after {
+      content: "✓"; position: absolute; right: -5px; bottom: -5px; width: 16px; height: 16px;
+      border-radius: 50%; background: var(--green); border: 2px solid #eef2f6; font-size: 10px; line-height: 13px;
+    }
+    .q-chip.visited:not(.answered):not(.review) { color: white; background: var(--red); border-color: #a53232; border-radius: 8px 8px 50% 50%; }
+    .legend { margin-top: 22px; font-size: 11px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 7px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; color: #475669; }
+    .dot { width: 18px; height: 18px; border: 1px solid #aeb8c3; background: white; border-radius: 3px; flex: none; }
+    .dot.ans { background: var(--green); border-color: #237c47; border-radius: 50% 50% 4px 4px; }
+    .dot.na { background: var(--red); border-color: #a53232; border-radius: 4px 4px 50% 50%; }
+    .dot.rev { background: var(--purple); border-color: #573185; border-radius: 50%; }
+    .sidebar-note { margin-top: 20px; padding: 10px; background: white; border: 1px solid #d5dce4; border-radius: 5px; color: #5f6d7c; font-size: 11px; line-height: 1.45; }
+
+    .main { min-width: 0; min-height: 0; display: flex; flex-direction: column; background: white; }
+    .content { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(330px, 47%) minmax(360px, 53%); }
+    .info-panel, .question-panel { min-height: 0; overflow-y: auto; }
+    .info-panel { border-right: 1px solid var(--line); padding: 19px 24px 28px; background: #fbfcfd; }
+    .panel-head {
+      margin: -19px -24px 18px; padding: 10px 24px;
+      background: #e9eef3; border-bottom: 1px solid #ced6df;
+      font-size: 13px; font-weight: 700; color: #38495d;
+    }
+    .directions { font-size: 12px; font-weight: 700; color: var(--blue-dark); margin-bottom: 13px; }
+    .passage { font-size: 15px; line-height: 1.62; }
+    .passage .principle {
+      margin: 17px 0; padding: 15px 17px; background: #eef6fd;
+      border-left: 4px solid var(--blue); font-weight: 700; line-height: 1.55;
+    }
+    .network-visual { display: flex; justify-content: center; align-items: center; gap: 17px; margin-top: 24px; color: #738195; font-size: 12px; }
+    .plane { color: var(--blue); font-size: 27px; transform: rotate(-8deg); }
+
+    .question-panel { padding: 19px 25px 28px; background: white; }
+    .question-top { display: flex; justify-content: space-between; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #dce2e8; }
+    .q-number { font-size: 15px; font-weight: 700; color: var(--navy); }
+    .q-type { font-size: 11px; color: white; background: var(--navy-2); padding: 5px 8px; border-radius: 12px; }
+    .question-text { margin: 19px 0 20px; font-size: 15px; line-height: 1.62; }
+    .rules-list { margin: 10px 0 4px 20px; padding: 0; }
+    .rules-list li { padding: 3px 0; }
+    .options { display: grid; gap: 11px; }
+    .option {
+      display: flex; align-items: center; gap: 11px; min-height: 47px;
+      border: 1px solid #c9d2dc; border-radius: 5px; padding: 10px 13px;
+      cursor: pointer; transition: border .15s, background .15s;
+    }
+    .option:hover { border-color: var(--blue); background: #f4faff; }
+    .option.selected { border: 2px solid var(--blue); padding: 9px 12px; background: #eaf5ff; }
+    .option input { position: absolute; opacity: 0; pointer-events: none; }
+    .radio {
+      width: 20px; height: 20px; border: 2px solid #9aa7b5; border-radius: 50%; flex: none;
+      display: grid; place-items: center;
+    }
+    .selected .radio { border-color: var(--blue); }
+    .selected .radio::after { content: ""; width: 10px; height: 10px; background: var(--blue); border-radius: 50%; }
+    .option-letter { font-weight: 700; color: #526174; min-width: 18px; }
+    .tita-box { margin-top: 6px; padding: 20px; background: #f4f7fa; border: 1px solid #d2dae3; border-radius: 6px; }
+    .tita-box label { display: block; font-size: 12px; font-weight: 700; color: #4f6073; margin-bottom: 9px; }
+    .tita-box input {
+      width: 230px; max-width: 100%; height: 44px; border: 2px solid #aebac6; border-radius: 4px;
+      padding: 0 12px; font-size: 19px; background: white;
+    }
+    .tita-box input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(22,119,200,.14); }
+    .tita-hint { margin-top: 8px; color: var(--muted); font-size: 11px; }
+
+    .actionbar {
+      min-height: 64px; padding: 10px 18px; border-top: 1px solid var(--line); background: #f5f7f9;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .btn { border: 1px solid #8998a8; background: white; color: #2c3d50; border-radius: 4px; min-height: 40px; padding: 8px 15px; font-weight: 700; font-size: 12px; }
+    .btn:hover { filter: brightness(.96); }
+    .btn.review-btn { border-color: #7652a0; color: #66418e; }
+    .btn.primary { margin-left: auto; border-color: var(--blue-dark); background: var(--blue); color: white; padding-left: 21px; padding-right: 21px; }
+    .btn.submit { border-color: #b46016; background: var(--orange); color: white; }
+
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 20; background: rgba(7,19,32,.68);
+      display: grid; place-items: center; padding: 24px;
+    }
+    .modal-backdrop.hidden { display: none; }
+    .modal { width: min(620px, 96vw); max-height: 90vh; overflow: auto; background: white; border-radius: 8px; box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+    .modal-head { padding: 17px 21px; background: var(--navy); color: white; font-weight: 700; font-size: 17px; }
+    .modal-body { padding: 22px; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0 20px; }
+    .summary-card { text-align: center; padding: 13px 6px; border: 1px solid #d7dee6; border-radius: 5px; background: #f8fafc; }
+    .summary-card strong { display: block; font-size: 23px; color: var(--navy); }
+    .summary-card span { color: var(--muted); font-size: 11px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 8px; }
+
+    .results-screen { position: fixed; inset: 0; z-index: 30; background: #eef2f6; overflow-y: auto; }
+    .results-screen.hidden { display: none; }
+    .results-top { width: 100%; background: var(--navy); color: white; padding: 20px clamp(16px, 1.5vw, 28px); display: flex; align-items: center; justify-content: space-between; }
+    .results-top h1 { margin: 0; font-size: 21px; }
+    .results-top p { margin: 4px 0 0; color: #d6e4f2; font-size: 12px; }
+    .score-pill { min-width: 110px; text-align: center; padding: 11px 16px; border: 1px solid #6d86a0; border-radius: 6px; background: rgba(255,255,255,.08); }
+    .score-pill strong { display: block; font-size: 27px; color: #ffd27a; }
+    .score-pill span { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .results-wrap { width: 100%; max-width: none; margin: 20px 0 50px; padding: 0 clamp(16px, 1.5vw, 28px); }
+    .result-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+    .result-stat { background: white; border: 1px solid #d4dce5; padding: 16px; border-radius: 6px; box-shadow: var(--shadow); }
+    .result-stat strong { font-size: 24px; color: var(--navy); }
+    .result-stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .solution-card { background: white; border: 1px solid #d4dce5; border-radius: 6px; margin-bottom: 14px; box-shadow: var(--shadow); overflow: hidden; }
+    .solution-title { display: flex; gap: 12px; align-items: center; padding: 15px 18px; background: #f4f7fa; border-bottom: 1px solid #dce2e8; font-size: 19px; line-height: 28px; font-weight: 800; }
+    .status-badge { font-size: 12px; color: white; padding: 5px 9px; border-radius: 12px; text-transform: uppercase; }
+    .status-badge.correct { background: var(--green); }
+    .status-badge.wrong { background: var(--red); }
+    .status-badge.skip { background: #7e8996; }
+    .solution-body { padding: 20px 22px 26px; font-size: 18px; line-height: 28px; color: #222; }
+    .solution-question { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #d8dee5; font-size: 20px; line-height: 30px; font-weight: 800; color: #222; }
+    .solution-question .rules-list { margin-top: 10px; margin-bottom: 6px; }
+    .solution-options { margin: 0 0 20px 32px; padding: 0; font-size: 18px; line-height: 28px; }
+    .solution-options li { margin: 8px 0; padding: 6px 10px; }
+    .solution-options li.correct-choice { color: #176b3d; background: #e9f7ef; font-weight: 700; border-left: 3px solid var(--green); }
+    .answer-line { margin-bottom: 18px; padding: 12px 14px; background: #eef6fd; border-left: 4px solid var(--blue); font-size: 18px; line-height: 29px; }
+    .solution-reference { margin: 0 0 20px; border: 2px solid #2e77a6; border-radius: 6px; background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+    .solution-reference-title { padding: 14px 18px; background: #2e77a6; color: #fff; font-size: 21px; line-height: 30px; font-weight: 800; }
+    .solution-reference-note { padding: 10px 18px; background: #eaf5fc; border-bottom: 1px solid #b9d5e7; color: #18364a; font-size: 17px; line-height: 26px; font-weight: 700; }
+    .solution-reference-content { padding: 20px 22px 24px; }
+    .solution-reference-content .passage { font-size: 18px; line-height: 28px; font-weight: 700; }
+    .solution-reference-content .shi-chart { max-height: 430px; }
+    .solution-explanation { margin-top: 18px; padding: 18px 20px 22px; border: 1px solid #cbd7e2; border-left: 5px solid #237fb5; background: #fbfdff; }
+    .solution-explanation-title { margin: 0 0 14px; color: #17354b; font-size: 21px; line-height: 30px; font-weight: 800; }
+    .results-actions { text-align: center; margin-top: 23px; }
+
+    @media (max-width: 1100px) {
+      .workspace { grid-template-columns: 225px minmax(0,1fr); }
+      .content { grid-template-columns: 43% 57%; }
+      .palette { gap: 9px; }
+      .topbar { grid-template-columns: 230px 1fr 210px; }
+    }
+
+    /* CAT candidate-screen layout, based on the official mock navigation guide */
+    body { background: #fff; }
+    .app { min-width: 980px; }
+    .topbar {
+      height: 32px; min-height: 32px; padding: 0 8px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: #303030; box-shadow: none; border-bottom: 1px solid #111;
+    }
+    .brand { gap: 7px; }
+    .brand-mark { width: 22px; height: 22px; border: 0; border-radius: 2px; font-size: 11px; background: #f0a11a; }
+    .brand-text strong { display: inline; color: #f4cf4e; font-size: 12px; }
+    .brand-text span { display: none; }
+    .test-title { margin-left: 10px; margin-right: auto; text-align: left; }
+    .test-title strong { color: #f4cf4e; font-family: Montserrat, "Segoe UI", Arial, sans-serif; font-size: 15px; font-weight: 700; }
+    .test-title small { display: none; }
+    .header-tools { display: flex; align-items: center; gap: 14px; }
+    .header-link { border: 0; padding: 0; color: #fff; background: transparent; font-size: 12px; font-weight: 700; }
+    .header-link .round-icon { display: inline-grid; place-items: center; width: 15px; height: 15px; margin-right: 4px; border-radius: 50%; background: #45bb77; color: #fff; font-size: 9px; }
+
+    .sectionbar {
+      height: 36px; min-height: 36px; padding: 3px 8px; gap: 5px; align-items: center;
+      background: #eee; border-bottom: 1px solid #c7c7c7;
+    }
+    .section-tab {
+      height: 28px; min-width: 60px; justify-content: center; padding: 0 12px;
+      border: 1px solid #aaa; border-radius: 2px; background: #fafafa;
+      color: #222; font-size: 14px; font-weight: 700;
+    }
+    .section-tab.active { color: #fff; border-color: #3687bd; background: #3b95ce; }
+    .tab-info { display: inline-grid; place-items: center; width: 15px; height: 15px; margin-left: 4px; border-radius: 50%; color: #168bc8; background: #fff; font-size: 10px; font-weight: 700; }
+    .section-tools { margin-left: auto; display: flex; gap: 9px; }
+    .calc-launch { width: 30px; height: 28px; border: 1px solid #d3a739; border-radius: 2px; color: #d18c00; background: #fff9df; font-size: 18px; line-height: 1; }
+    .exam-status {
+      height: 31px; min-height: 31px; padding: 0 10px; display: flex; align-items: center;
+      border-bottom: 1px solid #bfc5ca; background: #fff; color: #222; font-size: 12px;
+    }
+    .timer-box { margin-left: auto; display: flex; gap: 5px; align-items: center; text-align: right; color: #111; }
+    .timer-box span { display: inline; color: #111; font-size: 15px; text-transform: none; letter-spacing: 0; font-weight: 700; }
+    .timer-box span::after { content: " :"; }
+    .timer { margin: 0; color: #111; font: 800 17px/1 Arial, sans-serif; letter-spacing: .3px; }
+    .timer.warning { color: #a86100; }
+    .timer.danger { color: #c52626; }
+    .subsectionbar {
+      height: 34px; min-height: 34px; padding: 3px 8px; display: flex; align-items: center;
+      border-bottom: 1px solid #c5c5c5; background: #fff; font-size: 14px; font-weight: 700;
+    }
+    .subsection-name { min-width: 60px; height: 27px; padding: 6px 10px; background: #448fc5; color: #fff; }
+    .section-meta { margin-left: auto; padding: 0; color: #111; font-size: 13px; font-weight: 700; }
+
+    .workspace { position: relative; grid-template-columns: minmax(0,1fr) 300px; background: #fff; }
+    .main { grid-column: 1; grid-row: 1; }
+    .sidebar {
+      grid-column: 2; grid-row: 1; padding: 0 0 10px; display: flex; flex-direction: column;
+      border-right: 0; border-left: 3px solid #293945; background: #e5f6fc; overflow-y: auto;
+    }
+    .workspace.palette-collapsed { grid-template-columns: minmax(0,1fr) 0; }
+    .workspace.palette-collapsed .sidebar { visibility: hidden; }
+    .palette-toggle {
+      position: absolute; z-index: 8; right: 300px; top: 47%; width: 22px; height: 48px;
+      border: 0; border-radius: 4px 0 0 4px; background: #111; color: #fff; font-size: 18px;
+    }
+    .workspace.palette-collapsed .palette-toggle { right: 0; }
+    .candidate { order: 1; min-height: 68px; margin: 0; padding: 5px 8px; gap: 9px; border-bottom: 1px solid #222; background: #fff; }
+    .avatar {
+      position: relative; width: 56px; height: 56px; overflow: hidden; border-radius: 2px;
+      border: 1px solid #777; background: linear-gradient(#b8d6e4 0 42%, #e7f0f4 42%); color: transparent;
+    }
+    .avatar::before { content: ""; position: absolute; left: 17px; top: 7px; width: 22px; height: 22px; border-radius: 50%; background: #526d7d; }
+    .avatar::after { content: ""; position: absolute; left: 8px; bottom: 2px; width: 40px; height: 26px; border-radius: 50% 50% 12% 12%; background: #526d7d; }
+    .candidate strong { font-size: 16px; font-weight: 800; }
+    .candidate small { margin-top: 3px; font-size: 13px; font-weight: 600; }
+    .legend { order: 2; margin: 0; padding: 9px 8px; gap: 8px 5px; background: #fff; border-bottom: 1px solid #888; font-size: 12px; line-height: 1.3; font-weight: 700; }
+    .legend-item { gap: 4px; color: #333; }
+    .dot { width: 21px; height: 20px; }
+    .palette-title { order: 3; min-height: 46px; margin: 0; padding: 10px 14px; color: #fff; background: #4089c8; font-size: 18px; line-height: 26px; font-weight: 700; }
+    .palette-title::after { content: none; }
+    .palette-prompt { order: 4; padding: 10px 14px 4px; color: #111; font-size: 14px; line-height: 20px; font-weight: 700; }
+    .palette { order: 5; padding: 8px 14px 16px; grid-template-columns: repeat(4, 62px); gap: 10px 8px; justify-content: start; }
+    .q-chip { width: 62px; height: 44px; border-radius: 2px; background: linear-gradient(#fff,#dfe4e8); font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; color: #45515a; border-color: #a9b3bc; }
+    .q-chip.answered { background: #69b943; border-color: #4d9d2c; }
+    .q-chip.visited:not(.answered):not(.review) { background: #dc4b12; border-color: #b53c0d; }
+    .q-chip.review { background: #71459d; border-color: #57357a; }
+    .q-chip.current { box-shadow: 0 0 0 2px #f3b600; }
+    .sidebar-note { order: 6; margin: auto 8px 9px; background: #fff; font-size: 13px; line-height: 1.55; font-weight: 600; }
+    .sidebar-submit { order: 7; align-self: center; margin: 0 14px 4px; width: 124px; }
+
+    .content { grid-template-columns: minmax(390px, 52%) minmax(360px,48%); }
+    .info-panel { padding: 0 14px 28px; background: #fff; border-right: 3px solid #728a9b; }
+    .panel-head { min-height: 40px; margin: 0 -14px 16px; padding: 8px 12px; border-bottom: 1px solid #b5b5b5; background: #f8f8f8; color: #111; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 23px; font-weight: 800; }
+    .directions { margin-bottom: 15px; color: #333; font-size: 18px; line-height: 27px; font-weight: 700; }
+    .passage { font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 27px; color: #111; font-weight: 800; }
+    .passage p { margin: 0 0 18px; }
+    .passage .principle { margin: 17px 0; padding: 15px 17px; border-left: 5px solid #237fb5; background: #e8f5fc; line-height: 27px; font-weight: 700; }
+    .order-table { width: 100%; margin: 18px 0 4px; border-collapse: collapse; font-size: 17px; line-height: 1.45; font-weight: 800; }
+    .order-table th, .order-table td { border: 1px solid #1c2733; padding: 10px 12px; text-align: left; vertical-align: top; }
+    .order-table th { background: #4d88c7; color: #07131f; font-size: 18px; }
+    .order-table tbody tr:nth-child(odd) { background: #d5deec; }
+    .order-table tbody tr:nth-child(even) { background: #edf1f6; }
+    .order-table th:first-child, .order-table td:first-child { width: 120px; text-align: center; }
+    .order-table th:nth-child(2), .order-table td:nth-child(2) { width: 110px; text-align: center; }
+    .survey-table th, .survey-table td { text-align: center; }
+    .survey-table th:first-child, .survey-table td:first-child { width: 100px; text-align: center; font-weight: 800; }
+    .survey-table th:nth-child(2), .survey-table td:nth-child(2) { width: auto; text-align: center; }
+    .survey-table tbody td:first-child { background: #4d88c7; color: #07131f; }
+    .conditions-list { margin: 0 0 0 28px; padding: 0; }
+    .conditions-list li { margin: 8px 0; padding-left: 4px; }
+    .category-table th, .category-table td { text-align: center; }
+    .category-table th:first-child, .category-table td:first-child { width: 135px; text-align: center; font-weight: 800; background: #4d88c7; }
+    .category-table th:nth-child(2), .category-table td:nth-child(2) { width: auto; text-align: center; }
+    .shi-chart-wrap { margin: 18px 0 22px; padding: 12px 14px 8px; border: 1px solid #bdc9d5; background: #fff; overflow-x: auto; }
+    .shi-chart { display: block; width: 100%; min-width: 680px; height: auto; max-height: 390px; }
+    .shi-chart text { font-family: Arial, Helvetica, sans-serif; fill: #182533; font-weight: 700; }
+    .shi-chart .grid { stroke: #cfd7df; stroke-width: 1; }
+    .shi-chart .axis { stroke: #1f2c38; stroke-width: 2; }
+    .chart-key { display: flex; justify-content: center; gap: 22px; margin: 4px 0 0; font-size: 16px; font-weight: 800; }
+    .chart-key span::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 7px; vertical-align: -2px; }
+    .chart-key .key-s::before { background: #368ac5; }
+    .chart-key .key-f::before { background: #f47d22; }
+    .chart-key .key-c::before { background: #2f8a43; }
+    .platform-grid { width: min(620px, 100%); margin: 20px auto 24px; border-collapse: collapse; table-layout: fixed; font-size: 26px; line-height: 1; font-weight: 800; }
+    .platform-grid td { height: 82px; border: 3px solid #fff; text-align: center; vertical-align: middle; color: #07131f; background: #4d88c7; }
+    .platform-grid tr:nth-child(even) td { background: #d5deec; }
+    .reach-rules { margin: 8px 0 20px 30px; padding: 0; list-style: lower-roman; }
+    .reach-rules li { margin: 10px 0; padding-left: 7px; }
+    .solution-count-grid { max-width: 520px; margin: 12px auto 4px; font-size: 20px; }
+    .solution-count-grid td { height: 52px; border-color: #fff; }
+    .network-visual { margin-top: 14px; }
+    .question-panel { padding: 0 14px 28px; }
+    .question-top { min-height: 40px; margin: 0 -14px; padding: 8px 12px; border-bottom: 1px solid #b5b5b5; background: #f8f8f8; }
+    .q-number { color: #111; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 23px; font-weight: 800; }
+    .q-type { padding: 5px 9px; border-radius: 2px; background: #327fad; font-size: 13px; font-weight: 800; }
+    .question-text { margin: 14px 0 20px; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 27.55px; color: #101820; font-weight: 700; }
+    .rules-list li { padding: 7px 0; }
+    .hub-diagram {
+      width: 100%; margin: 26px 0 18px; padding: 8px 4px;
+      display: flex; align-items: center; justify-content: space-around; gap: 10px;
+    }
+    .hub-symbol { position: relative; width: 128px; height: 116px; flex: 0 1 128px; }
+    .hub-spoke {
+      position: absolute; z-index: 1; left: 50%; top: 50%; width: 118px; height: 2px;
+      background: #202020; box-shadow: 0 1px 1px rgba(0,0,0,.2);
+      transform-origin: center;
+    }
+    .hub-spoke.horizontal { transform: translate(-50%, -50%); }
+    .hub-spoke.diagonal-one { transform: translate(-50%, -50%) rotate(43deg); }
+    .hub-spoke.diagonal-two { transform: translate(-50%, -50%) rotate(-43deg); }
+    .hub-core {
+      position: absolute; z-index: 2; left: 50%; top: 50%; width: 66px; height: 66px;
+      transform: translate(-50%, -50%); display: grid; place-items: center;
+      border: 2px solid #245f98; border-radius: 50%; background: #4d88c9;
+      box-shadow: 0 2px 4px rgba(0,0,0,.18); color: #fff;
+      font-family: Roboto, "Segoe UI", Arial, sans-serif; font-size: 20px; font-weight: 500;
+    }
+    .solution-question .hub-diagram { max-width: 620px; margin: 22px auto 10px; }
+    .options { gap: 12px; }
+    .option { min-height: 44px; padding: 8px 4px; border: 1px solid transparent; border-radius: 2px; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 25.2px; font-weight: 500; color: #101820; background: #fff; }
+    .option.selected { padding: 6px 7px; border: 1px solid #3c94c9; background: #eaf6fb; }
+    .radio { width: 22px; height: 22px; border-width: 3px; }
+    .selected .radio::after { width: 11px; height: 11px; }
+    .tita-box { padding: 22px; border: 2px solid #aaa; }
+    .tita-box label { font-family: Montserrat, "Segoe UI", Arial, sans-serif; font-size: 18px; font-weight: 700; color: #333; }
+    .tita-box input { width: 310px; height: 52px; font-family: Roboto, "Segoe UI", Arial, sans-serif; font-size: 22px; font-weight: 700; color: #333; }
+    .tita-hint { font-size: 14px; line-height: 1.5; font-weight: 700; color: #333; }
+    .actionbar { min-height: 64px; padding: 10px 16px; background: #eef7fb; border-top: 1px solid #a9b3bc; }
+    .btn { min-height: 42px; border-radius: 1px; padding: 10px 18px; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 700; }
+    .solution-body { font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 28px; color: #222; }
+    .solution-title, .results-top h1, .result-stat strong { font-family: Montserrat, "Segoe UI", Arial, sans-serif; }
+    .btn.review-btn { order: 1; }
+    #clearBtn { order: 2; }
+    #previousBtn { order: 3; margin-left: auto; }
+    .btn.primary { order: 4; margin-left: 0; background: #168bc8; border-color: #0e74aa; }
+    .btn.submit { background: #53bad9; border-color: #42a7c6; }
+
+    .calculator-panel {
+      position: fixed; z-index: 18; top: 70px; right: 245px; width: 220px; padding: 0 8px 9px;
+      border: 1px solid #458bb8; background: #e8edf1; box-shadow: 0 4px 14px rgba(0,0,0,.3);
+    }
+    .calculator-panel.hidden { display: none; }
+    .calc-head { margin: 0 -8px 8px; padding: 7px 8px; display: flex; justify-content: space-between; background: #398fce; color: #fff; font-size: 12px; font-weight: 700; cursor: move; user-select: none; touch-action: none; }
+    .calculator-panel.dragging { box-shadow: 0 8px 22px rgba(0,0,0,.42); opacity: .97; }
+    .calc-close { border: 0; background: transparent; color: #fff; font-weight: 700; }
+    .calc-display { width: 100%; height: 32px; margin-bottom: 6px; padding: 4px 7px; text-align: right; border: 1px solid #999; background: #fff; }
+    .calc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 4px; }
+    .calc-key { height: 29px; border: 1px solid #aaa; background: linear-gradient(#fff,#ddd); font-size: 11px; }
+    .calc-key.op { background: #e96b4b; color: #fff; border-color: #c65337; }
+    .calc-key.eq { background: #39b76d; color: #fff; border-color: #279552; grid-row: span 2; height: auto; }
+
+    @media (max-width: 1100px) {
+      .workspace { grid-template-columns: minmax(0,1fr) 280px; }
+      .palette-toggle { right: 280px; }
+      .palette { grid-template-columns: repeat(4, 57px); gap: 9px 7px; padding-left: 12px; padding-right: 12px; }
+      .q-chip { width: 57px; }
+      .content { grid-template-columns: 52% 48%; }
+      .topbar { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">CL</div>
+        <div class="brand-text"><strong>CL Jaipur</strong><span>CAT PREP CENTRE</span></div>
+      </div>
+      <div class="test-title"><strong>LRDI CAT 2017 SLOT -1 Set -7</strong><small>Data Interpretation &amp; Logical Reasoning</small></div>
+      <div class="header-tools"><button class="header-link"><span class="round-icon">Q</span>Question Paper</button><button class="header-link"><span class="round-icon">i</span>View Instructions</button></div>
+    </header>
+
+    <div class="sectionbar">
+      <div class="section-tab">VARC <span class="tab-info">i</span></div>
+      <div class="section-tab active">DILR <span class="tab-info">i</span></div>
+      <div class="section-tab">QA <span class="tab-info">i</span></div>
+      <div class="section-tools"><button class="calc-launch" id="calculatorBtn" title="Open calculator" aria-label="Open calculator">▦</button></div>
+    </div>
+    <div class="exam-status"><span>Sections</span><div class="timer-box"><span>Time Left</span><div class="timer" id="timer">15:00</div></div></div>
+    <div class="subsectionbar"><span class="subsection-name">DILR <span class="tab-info">i</span></span><div class="section-meta">Marks for correct answer: 3 &nbsp;|&nbsp; Negative Marks: 1 for MCQ, 0 for TITA</div></div>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="candidate"><div class="avatar">C</div><div><strong>CAT Aspirant</strong><small>Candidate</small></div></div>
+        <div class="palette-title">Question Bar</div>
+        <div class="palette-prompt">Choose a Question</div>
+        <div class="palette" id="palette"></div>
+        <div class="legend">
+          <div class="legend-item"><i class="dot"></i> Not Visited</div>
+          <div class="legend-item"><i class="dot na"></i> Not Answered</div>
+          <div class="legend-item"><i class="dot ans"></i> Answered</div>
+          <div class="legend-item"><i class="dot rev"></i> Marked Review</div>
+        </div>
+        <div class="sidebar-note"><strong>Marking scheme</strong><br>MCQ: +3 correct, −1 incorrect<br>TITA: +3 correct, no negative mark</div>
+        <button class="btn submit sidebar-submit" id="submitBtn">Submit</button>
+      </aside>
+
+      <main class="main">
+        <div class="content">
+          <section class="info-panel">
+            <div class="panel-head">Common Information for Questions 1 to 4</div>
+            <div class="directions">Read the information carefully and answer the questions that follow.</div>
+            <div class="passage">
+              <p>In a square layout of size 5m × 5m, 25 equal sized square platforms of different heights are built. The heights (in metres) of individual platforms are as shown below:</p>
+              <table class="platform-grid" aria-label="Five by five platform-height layout">
+                <tbody>
+                  <tr><td>6</td><td>1</td><td>2</td><td>4</td><td>3</td></tr>
+                  <tr><td>9</td><td>5</td><td>3</td><td>2</td><td>8</td></tr>
+                  <tr><td>7</td><td>8</td><td>4</td><td>6</td><td>5</td></tr>
+                  <tr><td>3</td><td>9</td><td>5</td><td>1</td><td>2</td></tr>
+                  <tr><td>1</td><td>7</td><td>6</td><td>3</td><td>9</td></tr>
+                </tbody>
+              </table>
+              <p>Individuals (all of same height) are seated on these platforms. We say an individual A can reach an individual B if all the three following conditions are met:</p>
+              <ol class="reach-rules">
+                <li>A and B are In the same row or column</li>
+                <li>A is at a lower height than B</li>
+                <li>If there is/are any individual(s) between A and B, such individual(s) must be at a height lower than that of A.</li>
+              </ol>
+              <p>Thus in the table given above, consider the Individual seated at height 8 on 3rd row and 2nd column. He can be reached by four individuals. He can be reached by the individual on his left at height 7, by the two individuals on his right at heights of 4 and 6 and by the individual above at height 5. Rows in the layout are numbered from top to bottom and columns are numbered from left to right.</p>
+            </div>
+          </section>
+
+          <section class="question-panel">
+            <div class="question-top"><div class="q-number" id="qNumber">Question 1 of 4</div><div class="q-type" id="qType">MCQ • Single Correct</div></div>
+            <div class="question-text" id="questionText"></div>
+            <div id="answerArea"></div>
+          </section>
+        </div>
+
+        <div class="actionbar">
+          <button class="btn review-btn" id="reviewBtn">Mark for Review &amp; Next</button>
+          <button class="btn" id="clearBtn">Clear Response</button>
+          <button class="btn" id="previousBtn">Previous</button>
+          <button class="btn primary" id="saveBtn">Save &amp; Next</button>
+        </div>
+      </main>
+      <button class="palette-toggle" id="paletteToggle" title="Hide question palette" aria-label="Hide question palette">›</button>
+    </div>
+  </div>
+
+  <div class="calculator-panel hidden" id="calculatorPanel" role="dialog" aria-label="Calculator">
+    <div class="calc-head" id="calculatorHead"><span>Normal Calculator</span><button class="calc-close" id="calculatorClose" aria-label="Close calculator">×</button></div>
+    <input class="calc-display" id="calcDisplay" value="0" readonly aria-label="Calculator display">
+    <div class="calc-grid">
+      <button class="calc-key op" data-calc="clear">C</button><button class="calc-key op" data-calc="back">⌫</button><button class="calc-key op" data-calc="%">%</button><button class="calc-key op" data-calc="/">÷</button>
+      <button class="calc-key" data-calc="7">7</button><button class="calc-key" data-calc="8">8</button><button class="calc-key" data-calc="9">9</button><button class="calc-key op" data-calc="*">×</button>
+      <button class="calc-key" data-calc="4">4</button><button class="calc-key" data-calc="5">5</button><button class="calc-key" data-calc="6">6</button><button class="calc-key op" data-calc="-">−</button>
+      <button class="calc-key" data-calc="1">1</button><button class="calc-key" data-calc="2">2</button><button class="calc-key" data-calc="3">3</button><button class="calc-key op" data-calc="+">+</button>
+      <button class="calc-key" data-calc="0">0</button><button class="calc-key" data-calc=".">.</button><button class="calc-key eq" data-calc="=">=</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="submitModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-head" id="modalTitle">Submit Test?</div>
+      <div class="modal-body">
+        <div id="submitMessage">Review your attempt summary before final submission.</div>
+        <div class="summary-grid" id="attemptSummary"></div>
+        <div class="modal-actions"><button class="btn" id="cancelSubmit">Return to Test</button><button class="btn submit" id="confirmSubmit">Final Submit</button></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="results-screen hidden" id="resultsScreen">
+    <div class="results-top">
+      <div><h1>LRDI CAT 2017 SLOT -1 Set -7</h1><p>Performance report and worked explanations</p></div>
+      <div class="score-pill"><strong id="finalScore">0 / 12</strong><span>Total Score</span></div>
+    </div>
+    <div class="results-wrap">
+      <div class="result-summary" id="resultSummary"></div>
+      <section class="solution-reference" id="solutionReference">
+        <div class="solution-reference-title">Common Data for Cross-Checking</div>
+        <div class="solution-reference-note">Use this complete table, chart and set of conditions while reviewing the questions and solutions below.</div>
+        <div class="solution-reference-content" id="solutionReferenceContent"></div>
+      </section>
+      <div id="solutions"></div>
+      <div class="results-actions"><button class="btn primary" id="restartBtn">Restart Test</button></div>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const questions = [
+        {
+          type: 'mcq',
+          text: `How many individuals in this layout can be reached by just one individual?`,
+          options: ['3', '5', '7', '8'],
+          answer: '2',
+          explanation: `<strong>Step 1: Count the valid reachers for every platform.</strong><br>Applying the three reachability rules to each cell gives the following number-of-reachers matrix, in the same 5 × 5 arrangement:<br><br><table class="platform-grid solution-count-grid" aria-label="Number of individuals who can reach each platform"><tbody><tr><td>3</td><td>0</td><td>1</td><td>3</td><td>0</td></tr><tr><td>4</td><td>2</td><td>2</td><td>0</td><td>5</td></tr><tr><td>1</td><td>4</td><td>1</td><td>6</td><td>1</td></tr><tr><td>1</td><td>4</td><td>3</td><td>0</td><td>1</td></tr><tr><td>0</td><td>2</td><td>2</td><td>1</td><td>6</td></tr></tbody></table><br><strong>Step 2: Locate every entry equal to 1.</strong><br>These occur at (row, column): (1,3), (3,1), (3,3), (3,5), (4,1), (4,5) and (5,4). There are <strong>7</strong> such platforms.<br><br><strong>Correct answer: 7 (Option C).</strong>`
+        },
+        {
+          type: 'mcq',
+          text: `Which of the following is true for any individual at a platform of height 1m in this layout?`,
+          options: ['They can be reached by all the individuals in their own row and column.', 'They can be reached by at least 4 individuals.', 'They can be reached by at least one individual.', 'They cannot be reached by anyone.'],
+          answer: '3',
+          explanation: `<strong>Use the second reachability condition.</strong><br>For A to reach B, A must be at a lower height than B. If B is seated on a platform of height 1m, A would need to be on a platform lower than 1m.<br><br>The layout contains no platform with a height below 1m. Therefore, no possible individual A can satisfy the condition A &lt; B for a height-1 target.<br><br>Hence every individual seated at height 1m has zero reachers.<br><br><strong>Correct answer: They cannot be reached by anyone (Option D).</strong>`
+        },
+        {
+          type: 'mcq',
+          text: `We can find two individuals who cannot be reached by anyone in`,
+          options: ['the last row', 'the fourth row', 'the fourth column', 'the middle column'],
+          answer: '2',
+          explanation: `<strong>Step 1: Identify all unreachable platforms.</strong><br>From the reacher-count matrix, the platforms with zero reachers are:<br>• (1,2), height 1<br>• (1,5), height 3<br>• (2,4), height 2<br>• (4,4), height 1<br>• (5,1), height 1<br><br><strong>Step 2: Check the options.</strong><br>The fourth column contains two of these unreachable individuals: the height-2 individual at row 2 and the height-1 individual at row 4.<br><br>The last row and fourth row contain only one unreachable individual each, while the middle column contains none.<br><br><strong>Correct answer: the fourth column (Option C).</strong>`
+        },
+        {
+          type: 'mcq',
+          text: `Which of the following statements is true about this layout?`,
+          options: ['Each row has an individual who can be reached by 5 or more individuals', 'Each row has an individual who cannot be reached by anyone', 'Each row has at least two individuals who can be reached by an equal number of individuals', 'All individuals at the height of 9 m can be reached by at least 5 individuals'],
+          answer: '2',
+          explanation: `<strong>Check each statement against the reacher-count matrix.</strong><br><br><strong>Option A is false.</strong> In the first row, the reacher counts are 3, 0, 1, 3 and 0. None is 5 or more.<br><br><strong>Option B is false.</strong> The third row has reacher counts 1, 4, 1, 6 and 1, so no individual in that row has zero reachers.<br><br><strong>Option C is true.</strong> Every row contains a repeated reacher count:<br>• Row 1 repeats 3 and 0<br>• Row 2 repeats 2<br>• Row 3 repeats 1<br>• Row 4 repeats 1<br>• Row 5 repeats 2<br>Thus, each row has at least two individuals reached by an equal number of individuals.<br><br><strong>Option D is false.</strong> The height-9 individual at row 2, column 1 can be reached by only 4 individuals, not at least 5.<br><br><strong>Correct answer: Option C.</strong>`
+        }
+      ];
+
+      const state = {
+        current: 0,
+        answers: Array(4).fill(''),
+        visited: [true, false, false, false],
+        review: Array(4).fill(false),
+        seconds: 900,
+        submitted: false,
+        timerId: null
+      };
+
+      const $ = id => document.getElementById(id);
+      const palette = $('palette');
+
+      function isAnswered(i) { return String(state.answers[i]).trim() !== ''; }
+
+      function renderQuestionVisual(q) {
+        if (q.visual !== 'three-hubs') return '';
+        return `<div class="hub-diagram" role="img" aria-label="Three hub cities A, B and C, each directly connected to six other cities">
+          ${['A', 'B', 'C'].map(label => `<div class="hub-symbol" aria-hidden="true"><i class="hub-spoke horizontal"></i><i class="hub-spoke diagonal-one"></i><i class="hub-spoke diagonal-two"></i><span class="hub-core">${label}</span></div>`).join('')}
+        </div>`;
+      }
+
+      function renderPalette() {
+        palette.innerHTML = '';
+        questions.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.className = 'q-chip';
+          if (state.visited[i]) b.classList.add('visited');
+          if (isAnswered(i)) b.classList.add('answered');
+          if (state.review[i]) b.classList.add('review');
+          if (state.current === i) b.classList.add('current');
+          b.textContent = i + 1;
+          b.setAttribute('aria-label', `Go to question ${i + 1}`);
+          b.addEventListener('click', () => goTo(i));
+          palette.appendChild(b);
+        });
+      }
+
+      function renderQuestion() {
+        const q = questions[state.current];
+        $('qNumber').textContent = `Question ${state.current + 1} of 4`;
+        $('qType').textContent = q.type === 'mcq' ? 'MCQ • Single Correct' : 'TITA • Numeric Answer';
+        $('questionText').innerHTML = q.text + renderQuestionVisual(q);
+        const area = $('answerArea');
+
+        if (q.type === 'mcq') {
+          area.innerHTML = `<div class="options">${q.options.map((opt, i) => `
+            <label class="option ${state.answers[state.current] === String(i) ? 'selected' : ''}">
+              <input type="radio" name="answer" value="${i}" ${state.answers[state.current] === String(i) ? 'checked' : ''}>
+              <span class="radio"></span><span class="option-letter">${String.fromCharCode(65 + i)}.</span><span>${opt}</span>
+            </label>`).join('')}</div>`;
+          area.querySelectorAll('input').forEach(input => input.addEventListener('change', e => {
+            state.answers[state.current] = e.target.value;
+            area.querySelectorAll('.option').forEach(x => x.classList.remove('selected'));
+            e.target.closest('.option').classList.add('selected');
+            renderPalette();
+          }));
+        } else {
+          area.innerHTML = `<div class="tita-box"><label for="titaInput">Enter your answer</label><input id="titaInput" type="text" inputmode="decimal" autocomplete="off" maxlength="12" value="${state.answers[state.current]}" aria-label="Numeric answer"><div class="tita-hint">Use numbers only. There is no negative marking for this question.</div></div>`;
+          const input = $('titaInput');
+          input.addEventListener('input', e => {
+            e.target.value = e.target.value.replace(/[^0-9.\-]/g, '').replace(/(?!^)-/g, '');
+            state.answers[state.current] = e.target.value;
+            renderPalette();
+          });
+        }
+        $('saveBtn').textContent = state.current === 3 ? 'Save & Submit' : 'Save & Next';
+        renderPalette();
+      }
+
+      function goTo(index) {
+        state.current = index;
+        state.visited[index] = true;
+        renderQuestion();
+      }
+
+      function nextQuestion() {
+        if (state.current < 3) goTo(state.current + 1);
+        else openSubmitModal();
+      }
+
+      function updateTimer() {
+        const mins = Math.floor(state.seconds / 60);
+        const secs = state.seconds % 60;
+        const timer = $('timer');
+        timer.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        timer.classList.toggle('warning', state.seconds <= 180 && state.seconds > 60);
+        timer.classList.toggle('danger', state.seconds <= 60);
+      }
+
+      function runTimer() {
+        clearInterval(state.timerId);
+        state.timerId = setInterval(() => {
+          if (state.submitted) return;
+          state.seconds -= 1;
+          updateTimer();
+          if (state.seconds <= 0) {
+            clearInterval(state.timerId);
+            submitTest(true);
+          }
+        }, 1000);
+      }
+
+      function counts() {
+        const answered = state.answers.filter(a => String(a).trim() !== '').length;
+        const review = state.review.filter(Boolean).length;
+        const notAnswered = state.visited.filter((v, i) => v && !isAnswered(i)).length;
+        return { answered, review, notAnswered, unvisited: 4 - state.visited.filter(Boolean).length };
+      }
+
+      function openSubmitModal() {
+        const c = counts();
+        $('submitMessage').textContent = c.answered < 4 ? 'Some questions are unanswered. You can return to the test or submit now.' : 'All questions have a response. Confirm to finish the test.';
+        $('attemptSummary').innerHTML = `
+          <div class="summary-card"><strong>${c.answered}</strong><span>Answered</span></div>
+          <div class="summary-card"><strong>${c.notAnswered}</strong><span>Not Answered</span></div>
+          <div class="summary-card"><strong>${c.review}</strong><span>For Review</span></div>
+          <div class="summary-card"><strong>${c.unvisited}</strong><span>Not Visited</span></div>`;
+        $('submitModal').classList.remove('hidden');
+      }
+
+      function normalized(value) {
+        const n = Number(String(value).trim());
+        return Number.isFinite(n) ? String(n) : String(value).trim();
+      }
+
+      function submitTest(auto = false) {
+        if (state.submitted) return;
+        state.submitted = true;
+        clearInterval(state.timerId);
+        $('submitModal').classList.add('hidden');
+
+        let score = 0, correct = 0, wrong = 0, skipped = 0;
+        const evaluated = questions.map((q, i) => {
+          const response = state.answers[i];
+          if (!String(response).trim()) { skipped++; return 'skip'; }
+          const ok = q.type === 'tita' ? normalized(response) === normalized(q.answer) : response === q.answer;
+          if (ok) { correct++; score += 3; return 'correct'; }
+          wrong++;
+          if (q.type === 'mcq') score -= 1;
+          return 'wrong';
+        });
+
+        $('finalScore').textContent = `${score} / 12`;
+        $('resultSummary').innerHTML = `
+          <div class="result-stat"><strong>${correct}</strong><span>Correct Answers</span></div>
+          <div class="result-stat"><strong>${wrong}</strong><span>Incorrect Answers</span></div>
+          <div class="result-stat"><strong>${skipped}</strong><span>Unattempted</span></div>
+          <div class="result-stat"><strong>${formatTime(900 - state.seconds)}</strong><span>Time Used${auto ? ' • Auto-submitted' : ''}</span></div>`;
+
+        $('solutionReferenceContent').innerHTML = document.querySelector('.info-panel .passage').outerHTML;
+
+        $('solutions').innerHTML = questions.map((q, i) => {
+          const status = evaluated[i];
+          const correctDisplay = q.type === 'mcq' ? `${String.fromCharCode(65 + Number(q.answer))}. ${q.options[Number(q.answer)]}` : q.answer;
+          const responseDisplay = !isAnswered(i) ? 'Not attempted' : (q.type === 'mcq' ? `${String.fromCharCode(65 + Number(state.answers[i]))}. ${q.options[Number(state.answers[i])]}` : escapeHTML(state.answers[i]));
+          const optionsDisplay = q.type === 'mcq' ? `<ol class="solution-options" type="A">${q.options.map((option, optionIndex) => `<li class="${optionIndex === Number(q.answer) ? 'correct-choice' : ''}">${escapeHTML(option)}${optionIndex === Number(q.answer) ? ' — Correct answer' : ''}</li>`).join('')}</ol>` : '';
+          return `<article class="solution-card">
+            <div class="solution-title"><span>Question ${i + 1}</span><span class="status-badge ${status}">${status === 'skip' ? 'Unattempted' : status}</span></div>
+            <div class="solution-body">
+              <div class="solution-question">${q.text}${renderQuestionVisual(q)}</div>
+              ${optionsDisplay}
+              <div class="answer-line"><strong>Your answer:</strong> ${responseDisplay}<br><strong>Correct answer:</strong> ${correctDisplay}</div>
+              <div class="solution-explanation"><div class="solution-explanation-title">Detailed Solution for Question ${i + 1}</div>${q.explanation}</div>
+            </div>
+          </article>`;
+        }).join('');
+        $('resultsScreen').classList.remove('hidden');
+        window.scrollTo(0, 0);
+      }
+
+      function escapeHTML(s) {
+        return String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+      }
+
+      function formatTime(totalSeconds) {
+        const s = Math.max(0, totalSeconds);
+        return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
+      }
+
+      $('clearBtn').addEventListener('click', () => {
+        state.answers[state.current] = '';
+        renderQuestion();
+      });
+      $('reviewBtn').addEventListener('click', () => {
+        state.review[state.current] = true;
+        nextQuestion();
+      });
+      $('saveBtn').addEventListener('click', () => {
+        state.review[state.current] = false;
+        nextQuestion();
+      });
+      $('previousBtn').addEventListener('click', () => {
+        if (state.current > 0) goTo(state.current - 1);
+      });
+      $('submitBtn').addEventListener('click', openSubmitModal);
+      $('cancelSubmit').addEventListener('click', () => $('submitModal').classList.add('hidden'));
+      $('confirmSubmit').addEventListener('click', () => submitTest(false));
+      $('restartBtn').addEventListener('click', () => location.reload());
+      $('submitModal').addEventListener('click', e => { if (e.target === $('submitModal')) $('submitModal').classList.add('hidden'); });
+
+      $('paletteToggle').addEventListener('click', () => {
+        const collapsed = document.querySelector('.workspace').classList.toggle('palette-collapsed');
+        $('paletteToggle').textContent = collapsed ? '‹' : '›';
+        $('paletteToggle').title = collapsed ? 'Show question palette' : 'Hide question palette';
+        $('paletteToggle').setAttribute('aria-label', $('paletteToggle').title);
+      });
+
+      const calculatorPanel = $('calculatorPanel');
+      const calcDisplay = $('calcDisplay');
+      const calculatorHead = $('calculatorHead');
+      let calculatorDrag = null;
+      $('calculatorBtn').addEventListener('click', () => calculatorPanel.classList.toggle('hidden'));
+      $('calculatorClose').addEventListener('click', () => calculatorPanel.classList.add('hidden'));
+      calculatorHead.addEventListener('pointerdown', event => {
+        if (event.target.closest('button')) return;
+        const rect = calculatorPanel.getBoundingClientRect();
+        calculatorPanel.style.left = `${rect.left}px`;
+        calculatorPanel.style.top = `${rect.top}px`;
+        calculatorPanel.style.right = 'auto';
+        calculatorDrag = { pointerId: event.pointerId, offsetX: event.clientX - rect.left, offsetY: event.clientY - rect.top };
+        calculatorPanel.classList.add('dragging');
+        calculatorHead.setPointerCapture(event.pointerId);
+        event.preventDefault();
+      });
+      calculatorHead.addEventListener('pointermove', event => {
+        if (!calculatorDrag || calculatorDrag.pointerId !== event.pointerId) return;
+        const maxLeft = Math.max(0, window.innerWidth - calculatorPanel.offsetWidth);
+        const maxTop = Math.max(0, window.innerHeight - calculatorPanel.offsetHeight);
+        const left = Math.min(maxLeft, Math.max(0, event.clientX - calculatorDrag.offsetX));
+        const top = Math.min(maxTop, Math.max(0, event.clientY - calculatorDrag.offsetY));
+        calculatorPanel.style.left = `${left}px`;
+        calculatorPanel.style.top = `${top}px`;
+      });
+      function stopCalculatorDrag(event) {
+        if (!calculatorDrag || calculatorDrag.pointerId !== event.pointerId) return;
+        if (calculatorHead.hasPointerCapture(event.pointerId)) calculatorHead.releasePointerCapture(event.pointerId);
+        calculatorDrag = null;
+        calculatorPanel.classList.remove('dragging');
+      }
+      calculatorHead.addEventListener('pointerup', stopCalculatorDrag);
+      calculatorHead.addEventListener('pointercancel', stopCalculatorDrag);
+      window.addEventListener('resize', () => {
+        if (!calculatorPanel.style.left) return;
+        const maxLeft = Math.max(0, window.innerWidth - calculatorPanel.offsetWidth);
+        const maxTop = Math.max(0, window.innerHeight - calculatorPanel.offsetHeight);
+        calculatorPanel.style.left = `${Math.min(maxLeft, Math.max(0, parseFloat(calculatorPanel.style.left) || 0))}px`;
+        calculatorPanel.style.top = `${Math.min(maxTop, Math.max(0, parseFloat(calculatorPanel.style.top) || 0))}px`;
+      });
+      document.querySelectorAll('[data-calc]').forEach(key => key.addEventListener('click', () => {
+        const value = key.dataset.calc;
+        if (value === 'clear') { calcDisplay.value = '0'; return; }
+        if (value === 'back') { calcDisplay.value = calcDisplay.value.length > 1 ? calcDisplay.value.slice(0, -1) : '0'; return; }
+        if (value === '=') {
+          try {
+            const expression = calcDisplay.value;
+            if (!/^[0-9+\-*/%.() ]+$/.test(expression)) throw new Error('Invalid');
+            const result = Function(`"use strict"; return (${expression})`)();
+            calcDisplay.value = Number.isFinite(result) ? String(Math.round((result + Number.EPSILON) * 1e10) / 1e10) : 'Error';
+          } catch (_) { calcDisplay.value = 'Error'; }
+          return;
+        }
+        if (calcDisplay.value === '0' || calcDisplay.value === 'Error') calcDisplay.value = '';
+        calcDisplay.value += value;
+      }));
+
+      renderQuestion();
+      updateTimer();
+      runTimer();
+    })();
+  </script>
+</body>
+</html>
