@@ -2176,6 +2176,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 15,
     "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2017 SLOT -1 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
+    ],
+    "minutes": 15,
+    "questions": 4
   }
 ];
 
