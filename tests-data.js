@@ -2152,19 +2152,6 @@ window.CAT_TESTS = [
     "questions": 50
   },
   {
-    "title": "LRDI CAT 2017 SLOT -1 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
     "title": "LRDI CAT 2017 SLOT -1 Set -2",
     "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -2.html",
     "original": "LRDI CAT 2017 SLOT -1 Set -2.html",
@@ -2259,6 +2246,19 @@ window.CAT_TESTS = [
     "title": "LRDI CAT 2017 SLOT -2 Set -1",
     "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -1.html",
     "original": "LRDI CAT 2017 SLOT -2 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2017 SLOT -1 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
     "folders": [
       "PYQ",
       "Year Wise",
