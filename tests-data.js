@@ -2371,6 +2371,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 15,
     "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2018 SLOT -1 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -1.html",
+    "original": "LRDI CAT 2018 SLOT -1 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2018"
+    ],
+    "minutes": 15,
+    "questions": 4
   }
 ];
 
@@ -3172,6 +3185,15 @@ window.CAT_FOLDERS = [
       "Year Wise",
       "LRDI",
       "2017"
+    ]
+  },
+  {
+    "name": "2018",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2018"
     ]
   },
   {
