@@ -2267,6 +2267,19 @@ window.CAT_TESTS = [
     ],
     "minutes": 15,
     "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2017 SLOT -1 Set -3",
+    "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
+    "folders": [
+      "PYQ",
+      "2017",
+      "LRDI",
+      "2017"
+    ],
+    "minutes": 15,
+    "questions": 4
   }
 ];
 
@@ -2436,6 +2449,30 @@ window.CAT_FOLDERS = [
     "name": "PYQ",
     "path": [
       "PYQ"
+    ]
+  },
+  {
+    "name": "2017",
+    "path": [
+      "PYQ",
+      "2017"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "PYQ",
+      "2017",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "2017",
+    "path": [
+      "PYQ",
+      "2017",
+      "LRDI",
+      "2017"
     ]
   },
   {
