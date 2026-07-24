@@ -2578,6 +2578,18 @@ window.CAT_TESTS = [
       "2018"
     ],
     "minutes": 60
+  },
+  {
+    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions)",
+    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
+    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 40,
+    "questions": 25
   }
 ];
 
