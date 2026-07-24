@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CL Jaipur Repeaters Batch - Arithmetic Test 1</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}main>section>#result{flex:0 0 auto}main>section>#testForm{flex:1 1 auto;min-height:0;overflow:hidden}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc}.question-palette-panel{display:flex;flex-direction:column;overflow:auto}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 24px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    .formula-box{margin:14px 0;padding:12px 14px;border:2px solid #2d7fb8;background:#f4fbff;font-size:17px;font-weight:700}
+    .shortcut-box{margin:14px 0;padding:12px 14px;border-left:5px solid #60b947;background:#f5fbf2}
+    .final-answer{margin-top:14px;padding:10px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}
+    .solution-step{margin:0 0 10px}
+    .mixed-number{display:inline-flex;align-items:center;gap:.18em;white-space:nowrap}.math-frac{display:inline-grid;grid-template-rows:auto auto;min-width:1.35em;margin:0 .1em;vertical-align:middle;text-align:center;font-size:.82em;line-height:1}.math-frac .frac-num{padding:0 .12em .08em;border-bottom:1.5px solid currentColor}.math-frac .frac-den{padding:.08em .12em 0}.option .math-frac{font-size:.78em}.formula-box .math-frac,.final-answer .math-frac{font-size:.86em}
+  </style>
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>CL Jaipur Repeaters Batch - Arithmetic Test 1</h1><div class="meta">Quantitative Aptitude | 25 Questions | 50 Minutes | 9 TITA + 16 MCQ | +3 correct, -1 MCQ wrong, 0 TITA wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">50:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">x</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">Back</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">sqrt</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "q": "A sum of money is divided among Prakash, Vikas and Bala so that the ratio of the shares of Prakash and Vikas is 3 : 5, while the ratio of the shares of Vikas and Bala is 2 : 5. If the difference between the largest and the smallest of these three shares is Rs. 570, then Prakash’s share, in rupees, is _______ .",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Easy | ID 169235787270918",
+    "options": [
+      "150",
+      "180",
+      "120",
+      "90"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The average height of a group of people increases by 0.375 inches when a few more people join them. If the average weight of the new people is 3 inches more than that of the original group, then the ratio of the number of people present originally to those who joined later is:",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Medium | ID 16968491129216",
+    "options": [
+      "7 : 1",
+      "11 : 5",
+      "5 : 1",
+      "13 : 2"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "Three solutions have acid content 30%, 40% and 80% respectively. A mixture has been made with these three solutions where the volume of these solutions used are x ml, y ml, and z ml respectively. Which of the following will be true about the maximum value of the resulting concentration if z = 2x < y?",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Medium | ID 169452098262316",
+    "options": [
+      "less than 54",
+      "54 or more but less than 55",
+      "55 or more but less than 56",
+      "56 or more"
+    ],
+    "answer": 0
+  },
+  {
+    "q": "<p>Two friends Amay and Vinay started a business at the beginning of the year. Initially, Amay invested Rs. 20000. After 6 months, Vinay invested some money. The business was managed by Vinay alone and it was agreed between them that Vinay will receive 12.5% of the profit for managing the business. At the end of the year, both of them earned an equal amount. The amount invested by Vinay was:</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Partnership | Easy | ID 168509374069820",
+    "options": [
+      "<span style=\"font-family: Calibri;\"> Rs. 15000</span>",
+      "<span style=\"font-family: Calibri;\"> Rs. 20000</span>",
+      "<span style=\"font-family: Calibri;\"> Rs. 30000</span>",
+      "<span style=\"font-family: Calibri;\"> Rs. 40000</span>"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "In a 10<sup>th</sup> standard state board examination, 5% of registered students did not appear for the examination. Among the students who appeared for the examination, 8% could not pass the examination. The ratio of students who passed in first division, second division and p-division (students can pass in these 3 divisions only) is 5 : 3 : 2. How many students appeared for the board examination if the difference between the number of students who passed in first and p-division is 2622?",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Easy | ID 168940682086310",
+    "options": [
+      "10000",
+      "11000",
+      "9500",
+      "11400"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "<span style=\"color: #202124;background-color: white;\">A batsman played a total of 9 innings and his average score in these 9 innings was 35. He never scored more than 50 runs in a single innings. If in the first 5 innings his highest score was 31 then the largest possible difference between two lowest scores scored in these 9 innings is _____________ .</span>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Difficult | ID 169235787270313",
+    "options": [
+      "<span style=\"color: #202124;background-color: white;\"> 21</span>",
+      "<span style=\"color: #202124;background-color: white;\"> 27</span>",
+      "<span style=\"color: #202124;background-color: white;\"> 31</span>",
+      "<span style=\"color: #202124;background-color: white;\"> 32</span>"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "<span style=\"font-family: ;color: #000000;\"></span>\tA pitcher is filled with corn syrup and a second pitcher is filled with pure water. Half of the corn syrup and half of the pure water are poured into a large glass bowl. Next, one-third of the remaining corn syrup from the first pitcher and half of the remaining pure water from the second pitcher is again poured into the glass bowl. Now, the volumes of corn syrup and pure water left in the two pitchers are the same. Then the ratio of corn syrup and pure water in the large glass bowl is _________.",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Medium | ID 168171699415621",
+    "options": [
+      "1 : 1",
+      "3 : 2",
+      "2 : 3",
+      "8 : 3"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "<span style=\"font-family: Calibri;\"></span>\tA company has two branches in India - one in Mumbai and the other one in Kolkata. Each branch has three departments viz. Finance, Marketing and Operations. The number of employees in these three departments in the given order are in ratio 1 : 3 : 2 in the Mumbai branch and 3 : 7 : 5 in the Kolkata branch. If both the branches have same number of employees, then the ratio of number of employees in Mumbai in Finance department to that in Kolkata in Operations department is:",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Easy | ID 16875011662384",
+    "options": [
+      "<p>5 : 7</p>",
+      "<p>1 : 2</p>",
+      "<p>3 : 5</p>",
+      "<p>2 : 5</p>"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "The rector of the boys' hostel at Imperial College of Engineering, Delhi was trying to calculate the average age of the 35 boys living in the hostel. By mistake, he included himself with the group of boys, as a result, the average age increased by one year. If the rector is 57 years old, what is the average age of the boys living in the hostel?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Averages | Easy | ID 16928518622230",
+    "answer": "21",
+    "accepted": [
+      "21"
+    ]
+  },
+  {
+    "q": "<p>Two different brands of edible oil, Ganga and Yamuna, are mixed and sold at Rs. 126 a litre. The profit is 20% if Ganga and Yamuna are mixed in 4 : 5 ratio, and 5% if this ratio is 5 : 4. The price (in Rs.) of Ganga brand oil per litre is ________ .</p> <p>&nbsp;</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Medium | ID 16984024818153",
+    "options": [
+      "150",
+      "160",
+      "180",
+      "200"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "The ratio of male and female students in a college is 17 : 19. The students of the college can opt any one of the two programs for their graduation - Humanities or Commerce. Half of the students enrolled in the Humanities program are female, and in the Commerce program, the ratio of male to female students is 7 : 9. How many students are there in the college enrolled in these two programs if the number of male commerce students is 91?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Easy | ID 168846899786512",
+    "answer": "468",
+    "accepted": [
+      "468"
+    ]
+  },
+  {
+    "q": "<p>Let a<sub>1</sub>, a<sub>2</sub>, &hellip;, a<sub>50</sub> be positive integers such that a<sub>1</sub> &lt; a<sub>2</sub> &lt; &hellip; &lt; a<sub>50</sub>. The arithmetic mean of these 50 positive integers is 50 and that of a<sub>2</sub>, a<sub>3</sub>, &hellip;, a<sub>50</sub> is 51. The difference between the minimum and the maximum possible value of a<sub>50</sub> is _______.</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Difficult | ID 16850937406735",
+    "options": [
+      "<span style=\"font-family: Calibri;\"> 1051</span>",
+      "<span style=\"font-family: Calibri;\"> 1176</span>",
+      "<span style=\"font-family: Calibri;\"> 1200</span>",
+      "<span style=\"font-family: Calibri;\"> 1225</span>"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "Container-A is fully filled with one litre pure milk. Milkman Baijnath poured one-third of the content of container-A by volume to a large empty bowl. Then he refills container-A till its brim with pure water without any wastage and again empties half the mixture of container-A to that large bowl. At last, he fills container-A till its brim with pure water without any wastage and completely empties its content in the large bowl. What is the concentration (in %) of milk in the solution contained in the large bowl now?",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Easy | ID 16894068208525",
+    "options": [
+      "45<span class=\"math-frac\"><span class=\"frac-num\">5</span><span class=\"frac-den\">11</span></span>",
+      "54<span class=\"math-frac\"><span class=\"frac-num\">6</span><span class=\"frac-den\">11</span></span>",
+      "45<span class=\"math-frac\"><span class=\"frac-num\">6</span><span class=\"frac-den\">11</span></span>",
+      "54<span class=\"math-frac\"><span class=\"frac-num\">5</span><span class=\"frac-den\">11</span></span>"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "<p>In an election, <span class=\"math-frac\"><span class=\"frac-num\">3</span><span class=\"frac-den\">7</span></span>th of the voters promised to vote Kushal and the rest promised to vote Vishal. 5% of the voters who had promised to vote Kushal changed their minds and voted for Vishal. P% of the voters who had promised to vote Vishal changed their minds and voted for Kushal. The difference between their votes was 10% of the total votes. The value of P can be _________</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Medium | ID 16866508160388",
+    "options": [
+      "<p>10</p>",
+      "<p>15</p>",
+      "<p>20</p>",
+      "<p>25</p>"
+    ],
+    "answer": 3
+  },
+  {
+    "q": "If M and N are two positive integers such that (2M + 3N) = 53 , then the average of the maximum and minimum possible values of (M + N) is _____________ .",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Medium | ID 16894068208493",
+    "options": [
+      "21",
+      "21.5",
+      "22",
+      "22.5"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "<p>If a milkman mixes 30 litres of pure milk with 10 litres of milk-water solution, the concentration of water in the resulting solution becomes 12.5%. If the milkman had sold only the 10 litres milk-water solution at the cost price of pure milk without any wastage, his profit percentage would have been __________ .<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]</p>",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Easy | ID 16944128439893",
+    "answer": "100",
+    "accepted": [
+      "100"
+    ]
+  },
+  {
+    "q": "In a family of three members, the ratio of ages of father and mother was 5 : 4 when their son was born. Six years later, the ratio became 6 : 5. After how many more years will the ratio of the ages of mother and son become 3 : 1?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Ratio-Proportions | Easy | ID 169476357355118",
+    "answer": "6",
+    "accepted": [
+      "6"
+    ]
+  },
+  {
+    "q": "<p>All the four roots of the equation x<sup>4</sup> &ndash; 12x<sup>3</sup> + cx<sup>2</sup> &ndash; dx + 81 = 0 are positive real numbers. Find the value of (c + d).</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Difficult | ID 16962751744143",
+    "options": [
+      "<p>81</p>",
+      "<p>162</p>",
+      "<p>243</p>",
+      "<p>324</p>"
+    ],
+    "answer": 1
+  },
+  {
+    "q": "<p>A milkman doubled the volume of pure milk by adding water. He further adds pure milk to the resultant solution to increase its volume by 25%. What is the concentration of milk (in percentage) in this final solution?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]</p>",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Easy | ID 16884689978492",
+    "answer": "60",
+    "accepted": [
+      "60"
+    ]
+  },
+  {
+    "q": "<span style=\"font-family: ;color: #202124;\"></span>\tThe average age of three sisters is 17 years. If the age of the brother is included, the average age of the 4 persons remains an odd number. What can be the minimum age of the brother (in years) if his age is not less than 2 years?",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Easy | ID 16944128439946",
+    "options": [
+      "3",
+      "5",
+      "9",
+      "13"
+    ],
+    "answer": 2
+  },
+  {
+    "q": "A trader has bought two varieties of rice. The cheaper variety costs Rs. 50 per kg and the costlier variety costs Rs. 60 per kg. The mixture of the two varieties cost an integer value when expressed in Rs. per kg. The quantity of the cheaper variety is 5 kg more than that of the costlier variety. What can be the maximum weight (in kg) of the mixture?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Difficult | ID 16915800549374",
+    "answer": "25",
+    "accepted": [
+      "25"
+    ]
+  },
+  {
+    "q": "<p>In a team of 20 young adults, 8 are females and the rest are males. The average weight (in kg) of the female members in the group is an integer which is more than 50 but less than 55, and the average weight of the group of males is 1/3 kg more than that of the females. What is the average weight (in kg) of the female members in that group, if the total weight of the whole group (in kg) is a perfect square of a natural number?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]</p>",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Averages | Difficult | ID 168846899787719",
+    "answer": "51",
+    "accepted": [
+      "51"
+    ]
+  },
+  {
+    "q": "<p>A milk-water mixture of volume 200 litres contains 10% water. How many litres of water must be added to the mixture so that the percentage of water increases to 40%?<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]</p>",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Mixtures & Alligations | Easy | ID 168665081605418",
+    "answer": "<p>100</p>",
+    "accepted": [
+      "<p>100</p>"
+    ]
+  },
+  {
+    "q": "<p>Basketball players of a club, all of distinct heights, are standing in the descending order of their heights from left to right. If we do not include the first 5 players from the right, the average height of the players increases by 2 cm, and if we do not include the first 5 players from the left, the average height of the players decreases by 2 cm. If the sum of the height of the first 5 players from the left is 920 cm and that from the right is 680 cm, then the total number of players of the club is _____________ .<br><br>Enter your response (as an integer) using the virtual keyboard in the box provided below.<br><br>[quizky-text]</p>",
+    "type": "text",
+    "source": "CL Jaipur Repeaters Batch | Averages | Difficult | ID 168665081604310",
+    "answer": "<p>65</p>",
+    "accepted": [
+      "<p>65</p>"
+    ]
+  },
+  {
+    "q": "<p>Six students, including Aman, appeared for a test. The possible marks in the test were integers between 0 and 60, both inclusive, and no two students got equal marks. The average marks of all the students was 42 and exactly four students got not more than 40 marks. If Aman got the highest marks among the six students, then the difference between the highest and lowest possible marks of Aman is _____ .</p> <p>&nbsp;</p>",
+    "type": "mcq",
+    "source": "CL Jaipur Repeaters Batch | Averages | Easy | ID 169901234821920",
+    "options": [
+      "9",
+      "7",
+      "8",
+      "10"
+    ],
+    "answer": 3
+  }
+];
+
+    const solutionText = [
+  "<p><img style=\"vertical-align: middle;\" src=\"data:image/png;base64,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\" data-docx-image=\"image5.png\" /></p> <p><br>25x ‒ 6x = 570&nbsp; <br><span style=\"font-family: Cambria Math;\">&rArr;</span>&nbsp;19x = 570 <br><span style=\"font-family: Cambria Math;\">&rArr; </span>x = 30 <br><br>Prakash&rsquo;s share = 6x = 6 &times; 30 = Rs.&nbsp;180 <br><br>Hence, [2].</p>",
+  "Suppose the original number of people is x and the new people are y. Each of the y contributes 3 inches extra (compared to the old average) and this makes the average of the entire group go up by 0.375 per person. So 3y = 0.375(x&nbsp;+&nbsp;y) or 2.625y = 0.375x which gives us x : y = 7 : 1.&nbsp; <br> <br>Hence, [1]. <br> <br><span><b>Alternatively;</b></span> <br> <br>Suppose the original number of people is x and their average height is k, while the new people are&nbsp;y and their average height is&nbsp;(k&nbsp;+&nbsp;3). Then x × k + y ×&nbsp;(k&nbsp;+&nbsp;3) = (x&nbsp;+&nbsp;y) × (k&nbsp;+&nbsp;0.375) which gives us x : y = 7 : 1.",
+  "<p>Suppose, x = 1, z = 2, and y = 2</p> <p>Then the concentration of acid in the resulting solution will be =&nbsp;(<span class=\"math-frac\"><span class=\"frac-num\">1 &times; 30 + 2 &times; 40 + 2 &times; 80</span><span class=\"frac-den\">1 + 2 + 2</span></span>)% = 54%</p> <p>If we increase the value of y, the overall concentration of the resulting solution will decrease.</p> <p>Hence, [1].</p>",
+  "<p> <br>Profit remaining after paying 12.5% to Vinay is 87.5%&nbsp; <br>&rArr;&nbsp;&nbsp;From this, Amay and Vinay should get 50% and 37.5% i.e. in ratio 4:3. <br>&rArr; 40000 : x = 4 : 3&nbsp; <br>&rArr; x = Rs. 30000 <br><br>Hence, [3].</p>",
+  "<p>Let the total number of students appeared for the examination be N.</p> <p>Therefore, 0.92 &times; N &times;&nbsp;(<span class=\"math-frac\"><span class=\"frac-num\">5</span><span class=\"frac-den\">10</span></span>‒<span class=\"math-frac\"><span class=\"frac-num\">2</span><span class=\"frac-den\">10</span></span>) = 2622 <br><span style=\"font-family: Cambria Math;\">&rArr;</span> N = 9500 </p> <p>Hence, [3].</p>",
+  "<span style=\"color: #202124;background-color: white;\">Total score in 9 innings = 9 × 35 = 315</span> <br><span style=\"color: #202124;background-color: white;\">His highest score in the first 5 innings is 31 and he never scored more than 50 in a single innings.</span> <br><span style=\"color: #202124;background-color: white;\">If he scores 0 in the first innings and 31 in the 2</span><span style=\"color: #202124;background-color: white;\"><sup>nd</sup></span><span style=\"color: #202124;background-color: white;\">, 3</span><span style=\"color: #202124;background-color: white;\"><sup>rd</sup></span><span style=\"color: #202124;background-color: white;\">, 4</span><span style=\"color: #202124;background-color: white;\"><sup>th</sup></span><span style=\"color: #202124;background-color: white;\">, and 5</span><span style=\"color: #202124;background-color: white;\"><sup>th</sup></span><span style=\"color: #202124;background-color: white;\"> innings then total runs scored in first 5 innings = 124</span> <br><span style=\"color: #202124;background-color: white;\">Runs scored in last 4 innings = 315 – 124 = 191</span> <br><span style=\"color: #202124;background-color: white;\">With the given constraints it is possible to score</span><span style=\"color: #202124;background-color: white;\">&nbsp;</span><span style=\"color: #202124;background-color: white;\">191 in the last 4 innings (e.g., 47 + 48 + 48 + 48 or 41 + 50 + 50 + 50, etc.)</span> <br><span style=\"color: #202124;background-color: white;\">Thus, the largest possible difference between two lowest scores = 31 – 0 = 31.</span> <br><span style=\"color: #202124;background-color: white;\">Hence, [3].</span>",
+  "<p>Let the volumes of corn syrup in the first pitcher and that of pure water in the second pitcher be 6A and 4B. </p> <p>After first round of transfer, volume of corn syrup left in first pitcher = 3A and volume of pure water left in second pitcher = 2B </p> <p>After second round of transfer, volume of corn syrup left in first pitcher = 2A and volume of pure water left in second pitcher = B <br>According to the question, 2A = B </p> <p>Therefore, in the large glass bowl, <br>volume of corn syrup : volume of pure water = 4A : 3B = 2B : 3B = 2 : 3 </p> <p>Hence, [3].</p>",
+  "</span>\tLet us assume following are the number of employees in different departments of the two cities: <br><img src=\"data:image/png;base64,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\" data-docx-image=\"image1.png\" style=\"vertical-align: middle;\" /> <br><span style=\"font-family: ;\">As both the cities have same number of employees, therefore –&nbsp;</span> <br>6m = 15k <br><span style=\"font-family: ;\">⇒&nbsp;</span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: ;\">2m = 5k</span> <br><span style=\"font-family: ;\">⇒&nbsp;</span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: ;\">m : 5k = 1 : 2</span> <br><span style=\"font-family: ;\">Hence, [2].</span>",
+  "</span>\tIf the average age of the boys is x, we get the following -&nbsp; <br><span style=\"font-family: ;\">36(x + 1) = 35x + 57</span> <br><span style=\"font-family: ;\">Solving for x, x =</span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: ;\">21.</span> <br> <br><span style=\"font-family: ;\">Therefore, the required answer is 21.</span>",
+  "</span>\tLet, the cost price of Ganga brand oil be Rs. g per litre and that of Yamuna oil be Rs. y per litre. <br><span class=\"math-frac\"><span class=\"frac-num\">4g+5y</span><span class=\"frac-den\">4+5</span></span><span style=\"font-family: ;\"> × 1.2 = 126</span>\t… (1) and <br><span class=\"math-frac\"><span class=\"frac-num\">5g+4y</span><span class=\"frac-den\">4+5</span></span><span style=\"font-family: ;\"> × 1.05 = 126</span>\t… (2) <br> <br><span style=\"font-family: ;\">From eq. (1), we get</span>\t4g + 5y = 945\t… (3) <br><span style=\"font-family: ;\">From eq. (2), we get</span>\t5g + 4y = 1080\t… (4) <br> <br><span style=\"font-family: ;\">Solving the two equations, the derived value of g is 180.</span> <br> <br><span style=\"font-family: ;\">Hence, [3].</span>",
+  "</span>\tLet the total number of students enrolled in these two programs be 36k<span>.</span> <br>\t<span>Suppose, in commerce program, the number of male students be 7c and female students be 9c</span><span>.</span> <br>\t<span>In a similar way we assume that, in humanities program, the number of male students be h and female students be h.</span> <br>\t<span>Therefore, (7c + h) : (9c + h) = 17 : 19</span> <br>\t⇒<span> 133c + 19h = 153c + 17h</span> <br>\t<span style=\"font-family: Cambria Math;\">⇒</span><span> 20c = 2h</span> <br>\t<span style=\"font-family: Cambria Math;\">⇒</span><span> h = 10c</span> <br>\t<span>It is given that 7c = 91&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span> c = 13 and h = 130</span> <br>\t<span>Thus, total number of students enrolled in these two programs in the college = 16c + 2h = 468</span> <br>\t<span>Therefore, the required answer is 468.</span>",
+  "<p>According to the question,&nbsp; <br>a<sub>1</sub> + a<sub>2</sub> + &hellip; + a<sub>50</sub> = 50 &times; 50&nbsp;&hellip; (i) and <br>a<sub>2</sub> + a<sub>3</sub> + &hellip; + a<sub>50</sub> = 49 &times; 51&nbsp;&hellip; (ii) <br>By subtraction, we get &ndash; <br>a<sub>1</sub> = 2500 &ndash; 2499 = 1 <br>The minimum sum of a<sub>1</sub> + a<sub>2</sub> + &hellip; + a<sub>49</sub> = 1 + 2 + 3 + &hellip; + 49 = 1225 and hence, maximum value of a<sub>50</sub> = 2500 &ndash; 1225 = 1275 <br>Now, starting from a<sub>2</sub> till a<sub>50</sub>, the sum is 2499 and the average of these 49 numbers is 51.&nbsp; <br>Thus, a<sub>50</sub> will be minimum, when the median number will be 51 and all the numbers will be in AP with common difference of 1. <br>The minimum value of a<sub>50</sub> = 51&nbsp;+&nbsp;<span class=\"math-frac\"><span class=\"frac-num\">48</span><span class=\"frac-den\">2</span></span> = 75 <br>Thus, the difference = 1275 &ndash; 75 = 1200 <br>Hence, [3].</p>",
+  "<p>Total volume of solution in the large bowl =&nbsp;(<span class=\"math-frac\"><span class=\"frac-num\">1</span><span class=\"frac-den\">3</span></span>+<span class=\"math-frac\"><span class=\"frac-num\">1</span><span class=\"frac-den\">2</span></span>+1)&nbsp;litres =&nbsp;<span class=\"math-frac\"><span class=\"frac-num\">11</span><span class=\"frac-den\">6</span></span>&nbsp;litres </p> <p>Therefore, volume of milk in the solution = 1 litre </p> <p><span style=\"font-family: Cambria Math;\">&there4;</span> Concentration of milk in the solution contained in the large bowl now =&nbsp;<span class=\"math-frac\"><span class=\"frac-num\">6</span><span class=\"frac-den\">11</span></span> &times; 100% = 54<span class=\"math-frac\"><span class=\"frac-num\">6</span><span class=\"frac-den\">11</span></span>% </p> <p>Hence, [2].</p>",
+  "<p>We&nbsp;have to work with&nbsp;<span class=\"math-frac\"><span class=\"frac-num\">3</span><span class=\"frac-den\">7</span></span>.&nbsp; <br>&rArr;&nbsp;Let us assume that the total number of voters = 70 <br><span class=\"math-frac\"><span class=\"frac-num\">3</span><span class=\"frac-den\">7</span></span>th = 30 and remaining = 40 <br>5% of 30 = 1.5 and P% of 40 = 0.4P <br><br>Number of voters voted for Kushal = 30&nbsp;‒ 1.5 + 0.4P <br>Number of voters voted for Vishal = 40&nbsp;‒&nbsp;0.4P + 1.5 <br>Difference = |10&nbsp;‒&nbsp;0.8P + 3| = |13&nbsp;‒&nbsp;0.8P| = 10% of the total votes <br>&there4; |13&nbsp;‒&nbsp;0.8P| = 7 <br>&rArr;&nbsp;13&nbsp;‒&nbsp;0.8P = 7 (OR) 13&nbsp;‒&nbsp;0.8P =&nbsp;‒7 <br>&rArr;&nbsp;0.8P = 6 (OR)&nbsp;0.8P = 20 <br>&rArr;&nbsp;P = 7.5 (OR) P = 25 <br><br>Hence, [4].</p>",
+  "</span>\t2M + 3N = 53 <br><span style=\"font-family: Cambria Math;\">⇒</span><span> 2(M + N) + N = 53</span> <br><span>Now, M + N will be maximum when N will be minimum.</span> <br><span>Thus, (M + N)</span><span><sub>max</sub></span><span> = 26 when N</span><span><sub>min</sub></span><span> = 1</span> <br><span>Again, M + N will be minimum when N will be maximum.</span> <br><span>Thus, (M + N)</span><span><sub>min</sub></span><span> = 18 when N</span><span><sub>max</sub></span><span> = 17</span> <br><span>Therefore, the required average = {(26 + 18) ÷ 2} = 22</span> <br><span>Hence, [3].</span>",
+  "<p>The volume of the final solution of water and milk is (10 + 30) litres and volume of water in this final solution is 12.5% of 40 litres i.e. 5 litres. <br>Thus, the original solution of milk and water had 5 litres of water. This is 50% of the total volume of the solution. So, the profit would have been 100%. </p> <p>Therefore, the required answer is 100.</p>",
+  "</span>\tLet the initial ages of father and mother be 5x years and 4x years respectively. <br> <br><span style=\"font-family: Cambria Math;\">∴</span><span style=\"font-family: Cambria Math;\">&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">5x + 6</span><span class=\"frac-den\">4x + 6</span></span><span style=\"font-family: ;\"> =&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">6</span><span class=\"frac-den\">5</span></span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span style=\"font-family: ;\"> x = 6</span> <br> <br><span style=\"font-family: Cambria Math;\">∴</span><span style=\"font-family: ;\"> The initial ages of father and mother were 30 years and 24 years respectively.&nbsp;</span> <br> <br><span style=\"font-family: ;\">The age of the son at this point of time was 6 years.</span> <br> <br><span style=\"font-family: ;\">Let the ratio</span><span style=\"font-family: ;\"> of the ages of mother and son&nbsp;</span><span style=\"font-family: ;\">become 3</span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: ;\">:</span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: ;\">1 ‘y’ years after this.</span> <br> <br><span style=\"font-family: Cambria Math;\">∴</span><span style=\"font-family: Cambria Math;\">&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">30 + y</span><span class=\"frac-den\">6 + y</span></span><span style=\"font-family: ;\"> =&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">3</span><span class=\"frac-den\">1</span></span><span style=\"font-family: ;\">&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span style=\"font-family: ;\"> y = 6</span> <br> <br><span style=\"font-family: ;\">Therefore, the required answer is 6.</span>",
+  "<p>Let, the positive real roots of the equation x<sup style=\"font-family: Calibri, 'sans-serif';\">4 </sup>&ndash; 12x<sup>3</sup> + cx<sup>2</sup>&ndash; dx + 81 = 0 be p, q, r and s.</p> <p>Now, p + q + r + s = &ndash; (&ndash;12) = 12 and p &times; q &times; r &times; s = 81<br>Thus, the AM of p, q, r and s = 3 and their GM = 3.</p> <p>For four positive real numbers, AM = GM.<br>This means that all these four numbers are equal.</p> <p><span style=\"font-family: Cambria Math;\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\">c = Sum of the products taken two at a time = pq + pr + ps + qr + qs + rs =</span></span>&nbsp;(3 &times; 3 &times; 6) = 54</p> <p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; line-height: normal;\">&nbsp;</p> <p><span style=\"font-family: Cambria Math;\"><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\">d = Sum of the products taken three at a time =&nbsp;</span><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\">pqr + prs + pqs + qrs</span><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\"> = </span><span style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\">(3&nbsp;</span></span>&times; 3 &times; 3 &times; 4) = 108</p> <p>Therefore, c + d = 54 + 108 = 162<br><br>Hence, [2].</p>",
+  "</span>\tSuppose, 2 litres of water is mixed with 2 litres of pure milk. <br><span>The volume of this solution is 4 litres.</span> <br><span>Then, 1 litre of pure milk is added to this solution.</span> <br><span>Now, the volume of the solution is 5 litres in which 3 litres of pure milk is present.</span> <br><span>Therefore, the concentration of milk in this final solution is 60%.</span> <br><span>Therefore, the required answer is 60.</span>",
+  "The sum of the ages of three sisters = 17&nbsp;</span>&#215;<span> 3 = 51 years.</span> <br> <br><span>The new average age is an odd integer.&nbsp;</span> <br><span>So, the numbers after 51 which are multiples of 4 can be checked for the new sum of ages.</span> <br><span>52 years: Average age = 13 years but age of son = 1 year&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span> Not valid</span> <br><span>56 years: Average age = 14 years&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span> Not valid</span> <br><span>60 years: Average age = 15 years and age of son = 9 years&nbsp;</span><span style=\"font-family: Cambria Math;\">⇒</span><span> Valid answer</span> <br> <br><span>Hence, [3].</span>",
+  "</span>\tLet, the cost of the mixture of the two varieties of rice be Rs. G per kg<span>.</span> <br><span>Therefore, quantity of cheaper variety : quantity of costlier variety = (60&nbsp;</span><span>–</span><span> G) : (G&nbsp;</span><span>–</span><span> 50)</span> <br><span>Now, as the quantity of the cheaper variety is 5 kg more than that of the costlier variety, therefore, the value of G should be less than 55.</span> <br><span>If G = 54 then&nbsp;</span><span>(60&nbsp;</span><span>–</span><span> G) : (G&nbsp;</span><span>–</span><span> 50)</span><span> = 3 : 2 and the total quantity of the mixture will be 25 kg</span><span>.</span> <br><span>If G = 53 then</span><span>&nbsp;</span><span>(60&nbsp;</span><span>–</span><span> G) : (G&nbsp;</span><span>–</span><span> 50)</span><span> = 7 : 3 and the total quantity of the mixture will be 12.5 kg</span><span>.</span> <br><span>If G = 52 then</span><span>&nbsp;</span><span>(60&nbsp;</span><span>–</span><span> G) : (G&nbsp;</span><span>–</span><span> 50)</span><span> = 8 : 2 and the total quantity of the mixture will be 8</span><span class=\"math-frac\"><span class=\"frac-num\">1</span><span class=\"frac-den\">3</span></span><span> kg</span><span>.</span> <br><span>If G = 51 then</span><span>&nbsp;</span><span>(60&nbsp;</span><span>–</span><span> G) : (G&nbsp;</span><span>–</span><span> 50)</span><span> = 9 : 1 and the total quantity of the mixture will be 6.25 kg</span><span>.</span> <br><span>Therefore, the required answer is 25.</span>",
+  "</span>\tLet, the average weight of the males be M kg and that of the females be W kg. <br>\t<span>Therefore, 8W + 12M = 8W + 12(W +&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">1</span><span class=\"frac-den\">3</span></span><span>) = 20W + 4</span> <br> <br>\t<span>As, 50 < W < 55,&nbsp;</span><span>1004 < (20W + 4) < 1104</span> <br>\t<span>The two perfect squares in this range are 1024 and 1089.</span> <br>\t<span>However, we cannot take 1089 as that will produce a fraction value for W.</span> <br>\t<span style=\"font-family: Cambria Math;\">∴</span><span> 20W + 4 = 1024</span> <br>\t<span style=\"font-family: Cambria Math;\">⇒</span><span> W = 51</span> <br>\tTherefore, the required answer is 51.",
+  "<p>Volume of milk = 90% of 200 = 180 litres.&nbsp; <br><br>After adding water, the percentage of water becomes 40% and so, milk is now 60%.&nbsp; <br><br>If 60% &equiv; 180 litres, 100% &equiv;&nbsp;100&nbsp;&times;&nbsp;<span class=\"math-frac\"><span class=\"frac-num\">180</span><span class=\"frac-den\">60</span></span>&nbsp;=&nbsp;300. <br><br>Therefore, the volume of water required to be added = 300&nbsp;‒&nbsp;200 = 100. <br><br>Therefore, the required answer is 100.</p>",
+  "<p>Let the total number of players in the club be &lsquo;n&rsquo; and their average height be &lsquo;a&rsquo; cm. </p> <p><span style=\"font-family: Calibri;\">&there4;&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">na‒680</span><span class=\"frac-den\">n‒5</span></span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">=</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">a</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">+</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">2</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">and</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">na‒920</span><span class=\"frac-den\">n‒5</span></span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">=</span><span style=\"font-family: Calibri;\">&nbsp;</span><span style=\"font-family: Calibri;\">a</span><span style=\"font-family: Calibri;\"> ‒&nbsp;</span><span style=\"font-family: Calibri;\">2</span> </p> <p><span style=\"font-family: Calibri;\">Therefore,&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">na ‒ 680</span><span class=\"frac-den\">n ‒ 5</span></span><span style=\"font-family: Calibri;\">‒&nbsp;</span><span style=\"font-family: Calibri;\">2</span><span style=\"font-family: Calibri;\"> =</span><span style=\"font-family: Calibri; font-size: 18.7px;\">&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">na‒920</span><span class=\"frac-den\">n‒5</span></span><span style=\"font-family: Calibri;\">+ 2</span><span style=\"font-family: Calibri; font-size: 18.7px;\">&nbsp;</span> </p> <p><span style=\"font-family: Cambria Math;\">&rArr;</span><span style=\"font-family: Calibri;\">&nbsp;</span><span class=\"math-frac\"><span class=\"frac-num\">240</span><span class=\"frac-den\">n‒5</span></span><span style=\"font-family: Calibri; font-size: 18.7px;\">&nbsp;</span><span style=\"font-family: Calibri;\">= 4</span><span style=\"font-family: Calibri; font-size: 18.7px;\"> </span></p> <p>&rArr; n = 65</p> <p>Therefore, the required answer is 65.</p>",
+  "Since the average of the six students is 42, their total would be 42 × 6 = 252. 4 of them have distinct scores not more than 40. Let us consider the maximum possible case for these 4.&nbsp;<span style=\"font-family: ;\">So</span><span style=\"font-family: ;\"> their maximum total could be (40 + 39 + 38 + 37) = 154 leaving 98 marks for the other two. Since Aman has to be the highest, he has to have more than half of this so he could get anything from 50 to 57 marks (with the 6</span><span style=\"font-family: ;\"><sup>th</sup></span><span style=\"font-family: ;\"> student correspondingly getting between 48 and 41 marks).</span> <br> <br><span style=\"font-family: ;\">In case the other 4 get lower than the maximum possible, however, there will be more than 98 marks left (for example if they get 39, 38, 37 and 36, that would leave 102 marks for the other two, which would allow Aman to get 58, 59 or a full 60 as well. Hence Aman’s highest possible score is 60 while his lowest is 50, a difference of 10 marks.&nbsp;</span> <br> <br><span style=\"font-family: ;\">Hence, [4].</span>"
+];
+
+    questions.forEach((q, i) => { q.solution = solutionText[i] || 'Solution not provided.'; });
+    let current = 0, submitted = false, secondsLeft = 50 * 60;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function hasHtml(s){return /<\/?[a-z][\s\S]*>/i.test(String(s ?? ""));}
+    function mathFractions(s){let html=hasHtml(s)?String(s):esc(s);html=html.replace(/(\d+)\s*<sup>(\d+)<\/sup>\s*\/\s*<sub>(\d+)<\/sub>/g,'<span class="mixed-number">$1 <span class="math-frac"><span class="frac-num">$2</span><span class="frac-den">$3</span></span></span>');const wrap=document.createElement("span");wrap.innerHTML=html;const nodes=[];const walker=document.createTreeWalker(wrap,NodeFilter.SHOW_TEXT);while(walker.nextNode())nodes.push(walker.currentNode);const pattern=/(^|[^A-Za-z0-9.])((?:\d+(?:\.\d+)?|[A-Za-z]))\s*\/\s*((?:\d+(?:\.\d+)?|[A-Za-z]))(?=$|[^A-Za-z0-9.])/g;nodes.forEach(node=>{const parent=node.parentElement;if(parent&&parent.closest('.math-frac,script,style'))return;const text=node.nodeValue||'';pattern.lastIndex=0;if(!pattern.test(text))return;pattern.lastIndex=0;const frag=document.createDocumentFragment();let last=0,m;while((m=pattern.exec(text))){frag.append(document.createTextNode(text.slice(last,m.index)+m[1]));const fraction=document.createElement('span');fraction.className='math-frac';const numerator=document.createElement('span');numerator.className='frac-num';numerator.textContent=m[2];const denominator=document.createElement('span');denominator.className='frac-den';denominator.textContent=m[3];fraction.append(numerator,denominator);frag.append(fraction);last=pattern.lastIndex;}frag.append(document.createTextNode(text.slice(last)));node.replaceWith(frag);});return wrap.innerHTML;}
+    function rich(s){return mathFractions(hasHtml(s) ? String(s) : esc(s));}
+    function stripHtml(html){const div=document.createElement("div");div.innerHTML=String(html ?? "");return div.textContent.trim().replace(/\s+/g," ");}
+    function qType(q){return q.type || ((q.options && q.options.length) ? "mcq" : "text");}
+    function qText(q){return q.question ?? q.q ?? "";}
+    function qSource(q){return q.source || q.level || "";}
+    function qAnswer(q){return q.typedAnswer ?? q.answer ?? "";}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(q.palette || (i+1))+'</button>').join('');}
+    function correctText(q){return qType(q)==="mcq" ? "(" + labels[q.answer] + ") " + stripHtml((q.options || [])[q.answer] || "") : qAnswer(q);}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+rich(html)+'</div>' : '';}
+    function control(q,i){if(qType(q)==="mcq") return '<div class="options">'+(q.options||[]).map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+rich(op)+'</span></span></label>').join('')+'</div>'; return '<input type="text" inputmode="decimal" class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your numerical answer" '+(submitted?'disabled':'')+'>';}
+    function solutionHtml(q){const sol=q.solution || "Solution not provided.";return rich(sol);}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(q.display || (current+1))+'</div><div class="source">'+esc(qSource(q))+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+rich(qText(q))+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+rich(correctText(q))+'</strong><div class="block">'+solutionHtml(q)+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(qType(q)==='mcq')return Number(ans)===Number(q.answer);const accepted=(q.accepted&&q.accepted.length?q.accepted:[qAnswer(q)]).map(norm);return accepted.includes(norm(ans));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';host.scrollTop=0;if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;let c=0,w=0,u=0;let score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r){c++;score+=3;}else{w++;if(qType(q)==='mcq')score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();resultBox.scrollIntoView({behavior:'smooth',block:'start'});}
+    function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;}
+    function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    renderQuestion();tick();setInterval(tick,1000);
+  </script>
+</body>
+</html>
