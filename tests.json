@@ -2632,7 +2632,7 @@
     "questions": 20
   },
   {
-    "title": "DI -Bar Graph -Test -2",
+    "title": "DI - Bar Graph - Test - 2",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 2.html",
     "original": "DI - Bar Graph - Test - 2.html",
     "folders": [
@@ -2641,6 +2641,7 @@
       "DI",
       "Bar Graph"
     ],
-    "minutes": 60
+    "minutes": 40,
+    "questions": 20
   }
 ]
