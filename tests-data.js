@@ -2702,7 +2702,8 @@ window.CAT_TESTS = [
       "DI",
       "Bar Graph"
     ],
-    "minutes": 60
+    "minutes": 35,
+    "questions": 15
   }
 ];
 
