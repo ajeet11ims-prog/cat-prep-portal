@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cat-prep-portal-26.vercel.app/sitemap.xml

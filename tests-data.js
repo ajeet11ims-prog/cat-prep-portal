@@ -100,6 +100,126 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-1",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-1.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-1.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-2",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-2.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-2.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-3",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-3.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-3.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-4",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-5",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-5.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-5.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-6",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-6.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-6.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-7",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-7.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-7.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-8",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-8.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-8.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-9",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-9.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-9.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-10",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
     "title": "Area Wise Number System test -1",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -1.html",
     "original": "Area Wise  Number System  test -1.html",
@@ -310,6 +430,20 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "Percentage_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
+    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
     "title": "Topic Test -Arithmetic -Percentage PYQ",
     "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Topic Test - Arithmetic - Percentage PYQ.html",
     "original": "Topic Test - Arithmetic - Percentage PYQ.html",
@@ -336,9 +470,91 @@ window.CAT_TESTS = [
     "minutes": 90
   },
   {
+    "title": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025)",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "original": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 26
+  },
+  {
+    "title": "Profit_Loss_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/3.Profit & Loss/Profit_Loss_CAT_PYQ_2017-2025.html",
+    "original": "Profit_Loss_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60,
+    "questions": 29
+  },
+  {
+    "title": "SICI CAT PYQ 2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
+    "original": "SICI CAT PYQ 2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 20
+  },
+  {
+    "title": "Average CAT ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/5. Average/Average CAT ( 2017 -2025 ).html",
+    "original": "Average CAT ( 2017 -2025 ).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 28
+  },
+  {
+    "title": "Mixture & Alligation CAT PYQ ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/6. Mixture & Alligation/Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "original": "Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
     "title": "DI -Bar Graph -Test -1",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -1.html",
     "original": "DI - Bar Graph - Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI -Bar Graph -Test -2",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -2.html",
+    "original": "DI - Bar Graph - Test -2.html",
     "folders": [
       "Topic Test",
       "LRDI",
@@ -370,6 +586,58 @@ window.CAT_TESTS = [
       "Line Graph"
     ],
     "minutes": 40
+  },
+  {
+    "title": "Line Graph Test",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -3.html",
+    "original": "DI Line Graph Test -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 25,
+    "questions": 20
+  },
+  {
+    "title": "Line Graph Test",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -4.html",
+    "original": "DI Line Graph Test -4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "Line Graph Test",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -5.html",
+    "original": "DI Line Graph Test -5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 25,
+    "questions": 20
+  },
+  {
+    "title": "Line Graph Test",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -6.html",
+    "original": "DI Line Graph Test -6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 45,
+    "questions": 20
   },
   {
     "title": "DILR -Network & 3D diagram -1",
@@ -408,6 +676,30 @@ window.CAT_TESTS = [
     "minutes": 40
   },
   {
+    "title": "Class Sheet L1 - DI Table Test -1",
+    "file": "tests/Topic Test/LRDI/DI/Table/Class Sheet L1 - DI Table Test -1.html",
+    "original": "Class Sheet L1 - DI Table Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 30
+  },
+  {
+    "title": "Class Sheet L2 - DI Table Test -2",
+    "file": "tests/Topic Test/LRDI/DI/Table/Class Sheet L2 - DI Table Test -2.html",
+    "original": "Class Sheet L2 - DI Table Test -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 35
+  },
+  {
     "title": "DI -Table -Test -1",
     "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -1.html",
     "original": "DI - Table - Test -1.html",
@@ -432,6 +724,147 @@ window.CAT_TESTS = [
     "minutes": 40
   },
   {
+    "title": "DI Table -3",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI Table -3.html",
+    "original": "DI Table -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "DI Table Test -4",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI Table test -4.html",
+    "original": "DI Table test -4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "DI Table Test -5",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
+    "original": "DI - Table test -5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Home Sheet L1 - DI Table Test -3",
+    "file": "tests/Topic Test/LRDI/DI/Table/Home Sheet L1 - DI Table Test -3.html",
+    "original": "Home Sheet L1 - DI Table Test -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 30
+  },
+  {
+    "title": "Home Sheet L2 - DI Table Test -4",
+    "file": "tests/Topic Test/LRDI/DI/Table/Home Sheet L2 - DI Table Test -4.html",
+    "original": "Home Sheet L2 - DI Table Test -4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 45
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-1",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-1.html",
+    "original": "logical_reasoning_arrangement_test-1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-2",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-2.html",
+    "original": "logical_reasoning_arrangement_test-2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-3",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-3.html",
+    "original": "logical_reasoning_arrangement_test-3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-4",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-4.html",
+    "original": "logical_reasoning_arrangement_test-4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 28
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-5",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-5.html",
+    "original": "logical_reasoning_arrangement_test-5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 28
+  },
+  {
+    "title": "Family Tree & Direction -1",
+    "file": "tests/Topic Test/LRDI/LR/Family Tree & Direction/Family Tree & Direction -1.html",
+    "original": "Family Tree & Direction -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Family Tree & Direction"
+    ],
+    "minutes": 81,
+    "questions": 54
+  },
+  {
     "title": "DILR -Games & Tournaments -1",
     "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -1.html",
     "original": "DILR - Games & Tournaments -1.html",
@@ -454,6 +887,84 @@ window.CAT_TESTS = [
       "Games & Tournaments"
     ],
     "minutes": 40
+  },
+  {
+    "title": "Miscellaneous Reasoning Test",
+    "file": "tests/Topic Test/LRDI/LR/Miscellaneous/miscellaneous.html",
+    "original": "miscellaneous.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Miscellaneous"
+    ],
+    "minutes": 96,
+    "questions": 64
+  },
+  {
+    "title": "Miscellaneous Reasoning Test -1",
+    "file": "tests/Topic Test/LRDI/LR/Miscellaneous/miscellaneous -1.html",
+    "original": "miscellaneous -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Miscellaneous"
+    ],
+    "minutes": 32,
+    "questions": 21
+  },
+  {
+    "title": "Miscellaneous Reasoning Test -2",
+    "file": "tests/Topic Test/LRDI/LR/Miscellaneous/miscellaneous -2.html",
+    "original": "miscellaneous -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Miscellaneous"
+    ],
+    "minutes": 32,
+    "questions": 21
+  },
+  {
+    "title": "Miscellaneous Reasoning Test -3",
+    "file": "tests/Topic Test/LRDI/LR/Miscellaneous/miscellaneous -3.html",
+    "original": "miscellaneous -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Miscellaneous"
+    ],
+    "minutes": 33,
+    "questions": 22
+  },
+  {
+    "title": "Puzzle & Analytical Reasoning Test -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle & Analytical Reasoning/Puzzle & Analytical Reasoning Test -1.html",
+    "original": "Puzzle & Analytical Reasoning Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle & Analytical Reasoning"
+    ],
+    "minutes": 40,
+    "questions": 30
+  },
+  {
+    "title": "Puzzle & Analytical Reasoning Test -2",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle & Analytical Reasoning/Puzzle & Analytical Reasoning Test -2.html",
+    "original": "Puzzle & Analytical Reasoning Test -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle & Analytical Reasoning"
+    ],
+    "minutes": 40,
+    "questions": 30
   },
   {
     "title": "Linear Equation Basics -1",
@@ -495,6 +1006,57 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "Career Launcher Percentage Test 1",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
+    "original": "Career Launcher Percentage Test 1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 20,
+    "questions": 10
+  },
+  {
+    "title": "Career Launcher Percentage Test 2",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 2.html",
+    "original": "Career Launcher Percentage Test 2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 20,
+    "questions": 9
+  },
+  {
+    "title": "Career Launcher Percentage Test 3",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 3.html",
+    "original": "Career Launcher Percentage Test 3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 20,
+    "questions": 9
+  },
+  {
+    "title": "Percentage Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
+    "original": "Percentage Test-1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60
+  },
+  {
     "title": "Percentage Test -2",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-2.html",
     "original": "Percentage Test-2.html",
@@ -517,6 +1079,30 @@ window.CAT_TESTS = [
       "1.Percentage"
     ],
     "minutes": 60
+  },
+  {
+    "title": "Percentage Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-4.html",
+    "original": "Percentage Test-4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Percentage Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-5.html",
+    "original": "Percentage Test-5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "questions": 1
   },
   {
     "title": "Percentage Test -6",
@@ -551,6 +1137,31 @@ window.CAT_TESTS = [
       "QA",
       "Arithmetic",
       "1.Percentage"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "SimCAT Proctored Percentage Questions",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/SimCAT Proctored Percentage All Questions CAT Layout.html",
+    "original": "SimCAT Proctored Percentage All Questions CAT Layout.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 40,
+    "questions": 28
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -1.html",
+    "original": "Ratio Proportion Variation Partnership  Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
     ],
     "minutes": 40
   },
@@ -702,6 +1313,58 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "Ratio_Proportion_Variation_Partnership_Test_14",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 32
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test-15",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-15.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test-15.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test-16",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Test name ;- Test Name: Ratio_Proportion_Variation_Partnership_Test-17",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_17.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test_17.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
     "title": "Profit Loss Test -1",
     "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -1.html",
     "original": "Profit Loss Test -1.html",
@@ -717,6 +1380,18 @@ window.CAT_TESTS = [
     "title": "Profit Loss Test -2",
     "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -2.html",
     "original": "Profit Loss Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 90
+  },
+  {
+    "title": "Profit Loss Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -2.html",
+    "original": "Profit Loss  Test -2.html",
     "folders": [
       "Topic Test",
       "QA",
@@ -760,18 +1435,6 @@ window.CAT_TESTS = [
       "3.Profit & Loss"
     ],
     "minutes": 95
-  },
-  {
-    "title": "Profit Loss Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -2.html",
-    "original": "Profit Loss  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 90
   },
   {
     "title": "Profit Loss Test -5",
@@ -906,139 +1569,6 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "Average Test 5",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
-    "original": "Average Test 5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 75
-  },
-  {
-    "title": "Average Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
-    "original": "Average Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
-    "original": "Average Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
-    "original": "Average Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40,
-    "questions": 1
-  },
-  {
-    "title": "Average Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
-    "original": "Average Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "number -system -properties -of -numbers Test -3",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
-    "original": "number-system-properties-of-numbers Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 75
-  },
-  {
-    "title": "Number System -Properties of Numbers Test -2",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
-    "original": "Number System - Properties of Numbers  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Number System -Properties of Numbers Test -2 (2)",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
-    "original": "Number System - Properties of Numbers  Test -2 (2).html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 45
-  },
-  {
-    "title": "Properties Of Number Test -1",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
-    "original": "Properties Of Number Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Properties Of Number Test -2",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
-    "original": "Properties Of Number Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Properties Of Number Test -3",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
-    "original": "Properties Of Number Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
     "title": "SI & CI Test -3",
     "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -3.html",
     "original": "SI CI Test -3.html",
@@ -1091,19 +1621,6 @@ window.CAT_TESTS = [
     "questions": 25
   },
   {
-    "title": "sici Test 7",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -7.html",
-    "original": "SICI Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
     "title": "SICI Test -8",
     "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -8.html",
     "original": "SICI Test -8.html",
@@ -1130,69 +1647,78 @@ window.CAT_TESTS = [
     "questions": 25
   },
   {
-    "title": "Ratio_Proportion_Variation_Partnership_Test_14",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_14.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "title": "sici Test 7",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -7.html",
+    "original": "SICI Test -7.html",
     "folders": [
       "Topic Test",
       "QA",
       "Arithmetic",
-      "2.Ratio Proportion"
+      "4.SI & CI"
     ],
     "minutes": 60,
-    "questions": 32
+    "questions": 25
   },
   {
-    "title": "Ratio_Proportion_Variation_Partnership_Test-15",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-15.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test-15.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Ratio_Proportion_Variation_Partnership_Test-16",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-16.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test-16.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Test name ;- Test Name: Ratio_Proportion_Variation_Partnership_Test-17",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_17.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test_17.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Average_Test-6",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average_Test-6.html",
-    "original": "Average_Test-6.html",
+    "title": "Average Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
+    "original": "Average Test -1.html",
     "folders": [
       "Topic Test",
       "QA",
       "Arithmetic",
       "5. Average"
     ],
-    "minutes": 60,
-    "questions": 23
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
+    "original": "Average Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
+    "original": "Average Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40,
+    "questions": 1
+  },
+  {
+    "title": "Average Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
+    "original": "Average Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test 5",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
+    "original": "Average Test 5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 75
   },
   {
     "title": "Average Test 7",
@@ -1208,208 +1734,17 @@ window.CAT_TESTS = [
     "questions": 23
   },
   {
-    "title": "Percentage_CAT_PYQ_2017-2025",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
-    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "title": "Average_Test-6",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average_Test-6.html",
+    "original": "Average_Test-6.html",
     "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 23
-  },
-  {
-    "title": "Profit_Loss_CAT_PYQ_2017-2025",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/3.Profit & Loss/Profit_Loss_CAT_PYQ_2017-2025.html",
-    "original": "Profit_Loss_CAT_PYQ_2017-2025.html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60,
-    "questions": 29
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-1",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-1.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-1.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-2",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-2.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-2.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-3",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-3.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-3.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-4",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-4.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-4.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-5",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-5.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-5.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-6",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-6.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-6.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-7",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-7.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-7.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-8",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-8.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-8.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-9",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-9.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-9.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-10",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-10.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-10.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation CAT PYQ ( 2017 -2025 )",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/6. Mixture & Alligation/Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
-    "original": "Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Average CAT ( 2017 -2025 )",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/5. Average/Average CAT ( 2017 -2025 ).html",
-    "original": "Average CAT ( 2017 -2025 ).html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
+      "Topic Test",
       "QA",
       "Arithmetic",
       "5. Average"
     ],
     "minutes": 60,
-    "questions": 28
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025)",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
-    "original": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 26
-  },
-  {
-    "title": "SICI CAT PYQ 2017-2025",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
-    "original": "SICI CAT PYQ 2017-2025.html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 20
+    "questions": 23
   },
   {
     "title": "Mixture & Alligation Test -1",
@@ -1594,344 +1929,6 @@ window.CAT_TESTS = [
     "questions": 15
   },
   {
-    "title": "logical_reasoning_arrangement_test-1",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-1.html",
-    "original": "logical_reasoning_arrangement_test-1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-2",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-2.html",
-    "original": "logical_reasoning_arrangement_test-2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-3",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-3.html",
-    "original": "logical_reasoning_arrangement_test-3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 23
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-4",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-4.html",
-    "original": "logical_reasoning_arrangement_test-4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 28
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-5",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-5.html",
-    "original": "logical_reasoning_arrangement_test-5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 28
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-7",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-7.html",
-    "original": "logical_reasoning_arrangement_test-7.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test- 6",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test- 6.html",
-    "original": "logical_reasoning_arrangement_test- 6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Career Launcher Percentage Test 1",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
-    "original": "Career Launcher Percentage Test 1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 20,
-    "questions": 10
-  },
-  {
-    "title": "Puzzle & Analytical Reasoning Test -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning Test -1.html",
-    "original": "Puzzle & Analytical Reasoning Test -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 40,
-    "questions": 30
-  },
-  {
-    "title": "Puzzle & Analytical Reasoning Test -2",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning -2.html",
-    "original": "Puzzle & Analytical Reasoning -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 40,
-    "questions": 30
-  },
-  {
-    "title": "Family Tree & Direction -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Family Tree & Direction -1.html",
-    "original": "Family Tree & Direction -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 81,
-    "questions": 54
-  },
-  {
-    "title": "miscellaneous -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -1.html",
-    "original": "miscellaneous -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 21,
-    "questions": 32
-  },
-  {
-    "title": "miscellaneous -2",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -2.html",
-    "original": "miscellaneous -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 21,
-    "questions": 32
-  },
-  {
-    "title": "miscellaneous -3",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -3.html",
-    "original": "miscellaneous -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 33,
-    "questions": 22
-  },
-  {
-    "title": "Percentage Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
-    "original": "Percentage Test-1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Percentage Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -4.html",
-    "original": "Percentage Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Percentage Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -5.html",
-    "original": "Percentage Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 26
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership Test -1.html",
-    "original": "Ratio Proportion Variation Partnership Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 40,
-    "questions": 15
-  },
-  {
-    "title": "DI Table -3",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI Table -3.html",
-    "original": "DI Table -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI Table Test -4",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI Table Test -4.html",
-    "original": "DI Table Test -4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI - Table Test -5",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
-    "original": "DI - Table test -5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "DI - Table test -6",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -6.html",
-    "original": "DI - Table test -6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -3",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -3.html",
-    "original": "DI Line Graph Test -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -4",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -4.html",
-    "original": "DI Line Graph Test -4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI Line Graph Test -5",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -5.html",
-    "original": "DI Line Graph Test -5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 25,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -6",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -6.html",
-    "original": "DI Line Graph Test -6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 45,
-    "questions": 20
-  },
-  {
     "title": "Time & Work Test -1",
     "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -1.html",
     "original": "Time & Work Test -1.html",
@@ -1955,7 +1952,7 @@ window.CAT_TESTS = [
       "7. Time & Work"
     ],
     "minutes": 30,
-    "questions": 15
+    "questions": 13
   },
   {
     "title": "Time & Work Test -3",
@@ -1971,2195 +1968,75 @@ window.CAT_TESTS = [
     "questions": 30
   },
   {
-    "title": "Time & Work Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -4.html",
-    "original": "Time & Work Test -4.html",
+    "title": "number -system -properties -of -numbers Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
+    "original": "number-system-properties-of-numbers Test -3.html",
     "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 40,
-    "questions": 23
-  },
-  {
-    "title": "Time & Work Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -5.html",
-    "original": "Time & Work Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 40,
-    "questions": 27
-  },
-  {
-    "title": "Time & Work Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -6.html",
-    "original": "Time & Work Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 60,
-    "questions": 32
-  },
-  {
-    "title": "Pipe & Cistern -2",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -2.html",
-    "original": "Pipe & Cistern -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 23
-  },
-  {
-    "title": "Pipe & Cistern -3",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -3.html",
-    "original": "Pipe & Cistern -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 17
-  },
-  {
-    "title": "Time Work Pipe & Cistern -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -1.html",
-    "original": "Pipe & Cistern -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 15
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -2.html",
-    "original": "Time & Work Pipe & Cistern Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 15,
-    "questions": 30
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -3.html",
-    "original": "Time & Work Pipe & Cistern Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -4.html",
-    "original": "Time & Work Pipe & Cistern Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 45,
-    "questions": 25
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -1.html",
-    "original": "Time & Work Pipe & Cistern Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 15,
-    "questions": 10
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -5.html",
-    "original": "Time & Work Pipe & Cistern Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -6.html",
-    "original": "Time & Work Pipe & Cistern Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -7.html",
-    "original": "Time & Work Pipe & Cistern Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 90,
-    "questions": 50
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -5",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -5.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -5.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -6",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -6.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -6.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -7",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -7.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -7.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -8",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -8.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -8.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -1.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -2.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -3",
-    "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
-    "folders": [
-      "PYQ",
-      "2017",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -3",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -4",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -4.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -4.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -2.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -5",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -5.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -5.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -3",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -3.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -3.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -4",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -4.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -4.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -6",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -6.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -6.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -8",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -8.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -8.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -7",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -7.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -7.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -1.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -2.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -3",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -3.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -3.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -4",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -4.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -4.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -5",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -5.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -5.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -6",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -6.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -6.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -7",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -7.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -7.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -1 Set -8",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -1 Set -8.html",
-    "original": "LRDI CAT 2018 SLOT -1 Set -8.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -1.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -2.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -3",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -3.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -3.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -4",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -4.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -4.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -5",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -5.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -5.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -6",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -6.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -6.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -7",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -7.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -7.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2018 SLOT -2 Set -8",
-    "file": "tests/PYQ/Year Wise/LRDI/2018/LRDI CAT 2018 SLOT -2 Set -8.html",
-    "original": "LRDI CAT 2018 SLOT -2 Set -8.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions)",
-    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
-    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 40,
-    "questions": 25
-  },
-  {
-    "title": "DI - Bar Graph - Test - 5",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 5.html",
-    "original": "DI - Bar Graph - Test - 5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "DI - Bar Graph - Test - 6",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 6.html",
-    "original": "DI - Bar Graph - Test - 6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "LRDI CAT 2019 SLOT -1 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -1 Set -1.html",
-    "original": "LRDI CAT 2019 SLOT -1 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2019"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2019 SLOT -1 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -1 Set -2.html",
-    "original": "LRDI CAT 2019 SLOT -1 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2019"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "DI - Bar Graph - Test - 7",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 7.html",
-    "original": "DI - Bar Graph - Test - 7.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 8",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 8.html",
-    "original": "DI - Bar Graph - Test - 8.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 9",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 9.html",
-    "original": "DI - Bar Graph - Test - 9.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 2",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 2.html",
-    "original": "DI - Bar Graph - Test - 2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "DI - Bar Graph - Test - 3",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 3.html",
-    "original": "DI - Bar Graph - Test - 3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "DI - Bar Graph - Test - 4",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 4.html",
-    "original": "DI - Bar Graph - Test - 4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 35,
-    "questions": 15
-  }
-];
-
-window.CAT_FOLDERS = [
-  {
-    "name": "Area Wise Test",
-    "path": [
-      "Area Wise Test"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "Area Wise Test",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "DI",
-    "path": [
-      "Area Wise Test",
-      "LRDI",
-      "DI"
-    ]
-  },
-  {
-    "name": "LR",
-    "path": [
-      "Area Wise Test",
-      "LRDI",
-      "LR"
-    ]
-  },
-  {
-    "name": "LRDI Mix",
-    "path": [
-      "Area Wise Test",
-      "LRDI",
-      "LRDI Mix"
-    ]
-  },
-  {
-    "name": "QA",
-    "path": [
-      "Area Wise Test",
-      "QA"
-    ]
-  },
-  {
-    "name": "Algebra",
-    "path": [
-      "Area Wise Test",
-      "QA",
-      "Algebra"
-    ]
-  },
-  {
-    "name": "Arithmetic",
-    "path": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ]
-  },
-  {
-    "name": "Geometry",
-    "path": [
-      "Area Wise Test",
-      "QA",
-      "Geometry"
-    ]
-  },
-  {
-    "name": "Modern Math",
-    "path": [
-      "Area Wise Test",
-      "QA",
-      "Modern Math"
-    ]
-  },
-  {
-    "name": "Number System",
-    "path": [
-      "Area Wise Test",
-      "QA",
-      "Number System"
-    ]
-  },
-  {
-    "name": "VARC",
-    "path": [
-      "Area Wise Test",
-      "VARC"
-    ]
-  },
-  {
-    "name": "RC",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "RC"
-    ]
-  },
-  {
-    "name": "VA - VR",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR"
-    ]
-  },
-  {
-    "name": "OddOne Out",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR",
-      "OddOne Out"
-    ]
-  },
-  {
-    "name": "Paracompletion",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR",
-      "Paracompletion"
-    ]
-  },
-  {
-    "name": "Parajumble",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR",
-      "Parajumble"
-    ]
-  },
-  {
-    "name": "ParaSummary",
-    "path": [
-      "Area Wise Test",
-      "VARC",
-      "VA - VR",
-      "ParaSummary"
-    ]
-  },
-  {
-    "name": "Daily LRDI",
-    "path": [
-      "Daily LRDI"
-    ]
-  },
-  {
-    "name": "Daily RC",
-    "path": [
-      "Daily RC"
-    ]
-  },
-  {
-    "name": "Full Length",
-    "path": [
-      "Full Length"
-    ]
-  },
-  {
-    "name": "PYQ",
-    "path": [
-      "PYQ"
-    ]
-  },
-  {
-    "name": "2017",
-    "path": [
-      "PYQ",
-      "2017"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "PYQ",
-      "2017",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "2017",
-    "path": [
-      "PYQ",
-      "2017",
-      "LRDI",
-      "2017"
-    ]
-  },
-  {
-    "name": "Topic Wise",
-    "path": [
-      "PYQ",
-      "Topic Wise"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "Arrangement Group & Conditionalities",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Arrangement Group & Conditionalities"
-    ]
-  },
-  {
-    "name": "Cube Cutting & Painting",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Cube Cutting & Painting"
-    ]
-  },
-  {
-    "name": "DI Calculation Based",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "DI Calculation Based"
-    ]
-  },
-  {
-    "name": "DI Reasoning Based",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "DI Reasoning Based"
-    ]
-  },
-  {
-    "name": "Games & Tournaments",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Games & Tournaments"
-    ]
-  },
-  {
-    "name": "Puzzles",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Puzzles"
-    ]
-  },
-  {
-    "name": "Quant Based Reasoning",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Quant Based Reasoning"
-    ]
-  },
-  {
-    "name": "Set Theory",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "LRDI",
-      "Set Theory"
-    ]
-  },
-  {
-    "name": "QA",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA"
-    ]
-  },
-  {
-    "name": "Algebra",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra"
-    ]
-  },
-  {
-    "name": "Advance Linear Equation",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Advance Linear Equation"
-    ]
-  },
-  {
-    "name": "Advance Quadratic Equation",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Advance Quadratic Equation"
-    ]
-  },
-  {
-    "name": "Basic Inequality",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Basic Inequality"
-    ]
-  },
-  {
-    "name": "Function & Graph",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Function & Graph"
-    ]
-  },
-  {
-    "name": "Linear Equation",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Linear Equation"
-    ]
-  },
-  {
-    "name": "Logarithm",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Logarithm"
-    ]
-  },
-  {
-    "name": "Maxima Minima",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Maxima Minima"
-    ]
-  },
-  {
-    "name": "Mod Function",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Mod Function"
-    ]
-  },
-  {
-    "name": "Polynomial & Basic Identities",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Polynomial & Basic Identities"
-    ]
-  },
-  {
-    "name": "Quadratic Equation",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Quadratic Equation"
-    ]
-  },
-  {
-    "name": "Sequence & Series",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Sequence & Series"
-    ]
-  },
-  {
-    "name": "Surds & Indices",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Algebra",
-      "Surds & Indices"
-    ]
-  },
-  {
-    "name": "Arithmetic",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic"
-    ]
-  },
-  {
-    "name": "1.Percentage",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ]
-  },
-  {
-    "name": "2.Ratio Proportion",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ]
-  },
-  {
-    "name": "3.Profit & Loss",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ]
-  },
-  {
-    "name": "4.SI & CI",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ]
-  },
-  {
-    "name": "5. Average",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ]
-  },
-  {
-    "name": "6. Mixture & Alligation",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ]
-  },
-  {
-    "name": "7. Time & Work",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ]
-  },
-  {
-    "name": "8. Time Speed Distance",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "8. Time Speed Distance"
-    ]
-  },
-  {
-    "name": "Geometry",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry"
-    ]
-  },
-  {
-    "name": "Circle",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Circle"
-    ]
-  },
-  {
-    "name": "Co-Ordinate Geometry",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Co-Ordinate Geometry"
-    ]
-  },
-  {
-    "name": "Line Angle",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Line Angle"
-    ]
-  },
-  {
-    "name": "Mensuration -3D",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Mensuration -3D"
-    ]
-  },
-  {
-    "name": "Polygon",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Polygon"
-    ]
-  },
-  {
-    "name": "Quadrilateral",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Quadrilateral"
-    ]
-  },
-  {
-    "name": "Triangle",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Triangle"
-    ]
-  },
-  {
-    "name": "Trigonometry",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Geometry",
-      "Trigonometry"
-    ]
-  },
-  {
-    "name": "Modern Math",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Modern Math"
-    ]
-  },
-  {
-    "name": "Permutation & Combination",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Modern Math",
-      "Permutation & Combination"
-    ]
-  },
-  {
-    "name": "Probability",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Modern Math",
-      "Probability"
-    ]
-  },
-  {
-    "name": "Set Theory",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Modern Math",
-      "Set Theory"
-    ]
-  },
-  {
-    "name": "Number System",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System"
-    ]
-  },
-  {
-    "name": "1.Properties Of Number",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ]
-  },
-  {
-    "name": "2.Divisibility Rule",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System",
-      "2.Divisibility Rule"
-    ]
-  },
-  {
-    "name": "3.Factor & Multiple",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System",
-      "3.Factor & Multiple"
-    ]
-  },
-  {
-    "name": "4.LCM HCF",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System",
-      "4.LCM HCF"
-    ]
-  },
-  {
-    "name": "5.Cyclicity , Remainders , Factorial , Base System",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Number System",
-      "5.Cyclicity , Remainders , Factorial , Base System"
-    ]
-  },
-  {
-    "name": "VARC",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC"
-    ]
-  },
-  {
-    "name": "RC",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "RC"
-    ]
-  },
-  {
-    "name": "VA-VR",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR"
-    ]
-  },
-  {
-    "name": "Critical Reasoning",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "Critical Reasoning"
-    ]
-  },
-  {
-    "name": "Odd One Out",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "Odd One Out"
-    ]
-  },
-  {
-    "name": "Paracompletion",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "Paracompletion"
-    ]
-  },
-  {
-    "name": "Parajumble",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "Parajumble"
-    ]
-  },
-  {
-    "name": "ParaSummary",
-    "path": [
-      "PYQ",
-      "Topic Wise",
-      "VARC",
-      "VA-VR",
-      "ParaSummary"
-    ]
-  },
-  {
-    "name": "Year Wise",
-    "path": [
-      "PYQ",
-      "Year Wise"
-    ]
-  },
-  {
-    "name": "Full Length",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "Full Length"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "2017",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ]
-  },
-  {
-    "name": "2018",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2018"
-    ]
-  },
-  {
-    "name": "2019",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2019"
-    ]
-  },
-  {
-    "name": "QA",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "QA"
-    ]
-  },
-  {
-    "name": "VARC",
-    "path": [
-      "PYQ",
-      "Year Wise",
-      "VARC"
-    ]
-  },
-  {
-    "name": "Sectional Test",
-    "path": [
-      "Sectional Test"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "Sectional Test",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "QA",
-    "path": [
-      "Sectional Test",
-      "QA"
-    ]
-  },
-  {
-    "name": "VARC",
-    "path": [
-      "Sectional Test",
-      "VARC"
-    ]
-  },
-  {
-    "name": "Topic Test",
-    "path": [
-      "Topic Test"
-    ]
-  },
-  {
-    "name": "LRDI",
-    "path": [
-      "Topic Test",
-      "LRDI"
-    ]
-  },
-  {
-    "name": "DI",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI"
-    ]
-  },
-  {
-    "name": "Bar Graph",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ]
-  },
-  {
-    "name": "Line Graph",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ]
-  },
-  {
-    "name": "MIx Graph Calculation & Observation Based",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "MIx Graph Calculation & Observation Based"
-    ]
-  },
-  {
-    "name": "Mix Graph Reasoning Based",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Mix Graph Reasoning Based"
-    ]
-  },
-  {
-    "name": "Network & 3D Graph",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Network & 3D Graph"
-    ]
-  },
-  {
-    "name": "Pie Chart",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Pie Chart"
-    ]
-  },
-  {
-    "name": "Set Theory",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Set Theory"
-    ]
-  },
-  {
-    "name": "Table",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ]
-  },
-  {
-    "name": "LR",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR"
-    ]
-  },
-  {
-    "name": "Arrangement",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ]
-  },
-  {
-    "name": "Cube Painting & Cutting",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Cube Painting & Cutting"
-    ]
-  },
-  {
-    "name": "Deductive Reasoning",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Deductive Reasoning"
-    ]
-  },
-  {
-    "name": "Games & Tournaments",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Games & Tournaments"
-    ]
-  },
-  {
-    "name": "Group & Conditionalities",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Group & Conditionalities"
-    ]
-  },
-  {
-    "name": "Puzzle",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ]
-  },
-  {
-    "name": "Quant Reasoning Based Set",
-    "path": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Quant Reasoning Based Set"
-    ]
-  },
-  {
-    "name": "QA",
-    "path": [
-      "Topic Test",
-      "QA"
-    ]
-  },
-  {
-    "name": "Algebra",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra"
-    ]
-  },
-  {
-    "name": "Advance Linear Equation",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Advance Linear Equation"
-    ]
-  },
-  {
-    "name": "Advance Quadratic Equation",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Advance Quadratic Equation"
-    ]
-  },
-  {
-    "name": "Basic Inequality",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Basic Inequality"
-    ]
-  },
-  {
-    "name": "Function & Graph",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Function & Graph"
-    ]
-  },
-  {
-    "name": "Linear Equation",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Linear Equation"
-    ]
-  },
-  {
-    "name": "Logarithm",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Logarithm"
-    ]
-  },
-  {
-    "name": "Maxima Minima",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Maxima Minima"
-    ]
-  },
-  {
-    "name": "Mod Function",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Mod Function"
-    ]
-  },
-  {
-    "name": "Polynomial & Basic Identities",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Polynomial & Basic Identities"
-    ]
-  },
-  {
-    "name": "Quadratic Equation",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Quadratic Equation"
-    ]
-  },
-  {
-    "name": "Sequence & Series",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Sequence & Series"
-    ]
-  },
-  {
-    "name": "Surds & Indices",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Surds & Indices"
-    ]
-  },
-  {
-    "name": "Arithmetic",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic"
-    ]
-  },
-  {
-    "name": "1.Percentage",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ]
-  },
-  {
-    "name": "2.Ratio Proportion",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ]
-  },
-  {
-    "name": "3.Profit & Loss",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ]
-  },
-  {
-    "name": "4.SI & CI",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ]
-  },
-  {
-    "name": "5. Average",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ]
-  },
-  {
-    "name": "6. Mixture & Alligation",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ]
-  },
-  {
-    "name": "7. Time & Work",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ]
-  },
-  {
-    "name": "8.Time Speed Distance",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "8.Time Speed Distance"
-    ]
-  },
-  {
-    "name": "Geometry",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry"
-    ]
-  },
-  {
-    "name": "Circle",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Circle"
-    ]
-  },
-  {
-    "name": "Co-Ordinate Geometry",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Co-Ordinate Geometry"
-    ]
-  },
-  {
-    "name": "Line Angle",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Line Angle"
-    ]
-  },
-  {
-    "name": "Mensuration -3D",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Mensuration -3D"
-    ]
-  },
-  {
-    "name": "Polygon",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Polygon"
-    ]
-  },
-  {
-    "name": "Quadrilateral",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Quadrilateral"
-    ]
-  },
-  {
-    "name": "Triangle",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Triangle"
-    ]
-  },
-  {
-    "name": "Trigonometry",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Geometry",
-      "Trigonometry"
-    ]
-  },
-  {
-    "name": "Modern Math",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Modern Math"
-    ]
-  },
-  {
-    "name": "Permutation & Combination",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Modern Math",
-      "Permutation & Combination"
-    ]
-  },
-  {
-    "name": "Probability",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Modern Math",
-      "Probability"
-    ]
-  },
-  {
-    "name": "Set Theory",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Modern Math",
-      "Set Theory"
-    ]
-  },
-  {
-    "name": "Number System",
-    "path": [
-      "Topic Test",
-      "QA",
-      "Number System"
-    ]
-  },
-  {
-    "name": "1.Properties Of Number",
-    "path": [
       "Topic Test",
       "QA",
       "Number System",
       "1.Properties Of Number"
-    ]
+    ],
+    "minutes": 75
   },
   {
-    "name": "2.Divisibility Rule",
-    "path": [
+    "title": "Number System -Properties of Numbers Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
+    "original": "Number System - Properties of Numbers  Test -2.html",
+    "folders": [
       "Topic Test",
       "QA",
       "Number System",
-      "2.Divisibility Rule"
-    ]
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   },
   {
-    "name": "3.Factor & Multiple",
-    "path": [
+    "title": "Number System -Properties of Numbers Test -2 (2)",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
+    "original": "Number System - Properties of Numbers  Test -2 (2).html",
+    "folders": [
       "Topic Test",
       "QA",
       "Number System",
-      "3.Factor & Multiple"
-    ]
+      "1.Properties Of Number"
+    ],
+    "minutes": 45
   },
   {
-    "name": "4.LCM HCF",
-    "path": [
+    "title": "Properties Of Number Test -1",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
+    "original": "Properties Of Number Test -1.html",
+    "folders": [
       "Topic Test",
       "QA",
       "Number System",
-      "4.LCM HCF"
-    ]
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   },
   {
-    "name": "5.Cyclicity , Remainders , Factorial , Base System",
-    "path": [
+    "title": "Properties Of Number Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
+    "original": "Properties Of Number Test -2.html",
+    "folders": [
       "Topic Test",
       "QA",
       "Number System",
-      "5.Cyclicity , Remainders , Factorial , Base System"
-    ]
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   },
   {
-    "name": "VARC",
-    "path": [
+    "title": "Properties Of Number Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
+    "original": "Properties Of Number Test -3.html",
+    "folders": [
       "Topic Test",
-      "VARC"
-    ]
-  },
-  {
-    "name": "RC",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "RC"
-    ]
-  },
-  {
-    "name": "VA - VR",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR"
-    ]
-  },
-  {
-    "name": "OddOne Out",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR",
-      "OddOne Out"
-    ]
-  },
-  {
-    "name": "Paracompletion",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR",
-      "Paracompletion"
-    ]
-  },
-  {
-    "name": "Parajumble",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR",
-      "Parajumble"
-    ]
-  },
-  {
-    "name": "ParaSummary",
-    "path": [
-      "Topic Test",
-      "VARC",
-      "VA - VR",
-      "ParaSummary"
-    ]
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   }
 ];

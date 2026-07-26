@@ -114,8 +114,8 @@
           <div class="panel-heading">
             <div>
               <p class="eyebrow">Upload Details</p>
-              <h2>Publish test file</h2>
-              <p>Review the folder and file path before publishing.</p>
+              <h2>Publish test files</h2>
+              <p>Upload one HTML test or select a complete folder of tests.</p>
             </div>
             <button id="copyPathBtn" type="button" class="ghost-btn">Copy Path</button>
           </div>
@@ -141,7 +141,7 @@
           <div class="form-card">
             <div class="form-card-head">
               <span class="step-dot">2</span>
-              <div><h3>Test metadata</h3><p>These details create the student portal card.</p></div>
+              <div><h3>Test metadata</h3><p>Used for one file. Folder uploads detect each test title and timing automatically.</p></div>
             </div>
             <div class="form-grid">
               <label class="field wide"><span>Test Title</span><input id="title" type="text" placeholder="Example: Profit Loss Test -14" /></label>
@@ -154,14 +154,23 @@
           <div class="form-card">
             <div class="form-card-head">
               <span class="step-dot">3</span>
-              <div><h3>HTML test file</h3><p>Drag and drop or select your ready exam console HTML file.</p></div>
+              <div><h3>HTML test files</h3><p>Select one file, several files, or a complete folder. All tests go to the selected portal folder.</p></div>
             </div>
             <label id="dropzone" class="dropzone" for="htmlFile">
-              <input id="htmlFile" type="file" accept=".html,text/html" />
+              <input id="htmlFile" type="file" accept=".html,text/html" multiple />
               <span class="drop-icon">⇧</span>
-              <strong id="dropTitle">Drop HTML test here</strong>
-              <small id="dropSub">or click to select .html file</small>
+              <strong id="dropTitle">Drop HTML tests here</strong>
+              <small id="dropSub">or click to select one or more .html files</small>
             </label>
+            <div class="bulk-picker-row">
+              <label class="folder-picker" for="folderFiles">
+                <input id="folderFiles" type="file" accept=".html,text/html" webkitdirectory directory multiple />
+                <strong>Select a complete folder</strong>
+                <span>Every HTML test inside it will be uploaded together.</span>
+              </label>
+              <button id="clearFilesBtn" type="button" class="secondary-admin">Clear selection</button>
+            </div>
+            <div id="selectedFilesList" class="selected-files-list" aria-live="polite"></div>
           </div>
 
           <div class="preview-grid">
@@ -176,7 +185,7 @@
           </div>
 
           <div class="action-row">
-            <button id="publishBtn" type="button" class="primary-admin">Publish to GitHub</button>
+            <button id="publishBtn" type="button" class="primary-admin">Publish selected tests</button>
             <button id="repairDataBtn" type="button" class="secondary-admin">Repair existing data</button>
             <button id="downloadBtn" type="button" class="secondary-admin">Download updated data only</button>
           </div>

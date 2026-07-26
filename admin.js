@@ -9,6 +9,7 @@ const state = {
   folders: Array.isArray(window.CAT_FOLDERS) ? window.CAT_FOLDERS : [],
   selectedPath: ["Topic Test", "QA", "Arithmetic", "3.Profit & Loss"],
   selectedFile: null,
+  selectedFiles: [],
   userSelectedPath: false,
 };
 
@@ -171,6 +172,69 @@ function safeFileName(value) {
   return name;
 }
 
+function inferMetadata(file, html) {
+  const source = String(html || "");
+  const title = cleanNameFromFile(file.name);
+
+  let questions = null;
+  const questionTextMatch = source.match(/\b(\d+)\s+Questions?\b/i);
+  if (questionTextMatch) questions = Number(questionTextMatch[1]);
+  if (!Number.isFinite(questions)) {
+    const jsonMatch = source.match(/<script[^>]+id=["']questions-data["'][^>]*>([\s\S]*?)<\/script>/i);
+    if (jsonMatch) {
+      try {
+        const parsed = JSON.parse(jsonMatch[1]);
+        if (Array.isArray(parsed)) questions = parsed.length;
+      } catch (error) {}
+    }
+  }
+
+  let minutes = null;
+  const minuteTextMatch = source.match(/\b(\d+)\s+Minutes?\b/i);
+  const minuteObjectMatch = source.match(/\bminutes\s*:\s*(\d+)\b/i);
+  const timerMatch = source.match(/\bsecondsLeft\s*=\s*(\d+)\s*\*\s*60\b/i);
+  if (minuteTextMatch) minutes = Number(minuteTextMatch[1]);
+  else if (minuteObjectMatch) minutes = Number(minuteObjectMatch[1]);
+  else if (timerMatch) minutes = Number(timerMatch[1]);
+
+  return {
+    title: title || cleanNameFromFile(file.name),
+    minutes: Number.isFinite(minutes) && minutes > 0 ? minutes : (Number($("minutes").value || 0) || 60),
+    questions: Number.isFinite(questions) && questions >= 0 ? questions : null,
+  };
+}
+
+function renderSelectedFiles() {
+  const list = $("selectedFilesList");
+  list.innerHTML = "";
+  state.selectedFiles.slice(0, 100).forEach((file) => {
+    const row = document.createElement("div");
+    row.className = "selected-file-row";
+    row.innerHTML = `<span>${escapeHtml(file.webkitRelativePath || file.name)}</span><span>${Math.ceil(file.size / 1024)} KB</span>`;
+    list.appendChild(row);
+  });
+  if (state.selectedFiles.length > 100) {
+    const row = document.createElement("div");
+    row.className = "selected-file-row";
+    row.textContent = `+ ${state.selectedFiles.length - 100} more files`;
+    list.appendChild(row);
+  }
+}
+
+function clearSelectedFiles() {
+  state.selectedFile = null;
+  state.selectedFiles = [];
+  $("htmlFile").value = "";
+  $("folderFiles").value = "";
+  $("title").value = "";
+  $("fileName").value = "";
+  $("dropTitle").textContent = "Drop HTML tests here";
+  $("dropSub").textContent = "or click to select one or more .html files";
+  renderSelectedFiles();
+  updatePathUI();
+  setStatus("Selection cleared. Choose HTML files or a complete folder.");
+}
+
 function folderKey(path) { return path.join(" / "); }
 
 function compareKey(value) {
@@ -234,6 +298,9 @@ function collectFolders() {
 }
 
 function selectedUploadPath() {
+  if (state.selectedFiles.length > 1) {
+    return `tests/${state.selectedPath.join("/")}/ (${state.selectedFiles.length} HTML files)`;
+  }
   const fileName = safeFileName($("fileName").value || (state.selectedFile && state.selectedFile.name));
   return `tests/${state.selectedPath.join("/")}/${fileName}`;
 }
@@ -251,9 +318,15 @@ function updatePathUI() {
   $("selectedPathText").textContent = pathText;
   $("uploadPathText").textContent = selectedUploadPath();
   $("previewFolder").textContent = pathText;
-  $("previewTitle").textContent = $("title").value.trim() || cleanNameFromFile($("fileName").value || (state.selectedFile && state.selectedFile.name)) || "New Test";
-  $("previewMinutes").textContent = `${Number($("minutes").value || 0) || 60} min`;
-  $("previewQuestions").textContent = $("questions").value.trim() ? `${$("questions").value.trim()} questions` : "Questions optional";
+  if (state.selectedFiles.length > 1) {
+    $("previewTitle").textContent = `${state.selectedFiles.length} tests ready`;
+    $("previewMinutes").textContent = "Timing auto-detected";
+    $("previewQuestions").textContent = "Questions auto-detected";
+  } else {
+    $("previewTitle").textContent = $("title").value.trim() || cleanNameFromFile($("fileName").value || (state.selectedFile && state.selectedFile.name)) || "New Test";
+    $("previewMinutes").textContent = `${Number($("minutes").value || 0) || 60} min`;
+    $("previewQuestions").textContent = $("questions").value.trim() ? `${$("questions").value.trim()} questions` : "Questions optional";
+  }
   updateStats();
   document.querySelectorAll(".folder-pick").forEach((btn) => btn.classList.toggle("active", btn.dataset.path === pathText));
 }
@@ -313,31 +386,63 @@ function applyBuilder() {
   renderFolders();
 }
 
-function handleFile(file) {
-  if (!file) return;
-  if (!file.name.toLowerCase().endsWith(".html")) {
-    setStatus("Please select only an .html file.", "error");
+function handleFiles(fileList) {
+  const files = Array.from(fileList || []).filter((file) => file.name.toLowerCase().endsWith(".html"));
+  if (!files.length) {
+    setStatus("No HTML tests were found in that selection.", "error");
     return;
   }
-  state.selectedFile = file;
-  $("dropTitle").textContent = file.name;
-  $("dropSub").textContent = `${Math.ceil(file.size / 1024)} KB selected`;
-  if (!$("title").value.trim()) $("title").value = cleanNameFromFile(file.name);
-  if (!$("fileName").value.trim()) $("fileName").value = file.name;
-  const suggestedPath = !state.userSelectedPath ? pathForFileName(file.name) : null;
-  if (suggestedPath) {
-    selectPath(suggestedPath);
-    setStatus(`Folder auto-selected from file name.\n${folderKey(suggestedPath)}`, "success");
+
+  const names = new Set();
+  const duplicates = [];
+  files.forEach((file) => {
+    const name = safeFileName(file.name).toLowerCase();
+    if (names.has(name)) duplicates.push(file.name);
+    names.add(name);
+  });
+  if (duplicates.length) {
+    setStatus(`Duplicate HTML file names found:\n${duplicates.join("\n")}\n\nRename them before uploading so one test does not replace another.`, "error");
+    return;
+  }
+
+  state.selectedFiles = files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+  state.selectedFile = state.selectedFiles[0];
+  renderSelectedFiles();
+
+  if (state.selectedFiles.length === 1) {
+    const file = state.selectedFile;
+    $("dropTitle").textContent = file.name;
+    $("dropSub").textContent = `${Math.ceil(file.size / 1024)} KB selected`;
+    $("title").value = cleanNameFromFile(file.name);
+    $("fileName").value = file.name;
+    const suggestedPath = !state.userSelectedPath ? pathForFileName(file.name) : null;
+    if (suggestedPath) {
+      selectPath(suggestedPath);
+      setStatus(`Folder auto-selected from file name.\n${folderKey(suggestedPath)}`, "success");
+    } else {
+      setStatus("One HTML test selected. Review its title and destination folder.");
+    }
+  } else {
+    $("title").value = "";
+    $("fileName").value = "";
+    $("dropTitle").textContent = `${state.selectedFiles.length} HTML tests selected`;
+    const folderName = String(state.selectedFiles[0].webkitRelativePath || "").split("/")[0];
+    $("dropSub").textContent = folderName ? `Folder: ${folderName}` : "Multiple files ready";
+    setStatus(`${state.selectedFiles.length} HTML tests ready.\nAll will be uploaded to:\n${folderKey(state.selectedPath)}\n\nTitles, durations, and question counts will be detected from each file.`);
   }
   updatePathUI();
+}
+
+function handleFile(file) {
+  if (file) handleFiles([file]);
 }
 
 function validate() {
   const token = $("token").value.trim();
   const title = $("title").value.trim();
   if (!token) throw new Error("Paste GitHub token first.");
-  if (!title) throw new Error("Enter test title.");
-  if (!state.selectedFile) throw new Error("Select an HTML test file.");
+  if (!state.selectedFiles.length) throw new Error("Select one or more HTML test files.");
+  if (state.selectedFiles.length === 1 && !title) throw new Error("Enter test title.");
   if (!state.selectedPath.length) throw new Error("Select destination folder.");
   return { token, title };
 }
@@ -366,6 +471,43 @@ function buildUpdatedData() {
   return { updatedTests, updatedFolders, meta, replacedCount: replacementFiles.size - (replacementFiles.has(filePath) ? 1 : 0) };
 }
 
+async function buildBulkUpdatedData() {
+  let updatedTests = repairTests(state.tests);
+  const uploads = [];
+  let replacedCount = 0;
+
+  for (const file of state.selectedFiles) {
+    const html = await file.text();
+    const detected = inferMetadata(file, html);
+    const original = safeFileName(file.name);
+    const filePath = `tests/${state.selectedPath.join("/")}/${original}`;
+    const meta = {
+      title: detected.title,
+      file: filePath,
+      original,
+      folders: [...state.selectedPath],
+      minutes: detected.minutes,
+    };
+    if (Number.isFinite(detected.questions)) meta.questions = detected.questions;
+
+    const replacementFiles = new Set(findReplacementMatches(filePath, meta.title, meta.original).map((test) => test.file));
+    replacementFiles.add(filePath);
+    const before = updatedTests.length;
+    updatedTests = updatedTests.filter((test) => !replacementFiles.has(test.file));
+    replacedCount += before - updatedTests.length;
+    updatedTests.push(meta);
+    uploads.push({ file, html, meta });
+  }
+
+  updatedTests.sort((a, b) => {
+    const left = [...(a.folders || []), a.title || ""].join(" / ");
+    const right = [...(b.folders || []), b.title || ""].join(" / ");
+    return left.localeCompare(right, undefined, { numeric: true, sensitivity: "base" });
+  });
+  const updatedFolders = buildFoldersFromTests(updatedTests, state.folders);
+  return { updatedTests, updatedFolders, uploads, replacedCount };
+}
+
 async function loadRemoteData(token) {
   const dataFile = await githubGet("tests-data.js", token);
   let tests = state.tests;
@@ -392,25 +534,46 @@ async function publishTest() {
     setStatus("Reading latest tests-data.js from GitHub...");
     const { dataFile } = await loadRemoteData(token);
 
-    const { updatedTests, updatedFolders, meta, replacedCount } = buildUpdatedData();
-    const html = await state.selectedFile.text();
+    let updatedTests, updatedFolders, uploads, replacedCount;
+    if (state.selectedFiles.length > 1) {
+      const bulk = await buildBulkUpdatedData();
+      ({ updatedTests, updatedFolders, uploads, replacedCount } = bulk);
+    } else {
+      const single = buildUpdatedData();
+      updatedTests = single.updatedTests;
+      updatedFolders = single.updatedFolders;
+      replacedCount = single.replacedCount;
+      uploads = [{ file: state.selectedFile, html: await state.selectedFile.text(), meta: single.meta }];
+    }
 
-    setStatus(`Uploading HTML file...\n${meta.file}`);
-    const oldHtml = await githubGet(meta.file, token);
-    await githubPut(meta.file, html, `Add/update test: ${title}`, token, oldHtml ? oldHtml.sha : undefined);
+    for (let index = 0; index < uploads.length; index += 1) {
+      const upload = uploads[index];
+      setStatus(`Uploading test ${index + 1} of ${uploads.length}...\n${upload.meta.file}`);
+      const oldHtml = await githubGet(upload.meta.file, token);
+      await githubPut(
+        upload.meta.file,
+        upload.html,
+        uploads.length > 1 ? `Bulk upload test: ${upload.meta.title}` : `Add/update test: ${title}`,
+        token,
+        oldHtml ? oldHtml.sha : undefined
+      );
+    }
 
-    setStatus("Updating tests-data.js...");
-    await githubPut("tests-data.js", buildTestsData(updatedTests, updatedFolders), `Update tests list: ${title}`, token, dataFile ? dataFile.sha : undefined);
+    setStatus(`All ${uploads.length} HTML file${uploads.length === 1 ? "" : "s"} uploaded.\nUpdating the student catalog once...`);
+    const catalogMessage = uploads.length > 1 ? `Update tests list: bulk upload ${uploads.length} tests` : `Update tests list: ${title}`;
+    await githubPut("tests-data.js", buildTestsData(updatedTests, updatedFolders), catalogMessage, token, dataFile ? dataFile.sha : undefined);
 
     setStatus("Updating tests.json backup...");
     const jsonFile = await githubGet("tests.json", token);
-    await githubPut("tests.json", `${JSON.stringify(updatedTests, null, 2)}\n`, `Update tests.json: ${title}`, token, jsonFile ? jsonFile.sha : undefined);
+    await githubPut("tests.json", `${JSON.stringify(updatedTests, null, 2)}\n`, catalogMessage, token, jsonFile ? jsonFile.sha : undefined);
 
     state.tests = updatedTests;
     state.folders = updatedFolders;
     renderFolders();
-    const action = replacedCount ? `Replaced ${replacedCount} existing portal card.` : "Added a new portal card.";
-    setStatus(`Success! Test published.\n${action}\n\nPortal folder: ${folderKey(meta.folders)}\nFile: ${meta.file}\n\nWait for Vercel deployment, then refresh student portal.`, "success");
+    const action = replacedCount
+      ? `Published ${uploads.length} test${uploads.length === 1 ? "" : "s"} and replaced ${replacedCount} existing card${replacedCount === 1 ? "" : "s"}.`
+      : `Published ${uploads.length} new test${uploads.length === 1 ? "" : "s"}.`;
+    setStatus(`Success!\n${action}\n\nPortal folder: ${folderKey(state.selectedPath)}\n\nWait for Vercel deployment, then refresh the student portal.`, "success");
   } catch (error) {
     setStatus(`Upload failed: ${error.message}`, "error");
   } finally {
@@ -457,10 +620,12 @@ function downloadText(filename, text) {
   URL.revokeObjectURL(a.href);
 }
 
-function downloadUpdatedData() {
+async function downloadUpdatedData() {
   try {
-    const hasNewUpload = $("title").value.trim() && state.selectedFile;
-    const updatedTests = hasNewUpload ? buildUpdatedData().updatedTests : repairTests(state.tests);
+    let updatedTests;
+    if (state.selectedFiles.length > 1) updatedTests = (await buildBulkUpdatedData()).updatedTests;
+    else if ($("title").value.trim() && state.selectedFile) updatedTests = buildUpdatedData().updatedTests;
+    else updatedTests = repairTests(state.tests);
     const updatedFolders = buildFoldersFromTests(updatedTests, state.folders);
     downloadText("tests-data.js", buildTestsData(updatedTests, updatedFolders));
     setTimeout(() => downloadText("tests.json", `${JSON.stringify(updatedTests, null, 2)}\n`), 350);
@@ -475,7 +640,9 @@ function bindEvents() {
   ["rootSelect", "level2", "level3", "level4", "level5"].forEach((id) => $(id).addEventListener("input", applyBuilder));
   $("folderSearch").addEventListener("input", renderFolders);
   ["title", "minutes", "questions", "fileName"].forEach((id) => $(id).addEventListener("input", updatePathUI));
-  $("htmlFile").addEventListener("change", (e) => handleFile(e.target.files[0]));
+  $("htmlFile").addEventListener("change", (e) => handleFiles(e.target.files));
+  $("folderFiles").addEventListener("change", (e) => handleFiles(e.target.files));
+  $("clearFilesBtn").addEventListener("click", clearSelectedFiles);
   $("publishBtn").addEventListener("click", publishTest);
   $("repairDataBtn").addEventListener("click", repairExistingData);
   $("downloadBtn").addEventListener("click", downloadUpdatedData);
@@ -489,7 +656,7 @@ function bindEvents() {
   const drop = $("dropzone");
   ["dragenter", "dragover"].forEach((eventName) => drop.addEventListener(eventName, (event) => { event.preventDefault(); drop.classList.add("drag"); }));
   ["dragleave", "drop"].forEach((eventName) => drop.addEventListener(eventName, (event) => { event.preventDefault(); drop.classList.remove("drag"); }));
-  drop.addEventListener("drop", (event) => handleFile(event.dataTransfer.files[0]));
+  drop.addEventListener("drop", (event) => handleFiles(event.dataTransfer.files));
 }
 
 function init() {
@@ -502,7 +669,8 @@ function init() {
   renderFolders();
   selectPath(state.selectedPath);
   bindEvents();
-  setStatus("Ready. Select destination folder and upload HTML file.");
+  renderSelectedFiles();
+  setStatus("Ready. Select a destination folder, then choose HTML files or a complete folder.");
 }
 
 init();
