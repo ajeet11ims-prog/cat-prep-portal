@@ -2038,5 +2038,1502 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 60
+  },
+  {
+    "title": "DI - Bar Graph - Test - 10",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 10.html",
+    "original": "DI - Bar Graph - Test - 10.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  }
+];
+
+window.CAT_FOLDERS = [
+  {
+    "name": "Area Wise Test",
+    "path": [
+      "Area Wise Test"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "Area Wise Test",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "DI",
+    "path": [
+      "Area Wise Test",
+      "LRDI",
+      "DI"
+    ]
+  },
+  {
+    "name": "LR",
+    "path": [
+      "Area Wise Test",
+      "LRDI",
+      "LR"
+    ]
+  },
+  {
+    "name": "LRDI Mix",
+    "path": [
+      "Area Wise Test",
+      "LRDI",
+      "LRDI Mix"
+    ]
+  },
+  {
+    "name": "QA",
+    "path": [
+      "Area Wise Test",
+      "QA"
+    ]
+  },
+  {
+    "name": "Algebra",
+    "path": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ]
+  },
+  {
+    "name": "Arithmetic",
+    "path": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ]
+  },
+  {
+    "name": "Geometry",
+    "path": [
+      "Area Wise Test",
+      "QA",
+      "Geometry"
+    ]
+  },
+  {
+    "name": "Modern Math",
+    "path": [
+      "Area Wise Test",
+      "QA",
+      "Modern Math"
+    ]
+  },
+  {
+    "name": "Number System",
+    "path": [
+      "Area Wise Test",
+      "QA",
+      "Number System"
+    ]
+  },
+  {
+    "name": "VARC",
+    "path": [
+      "Area Wise Test",
+      "VARC"
+    ]
+  },
+  {
+    "name": "RC",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "RC"
+    ]
+  },
+  {
+    "name": "VA - VR",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR"
+    ]
+  },
+  {
+    "name": "OddOne Out",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR",
+      "OddOne Out"
+    ]
+  },
+  {
+    "name": "Paracompletion",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR",
+      "Paracompletion"
+    ]
+  },
+  {
+    "name": "Parajumble",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR",
+      "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "Area Wise Test",
+      "VARC",
+      "VA - VR",
+      "ParaSummary"
+    ]
+  },
+  {
+    "name": "Daily LRDI",
+    "path": [
+      "Daily LRDI"
+    ]
+  },
+  {
+    "name": "Daily RC",
+    "path": [
+      "Daily RC"
+    ]
+  },
+  {
+    "name": "Full Length",
+    "path": [
+      "Full Length"
+    ]
+  },
+  {
+    "name": "PYQ",
+    "path": [
+      "PYQ"
+    ]
+  },
+  {
+    "name": "2017",
+    "path": [
+      "PYQ",
+      "2017"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "PYQ",
+      "2017",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "2017",
+    "path": [
+      "PYQ",
+      "2017",
+      "LRDI",
+      "2017"
+    ]
+  },
+  {
+    "name": "Topic Wise",
+    "path": [
+      "PYQ",
+      "Topic Wise"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "Arrangement Group & Conditionalities",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Arrangement Group & Conditionalities"
+    ]
+  },
+  {
+    "name": "Cube Cutting & Painting",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Cube Cutting & Painting"
+    ]
+  },
+  {
+    "name": "DI Calculation Based",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "DI Calculation Based"
+    ]
+  },
+  {
+    "name": "DI Reasoning Based",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "DI Reasoning Based"
+    ]
+  },
+  {
+    "name": "Games & Tournaments",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Games & Tournaments"
+    ]
+  },
+  {
+    "name": "Puzzles",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Puzzles"
+    ]
+  },
+  {
+    "name": "Quant Based Reasoning",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Quant Based Reasoning"
+    ]
+  },
+  {
+    "name": "Set Theory",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "LRDI",
+      "Set Theory"
+    ]
+  },
+  {
+    "name": "QA",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA"
+    ]
+  },
+  {
+    "name": "Algebra",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra"
+    ]
+  },
+  {
+    "name": "Advance Linear Equation",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Advance Linear Equation"
+    ]
+  },
+  {
+    "name": "Advance Quadratic Equation",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Advance Quadratic Equation"
+    ]
+  },
+  {
+    "name": "Basic Inequality",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Basic Inequality"
+    ]
+  },
+  {
+    "name": "Function & Graph",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Function & Graph"
+    ]
+  },
+  {
+    "name": "Linear Equation",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Linear Equation"
+    ]
+  },
+  {
+    "name": "Logarithm",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Logarithm"
+    ]
+  },
+  {
+    "name": "Maxima Minima",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Maxima Minima"
+    ]
+  },
+  {
+    "name": "Mod Function",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Mod Function"
+    ]
+  },
+  {
+    "name": "Polynomial & Basic Identities",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Polynomial & Basic Identities"
+    ]
+  },
+  {
+    "name": "Quadratic Equation",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ]
+  },
+  {
+    "name": "Sequence & Series",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Sequence & Series"
+    ]
+  },
+  {
+    "name": "Surds & Indices",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Algebra",
+      "Surds & Indices"
+    ]
+  },
+  {
+    "name": "Arithmetic",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic"
+    ]
+  },
+  {
+    "name": "1.Percentage",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ]
+  },
+  {
+    "name": "2.Ratio Proportion",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ]
+  },
+  {
+    "name": "3.Profit & Loss",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ]
+  },
+  {
+    "name": "4.SI & CI",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ]
+  },
+  {
+    "name": "5. Average",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ]
+  },
+  {
+    "name": "6. Mixture & Alligation",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ]
+  },
+  {
+    "name": "7. Time & Work",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ]
+  },
+  {
+    "name": "8. Time Speed Distance",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "8. Time Speed Distance"
+    ]
+  },
+  {
+    "name": "Geometry",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry"
+    ]
+  },
+  {
+    "name": "Circle",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Circle"
+    ]
+  },
+  {
+    "name": "Co-Ordinate Geometry",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Co-Ordinate Geometry"
+    ]
+  },
+  {
+    "name": "Line Angle",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Line Angle"
+    ]
+  },
+  {
+    "name": "Mensuration -3D",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Mensuration -3D"
+    ]
+  },
+  {
+    "name": "Polygon",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Polygon"
+    ]
+  },
+  {
+    "name": "Quadrilateral",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Quadrilateral"
+    ]
+  },
+  {
+    "name": "Triangle",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Triangle"
+    ]
+  },
+  {
+    "name": "Trigonometry",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Geometry",
+      "Trigonometry"
+    ]
+  },
+  {
+    "name": "Modern Math",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Modern Math"
+    ]
+  },
+  {
+    "name": "Permutation & Combination",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Modern Math",
+      "Permutation & Combination"
+    ]
+  },
+  {
+    "name": "Probability",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Modern Math",
+      "Probability"
+    ]
+  },
+  {
+    "name": "Set Theory",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Modern Math",
+      "Set Theory"
+    ]
+  },
+  {
+    "name": "Number System",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System"
+    ]
+  },
+  {
+    "name": "1.Properties Of Number",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ]
+  },
+  {
+    "name": "2.Divisibility Rule",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ]
+  },
+  {
+    "name": "3.Factor & Multiple",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System",
+      "3.Factor & Multiple"
+    ]
+  },
+  {
+    "name": "4.LCM HCF",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System",
+      "4.LCM HCF"
+    ]
+  },
+  {
+    "name": "5.Cyclicity , Remainders , Factorial , Base System",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Number System",
+      "5.Cyclicity , Remainders , Factorial , Base System"
+    ]
+  },
+  {
+    "name": "VARC",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC"
+    ]
+  },
+  {
+    "name": "RC",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "RC"
+    ]
+  },
+  {
+    "name": "VA-VR",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR"
+    ]
+  },
+  {
+    "name": "Critical Reasoning",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "Critical Reasoning"
+    ]
+  },
+  {
+    "name": "Odd One Out",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "Odd One Out"
+    ]
+  },
+  {
+    "name": "Paracompletion",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "Paracompletion"
+    ]
+  },
+  {
+    "name": "Parajumble",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "PYQ",
+      "Topic Wise",
+      "VARC",
+      "VA-VR",
+      "ParaSummary"
+    ]
+  },
+  {
+    "name": "Year Wise",
+    "path": [
+      "PYQ",
+      "Year Wise"
+    ]
+  },
+  {
+    "name": "Full Length",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "Full Length"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "2017",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
+    ]
+  },
+  {
+    "name": "2018",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2018"
+    ]
+  },
+  {
+    "name": "2019",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2019"
+    ]
+  },
+  {
+    "name": "QA",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "QA"
+    ]
+  },
+  {
+    "name": "VARC",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "VARC"
+    ]
+  },
+  {
+    "name": "Sectional Test",
+    "path": [
+      "Sectional Test"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "Sectional Test",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "QA",
+    "path": [
+      "Sectional Test",
+      "QA"
+    ]
+  },
+  {
+    "name": "VARC",
+    "path": [
+      "Sectional Test",
+      "VARC"
+    ]
+  },
+  {
+    "name": "Topic Test",
+    "path": [
+      "Topic Test"
+    ]
+  },
+  {
+    "name": "LRDI",
+    "path": [
+      "Topic Test",
+      "LRDI"
+    ]
+  },
+  {
+    "name": "DI",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI"
+    ]
+  },
+  {
+    "name": "Bar Graph",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ]
+  },
+  {
+    "name": "Line Graph",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ]
+  },
+  {
+    "name": "MIx Graph Calculation & Observation Based",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "MIx Graph Calculation & Observation Based"
+    ]
+  },
+  {
+    "name": "Mix Graph Reasoning Based",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Mix Graph Reasoning Based"
+    ]
+  },
+  {
+    "name": "Network & 3D Graph",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Network & 3D Graph"
+    ]
+  },
+  {
+    "name": "Pie Chart",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Pie Chart"
+    ]
+  },
+  {
+    "name": "Set Theory",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Set Theory"
+    ]
+  },
+  {
+    "name": "Table",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ]
+  },
+  {
+    "name": "LR",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR"
+    ]
+  },
+  {
+    "name": "Arrangement",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ]
+  },
+  {
+    "name": "Cube Painting & Cutting",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Cube Painting & Cutting"
+    ]
+  },
+  {
+    "name": "Deductive Reasoning",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Deductive Reasoning"
+    ]
+  },
+  {
+    "name": "Family Tree & Direction",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Family Tree & Direction"
+    ]
+  },
+  {
+    "name": "Games & Tournaments",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Games & Tournaments"
+    ]
+  },
+  {
+    "name": "Group & Conditionalities",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Group & Conditionalities"
+    ]
+  },
+  {
+    "name": "Miscellaneous",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Miscellaneous"
+    ]
+  },
+  {
+    "name": "Puzzle",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ]
+  },
+  {
+    "name": "Puzzle & Analytical Reasoning",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle & Analytical Reasoning"
+    ]
+  },
+  {
+    "name": "Quant Reasoning Based Set",
+    "path": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Quant Reasoning Based Set"
+    ]
+  },
+  {
+    "name": "QA",
+    "path": [
+      "Topic Test",
+      "QA"
+    ]
+  },
+  {
+    "name": "Algebra",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra"
+    ]
+  },
+  {
+    "name": "Advance Linear Equation",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Advance Linear Equation"
+    ]
+  },
+  {
+    "name": "Advance Quadratic Equation",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Advance Quadratic Equation"
+    ]
+  },
+  {
+    "name": "Basic Inequality",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Basic Inequality"
+    ]
+  },
+  {
+    "name": "Function & Graph",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Function & Graph"
+    ]
+  },
+  {
+    "name": "Linear Equation",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Linear Equation"
+    ]
+  },
+  {
+    "name": "Logarithm",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Logarithm"
+    ]
+  },
+  {
+    "name": "Maxima Minima",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Maxima Minima"
+    ]
+  },
+  {
+    "name": "Mod Function",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Mod Function"
+    ]
+  },
+  {
+    "name": "Polynomial & Basic Identities",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Polynomial & Basic Identities"
+    ]
+  },
+  {
+    "name": "Quadratic Equation",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ]
+  },
+  {
+    "name": "Sequence & Series",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Sequence & Series"
+    ]
+  },
+  {
+    "name": "Surds & Indices",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Surds & Indices"
+    ]
+  },
+  {
+    "name": "Arithmetic",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic"
+    ]
+  },
+  {
+    "name": "1.Percentage",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ]
+  },
+  {
+    "name": "2.Ratio Proportion",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ]
+  },
+  {
+    "name": "3.Profit & Loss",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ]
+  },
+  {
+    "name": "4.SI & CI",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ]
+  },
+  {
+    "name": "5. Average",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ]
+  },
+  {
+    "name": "6. Mixture & Alligation",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ]
+  },
+  {
+    "name": "7. Time & Work",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ]
+  },
+  {
+    "name": "8.Time Speed Distance",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ]
+  },
+  {
+    "name": "Geometry",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry"
+    ]
+  },
+  {
+    "name": "Circle",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Circle"
+    ]
+  },
+  {
+    "name": "Co-Ordinate Geometry",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Co-Ordinate Geometry"
+    ]
+  },
+  {
+    "name": "Line Angle",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Line Angle"
+    ]
+  },
+  {
+    "name": "Mensuration -3D",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Mensuration -3D"
+    ]
+  },
+  {
+    "name": "Polygon",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Polygon"
+    ]
+  },
+  {
+    "name": "Quadrilateral",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Quadrilateral"
+    ]
+  },
+  {
+    "name": "Triangle",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Triangle"
+    ]
+  },
+  {
+    "name": "Trigonometry",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Geometry",
+      "Trigonometry"
+    ]
+  },
+  {
+    "name": "Modern Math",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Modern Math"
+    ]
+  },
+  {
+    "name": "Permutation & Combination",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Modern Math",
+      "Permutation & Combination"
+    ]
+  },
+  {
+    "name": "Probability",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Modern Math",
+      "Probability"
+    ]
+  },
+  {
+    "name": "Set Theory",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Modern Math",
+      "Set Theory"
+    ]
+  },
+  {
+    "name": "Number System",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System"
+    ]
+  },
+  {
+    "name": "1.Properties Of Number",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ]
+  },
+  {
+    "name": "2.Divisibility Rule",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ]
+  },
+  {
+    "name": "3.Factor & Multiple",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "3.Factor & Multiple"
+    ]
+  },
+  {
+    "name": "4.LCM HCF",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "4.LCM HCF"
+    ]
+  },
+  {
+    "name": "5.Cyclicity , Remainders , Factorial , Base System",
+    "path": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "5.Cyclicity , Remainders , Factorial , Base System"
+    ]
+  },
+  {
+    "name": "VARC",
+    "path": [
+      "Topic Test",
+      "VARC"
+    ]
+  },
+  {
+    "name": "RC",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "RC"
+    ]
+  },
+  {
+    "name": "VA - VR",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR"
+    ]
+  },
+  {
+    "name": "OddOne Out",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR",
+      "OddOne Out"
+    ]
+  },
+  {
+    "name": "Paracompletion",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR",
+      "Paracompletion"
+    ]
+  },
+  {
+    "name": "Parajumble",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR",
+      "Parajumble"
+    ]
+  },
+  {
+    "name": "ParaSummary",
+    "path": [
+      "Topic Test",
+      "VARC",
+      "VA - VR",
+      "ParaSummary"
+    ]
   }
 ];
