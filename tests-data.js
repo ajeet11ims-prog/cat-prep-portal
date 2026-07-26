@@ -2680,6 +2680,18 @@ window.CAT_TESTS = [
       "Bar Graph"
     ],
     "minutes": 15
+  },
+  {
+    "title": "DI - Bar Graph - Test - 8",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 8.html",
+    "original": "DI - Bar Graph - Test - 8.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15
   }
 ];
 
