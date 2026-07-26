@@ -2038,5 +2038,18 @@
       "1.Properties Of Number"
     ],
     "minutes": 60
+  },
+  {
+    "title": "DI - Bar Graph - Test - 10",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 10.html",
+    "original": "DI - Bar Graph - Test - 10.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
   }
 ]
