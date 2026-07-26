@@ -2717,6 +2717,16 @@ window.CAT_TESTS = [
     ],
     "minutes": 15,
     "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 11",
+    "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
+    "original": "DI - Bar Graph - Test - 11.html",
+    "folders": [
+      "Topic Test",
+      "LRDI"
+    ],
+    "minutes": 15
   }
 ];
 
