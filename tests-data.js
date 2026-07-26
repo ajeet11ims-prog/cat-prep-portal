@@ -100,6 +100,138 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-1",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-1.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-1.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-2",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-2.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-2.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-3",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-3.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-3.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-4",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-4.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-5",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-5.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-5.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-6",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-6.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-6.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-7",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-7.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-7.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-8",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-8.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-8.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-9",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-9.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-9.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic Part -I ( Without TSD & TW )-10",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "original": "Arithmetic Part -I ( Without TSD & TW )-10.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions)",
+    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
+    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 40,
+    "questions": 25
+  },
+  {
     "title": "Area Wise Number System test -1",
     "file": "tests/Area Wise Test/QA/Number System/Area Wise  Number System  test -1.html",
     "original": "Area Wise  Number System  test -1.html",
@@ -310,6 +442,33 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "LRDI CAT 2017 SLOT -1 Set -3",
+    "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
+    "folders": [
+      "PYQ",
+      "2017",
+      "LRDI",
+      "2017"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "Percentage_CAT_PYQ_2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
+    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
     "title": "Topic Test -Arithmetic -Percentage PYQ",
     "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Topic Test - Arithmetic - Percentage PYQ.html",
     "original": "Topic Test - Arithmetic - Percentage PYQ.html",
@@ -336,890 +495,18 @@ window.CAT_TESTS = [
     "minutes": 90
   },
   {
-    "title": "DI -Bar Graph -Test -1",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -1.html",
-    "original": "DI - Bar Graph - Test -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI -Line Graph -2",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI - Line Graph -2.html",
-    "original": "DI - Line Graph -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI LINE GRAPH -1",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI LINE GRAPH -1.html",
-    "original": "DI LINE GRAPH -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DILR -Network & 3D diagram -1",
-    "file": "tests/Topic Test/LRDI/DI/Network & 3D Graph/DILR - Network & 3D diagram -1.html",
-    "original": "DILR - Network & 3D diagram -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Network & 3D Graph"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI PIE CHART -1",
-    "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -1.html",
-    "original": "DI PIE CHART -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Pie Chart"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI PIE CHART -2",
-    "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -2.html",
-    "original": "DI PIE CHART -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Pie Chart"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI -Table -Test -1",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -1.html",
-    "original": "DI - Table - Test -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DI -Table -Test -2",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -2.html",
-    "original": "DI - Table - Test -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DILR -Games & Tournaments -1",
-    "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -1.html",
-    "original": "DILR - Games & Tournaments -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Games & Tournaments"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "DILR -Games & Tournaments -2",
-    "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -2.html",
-    "original": "DILR - Games & Tournaments -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Games & Tournaments"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Linear Equation Basics -1",
-    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -1.html",
-    "original": "Linear Equation Basics -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Linear Equation"
-    ],
-    "minutes": 60,
-    "questions": 1
-  },
-  {
-    "title": "Linear Equation Basics -2",
-    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -2.html",
-    "original": "Linear Equation Basics -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Linear Equation"
-    ],
-    "minutes": 44,
-    "questions": 1
-  },
-  {
-    "title": "Linear Equation Basics -3",
-    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -3.html",
-    "original": "Linear Equation Basics -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Algebra",
-      "Linear Equation"
-    ],
-    "minutes": 60,
-    "questions": 1
-  },
-  {
-    "title": "Percentage Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-2.html",
-    "original": "Percentage Test-2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Percentage Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-3.html",
-    "original": "Percentage Test-3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Percentage Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-6.html",
-    "original": "Percentage Test-6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Percentage Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-7.html",
-    "original": "Percentage Test-7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Percentage Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-8.html",
-    "original": "Percentage Test-8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
-    "original": "Ratio Proportion Variation Partnership  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -3.html",
-    "original": "Ratio Proportion Variation Partnership  Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 30
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -4.html",
-    "original": "Ratio Proportion Variation Partnership  Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -5.html",
-    "original": "Ratio Proportion Variation Partnership  Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -6.html",
-    "original": "Ratio Proportion Variation Partnership  Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -7.html",
-    "original": "Ratio Proportion Variation Partnership  Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -8.html",
-    "original": "Ratio Proportion Variation Partnership  Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -9",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -9.html",
-    "original": "Ratio Proportion Variation Partnership  Test -9.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -10",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -10.html",
-    "original": "Ratio Proportion Variation Partnership  Test -10.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -11",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -11.html",
-    "original": "Ratio Proportion Variation Partnership  Test -11.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 1
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -12",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -12.html",
-    "original": "Ratio Proportion Variation Partnership  Test -12.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 1
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -13",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -13.html",
-    "original": "Ratio Proportion Variation Partnership  Test -13.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 1
-  },
-  {
-    "title": "Profit Loss Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -1.html",
-    "original": "Profit Loss Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Profit Loss Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -2.html",
-    "original": "Profit Loss Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 90
-  },
-  {
-    "title": "Profit Loss Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -3.html",
-    "original": "Profit Loss Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 90
-  },
-  {
-    "title": "Profit Loss Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -4.html",
-    "original": "Profit Loss Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 30
-  },
-  {
-    "title": "Profit Loss Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -5.html",
-    "original": "Profit Loss Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 95
-  },
-  {
-    "title": "Profit Loss Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -2.html",
-    "original": "Profit Loss  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 90
-  },
-  {
-    "title": "Profit Loss Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -5.html",
-    "original": "Profit Loss  Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 95
-  },
-  {
-    "title": "Profit Loss Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -6.html",
-    "original": "Profit Loss Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -7.html",
-    "original": "Profit Loss Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -8.html",
-    "original": "Profit Loss Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -9",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -9.html",
-    "original": "Profit Loss Test -9.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -10",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -10.html",
-    "original": "Profit Loss Test -10.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -11",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -11.html",
-    "original": "Profit Loss Test -11.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -12",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -12.html",
-    "original": "Profit Loss Test -12.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Profit Loss Test -13",
-    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -13.html",
-    "original": "Profit Loss Test -13.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "3.Profit & Loss"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "SI & CI Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -1.html",
-    "original": "SI & CI Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "SI & CI Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -2.html",
-    "original": "SI & CI Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Average Test 5",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
-    "original": "Average Test 5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 75
-  },
-  {
-    "title": "Average Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
-    "original": "Average Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
-    "original": "Average Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "Average Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
-    "original": "Average Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40,
-    "questions": 1
-  },
-  {
-    "title": "Average Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
-    "original": "Average Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 40
-  },
-  {
-    "title": "number -system -properties -of -numbers Test -3",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
-    "original": "number-system-properties-of-numbers Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 75
-  },
-  {
-    "title": "Number System -Properties of Numbers Test -2",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
-    "original": "Number System - Properties of Numbers  Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Number System -Properties of Numbers Test -2 (2)",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
-    "original": "Number System - Properties of Numbers  Test -2 (2).html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 45
-  },
-  {
-    "title": "Properties Of Number Test -1",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
-    "original": "Properties Of Number Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Properties Of Number Test -2",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
-    "original": "Properties Of Number Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "Properties Of Number Test -3",
-    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
-    "original": "Properties Of Number Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Number System",
-      "1.Properties Of Number"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "SI & CI Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -3.html",
-    "original": "SI CI Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SI CI TEST -4",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -4.html",
-    "original": "SI CI Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test - 5.html",
-    "original": "SICI Test - 5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -6.html",
-    "original": "SICI Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "sici Test 7",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -7.html",
-    "original": "SICI Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -8.html",
-    "original": "SICI Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "SICI Test -9",
-    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -9.html",
-    "original": "SICI Test -9.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Ratio_Proportion_Variation_Partnership_Test_14",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_14.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test_14.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 32
-  },
-  {
-    "title": "Ratio_Proportion_Variation_Partnership_Test-15",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-15.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test-15.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Ratio_Proportion_Variation_Partnership_Test-16",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-16.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test-16.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Test name ;- Test Name: Ratio_Proportion_Variation_Partnership_Test-17",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_17.html",
-    "original": "Ratio_Proportion_Variation_Partnership_Test_17.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 27
-  },
-  {
-    "title": "Average_Test-6",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average_Test-6.html",
-    "original": "Average_Test-6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 60,
-    "questions": 23
-  },
-  {
-    "title": "Average Test 7",
-    "file": "tests/Topic Test/QA/Arithmetic/5. Average/AverageTest-7.html",
-    "original": "AverageTest-7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "5. Average"
-    ],
-    "minutes": 60,
-    "questions": 23
-  },
-  {
-    "title": "Percentage_CAT_PYQ_2017-2025",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
-    "original": "Percentage_CAT_PYQ_2017-2025.html",
+    "title": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025)",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "original": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
     "folders": [
       "PYQ",
       "Topic Wise",
       "QA",
       "Arithmetic",
-      "1.Percentage"
+      "2.Ratio Proportion"
     ],
     "minutes": 60,
-    "questions": 23
+    "questions": 26
   },
   {
     "title": "Profit_Loss_CAT_PYQ_2017-2025",
@@ -1236,138 +523,18 @@ window.CAT_TESTS = [
     "questions": 29
   },
   {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-1",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-1.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-1.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-2",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-2.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-2.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-3",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-3.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-3.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-4",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-4.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-4.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-5",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-5.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-5.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-6",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-6.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-6.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-7",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-7.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-7.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-8",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-8.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-8.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-9",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-9.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-9.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Arithmetic Part -I ( Without TSD & TW )-10",
-    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic Part -I ( Without TSD & TW )-10.html",
-    "original": "Arithmetic Part -I ( Without TSD & TW )-10.html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation CAT PYQ ( 2017 -2025 )",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/6. Mixture & Alligation/Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
-    "original": "Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "title": "SICI CAT PYQ 2017-2025",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
+    "original": "SICI CAT PYQ 2017-2025.html",
     "folders": [
       "PYQ",
       "Topic Wise",
       "QA",
       "Arithmetic",
-      "6. Mixture & Alligation"
+      "4.SI & CI"
     ],
     "minutes": 60,
-    "questions": 27
+    "questions": 20
   },
   {
     "title": "Average CAT ( 2017 -2025 )",
@@ -1384,760 +551,70 @@ window.CAT_TESTS = [
     "questions": 28
   },
   {
-    "title": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025)",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
-    "original": "Ratio Proportion Variation Partnership CAT PYQ (2017 - 2025).html",
+    "title": "Mixture & Alligation CAT PYQ ( 2017 -2025 )",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/6. Mixture & Alligation/Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
+    "original": "Mixture & Alligation CAT PYQ ( 2017 -2025 ).html",
     "folders": [
       "PYQ",
       "Topic Wise",
       "QA",
       "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 60,
-    "questions": 26
-  },
-  {
-    "title": "SICI CAT PYQ 2017-2025",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/4.SI & CI/SICI CAT PYQ 2017-2025.html",
-    "original": "SICI CAT PYQ 2017-2025.html",
-    "folders": [
-      "PYQ",
-      "Topic Wise",
-      "QA",
-      "Arithmetic",
-      "4.SI & CI"
-    ],
-    "minutes": 60,
-    "questions": 20
-  },
-  {
-    "title": "Mixture & Alligation Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-1.html",
-    "original": "mixture_alligation_test-1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
       "6. Mixture & Alligation"
     ],
     "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-2.html",
-    "original": "mixture_alligation_test-2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-3.html",
-    "original": "mixture_alligation_test-3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-4.html",
-    "original": "mixture_alligation_test-4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test_5.html",
-    "original": "mixture_alligation_test_5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 25
-  },
-  {
-    "title": "Mixture & Alligation Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-6.html",
-    "original": "Mixture Alligation Test -6.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 35
-  },
-  {
-    "title": "Mixture & Alligation Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-7.html",
-    "original": "Mixture Alligation Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Mixture & Alligation Test -8",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-8.html",
-    "original": "Mixture Alligation Test -8.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 42
-  },
-  {
-    "title": "Mixture & Alligation Test -9",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-9.html",
-    "original": "Mixture Alligation Test -9.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 29
-  },
-  {
-    "title": "Mixture & Alligation Test -10",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-10.html",
-    "original": "Mixture Alligation Test - 10.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 15
-  },
-  {
-    "title": "Mixture & Alligation Test -11",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-11.html",
-    "original": "Mixture Alligation Test -11.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Mixture & Alligation Test -12",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-12.html",
-    "original": "Mixture Alligation Test -12.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Mixture & Alligation Test -13",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-13.html",
-    "original": "Mixture Alligation Test -13.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Mixture & Alligation Test -14",
-    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-14.html",
-    "original": "Mixture Alligation Test -14.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "6. Mixture & Alligation"
-    ],
-    "minutes": 60,
-    "questions": 15
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-1",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-1.html",
-    "original": "logical_reasoning_arrangement_test-1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-2",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-2.html",
-    "original": "logical_reasoning_arrangement_test-2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-3",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-3.html",
-    "original": "logical_reasoning_arrangement_test-3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 23
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-4",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-4.html",
-    "original": "logical_reasoning_arrangement_test-4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 28
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-5",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-5.html",
-    "original": "logical_reasoning_arrangement_test-5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 28
-  },
-  {
-    "title": "logical_reasoning_arrangement_test-7",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-7.html",
-    "original": "logical_reasoning_arrangement_test-7.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "logical_reasoning_arrangement_test- 6",
-    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test- 6.html",
-    "original": "logical_reasoning_arrangement_test- 6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Arrangement"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Career Launcher Percentage Test 1",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
-    "original": "Career Launcher Percentage Test 1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 20,
-    "questions": 10
-  },
-  {
-    "title": "Puzzle & Analytical Reasoning Test -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning Test -1.html",
-    "original": "Puzzle & Analytical Reasoning Test -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 40,
-    "questions": 30
-  },
-  {
-    "title": "Puzzle & Analytical Reasoning Test -2",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning -2.html",
-    "original": "Puzzle & Analytical Reasoning -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 40,
-    "questions": 30
-  },
-  {
-    "title": "Family Tree & Direction -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/Family Tree & Direction -1.html",
-    "original": "Family Tree & Direction -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 81,
-    "questions": 54
-  },
-  {
-    "title": "miscellaneous -1",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -1.html",
-    "original": "miscellaneous -1.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 21,
-    "questions": 32
-  },
-  {
-    "title": "miscellaneous -2",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -2.html",
-    "original": "miscellaneous -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 21,
-    "questions": 32
-  },
-  {
-    "title": "miscellaneous -3",
-    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -3.html",
-    "original": "miscellaneous -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "LR",
-      "Puzzle"
-    ],
-    "minutes": 33,
-    "questions": 22
-  },
-  {
-    "title": "Percentage Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
-    "original": "Percentage Test-1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Percentage Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -4.html",
-    "original": "Percentage Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Percentage Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -5.html",
-    "original": "Percentage Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "1.Percentage"
-    ],
-    "minutes": 60,
-    "questions": 26
-  },
-  {
-    "title": "Ratio Proportion Variation Partnership Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership Test -1.html",
-    "original": "Ratio Proportion Variation Partnership Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "2.Ratio Proportion"
-    ],
-    "minutes": 40,
-    "questions": 15
-  },
-  {
-    "title": "DI Table -3",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI Table -3.html",
-    "original": "DI Table -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI Table Test -4",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI Table Test -4.html",
-    "original": "DI Table Test -4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI - Table Test -5",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
-    "original": "DI - Table test -5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "DI - Table test -6",
-    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -6.html",
-    "original": "DI - Table test -6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Table"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -3",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -3.html",
-    "original": "DI Line Graph Test -3.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -4",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -4.html",
-    "original": "DI Line Graph Test -4.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 35,
-    "questions": 15
-  },
-  {
-    "title": "DI Line Graph Test -5",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -5.html",
-    "original": "DI Line Graph Test -5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 25,
-    "questions": 20
-  },
-  {
-    "title": "DI Line Graph Test -6",
-    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -6.html",
-    "original": "DI Line Graph Test -6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Line Graph"
-    ],
-    "minutes": 45,
-    "questions": 20
-  },
-  {
-    "title": "Time & Work Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -1.html",
-    "original": "Time & Work Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 13
-  },
-  {
-    "title": "Time & Work Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -2.html",
-    "original": "Time & Work Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 15
-  },
-  {
-    "title": "Time & Work Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -3.html",
-    "original": "Time & Work Test -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Time & Work Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -4.html",
-    "original": "Time & Work Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 40,
-    "questions": 23
-  },
-  {
-    "title": "Time & Work Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -5.html",
-    "original": "Time & Work Test -5.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 40,
     "questions": 27
   },
   {
-    "title": "Time & Work Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -6.html",
-    "original": "Time & Work Test -6.html",
+    "title": "LRDI CAT 2017 SLOT -1 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
     "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 60,
-    "questions": 32
-  },
-  {
-    "title": "Pipe & Cistern -2",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -2.html",
-    "original": "Pipe & Cistern -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 23
-  },
-  {
-    "title": "Pipe & Cistern -3",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -3.html",
-    "original": "Pipe & Cistern -3.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 17
-  },
-  {
-    "title": "Time Work Pipe & Cistern -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -1.html",
-    "original": "Pipe & Cistern -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 15
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -2",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -2.html",
-    "original": "Time & Work Pipe & Cistern Test -2.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
     ],
     "minutes": 15,
-    "questions": 30
+    "questions": 4
   },
   {
-    "title": "Time & Work Pipe & Cistern Test -3",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -3.html",
-    "original": "Time & Work Pipe & Cistern Test -3.html",
+    "title": "LRDI CAT 2017 SLOT -1 Set -2",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -2.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -2.html",
     "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -4",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -4.html",
-    "original": "Time & Work Pipe & Cistern Test -4.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 45,
-    "questions": 25
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -1",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -1.html",
-    "original": "Time & Work Pipe & Cistern Test -1.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
     ],
     "minutes": 15,
-    "questions": 10
+    "questions": 4
   },
   {
-    "title": "Time & Work Pipe & Cistern Test -5",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -5.html",
-    "original": "Time & Work Pipe & Cistern Test -5.html",
+    "title": "LRDI CAT 2017 SLOT -1 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
     "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
     ],
-    "minutes": 60,
-    "questions": 30
+    "minutes": 15,
+    "questions": 4
   },
   {
-    "title": "Time & Work Pipe & Cistern Test -6",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -6.html",
-    "original": "Time & Work Pipe & Cistern Test -6.html",
+    "title": "LRDI CAT 2017 SLOT -1 Set -4",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -4.html",
+    "original": "LRDI CAT 2017 SLOT -1 Set -4.html",
     "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
     ],
-    "minutes": 60,
-    "questions": 30
-  },
-  {
-    "title": "Time & Work Pipe & Cistern Test -7",
-    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -7.html",
-    "original": "Time & Work Pipe & Cistern Test -7.html",
-    "folders": [
-      "Topic Test",
-      "QA",
-      "Arithmetic",
-      "7. Time & Work"
-    ],
-    "minutes": 90,
-    "questions": 50
+    "minutes": 15,
+    "questions": 4
   },
   {
     "title": "LRDI CAT 2017 SLOT -1 Set -5",
@@ -2205,87 +682,9 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
-    "title": "LRDI CAT 2017 SLOT -1 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -2",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -2.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -3",
-    "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
-    "folders": [
-      "PYQ",
-      "2017",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -3",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -1 Set -4",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -4.html",
-    "original": "LRDI CAT 2017 SLOT -1 Set -4.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
     "title": "LRDI CAT 2017 SLOT -2 Set -2",
     "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -2.html",
     "original": "LRDI CAT 2017 SLOT -2 Set -2.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2017"
-    ],
-    "minutes": 15,
-    "questions": 4
-  },
-  {
-    "title": "LRDI CAT 2017 SLOT -2 Set -5",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -5.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -5.html",
     "folders": [
       "PYQ",
       "Year Wise",
@@ -2322,6 +721,19 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
+    "title": "LRDI CAT 2017 SLOT -2 Set -5",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -5.html",
+    "original": "LRDI CAT 2017 SLOT -2 Set -5.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2017"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
     "title": "LRDI CAT 2017 SLOT -2 Set -6",
     "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -6.html",
     "original": "LRDI CAT 2017 SLOT -2 Set -6.html",
@@ -2335,9 +747,9 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
-    "title": "LRDI CAT 2017 SLOT -2 Set -8",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -8.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -8.html",
+    "title": "LRDI CAT 2017 SLOT -2 Set -7",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -7.html",
+    "original": "LRDI CAT 2017 SLOT -2 Set -7.html",
     "folders": [
       "PYQ",
       "Year Wise",
@@ -2348,9 +760,9 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
-    "title": "LRDI CAT 2017 SLOT -2 Set -7",
-    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -7.html",
-    "original": "LRDI CAT 2017 SLOT -2 Set -7.html",
+    "title": "LRDI CAT 2017 SLOT -2 Set -8",
+    "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -2 Set -8.html",
+    "original": "LRDI CAT 2017 SLOT -2 Set -8.html",
     "folders": [
       "PYQ",
       "Year Wise",
@@ -2568,44 +980,6 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions)",
-    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
-    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 40,
-    "questions": 25
-  },
-  {
-    "title": "DI - Bar Graph - Test - 5",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 5.html",
-    "original": "DI - Bar Graph - Test - 5.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 30,
-    "questions": 20
-  },
-  {
-    "title": "DI - Bar Graph - Test - 6",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 6.html",
-    "original": "DI - Bar Graph - Test - 6.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
     "title": "LRDI CAT 2019 SLOT -1 Set -1",
     "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -1 Set -1.html",
     "original": "LRDI CAT 2019 SLOT -1 Set -1.html",
@@ -2631,38 +1005,12 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "DI - Bar Graph - Test - 7",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 7.html",
-    "original": "DI - Bar Graph - Test - 7.html",
+    "title": "DI - Bar Graph - Test - 11",
+    "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
+    "original": "DI - Bar Graph - Test - 11.html",
     "folders": [
       "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 8",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 8.html",
-    "original": "DI - Bar Graph - Test - 8.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 9",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 9.html",
-    "original": "DI - Bar Graph - Test - 9.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
+      "LRDI"
     ],
     "minutes": 15
   },
@@ -2706,6 +1054,71 @@ window.CAT_TESTS = [
     "questions": 15
   },
   {
+    "title": "DI - Bar Graph - Test - 5",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 5.html",
+    "original": "DI - Bar Graph - Test - 5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 30,
+    "questions": 20
+  },
+  {
+    "title": "DI - Bar Graph - Test - 6",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 6.html",
+    "original": "DI - Bar Graph - Test - 6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "DI - Bar Graph - Test - 7",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 7.html",
+    "original": "DI - Bar Graph - Test - 7.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 8",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 8.html",
+    "original": "DI - Bar Graph - Test - 8.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 9",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 9.html",
+    "original": "DI - Bar Graph - Test - 9.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
     "title": "DI - Bar Graph - Test - 10",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 10.html",
     "original": "DI - Bar Graph - Test - 10.html",
@@ -2720,16 +1133,6 @@ window.CAT_TESTS = [
   },
   {
     "title": "DI - Bar Graph - Test - 11",
-    "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
-    "original": "DI - Bar Graph - Test - 11.html",
-    "folders": [
-      "Topic Test",
-      "LRDI"
-    ],
-    "minutes": 15
-  },
-  {
-    "title": "DI - Bar Graph - Test - 11",
     "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 11.html",
     "original": "DI - Bar Graph - Test - 11.html",
     "folders": [
@@ -2738,7 +1141,1894 @@ window.CAT_TESTS = [
       "DI",
       "Bar Graph"
     ],
-    "minutes": 15
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 12",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 12.html",
+    "original": "DI - Bar Graph - Test - 12.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 13",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 13.html",
+    "original": "DI - Bar Graph - Test - 13.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 14",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 14.html",
+    "original": "DI - Bar Graph - Test - 14.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 15",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 15.html",
+    "original": "DI - Bar Graph - Test - 15.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 16",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 16.html",
+    "original": "DI - Bar Graph - Test - 16.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 17",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 17.html",
+    "original": "DI - Bar Graph - Test - 17.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 18",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 18.html",
+    "original": "DI - Bar Graph - Test - 18.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 19",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 19.html",
+    "original": "DI - Bar Graph - Test - 19.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 20",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 20.html",
+    "original": "DI - Bar Graph - Test - 20.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "DI - Bar Graph - Test - 21",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 21.html",
+    "original": "DI - Bar Graph - Test - 21.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 22",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 22.html",
+    "original": "DI - Bar Graph - Test - 22.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 23",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 23.html",
+    "original": "DI - Bar Graph - Test - 23.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 24",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 24.html",
+    "original": "DI - Bar Graph - Test - 24.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 25",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 25.html",
+    "original": "DI - Bar Graph - Test - 25.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 26",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 26.html",
+    "original": "DI - Bar Graph - Test - 26.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 27",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 27.html",
+    "original": "DI - Bar Graph - Test - 27.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 28",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 28.html",
+    "original": "DI - Bar Graph - Test - 28.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 3
+  },
+  {
+    "title": "DI - Bar Graph - Test - 29",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 29.html",
+    "original": "DI - Bar Graph - Test - 29.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 30",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 30.html",
+    "original": "DI - Bar Graph - Test - 30.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 31",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 31.html",
+    "original": "DI - Bar Graph - Test - 31.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 32",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 32.html",
+    "original": "DI - Bar Graph - Test - 32.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI - Bar Graph - Test - 33",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 33.html",
+    "original": "DI - Bar Graph - Test - 33.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "DI -Bar Graph -Test -1",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -1.html",
+    "original": "DI - Bar Graph - Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI -Line Graph -2",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI - Line Graph -2.html",
+    "original": "DI - Line Graph -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI LINE GRAPH -1",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI LINE GRAPH -1.html",
+    "original": "DI LINE GRAPH -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI Line Graph Test -3",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -3.html",
+    "original": "DI Line Graph Test -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 30,
+    "questions": 20
+  },
+  {
+    "title": "DI Line Graph Test -4",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -4.html",
+    "original": "DI Line Graph Test -4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "DI Line Graph Test -5",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -5.html",
+    "original": "DI Line Graph Test -5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 25,
+    "questions": 20
+  },
+  {
+    "title": "DI Line Graph Test -6",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -6.html",
+    "original": "DI Line Graph Test -6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "DILR -Network & 3D diagram -1",
+    "file": "tests/Topic Test/LRDI/DI/Network & 3D Graph/DILR - Network & 3D diagram -1.html",
+    "original": "DILR - Network & 3D diagram -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Network & 3D Graph"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI PIE CHART -1",
+    "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -1.html",
+    "original": "DI PIE CHART -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Pie Chart"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI PIE CHART -2",
+    "file": "tests/Topic Test/LRDI/DI/Pie Chart/DI PIE CHART -2.html",
+    "original": "DI PIE CHART -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Pie Chart"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI - Table Test -5",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
+    "original": "DI - Table test -5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "DI - Table test -6",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -6.html",
+    "original": "DI - Table test -6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "DI -Table -Test -1",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -1.html",
+    "original": "DI - Table - Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI -Table -Test -2",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI - Table - Test -2.html",
+    "original": "DI - Table - Test -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DI Table -3",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI Table -3.html",
+    "original": "DI Table -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "DI Table Test -4",
+    "file": "tests/Topic Test/LRDI/DI/Table/DI Table Test -4.html",
+    "original": "DI Table Test -4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Table"
+    ],
+    "minutes": 35,
+    "questions": 15
+  },
+  {
+    "title": "logical_reasoning_arrangement_test- 6",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test- 6.html",
+    "original": "logical_reasoning_arrangement_test- 6.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-1",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-1.html",
+    "original": "logical_reasoning_arrangement_test-1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-2",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-2.html",
+    "original": "logical_reasoning_arrangement_test-2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-3",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-3.html",
+    "original": "logical_reasoning_arrangement_test-3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-4",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-4.html",
+    "original": "logical_reasoning_arrangement_test-4.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 28
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-5",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-5.html",
+    "original": "logical_reasoning_arrangement_test-5.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 28
+  },
+  {
+    "title": "logical_reasoning_arrangement_test-7",
+    "file": "tests/Topic Test/LRDI/LR/Arrangement/logical_reasoning_arrangement_test-7.html",
+    "original": "logical_reasoning_arrangement_test-7.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Arrangement"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "DILR -Games & Tournaments -1",
+    "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -1.html",
+    "original": "DILR - Games & Tournaments -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Games & Tournaments"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "DILR -Games & Tournaments -2",
+    "file": "tests/Topic Test/LRDI/LR/Games & Tournaments/DILR - Games & Tournaments -2.html",
+    "original": "DILR - Games & Tournaments -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Games & Tournaments"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Family Tree & Direction -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Family Tree & Direction -1.html",
+    "original": "Family Tree & Direction -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 81,
+    "questions": 54
+  },
+  {
+    "title": "miscellaneous -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -1.html",
+    "original": "miscellaneous -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 21,
+    "questions": 32
+  },
+  {
+    "title": "miscellaneous -2",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -2.html",
+    "original": "miscellaneous -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 21,
+    "questions": 32
+  },
+  {
+    "title": "miscellaneous -3",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/miscellaneous -3.html",
+    "original": "miscellaneous -3.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 33,
+    "questions": 22
+  },
+  {
+    "title": "Puzzle & Analytical Reasoning Test -1",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning Test -1.html",
+    "original": "Puzzle & Analytical Reasoning Test -1.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 40,
+    "questions": 30
+  },
+  {
+    "title": "Puzzle & Analytical Reasoning Test -2",
+    "file": "tests/Topic Test/LRDI/LR/Puzzle/Puzzle & Analytical Reasoning -2.html",
+    "original": "Puzzle & Analytical Reasoning -2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "LR",
+      "Puzzle"
+    ],
+    "minutes": 40,
+    "questions": 30
+  },
+  {
+    "title": "Linear Equation Basics -1",
+    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -1.html",
+    "original": "Linear Equation Basics -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Linear Equation"
+    ],
+    "minutes": 60,
+    "questions": 1
+  },
+  {
+    "title": "Linear Equation Basics -2",
+    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -2.html",
+    "original": "Linear Equation Basics -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Linear Equation"
+    ],
+    "minutes": 44,
+    "questions": 1
+  },
+  {
+    "title": "Linear Equation Basics -3",
+    "file": "tests/Topic Test/QA/Algebra/Linear Equation/Linear Equation Basics -3.html",
+    "original": "Linear Equation Basics -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Linear Equation"
+    ],
+    "minutes": 60,
+    "questions": 1
+  },
+  {
+    "title": "Career Launcher Percentage Test 1",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
+    "original": "Career Launcher Percentage Test 1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 20,
+    "questions": 10
+  },
+  {
+    "title": "Percentage Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-1.html",
+    "original": "Percentage Test-1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Percentage Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-2.html",
+    "original": "Percentage Test-2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Percentage Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-3.html",
+    "original": "Percentage Test-3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Percentage Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -4.html",
+    "original": "Percentage Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Percentage Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test -5.html",
+    "original": "Percentage Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 60,
+    "questions": 26
+  },
+  {
+    "title": "Percentage Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-6.html",
+    "original": "Percentage Test-6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Percentage Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-7.html",
+    "original": "Percentage Test-7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Percentage Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Percentage Test-8.html",
+    "original": "Percentage Test-8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "1.Percentage"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership Test -1.html",
+    "original": "Ratio Proportion Variation Partnership Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 40,
+    "questions": 15
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -2.html",
+    "original": "Ratio Proportion Variation Partnership  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -3.html",
+    "original": "Ratio Proportion Variation Partnership  Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 30
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -4.html",
+    "original": "Ratio Proportion Variation Partnership  Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -5.html",
+    "original": "Ratio Proportion Variation Partnership  Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -6.html",
+    "original": "Ratio Proportion Variation Partnership  Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -7.html",
+    "original": "Ratio Proportion Variation Partnership  Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -8.html",
+    "original": "Ratio Proportion Variation Partnership  Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -9.html",
+    "original": "Ratio Proportion Variation Partnership  Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -10",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -10.html",
+    "original": "Ratio Proportion Variation Partnership  Test -10.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -11",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -11.html",
+    "original": "Ratio Proportion Variation Partnership  Test -11.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 1
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -12",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -12.html",
+    "original": "Ratio Proportion Variation Partnership  Test -12.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 1
+  },
+  {
+    "title": "Ratio Proportion Variation Partnership Test -13",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio Proportion Variation Partnership  Test -13.html",
+    "original": "Ratio Proportion Variation Partnership  Test -13.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 1
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test_14",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test_14.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 32
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test-15",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-15.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test-15.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Ratio_Proportion_Variation_Partnership_Test-16",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test-16.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Test name ;- Test Name: Ratio_Proportion_Variation_Partnership_Test-17",
+    "file": "tests/Topic Test/QA/Arithmetic/2.Ratio Proportion/Ratio_Proportion_Variation_Partnership_Test_17.html",
+    "original": "Ratio_Proportion_Variation_Partnership_Test_17.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "2.Ratio Proportion"
+    ],
+    "minutes": 60,
+    "questions": 27
+  },
+  {
+    "title": "Profit Loss Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -1.html",
+    "original": "Profit Loss Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Profit Loss Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -2.html",
+    "original": "Profit Loss Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 90
+  },
+  {
+    "title": "Profit Loss Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -2.html",
+    "original": "Profit Loss  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 90
+  },
+  {
+    "title": "Profit Loss Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -3.html",
+    "original": "Profit Loss Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 90
+  },
+  {
+    "title": "Profit Loss Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -4.html",
+    "original": "Profit Loss Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 30
+  },
+  {
+    "title": "Profit Loss Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -5.html",
+    "original": "Profit Loss Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 95
+  },
+  {
+    "title": "Profit Loss Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss  Test -5.html",
+    "original": "Profit Loss  Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 95
+  },
+  {
+    "title": "Profit Loss Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -6.html",
+    "original": "Profit Loss Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -7.html",
+    "original": "Profit Loss Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -8.html",
+    "original": "Profit Loss Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -9.html",
+    "original": "Profit Loss Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -10",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -10.html",
+    "original": "Profit Loss Test -10.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -11",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -11.html",
+    "original": "Profit Loss Test -11.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -12",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -12.html",
+    "original": "Profit Loss Test -12.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Profit Loss Test -13",
+    "file": "tests/Topic Test/QA/Arithmetic/3.Profit & Loss/Profit Loss Test -13.html",
+    "original": "Profit Loss Test -13.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "3.Profit & Loss"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "SI & CI Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -1.html",
+    "original": "SI & CI Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "SI & CI Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI & CI Test -2.html",
+    "original": "SI & CI Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "SI & CI Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -3.html",
+    "original": "SI CI Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "SI CI TEST -4",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SI CI Test -4.html",
+    "original": "SI CI Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "SICI Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test - 5.html",
+    "original": "SICI Test - 5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "SICI Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -6.html",
+    "original": "SICI Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "SICI Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -8.html",
+    "original": "SICI Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "SICI Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -9.html",
+    "original": "SICI Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "sici Test 7",
+    "file": "tests/Topic Test/QA/Arithmetic/4.SI & CI/SICI Test -7.html",
+    "original": "SICI Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "4.SI & CI"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Average Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -1.html",
+    "original": "Average Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -2.html",
+    "original": "Average Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -3.html",
+    "original": "Average Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40,
+    "questions": 1
+  },
+  {
+    "title": "Average Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test -4.html",
+    "original": "Average Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 40
+  },
+  {
+    "title": "Average Test 5",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average Test 5.html",
+    "original": "Average Test 5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 75
+  },
+  {
+    "title": "Average Test 7",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/AverageTest-7.html",
+    "original": "AverageTest-7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
+    "title": "Average_Test-6",
+    "file": "tests/Topic Test/QA/Arithmetic/5. Average/Average_Test-6.html",
+    "original": "Average_Test-6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "5. Average"
+    ],
+    "minutes": 60,
+    "questions": 23
+  },
+  {
+    "title": "Mixture & Alligation Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-1.html",
+    "original": "mixture_alligation_test-1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-2.html",
+    "original": "mixture_alligation_test-2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-3.html",
+    "original": "mixture_alligation_test-3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-4.html",
+    "original": "mixture_alligation_test-4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test_5.html",
+    "original": "mixture_alligation_test_5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Mixture & Alligation Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-6.html",
+    "original": "Mixture Alligation Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 35
+  },
+  {
+    "title": "Mixture & Alligation Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-7.html",
+    "original": "Mixture Alligation Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Mixture & Alligation Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-8.html",
+    "original": "Mixture Alligation Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 42
+  },
+  {
+    "title": "Mixture & Alligation Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-9.html",
+    "original": "Mixture Alligation Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 29
+  },
+  {
+    "title": "Mixture & Alligation Test -10",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-10.html",
+    "original": "Mixture Alligation Test - 10.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 15
+  },
+  {
+    "title": "Mixture & Alligation Test -11",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-11.html",
+    "original": "Mixture Alligation Test -11.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Mixture & Alligation Test -12",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-12.html",
+    "original": "Mixture Alligation Test -12.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Mixture & Alligation Test -13",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-13.html",
+    "original": "Mixture Alligation Test -13.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Mixture & Alligation Test -14",
+    "file": "tests/Topic Test/QA/Arithmetic/6. Mixture & Alligation/mixture_alligation_test-14.html",
+    "original": "Mixture Alligation Test -14.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "6. Mixture & Alligation"
+    ],
+    "minutes": 60,
+    "questions": 15
+  },
+  {
+    "title": "Pipe & Cistern -2",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -2.html",
+    "original": "Pipe & Cistern -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 23
+  },
+  {
+    "title": "Pipe & Cistern -3",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -3.html",
+    "original": "Pipe & Cistern -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 17
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -1.html",
+    "original": "Time & Work Pipe & Cistern Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 15,
+    "questions": 10
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -2.html",
+    "original": "Time & Work Pipe & Cistern Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 15,
+    "questions": 30
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -3.html",
+    "original": "Time & Work Pipe & Cistern Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 20
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -4.html",
+    "original": "Time & Work Pipe & Cistern Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 45,
+    "questions": 25
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -5.html",
+    "original": "Time & Work Pipe & Cistern Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -6.html",
+    "original": "Time & Work Pipe & Cistern Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Time & Work Pipe & Cistern Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Pipe & Cistern Test -7.html",
+    "original": "Time & Work Pipe & Cistern Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 90,
+    "questions": 50
+  },
+  {
+    "title": "Time & Work Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -1.html",
+    "original": "Time & Work Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 13
+  },
+  {
+    "title": "Time & Work Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -2.html",
+    "original": "Time & Work Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 15
+  },
+  {
+    "title": "Time & Work Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -3.html",
+    "original": "Time & Work Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Time & Work Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -4.html",
+    "original": "Time & Work Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 40,
+    "questions": 23
+  },
+  {
+    "title": "Time & Work Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -5.html",
+    "original": "Time & Work Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 40,
+    "questions": 27
+  },
+  {
+    "title": "Time & Work Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Time & Work Test -6.html",
+    "original": "Time & Work Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 60,
+    "questions": 32
+  },
+  {
+    "title": "Time Work Pipe & Cistern -1",
+    "file": "tests/Topic Test/QA/Arithmetic/7. Time & Work/Pipe & Cistern -1.html",
+    "original": "Pipe & Cistern -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 30,
+    "questions": 15
+  },
+  {
+    "title": "number -system -properties -of -numbers Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
+    "original": "number-system-properties-of-numbers Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 75
+  },
+  {
+    "title": "Number System -Properties of Numbers Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2.html",
+    "original": "Number System - Properties of Numbers  Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Number System -Properties of Numbers Test -2 (2)",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Number System - Properties of Numbers  Test -2 (2).html",
+    "original": "Number System - Properties of Numbers  Test -2 (2).html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 45
+  },
+  {
+    "title": "Properties Of Number Test -1",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -1.html",
+    "original": "Properties Of Number Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Properties Of Number Test -2",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -2.html",
+    "original": "Properties Of Number Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "Properties Of Number Test -3",
+    "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/Properties Of Number Test -3.html",
+    "original": "Properties Of Number Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "1.Properties Of Number"
+    ],
+    "minutes": 60
   }
 ];
 
