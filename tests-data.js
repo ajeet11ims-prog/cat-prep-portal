@@ -348,18 +348,6 @@ window.CAT_TESTS = [
     "minutes": 40
   },
   {
-    "title": "DI -Bar Graph -Test -2",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test -2.html",
-    "original": "DI - Bar Graph - Test -2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40
-  },
-  {
     "title": "DI -Line Graph -2",
     "file": "tests/Topic Test/LRDI/DI/Line Graph/DI - Line Graph -2.html",
     "original": "DI - Line Graph -2.html",
@@ -2642,6 +2630,18 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 20
+  },
+  {
+    "title": "DI -Bar Graph -Test -2",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 2.html",
+    "original": "DI - Bar Graph - Test - 2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 60
   }
 ];
 
