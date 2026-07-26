@@ -2632,19 +2632,6 @@ window.CAT_TESTS = [
     "questions": 20
   },
   {
-    "title": "DI - Bar Graph - Test - 2",
-    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 2.html",
-    "original": "DI - Bar Graph - Test - 2.html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Bar Graph"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
     "title": "LRDI CAT 2019 SLOT -1 Set -1",
     "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -1 Set -1.html",
     "original": "LRDI CAT 2019 SLOT -1 Set -1.html",
@@ -2704,6 +2691,19 @@ window.CAT_TESTS = [
       "Bar Graph"
     ],
     "minutes": 15
+  },
+  {
+    "title": "DI - Bar Graph - Test - 2",
+    "file": "tests/Topic Test/LRDI/DI/Bar Graph/DI - Bar Graph - Test - 2.html",
+    "original": "DI - Bar Graph - Test - 2.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Bar Graph"
+    ],
+    "minutes": 40,
+    "questions": 20
   }
 ];
 
