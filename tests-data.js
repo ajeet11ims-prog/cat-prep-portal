@@ -1076,6 +1076,18 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
+    "title": "LRDI CAT 2019 SLOT -2 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -1.html",
+    "original": "LRDI CAT 2019 SLOT -2 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2019"
+    ],
+    "minutes": 15
+  },
+  {
     "title": "LRDI CAT 2019 SLOT -2 Set -2",
     "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -2.html",
     "original": "LRDI CAT 2019 SLOT -2 Set -2.html",
@@ -1158,6 +1170,126 @@ window.CAT_TESTS = [
       "2019"
     ],
     "minutes": 60
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -1 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -1 Set -1.html",
+    "original": "LRDI CAT 2020 SLOT -1 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -1 Set -2",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -1 Set -2.html",
+    "original": "LRDI CAT 2020 SLOT -1 Set -2.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -1 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2020 SLOT -1 Set -3.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -1 Set -4",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -1 Set -4.html",
+    "original": "LRDI CAT 2020 SLOT -1 Set -4.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -1 Set -5",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -1 Set -5.html",
+    "original": "LRDI CAT 2020 SLOT -1 Set -5.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -2 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -2 Set -1.html",
+    "original": "LRDI CAT 2020 SLOT -2 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -2 Set -2",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -2 Set -2.html",
+    "original": "LRDI CAT 2020 SLOT -2 Set -2.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -2 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -2 Set -3.html",
+    "original": "LRDI CAT 2020 SLOT -2 Set -3.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -2 Set -4",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -2 Set -4.html",
+    "original": "LRDI CAT 2020 SLOT -2 Set -4.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -2 Set -5",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -2 Set -5.html",
+    "original": "LRDI CAT 2020 SLOT -2 Set -5.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15
   },
   {
     "title": "DI - Bar Graph - Test - 11",
@@ -3184,18 +3316,6 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 60
-  },
-  {
-    "title": "LRDI CAT 2019 SLOT -2 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -1.html",
-    "original": "LRDI CAT 2019 SLOT -2 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2019"
-    ],
-    "minutes": 15
   }
 ];
 
@@ -4015,6 +4135,15 @@ window.CAT_FOLDERS = [
       "Year Wise",
       "LRDI",
       "2019"
+    ]
+  },
+  {
+    "name": "2020",
+    "path": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
     ]
   },
   {
