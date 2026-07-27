@@ -1076,18 +1076,6 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "LRDI CAT 2019 SLOT -2 Set -1",
-    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -1.html",
-    "original": "LRDI CAT 2019 SLOT -2 Set -1.html",
-    "folders": [
-      "PYQ",
-      "Year Wise",
-      "LRDI",
-      "2019"
-    ],
-    "minutes": 60
-  },
-  {
     "title": "LRDI CAT 2019 SLOT -2 Set -2",
     "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -2.html",
     "original": "LRDI CAT 2019 SLOT -2 Set -2.html",
@@ -3196,6 +3184,18 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 60
+  },
+  {
+    "title": "LRDI CAT 2019 SLOT -2 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2019/LRDI CAT 2019 SLOT -2 Set -1.html",
+    "original": "LRDI CAT 2019 SLOT -2 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2019"
+    ],
+    "minutes": 15
   }
 ];
 
