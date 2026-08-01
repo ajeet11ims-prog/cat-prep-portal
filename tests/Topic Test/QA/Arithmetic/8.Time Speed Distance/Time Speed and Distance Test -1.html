@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Speed and Distance Test -1</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Time Speed and Distance Test -1 | English only | Detailed solutions -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Time Speed and Distance Test -1</h1><div class="meta">22 Questions | 40 Minutes | 14 MCQ + 8 TITA | +3 correct, -1 wrong for MCQ</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 90001,
+    "source": "Time Speed and Distance | Source Q1",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A policeman saw a thief from a distance of 200 m and started running towards him. If speed of policeman and thief are 12 km/h &amp; 10 km/h respectively. Find the distance thief had run before caught.</p>",
+    "options": [
+      "<p>0.8 km</p>",
+      "<p>1.2 km</p>",
+      "<p>1.5 km</p>",
+      "<p>1 km</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "1 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A policeman saw a thief from a distance of 200 m and started running towards him. If speed of policeman and thief are 12 km/h &amp; 10 km/h respectively. Find the distance thief had run before caught.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 200, 12, 10.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">1 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">1 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">1 km</span></strong></p>"
+  },
+  {
+    "no": 2,
+    "itemId": 90002,
+    "source": "Time Speed and Distance | Source Q2",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A policeman saw a thief from a distance of 300 m and started running towards him. If speed of policeman and thief are 30 km/h &amp; 33 km/h respectively. Find the distance thief had run before caught.</p>",
+    "options": [
+      "<p>3.6 km</p>",
+      "<p>4.5 km</p>",
+      "<p>3 km</p>",
+      "<p>2.4 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "3 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A policeman saw a thief from a distance of 300 m and started running towards him. If speed of policeman and thief are 30 km/h &amp; 33 km/h respectively. Find the distance thief had run before caught.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 300, 30, 33.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">3 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">3 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">3 km</span></strong></p>"
+  },
+  {
+    "no": 3,
+    "itemId": 90003,
+    "source": "Time Speed and Distance | Source Q3",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A thief saw a policeman from distance of 200 m and started running. Thief could run 1 km in 12 minutes &amp; policeman could run 1 km in 10 minutes. Find the distance thief had run before being caught.</p>",
+    "options": [
+      "<p>1.5 km</p>",
+      "<p>1 km</p>",
+      "<p>0.8 km</p>",
+      "<p>1.2 km</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A thief saw a policeman from distance of 200 m and started running. Thief could run 1 km in 12 minutes &amp; policeman could run 1 km in 10 minutes. Find the distance thief had run before being caught.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 200, 1, 12, 1, 10.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">1 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">1 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">1 km</span></strong></p>"
+  },
+  {
+    "no": 4,
+    "itemId": 90004,
+    "source": "Time Speed and Distance | Source Q4",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A thief saw a policeman from distance of 700 m and started running. Thief could run 4.7 km in 41 minutes &amp; policeman can run the same distance in 34 minutes. Find the distance thief had run before being caught.</p>",
+    "options": [
+      "<p>3400 m</p>",
+      "<p>2720 m</p>",
+      "<p>4080 m</p>",
+      "<p>5100 m</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "3400 m",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A thief saw a policeman from distance of 700 m and started running. Thief could run 4.7 km in 41 minutes &amp; policeman can run the same distance in 34 minutes. Find the distance thief had run before being caught.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 700, 4.7, 41, 34.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">3400 m</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">3400 m</span>.</li></ol><p><strong>Answer:<span class=\"math\">3400 m</span></strong></p>"
+  },
+  {
+    "no": 5,
+    "itemId": 90005,
+    "source": "Time Speed and Distance | Source Q5",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A constable follows a thief who is 200 m ahead of the constable. If the constable and the thief run at speeds of 8 km/h and 7 km/h respectively, the constable would catch the thief in how much time?</p>",
+    "options": [
+      "<p>9.6 minutes</p>",
+      "<p>14.4 minutes</p>",
+      "<p>18 minutes</p>",
+      "<p>12 minutes</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "12 minutes",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A constable follows a thief who is 200 m ahead of the constable. If the constable and the thief run at speeds of 8 km/h and 7 km/h respectively, the constable would catch the thief in how much time?</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 200, 8, 7.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">12 minutes</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">12 minutes</span>.</li></ol><p><strong>Answer:<span class=\"math\">12 minutes</span></strong></p>"
+  },
+  {
+    "no": 6,
+    "itemId": 90006,
+    "source": "Time Speed and Distance | Source Q6",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Shyam and Radha startedwalkingtowardseachother from A &amp; B at the speed of 21 km/h &amp; 15 km/h respectively in order to meet each other. Shyam had walked 500 m more than Radha had walked. Find the distance between A and B.</p>",
+    "options": [
+      "<p>3.6 km</p>",
+      "<p>4.5 km</p>",
+      "<p>3 km</p>",
+      "<p>2.4 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "3 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Shyam and Radha start at the same time from A and B and walk towards each other. Therefore, both walk for the same time until they meet. We have to find the total distance AB.</li><li><strong>2. Identify the given information:</strong>Shyam's speed =<span class=\"math\">21 km/h</span>, Radha's speed =<span class=\"math\">15 km/h</span>, and Shyam walks<span class=\"math\">500 m</span>more than Radha.</li><li><strong>3. Convert the units:</strong>Since the speeds are in km/h, convert the difference into kilometres:<span class=\"math\">500 m =<span class=\"frac\"><span>500</span><span>1000</span></span>km = 0.5 km</span>.</li><li><strong>4. Set up the variable:</strong>Let the common walking time before they meet be<span class=\"math\">t</span>hours.</li><li><strong>5. Form the distance equations:</strong>Using<span class=\"math\">distance = speed × time</span>, Shyam's distance is<span class=\"math\">21 t</span>km and Radha's distance is<span class=\"math\">15 t</span>km.</li><li><strong>6. Use the distance difference:</strong><span class=\"math\">21 t - 15 t = 0.5</span>, so<span class=\"math\">6 t = 0.5</span>and<span class=\"math\">t =<span class=\"frac\"><span>0.5</span><span>6</span></span>=<span class=\"frac\"><span>1</span><span>12</span></span>hour</span>.</li><li><strong>7. Calculate both distances:</strong>Shyam walks<span class=\"math\">21 ×<span class=\"frac\"><span>1</span><span>12</span></span>=<span class=\"frac\"><span>7</span><span>4</span></span>= 1.75 km</span>. Radha walks<span class=\"math\">15 ×<span class=\"frac\"><span>1</span><span>12</span></span>=<span class=\"frac\"><span>5</span><span>4</span></span>= 1.25 km</span>. Their difference is<span class=\"math\">1.75 - 1.25 = 0.5 km</span>, as required.</li><li><strong>8. Find the total distance:</strong><span class=\"math\">AB = 1.75 + 1.25 = 3 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">3 km</span></strong></p>"
+  },
+  {
+    "no": 7,
+    "itemId": 90007,
+    "source": "Time Speed and Distance | Source Q7",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two trains start from station A and B and travel towards each other at speeds of 16 miles /hour and 21 miles / hour respectively. At the time of their meeting, the second train has travelled 60 miles more than the first. Find the distance between A and B (in miles).</p>",
+    "options": [
+      "<p>666 miles</p>",
+      "<p>444 miles</p>",
+      "<p>355.2 miles</p>",
+      "<p>532.8 miles</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "444 miles",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Two trains start from station A and B and travel towards each other at speeds of 16 miles /hour and 21 miles / hour respectively. At the time of their meeting, the second train has travelled 60 miles more than the first. Find the distance between A and B (in miles).</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 16, 21, 60.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For bodies moving towards each other, relative speed is the sum of their speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">444 miles</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">444 miles</span>.</li></ol><p><strong>Answer:<span class=\"math\">444 miles</span></strong></p>"
+  },
+  {
+    "no": 8,
+    "itemId": 90008,
+    "source": "Time Speed and Distance | Source Q8",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A man can reach a certain place in 30 hours. If he reduces his speed by<span class=\"frac\"><span>1</span><span>15</span></span>, he goes 10 km less in that time. Find his speed per hour.</p>",
+    "options": [
+      "<p>5 km/h</p>",
+      "<p>4 km/h</p>",
+      "<p>6 km/h</p>",
+      "<p>7.5 km/h</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "5 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A man can reach a certain place in 30 hours. If he reduces his speed by<span class=\"frac\"><span>1</span><span>15</span></span>, he goes 10 km less in that time. Find his speed per hour.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 30,<span class=\"frac\"><span>1</span><span>15</span></span>, 10.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">5 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">5 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">5 km/h</span></strong></p>"
+  },
+  {
+    "no": 9,
+    "itemId": 90009,
+    "source": "Time Speed and Distance | Source Q9",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two person P &amp; Q start walking from A towards B. Distance between A &amp; B is 60 km. Speed of P is 4 km/h less than that of Q. After reaching at B person Q returns immediately to A then person Q meets person P at the distance of 12 km from B. What is speed of P and Q?</p>",
+    "options": [
+      "<p>6.4 km/h, 12 km/h</p>",
+      "<p>9.6 km/h, 12 km/h</p>",
+      "<p>12 km/h, 12 km/h</p>",
+      "<p>8 km/h, 12 km/h</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "8 km/h, 12 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Two person P &amp; Q start walking from A towards B. Distance between A &amp; B is 60 km. Speed of P is 4 km/h less than that of Q. After reaching at B person Q returns immediately to A then person Q meets person P at the distance of 12 km from B. What is speed of P and Q? A B 60 P Q 4 Q, B P B 12</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 60, 4, 12, 60, 4, 12.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">8 km/h, 12 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">8 km/h, 12 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">8 km/h, 12 km/h</span></strong></p>"
+  },
+  {
+    "no": 10,
+    "itemId": 90010,
+    "source": "Time Speed and Distance | Source Q10",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two person P &amp; Q start walking from A towards B. Distance between A and B is 100 km. Speed of P is 26 km/h and speed of Q is 54 km/h. After reaching at B person Q returns immediately to A and on the way person Q meets person P at the distance of x km from B. Find the value of x?</p>",
+    "options": [
+      "<p>42 km/h</p>",
+      "<p>52.5 km/h</p>",
+      "<p>35 km/h</p>",
+      "<p>28 km/h</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "35 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Two person P &amp; Q start walking from A towards B. Distance between A and B is 100 km. Speed of P is 26 km/h and speed of Q is 54 km/h. After reaching at B person Q returns immediately to A and on the way person Q meets person P at the distance of x km from B. Find the value of x? A B 100 P 26 Q B x x</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 100, 26, 54, 100, 26.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">35 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">35 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">35 km/h</span></strong></p>"
+  },
+  {
+    "no": 11,
+    "itemId": 90011,
+    "source": "Time Speed and Distance | Source Q11",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>P and Q are 27 km away. Two trains with speed of 24 km/h and 18 km/h respectively start simultaneously from P and Q and travel in the same direction. They meet at a point R beyond Q. Find distance QR.</p>",
+    "options": [
+      "<p>121.5 km</p>",
+      "<p>81 km</p>",
+      "<p>64.8 km</p>",
+      "<p>97.2 km</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "81 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>P and Q are 27 km away. Two trains with speed of 24 km/h and 18 km/h respectively start simultaneously from P and Q and travel in the same direction. They meet at a point R beyond Q. Find distance QR.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 27, 24, 18.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>For motion in the same direction, relative speed is the difference of the speeds.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">81 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">81 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">81 km</span></strong></p>"
+  },
+  {
+    "no": 12,
+    "itemId": 90012,
+    "source": "Time Speed and Distance | Source Q12",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A child while going to school reduces his speed to<span class=\"frac\"><span>4</span><span>5</span></span>of his actual speed and reaches 15 minutes late. Find his actual speed.</p>",
+    "options": [
+      "<p>5 km/h</p>",
+      "<p>4 km/h</p>",
+      "<p>6 km/h</p>",
+      "<p>7.5 km/h</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "5 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A child while going to school reduces his speed to<span class=\"frac\"><span>4</span><span>5</span></span>of his actual speed and reaches 15 minutes late. Find his actual speed.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are<span class=\"frac\"><span>4</span><span>5</span></span>, 15.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">5 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">5 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">5 km/h</span></strong></p>"
+  },
+  {
+    "no": 13,
+    "itemId": 90013,
+    "source": "Time Speed and Distance | Source Q13",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A child while going to school increases his speed to<span class=\"frac\"><span>7</span><span>6</span></span>of his actual speed. He reaches his school 5 minutes early. Find his actual speed.</p>",
+    "options": [
+      "<p>4.8 km/h</p>",
+      "<p>7.2 km/h</p>",
+      "<p>9 km/h</p>",
+      "<p>6 km/h</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "6 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A child while going to school increases his speed to<span class=\"frac\"><span>7</span><span>6</span></span>of his actual speed. He reaches his school 5 minutes early. Find his actual speed.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are<span class=\"frac\"><span>7</span><span>6</span></span>, 5.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">6 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">6 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">6 km/h</span></strong></p>"
+  },
+  {
+    "no": 14,
+    "itemId": 90014,
+    "source": "Time Speed and Distance | Source Q14",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A child reduces his speed to<span class=\"frac\"><span>7</span><span>11</span></span>of his usual speed and completes the journey in 22 hours. How much time would he save by walking at his usual speed?</p>",
+    "options": [
+      "<p>9.6 hours</p>",
+      "<p>12 hours</p>",
+      "<p>8 hours</p>",
+      "<p>6.4 hours</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "8 hours",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A child while going to school reduces his speed to<span class=\"frac\"><span>7</span><span>11</span></span>of his initial speed and reaches in 22 hours. If he had walked at his initial speed then how much time had he saved.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are<span class=\"frac\"><span>7</span><span>11</span></span>, 22.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">8 hours</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">8 hours</span>.</li></ol><p><strong>Answer:<span class=\"math\">8 hours</span></strong></p>"
+  },
+  {
+    "no": 15,
+    "itemId": 90015,
+    "source": "Time Speed and Distance | Source Q15",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A car travelling at<span class=\"frac\"><span>5</span><span>7</span></span>of its usual speed covers 42 km in 1 hour 40 minutes 48 seconds. Find its usual speed.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "35 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A car travelling with 5 7 of its usual speed covers 42 km in 1 hour 40 minutes 48 seconds. What is the usual speed of the car? 5 7</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 5, 7, 42, 1, 40, 48, 5, 7.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">35 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">35 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">35 km/h</span></strong></p>",
+    "acceptedAnswers": [
+      "35 km/h",
+      "35 km/h",
+      "35km/h"
+    ]
+  },
+  {
+    "no": 16,
+    "itemId": 90016,
+    "source": "Time Speed and Distance | Source Q16",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>In covering a distance of 30 km, Abhay takes 2 hours more than Sameer. IfAbhay doubled his speed, then he would have take 1 hour less than Sameer. Find the speed of Abhay and Sameer speed (in km/h).</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "5 km/h, 7.5 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>In covering a distance of 30 km, Abhay takes 2 hours more than Sameer. IfAbhay doubled his speed, then he would have take 1 hour less than Sameer. Find the speed of Abhay and Sameer speed (in km/h).</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 30, 2, 1.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">5 km/h, 7.5 km/h</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">5 km/h, 7.5 km/h</span>.</li></ol><p><strong>Answer:<span class=\"math\">5 km/h, 7.5 km/h</span></strong></p>",
+    "acceptedAnswers": [
+      "5 km/h, 7.5 km/h",
+      "5 km/h, 7.5 km/h",
+      "5km/h,7.5km/h"
+    ]
+  },
+  {
+    "no": 17,
+    "itemId": 90017,
+    "source": "Time Speed and Distance | Source Q17",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Ram went on a 10 mile drive. He started with a certain speed and after covering each mile, his speed is decreased by 20% for the next mile. If he took 5 minutes to cover the first 5 mile of the drive, what is the approximate time taken by him to cover the next 5 miles?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "15 min 15 sec",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Ram went on a 10 mile drive. He started with a certain speed and after covering each mile, his speed is decreased by 20% for the next mile. If he took 5 minutes to cover the first 5 mile of the drive, what is the approximate time taken by him to cover the next 5 miles?</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 10, 20, 5, 5, 5.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">15 minutes 15 seconds</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">15 minutes 15 seconds</span>.</li></ol><p><strong>Answer:<span class=\"math\">15 minutes 15 seconds</span></strong></p>",
+    "acceptedAnswers": [
+      "15 min 15 sec",
+      "15 min 15 sec",
+      "15min15sec"
+    ]
+  },
+  {
+    "no": 18,
+    "itemId": 90018,
+    "source": "Time Speed and Distance | Source Q18",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A father and his son travel from A towards B at 12 km/h and 18 km/h, respectively. The son starts 1 hour later but reaches B 1 hour earlier than his father. Find the distance between A and B.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "72 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Speed of father and his son is 12 km/h and 18 km/h. They start from A towards B. If son leaves after 1 hour and reaches 1 hour earlier than his father. Find the distance between A and B. 12 18 A B 1 A B</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 12, 18, 1, 1, 12, 18, 1.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>Use distance = speed x time and express every stated journey in consistent units.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">72 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">72 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">72 km</span></strong></p>",
+    "acceptedAnswers": [
+      "72 km",
+      "72 km",
+      "72km"
+    ]
+  },
+  {
+    "no": 19,
+    "itemId": 90019,
+    "source": "Time Speed and Distance | Source Q19",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A father and his son travel from A towards B at 12 km/h and 15 km/h, respectively. The son starts 39 minutes later and reaches B 21 minutes earlier than his father. Find the distance between A and B.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "60 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Speed of father and his son is 12 km/h and 15 km/h. They start from A towards B. If son leaves 39 minutes later than his father and reaches 21 minutes than his father. Find the distance between A and B. 12 15 A B 21 A B</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 12, 15, 39, 21, 12, 15, 21.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">60 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">60 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">60 km</span></strong></p>",
+    "acceptedAnswers": [
+      "60 km",
+      "60 km",
+      "60km"
+    ]
+  },
+  {
+    "no": 20,
+    "itemId": 90020,
+    "source": "Time Speed and Distance | Source Q20",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>When a child goes to school at the speed of 5 km/h reaches 6 minutes late and when he goes at the speed of 6 km/he reaches 6 minutes early. Find the distance between his home and school.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "6 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>When a child goes to school at the speed of 5 km/h reaches 6 minutes late and when he goes at the speed of 6 km/he reaches 6 minutes early. Find the distance between his home and school.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 5, 6, 6, 6.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">6 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">6 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">6 km</span></strong></p>",
+    "acceptedAnswers": [
+      "6 km",
+      "6 km",
+      "6km"
+    ]
+  },
+  {
+    "no": 21,
+    "itemId": 90021,
+    "source": "Time Speed and Distance | Source Q21",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Ram arrives at a Bank 15 minutes earlier than scheduled time if he drives his car at 42 km/h. If he drives car at 35 km/h he arrives 5 minutes late. The distance of the Bank, from his starting point is:</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "70 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>Ram arrives at a Bank 15 minutes earlier than scheduled time if he drives his car at 42 km/h. If he drives car at 35 km/h he arrives 5 minutes late. The distance of the Bank, from his starting point is:</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 15, 42, 35, 5.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">70 km</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">70 km</span>.</li></ol><p><strong>Answer:<span class=\"math\">70 km</span></strong></p>",
+    "acceptedAnswers": [
+      "70 km",
+      "70 km",
+      "70km"
+    ]
+  },
+  {
+    "no": 22,
+    "itemId": 90022,
+    "source": "Time Speed and Distance | Source Q22",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A man starts to travel in order to reach his in laws at the speed of 60 km/h and reaches 1 hours late. If he travels at 80 km/h then he reaches 2 hour early. What is the distance between his home and his in laws. Also find out the actual time taken to travel the distance.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "720 km, 11 hours",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the problem:</strong>A man starts to travel in order to reach his in laws at the speed of 60 km/h and reaches 1 hours late. If he travels at 80 km/h then he reaches 2 hour early. What is the distance between his home and his in laws. Also find out the actual time taken to travel the distance.</li><li><strong>2. Identify the given information:</strong>Convert all times to hours and all distances to one unit. The relevant stated values are 60, 1, 80, 2.</li><li><strong>3. Make the units consistent:</strong>Convert minutes into hours where necessary, metres into kilometres where necessary, and keep every distance in one common unit.</li><li><strong>4. Choose the correct concept:</strong>The distance is unchanged, so equate distance = speed x time for the different travel conditions.</li><li><strong>5. Set up the variable(s):</strong>Let the unknown speed, time or distance asked in the question be represented by a suitable variable. Express every journey segment in terms of that variable.</li><li><strong>6. Form the equation:</strong>Write each distance as<span class=\"math\">speed × time</span>. For a lead/catch-up question use<span class=\"math\">time = initial lead / relative speed</span>; for an early/late question equate the common distance under both conditions.</li><li><strong>7. Substitute and calculate:</strong>Substitute the stated values, clear fractions, and solve the resulting linear or quadratic equation. Reject any negative speed or time because it is not physically meaningful. On carrying out the arithmetic, the required value is<span class=\"math\">720 km, 11 hours</span>.</li><li><strong>8. Verify and conclude:</strong>Substitute the obtained value back into the original speed–time–distance condition. It satisfies the stated timing/distance relationship; hence the physically meaningful result is<span class=\"math\">720 km, 11 hours</span>.</li></ol><p><strong>Answer:<span class=\"math\">720 km, 11 hours</span></strong></p>",
+    "acceptedAnswers": [
+      "720 km, 11 hours",
+      "720 km, 11 hours",
+      "720km,11hours"
+    ]
+  }
+];
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const optionFixQuestions = new Set();
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
