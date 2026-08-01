@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Speed and Distance Test -6</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Time Speed and Distance Test -6 | English only | Detailed solutions -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Time Speed and Distance Test -6</h1><div class="meta">20 Questions | 40 Minutes | 14 MCQ + 6 TITA | +3 correct, -1 wrong for MCQ</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 91001,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Gopal travelled the first half of his journey time at an average speed of 40 km/h and the remaining half at an average speed of 50 km/h. Find his average speed (in km/h) for the journey.</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "45",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For equal time intervals, average speed is the arithmetic mean of the speeds.</li><li><strong>2. Form the equation:</strong>Let the total time be 2 t hours. Distances are 40 t and 50 t.</li><li><strong>3. Substitute and calculate:</strong>Average speed = (40 t + 50 t)/(2 t) =<span class=\"frac\"><span>90</span><span>2</span></span>= 45 km/h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">45 km/h</span>.</li></ol>",
+    "acceptedAnswers": [
+      "45"
+    ]
+  },
+  {
+    "no": 2,
+    "itemId": 91002,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A car left A for B at an average speed of 60 km/h and reached B one hour late. If it had travelled at 80 km/h, it would have reached B one hour early. Find the average speed required to arrive on time.</p>",
+    "options": [
+      "<p>70 km/h</p>",
+      "<p><span class=\"frac\"><span>500</span><span>7</span></span>km/h</p>",
+      "<p><span class=\"frac\"><span>480</span><span>7</span></span>km/h</p>",
+      "<p><span class=\"frac\"><span>440</span><span>7</span></span>km/h</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "<span class=\"frac\"><span>480</span><span>7</span></span> km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>The distance is common; the difference between the two travel times is 2 hours.</li><li><strong>2. Form the equation:</strong>Let distance be D. Then D/60 - D/80 = 2.</li><li><strong>3. Substitute and calculate:</strong>D(<span class=\"frac\"><span>1</span><span>60</span></span>-<span class=\"frac\"><span>1</span><span>80</span></span>)=2 ⇒ D/240=2 ⇒ D=480 km. Scheduled time =<span class=\"frac\"><span>480</span><span>60</span></span>- 1 = 7 h. Required speed =<span class=\"frac\"><span>480</span><span>7</span></span>km/h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\"><span class=\"frac\"><span>480</span><span>7</span></span>km/h</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 91003,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>While travelling from office to home, Alok's car developed a problem, so he took 25% more than the usual time. His speed in this case is what fraction of the usual speed?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>3</span><span>4</span></span></p>",
+      "<p><span class=\"frac\"><span>4</span><span>5</span></span></p>",
+      "<p><span class=\"frac\"><span>3</span><span>5</span></span></p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "<span class=\"frac\"><span>4</span><span>5</span></span>",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For a fixed distance, speed is inversely proportional to time.</li><li><strong>2. Form the equation:</strong>New time = 125% of usual time = 5 T/4.</li><li><strong>3. Substitute and calculate:</strong>New speed/usual speed = T/(5 T/4) =<span class=\"frac\"><span>4</span><span>5</span></span>.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\"><span class=\"frac\"><span>4</span><span>5</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 91004,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>If a man travels at<span class=\"frac\"><span>3</span><span>4</span></span>of his usual speed, how many times his usual time will he take?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>3</span><span>4</span></span></p>",
+      "<p><span class=\"frac\"><span>4</span><span>3</span></span></p>",
+      "<p><span class=\"frac\"><span>3</span><span>5</span></span></p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "<span class=\"frac\"><span>4</span><span>3</span></span>",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For a fixed distance, time varies inversely with speed.</li><li><strong>2. Form the equation:</strong>New time/usual time = usual speed/new speed.</li><li><strong>3. Substitute and calculate:</strong>Tnew/T = V/(3 V/4) =<span class=\"frac\"><span>4</span><span>3</span></span>.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\"><span class=\"frac\"><span>4</span><span>3</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 91005,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>The ratio of the speeds of P, Q and R is 3: 4: 6. Find the ratio of the times that P, Q and R would take to run a certain distance.</p>",
+    "options": [
+      "<p>4: 3: 1</p>",
+      "<p>2: 3: 4</p>",
+      "<p>3: 2: 4</p>",
+      "<p>4: 3: 2</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "4 : 3 : 2",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For the same distance, time ratios are the reciprocals of speed ratios.</li><li><strong>2. Form the equation:</strong>Time ratio =<span class=\"frac\"><span>1</span><span>3</span></span>:<span class=\"frac\"><span>1</span><span>4</span></span>:<span class=\"frac\"><span>1</span><span>6</span></span>.</li><li><strong>3. Substitute and calculate:</strong>Multiplying by LCM 12 gives 4: 3: 2.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">4: 3: 2</span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 91006,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>The ratio of the speeds of A and B is 3: 7. If B takes 20 minutes less than A to cover a certain distance, what is the time taken (in minutes) by A?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "35",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For equal distances, time ratio is inverse to speed ratio.</li><li><strong>2. Form the equation:</strong>Speed A: B=3:7 ⇒ time A: B=7:3.</li><li><strong>3. Substitute and calculate:</strong>The difference of 4 ratio-parts equals 20 minutes, so 1 part=5 minutes. A takes 7×5=35 minutes.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">35 minutes</span>.</li></ol>",
+    "acceptedAnswers": [
+      "35"
+    ]
+  },
+  {
+    "no": 7,
+    "itemId": 91007,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Travelling at three-fifths of his usual speed, a man is late by 20 minutes. What is the usual time (in minutes) taken to cover the same distance?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "30",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>At<span class=\"frac\"><span>3</span><span>5</span></span>speed, travel time becomes<span class=\"frac\"><span>5</span><span>3</span></span>of usual time.</li><li><strong>2. Form the equation:</strong>Delay = (<span class=\"frac\"><span>5</span><span>3</span></span>T - T) = 2 T/3.</li><li><strong>3. Substitute and calculate:</strong>2 T/3=20 ⇒ T=30 minutes.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">30 minutes</span>.</li></ol>",
+    "acceptedAnswers": [
+      "30"
+    ]
+  },
+  {
+    "no": 8,
+    "itemId": 91008,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Murali travelled from city A to city B at 40 km/h and from city B to city C at 60 km/h. What is his average speed from A to C if AB: BC = 2:3?</p>",
+    "options": [
+      "<p>48 km/h</p>",
+      "<p>50 km/h</p>",
+      "<p>52 km/h</p>",
+      "<p>56 km/h</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "50 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>Average speed equals total distance divided by total time.</li><li><strong>2. Form the equation:</strong>Let AB=2 x and BC=3 x.</li><li><strong>3. Substitute and calculate:</strong>Total time = 2 x/40 + 3 x/60 = x/20+x/20=x/10. Average speed=5 x/(x/10)=50 km/h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">50 km/h</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 91009,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A person travelled from P to Q at 40 km/h. He covered three-fifths of the distance in two-thirds of the total time. At what speed (in km/h) should he travel to complete the remaining journey in the remaining time?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "53 1/3",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>Use the first part to relate total distance D and total time T, then calculate the required speed for the remaining part.</li><li><strong>2. Form the equation:</strong>40 = (3 D/5)/(2 T/3).</li><li><strong>3. Substitute and calculate:</strong>40=9 D/(10 T) ⇒ D/T=<span class=\"frac\"><span>400</span><span>9</span></span>. Remaining speed=(2 D/5)/(T/3)=6 D/(5 T)=<span class=\"frac\"><span>6</span><span>5</span></span>×<span class=\"frac\"><span>400</span><span>9</span></span>=<span class=\"frac\"><span>160</span><span>3</span></span>= 53<span class=\"frac\"><span>1</span><span>3</span></span>km/h.</li><li><strong>4. Verify:</strong>At this speed, 2 D/5 is covered in T/3. The printed key says 48, but it does not satisfy the stated fractions.</li><li><strong>5. Final answer:</strong><span class=\"math\">53<span class=\"frac\"><span>1</span><span>3</span></span>km/h</span>.</li></ol>",
+    "acceptedAnswers": [
+      "53 1/3",
+      "160/3",
+      "53.333",
+      "53⅓"
+    ]
+  },
+  {
+    "no": 10,
+    "itemId": 91010,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A man covered one-fourth of the total distance at 16 km/h and the remaining distance at 24 km/h. What is his average speed for the total distance?</p>",
+    "options": [
+      "<p>21<span class=\"frac\"><span>2</span><span>3</span></span>km/h</p>",
+      "<p>21<span class=\"frac\"><span>1</span><span>3</span></span>km/h</p>",
+      "<p>22<span class=\"frac\"><span>1</span><span>3</span></span>km/h</p>",
+      "<p>22<span class=\"frac\"><span>2</span><span>3</span></span>km/h</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "21<span class=\"frac\"><span>1</span><span>3</span></span> km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>Use total distance divided by total time; unequal distance portions require a weighted harmonic calculation.</li><li><strong>2. Form the equation:</strong>Let total distance be D. Time=D/64+3 D/96.</li><li><strong>3. Substitute and calculate:</strong>Time=D/64+D/32=3 D/64. Average speed=D/(3 D/64)=<span class=\"frac\"><span>64</span><span>3</span></span>=21<span class=\"frac\"><span>1</span><span>3</span></span>km/h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">21<span class=\"frac\"><span>1</span><span>3</span></span>km/h</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 91011,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A man misses his bus by 40 minutes if he travels at 30 km/h. If he travels at 40 km/h, he misses it by 10 minutes. What is the minimum speed (in km/h) required to catch the bus on time?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "45",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>The two travel times differ by 30 minutes for the same distance.</li><li><strong>2. Form the equation:</strong>D/30-D/40=<span class=\"frac\"><span>1</span><span>2</span></span>hour.</li><li><strong>3. Substitute and calculate:</strong>D/120=<span class=\"frac\"><span>1</span><span>2</span></span>⇒ D=60 km. At 40 km/h he takes 1.5 h and is 10 minutes late, so available time=<span class=\"frac\"><span>4</span><span>3</span></span>h. Required speed=60÷(<span class=\"frac\"><span>4</span><span>3</span></span>)=45 km/h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">45 km/h</span>.</li></ol>",
+    "acceptedAnswers": [
+      "45"
+    ]
+  },
+  {
+    "no": 12,
+    "itemId": 91012,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Haritha leaves at 8:00 a. m. at 25 km/h. Karuna leaves from the same point at 9:30 a. m. at 37.5 km/h in the same direction. At what time and how far from the starting point do they meet?</p>",
+    "options": [
+      "<p>12:45 p. m. , 122.5 km</p>",
+      "<p>12:30 p. m. , 122.5 km</p>",
+      "<p>12:30 p. m. , 112.5 km</p>",
+      "<p>12:45 p. m. , 112.5 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "12:30 p.m., 112.5 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>Karuna catches Haritha using relative speed.</li><li><strong>2. Form the equation:</strong>Haritha’s 1.5 h lead =25×1.5=37.5 km. Relative speed=37.5-25=12.5 km/h.</li><li><strong>3. Substitute and calculate:</strong>Catch time after 9:30=37.<span class=\"frac\"><span>5</span><span>12</span></span>.5=3 h, so meeting time=12:30 p. m. Distance=37.5×3=112.5 km.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">12:30 p. m. , 112.5 km</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 91013,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>X and Y are 400 km apart. At 7:00 a. m. , buses A and B leave X and Y simultaneously towards each other at 30 km/h and 70 km/h. At what time will they meet?</p>",
+    "options": [
+      "<p>11:30 a. m.</p>",
+      "<p>10:30 a. m.</p>",
+      "<p>12 noon</p>",
+      "<p>11:00 a. m.</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "11:00 a.m.",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>For motion towards each other, relative speed is the sum.</li><li><strong>2. Form the equation:</strong>Meeting time=400/(30+70).</li><li><strong>3. Substitute and calculate:</strong>Time=<span class=\"frac\"><span>400</span><span>100</span></span>=4 h after 7:00 a. m.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">11:00 a. m.</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 91014,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Car A leaves P for Q at 8:00 a. m. Car B leaves Q for P at 9:00 a. m. Speeds are 60 km/h and 40 km/h, and PQ is 360 km. At what time will they meet?</p>",
+    "options": [
+      "<p>11:00 a. m.</p>",
+      "<p>12 noon</p>",
+      "<p>1:00 p. m.</p>",
+      "<p>12:30 p. m.</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "12 noon",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>First find A’s one-hour head start, then use combined speed.</li><li><strong>2. Form the equation:</strong>By 9:00, A covers 60 km; remaining separation=300 km. Combined speed=100 km/h.</li><li><strong>3. Substitute and calculate:</strong>Time after 9:00=<span class=\"frac\"><span>300</span><span>100</span></span>=3 h.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">12 noon</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 91015,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A starts running south at 7:00 a. m. and B starts from the same point south at 11:00 a. m. Their speeds are in the ratio 3:7. At what time will they meet?</p>",
+    "options": [
+      "<p>1 p. m.</p>",
+      "<p>2 p. m.</p>",
+      "<p>12:30 p. m.</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2 p.m.",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>Use A’s four-hour lead and the relative speed in ratio units.</li><li><strong>2. Form the equation:</strong>Let speeds be 3 x and 7 x. Lead at 11:00=3 x×4=12 x. Relative speed=4 x.</li><li><strong>3. Substitute and calculate:</strong>Catch time=12 x/4 x=3 h after 11:00 a. m.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">2 p. m.</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 91016,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Ajay leaves X for Y at 9:00 a. m. and Bala leaves Y for X simultaneously. After meeting, Ajay takes 16 minutes to reach Y and Bala takes 9 minutes to reach X. Find their meeting time.</p>",
+    "options": [
+      "<p>9:06 a. m.</p>",
+      "<p>9:09 a. m.</p>",
+      "<p>9:12 a. m.</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "9:12 a.m.",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>If two travellers meet after t and then take t₁ and t₂ to complete their remaining journeys, t²=t₁t₂.</li><li><strong>2. Form the equation:</strong>t²=16×9.</li><li><strong>3. Substitute and calculate:</strong>t=√144=12 minutes after 9:00 a. m.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">9:12 a. m.</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 91017,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Cars X and Y start from A at 9:00 a. m. and 10:00 a. m. respectively with speeds in the ratio 4:5, travelling in the same direction. Find the ratio of distances covered before meeting.</p>",
+    "options": [
+      "<p>1: 1</p>",
+      "<p>2: 1</p>",
+      "<p>1: 2</p>",
+      "<p>3: 2</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "1 : 1",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>At their meeting point, both have travelled from the same starting point to the same location.</li><li><strong>2. Form the equation:</strong>Distance covered by X = distance covered by Y at meeting.</li><li><strong>3. Substitute and calculate:</strong>Therefore their distances are equal, irrespective of their different start times.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">1: 1</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 91018,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A train 400 m long travels at 36 km/h. Find the time (in seconds) taken to cross a platform 600 m long.</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "100",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>To cross a platform, the train covers its own length plus the platform length.</li><li><strong>2. Form the equation:</strong>Total distance=400+600=1000 m; speed=36×<span class=\"frac\"><span>5</span><span>18</span></span>=10 m/s.</li><li><strong>3. Substitute and calculate:</strong>Time=<span class=\"frac\"><span>1000</span><span>10</span></span>=100 seconds.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">100 seconds</span>.</li></ol>",
+    "acceptedAnswers": [
+      "100"
+    ]
+  },
+  {
+    "no": 19,
+    "itemId": 91019,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Two trains 500 m and 600 m long run on parallel tracks in opposite directions. Find the total distance travelled by both trains from the start to the completion of crossing.</p>",
+    "options": [
+      "<p>100 m</p>",
+      "<p>1100 m</p>",
+      "<p>2200 m</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1100 m",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>During complete crossing, the sum of distances travelled by both trains equals the sum of their lengths.</li><li><strong>2. Form the equation:</strong>Total relative distance=500+600.</li><li><strong>3. Substitute and calculate:</strong>Total distance travelled by the two trains together=1100 m.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">1100 m</span>.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 91020,
+    "source": "Time Speed and Distance | Practice Set",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>In Question 19, if the trains move in the same direction, find the distance the faster train should travel to cross the slower train completely.</p>",
+    "options": [
+      "<p>100 m</p>",
+      "<p>1100 m</p>",
+      "<p>2200 m</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "Cannot be determined",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Understand the concept:</strong>In same-direction crossing, the faster train must gain 1100 m, but its actual distance depends on both speeds.</li><li><strong>2. Form the equation:</strong>Distance of faster train = its speed × crossing time, and crossing time=1100/(difference of speeds).</li><li><strong>3. Substitute and calculate:</strong>No train speeds are supplied, so the faster train’s actual distance cannot be calculated.</li><li><strong>4. Verify:</strong>The result satisfies all the conditions stated in the question.</li><li><strong>5. Final answer:</strong><span class=\"math\">Cannot be determined</span>.</li></ol>"
+  }
+];
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const optionFixQuestions = new Set();
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
