@@ -3766,6 +3766,227 @@ window.CAT_TESTS = [
     "questions": 15
   },
   {
+    "title": "Time Speed and Distance Test -1",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -1.html",
+    "original": "Time Speed and Distance Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "Time Speed and Distance Test -2",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -2.html",
+    "original": "Time Speed and Distance Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "Time Speed and Distance Test -3",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -3.html",
+    "original": "Time Speed and Distance Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "Time Speed and Distance Test -4",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -4.html",
+    "original": "Time Speed and Distance Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "Time Speed and Distance Test -5",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -5.html",
+    "original": "Time Speed and Distance Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Time Speed and Distance Test -6",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -6.html",
+    "original": "Time Speed and Distance Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Time Speed and Distance Test -7",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -7.html",
+    "original": "Time Speed and Distance Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Time Speed and Distance Test -8",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -8.html",
+    "original": "Time Speed and Distance Test -8.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 50,
+    "questions": 30
+  },
+  {
+    "title": "Time Speed and Distance Test -9",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -9.html",
+    "original": "Time Speed and Distance Test -9.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 18
+  },
+  {
+    "title": "Time Speed and Distance Test -10",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -10.html",
+    "original": "Time Speed and Distance Test -10.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 18
+  },
+  {
+    "title": "Time Speed and Distance Test -11",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -11.html",
+    "original": "Time Speed and Distance Test -11.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 19
+  },
+  {
+    "title": "Time Speed and Distance Test -12",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -12.html",
+    "original": "Time Speed and Distance Test -12.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 40,
+    "questions": 15
+  },
+  {
+    "title": "Time Speed and Distance Test -13",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -13.html",
+    "original": "Time Speed and Distance Test -13.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 60,
+    "questions": 30
+  },
+  {
+    "title": "Time Speed and Distance Test -14",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -14.html",
+    "original": "Time Speed and Distance Test -14.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 15,
+    "questions": 10
+  },
+  {
+    "title": "Time Speed and Distance Test -15",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -15.html",
+    "original": "Time Speed and Distance Test -15.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 30,
+    "questions": 15
+  },
+  {
+    "title": "Time Speed and Distance Test -16",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -16.html",
+    "original": "Time Speed and Distance Test -16.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 30,
+    "questions": 20
+  },
+  {
+    "title": "Time Speed and Distance Test -17",
+    "file": "tests/Topic Test/QA/Arithmetic/8.Time Speed Distance/Time Speed and Distance Test -17.html",
+    "original": "Time Speed and Distance Test -17.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Arithmetic",
+      "8.Time Speed Distance"
+    ],
+    "minutes": 45,
+    "questions": 25
+  },
+  {
     "title": "number -system -properties -of -numbers Test -3",
     "file": "tests/Topic Test/QA/Number System/1.Properties Of Number/number-system-properties-of-numbers Test -3.html",
     "original": "number-system-properties-of-numbers Test -3.html",
