@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Speed and Distance Test -15</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Time Speed and Distance Test -15 | English only | Detailed solutions -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Time Speed and Distance Test -15</h1><div class="meta">15 Questions | 30 Minutes | 13 MCQ + 2 TITA | +3 correct, -1 wrong for MCQ</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">30:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 97501,
+    "source": "QAS08 Class Sheet L2 | Q1",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A and B start swimming simultaneously from the deep and shallow ends of a pool, respectively. They meet for the first time 70 m from the deep end. They continue to the opposite ends, rest for 1 minute, and start swimming back. They then meet 50 m from the shallow end. Find the length of the pool.</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "160 m",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">160 m</span>.</li></ol>",
+    "acceptedAnswers": [
+      "160 m"
+    ]
+  },
+  {
+    "no": 2,
+    "itemId": 97502,
+    "source": "QAS08 Class Sheet L2 | Q2",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "<p>Salman and Vivek are at point A of a circular track, while Aishwarya is at point B, diametrically opposite A. Salman and Aishwarya run towards each other along the circular track. Vivek runs along the straight line AB and, after reaching B, runs along the circular track in Aishwarya’s direction. All three start simultaneously and meet at the same point before anyone completes a round.</p>",
+    "question": "<p>If the ratio of speed of Salman and Vivek is 1:1, what is the distance travelled by Aishwarya till the meeting?</p>",
+    "options": [
+      "<p>40 m</p>",
+      "<p>60 m</p>",
+      "<p>80 m</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "40m",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">40 m</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 3,
+    "itemId": 97503,
+    "source": "QAS08 Class Sheet L2 | Q3",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "<p>Salman and Vivek are at point A of a circular track, while Aishwarya is at point B, diametrically opposite A. Salman and Aishwarya run towards each other along the circular track. Vivek runs along the straight line AB and, after reaching B, runs along the circular track in Aishwarya’s direction. All three start simultaneously and meet at the same point before anyone completes a round.</p>",
+    "question": "<p>If the ratio of speeds of Salman and Vivek is 1:2 and Aishwarya runs at a speed of 20 m/s, after how much time since start will all three meet?</p>",
+    "options": [
+      "<p>2 seconds</p>",
+      "<p>3 seconds</p>",
+      "<p>4 seconds</p>",
+      "<p>5 seconds</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "Option D",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">Option D</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 4,
+    "itemId": 97504,
+    "source": "QAS08 Class Sheet L2 | Q4",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A walks a certain distance and rides back in 6 hours and 15 minutes. If he walks both ways he takes 7 hours and 45 minutes. If he rides both ways the time which he will take, will be</p>",
+    "options": [
+      "<p>4 hours</p>",
+      "<p>4.75 hours</p>",
+      "<p>4.5 hours</p>",
+      "<p>4.25 hours</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4.75 hours Cc} 4.5 hours",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">4.75 hours Cc} 4.5 hours</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 5,
+    "itemId": 97505,
+    "source": "QAS08 Class Sheet L2 | Q5",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A hiker climbed a mountainous path at the rate of 2 miles per hour. Following the same path on his way down the mountain, the hiker had a rate of 4 miles per hour. The total time for his journey was 3 hours. What is the distance between the top and the bottom of the mountain?</p>",
+    "options": [
+      "<p>4.5 miles</p>",
+      "<p>4 miles</p>",
+      "<p>8 miles</p>",
+      "<p>9 miles</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4 miles",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">4 miles</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 6,
+    "itemId": 97506,
+    "source": "QAS08 Class Sheet L2 | Q6",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A student reaches school 10 minutes late when walking at 5 km/h and 15 minutes early when walking at 8 km/h. Find the distance between the student’s residence and school.</p>",
+    "options": [
+      "<p>4.48 km</p>",
+      "<p>6.6 km</p>",
+      "<p>5.56 km</p>",
+      "<p>8 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "5.56 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">5.56 km</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 7,
+    "itemId": 97507,
+    "source": "QAS08 Class Sheet L2 | Q7",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Two men, P and Q, start from X towards Y simultaneously. P reaches Y, turns back immediately, and meets Q at Z. If XY = 60 km and their speeds are in the ratio 5: 3, find XZ.</p>",
+    "options": [
+      "<p>22.5 km</p>",
+      "<p>45 km</p>",
+      "<p>30 km</p>",
+      "<p>15 km</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "45 kms",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">45 km</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 8,
+    "itemId": 97508,
+    "source": "QAS08 Class Sheet L2 | Q8",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A 200 m long train crosses a man sitting in another 100 m long train coming from the opposite direction at 25 m/s. The crossing takes 5 seconds. Find the speed of the first train.</p>",
+    "options": [
+      "<p>40 m/s</p>",
+      "<p>40 km/h</p>",
+      "<p>10 m/s</p>",
+      "<p>54 km/h</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "54km/hr",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">54 km/h</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 9,
+    "itemId": 97509,
+    "source": "QAS08 Class Sheet L2 | Q9",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>If a man walks at 4 km/h, he takes 5 minutes more than the scheduled time. If he walks at 5 km/h, he takes 5 minutes less than the scheduled time. Find the distance travelled.</p>",
+    "options": [
+      "<p>10 km</p>",
+      "<p>5 km</p>",
+      "<p>3.33 km</p>",
+      "<p>3 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "3.33 kms",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">3.33 km</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 10,
+    "itemId": 97510,
+    "source": "QAS08 Class Sheet L2 | Q10",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Asha goes to her friend Lata’s house, stays there for sometime and returns back. The average speed for the entire journey is 8 km/h. If the time period for which Asha stays at Lata’s house is ignored, her average speed for entire journey is 12 km/h. The average time Asha has stopped per hour at Lata’s house is</p>",
+    "options": [
+      "<p>20 minutes</p>",
+      "<p>30 minutes</p>",
+      "<p>40 minutes</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "20 min",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">20 minutes</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 11,
+    "itemId": 97511,
+    "source": "QAS08 Class Sheet L2 | Q11",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A train running at 36 km/h passes another train completely in 12 seconds, which is half of its length, running in the opposite direction at 54 km/h. If it also passes a railway platform in 1.5 minutes, what is the length of the platform (in meters)?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "700 m",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">700 m</span>.</li></ol>",
+    "acceptedAnswers": [
+      "700 m"
+    ]
+  },
+  {
+    "no": 12,
+    "itemId": 97512,
+    "source": "QAS08 Class Sheet L2 | Q12",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A man takes 5 hours to walk to a certain place and returns by car. He would have, however, gained 3 hours if he had completed his entire journey by car. How long would he have taken to walk both ways?</p>",
+    "options": [
+      "<p>6 hours</p>",
+      "<p>6.5 hours</p>",
+      "<p>7 hours</p>",
+      "<p>8 hours</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "8 hours",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">8 hours</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 13,
+    "itemId": 97513,
+    "source": "QAS08 Class Sheet L2 | Q13",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A train after travelling 30 km from X meets with an accident and proceeds at<span class=\"frac\"><span>3</span><span>4</span></span>of the former speed and reaches late by 45 minutes. Had the accident happened 10 km later, it would have arrived 15 minutes sooner than formerly. Find the original distance.</p>",
+    "options": [
+      "<p>60 km</p>",
+      "<p>30 km</p>",
+      "<p>50 km</p>",
+      "<p>20 km</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "60",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">60</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 14,
+    "itemId": 97514,
+    "source": "QAS08 Class Sheet L2 | Q14",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Zubin travels a certain distance in his car and takes 5 hours to complete it. Had he travelled at a speed that was 66.67% more than his earlier speed, then he would have covered the same distance in 3 hours. The distance covered by Zubin could be</p>",
+    "options": [
+      "<p>200 km</p>",
+      "<p>120 km</p>",
+      "<p>60 km</p>",
+      "<p>Any of these</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "Any of these",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">Any of these</span>.</li></ol>",
+    "acceptedAnswers": []
+  },
+  {
+    "no": 15,
+    "itemId": 97515,
+    "source": "QAS08 Class Sheet L2 | Q15",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A man covers half of his journey at an average speed of 30 km/h, half of the remaining distance at 45 km/h, and the rest on foot at 10 km/h. The total journey takes 2 hours 50 minutes. Find the total distance covered.</p>",
+    "options": [
+      "<p>50 km</p>",
+      "<p>40 km</p>",
+      "<p>55 km</p>",
+      "<p>60 km</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "60 km",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the variables:</strong>Write every stated distance, speed and time in consistent units.</li><li><strong>2. Select the model:</strong>Use distance = speed × time; use relative speed for meeting/crossing and upstream/downstream speeds for river motion.</li><li><strong>3. Form the equation:</strong>Translate each condition into an equation for the required unknown.</li><li><strong>4. Calculate and verify:</strong>Solve the equation, reject non-physical roots, and substitute the result back into every original condition.</li><li><strong>5. Final answer:</strong><span class=\"math\">60 km</span>.</li></ol>",
+    "acceptedAnswers": []
+  }
+];
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    let current = 0, submitted = false, secondsLeft = 30 * 60, timerId = null;
+    const optionFixQuestions = new Set();
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
