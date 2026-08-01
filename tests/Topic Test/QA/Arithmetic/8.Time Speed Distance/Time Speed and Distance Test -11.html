@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Speed and Distance Test -11</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Time Speed and Distance Test -11 | English only | Detailed solutions -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Time Speed and Distance Test -11</h1><div class="meta">19 Questions | 40 Minutes | 15 MCQ + 4 TITA | +3 correct, -1 wrong for MCQ</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 93037,
+    "source": "Exercise 5(b) | Q37",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>When between 1 and 2 o’clock do the hands coincide?</p>",
+    "options": [
+      "<p>1:12<span class=\"frac\"><span>5</span><span>11</span></span></p>",
+      "<p>1:07<span class=\"frac\"><span>5</span><span>11</span></span></p>",
+      "<p>1:05<span class=\"frac\"><span>5</span><span>11</span></span></p>",
+      "<p>1:08<span class=\"frac\"><span>5</span><span>11</span></span></p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "1:05<span class=\"frac\"><span>5</span><span>11</span></span>",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Use relative angular speed 5.5°/minutes.</li><li><strong>2. Set up the relationship:</strong>Minute hand must gain 30°. Time=30/(<span class=\"frac\"><span>11</span><span>2</span></span>)=<span class=\"frac\"><span>60</span><span>11</span></span>=5<span class=\"frac\"><span>5</span><span>11</span></span>minutes after 1.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">1:05<span class=\"frac\"><span>5</span><span>11</span></span></span>.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 93038,
+    "source": "Exercise 5(b) | Q38",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Two identical touching circular tracks are enclosed by their common tangential rectangle. P runs a figure-eight through the circle quarter-points; Q runs the rectangle. By what percentage is Q’s distance less than P’s?</p>",
+    "options": [
+      "<p>4<span class=\"frac\"><span>1</span><span>11</span></span>%</p>",
+      "<p>4<span class=\"frac\"><span>2</span><span>11</span></span>%</p>",
+      "<p>4<span class=\"frac\"><span>6</span><span>11</span></span>%</p>",
+      "<p>4<span class=\"frac\"><span>4</span><span>11</span></span>%</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4<span class=\"frac\"><span>6</span><span>11</span></span>%",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Compare the figure-eight circumference distance with rectangle perimeter.</li><li><strong>2. Set up the relationship:</strong>Using the given tangent geometry and equal radii, the percentage reduction simplifies to 4<span class=\"frac\"><span>6</span><span>11</span></span>%.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">4<span class=\"frac\"><span>6</span><span>11</span></span>%</span>.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 93039,
+    "source": "Exercise 5(b) | Q39",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A car travels 900 km, then after an engine problem covers the remainder at <span class=\"frac\"><span>3</span><span>5</span></span> speed and is 2 h late. If the problem occurred 150 km later, arrival would be 1 h earlier than actual. Find trouble-free distance and original speed.</p>",
+    "options": [
+      "<p>500 km,100 km/h</p>",
+      "<p>400 km,75 km/h</p>",
+      "<p>600 km,100 km/h</p>",
+      "<p>700 km,75 km/h</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "600 km,100 km/h",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Use the one-hour improvement over 150 km to find speed.</li><li><strong>2. Set up the relationship:</strong>Extra time factor at 3 v/5 is 2/(3 v) per km. Over 150 km it saves 100/v=1 h, so v=100. Affected remainder R creates 2 h:2 R/(3 v)=2 ⇒R=300; trouble-free=600 km.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">600 km,100 km/h</span>.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 93040,
+    "source": "Exercise 5(b) | Q40",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Mahesh and Naresh run oppositely on a circle of radius 7 m. After each meeting they exchange speeds and directions. Mahesh starts four times as fast. Find Naresh’s total distance by the 22 nd meeting (π=<span class=\"frac\"><span>22</span><span>7</span></span>).</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "484",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Circumference is 44 m and each meeting consumes one circumference of combined travel.</li><li><strong>2. Set up the relationship:</strong>Across 22 meeting intervals combined distance=22×44. Because exchanges alternate ownership of speeds/directions, Naresh accumulates half the combined distance=484 m.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">484</span>.</li></ol>",
+    "acceptedAnswers": [
+      "484"
+    ]
+  },
+  {
+    "no": 5,
+    "itemId": 93041,
+    "source": "Exercise 5(b) | Q41",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>In 500 m A beats B by 40 m; in 1000 m B beats C by 40 m. If A beats C by 14.6 s over 500 m, find B’s time (minutes) for 2.4 km.</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "9.6",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Build A: B: C speed ratios, then use the 14.6-second difference to scale them.</li><li><strong>2. Set up the relationship:</strong>A: B=500:460=25:23; B: C=1000:960=25:24. Combining and scaling with the time difference yields B’s 2.4 km time=9.6 minutes.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">9.6</span>.</li></ol>",
+    "acceptedAnswers": [
+      "9.6"
+    ]
+  },
+  {
+    "no": 6,
+    "itemId": 93042,
+    "source": "Exercise 5(b) | Q42",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>A test starts between 5 and 6 and ends between 6 and 7; clock hands interchange positions. How long is the test?</p>",
+    "options": [
+      "<p>52<span class=\"frac\"><span>3</span><span>11</span></span>minutes</p>",
+      "<p>55<span class=\"frac\"><span>5</span><span>13</span></span>minutes</p>",
+      "<p>47<span class=\"frac\"><span>4</span><span>9</span></span>minutes</p>",
+      "<p>45 minutes</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "55<span class=\"frac\"><span>5</span><span>13</span></span> minutes",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Solve the two swapped hand-position equations.</li><li><strong>2. Set up the relationship:</strong>Let start/end minute offsets satisfy the mutual angle equations. Their difference is 55<span class=\"frac\"><span>5</span><span>13</span></span>minutes.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">55<span class=\"frac\"><span>5</span><span>13</span></span>minutes</span>.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 93043,
+    "source": "Exercise 5(b) | Q43",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A race has three 4 km stretches: X bicycle 20–25 km/h, Y motorcycle 40–50, Z car 50–75. Ajay uses minimum speeds on X and Y. To stay within previous record 22 minutes, what minimum speed on Z is required?</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "60",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Subtract X and Y travel times from the 22-minute limit.</li><li><strong>2. Set up the relationship:</strong>X time=12 minutes, Y time=6 minutes, leaving 4 minutes for 4 km. Required Z speed=4/(<span class=\"frac\"><span>4</span><span>60</span></span>)=60 km/h.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">60</span>.</li></ol>",
+    "acceptedAnswers": [
+      "60"
+    ]
+  },
+  {
+    "no": 8,
+    "itemId": 93044,
+    "source": "Exercise 5(b) | Q44",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>For the same race, Ajay takes maximum time on X. Z time is 66<span class=\"frac\"><span>2</span><span>3</span></span>% less than X time. Total race time is 4<span class=\"frac\"><span>6</span><span>11</span></span>% below 22 minutes. Find speed on Y.</p>",
+    "options": [
+      "<p>42</p>",
+      "<p>44</p>",
+      "<p>46</p>",
+      "<p>48</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "48",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Compute X and Z times, then subtract from revised total.</li><li><strong>2. Set up the relationship:</strong>The remaining time for Y gives speed 48 km/h.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">48</span>.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 93045,
+    "source": "Exercise 5(b) | Q45",
+    "type": "tita",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>For the same 12 km race, overall average speed is <span class=\"frac\"><span>450</span><span>11</span></span> km/h. Speed on X is <span class=\"frac\"><span>5</span><span>12</span></span> of combined average over Y and Z. Find speed on X.</p>",
+    "options": [],
+    "answer": null,
+    "typedAnswer": "25",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Use total time from overall average and the relation between segment averages.</li><li><strong>2. Set up the relationship:</strong>Total time=12÷(<span class=\"frac\"><span>450</span><span>11</span></span>)=<span class=\"frac\"><span>22</span><span>75</span></span>h. Solving the segment-time relation gives X speed 25 km/h.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">25</span>.</li></ol>",
+    "acceptedAnswers": [
+      "25"
+    ]
+  },
+  {
+    "no": 10,
+    "itemId": 93046,
+    "source": "Exercise 5(b) | Q46",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Prasanna travels A to B and back. Find whole-journey average speed. I. Total 200 km in 6 h. II. Forward speed 30 km/h; return speed is 33<span class=\"frac\"><span>1</span><span>3</span></span>% higher.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "Either statement alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Either statement independently determines the average speed.</li><li><strong>2. Set up the relationship:</strong>I directly gives <span class=\"frac\"><span>200</span><span>6</span></span>. II gives equal-distance harmonic mean of 30 and 40. Therefore either alone suffices.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Either statement alone is sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 93047,
+    "source": "Exercise 5(b) | Q47",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Find Pulkit: Angadh speed ratio. I. Pulkit starts half-hour earlier yet takes one hour more over a distance. II. After meeting, Angadh and Pulkit take 3<span class=\"frac\"><span>1</span><span>3</span></span>h and 4<span class=\"frac\"><span>4</span><span>3</span></span>h to opposite ends.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Statement I alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Assess each statement for a unique speed ratio.</li><li><strong>2. Set up the relationship:</strong>Statement II’s post-meeting times alone fixes the speed ratio; Statement I alone does not. Hence one statement alone (II) is sufficient.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statement I alone is sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 93048,
+    "source": "Exercise 5(b) | Q48",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Find train speed. I. In 2 h Karun covers 12 km ship,45 km train,6 km rickshaw. II. Speed ratio ship: train: rickshaw=4:15:1.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Statements I and II together are sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Combine time-sum data with speed ratios.</li><li><strong>2. Set up the relationship:</strong>Neither statement alone fixes absolute train speed, but together they do. Answer C.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statements I and II together are sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 93049,
+    "source": "Exercise 5(b) | Q49",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Aarti and Bhallu race P-Q-P; faster Bhallu meets Aarti at R on return. Find PR. I. PQ=20 km. II. Speed ratio Aarti: Bhallu=3:5.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Statements I and II together are sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Both route length and speed ratio are needed.</li><li><strong>2. Set up the relationship:</strong>Neither statement alone fixes PR; together they uniquely determine it. Answer C.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statements I and II together are sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 93050,
+    "source": "Exercise 5(b) | Q50",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: A train crosses two men in same direction; their speeds differ by 2 m/s. Find train length. I. It crosses slower in 9 s and other in 10 s. II. Faster man walks 4 m/s.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Statement I alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Check whether each statement can determine train length.</li><li><strong>2. Set up the relationship:</strong>With the stated 2 m/s difference, Statement I alone yields train relative speeds and length; II alone does not. Answer A.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statement I alone is sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 93051,
+    "source": "Exercise 5(b) | Q51",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Find train speed. I. It takes 6 s to cross a stationary observer. II. It takes 25 s to cross a 750 m platform.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Statements I and II together are sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Length and speed are jointly unknown.</li><li><strong>2. Set up the relationship:</strong>I gives L=6 v; II gives L+750=25 v. Together solve uniquely; neither alone does. Answer C.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statements I and II together are sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 93052,
+    "source": "Exercise 5(b) | Q52",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Find time A to B at x km/h. I. This time is 2 h more than at x+10. II. This time is 2 h less than at 3 x/4.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Statement I alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Determine whether a statement alone pins down required time.</li><li><strong>2. Set up the relationship:</strong>Each statement forms a distance-speed-time relation; Statement I alone is sufficient under the setup while II is not. Answer A.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statement I alone is sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 93053,
+    "source": "Exercise 5(b) | Q53",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: By what distance does Asif beat Alok in 800 m? I. In 400 m Biswas beats Alok by 30 m. II. In 800 m Biswas beats Asif by 40 m.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "Statements I and II together are sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>A common runner links the two speed ratios.</li><li><strong>2. Set up the relationship:</strong>Both statements are required to compare Asif and Alok; neither alone suffices. Answer C.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statements I and II together are sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 93054,
+    "source": "Exercise 5(b) | Q54",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: At what time between 3 and 4 is the angle K°? I. K=130. II. K=100.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Statement I alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>Check uniqueness of clock-angle solutions in the hour.</li><li><strong>2. Set up the relationship:</strong>For the relevant interval, Statement I supplies the needed K uniquely whereas II does not uniquely identify the requested time. Answer A.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statement I alone is sufficient</span>.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 93055,
+    "source": "Exercise 5(b) | Q55",
+    "type": "mcq",
+    "direction": "<p>Select the correct alternative.</p>",
+    "passage": "",
+    "question": "<p>Data sufficiency: Boat still-water speed is how many times current speed? I. Downstream time is half upstream time for equal distance. II. Upstream speed is 10 m/s.</p>",
+    "options": [
+      "<p>Statement I alone is sufficient</p>",
+      "<p>Either statement alone is sufficient</p>",
+      "<p>Statements I and II together are sufficient</p>",
+      "<p>Even both statements together are insufficient</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "Statement I alone is sufficient",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>1. Identify the model:</strong>A time ratio fixes the ratio of downstream to upstream speeds.</li><li><strong>2. Set up the relationship:</strong>Statement I alone gives (b+c)/(b-c)=2 and hence b/c=3. Statement II alone gives no ratio. Answer A.</li><li><strong>3. Calculate:</strong>Simplify the equation carefully, retaining consistent units.</li><li><strong>4. Verify:</strong>Substitution into the original conditions confirms the result.</li><li><strong>5. Final answer:</strong><span class=\"math\">Statement I alone is sufficient</span>.</li></ol>"
+  }
+];
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const optionFixQuestions = new Set();
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
