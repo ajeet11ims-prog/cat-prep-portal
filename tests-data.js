@@ -4410,6 +4410,20 @@ window.CAT_TESTS = [
     ],
     "minutes": 75,
     "questions": 24
+  },
+  {
+    "title": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/8. Time Speed Distance/CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
+    "original": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "8. Time Speed Distance"
+    ],
+    "minutes": 75,
+    "questions": 23
   }
 ];
 
