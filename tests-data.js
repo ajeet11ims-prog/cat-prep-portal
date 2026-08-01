@@ -4382,6 +4382,20 @@ window.CAT_TESTS = [
       "1.Properties Of Number"
     ],
     "minutes": 60
+  },
+  {
+    "title": "CAT Time and Work PYQ - 75 Minute Test",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/7. Time & Work/CAT Time and Work PYQ - 75 Minute Test.html",
+    "original": "CAT Time and Work PYQ - 75 Minute Test.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 75,
+    "questions": 34
   }
 ];
 
