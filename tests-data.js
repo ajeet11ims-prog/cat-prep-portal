@@ -520,6 +520,58 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
+    "title": "LRDI CAT 2021 SLOT -1 Set -1",
+    "file": "tests/PYQ/LRDI/Year Wise/2021/LRDI CAT 2021 SLOT -1 Set -1.html",
+    "original": "LRDI CAT 2021 SLOT -1 Set -1.html",
+    "folders": [
+      "PYQ",
+      "LRDI",
+      "Year Wise",
+      "2021"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2021 SLOT -1 Set -2",
+    "file": "tests/PYQ/LRDI/Year Wise/2021/LRDI CAT 2021 SLOT -1 Set -2.html",
+    "original": "LRDI CAT 2021 SLOT -1 Set -2.html",
+    "folders": [
+      "PYQ",
+      "LRDI",
+      "Year Wise",
+      "2021"
+    ],
+    "minutes": 15,
+    "questions": 6
+  },
+  {
+    "title": "LRDI CAT 2021 SLOT -1 Set -3",
+    "file": "tests/PYQ/LRDI/Year Wise/2021/LRDI CAT 2021 SLOT -1 Set -3.html",
+    "original": "LRDI CAT 2021 SLOT -1 Set -3.html",
+    "folders": [
+      "PYQ",
+      "LRDI",
+      "Year Wise",
+      "2021"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2021 SLOT -1 Set -4",
+    "file": "tests/PYQ/LRDI/Year Wise/2021/LRDI CAT 2021 SLOT -1 Set -4.html",
+    "original": "LRDI CAT 2021 SLOT -1 Set -4.html",
+    "folders": [
+      "PYQ",
+      "LRDI",
+      "Year Wise",
+      "2021"
+    ],
+    "minutes": 15,
+    "questions": 6
+  },
+  {
     "title": "Percentage_CAT_PYQ_2017-2025",
     "file": "tests/PYQ/Topic Wise/QA/Arithmetic/1.Percentage/Percentage_CAT_PYQ_2017-2025.html",
     "original": "Percentage_CAT_PYQ_2017-2025.html",
@@ -4001,6 +4053,15 @@ window.CAT_FOLDERS = [
       "LRDI",
       "Year Wise",
       "2020"
+    ]
+  },
+  {
+    "name": "2021",
+    "path": [
+      "PYQ",
+      "LRDI",
+      "Year Wise",
+      "2021"
     ]
   },
   {
