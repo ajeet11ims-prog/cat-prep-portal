@@ -1513,6 +1513,71 @@ window.CAT_TESTS = [
     "minutes": 15
   },
   {
+    "title": "LRDI CAT 2020 SLOT -3 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -3 Set -1.html",
+    "original": "LRDI CAT 2020 SLOT -3 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15,
+    "questions": 6
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -3 Set -2",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -3 Set -2.html",
+    "original": "LRDI CAT 2020 SLOT -3 Set -2.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15,
+    "questions": 6
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -3 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -3 Set -3.html",
+    "original": "LRDI CAT 2020 SLOT -3 Set -3.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -3 Set -4",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -3 Set -4.html",
+    "original": "LRDI CAT 2020 SLOT -3 Set -4.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
+    "title": "LRDI CAT 2020 SLOT -3 Set -5",
+    "file": "tests/PYQ/Year Wise/LRDI/2020/LRDI CAT 2020 SLOT -3 Set -5.html",
+    "original": "LRDI CAT 2020 SLOT -3 Set -5.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2020"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
     "title": "DI - Bar Graph - Test - 11",
     "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
     "original": "DI - Bar Graph - Test - 11.html",
