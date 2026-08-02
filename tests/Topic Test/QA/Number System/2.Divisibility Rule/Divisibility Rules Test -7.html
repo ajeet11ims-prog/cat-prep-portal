@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisibility Rules Test -7</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Divisibility Rules Test -7 | English only | Detailed solutions -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Divisibility Rules Test -7</h1><div class="meta">20 Questions | 40 Minutes | 20 MCQ + 0 TITA | +3 correct, -1 wrong for MCQ</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">40:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "type": "mcq",
+    "question": "<p>The string 123456789 is repeated to form 180 digits. What remainder does the number leave on division by 11?</p>",
+    "options": [
+      "<p>4</p>",
+      "<p>5</p>",
+      "<p>6</p>",
+      "<p>0</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "0",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Use the alternating digit-sum rule.</li><li><strong>Step 2 — Apply it:</strong> The 9-digit block is repeated 20 times; the complete alternating difference is a multiple of 11, giving remainder 0.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) 0</strong>.</li></ol><p><strong>Answer: (D) 0</strong></p>",
+    "no": 1,
+    "itemId": 98701,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A four-digit number multiplied by N repeats itself to form the corresponding eight-digit number. If its digits are distinct, N is a multiple of</p>",
+    "options": [
+      "<p>11</p>",
+      "<p>27</p>",
+      "<p>7</p>",
+      "<p>73</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "73",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> The repeated eight-digit number equals the original times 10001.</li><li><strong>Step 2 — Apply it:</strong> 10001=137×73, so the multiplier is a multiple of 73.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) 73</strong>.</li></ol><p><strong>Answer: (D) 73</strong></p>",
+    "no": 2,
+    "itemId": 98702,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>Digits 1,2,3,4,5 form abcde once each. If abc is divisible by 4, bcd by 5 and cde by 3, find a.</p>",
+    "options": [
+      "<p>1</p>",
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "1",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Use d=5 from divisibility by 5, then apply divisibility by 4 and 3.</li><li><strong>Step 2 — Apply it:</strong> The unique arrangement is 12453, hence a=1.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(A) 1</strong>.</li></ol><p><strong>Answer: (A) 1</strong></p>",
+    "no": 3,
+    "itemId": 98703,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A three-digit number abc is divisible by 7 if</p>",
+    "options": [
+      "<p>3a+b+c is divisible by 7</p>",
+      "<p>a+2b+c is divisible by 7</p>",
+      "<p>2a+3b+c is divisible by 7</p>",
+      "<p>2a+2b+c is divisible by 7</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "2a+3b+c is divisible by 7",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Reduce place values modulo 7.</li><li><strong>Step 2 — Apply it:</strong> 100a+10b+c ≡2a+3b+c (mod 7).</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(C) 2a+3b+c is divisible by 7</strong>.</li></ol><p><strong>Answer: (C) 2a+3b+c is divisible by 7</strong></p>",
+    "no": 4,
+    "itemId": 98704,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>N is the least natural number such that 7N consists only of digit 1. What is 8N?</p>",
+    "options": [
+      "<p>127784</p>",
+      "<p>125384</p>",
+      "<p>126984</p>",
+      "<p>181384</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "126984",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Find the least repunit divisible by 7.</li><li><strong>Step 2 — Apply it:</strong> 111111=7×15873, so N=15873 and 8N=126984.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(C) 126984</strong>.</li></ol><p><strong>Answer: (C) 126984</strong></p>",
+    "no": 5,
+    "itemId": 98705,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>The 9235-digit number 888222888222… is divided by 5<sup>3</sup>. Find the remainder.</p>",
+    "options": [
+      "<p>1</p>",
+      "<p>38</p>",
+      "<p>47</p>",
+      "<p>103</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "103",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Modulo 125, only the final three digits matter.</li><li><strong>Step 2 — Apply it:</strong> 9235≡1 (mod 6), so the pattern ends in 228; 228−125=103.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) 103</strong>.</li></ol><p><strong>Answer: (D) 103</strong></p>",
+    "no": 6,
+    "itemId": 98706,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A4531B is divisible by 72. Find A+B.</p>",
+    "options": [
+      "<p>5</p>",
+      "<p>7</p>",
+      "<p>8</p>",
+      "<p>4</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "5",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Use divisibility by 8 and 9.</li><li><strong>Step 2 — Apply it:</strong> 31B divisible by 8 gives B=2; the digit sum gives A=3, so A+B=5.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(A) 5</strong>.</li></ol><p><strong>Answer: (A) 5</strong></p>",
+    "no": 7,
+    "itemId": 98707,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>N is a repunit containing 73 ones. If its remainders on division by 259 and 32 are R₁ and R₂, find R₁+R₂.</p>",
+    "options": [
+      "<p>6</p>",
+      "<p>8</p>",
+      "<p>253</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "8",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Compute the repunit by repeated modular recurrence r←(10r+1) mod d.</li><li><strong>Step 2 — Apply it:</strong> The two modular remainders sum to 8.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(B) 8</strong>.</li></ol><p><strong>Answer: (B) 8</strong></p>",
+    "no": 8,
+    "itemId": 98708,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>523abc is divisible by 7, 8 and 9. What can a×b×c be?</p>",
+    "options": [
+      "<p>10</p>",
+      "<p>60</p>",
+      "<p>180</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "Cannot be determined",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Solve the simultaneous divisibility conditions.</li><li><strong>Step 2 — Apply it:</strong> Both 523152 and 523656 satisfy them, giving products 10 and 180; the product is not unique.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) Cannot be determined</strong>.</li></ol><p><strong>Answer: (D) Cannot be determined</strong></p>",
+    "no": 9,
+    "itemId": 98709,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>M and N are digits. If 2M5×13N is divisible by 36, how many ordered pairs (M,N) are possible?</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>5</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "4",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Require the product to contain factors 4 and 9.</li><li><strong>Step 2 — Apply it:</strong> Digit checking gives (2,2),(2,6),(5,2),(8,2): four pairs.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(C) 4</strong>.</li></ol><p><strong>Answer: (C) 4</strong></p>",
+    "no": 10,
+    "itemId": 98710,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>N leaves remainder 52 on division by D, and 5N leaves remainder 4. How many values of D are possible?</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>4</p>",
+      "<p>6</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "3",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> From N≡52 and 5N≡4, D divides 260−4=256 and D>52.</li><li><strong>Step 2 — Apply it:</strong> The eligible divisors are 64,128,256: three values.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(B) 3</strong>.</li></ol><p><strong>Answer: (B) 3</strong></p>",
+    "no": 11,
+    "itemId": 98711,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>If 10*47* is divisible by both 5 and 11, the missing digits respectively are</p>",
+    "options": [
+      "<p>2 and 5</p>",
+      "<p>None of these</p>",
+      "<p>1 and 5</p>",
+      "<p>5 and 0</p>",
+      "<p>6 and 0</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "1 and 5",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> The last digit must be 0 or 5; then apply the 11-test.</li><li><strong>Step 2 — Apply it:</strong> For digits 1 and 5, the alternating difference is zero, so the number is divisible by 11.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(C) 1 and 5</strong>.</li></ol><p><strong>Answer: (C) 1 and 5</strong></p>",
+    "no": 12,
+    "itemId": 98712,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A number is multiplied by 13 and 13 is added; the result is divisible by 5. Which is the smallest listed number possible?</p>",
+    "options": [
+      "<p>55</p>",
+      "<p>85</p>",
+      "<p>105</p>",
+      "<p>65</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "55",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> The condition is 13(n+1) divisible by 5, so n+1 is divisible by 5.</li><li><strong>Step 2 — Apply it:</strong> 55+1=56 satisfies the congruence and is the smallest offered value.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(A) 55</strong>.</li></ol><p><strong>Answer: (A) 55</strong></p>",
+    "no": 13,
+    "itemId": 98713,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>Two numbers differ by 2577. Dividing the larger by the smaller gives quotient 26 and remainder 2. Find the larger number.</p>",
+    "options": [
+      "<p>3680</p>",
+      "<p>2680</p>",
+      "<p>2660</p>",
+      "<p>2880</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2680",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Let the smaller be s, so the larger is 26s+2.</li><li><strong>Step 2 — Apply it:</strong> Then 25s+2=2577, giving s=103 and larger=2680.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(B) 2680</strong>.</li></ol><p><strong>Answer: (B) 2680</strong></p>",
+    "no": 14,
+    "itemId": 98714,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>The six-digit number 54321X is divisible by 9. Find X.</p>",
+    "options": [
+      "<p>3</p>",
+      "<p>0</p>",
+      "<p>2</p>",
+      "<p>4</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "3",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Use the digit-sum rule.</li><li><strong>Step 2 — Apply it:</strong> The known digits sum to 15; 15+X=18 gives X=3.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(A) 3</strong>.</li></ol><p><strong>Answer: (A) 3</strong></p>",
+    "no": 15,
+    "itemId": 98715,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>Find the least number to subtract from 103876 to obtain a multiple of 16.</p>",
+    "options": [
+      "<p>2</p>",
+      "<p>3</p>",
+      "<p>6</p>",
+      "<p>4</p>",
+      "<p>9</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "4",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Only the last four digits determine the remainder modulo 16.</li><li><strong>Step 2 — Apply it:</strong> 3876=16×242+4, so subtract 4.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) 4</strong>.</li></ol><p><strong>Answer: (D) 4</strong></p>",
+    "no": 16,
+    "itemId": 98716,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>In a division, the divisor is three times the quotient and six times the remainder. If the remainder is 46, find the dividend.</p>",
+    "options": [
+      "<p>19900</p>",
+      "<p>29056</p>",
+      "<p>19046</p>",
+      "<p>5364</p>",
+      "<p>25438</p>"
+    ],
+    "answer": 4,
+    "typedAnswer": "25438",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> The divisor is 6×46=276 and the quotient is <span class=\"frac\"><span>276</span><span>3</span></span>=92.</li><li><strong>Step 2 — Apply it:</strong> Dividend=276×92+46=25438.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(E) 25438</strong>.</li></ol><p><strong>Answer: (E) 25438</strong></p>",
+    "no": 17,
+    "itemId": 98717,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A number leaves remainder 79 on division by 961. What is its remainder on division by 31?</p>",
+    "options": [
+      "<p>11</p>",
+      "<p>13</p>",
+      "<p>15</p>",
+      "<p>17</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "17",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Since 961=31<sup>2</sup>, reduce the remainder modulo 31.</li><li><strong>Step 2 — Apply it:</strong> 79=31×2+17.</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(D) 17</strong>.</li></ol><p><strong>Answer: (D) 17</strong></p>",
+    "no": 18,
+    "itemId": 98718,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A number leaves remainder 3 on division by 5. What remainder does its square leave?</p>",
+    "options": [
+      "<p>4</p>",
+      "<p>6</p>",
+      "<p>9</p>",
+      "<p>2</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "4",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Square the residue modulo 5.</li><li><strong>Step 2 — Apply it:</strong> 3<sup>2</sup>=9≡4 (mod 5).</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(A) 4</strong>.</li></ol><p><strong>Answer: (A) 4</strong></p>",
+    "no": 19,
+    "itemId": 98719,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  },
+  {
+    "type": "mcq",
+    "question": "<p>A number leaves remainder 20 on division by 527. What is its remainder on division by 17?</p>",
+    "options": [
+      "<p>4</p>",
+      "<p>6</p>",
+      "<p>3</p>",
+      "<p>2</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "3",
+    "solution": "<p><strong>Detailed step-by-step solution:</strong></p><ol class=\"solution-steps\"><li><strong>Step 1 — Choose the rule:</strong> Since 527=17×31, reduce 20 modulo 17.</li><li><strong>Step 2 — Apply it:</strong> 20≡3 (mod 17).</li><li><strong>Step 3 — Conclude:</strong> Therefore the required answer is <strong>(C) 3</strong>.</li></ol><p><strong>Answer: (C) 3</strong></p>",
+    "no": 20,
+    "itemId": 98720,
+    "source": "Divisibility Rules | Uploaded question images",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": ""
+  }
+];
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D","E"];
+    let current = 0, submitted = false, secondsLeft = 40 * 60, timerId = null;
+    const optionFixQuestions = new Set();
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null)u++;else if(r)c++;else w++;});const score=c*3-w;resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
