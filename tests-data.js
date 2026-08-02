@@ -786,6 +786,48 @@ window.CAT_TESTS = [
     "questions": 27
   },
   {
+    "title": "CAT Time and Work PYQ - 75 Minute Test",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/7. Time & Work/CAT Time and Work PYQ - 75 Minute Test.html",
+    "original": "CAT Time and Work PYQ - 75 Minute Test.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "7. Time & Work"
+    ],
+    "minutes": 75,
+    "questions": 34
+  },
+  {
+    "title": "CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/8. Time Speed Distance/CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test.html",
+    "original": "CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "8. Time Speed Distance"
+    ],
+    "minutes": 75,
+    "questions": 24
+  },
+  {
+    "title": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test",
+    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/8. Time Speed Distance/CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
+    "original": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
+    "folders": [
+      "PYQ",
+      "Topic Wise",
+      "QA",
+      "Arithmetic",
+      "8. Time Speed Distance"
+    ],
+    "minutes": 75,
+    "questions": 23
+  },
+  {
     "title": "LRDI CAT 2017 SLOT -1 Set -1",
     "file": "tests/PYQ/Year Wise/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -1.html",
     "original": "LRDI CAT 2017 SLOT -1 Set -1.html",
@@ -4384,46 +4426,95 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
-    "title": "CAT Time and Work PYQ - 75 Minute Test",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/7. Time & Work/CAT Time and Work PYQ - 75 Minute Test.html",
-    "original": "CAT Time and Work PYQ - 75 Minute Test.html",
+    "title": "Divisibility Rules Test -1",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -1.html",
+    "original": "Divisibility Rules Test -1.html",
     "folders": [
-      "PYQ",
-      "Topic Wise",
+      "Topic Test",
       "QA",
-      "Arithmetic",
-      "7. Time & Work"
+      "Number System",
+      "2.Divisibility Rule"
     ],
-    "minutes": 75,
-    "questions": 34
+    "minutes": 40,
+    "questions": 20
   },
   {
-    "title": "CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/8. Time Speed Distance/CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test.html",
-    "original": "CAT Time, Speed & Distance PYQ - Part 1 - 75 Minute Test.html",
+    "title": "Divisibility Rules Test -2",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -2.html",
+    "original": "Divisibility Rules Test -2.html",
     "folders": [
-      "PYQ",
-      "Topic Wise",
+      "Topic Test",
       "QA",
-      "Arithmetic",
-      "8. Time Speed Distance"
+      "Number System",
+      "2.Divisibility Rule"
     ],
-    "minutes": 75,
-    "questions": 24
+    "minutes": 40,
+    "questions": 20
   },
   {
-    "title": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test",
-    "file": "tests/PYQ/Topic Wise/QA/Arithmetic/8. Time Speed Distance/CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
-    "original": "CAT Time, Speed & Distance PYQ - Part 2 - 75 Minute Test.html",
+    "title": "Divisibility Rules Test -3",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -3.html",
+    "original": "Divisibility Rules Test -3.html",
     "folders": [
-      "PYQ",
-      "Topic Wise",
+      "Topic Test",
       "QA",
-      "Arithmetic",
-      "8. Time Speed Distance"
+      "Number System",
+      "2.Divisibility Rule"
     ],
-    "minutes": 75,
-    "questions": 23
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Divisibility Rules Test -4",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -4.html",
+    "original": "Divisibility Rules Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Divisibility Rules Test -5",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -5.html",
+    "original": "Divisibility Rules Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Divisibility Rules Test -6",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -6.html",
+    "original": "Divisibility Rules Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "Divisibility Rules Test -7",
+    "file": "tests/Topic Test/QA/Number System/2.Divisibility Rule/Divisibility Rules Test -7.html",
+    "original": "Divisibility Rules Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Number System",
+      "2.Divisibility Rule"
+    ],
+    "minutes": 40,
+    "questions": 20
   }
 ];
 
