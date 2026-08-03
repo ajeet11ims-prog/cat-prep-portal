@@ -4527,5 +4527,18 @@
     ],
     "minutes": 40,
     "questions": 25
+  },
+  {
+    "title": "CL Jaipur Repeaters Batch - Venn Diagram -1",
+    "file": "tests/Topic Test/LRDI/DI/Set Theory/CL Jaipur Repeaters Batch - Venn Diagram (2).html",
+    "original": "CL Jaipur Repeaters Batch - Venn Diagram (2).html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Set Theory"
+    ],
+    "minutes": 40,
+    "questions": 15
   }
 ]
