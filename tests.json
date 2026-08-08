@@ -220,9 +220,117 @@
     "questions": 25
   },
   {
+    "title": "Arithmetic TSD Time Work Test 1",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_1.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_1.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 2",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_2.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_2.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 3",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_3.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_3.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 4",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_4.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_4.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 5",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_5.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_5.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 6",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_6.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_6.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 7",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_7.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_7.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
+    "title": "Arithmetic TSD Time Work Test 8",
+    "file": "tests/Area Wise Test/QA/Arithmetic/Arithmetic_TSD_Time_Work_Test_8.html",
+    "original": "Arithmetic_TSD_Time_Work_Test_8.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 60,
+    "questions": 25
+  },
+  {
     "title": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions)",
     "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
     "original": "CL Jaipur Repeaters Batch - Arithmetic Test 1 (25 Questions).html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Arithmetic"
+    ],
+    "minutes": 40,
+    "questions": 25
+  },
+  {
+    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions)",
+    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions).html",
+    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions).html",
     "folders": [
       "Area Wise Test",
       "QA",
@@ -2729,6 +2837,19 @@
     "minutes": 40
   },
   {
+    "title": "CL Jaipur Repeaters Batch - Venn Diagram -1",
+    "file": "tests/Topic Test/LRDI/DI/Set Theory/CL Jaipur Repeaters Batch - Venn Diagram (2).html",
+    "original": "CL Jaipur Repeaters Batch - Venn Diagram (2).html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Set Theory"
+    ],
+    "minutes": 40,
+    "questions": 15
+  },
+  {
     "title": "DI - Table Test -5",
     "file": "tests/Topic Test/LRDI/DI/Table/DI - Table test -5.html",
     "original": "DI - Table test -5.html",
@@ -4515,30 +4636,5 @@
     ],
     "minutes": 40,
     "questions": 20
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions)",
-    "file": "tests/Area Wise Test/QA/Arithmetic/CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions).html",
-    "original": "CL Jaipur Repeaters Batch - Arithmetic Test 2 (25 Questions).html",
-    "folders": [
-      "Area Wise Test",
-      "QA",
-      "Arithmetic"
-    ],
-    "minutes": 40,
-    "questions": 25
-  },
-  {
-    "title": "CL Jaipur Repeaters Batch - Venn Diagram -1",
-    "file": "tests/Topic Test/LRDI/DI/Set Theory/CL Jaipur Repeaters Batch - Venn Diagram (2).html",
-    "original": "CL Jaipur Repeaters Batch - Venn Diagram (2).html",
-    "folders": [
-      "Topic Test",
-      "LRDI",
-      "DI",
-      "Set Theory"
-    ],
-    "minutes": 40,
-    "questions": 15
   }
 ]
