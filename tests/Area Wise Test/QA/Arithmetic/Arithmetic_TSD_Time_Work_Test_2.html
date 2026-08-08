@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic (TSD, Time & Work) - Test 2</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Arithmetic (TSD, Time & Work) - Test 2 | Professional Math Layout | 19 MCQ + 6 TITA -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Arithmetic (TSD, Time & Work) - Test 2</h1><div class="meta">25 Questions | 60 Minutes | 19 MCQ + 6 TITA | +3 correct | −1 wrong MCQ | 0 wrong TITA</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 2001,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 26",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A typist had to type 360 pages of matter. By typing daily 4 pages more than what he had planned, the work was completed one day ahead of the schedule. For how many days did he work on the job?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "9",
+    "acceptedAnswers": [
+      "9"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the planned daily typing be x pages. Planned days = <span class=\"frac\"><span>360</span><span>x</span></span> and actual days = <span class=\"frac\"><span>360</span><span>(x+4)</span></span>.</li><li>The work finished one day early: <span class=\"frac\"><span>360</span><span>x</span></span> - <span class=\"frac\"><span>360</span><span>(x+4)</span></span> = 1.</li><li>Solving x(x+4)=1440 gives x=36.</li><li>Actual rate = 40 <span class=\"frac\"><span>pages</span><span>day</span></span>, so actual working days = <span class=\"frac\"><span>360</span><span>40</span></span> = 9.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 2002,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 27",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two ants start from a point A on circular path of circumference 1100 m. Both ants can show two types of motion. First ant can travel at the speed of 2 meters a minute and then takes rest for 2 minutes, or it can cover 3 meters in 2 minutes and then takes rest for 1 minute. Whereas, second ant can travel at the speed of 2 meters in 2 minutes and takes rest for 1 minute or it can cover 2 meters in three minutes without any rest. If each ant wants to reach back to the starting point A in the least possible time, then how long will the first ant take to complete a full circle?</p>",
+    "options": [
+      "<p>18 hours 19 minutes</p>",
+      "<p>18 hours</p>",
+      "<p>18 hours 20 minutes</p>",
+      "<p>18 hours 5 minutes</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "18 hours 19 minutes",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>For the first ant, compare the two modes over a complete movement-rest cycle.</li><li>Mode 1: 2 m in 1 min, then rest 2 min → 2 m in 3 min. Mode 2: 3 m in 2 min, rest 1 min → 3 m in 3 min, so mode 2 is faster.</li><li>Using repeated 3-min cycles, the ant covers 3 m per cycle. For 1100 m it needs 366 complete cycles for 1098 m, taking 1098 min, then 2 m more in <span class=\"frac\"><span>4</span><span>3</span></span> min.</li><li>Total = 1099 <span class=\"frac\"><span>1</span><span>3</span></span> min = 18 h 19 min 20 s, which corresponds to 18 h 19 min.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 2003,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 28",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two riders on horseback with a gun and a bulletproof shield were moving towards each other at a constant speed of 25 <span class=\"frac\"><span>km</span><span>h</span></span> and 5 <span class=\"frac\"><span>km</span><span>h</span></span> respectively. When they were 300 km apart, they started firing bullets at each other with the speed of the fired bullets being 2000 <span class=\"frac\"><span>km</span><span>h</span></span>. When a bullet fired by rider 1 hit the shield of rider 2, rider 2 fired a bullet and vice versa and the process continued like this. Neglecting the time spent between the instant at which the bullet hits the shield and the rider fires the shot, find the total distance (in km) covered by all the bullets shot by both the riders.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20000",
+    "acceptedAnswers": [
+      "20000"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>The two riders are 300 km apart and ride toward each other at 25 and 5 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li>They meet after <span class=\"frac\"><span>300</span><span>(25+5)</span></span> = 10 h.</li><li>The bullet keeps flying during the entire 10 h at 2000 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li>Total distance flown = 2000×10 = 20000 km.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 2004,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 29",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A and B together can do a piece of work in 15 days. A alone can do the same work in 60 days. A and B work together on the work for 9 days at their original efficiency. After that B’s efficiency reduces by 33.33% and A keeps working at his original efficiency. In how many days will they complete the remaining work?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>20</span><span>3</span></span></p>",
+      "<p>8</p>",
+      "<p>6</p>",
+      "<p>7</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "8",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>A and B together finish in 15 days, so their rate is <span class=\"frac\"><span>1</span><span>15</span></span>. A alone takes 60 days, so B's rate = <span class=\"frac\"><span>1</span><span>15</span></span>-<span class=\"frac\"><span>1</span><span>60</span></span> = <span class=\"frac\"><span>1</span><span>20</span></span>.</li><li>In the first 9 days at normal rates, they complete <span class=\"frac\"><span>9</span><span>15</span></span> = <span class=\"frac\"><span>3</span><span>5</span></span> of the job. Remaining = <span class=\"frac\"><span>2</span><span>5</span></span>.</li><li>After the change, B works at <span class=\"frac\"><span>2</span><span>3</span></span> of normal efficiency, so new B rate = (<span class=\"frac\"><span>2</span><span>3</span></span>)(<span class=\"frac\"><span>1</span><span>20</span></span>)=<span class=\"frac\"><span>1</span><span>30</span></span>. New joint rate = <span class=\"frac\"><span>1</span><span>60</span></span>+<span class=\"frac\"><span>1</span><span>30</span></span>=<span class=\"frac\"><span>1</span><span>20</span></span>.</li><li>Time for remaining <span class=\"frac\"><span>2</span><span>5</span></span> = (<span class=\"frac\"><span>2</span><span>5</span></span>)/(<span class=\"frac\"><span>1</span><span>20</span></span>) = 8 days.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 2005,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 30",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Twenty seven men can complete a piece of work in 21 days working 6 hrs a day. In how many days 18 women working 9 hrs a day can complete twice the amount of work if each women is 50% more efficient than a man?</p>",
+    "options": [
+      "<p>34 days</p>",
+      "<p>42 days</p>",
+      "<p>28 days</p>",
+      "<p>14 days</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "28",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Original work = 27 workers × 21 days × 6 <span class=\"frac\"><span>h</span><span>day</span></span> = 3402 worker-hours.</li><li>Required work is twice this = 6804 worker-hours.</li><li>The new group has 18 women working 9 <span class=\"frac\"><span>h</span><span>day</span></span> at 1.5 times the original worker efficiency, so effective work per day = 18×9×1.5 = 243 worker-hours.</li><li>Days required = <span class=\"frac\"><span>6804</span><span>243</span></span> = 28.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 2006,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 31",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A boat can travel at 32 <span class=\"frac\"><span>km</span><span>h</span></span> in still water. The speed of stream is 4 <span class=\"frac\"><span>km</span><span>h</span></span>. The boat takes 135 minutes to cover a certain distance upstream. The time (in minute) taken by the boat to cover the same distance downstream is</p>",
+    "options": [
+      "<p>94.5</p>",
+      "<p>105</p>",
+      "<p>108.25</p>",
+      "<p>120</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "105",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Upstream speed = 32-4 = 28 <span class=\"frac\"><span>km</span><span>h</span></span>. In 2 h 15 min = 2.25 h, distance = 28×2.25 = 63 km.</li><li>Downstream speed = 32+4 = 36 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li>Return time = <span class=\"frac\"><span>63</span><span>36</span></span> = 1.75 h = 105 min.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 2007,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 32",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A is 20% more efficient than B and takes 40 days less than what B takes to complete a particular job. B is 50% more efficient than C. On the same job, A works for 50 days and quits, then B takes over and works for 120 days and quits. C completed the remaining work. Find the number of days taken by C to complete the remaining work.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "90",
+    "acceptedAnswers": [
+      "90"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>A:B efficiency = 6:5, so if A takes 200 days, B takes 240 days because their times are inverse to rates.</li><li>Since B:C efficiency = 3:2, C's time = 240×<span class=\"frac\"><span>3</span><span>2</span></span> = 360 days.</li><li>Work done by A in 50 days = <span class=\"frac\"><span>50</span><span>200</span></span>=<span class=\"frac\"><span>1</span><span>4</span></span> and by B in 120 days = <span class=\"frac\"><span>120</span><span>240</span></span>=<span class=\"frac\"><span>1</span><span>2</span></span>.</li><li>Remaining work = <span class=\"frac\"><span>1</span><span>4</span></span>; C needs (<span class=\"frac\"><span>1</span><span>4</span></span>)×360 = 90 days.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 2008,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 33",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A, B, C start from the same point on a linear track and travel in the same direction at constant speeds. The ratio of speeds of A, B and C is 3 : 4: 6. The ratio of time taken by B and C to overtake A from the time after they start is 2: 3.B and C started X and Y hours respectively after A's start. What is the ratio X : Y?</p>",
+    "options": [
+      "<p>1:3</p>",
+      "<p>2:9</p>",
+      "<p>1:2</p>",
+      "<p>None of these</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "2:9",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A's head starts for B and C be X and Y respectively. Speeds are A=3, B=4, C=6 in proportional units.</li><li>B catches A after <span class=\"frac\"><span>3X</span><span>(4-3)</span></span>=3X time units.</li><li>C catches A after <span class=\"frac\"><span>3Y</span><span>(6-3)</span></span>=Y time units.</li><li>Given these catch times are in ratio 2:3, 3X:Y=2:3, hence X:Y = 2:9.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 2009,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 34",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>There are two concentric circular tracks of radii 100 metres and 102 metres respectively. A runs on the inner track and completes one round in 1 minute and 30 seconds; while B runs on the outer track and completes one round in 1 minute and 32 seconds, Find the ratio of speed of A to that of B.</p>",
+    "options": [
+      "<p>460: 459</p>",
+      "<p>230: 229</p>",
+      "<p>400 : 469</p>",
+      "<p>360: 359</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "460:459",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>On the same circular track, speed is proportional to circumference divided by lap time.</li><li>The speed ratio is (<span class=\"frac\"><span>100</span><span>90</span></span>):(<span class=\"frac\"><span>102</span><span>92</span></span>).</li><li>Simplifying gives 100×92 : 102×90 = 9200:9180 = 460:459.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 2010,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 35",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Amesh starts walking from point A at 3 p.m and reaches point B at 6 p.m. without stopping anywhere. P is a point between A and B. The time taken to reach point P from point A is 50 minutes more than four times the time taken to reach point B from point P. Time taken by Amesh to reach point B from point P is</p>",
+    "options": [
+      "<p>30 minutes</p>",
+      "<p>26 minutes</p>",
+      "<p>45 minutes</p>",
+      "<p>60 minutes</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "26",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let PB take t minutes. The statement gives AP = 4t+50 minutes.</li><li>Since the total time is 180 min, t + (4t+50)=180.</li><li>Thus 5t=130 and t=26 minutes.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 2011,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 36",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two pipes working simultaneously can empty a full tank in 30 minutes. Another pipe can fill the tank in 25 minutes. If all the three pipes are working together, then after 30 minutes what fraction of the tank will be filled?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>2</span><span>5</span></span></p>",
+      "<p><span class=\"frac\"><span>1</span><span>5</span></span></p>",
+      "<p><span class=\"frac\"><span>5</span><span>6</span></span></p>",
+      "<p><span class=\"frac\"><span>2</span><span>3</span></span></p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "1/5",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Filling tap rate = <span class=\"frac\"><span>1</span><span>25</span></span> <span class=\"frac\"><span>tank</span><span>min</span></span>. The two emptying pipes together empty in 30 min, so their combined rate = <span class=\"frac\"><span>1</span><span>30</span></span>.</li><li>Net rate = <span class=\"frac\"><span>1</span><span>25</span></span> - <span class=\"frac\"><span>1</span><span>30</span></span> = <span class=\"frac\"><span>1</span><span>150</span></span> <span class=\"frac\"><span>tank</span><span>min</span></span>.</li><li>In 30 min, fraction filled = <span class=\"frac\"><span>30</span><span>150</span></span> = <span class=\"frac\"><span>1</span><span>5</span></span>.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 2012,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 37",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A man completes a journey in 10 hours. He travels the first half of the journey at 21 <span class=\"frac\"><span>km</span><span>h</span></span> and the second half at 24 <span class=\"frac\"><span>km</span><span>h</span></span>. Find the total distance covered by him.</p>",
+    "options": [
+      "<p>220</p>",
+      "<p>224</p>",
+      "<p>230</p>",
+      "<p>234</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "224",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let half the distance be d km. One half is covered at 21 <span class=\"frac\"><span>km</span><span>h</span></span> and the other at 24 <span class=\"frac\"><span>km</span><span>h</span></span>, with total time 10 h.</li><li><span class=\"frac\"><span>d</span><span>21</span></span> + <span class=\"frac\"><span>d</span><span>24</span></span> = 10.</li><li>d(<span class=\"frac\"><span>45</span><span>504</span></span>)=10, so d=112 km.</li><li>Total distance = 2d = 224 km.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 2013,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 38",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two trains A and B are running in opposite directions. They both take 4 seconds to pass a man standing on a platform. How much time will they take to pass each other?</p>",
+    "options": [
+      "<p>2 seconds</p>",
+      "<p>4 seconds</p>",
+      "<p>8 seconds</p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "4",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the trains have speeds u and v. Each train crosses a pole in 4 s, so their lengths are 4u and 4v.</li><li>When they cross each other in opposite directions, total length = 4u+4v and relative speed = u+v.</li><li>Time = (4u+4v)/(u+v)=4 s.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 2014,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 39",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A ship develops a leak 12 km from the shore. Despite the leak, the ship is able to move towards the shore at a speed of 8 <span class=\"frac\"><span>km</span><span>h</span></span>. However, the ship can stay afloat only for 20 minutes. If a rescue vessel were to leave from the shore towards the ship and it takes 4 minutes to evacuate the crew and passengers of the ship, what should be the minimum speed of the rescue vessel in order to be able to successfully rescue the people aboard the ship (Assume that water is still)?</p>",
+    "options": [
+      "<p>33 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>27 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>42 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>37 <span class=\"frac\"><span>km</span><span>hr</span></span></p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "37",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>The ship will sink 20 minutes after the signal; evacuation itself needs 4 minutes, so the rescue boat must reach it within 16 minutes = <span class=\"frac\"><span>4</span><span>15</span></span> h.</li><li>The ship and rescue boat move toward each other; their separation is 12 km and ship speed is 8 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li><span class=\"frac\"><span>12</span><span>(v+8)</span></span>=<span class=\"frac\"><span>4</span><span>15</span></span>.</li><li>Thus v+8=45 and v=37 <span class=\"frac\"><span>km</span><span>h</span></span>.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 2015,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 40",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A certain number of students were standing in front of a gate in a single row at a distance of 20 meter each. Virat started distributing chocolates one by one to the students. The student standing first in the row is also 20 meters away from the gate. Virat carried only one chocolate at a time and returned to the gate after giving chocolate to each student including the last student. If he travelled 2.2 km, find the number of students in the row?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [
+      "10"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Suppose there are n students, with the first student walking 20 m, the second 40 m, and so on, each making an out-and-back trip.</li><li>Total distance = 2×20(1+2+...+n)=40×n<span class=\"frac\"><span>(n+1)</span><span>2</span></span> = 20n(n+1).</li><li>Given total distance 2200 m: 20n(n+1)=2200, so n(n+1)=110.</li><li>n=10.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 2016,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 41",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Each of A, B and C, working alone, can complete a piece of work in 10 days, 20 days and 30 days respectively. They work in such a manner that on the 1st day A and B work, on the 2nd day B and C work, and on the 3rd day C and A work. If the work is continued in the same sequence, then on which day will the work be completed and who will complete it?</p>",
+    "options": [
+      "<p>9th day, B and C</p>",
+      "<p>9th day, C and A</p>",
+      "<p>10th day, A and B</p>",
+      "<p>8th day, B and C</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "9th day",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Rates are A=<span class=\"frac\"><span>1</span><span>10</span></span>, B=<span class=\"frac\"><span>1</span><span>15</span></span> and C=<span class=\"frac\"><span>1</span><span>20</span></span>.</li><li>In one 3-day cycle AB, BC, CA, work done = (<span class=\"frac\"><span>1</span><span>10</span></span>+<span class=\"frac\"><span>1</span><span>15</span></span>)+(<span class=\"frac\"><span>1</span><span>15</span></span>+<span class=\"frac\"><span>1</span><span>20</span></span>)+(<span class=\"frac\"><span>1</span><span>20</span></span>+<span class=\"frac\"><span>1</span><span>10</span></span>)=<span class=\"frac\"><span>11</span><span>30</span></span>.</li><li>After 6 days, <span class=\"frac\"><span>11</span><span>15</span></span> is done. Day 7 (AB) takes total to <span class=\"frac\"><span>53</span><span>60</span></span>; day 8 (BC) takes it to <span class=\"frac\"><span>58</span><span>60</span></span>.</li><li>The remaining <span class=\"frac\"><span>2</span><span>60</span></span> is completed on day 9 when C and A work. So it finishes on the 9th day.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 2017,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 42",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>The distance between Melbourne and Sydney is 600 km. Mark leaves by car at 1:00 a.m. and travels at 50 <span class=\"frac\"><span>km</span><span>h</span></span> for the first 6 hours. He completes the remaining journey at 100 <span class=\"frac\"><span>km</span><span>h</span></span>. Mark returns at an average speed of 80 <span class=\"frac\"><span>km</span><span>h</span></span>. How much less time does the return journey take?</p>",
+    "options": [
+      "<p>1 hour more</p>",
+      "<p>1.5 hours more</p>",
+      "<p>1.5 hours less</p>",
+      "<p>1 hour less</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "1.5",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>For the outward journey, 300 km at 50 <span class=\"frac\"><span>km</span><span>h</span></span> and 300 km at 100 <span class=\"frac\"><span>km</span><span>h</span></span> take 6+3=9 h.</li><li>For the return 600 km at 80 <span class=\"frac\"><span>km</span><span>h</span></span> takes 7.5 h.</li><li>The return is 9-7.5 = 1.5 h less.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 2018,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 43",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A group comprising certain number of men can complete a job in 4 days. But it so happens that on every alternate day starting from the second day, 3 men are withdrawn from the job and every alternate day starting from the third day 2 men are added to the group. If the job is completed in 7 days, find the number of workers who started the job.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "6",
+    "acceptedAnswers": [
+      "6"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the initial number of workers be N. According to the stated day-wise changes, workers for days 1 to 7 are N, N-3, N-1, N-4, N-2, N-5, N-3.</li><li>Their total worker-days = 7N-18.</li><li>This equals the work of N workers for 4 days, i.e. 4N.</li><li>7N-18=4N gives N=6.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 2019,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 44",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Tap A can fill a tank in 10 hours, B in 12 hours and tap C can empty a full tank in 25 hours. Starting with A, followed by B, andC, each tap opens alternatively for one hour period till the tank gets filled up completely. For how many hours B worked in filling up the tank?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>85</span><span>12</span></span> hours</p>",
+      "<p>5 hours</p>",
+      "<p><span class=\"frac\"><span>11</span><span>12</span></span> hours</p>",
+      "<p><span class=\"frac\"><span>162</span><span>25</span></span> hours</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "162/25",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Tap A rate = <span class=\"frac\"><span>1</span><span>10</span></span>, B rate = <span class=\"frac\"><span>1</span><span>12</span></span>, and C empties at <span class=\"frac\"><span>1</span><span>25</span></span> <span class=\"frac\"><span>tank</span><span>h</span></span>.</li><li>In one 3-hour A→B→C cycle, net work = <span class=\"frac\"><span>1</span><span>10</span></span>+<span class=\"frac\"><span>1</span><span>12</span></span>-<span class=\"frac\"><span>1</span><span>25</span></span> = <span class=\"frac\"><span>43</span><span>300</span></span>.</li><li>After 6 full cycles (18 h), tank level = 6×<span class=\"frac\"><span>43</span><span>300</span></span> = <span class=\"frac\"><span>258</span><span>300</span></span>. Hour 19 is A, taking it to <span class=\"frac\"><span>288</span><span>300</span></span>.</li><li>Only <span class=\"frac\"><span>12</span><span>300</span></span> remains when B opens. B's rate is <span class=\"frac\"><span>25</span><span>300</span></span> per hour, so B works <span class=\"frac\"><span>12</span><span>25</span></span> h in this final turn. Total B time = 6+<span class=\"frac\"><span>12</span><span>25</span></span> = <span class=\"frac\"><span>162</span><span>25</span></span> h.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 2020,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 45",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Three persons A, B and C, working together can complete a work in 12 days. The time taken to complete the same work by A is twice of the time taken by B, and thrice of the time taken by C. If these three work alternatively for first 6 days, then in how many days can B complete the remaining work?</p>",
+    "options": [
+      "<p>25</p>",
+      "<p>30</p>",
+      "<p>20</p>",
+      "<p>35</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "30",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let the individual times be 6x, 3x and 2x days. Their combined rate is <span class=\"frac\"><span>1</span><span>(6x)</span></span>+<span class=\"frac\"><span>1</span><span>(3x)</span></span>+<span class=\"frac\"><span>1</span><span>(2x)</span></span>=<span class=\"frac\"><span>1</span><span>x</span></span>.</li><li>Since all three together take 12 days, x=12. Thus A, B and C alone take 72, 36 and 24 days.</li><li>In the first 6 alternating days A,B,C,A,B,C, work done = 2(<span class=\"frac\"><span>1</span><span>72</span></span>+<span class=\"frac\"><span>1</span><span>36</span></span>+<span class=\"frac\"><span>1</span><span>24</span></span>)=<span class=\"frac\"><span>1</span><span>6</span></span>.</li><li>Remaining work = <span class=\"frac\"><span>5</span><span>6</span></span>. If B now completes it alone, time = (<span class=\"frac\"><span>5</span><span>6</span></span>)×36 = 30 days.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 2021,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 46",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Rajkishor can do a piece of work in 10 days working 8 hrs per day. Brijkishor, who is a friend of Rajkishor, is two-thirds as efficient as Rajkishor. If the two work alternately, without a break, for one hour each, how long (in hours) will it take to complete the work?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "96",
+    "acceptedAnswers": [
+      "96"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Take total work as 80 Raj-hours because Raj alone can finish in 80 h.</li><li>The other worker's efficiency is <span class=\"frac\"><span>2</span><span>3</span></span> of Raj's. In every 2-hour pair, one hour by Raj plus one hour by the other completes 1 + <span class=\"frac\"><span>2</span><span>3</span></span> = <span class=\"frac\"><span>5</span><span>3</span></span> Raj-hours.</li><li>Number of such pairs needed = <span class=\"frac\"><span>80</span><span>(<span class=\"frac\"><span>5</span><span>3</span></span>)</span></span>=48.</li><li>Total elapsed time = 48×2 = 96 h.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 2022,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 47",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Twenty workers can complete a piece of work in 15 days. All start together, but on every alternate day starting from the 2nd day some workers do not turn up: 2 workers are absent on day 2, 4 on day 4, 6 on day 6, and so on. In how many days is the work completed?</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>61</span><span>3</span></span></p>",
+      "<p><span class=\"frac\"><span>41</span><span>2</span></span></p>",
+      "<p>20</p>",
+      "<p>21</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "41/2",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Total work = 20 workers × 15 days = 300 worker-days.</li><li>Under the stated pattern, work in the first 20 days is 290 worker-days.</li><li>Only 10 worker-days remain. On day 21, 20 workers are available.</li><li>They need <span class=\"frac\"><span>10</span><span>20</span></span> = <span class=\"frac\"><span>1</span><span>2</span></span> day, so completion time = 20.5 days = <span class=\"frac\"><span>41</span><span>2</span></span> days.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 2023,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 48",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Anushka and Anirudh working together can complete a piece of work in 20 days. They started the work together, but Anushka left after x days and Anirudh finished the remaining work in the next <span class=\"frac\"><span>x</span><span>2</span></span> days. Had Anushka left after <span class=\"frac\"><span>3x</span><span>4</span></span> days, Anirudh would have taken x days to finish the remaining work. Find the ratio of the efficiency of Anushka to that of Anirudh.</p>",
+    "options": [
+      "<p>2:3</p>",
+      "<p>3:2</p>",
+      "<p>2:1</p>",
+      "<p>1:1</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "1:1",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let rates of Anushka and Anirudh be a and b. Together, a+b=<span class=\"frac\"><span>1</span><span>20</span></span>.</li><li>First situation: x(a+b)+(<span class=\"frac\"><span>x</span><span>2</span></span>)b=1.</li><li>Second situation: (<span class=\"frac\"><span>3x</span><span>4</span></span>)(a+b)+xb=1.</li><li>Subtracting the two equations and using a+b=<span class=\"frac\"><span>1</span><span>20</span></span> gives a=b. Hence their efficiency ratio is 1:1.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 2024,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 49",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Train X traveling at 120 <span class=\"frac\"><span>km</span><span>h</span></span> takes 31 seconds to cross a platform and 4 seconds to cross an electric pole. What is the length of the platform?</p>",
+    "options": [
+      "<p>1.2 km</p>",
+      "<p>1 km</p>",
+      "<p>0.9 km</p>",
+      "<p>0.8 km</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "0.9",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Train speed = 120 <span class=\"frac\"><span>km</span><span>h</span></span> = <span class=\"frac\"><span>100</span><span>3</span></span> <span class=\"frac\"><span>m</span><span>s</span></span>.</li><li>If it crosses a pole in 4 s, train length = (<span class=\"frac\"><span>100</span><span>3</span></span>)×4 = <span class=\"frac\"><span>400</span><span>3</span></span> m.</li><li>In 31 s the train covers (<span class=\"frac\"><span>100</span><span>3</span></span>)×31 = <span class=\"frac\"><span>3100</span><span>3</span></span> m, equal to train length + platform length.</li><li>Platform length = <span class=\"frac\"><span>(3100-400)</span><span>3</span></span> = 900 m = 0.9 km.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 2025,
+    "source": "Arithmetic (TSD, Time & Work) | Test 2 | Source Page 50",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Ramcharan drove to Phoenix Mall from his villa at a speed of 10 <span class=\"frac\"><span>m</span><span>s</span></span>. While returning to his villa, he drove at a speed of 18 <span class=\"frac\"><span>km</span><span>h</span></span>. The total travel time was 3 hours. Find the distance between his villa and Phoenix Mall.</p>",
+    "options": [
+      "<p>72km</p>",
+      "<p>) 18km</p>",
+      "<p>36km</p>",
+      "<p>&gt;in</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "36",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Speed 10 <span class=\"frac\"><span>m</span><span>s</span></span> = 36 <span class=\"frac\"><span>km</span><span>h</span></span>. Let one-way distance be d km.</li><li>Travel time one way at 36 <span class=\"frac\"><span>km</span><span>h</span></span> and return at 18 <span class=\"frac\"><span>km</span><span>h</span></span> totals 3 h: <span class=\"frac\"><span>d</span><span>36</span></span>+<span class=\"frac\"><span>d</span><span>18</span></span>=3.</li><li>d(<span class=\"frac\"><span>1</span><span>36</span></span>+<span class=\"frac\"><span>2</span><span>36</span></span>)=3, so <span class=\"frac\"><span>d</span><span>12</span></span>=3 and d=36 km.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    function cleanOptionHtml(html){return html;}
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'><div class="typed-answer-hint">TITA: type the numerical/value answer. No negative marking.</div>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null){u++;}else if(r){c++;score+=3;}else{w++;if(q.type==="mcq")score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
