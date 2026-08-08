@@ -2394,6 +2394,330 @@ window.CAT_TESTS = [
     "minutes": 15
   },
   {
+    "title": "DI Line Graph Test -7",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -7.html",
+    "original": "DI Line Graph Test -7.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -8",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -8.html",
+    "original": "DI Line Graph Test -8.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -9",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -9.html",
+    "original": "DI Line Graph Test -9.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -10",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -10.html",
+    "original": "DI Line Graph Test -10.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -11",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -11.html",
+    "original": "DI Line Graph Test -11.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -12",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -12.html",
+    "original": "DI Line Graph Test -12.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -13",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -13.html",
+    "original": "DI Line Graph Test -13.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -14",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -14.html",
+    "original": "DI Line Graph Test -14.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -15",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -15.html",
+    "original": "DI Line Graph Test -15.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -16",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -16.html",
+    "original": "DI Line Graph Test -16.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -17",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -17.html",
+    "original": "DI Line Graph Test -17.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -18",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -18.html",
+    "original": "DI Line Graph Test -18.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -19",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -19.html",
+    "original": "DI Line Graph Test -19.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -20",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -20.html",
+    "original": "DI Line Graph Test -20.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -21",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -21.html",
+    "original": "DI Line Graph Test -21.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -22",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -22.html",
+    "original": "DI Line Graph Test -22.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -23",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -23.html",
+    "original": "DI Line Graph Test -23.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -24",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -24.html",
+    "original": "DI Line Graph Test -24.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -25",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -25.html",
+    "original": "DI Line Graph Test -25.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -26",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -26.html",
+    "original": "DI Line Graph Test -26.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -27",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -27.html",
+    "original": "DI Line Graph Test -27.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -28",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -28.html",
+    "original": "DI Line Graph Test -28.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -29",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -29.html",
+    "original": "DI Line Graph Test -29.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -30",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -30.html",
+    "original": "DI Line Graph Test -30.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -31",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -31.html",
+    "original": "DI Line Graph Test -31.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -32",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -32.html",
+    "original": "DI Line Graph Test -32.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
+    "title": "DI Line Graph Test -33",
+    "file": "tests/Topic Test/LRDI/DI/Line Graph/DI Line Graph Test -33.html",
+    "original": "DI Line Graph Test -33.html",
+    "folders": [
+      "Topic Test",
+      "LRDI",
+      "DI",
+      "Line Graph"
+    ],
+    "minutes": 15
+  },
+  {
     "title": "DILR -Network & 3D diagram -1",
     "file": "tests/Topic Test/LRDI/DI/Network & 3D Graph/DILR - Network & 3D diagram -1.html",
     "original": "DILR - Network & 3D diagram -1.html",
