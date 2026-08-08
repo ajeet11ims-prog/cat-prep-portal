@@ -2355,8 +2355,7 @@ window.CAT_TESTS = [
       "DI",
       "Line Graph"
     ],
-    "minutes": 30,
-    "questions": 20
+    "minutes": 25
   },
   {
     "title": "DI Line Graph Test -4",
@@ -2368,8 +2367,7 @@ window.CAT_TESTS = [
       "DI",
       "Line Graph"
     ],
-    "minutes": 35,
-    "questions": 15
+    "minutes": 35
   },
   {
     "title": "DI Line Graph Test -5",
@@ -2381,8 +2379,7 @@ window.CAT_TESTS = [
       "DI",
       "Line Graph"
     ],
-    "minutes": 25,
-    "questions": 20
+    "minutes": 25
   },
   {
     "title": "DI Line Graph Test -6",
@@ -2394,8 +2391,7 @@ window.CAT_TESTS = [
       "DI",
       "Line Graph"
     ],
-    "minutes": 45,
-    "questions": 20
+    "minutes": 15
   },
   {
     "title": "DILR -Network & 3D diagram -1",
