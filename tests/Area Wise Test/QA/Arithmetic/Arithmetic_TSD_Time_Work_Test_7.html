@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arithmetic (TSD, Time & Work) - Test 7</title>
+  <style>
+    :root{--ink:#101820;--muted:#5f6f7a;--line:#b8c3cc;--brand:#0b75bb;--brand-dark:#24313a;--brand-mid:#4089c8;--soft:#dff3fb;--ok:#60b947;--bad:#e55b25;--review:#7b4ab0;--paper:#fff;--bg:#eef3f7}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;overflow:hidden} img{max-width:100%;height:auto}
+    header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 18px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#dce9ef;margin-top:6px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}
+    main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}main>section{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c}main>aside:first-child{grid-column:2;grid-row:1}.panel,.question-card,#result{background:var(--paper);border:0;border-radius:0}.panel{padding:14px;align-self:stretch;position:static;background:#e5f6fc} .calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee}.calc-wrap.open{display:block}.panel h2{font-size:18px;margin:0 -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.question-palette-panel{display:flex;flex-direction:column}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+    .qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qbtn{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qbtn.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qbtn.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qbtn.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%}.legend{display:grid;gap:10px;margin-top:18px;font-size:15px;color:#26333d}.dot{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.dot.current{background:#e85b21;border-color:#c84815}.dot.answered{background:#72bd3b;border-color:#4f9727}.dot.marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}
+    .question-card{height:100%;overflow:auto;padding:0 0 74px;background:#fff}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:none}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px}.qtext p,.block p,.option p{margin:0 0 10px}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover .opt-text{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25)}.option .opt-label,.option .opt-text{font-weight:700}.option .opt-text{display:inline-block;color:#202a32}.typed-answer{width:min(420px,100%);font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin-left:24px}.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;align-items:center;justify-content:flex-end;margin:0;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button,.submit{border:1px solid #b6c1ca;border-radius:2px;padding:11px 18px;font-size:16px;font-weight:700;cursor:pointer;background:#fff;color:#2f3b44}.submit{background:#29a8df!important;color:#fff!important;border-color:#198fc0!important}.mark{background:#fff!important;color:#2f3b44!important}.solution{display:none;margin:16px 24px 0;padding-top:14px;border-top:1px solid var(--line);font-size:17px}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:8px 0 0 20px;padding:0}.solution-steps li{margin:6px 0}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:var(--muted)}#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}
+    .calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title:active{cursor:grabbing}.calc-title-actions{display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{width:27px;height:27px;border:0;background:#4a8fd0;color:#fff;border-radius:2px;cursor:pointer;font-weight:800;font-size:26px;line-height:24px}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block;flex:0 0 auto}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2;color:#555}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}.calc-help{display:none}
+
+    .math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600;white-space:nowrap}
+    .frac{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif}
+    .typed-answer-hint{font-size:13px;color:#5f6f7a;margin:8px 24px 0;font-weight:700}
+
+    @media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto}.panel,main>section,main>aside:first-child{grid-column:1;grid-row:auto;position:static}.calc-wrap{top:90px;left:12px;right:auto}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{height:auto;min-height:70vh;padding-bottom:16px}.navrow{position:static;right:auto}.score-grid{grid-template-columns:1fr 1fr}}
+
+    body.submitted-mode{overflow:auto;}
+    body.submitted-mode main{height:auto;min-height:calc(100vh - 84px);align-items:start;}
+    body.submitted-mode main>section{min-height:0;border-right:2px solid #41515c;overflow:visible;}
+    body.submitted-mode .question-card{height:auto;min-height:calc(100vh - 84px);overflow:visible;padding-bottom:120px;}
+    body.submitted-mode .solution{display:block;max-width:980px;line-height:1.55;}
+    body.submitted-mode .solution .block{border-bottom:0;padding-left:0;padding-right:0;}
+    body.submitted-mode .navrow{position:sticky;left:auto;right:auto;bottom:0;z-index:40;}
+
+    /* Scroll support for laptop/desktop screens */
+    html,body{overflow:auto!important;}
+    body{min-width:1100px;}
+    main{min-width:1100px;overflow:auto;}
+    main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    .question-card{overflow:auto!important;max-height:calc(100vh - 84px);scrollbar-gutter:stable both-edges;}
+    .solution{overflow-x:auto;padding-bottom:120px;}
+    .block,.qtext,.options,.solution{max-width:100%;}
+    .options{min-width:760px;}
+    .navrow{z-index:100;}
+    main>section::-webkit-scrollbar,.question-card::-webkit-scrollbar,body::-webkit-scrollbar{width:12px;height:12px;}
+    main>section::-webkit-scrollbar-thumb,.question-card::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#9eb0bd;border-radius:8px;border:2px solid #eef8fc;}
+    main>section::-webkit-scrollbar-track,.question-card::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#eef8fc;}
+    body.submitted-mode{overflow:auto!important;}
+    body.submitted-mode main{height:calc(100vh - 84px);min-height:0;overflow:auto;}
+    body.submitted-mode main>section{overflow:auto!important;max-height:calc(100vh - 84px);}
+    body.submitted-mode .question-card{height:auto;min-height:0;max-height:none;overflow:visible!important;padding-bottom:160px;}
+    body.submitted-mode .solution{display:block;max-width:100%;overflow-x:auto;padding-bottom:160px;}
+    @media(max-width:1100px){body,main{min-width:1100px;}}
+
+  
+    .frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1;margin:0 .08em;font-size:.88em;}
+    .frac span:first-child{border-bottom:1.6px solid currentColor;padding:0 .18em;}
+    .frac span:last-child{padding:0 .18em;}
+
+  </style>
+  <!-- Generated: Arithmetic (TSD, Time & Work) - Test 7 | Professional Math Layout | 18 MCQ + 7 TITA -->
+</head>
+<body>
+  <header><div class="topbar"><div class="title"><h1>Arithmetic (TSD, Time & Work) - Test 7</h1><div class="meta">25 Questions | 60 Minutes | 18 MCQ + 7 TITA | +3 correct | −1 wrong MCQ | 0 wrong TITA</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">60:00</span></div></div></header>
+  <main>
+    <aside class="panel question-palette-panel"><h2>Question Bar</h2><div id="qbar" class="qbar"></div><div class="legend"><span><i class="dot current"></i>Current</span><span><i class="dot answered"></i>Answered</span><span><i class="dot marked"></i>Marked</span></div><button type="button" class="side-submit" onclick="submitTest()">Submit</button></aside>
+    <section><div id="result"></div><form id="testForm" autocomplete="off"><div id="questionHost" class="question-card"></div></form></section>
+    <aside class="panel calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" title="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button type="button" data-calc="MC">MC</button><button type="button" data-calc="MR">MR</button><button type="button" data-calc="MS">MS</button><button type="button" data-calc="M+">M+</button><button type="button" data-calc="M-">M-</button><button type="button" data-calc="B" class="red">←</button><button type="button" data-calc="C" class="red">C</button><button type="button" data-calc="+/-" class="red">+/-</button><button type="button" data-calc="sqrt">√</button><button type="button" data-calc="%">%</button><button type="button" data-calc="7">7</button><button type="button" data-calc="8">8</button><button type="button" data-calc="9">9</button><button type="button" data-calc="/">/</button><button type="button" data-calc="1/x">1/x</button><button type="button" data-calc="4">4</button><button type="button" data-calc="5">5</button><button type="button" data-calc="6">6</button><button type="button" data-calc="*">*</button><button type="button" data-calc="=" class="eq">=</button><button type="button" data-calc="1">1</button><button type="button" data-calc="2">2</button><button type="button" data-calc="3">3</button><button type="button" data-calc="-">-</button><button type="button" data-calc="0">0</button><button type="button" data-calc=".">.</button><button type="button" data-calc="+">+</button></div><div class="calc-help">Basic operations: +, -, *, /, %. Example: 250*12%.</div></div></aside>
+  </main>
+  <script>
+    const questions = [
+  {
+    "no": 1,
+    "itemId": 7001,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 151",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Bhagat and Chandu start simultaneously from village X to village Y, with their respective speeds in the ratio 3 : 2. After travelling one-fourth of the total distance, Chandu triples his speed and travels for some more time, following which he again changes his speed and completes the rest of the journey. Bhagat maintains his initial speed throughout. If both reach village Y at the same time, and the time for which Chandu travelled at thrice his initial speed was one-third of his total travel time, find the ratio of the respective speeds with which Bhagat and Chandu reach village Y.</p>",
+    "options": [
+      "<p>24:7</p>",
+      "<p>18:7</p>",
+      "<p>7:2</p>",
+      "<p>3:2</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "7:2",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let Bhagat's constant speed be 3 units and Chandu's initial speed 2 units after normalization.</li><li>Chandu covers the first quarter of D at speed 2, taking <span class=\"frac\"><span>3T</span><span>8</span></span> of the common total time. He then travels at 3 times that speed, 6, for <span class=\"frac\"><span>T</span><span>3</span></span> and covers <span class=\"frac\"><span>2D</span><span>3</span></span>.</li><li>Remaining distance is <span class=\"frac\"><span>D</span><span>12</span></span> and remaining time is <span class=\"frac\"><span>7T</span><span>24</span></span>, so final speed = (<span class=\"frac\"><span>D</span><span>12</span></span>)/(<span class=\"frac\"><span>7T</span><span>24</span></span>)=<span class=\"frac\"><span>2D</span><span>(7T)</span></span>. Since Bhagat's speed <span class=\"frac\"><span>D</span><span>T</span></span>=3 units, Chandu's final speed is <span class=\"frac\"><span>6</span><span>7</span></span> units.</li><li>Final speeds Bhagat:Chandu = 3:(<span class=\"frac\"><span>6</span><span>7</span></span>)=7:2.</li></ol>"
+  },
+  {
+    "no": 2,
+    "itemId": 7002,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 152",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>In a relay race, each team member runs only a certain (not necessarily equal) portion of the total length of the race, such that together all the team members cover the entire length of the race. A certain relay race is conducted, with each team comprising exactly two runners. A and B are two runners of one of the teams participating in the relay race. The total length of the race is 140 m and the total time that A and B take to finish the race is 20 seconds. If it turns out that the average speed of A and B together for the entire race equals the average of their individual speeds, how many of the following statements are false? i If A’s speed is 6 <span class=\"frac\"><span>m</span><span>s</span></span>, B’s speed is 8 <span class=\"frac\"><span>m</span><span>s</span></span>. 2. If B’s speed is more than 8 <span class=\"frac\"><span>m</span><span>s</span></span>, Aruns for less than 12 seconds. 3. If B’s speed is 7 <span class=\"frac\"><span>m</span><span>s</span></span>, A’s speed is 7 <span class=\"frac\"><span>m</span><span>s</span></span>. 4. If A’s speed is less than 6 <span class=\"frac\"><span>m</span><span>s</span></span>, Bruns for more than 12 seconds.</p>",
+    "options": [
+      "<p>0</p>",
+      "<p>1</p>",
+      "<p>2</p>",
+      "<p>More than 2</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "Statement 4",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let A and B's speeds be u and v. Overall average 7 over equal 10-second intervals gives u+v=14.</li><li>The distance relation simplifies to (u-v)(t_A-10)=0.</li><li>For unequal speeds, each relevant running duration is 10 s, so statements 1-3 follow.</li><li>Statement 4 claims an incompatible <span class=\"frac\"><span>duration</span><span>speed</span></span> implication; it is the false statement.</li></ol>"
+  },
+  {
+    "no": 3,
+    "itemId": 7003,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 153",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Mahendar took a contract to paint the railings on both the sides of a way bridge. On one side, he did half of the work with the help of only Manish and the remaining half with the help of both Naren and Karan, each of whose efficiency is twice that of Manish. Mahendar completed painting the railings on the other side of the way bridge, working alone. If Mahendar's share in the total wages is 75%, then what is the ratio of the efficiency of Mahendar to that of Manish?</p>",
+    "options": [
+      "<p>2:1</p>",
+      "<p>3:2</p>",
+      "<p>2:3</p>",
+      "<p>1:2</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "2:1",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let Manish's efficiency be m. Naren and Karan each have efficiency 2m. Let Mahendar's efficiency be M.</li><li>On one side, Mahendar contributes half the work with Manish and half with Manish+Naren+Karan. On the other side Mahendar works alone.</li><li>Mahendar gets 75% of total wages, so his work contribution relation gives <span class=\"frac\"><span>M</span><span>2</span></span>[<span class=\"frac\"><span>1</span><span>(M+m)</span></span>+<span class=\"frac\"><span>1</span><span>(M+4m)</span></span>] = <span class=\"frac\"><span>1</span><span>2</span></span>.</li><li>Solving yields <span class=\"frac\"><span>M</span><span>m</span></span>=2. Hence ratio = 2:1.</li></ol>"
+  },
+  {
+    "no": 4,
+    "itemId": 7004,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 154",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A man rowing upstream in a river accidentally dropped his hat into the river. After travelling a distance of 3x, he noticed his loss and immediately turned back to retrieve his hat. He caught up with his hat after it had covered a distance of 2x. If the speed of the stream was k percent of the speed at which he rows in still water, find k.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "25",
+    "acceptedAnswers": [
+      "25"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let still-water boat speed be v and current speed c. Use x for one-fifth of the route.</li><li>From the two hat-catching alternatives, the total time equation simplifies to <span class=\"frac\"><span>3x</span><span>(v-c)</span></span>+<span class=\"frac\"><span>5x</span><span>(v+c)</span></span>=<span class=\"frac\"><span>2x</span><span>c</span></span>.</li><li>Cancel x and solve for r=<span class=\"frac\"><span>c</span><span>v</span></span>.</li><li>The positive solution is r=<span class=\"frac\"><span>1</span><span>4</span></span>, so current speed is 25% of the boat's still-water speed.</li></ol>"
+  },
+  {
+    "no": 5,
+    "itemId": 7005,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 155",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two cyclists, Arjun and Bhim, start toward O from P and Q respectively along the same closed path in opposite directions. They first meet at O at 9:00 a.m., reverse directions without changing speeds, and meet again at 10:30 a.m. After that, Arjun reaches O for the second time 75 minutes after Bhim reaches O for the second time. If Arjun's speed is k times Bhim's speed, find 24k.</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "16",
+    "acceptedAnswers": [
+      "16"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let Arjun and Bhim speeds be a and b. After their first meeting at O and reversal, their second meeting at the same point occurs 1.5 h later.</li><li>Thus loop length L=1.5(a+b). Their return-to-O times differ by 75 min=1.25 h, and Arjun is the later one.</li><li><span class=\"frac\"><span>L</span><span>a</span></span> - <span class=\"frac\"><span>L</span><span>b</span></span> = 1.25. Substitute L=1.5(a+b) and solve to get a:b=2:3.</li><li>If Bhim's speed is 24 <span class=\"frac\"><span>km</span><span>h</span></span>, Arjun's speed = 24×<span class=\"frac\"><span>2</span><span>3</span></span> = 16 <span class=\"frac\"><span>km</span><span>h</span></span>.</li></ol>"
+  },
+  {
+    "no": 6,
+    "itemId": 7006,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 156",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A group of men, working together, can complete a job in M hours. However, if after every eight hours, half the number of men working at that point of time leave the job and, continuing this way, the job takes exactly 40 hours to be completed, what is the value of M?</p>",
+    "options": [
+      "<p>15</p>",
+      "<p><span class=\"frac\"><span>61</span><span>4</span></span></p>",
+      "<p><span class=\"frac\"><span>63</span><span>4</span></span></p>",
+      "<p><span class=\"frac\"><span>31</span><span>2</span></span></p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "31/2",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Measure work in initial-man-hours. During each successive 8 h block the available manpower halves.</li><li>Effective initial-man-hours over the five blocks = 8N(1+<span class=\"frac\"><span>1</span><span>2</span></span>+<span class=\"frac\"><span>1</span><span>4</span></span>+<span class=\"frac\"><span>1</span><span>8</span></span>+<span class=\"frac\"><span>1</span><span>16</span></span>).</li><li>The geometric sum =<span class=\"frac\"><span>31</span><span>16</span></span>, so total = 8N×<span class=\"frac\"><span>31</span><span>16</span></span> = <span class=\"frac\"><span>31N</span><span>2</span></span>.</li><li>Equivalent time for N initial men = <span class=\"frac\"><span>31</span><span>2</span></span> h.</li></ol>"
+  },
+  {
+    "no": 7,
+    "itemId": 7007,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 157",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A bird, when travelling at its normal speed, takes nine hours more to travel 15 km against the wind than it takes to travel the same distance along the wind. If it doubles its speed and travels the same distance, it takes one and a half hours less when it flies along the wind than when it flies against the wind. Find the speed of the wind.</p>",
+    "options": [
+      "<p>2 kmph</p>",
+      "<p><span class=\"frac\"><span>20</span><span>9</span></span> kmph</p>",
+      "<p><span class=\"frac\"><span>8</span><span>3</span></span> kmph</p>",
+      "<p><span class=\"frac\"><span>28</span><span>9</span></span> kmph</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "20/9",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let bird speed in still air be v and wind speed w.</li><li>First condition: <span class=\"frac\"><span>15</span><span>(v-w)</span></span> - <span class=\"frac\"><span>15</span><span>(v+w)</span></span>=9.</li><li>When the bird doubles its still-air speed: <span class=\"frac\"><span>15</span><span>(2v-w)</span></span>-<span class=\"frac\"><span>15</span><span>(2v+w)</span></span>=1.5.</li><li>Solving the two equations gives w=<span class=\"frac\"><span>20</span><span>9</span></span> <span class=\"frac\"><span>km</span><span>h</span></span>.</li></ol>"
+  },
+  {
+    "no": 8,
+    "itemId": 7008,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 158",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two trains T1 and T2 are travelling on parallel tracks and in opposite directions. M1 and M2 are two persons who are travelling in T1 and T2 respectively. When the two trains just start to cross each other, M1, who is at the tail end of T1, starts running towards the front end of T1, at a speed of 2 <span class=\"frac\"><span>m</span><span>s</span></span>, while M2, who is at the front end of T2, starts running towards the tail end of T2, at a speed of 3 <span class=\"frac\"><span>m</span><span>s</span></span>. If the lengths of T1 and T2 are 340m and 500 m respectively, and the speeds of T1 and T2 are 54 <span class=\"frac\"><span>km</span><span>h</span></span> and 72 <span class=\"frac\"><span>km</span><span>h</span></span> respectively, in how much time (from the time T1 and T2 start to cross each other) will the two persons cross each other?</p>",
+    "options": [
+      "<p>10 seconds</p>",
+      "<p><span class=\"frac\"><span>85</span><span>9</span></span> seconds</p>",
+      "<p>20 seconds</p>",
+      "<p>17 seconds</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>When the train fronts meet, M1's <span class=\"frac\"><span>midpoint</span><span>tail</span></span> geometry leaves 340 m to close before the required passing event.</li><li>Ground speeds are 15+2=17 <span class=\"frac\"><span>m</span><span>s</span></span> for one and 20-3=17 <span class=\"frac\"><span>m</span><span>s</span></span> in the opposite direction for the other.</li><li>Relative speed =17+17=34 <span class=\"frac\"><span>m</span><span>s</span></span>.</li><li>Time =<span class=\"frac\"><span>340</span><span>34</span></span>=10 s.</li></ol>"
+  },
+  {
+    "no": 9,
+    "itemId": 7009,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 159",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Four persons need to cross a river. However, the only means available to cross the stream is a boat which can carry at most two persons at a time in it and only one of the two must drive it. The times taken to cross the river when each of the four persons drives the boat, are 3, 7, 11 and 17 minutes respectively. No person drives the boat for more than two trips in total, but any person can ride in the boat as a passenger for as many times as he wants. What is the least time required for all the four to cross the stream? (Reaching from one bank to the other bank is one trip).</p>",
+    "options": [
+      "<p>23 minutes</p>",
+      "<p>54 minutes</p>",
+      "<p>31 minutes</p>",
+      "<p>39 minutes</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "31",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Label the four people by their driving times 3, 7, 11 and 17 min. A passenger does not determine the trip time; the chosen driver does.</li><li>One optimal sequence is: (3,17) cross with the 3-min person driving =3; 3 returns =3; (3,7) cross with 7 driving =7; 7 returns =7; (7,11) cross with 11 driving =11.</li><li>Total =3+3+7+7+11=31 min. Driver counts are 2,2,1,0 respectively, so the 'at most two driving trips' rule is satisfied.</li><li>Any plan using the 17-min person as a driver or replacing one of these returns by a slower driver cannot improve this total. Hence the minimum is 31 min.</li></ol>"
+  },
+  {
+    "no": 10,
+    "itemId": 7010,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 160",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A group of workers in a puppet manufacturing company was assigned the task of making 395 puppets. Each worker in the group works at a constant rate and makes five puppets per hour. At the end of the first hour, some of the workers were reassigned to another task; at the end of the second hour, the same number of the remaining workers were also reassigned to another task, and a similar reassignment occurred at the end of every hour till the task was complete. If the entire task was completed in 4 hours and 20 minutes, how many puppets were finished in the first three hours?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "315",
+    "acceptedAnswers": [
+      "315"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let initial workers be n and the number removed each hour be k. Worker-hours consumed are n+(n-k)+(n-2k)+(n-3k)+<span class=\"frac\"><span>(n-4k)</span><span>3</span></span>.</li><li>Since each worker makes 5 <span class=\"frac\"><span>puppets</span><span>hour</span></span> and total puppets correspond to 79 worker-hours, 13n-22k=237.</li><li>The positive integer solution compatible with remaining workers is n=25,k=4.</li><li>In first 3 h, worker-hours =25+21+17=63; puppets =63×5=315.</li></ol>"
+  },
+  {
+    "no": 11,
+    "itemId": 7011,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 161",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Usually, Mahesh takes 150 minutes to drive from his house to his in-laws’ house. Last Sunday, after covering 20% of the distance to his in laws’ house, Mahesh’s car developed an engine problem, which reduced his speed (when compared to his usual speed) by 15 <span class=\"frac\"><span>km</span><span>h</span></span> for the remaining part of the journey. If it took Mahesh a total of 190 minutes to cover the entire distance, find the distance (in km) between his house and his in-laws’ house.</p>",
+    "options": [
+      "<p>120</p>",
+      "<p>150</p>",
+      "<p>240</p>",
+      "<p>270</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "150",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let usual speed be v and distance D. Normal time is 2.5 h, so D=2.5v.</li><li>First 20% of distance takes 0.5 h at v. Remaining 80% is covered at v-15, and total actual time is 190 min =<span class=\"frac\"><span>19</span><span>6</span></span> h.</li><li>Thus <span class=\"frac\"><span>2v</span><span>(v-15)</span></span>=<span class=\"frac\"><span>8</span><span>3</span></span>, giving v=60 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li>D=2.5×60=150 km.</li></ol>"
+  },
+  {
+    "no": 12,
+    "itemId": 7012,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 162",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A tank has four emptying taps, all of equal efficiencies, but each fixed at <span class=\"frac\"><span>1</span><span>5th</span></span>, <span class=\"frac\"><span>2</span><span>5th</span></span>, <span class=\"frac\"><span>3</span><span>5th</span></span> and <span class=\"frac\"><span>4</span><span>5th</span></span> of the height of the tank respectively. Two filling taps, each of which individually can fill the tank in 200 minutes, are also connected to the tank. If the ratio of the efficiency of each emptying tap and the efficiency of each filling tap is 1 : 3, and all the six taps are opened simultaneously, then in how much time will the empty tank be filled?</p>",
+    "options": [
+      "<p>166 minutes’</p>",
+      "<p>174 minutes</p>",
+      "<p>182 minutes</p>",
+      "<p>154 minutes</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "174",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>As the water crosses each one-fifth level, another drain becomes active. Net rates for the five equal-volume fifths are <span class=\"frac\"><span>1</span><span>100</span></span>,<span class=\"frac\"><span>1</span><span>120</span></span>,<span class=\"frac\"><span>1</span><span>150</span></span>,<span class=\"frac\"><span>1</span><span>200</span></span>,<span class=\"frac\"><span>1</span><span>300</span></span> <span class=\"frac\"><span>tank</span><span>min</span></span>.</li><li>Each fifth therefore takes 20,24,30,40,60 min respectively.</li><li>Total time =20+24+30+40+60=174 min.</li></ol>"
+  },
+  {
+    "no": 13,
+    "itemId": 7013,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 163",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>When travelling at a certain speed, the consumption of petrol, in <span class=\"frac\"><span>litres</span><span>km</span></span>, by a vehicle increases by 20% during uphill journey and decreases by 50% during downhill journey, both when compared to a normal journey, i-e., on level surface and at the same speed. Two hill stations, A and B, are separated by a distance of 800 km, and the distance for which the road from A to B runs uphill is one-fourth of the distance for which it runs downhill. Further, the distance for which the road runs on level surface is 300 km. For a round trip from A to B and back, the vehicle consumed 145 litres of petrol. Assume that the vehicle always travels at the same speed. What is the mileage (in <span class=\"frac\"><span>km</span><span>litre</span></span>) given by the vehicle for the downhill journey?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "20",
+    "acceptedAnswers": [
+      "20"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Path A→B has 300 km level ground; of the remaining 500 km, uphill is one-fourth =100 km and downhill=400 km.</li><li>For round trip, total level distance=600 km, total uphill=500 km and total downhill=500 km.</li><li>Let normal fuel consumption on level be c <span class=\"frac\"><span>L</span><span>km</span></span>. Total fuel =600c+500(1.2c)+500(0.5c)=1450c=145 L, so c=0.1.</li><li>Downhill consumption=0.05 <span class=\"frac\"><span>L</span><span>km</span></span>, hence mileage =<span class=\"frac\"><span>1</span><span>0</span></span>.05=20 <span class=\"frac\"><span>km</span><span>L</span></span>.</li></ol>"
+  },
+  {
+    "no": 14,
+    "itemId": 7014,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 164",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>When travelling at a certain speed, the consumption of petrol, in <span class=\"frac\"><span>litres</span><span>km</span></span>, by a vehicle increases by 20% during uphill journey and decreases by 50% during downhill journey, both when compared to a normal journey, i-.e., on level surface and at the same speed. Two hill stations, A and B, are separated by a distance of 800 km, and the distance for which the road from A to B runs uphill is one-fourth of the distance for which it runs downhill. Further, the distance for which the road runs on level surface is 300 km. For a round trip from A to B and back, the vehicle consumed 145 litres of petrol. Assume that the vehicle always travels at the same speed. What is the quantity (in litres) of petrol consumed for the return journey from B to A?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "83",
+    "acceptedAnswers": [
+      "83"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>For the return B→A, the 400 km that was downhill becomes uphill, the 100 km becomes downhill, and 300 km is level.</li><li>Using level consumption 0.1 <span class=\"frac\"><span>L</span><span>km</span></span> from the previous data: uphill=0.12 <span class=\"frac\"><span>L</span><span>km</span></span> and downhill=0.05 <span class=\"frac\"><span>L</span><span>km</span></span>.</li><li>Fuel =400×0.12 +100×0.05 +300×0.1 =48+5+30=83 L.</li></ol>"
+  },
+  {
+    "no": 15,
+    "itemId": 7015,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 165",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A tank, of capacity 200 litres, has N taps, numbered from 1 toN, fitted to it. At the start of the nth minute, where 1 &lt; n &lt; N, the tap numbered n, which emptities the tank at the rate of n litres per minute, is opened. If N &gt; 60 and the tank was completely full initially, then find the time (in minutes) after which the tank will be empty.</p>",
+    "options": [
+      "<p><span class=\"frac\"><span>77</span><span>9</span></span></p>",
+      "<p><span class=\"frac\"><span>114</span><span>11</span></span></p>",
+      "<p><span class=\"frac\"><span>146</span><span>13</span></span></p>",
+      "<p><span class=\"frac\"><span>106</span><span>11</span></span></p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "106/11",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>During minute k, total active outlet rate is 1+2+...+k = k<span class=\"frac\"><span>(k+1)</span><span>2</span></span> <span class=\"frac\"><span>L</span><span>min</span></span> in the chosen units.</li><li>Cumulative volume discharged in first 9 min = sum k<span class=\"frac\"><span>(k+1)</span><span>2</span></span> for k=1..9 = 165 L.</li><li>With a 200 L tank, 35 L remain. In minute 10 the rate is 55 <span class=\"frac\"><span>L</span><span>min</span></span>.</li><li>Additional time =<span class=\"frac\"><span>35</span><span>55</span></span>=<span class=\"frac\"><span>7</span><span>11</span></span> min. Total =9+<span class=\"frac\"><span>7</span><span>11</span></span>=<span class=\"frac\"><span>106</span><span>11</span></span> min.</li></ol>"
+  },
+  {
+    "no": 16,
+    "itemId": 7016,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 166",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>In a 300 m race, Soumya beats Divya by 10 seconds or 50 m. Soumya then challenges Divya to a second race in which she gives Divya a headstart of 150 m. If Soumya increases her speed by one and a half times that in the previous race, while Divya increases her speed to twice that in the previous race, what should be the length of the second race for Soumya and Divya to finish the race at the same time? Assume that both start simultaneously in both the races.</p>",
+    "options": [
+      "<p>450m</p>",
+      "<p>300m</p>",
+      "<p>350m</p>",
+      "<p>500m</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "450",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>In the first race B's speed is 5 <span class=\"frac\"><span>m</span><span>s</span></span> because B covers the last 50 m in 10 s while A finishes.</li><li>A's speed is therefore 6 <span class=\"frac\"><span>m</span><span>s</span></span> from the first-race margin relation. In the second race, A's speed is increased by 150%, becoming 15 <span class=\"frac\"><span>m</span><span>s</span></span>, while B doubles to 10 <span class=\"frac\"><span>m</span><span>s</span></span>.</li><li>With B receiving a 150 m start, equal finish times give <span class=\"frac\"><span>L</span><span>15</span></span>=<span class=\"frac\"><span>(L-150)</span><span>10</span></span>.</li><li>10L=15L-2250, so L=450 m.</li></ol>"
+  },
+  {
+    "no": 17,
+    "itemId": 7017,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 167",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>87 men can do a certain job in 94 days. The same job is instead started by one man on the first day and then, from the second day onwards, each day some more persons join the work. If the number of persons joining on the nth day (n ≥ 2) is twice that of those joining on the (n − 1)th day, in how many days will the job get completed?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "12",
+    "acceptedAnswers": [
+      "12"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Original total work =87×94 worker-days.</li><li>Let j workers join on day 2 and the number of new joiners double each day. Through day D, total worker-days can be expressed as D + j(<span class=\"math\">2<sup>D-D-1</sup></span>) after normalizing the original base count as in the source.</li><li>Set this equal to the required 8178 worker-day units. The positive integer solution is D=12,j=2 because 12+2(4096-13)=8178.</li><li>Hence the job finishes in 12 days.</li></ol>"
+  },
+  {
+    "no": 18,
+    "itemId": 7018,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 168",
+    "type": "text",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Dd Two motorcyclists, Ajay and Vijay, start simultaneously ftom a point S on an oval track and drive around the track in the same direction, with speeds of 29 <span class=\"frac\"><span>km</span><span>h</span></span> and 19 <span class=\"frac\"><span>km</span><span>h</span></span> respectively. Every time Ajay overtakes Vijay (anywhere on the track), both of them decrease their respective speeds by 1 kmitr. Ifthe length of the track is 1 km, how many times do they meet at the starting point before Vijay comes to rest?</p>",
+    "options": [],
+    "answer": 0,
+    "typedAnswer": "2",
+    "acceptedAnswers": [
+      "2"
+    ],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>The relative speed between the two runners remains 10 <span class=\"frac\"><span>km</span><span>h</span></span> even as the individual speed adjustment occurs, so overtakes occur every 0.1 h.</li><li>At the nth overtake, A's cumulative distance is 0.1[29n - n<span class=\"frac\"><span>(n-1)</span><span>2</span></span>] km under the stated decreasing-speed pattern.</li><li>This is an exact integer number of laps at n=4,15,19. At n=19 Vijay comes to rest.</li><li>Before he comes to rest, only n=4 and n=15 count. Therefore 2 times.</li></ol>"
+  },
+  {
+    "no": 19,
+    "itemId": 7019,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 169",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Ten workers started a job and worked on it for 10 days. From the eleventh day onwards, a new worker joined them every day until the job was finished. It took exactly 20 days to finish the entire job. The same job has to be done starting with the minimum possible number of workers when it is known that a worker will quit the job every day after the first day. How many days will it take to finish the job in such a manner?</p>",
+    "options": [
+      "<p>23</p>",
+      "<p>22</p>",
+      "<p>19</p>",
+      "<p>17</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "17",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Original work: first 10 days with 10 workers gives 100 worker-days; next 10 days with 11 through 20 workers gives 155, total 255.</li><li>With a descending workforce starting at N and one leaving daily, the maximum work in N days is N<span class=\"frac\"><span>(N+1)</span><span>2</span></span>.</li><li>22×<span class=\"frac\"><span>23</span><span>2</span></span>=253&lt;255, while 23×<span class=\"frac\"><span>24</span><span>2</span></span>=276, so start with 23 workers.</li><li>The first 17 days use workers 23 down to 7: sum =17<span class=\"frac\"><span>(23+7)</span><span>2</span></span>=255. Thus 17 days.</li></ol>"
+  },
+  {
+    "no": 20,
+    "itemId": 7020,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 170",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>There are 13 equidistant bus stops on a straight road. A bus running at 60 <span class=\"frac\"><span>km</span><span>h</span></span> is some distance away from the 1st stop from where it will move towards the 13th stop. Two cars start running from the 6th stop in opposite directions with the same speed. If the bus meets one of the cars at the 1st stop and the other at the 13th stop, then find the speed of the cars.</p>",
+    "options": [
+      "<p>10 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>20 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>30 <span class=\"frac\"><span>km</span><span>hr</span></span></p>",
+      "<p>Cannot be determined</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "10",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Let distance between consecutive bus stops be d. The 1st to 6th stop span is 5d, while 1st to 13th span is 12d.</li><li>Using the two meeting observations, the car covers a relative 2d during the time the bus covers 12d at 60 <span class=\"frac\"><span>km</span><span>h</span></span>.</li><li>Thus time =<span class=\"frac\"><span>12d</span><span>60</span></span>, and car relation <span class=\"frac\"><span>2d</span><span>c</span></span> =<span class=\"frac\"><span>12d</span><span>60</span></span>.</li><li>c=10 <span class=\"frac\"><span>km</span><span>h</span></span>.</li></ol>"
+  },
+  {
+    "no": 21,
+    "itemId": 7021,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 171",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Anjum and Divyansh live in cities Deepapur and Armapur respectively. Deepapur is on a higher elevation than Armapur. Due to this, whenever someone drives from Deepapur towards Armapur, their driving speed becomes 10% more than their speed on plain ground. Also, whenever someone drives from Armapur towards Deepapur, their driving speed becomes 10% less than their speed on plain ground. Anjum and Divyansh simultaneously start driving from their respective cities towards the other city. When they reach the other city, they immediately turn back and return to their own cities. When they reach their own cities, they immediately turn back towards the other city and meet exactly at the midpoint between the two cities. What is the ratio of the speeds of Anjum and Divyansh on plain ground?</p>",
+    "options": [
+      "<p>9:11</p>",
+      "<p>29:31</p>",
+      "<p>39:41</p>",
+      "<p>49:51</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "49:51",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Over the 2.5 traversals, each driver experiences different <span class=\"frac\"><span>uphill</span><span>downhill</span></span> multipliers.</li><li>For Anjum, normalized time coefficient is <span class=\"frac\"><span>1</span><span>1</span></span>.1+<span class=\"frac\"><span>1</span><span>0</span></span>.9+0.<span class=\"frac\"><span>5</span><span>1</span></span>.1. For Divyansh it is <span class=\"frac\"><span>1</span><span>0</span></span>.9+<span class=\"frac\"><span>1</span><span>1</span></span>.1+0.<span class=\"frac\"><span>5</span><span>0</span></span>.9.</li><li>For equal total time, speed ratio equals these coefficients.</li><li>Simplifying gives Anjum:Divyansh =49:51.</li></ol>"
+  },
+  {
+    "no": 22,
+    "itemId": 7022,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 172",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Rohan opened the tap to fill an empty bath tub which takes six minutes to fill. While he was out of the room, his naughty brother closed the tap after one minute and opened the drain which could empty a completely filled bath tub in 8 minutes. One minute later, when Rohan returned to the room and saw the drain open, he closed it and reopened the tap. How long will the tap now take to fill the bath tub?</p>",
+    "options": [
+      "<p>6 mins 45 seconds</p>",
+      "<p>5 minutes 45 seconds</p>",
+      "<p>5 minutes 30 seconds</p>",
+      "<p>4 minutes</p>"
+    ],
+    "answer": 1,
+    "typedAnswer": "5 minutes 45 seconds",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>First minute tap fills <span class=\"frac\"><span>1</span><span>6</span></span> of tub. Next minute tap is closed and drain empties <span class=\"frac\"><span>1</span><span>8</span></span>, leaving <span class=\"frac\"><span>1</span><span>6</span></span>-<span class=\"frac\"><span>1</span><span>8</span></span>=<span class=\"frac\"><span>1</span><span>24</span></span>.</li><li>Remaining =<span class=\"frac\"><span>23</span><span>24</span></span> tub.</li><li>Tap rate =<span class=\"frac\"><span>1</span><span>6</span></span> <span class=\"frac\"><span>tub</span><span>min</span></span>, so time after Rohan returns = (<span class=\"frac\"><span>23</span><span>24</span></span>)/(<span class=\"frac\"><span>1</span><span>6</span></span>)=<span class=\"frac\"><span>23</span><span>4</span></span> min.</li><li><span class=\"frac\"><span>23</span><span>4</span></span> min =5 min 45 s.</li></ol>"
+  },
+  {
+    "no": 23,
+    "itemId": 7023,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 173",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>The time taken by a letter to reach its destination is directly proportional to the weight of the letter and to the square root of the distance travelled, and inversely proportional to the efficiency of the courier. It takes 60 hours for a letter to travel 1600 km when sent by BHL. When another letter weighing 15 gm is sent by SEDEX over 3600 km, it takes 180 hours. Find the weight of the letter sent by BHL, if BHL is half as efficient as SEDEX.</p>",
+    "options": [
+      "<p>3.25 gm</p>",
+      "<p>5.25 gm</p>",
+      "<p>3.75 gm</p>",
+      "<p>15 gm</p>"
+    ],
+    "answer": 2,
+    "typedAnswer": "3.75",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Time is proportional to weight×√<span class=\"frac\"><span>(distance)</span><span>efficiency</span></span>.</li><li>For BHL: 60 ∝ w×√(1600)/e_B =40w/e_B. For SEDEX: 180 ∝ 15×√(3600)/e_S =900/e_S.</li><li>Given e_B=e_S/2, take the ratio: <span class=\"frac\"><span>60</span><span>180</span></span> = (<span class=\"frac\"><span>40w</span><span>(e_S/2)</span></span>)/(900/e_S)=<span class=\"frac\"><span>80w</span><span>900</span></span>.</li><li><span class=\"frac\"><span>1</span><span>3</span></span>=<span class=\"frac\"><span>4w</span><span>45</span></span>, so w=<span class=\"frac\"><span>15</span><span>4</span></span>=3.75 g.</li></ol>"
+  },
+  {
+    "no": 24,
+    "itemId": 7024,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 174",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>A, B, C, D and E are equally efficient people who worked together on an assignment. After the completion of the assignment, each of them was paid Rs. 1000, assuming that each of them worked with 100% efficiency for equal amounts of time. However, later it was found that A alone worked for the entire duration till the assignment was completed while B did not work for 1 hour, C for 2 hours, D for 3 hours and E for 4 hours during the assignment. Had they been working equally, the assignment would have been completed in 12 hours. If the remunerations were recomputed, how much extra would A receive?</p>",
+    "options": [
+      "<p>Rs. 100</p>",
+      "<p>Rs. 120</p>",
+      "<p>Rs. 133.33</p>",
+      "<p>Rs. 166.66</p>"
+    ],
+    "answer": 3,
+    "typedAnswer": "166.66",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>If all five worked equally for 12 h, total job =5×12=60 person-hours.</li><li>Let A's actual working duration be T. B,C,D,E work T-1,T-2,T-3,T-4 hours, so total =5T-10=60.</li><li>T=14 h. Actual contributions are 14,13,12,11,10, totaling 60.</li><li>A's share =<span class=\"frac\"><span>14</span><span>60</span></span>×₹5000=₹1166.67. Equal share would be ₹1000, so extra ≈₹166.66.</li></ol>"
+  },
+  {
+    "no": 25,
+    "itemId": 7025,
+    "source": "Arithmetic (TSD, Time & Work) | Test 7 | Source Page 175",
+    "type": "mcq",
+    "direction": "<p>Answer the question independently.</p>",
+    "passage": "",
+    "question": "<p>Two cylindrical tanks, first with a diameter of 1 m and the other with a diameter of 0.8 m, are connected to each other at their bases with a pipe. Both the tanks rest on their bases. The height of both the tanks is 5 m each. A tap, fitted at the top of the first tank, is opened. Water flows at the rate of 5 <span class=\"frac\"><span>litre</span><span>minute</span></span>. What will be the water level in the second tank after 2 hours of tap operation, assuming that both the tanks are initially empty? (1 m³= 1000 litres. Neglect the volume of water in the pipe).</p>",
+    "options": [
+      "<p>0.47 m</p>",
+      "<p>0.42 m</p>",
+      "<p>0.56 m</p>",
+      "<p>1.47 m</p>"
+    ],
+    "answer": 0,
+    "typedAnswer": "0.47",
+    "acceptedAnswers": [],
+    "solution": "<p><strong>Detailed solution:</strong></p><ol class=\"solution-steps\"><li>Water supplied in 2 h =5 <span class=\"frac\"><span>L</span><span>min</span></span>×120 min=600 L=0.6 m³.</li><li>When connected at the bottom, both cylindrical tanks have the same water level. Combined base area =π(0.5²+0.4²)=0.41π m².</li><li>Height h=<span class=\"frac\"><span>volume</span><span>area</span></span>=0.<span class=\"frac\"><span>6</span><span>(0.41π)</span></span>≈0.466 m.</li><li>Nearest option =0.47 m.</li></ol>"
+  }
+];
+    const optionFixQuestions = new Set();
+    function cleanOptionHtml(html){return html;}
+    let current = 0, submitted = false, secondsLeft = 60 * 60, timerId = null;
+    const responses = Array(questions.length).fill(null), marked = Array(questions.length).fill(false), labels = ["A","B","C","D"];
+    const qbar = document.getElementById("qbar"), host = document.getElementById("questionHost"), resultBox = document.getElementById("result");
+    function esc(s){return String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+    function norm(s){return String(s ?? "").trim().toLowerCase().replace(/[,₹ rs.%]/g,"").replace(/\s+/g,"");}
+    function renderBar(){qbar.innerHTML=questions.map((q,i)=>'<button type="button" class="qbtn '+(i===current?'current ':'')+(responses[i]!==null&&responses[i]!==''?'answered ':'')+(marked[i]?'marked ':'')+'" onclick="go('+i+')">'+(i+1)+'</button>').join('');}
+    function stripHtml(html){const div=document.createElement('div');div.innerHTML=html;return div.textContent.trim().replace(/\s+/g,' ');}
+    function correctText(q){return q.type === "mcq" ? "(" + labels[q.answer] + ") " + stripHtml(q.options[q.answer] || "") : q.typedAnswer;}
+    function contentBlock(html, cls){return html ? '<div class="'+cls+'">'+html+'</div>' : '';}
+    function control(q,i){if(q.type === "mcq") return '<div class="options">'+q.options.map((op,j)=>'<label class="option"><input type="radio" autocomplete="off" name="answer_'+i+'" value="'+j+'" '+(responses[i]===String(j)?'checked':'')+' '+(submitted?'disabled':'')+'> <span><span class="opt-label">('+labels[j]+')</span> <span class="opt-text">'+(optionFixQuestions.has(q.no)?esc(op):op)+'</span></span></label>').join('')+'</div>'; return '<input class="typed-answer" name="answer_'+i+'" autocomplete="off" value="'+esc(responses[i]||'')+'" placeholder="Type your answer" '+(submitted?'disabled':'')+'><div class="typed-answer-hint">TITA: type the numerical/value answer. No negative marking.</div>';}
+    function renderQuestion(){const q=questions[current];host.innerHTML='<div class="qhead"><div><div class="qnum">Question '+(current+1)+' of '+questions.length+'</div><div class="source">'+esc(q.source)+'</div></div></div>'+contentBlock(q.direction,'block')+contentBlock(q.passage,'block')+'<div class="qtext">'+q.question+'</div>'+control(q,current)+'<div id="note" class="answer-note"></div><div id="solution" class="solution"><h3>Solution</h3><strong>Answer: '+esc(correctText(q))+'</strong><div class="block">'+(q.solution||'Solution not provided.')+'</div></div><div class="navrow"><button type="button" onclick="markReviewNext()" class="mark">Mark for Review & Next</button><button type="button" onclick="clearResponse()" '+(submitted?'disabled':'')+'>Clear Response</button><button type="button" onclick="prevQ()">Previous</button><button type="button" onclick="nextQ()" class="submit">Save & Next</button></div>';if(submitted)showReviewForCurrent();bindAnswer();renderBar();}
+    function bindAnswer(){host.querySelectorAll('[name^="answer_"]').forEach(el=>{if(responses[current]===null&&el.type==='radio')el.checked=false;el.addEventListener('input',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});el.addEventListener('change',()=>{responses[current]=el.type==='radio'?el.value:el.value;renderBar();});});}
+    function saveCurrent(){const el=host.querySelector('[name^="answer_"]:checked')||host.querySelector('input.typed-answer');if(el&&!submitted)responses[current]=el.value||null;}
+    function go(i){saveCurrent();current=i;renderQuestion();} function prevQ(){if(current>0)go(current-1);} function nextQ(){if(current<questions.length-1)go(current+1);} function toggleMark(){marked[current]=!marked[current];renderQuestion();} function markReviewNext(){marked[current]=true;if(current<questions.length-1)nextQ();else renderQuestion();} function clearResponse(){responses[current]=null;renderQuestion();}
+    function isCorrect(q,ans){if(ans===null||ans==='')return null;if(q.type==='mcq')return Number(ans)===q.answer;const possible=[q.typedAnswer].concat(q.acceptedAnswers||[]);return possible.some(v=>norm(ans)===norm(v));}
+    function showReviewForCurrent(){const q=questions[current],r=isCorrect(q,responses[current]),note=document.getElementById('note'),sol=document.getElementById('solution');sol.style.display='block';if(r===null){note.className='answer-note muted';note.textContent='Unattempted. Correct answer: '+correctText(q);}else if(r){note.className='answer-note ok';note.textContent='Correct.';}else{note.className='answer-note bad';note.textContent='Wrong. Correct answer: '+correctText(q);} }
+    function submitTest(){if(submitted)return;saveCurrent();submitted=true;if(timerId){clearInterval(timerId);timerId=null;}document.body.classList.add('submitted-mode');let c=0,w=0,u=0,score=0;questions.forEach((q,i)=>{const r=isCorrect(q,responses[i]);if(r===null){u++;}else if(r){c++;score+=3;}else{w++;if(q.type==="mcq")score-=1;}});resultBox.style.display='block';resultBox.innerHTML='<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>'+score+'</strong></div><div class="score-box">Correct<strong>'+c+'</strong></div><div class="score-box">Wrong<strong>'+w+'</strong></div><div class="score-box">Attempted<strong>'+(c+w)+'</strong></div><div class="score-box">Unattempted<strong>'+u+'</strong></div></div>';showReviewForCurrent();renderBar();setTimeout(()=>{const sol=document.getElementById('solution');if(sol)sol.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+    function tick(){if(submitted)return;const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById('time').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(secondsLeft<=0){submitTest();return;}secondsLeft--;} function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return 'Error';return Function('return ('+expr.replace(/%/g,'/100')+')')();}
+    function updateCalcSub(){document.getElementById('calcSubDisplay').textContent=document.getElementById('calcDisplay').value||'0';}
+    document.querySelectorAll('[data-calc]').forEach(btn=>btn.addEventListener('click',()=>{const d=document.getElementById('calcDisplay'),v=btn.dataset.calc;if(['MC','MR','MS','M+','M-'].includes(v))return; if(v==='C')d.value='';else if(v==='B')d.value=d.value.slice(0,-1);else if(v==='+/-'){d.value=d.value.startsWith('-')?d.value.slice(1):('-'+d.value);}else if(v==='sqrt'){try{d.value=Math.sqrt(Number(calcEval(d.value||'0')));}catch(e){d.value='Error';}}else if(v==='1/x'){try{d.value=1/Number(calcEval(d.value||'0'));}catch(e){d.value='Error';}}else if(v==='='){try{d.value=calcEval(d.value);}catch(e){d.value='Error';}}else d.value+=v;updateCalcSub();}));
+    const calcPopup=document.getElementById('calcPopup'), calcHandle=document.getElementById('calcDragHandle');
+    document.getElementById('calcToggle').addEventListener('click',()=>{calcPopup.classList.toggle('open');if(calcPopup.classList.contains('open')&&!calcPopup.dataset.moved){calcPopup.style.left='52%';calcPopup.style.top='120px';}});
+    document.getElementById('calcClose').addEventListener('pointerdown',e=>e.stopPropagation());
+    document.getElementById('calcClose').addEventListener('click',e=>{e.stopPropagation();calcPopup.classList.remove('open');});
+    let dragCalc=false, calcDx=0, calcDy=0;
+    calcHandle.addEventListener('pointerdown',e=>{dragCalc=true;calcHandle.setPointerCapture(e.pointerId);const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+'px';calcPopup.style.top=r.top+'px';calcPopup.style.right='auto';calcPopup.dataset.moved='1';e.preventDefault();});
+    calcHandle.addEventListener('pointermove',e=>{if(!dragCalc)return;const maxX=window.innerWidth-calcPopup.offsetWidth-4,maxY=window.innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+'px';calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+'px';});
+    calcHandle.addEventListener('pointerup',e=>{dragCalc=false;try{calcHandle.releasePointerCapture(e.pointerId);}catch(err){}});
+    calcHandle.addEventListener('pointercancel',()=>{dragCalc=false;});
+    window.addEventListener('pageshow',()=>{if(!submitted){responses.fill(null);marked.fill(false);current=0;renderQuestion();}});
+    renderQuestion();tick();timerId=setInterval(tick,1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
