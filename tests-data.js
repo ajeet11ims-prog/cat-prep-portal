@@ -1988,6 +1988,58 @@ window.CAT_TESTS = [
     "questions": 5
   },
   {
+    "title": "LRDI CAT 2022 SLOT -3 Set -1",
+    "file": "tests/PYQ/Year Wise/LRDI/2022/LRDI CAT 2022 SLOT -3 Set -1.html",
+    "original": "LRDI CAT 2022 SLOT -3 Set -1.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2022"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "LRDI CAT 2022 SLOT -3 Set -2",
+    "file": "tests/PYQ/Year Wise/LRDI/2022/LRDI CAT 2022 SLOT -3 Set -2.html",
+    "original": "LRDI CAT 2022 SLOT -3 Set -2.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2022"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "LRDI CAT 2022 SLOT -3 Set -3",
+    "file": "tests/PYQ/Year Wise/LRDI/2022/LRDI CAT 2022 SLOT -3 Set -3.html",
+    "original": "LRDI CAT 2022 SLOT -3 Set -3.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2022"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
+    "title": "LRDI CAT 2022 SLOT -3 Set -4",
+    "file": "tests/PYQ/Year Wise/LRDI/2022/LRDI CAT 2022 SLOT -3 Set -4.html",
+    "original": "LRDI CAT 2022 SLOT -3 Set -4.html",
+    "folders": [
+      "PYQ",
+      "Year Wise",
+      "LRDI",
+      "2022"
+    ],
+    "minutes": 15,
+    "questions": 5
+  },
+  {
     "title": "DI - Bar Graph - Test - 11",
     "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
     "original": "DI - Bar Graph - Test - 11.html",
