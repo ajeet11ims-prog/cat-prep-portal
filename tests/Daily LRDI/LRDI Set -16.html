@@ -1,988 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CL Jaipur Repeaters Batch LRDI SET -4</title>
-  <style>
-    :root {
-      --cat-blue: #0b75bb;
-      --cat-blue-dark: #075d98;
-      --cat-light: #d9eef9;
-      --cat-border: #aeb9c4;
-      --cat-panel: #f4f6f8;
-      --ink: #111827;
-      --muted: #5b6773;
-      --green: #2d9b55;
-      --red: #ca2f2f;
-      --purple: #6d42b8;
-      --grey: #d8dde3;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: #fff;
-      overflow: hidden;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    .exam-frame {
-      width: 100vw;
-      height: 100vh;
-      margin: auto;
-      position: fixed;
-      inset: 0;
-      background: #fff;
-      display: grid;
-      grid-template-rows: 52px 42px minmax(0, 1fr) 58px;
-      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.38);
-    }
-
-    .top-strip {
-      display: grid;
-      grid-template-columns: 1fr 310px;
-      align-items: center;
-      background: var(--cat-blue);
-      color: #fff;
-      border-bottom: 1px solid #075a91;
-    }
-
-    .test-title {
-      padding: 0 18px;
-      min-width: 0;
-    }
-
-    .test-title h1 {
-      margin: 0;
-      font-size: 20px;
-      line-height: 1.1;
-      letter-spacing: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .test-title p {
-      margin: 3px 0 0;
-      font-size: 12px;
-      opacity: 0.92;
-    }
-
-    .candidate-panel {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 14px;
-      background: var(--cat-blue-dark);
-      border-left: 1px solid rgba(255, 255, 255, 0.28);
-      font-weight: 700;
-    }
-
-    .avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 3px;
-      background: #eef3f7;
-      color: var(--cat-blue-dark);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-    }
-
-    .section-strip {
-      display: grid;
-      grid-template-columns: 1fr 310px;
-      border-bottom: 1px solid var(--cat-border);
-      background: #eef3f7;
-    }
-
-    .section-left,
-    .section-right {
-      display: flex;
-      align-items: center;
-      padding: 0 14px;
-      gap: 12px;
-    }
-
-    .section-left {
-      border-right: 1px solid var(--cat-border);
-    }
-
-    .section-name {
-      min-width: 116px;
-      padding: 7px 14px;
-      background: #fff;
-      border: 1px solid var(--cat-border);
-      border-bottom: 3px solid var(--cat-blue);
-      color: var(--cat-blue-dark);
-      font-size: 14px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .timer {
-      margin-left: auto;
-      color: #111;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .section-right {
-      justify-content: space-between;
-      background: #f7f9fb;
-      font-size: 13px;
-      font-weight: 700;
-      color: #263746;
-    }
-
-    .exam-body {
-      min-height: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 310px;
-      background: #fff;
-    }
-
-    .workspace {
-      min-width: 0;
-      min-height: 0;
-      display: grid;
-      grid-template-rows: 38px minmax(0, 1fr);
-      border-right: 1px solid var(--cat-border);
-    }
-
-    .question-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 0 16px;
-      border-bottom: 1px solid var(--cat-border);
-      background: #fafafa;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .marking {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 400;
-    }
-
-    .content-grid {
-      min-height: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.65fr);
-    }
-
-    .passage-pane,
-    .question-pane {
-      min-height: 0;
-      overflow: auto;
-      padding: 16px 18px;
-    }
-
-    .passage-pane {
-      border-right: 1px solid var(--cat-border);
-      background: #fff;
-    }
-
-    .question-pane {
-      background: #fff;
-    }
-
-    .passage-box {
-      background: #fff;
-      border: 0;
-      color: #000;
-      padding: 4px 2px;
-      font-size: 16px;
-      line-height: 1.42;
-    }
-
-    .passage-box p {
-      margin: 0 0 8px;
-    }
-
-    .passage-box ol {
-      margin: 0;
-      padding-left: 22px;
-    }
-
-    .passage-box li {
-      margin: 5px 0;
-    }
-
-    .given-grid {
-      border-collapse: collapse;
-      margin: 14px 0 16px;
-      font-size: 15px;
-      min-width: 560px;
-      max-width: 100%;
-    }
-
-    .given-grid th,
-    .given-grid td {
-      border: 2px solid #111;
-      width: 92px;
-      height: 34px;
-      text-align: center;
-      vertical-align: middle;
-      font-weight: 700;
-    }
-
-    .given-grid th {
-      background: #cfe3f7;
-    }
-
-    .given-grid .row-head {
-      width: 68px;
-      background: #fff;
-      text-align: left;
-      padding-left: 6px;
-    }
-
-    .bar-chart {
-      width: 560px;
-      max-width: 100%;
-      height: 350px;
-      margin: 18px 0 22px;
-      border: 2px solid #777;
-      background: #fff;
-      padding: 22px 16px 8px 42px;
-      position: relative;
-    }
-
-    .chart-area {
-      height: 230px;
-      border-left: 2px solid #333;
-      border-bottom: 2px solid #333;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      align-items: end;
-      gap: 28px;
-      padding: 0 18px;
-      background:
-        repeating-linear-gradient(
-          to top,
-          transparent 0,
-          transparent 45px,
-          #333 46px,
-          transparent 47px
-        );
-      position: relative;
-    }
-
-    .y-axis {
-      position: absolute;
-      left: 12px;
-      top: 20px;
-      height: 230px;
-      display: grid;
-      grid-template-rows: repeat(6, 1fr);
-      font-size: 14px;
-      color: #333;
-      text-align: right;
-    }
-
-    .chart-group {
-      height: 100%;
-      display: flex;
-      align-items: end;
-      justify-content: center;
-      gap: 7px;
-      position: relative;
-    }
-
-    .bar {
-      width: 34px;
-      border: 1px solid #666;
-    }
-
-    .bar.five {
-      background: #a8f3c9;
-    }
-
-    .bar.four {
-      background: #ffd093;
-    }
-
-    .chart-label {
-      position: absolute;
-      bottom: -36px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .chart-legend {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 44px;
-      font-size: 16px;
-    }
-
-    .legend-key {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .swatch {
-      width: 13px;
-      height: 13px;
-      border: 1px solid #555;
-      display: inline-block;
-    }
-
-    .swatch.five {
-      background: #a8f3c9;
-    }
-
-    .swatch.four {
-      background: #ffd093;
-    }
-
-    .q-card {
-      display: none;
-    }
-
-    .q-card.active {
-      display: block;
-    }
-
-    .q-title {
-      margin: 0 0 14px;
-      font-size: 17px;
-      line-height: 1.45;
-      color: #000;
-    }
-
-    .q-id {
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-
-    .options {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .option {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid #e1e5ea;
-      padding: 8px 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .option input {
-      width: 17px;
-      height: 17px;
-      accent-color: var(--cat-blue);
-      flex: 0 0 auto;
-    }
-
-    .answer-input {
-      width: min(320px, 100%);
-      height: 40px;
-      padding: 8px 10px;
-      border: 1px solid #8a98a8;
-      border-radius: 2px;
-      font-size: 16px;
-    }
-
-    .answer-note {
-      display: none;
-      margin-top: 14px;
-      padding: 10px;
-      border: 1px solid #d1d7de;
-      background: #f8fafc;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .answer-note.ok {
-      display: block;
-      color: var(--green);
-      border-color: rgba(45, 155, 85, 0.45);
-      background: #effaf3;
-    }
-
-    .answer-note.bad {
-      display: block;
-      color: var(--red);
-      border-color: rgba(202, 47, 47, 0.45);
-      background: #fff1f1;
-    }
-
-    .side-panel {
-      min-height: 0;
-      display: grid;
-      grid-template-rows: auto auto minmax(0, 1fr);
-      background: #f4f7fa;
-    }
-
-    .status-box {
-      padding: 12px;
-      border-bottom: 1px solid var(--cat-border);
-      background: #fff;
-    }
-
-    .status-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      font-size: 12px;
-    }
-
-    .legend {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      min-height: 28px;
-    }
-
-    .shape {
-      width: 26px;
-      height: 22px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      border-radius: 4px;
-      background: var(--grey);
-      color: #333;
-    }
-
-    .shape.answered {
-      background: var(--green);
-      color: #fff;
-      border-radius: 50% 50% 6px 6px;
-    }
-
-    .shape.not-answered {
-      background: var(--red);
-      color: #fff;
-      border-radius: 6px 6px 50% 50%;
-    }
-
-    .shape.review {
-      background: var(--purple);
-      color: #fff;
-      border-radius: 50%;
-    }
-
-    .palette-title {
-      padding: 10px 12px;
-      background: var(--cat-blue);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .palette-wrap {
-      min-height: 0;
-      overflow: auto;
-      padding: 14px 12px;
-    }
-
-    .palette {
-      display: grid;
-      grid-template-columns: repeat(4, 42px);
-      gap: 12px;
-      justify-content: center;
-    }
-
-    .pal-btn {
-      width: 42px;
-      height: 34px;
-      border: 1px solid #9da8b4;
-      background: var(--grey);
-      color: #1f2933;
-      border-radius: 5px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .pal-btn.current {
-      outline: 3px solid rgba(11, 117, 187, 0.28);
-      border-color: var(--cat-blue);
-    }
-
-    .pal-btn.answered {
-      background: var(--green);
-      color: #fff;
-      border-color: var(--green);
-      border-radius: 50% 50% 7px 7px;
-    }
-
-    .pal-btn.not-answered {
-      background: var(--red);
-      color: #fff;
-      border-color: var(--red);
-      border-radius: 7px 7px 50% 50%;
-    }
-
-    .pal-btn.review {
-      background: var(--purple);
-      color: #fff;
-      border-color: var(--purple);
-      border-radius: 50%;
-    }
-
-    .bottom-bar {
-      display: grid;
-      grid-template-columns: 1fr 310px;
-      border-top: 1px solid var(--cat-border);
-      background: #f4f6f8;
-    }
-
-    .left-actions,
-    .right-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-    }
-
-    .left-actions {
-      justify-content: space-between;
-      border-right: 1px solid var(--cat-border);
-    }
-
-    .action-group {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .right-actions {
-      justify-content: center;
-    }
-
-    .btn {
-      min-width: 92px;
-      min-height: 34px;
-      padding: 6px 12px;
-      border: 1px solid #7e8b97;
-      border-radius: 2px;
-      background: #fff;
-      color: #1f2933;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn.primary {
-      border-color: var(--cat-blue-dark);
-      background: var(--cat-blue);
-      color: #fff;
-    }
-
-    .btn.orange {
-      border-color: #d57200;
-      background: #f28c22;
-      color: #fff;
-    }
-
-    .btn:disabled {
-      opacity: 0.55;
-      cursor: default;
-    }
-
-    #result {
-      display: none;
-      margin: 0 0 12px;
-      padding: 12px;
-      border: 1px solid var(--cat-border);
-      background: #f8fafc;
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(80px, 1fr));
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .score-box {
-      background: #fff;
-      border: 1px solid #d6dde5;
-      padding: 8px;
-      font-size: 12px;
-    }
-
-    .score-box strong {
-      display: block;
-      font-size: 19px;
-      margin-top: 2px;
-    }
-
-    @media (max-width: 1100px) {
-      .test-title h1 {
-        font-size: 17px;
-      }
-
-      .content-grid {
-        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="exam-frame">
-    <header class="top-strip">
-      <div class="test-title">
-        <h1>CL Jaipur Repeaters Batch LRDI SET -4</h1>
-        <p>CAT Desktop Format | LRDI | 4 Questions | 20 Minutes</p>
-      </div>
-      <div class="candidate-panel">
-        <div class="avatar">CL</div>
-        <div>
-          <div>Candidate</div>
-          <small>CL Jaipur Repeaters Batch</small>
-        </div>
-      </div>
-    </header>
-
-    <div class="section-strip">
-      <div class="section-left">
-        <div class="section-name">LRDI</div>
-        <div class="timer">Time Left: <span id="timer">20:00</span></div>
-      </div>
-      <div class="section-right">
-        <span>Question Palette</span>
-        <span id="answeredCount">Answered: 0/4</span>
-      </div>
-    </div>
-
-    <main class="exam-body">
-      <section class="workspace">
-        <div class="question-head">
-          <span id="questionHeader">Question No. 43</span>
-          <span class="marking">Marks for correct answer: 3 | Negative marks: 1</span>
-        </div>
-
-        <div class="content-grid">
-          <article class="passage-pane">
-            <section class="passage-box">
-              <p><strong>Directions for questions 43 to 46:</strong> Answer the questions on the basis of the information given below.</p>
-              <p>Kaushambi is a city located at some distance from Triveni Sangam in Prayagraj. Several roads connect the two cities, as depicted in the road map below. The map may not be drawn to scale. Traffic on each road flows only in the direction indicated.</p>
-              <svg width="720" height="245" viewBox="0 0 720 245" role="img" aria-label="Directed road map from Kaushambi to Triveni Sangam" style="max-width:100%;height:auto;margin:14px 0 18px;background:#fff;border:1px solid #ddd">
-                <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#333"></path></marker></defs>
-                <style>.road{stroke:#333;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.node{fill:#eef3f7;stroke:#555;stroke-width:2}.ntext{font:700 16px Arial;text-anchor:middle;dominant-baseline:middle;fill:#333}.label{font:16px Arial;fill:#333}.toll{font:700 15px Arial;fill:#f04b42}</style>
-                <circle class="node" cx="80" cy="118" r="22"></circle><text class="ntext" x="80" y="118">K</text><text class="label" x="8" y="155">Kaushambi</text>
-                <circle class="node" cx="205" cy="48" r="22"></circle><text class="ntext" x="205" y="48">M</text>
-                <circle class="node" cx="205" cy="188" r="22"></circle><text class="ntext" x="205" y="188">N</text>
-                <circle class="node" cx="350" cy="118" r="22"></circle><text class="ntext" x="350" y="118">P</text>
-                <circle class="node" cx="515" cy="48" r="22"></circle><text class="ntext" x="515" y="48">Q</text>
-                <circle class="node" cx="515" cy="188" r="22"></circle><text class="ntext" x="515" y="188">R</text>
-                <circle class="node" cx="635" cy="118" r="22"></circle><text class="ntext" x="635" y="118">S</text><text class="label" x="665" y="106">Triveni</text><text class="label" x="665" y="126">Sangam</text>
-                <path class="road" d="M100 107 L184 60"></path><text class="label" x="115" y="72">15 km</text>
-                <path class="road" d="M100 132 L184 176"></path><text class="label" x="112" y="178">18 km</text><text class="toll" x="119" y="144" transform="rotate(33 119 144)">TOLL</text>
-                <path class="road" d="M228 48 L491 48"></path><text class="label" x="340" y="32">17 km</text>
-                <path class="road" d="M223 61 L331 105"></path><text class="label" x="280" y="78">10 km</text>
-                <path class="road" d="M227 178 L329 128"></path><text class="label" x="279" y="154">10 km</text>
-                <path class="road" d="M229 188 L491 188"></path><text class="label" x="350" y="211">19 km</text>
-                <path class="road" d="M371 129 L493 176"></path><text class="label" x="418" y="160">12 km</text><text class="toll" x="416" y="137" transform="rotate(23 416 137)">TOLL</text>
-                <path class="road" d="M515 166 L515 72"></path><text class="label" x="468" y="120">14 km</text>
-                <path class="road" d="M535 58 L615 102"></path><text class="label" x="574" y="62">13 km</text><text class="toll" x="553" y="84" transform="rotate(31 553 84)">TOLL</text>
-                <path class="road" d="M535 178 L616 135"></path><text class="label" x="575" y="166">16 km</text>
-              </svg>
-              <p>It is also known that:</p>
-              <ol type="i">
-                <li>There is a toll of Rs.75 on road K-N and Rs.50 on roads P-R and Q-S for four-wheelers. For two-wheelers, the toll at all three gates is Rs.25.</li>
-                <li>Bike rides with pillion riders are available at a rate of Rs.15 per km. If the distance exceeds 10 km, an additional charge of Rs.10 per km applies over and above the existing rate.</li>
-                <li>Taxi rides are available at a rate of Rs.25 per km. If the distance exceeds 35 km, an additional charge of Rs.10 per km applies over and above the existing rate. A taxi can accommodate a maximum of three passengers, excluding the driver.</li>
-              </ol>
-            </section>
-          </article>
-
-          <article class="question-pane">
-            <section id="result"></section>
-
-            <section class="q-card active" data-question="0" data-source="43">
-              <div class="q-id">Q.43 [2450309]</div>
-              <h2 class="q-title">If two-wheelers are not allowed on road Q-R for a period of time, what is the maximum distance (in km) that a person can travel by bike from K to S?</h2>
-              <div class="options">
-                <label class="option"><input type="radio" name="q0" value="0"><span>53</span></label>
-                <label class="option"><input type="radio" name="q0" value="1"><span>54</span></label>
-                <label class="option"><input type="radio" name="q0" value="2"><span>55</span></label>
-                <label class="option"><input type="radio" name="q0" value="3"><span>56</span></label>
-              </div>
-              <div class="answer-note" id="note-0"></div>
-            </section>
-
-            <section class="q-card" data-question="1" data-source="44">
-              <div class="q-id">Q.44 [2450309]</div>
-              <h2 class="q-title">On a particular day, the roads from P to R and R to S were heavily congested with four-wheeler traffic. As a result, Kailash decided to travel from K to R by taxi and from R to S by bike. What is the maximum amount (in Rs.) that Kailash could have paid for this trip?</h2>
-              <input class="answer-input" type="number" name="q1" placeholder="Type your answer">
-              <div class="answer-note" id="note-1"></div>
-            </section>
-
-            <section class="q-card" data-question="2" data-source="45">
-              <div class="q-id">Q.45 [2450309]</div>
-              <h2 class="q-title">Three friends decide to travel from Kaushambi to Triveni Sangam, either together in a taxi or separately as pillion riders on bikes. What is the difference between the maximum and minimum possible amounts (in Rs.) they could spend on travel?</h2>
-              <div class="options">
-                <label class="option"><input type="radio" name="q2" value="0"><span>2925</span></label>
-                <label class="option"><input type="radio" name="q2" value="1"><span>3275</span></label>
-                <label class="option"><input type="radio" name="q2" value="2"><span>3675</span></label>
-                <label class="option"><input type="radio" name="q2" value="3"><span>3925</span></label>
-              </div>
-              <div class="answer-note" id="note-2"></div>
-            </section>
-
-            <section class="q-card" data-question="3" data-source="46">
-              <div class="q-id">Q.46 [2450309]</div>
-              <h2 class="q-title">On certain important dates, heavy traffic was observed, prompting the government to impose an additional toll on four-wheelers along routes M-Q and M-P. This adjustment made the cost of traveling along K-M-Q-S and K-M-P-R-S equal to the cost of traveling along K-N-P-R-Q-S. What was the extra amount (in Rs.) charged on route M-Q compared to M-P at that time?</h2>
-              <input class="answer-input" type="number" name="q3" placeholder="Type your answer">
-              <div class="answer-note" id="note-3"></div>
-            </section>
-          </article>
-        </div>
-      </section>
-
-      <aside class="side-panel">
-        <div class="status-box">
-          <div class="status-grid">
-            <div class="legend"><span class="shape" id="notVisitedCount">4</span> Not Visited</div>
-            <div class="legend"><span class="shape not-answered" id="notAnsweredCount">0</span> Not Answered</div>
-            <div class="legend"><span class="shape answered" id="answeredLegendCount">0</span> Answered</div>
-            <div class="legend"><span class="shape review" id="reviewCount">0</span> Marked</div>
-          </div>
-        </div>
-        <div class="palette-title">Choose a Question</div>
-        <div class="palette-wrap">
-          <div class="palette" id="palette"></div>
-        </div>
-      </aside>
-    </main>
-
-    <footer class="bottom-bar">
-      <div class="left-actions">
-        <div class="action-group">
-          <button class="btn" type="button" id="markReviewBtn">Mark for Review &amp; Next</button>
-          <button class="btn" type="button" id="clearBtn">Clear Response</button>
-        </div>
-        <div class="action-group">
-          <button class="btn" type="button" id="prevBtn">Previous</button>
-          <button class="btn primary" type="button" id="nextBtn">Save &amp; Next</button>
-        </div>
-      </div>
-      <div class="right-actions">
-        <button class="btn orange" type="button" id="submitBtn">Submit</button>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    const questions = [
-      { type: "radio", name: "q0", source: 43, answer: "3", answerText: "Option 4 - 56" },
-      { type: "number", name: "q1", source: 44, answer: "1620", answerText: "1620" },
-      { type: "radio", name: "q2", source: 45, answer: "2", answerText: "Option 3 - 3675" },
-      { type: "number", name: "q3", source: 46, answer: "280", answerText: "280" }
-    ];
-
-    const cards = Array.from(document.querySelectorAll(".q-card"));
-    const palette = document.getElementById("palette");
-    const result = document.getElementById("result");
-    const timer = document.getElementById("timer");
-    const answeredCount = document.getElementById("answeredCount");
-    const questionHeader = document.getElementById("questionHeader");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const clearBtn = document.getElementById("clearBtn");
-    const submitBtn = document.getElementById("submitBtn");
-    const markReviewBtn = document.getElementById("markReviewBtn");
-    const visited = new Set([0]);
-    const review = new Set();
-    let current = 0;
-    let submitted = false;
-    let secondsLeft = 20 * 60;
-
-    function getAnswer(index) {
-      const question = questions[index];
-      if (question.type === "radio") {
-        const checked = document.querySelector(`input[name="${question.name}"]:checked`);
-        return checked ? checked.value : "";
-      }
-      return document.querySelector(`input[name="${question.name}"]`).value.trim();
-    }
-
-    function hasAnswer(index) {
-      return getAnswer(index).length > 0;
-    }
-
-    function renderPalette() {
-      palette.innerHTML = questions.map((question, index) => `<button class="pal-btn" type="button" data-index="${index}">${index + 1}</button>`).join("");
-      palette.querySelectorAll(".pal-btn").forEach(button => {
-        button.addEventListener("click", () => showQuestion(Number(button.dataset.index)));
-      });
-      updateStatus();
-    }
-
-    function updateStatus() {
-      let answered = 0;
-      let notAnswered = 0;
-      let notVisited = 0;
-
-      questions.forEach((question, index) => {
-        const button = palette.querySelector(`[data-index="${index}"]`);
-        const isVisited = visited.has(index);
-        const isAnswered = hasAnswer(index);
-        const isReview = review.has(index);
-
-        button.className = "pal-btn";
-        if (index === current) button.classList.add("current");
-        if (isReview) {
-          button.classList.add("review");
-        } else if (isAnswered) {
-          button.classList.add("answered");
-        } else if (isVisited) {
-          button.classList.add("not-answered");
-        }
-
-        if (!isVisited) notVisited += 1;
-        if (isVisited && !isAnswered) notAnswered += 1;
-        if (isAnswered) answered += 1;
-      });
-
-      answeredCount.textContent = `Answered: ${answered}/${questions.length}`;
-      document.getElementById("notVisitedCount").textContent = notVisited;
-      document.getElementById("notAnsweredCount").textContent = notAnswered;
-      document.getElementById("answeredLegendCount").textContent = answered;
-      document.getElementById("reviewCount").textContent = review.size;
-    }
-
-    function showQuestion(index) {
-      if (index < 0 || index >= questions.length || submitted) return;
-      current = index;
-      visited.add(index);
-      cards.forEach((card, idx) => card.classList.toggle("active", idx === index));
-      questionHeader.textContent = `Question No. ${questions[index].source}`;
-      prevBtn.disabled = index === 0;
-      nextBtn.disabled = index === questions.length - 1;
-      updateStatus();
-    }
-
-    function saveAndNext() {
-      review.delete(current);
-      if (current < questions.length - 1) showQuestion(current + 1);
-      else updateStatus();
-    }
-
-    function markForReviewAndNext() {
-      review.add(current);
-      if (current < questions.length - 1) showQuestion(current + 1);
-      else updateStatus();
-    }
-
-    function clearCurrentResponse() {
-      if (submitted) return;
-      const question = questions[current];
-      if (question.type === "radio") {
-        document.querySelectorAll(`input[name="${question.name}"]`).forEach(input => {
-          input.checked = false;
-        });
-      } else {
-        document.querySelector(`input[name="${question.name}"]`).value = "";
-      }
-      review.delete(current);
-      updateStatus();
-    }
-
-    function formatTime(totalSeconds) {
-      const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
-      const seconds = String(totalSeconds % 60).padStart(2, "0");
-      return `${minutes}:${seconds}`;
-    }
-
-    function updateTimer() {
-      timer.textContent = formatTime(secondsLeft);
-      if (secondsLeft <= 0) {
-        submitTest();
-        return;
-      }
-      secondsLeft -= 1;
-    }
-
-    function submitTest() {
-      if (submitted) return;
-      submitted = true;
-      let correct = 0;
-      let wrong = 0;
-      let unattempted = 0;
-
-      questions.forEach((question, index) => {
-        const answer = getAnswer(index);
-        const note = document.getElementById(`note-${index}`);
-        if (!answer) {
-          unattempted += 1;
-          note.className = "answer-note bad";
-          note.textContent = `Unattempted. Correct answer: ${question.answerText}`;
-        } else if (answer.toLowerCase() === question.answer.toLowerCase()) {
-          correct += 1;
-          note.className = "answer-note ok";
-          note.textContent = "Correct.";
-        } else {
-          wrong += 1;
-          note.className = "answer-note bad";
-          note.textContent = `Incorrect. Correct answer: ${question.answerText}`;
-        }
-      });
-
-      const score = correct * 3 - wrong;
-      result.style.display = "block";
-      result.innerHTML = `<strong>Test Submitted</strong><div class="score-grid"><div class="score-box">Score<strong>${score}</strong></div><div class="score-box">Correct<strong>${correct}</strong></div><div class="score-box">Wrong<strong>${wrong}</strong></div><div class="score-box">Unattempted<strong>${unattempted}</strong></div></div>`;
-      document.querySelectorAll("input, button").forEach(element => {
-        element.disabled = true;
-      });
-      showAllNotes();
-    }
-
-    function showAllNotes() {
-      cards.forEach(card => card.classList.add("active"));
-      questionHeader.textContent = "Test Submitted";
-    }
-
-    document.querySelectorAll("input").forEach(input => {
-      input.addEventListener("change", updateStatus);
-      input.addEventListener("input", updateStatus);
-    });
-
-    prevBtn.addEventListener("click", () => showQuestion(current - 1));
-    nextBtn.addEventListener("click", saveAndNext);
-    markReviewBtn.addEventListener("click", markForReviewAndNext);
-    clearBtn.addEventListener("click", clearCurrentResponse);
-    submitBtn.addEventListener("click", submitTest);
-
-    renderPalette();
-    showQuestion(0);
-    updateTimer();
-    setInterval(() => {
-      if (!submitted) updateTimer();
-    }, 1000);
-  </script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily LRDI Set -16: CL Jaipur Repeaters Batch LRDI SET -4 | CAT 2024 Layout</title><style>
+:root{--brand:#078fc8;--brand-dark:#203540;--brand-mid:#318fd3;--line:#aebbc5;--paper:#fff;--muted:#355d78}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;color:#17212b;background:#fff;overflow:hidden}
+header{height:84px;background:#f3f5f7;border-bottom:1px solid #9eadb9;box-shadow:none}.topbar{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 62px 300px;align-items:stretch;padding:0}.title{background:var(--brand-dark);color:#fff;padding:10px 17px;display:flex;flex-direction:column;justify-content:center}.title h1{font-size:22px;line-height:1.1;margin:0;color:#fff;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:15px;color:#fff;margin-top:7px}.timer{align-self:stretch;display:grid;place-items:center;text-align:center;background:#fff;color:#111;border-left:1px solid #9eadb9;font-weight:700;font-size:18px}.timer span{font-size:22px;color:#111}.calc-toggle{align-self:center;justify-self:center;width:34px;height:34px;border:1px solid #d89c29;background:#f9c35b;color:#774d00;border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.calc-toggle svg{width:18px;height:18px;display:block}
+main{height:calc(100vh - 84px);display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:0;margin:0;padding:0;background:#fff;position:relative}.workspace{grid-column:1;grid-row:1;min-width:0;min-height:0;border-right:2px solid #41515c;display:flex;flex-direction:column;overflow:hidden}.question-card{height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 0 88px;background:#fff;scroll-behavior:smooth;overscroll-behavior:contain}.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;min-height:52px;margin:0;padding:10px 16px;border-bottom:1px solid #c6d0d8;background:#f5f7f9}.qnum{font-size:19px;font-weight:700}.source{display:block;font-size:13px;color:var(--muted);margin-top:2px}.block{border:0;border-bottom:1px solid #d7dde5;border-radius:0;padding:12px 18px;background:#fff;margin:0;font-size:18px;line-height:1.45}.set-info{display:grid;gap:10px}.set-info.bank,.set-info.coaching{grid-template-columns:1fr}.chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:10px}.chart-card{border:1px solid #c8d2da;padding:5px;background:#fff;overflow:auto}.chart-svg{display:block;width:100%;height:auto;max-height:440px}.set-info.bank .chart-svg,.set-info.coaching .chart-svg{max-height:390px}.svg-title{font-size:19px;font-weight:700}.svg-text{font-size:17px;fill:#111}.svg-label{font-size:14px}.svg-value{font-size:12px;font-weight:700}.svg-small{font-size:12px;fill:#111}.svg-axis{stroke:#111;stroke-width:2}.svg-bar{stroke:#111;stroke-width:2}.svg-legend{font-size:21px;font-weight:700}.axis{stroke:#111;stroke-width:2}.grid{stroke:#d9e0e5;stroke-width:1}.bar{stroke:#111;stroke-width:1.4}.qtext{font-size:20px;font-weight:700;margin:0;padding:22px 24px 14px;min-height:120px;white-space:pre-wrap}.options{display:grid;gap:14px;padding:0 24px 14px}.option{border:0;border-radius:0;padding:4px 0;display:flex;gap:12px;cursor:pointer;background:#fff;align-items:flex-start;font-size:20px;font-weight:700}.option:hover span:last-child{text-decoration:underline}.option input{margin-top:7px;flex:0 0 auto;transform:scale(1.25);accent-color:var(--brand)}.typed-answer{width:min(420px,calc(100% - 48px));font-size:20px;font-weight:700;border:1px solid #8795a1;border-radius:2px;padding:12px;background:#fff;margin:0 24px 14px}.math{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-weight:600}.frac{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;vertical-align:middle;line-height:1.05;margin:0 .12em}.frac>span:first-child{border-bottom:1.6px solid currentColor;padding:0 .22em .08em}.frac>span:last-child{padding:.08em .22em 0}.solution{display:none;margin:16px 24px 28px;padding:16px 18px 20px;border:1px solid var(--line);border-radius:4px;background:#fbfcfd;font-size:17px;line-height:1.6;white-space:normal;overflow:visible}.solution h3{margin:0 0 8px;color:var(--brand);font-size:18px}.solution-steps{margin:10px 0 0 22px;padding-left:20px}.solution-steps li{margin:0 0 12px;padding-left:4px;line-height:1.6}.solution-steps li strong{color:#173f54}.solution-formula{margin:10px 0 16px;padding:12px 14px;border:2px solid #7ea6bd;border-radius:4px;background:#eef8fd;color:#142b38}.solution-formula>strong{display:block;margin-bottom:7px;color:#173f54}.solution-formula>div{margin:6px 0;line-height:1.8}.solution .frac{font-size:1.04em;margin:0 .2em}.solution .frac>span:first-child{border-bottom-width:2px;padding-left:.35em;padding-right:.35em}.final-answer{margin-top:14px;padding:11px 12px;background:#fff7df;border:1px solid #e4c86d;font-size:18px;font-weight:800}.answer-note{margin:14px 24px 0;font-weight:800;font-size:17px}.ok{color:#157347}.bad{color:#b02a37}.muted{color:#5d6d7e}
+.navrow{position:fixed;left:0;right:300px;bottom:0;height:64px;display:flex;gap:10px;justify-content:flex-end;align-items:center;padding:10px 16px;background:#eef8fc;border-top:1px solid #b6cbd6}.navrow button{border:1px solid #aab7c1;background:#fff;padding:11px 16px;font-weight:700;cursor:pointer}.navrow .primary{background:#29a8df;color:#fff;border-color:#198fc0}
+aside{grid-column:2;grid-row:1;background:#e5f6fc;padding:14px;display:flex;flex-direction:column;overflow:auto}.question-palette-panel h2{font-size:18px;margin:-14px -14px 14px;padding:10px 14px;background:var(--brand-mid);color:#fff;font-weight:700}.qbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.qdot{height:44px;border:1px solid #a9b3bc;background:linear-gradient(#fff,#dfe5ea);border-radius:3px;cursor:pointer;font-size:18px;font-weight:700;color:#45515a;box-shadow:inset 0 1px 0 #fff}.qdot.current{outline:0;background:#e85b21;color:#fff;border-color:#c84815;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}.qdot.answered{background:#72bd3b;color:#fff;border-color:#4f9727;clip-path:polygon(14% 0,86% 0,100% 50%,86% 100%,14% 100%,0 50%)}.qdot.marked{background:#7950a5;color:#fff;border-color:#5d3a85;border-radius:50%;clip-path:none}.legend{display:grid;gap:10px;margin:18px 0;font-size:15px;color:#26333d}.legend i{display:inline-block;width:20px;height:20px;border-radius:3px;border:1px solid var(--line);vertical-align:-5px;margin-right:8px}.legend .current{background:#e85b21;border-color:#c84815}.legend .answered{background:#72bd3b;border-color:#4f9727}.legend .marked{background:#7950a5;border-color:#5d3a85;border-radius:50%}.side-submit{margin-top:auto;align-self:center;width:124px;height:42px;border:0;border-radius:2px;background:#7fd7f2;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+#result{display:none;padding:16px;margin:0;border-bottom:1px solid var(--line)}.score-grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px}.score-box{border:1px solid var(--line);border-radius:2px;padding:10px;background:#fbfcfd;font-size:16px}.score-box strong{display:block;font-size:24px;margin-top:2px}.calc-wrap{position:fixed!important;top:120px;left:52%;width:264px;z-index:50;border:1px solid #7c8991;box-shadow:0 7px 18px rgba(0,0,0,.28);display:none;padding:0;align-self:auto;background:#eee;overflow:visible}.calc-wrap.open{display:block}.calc-wrap[hidden]{display:none!important}.calc{padding:9px;background:#eee}.calc-title{display:flex;align-items:center;justify-content:space-between;background:#4a8fd0;color:#fff;font-size:17px;font-weight:700;margin:-9px -9px 9px;padding:8px 9px;cursor:grab;user-select:none;touch-action:none}.calc-title-actions{position:relative;z-index:4;display:flex;align-items:center;gap:8px}.calc-min{line-height:1;font-size:23px;font-weight:800}.calc-close{position:relative;z-index:5;width:34px;height:30px;border:1px solid #fff;background:#d94343;color:#fff;border-radius:3px;cursor:pointer;font-weight:900;font-size:25px;line-height:25px;touch-action:manipulation}.calc-close:hover,.calc-close:focus{background:#b92323;outline:2px solid #fff;outline-offset:1px}.calc-display{width:100%;height:39px;border:1px solid #b6b6b6;border-radius:1px;padding:6px;text-align:right;font-size:20px;margin-bottom:8px;background:#fff}.calc-subdisplay{height:27px;background:#fff;border:1px solid #d0d0d0;border-top:0;text-align:right;padding:2px 8px;font-size:18px;color:#666;margin:-8px 0 8px}.calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.calc-grid button{height:33px;border:1px solid #bababa;border-radius:4px;background:linear-gradient(#fff,#e7e7e7);font-weight:700;cursor:pointer;font-size:15px;color:#555;padding:0}.calc-grid button.op{background:#e9edf2}.calc-grid button.red{background:#e35d4f;color:#fff;border-color:#c94a3d}.calc-grid button.eq{grid-row:span 2;height:71px;background:#21c987;color:#fff;border-color:#19a66f}
+/* Reference-screen layout refinements */
+.question-card{padding-bottom:64px}.qhead{min-height:69px;padding:10px 15px}.source{margin-top:5px}.block{padding:12px 17px}.block>p:first-child{margin-top:0}.block>p:last-child{margin-bottom:0}.qtext{padding:23px 24px 15px}.options{gap:17px;padding-bottom:18px}.option{padding:7px 0}
+.navrow{height:61px;padding:10px 15px;background:#eaf8fd}.navrow button{padding:11px 17px}.navrow .primary{background:#0aa7e8;border-color:#078dc4}
+aside{background:#ddf5ff}.question-palette-panel h2{margin:0 -14px 14px;padding:12px 14px}.qdot{color:#344c5b}.qdot.current{background:#ff5b0b;border-color:#e84e00}.qdot.answered{background:#2eb94b;border-color:#24993d}.qdot.marked{background:#a34fa5;border-color:#873b89}.legend .current{background:#ff5b0b;border-color:#e84e00}.legend .answered{background:#2eb94b;border-color:#24993d}.legend .marked{background:#a34fa5;border-color:#873b89}.side-submit{background:#62d2f5}
+/* High-visibility graph presentation */
+.chart-grid{grid-template-columns:1fr;gap:18px}
+.chart-card{width:62%;margin:0 auto;border:3px solid #17212b;border-radius:5px;padding:12px;background:#fff;box-shadow:0 2px 6px rgba(23,33,43,.12)}
+.data-table{width:100%;border-collapse:collapse;table-layout:auto;margin:8px auto 4px;background:#fff;color:#101820;font-family:"Segoe UI",Arial,sans-serif;font-size:17px;font-weight:600}
+.data-table th,.data-table td{border:2px solid #17212b;padding:8px 10px;text-align:center;vertical-align:middle;white-space:normal}
+.data-table thead th{background:#dceef8;font-size:17px;font-weight:800}
+.data-table tbody tr:nth-child(even){background:#f4f8fb}
+.data-table tbody td:first-child{font-weight:800}
+.chart-svg,.set-info.bank .chart-svg,.set-info.coaching .chart-svg{max-height:none}
+.chart-svg text{font-family:"Segoe UI",Arial,sans-serif}
+.svg-title{font-size:25px;font-weight:800;fill:#101820}
+.svg-text{font-size:19px;font-weight:700;fill:#101820}
+.svg-label{font-size:18px;font-weight:700;fill:#101820}
+.svg-value{font-size:17px;font-weight:900;fill:#101820;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}
+.svg-stack-value{font-size:16px;font-weight:900;fill:#101820;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}
+.svg-stack-external,.svg-boundary-value{font-size:17px;font-weight:900;fill:#101820;paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.value-guide{stroke:#101820;stroke-width:2;fill:none}
+.svg-small{font-size:16px;font-weight:700;fill:#101820}
+.svg-axis,.axis{stroke:#101820;stroke-width:3.5}
+.grid{stroke:#a7b4bf;stroke-width:1.4}
+.svg-bar,.bar{stroke:#101820;stroke-width:2.8}
+.svg-legend{font-size:20px;font-weight:800}
+.plot-boundary{stroke:#101820;stroke-width:3.5;fill:none}
+.water-network .svg-label{font-size:18px;font-weight:800}.water-network .svg-value{font-size:16px;font-weight:800}.water-requirements rect{fill:#fff;stroke:#101820;stroke-width:3}.water-requirements text{fill:#101820}
+.common-info>p{margin:0 0 12px}.common-list-heading{margin:4px 0 5px}.common-list{list-style:none;margin:0 0 10px;padding:0 0 0 28px}.common-list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:3px;margin:2px 0;line-height:1.45}.common-list-marker{text-align:right;padding-right:7px;font-weight:500}
+/* CAT desktop proportions: common information 55%, question 30%, palette 15% */
+.topbar{grid-template-columns:minmax(0,1fr) 62px minmax(210px,15vw)}
+main{grid-template-columns:minmax(0,85fr) minmax(210px,15fr)}
+.workspace{min-height:0}.question-card{flex:1;height:auto;min-height:0;padding:0 0 70px;overflow:hidden;display:grid;grid-template-columns:minmax(0,11fr) minmax(360px,6fr)}
+.common-panel{min-width:0;min-height:0;overflow:auto;border-right:2px solid #41515c;background:#fff}
+.common-panel .block{min-height:100%;border-bottom:0;padding:14px 18px 28px}
+.common-panel .chart-card{width:96%}
+.common-panel .solution{margin:22px 0 12px;padding:18px 20px 22px}
+.set-info.bank .svg-title,.set-info.coaching .svg-title{font-size:17px}
+.question-panel{min-width:0;min-height:0;display:flex;flex-direction:column;background:#fff}
+.question-panel .qhead{flex:0 0 auto}.question-body{flex:1;min-height:0;overflow:auto;padding-bottom:10px}
+.question-panel .qtext{min-height:0;padding:20px 18px 16px;font-size:19px;line-height:1.45}
+.question-panel .options{padding:0 18px 16px;gap:14px}.question-panel .option{font-size:18px;line-height:1.4}
+.question-panel .typed-answer{width:calc(100% - 36px);margin:0 18px 16px}
+.question-panel .solution{margin:14px 18px 22px}.question-panel .answer-note{margin:12px 18px 0}
+.question-panel .navrow{position:fixed;z-index:12;left:0;right:max(210px,15vw);bottom:0;width:auto;height:70px;display:flex;align-items:center;gap:9px;padding:10px 16px;background:#fff;border-top:1px solid #b6c0c8}
+.question-panel .navrow button{min-width:0;padding:11px 20px;font-size:17px;line-height:1.25}
+.question-panel .navrow .previous-btn{display:none}.question-panel .navrow .save-btn{margin-left:auto;min-width:150px}
+aside{border-left:1px solid #41515c}.side-submit{width:118px;height:48px;font-size:18px;margin-bottom:0}
+@media(max-width:980px){html,body{overflow:auto}header{height:auto}.topbar{grid-template-columns:1fr 62px 1fr}.title h1{white-space:normal}main{height:auto;grid-template-columns:1fr;grid-template-rows:auto}.workspace,aside{grid-column:1;grid-row:auto}.calc-wrap{top:90px;left:12px}.qbar{grid-template-columns:repeat(8,1fr)}.question-card{display:block;height:auto;min-height:70vh;padding-bottom:16px}.common-panel,.question-panel{overflow:visible;border-right:0}.common-panel .chart-card{width:92%}.question-panel .navrow{position:static;right:auto;width:100%;height:auto;display:grid;grid-template-columns:1fr 1fr}.question-panel .navrow .save-btn{margin-left:0}.score-grid{grid-template-columns:1fr 1fr}.chart-grid{grid-template-columns:1fr}.chart-card{width:92%}}
+
+/* Daily LRDI visual audit: preserve full source information and improve legibility. */
+.common-panel .block{overflow:auto}
+.common-info{min-width:0;font-size:18px;line-height:1.62;color:#101820;font-weight:600}
+.common-info p{margin:0 0 14px}
+.common-info li{margin:7px 0;line-height:1.55}
+.common-info h2,.common-info h3{font-size:21px;line-height:1.35;margin:4px 0 12px;color:#173f54;font-weight:750}
+.common-info .set-info{display:grid;grid-template-columns:1fr;gap:14px;width:100%}
+.common-info .prompt{font-size:21px;line-height:1.45;font-weight:650}
+.common-info .chart-card,.common-panel .common-info .chart-card{box-sizing:border-box;width:100%;max-width:none;margin:12px 0 18px;padding:14px;border:3px solid #17212b;border-radius:5px;background:#fff;overflow:auto;box-shadow:0 2px 6px rgba(23,33,43,.12)}
+.common-info .info-card{font-size:18px;line-height:1.58;padding:12px 14px;border:2px solid #607584;border-radius:4px;background:#f9fcfe}
+.common-info table{display:table!important;visibility:visible!important;opacity:1!important;width:100%;min-width:580px;border-collapse:collapse;table-layout:auto;margin:14px 0 20px;background:#fff;color:#101820;font-size:18px;font-weight:650}
+.common-info th,.common-info td{height:44px;border:2px solid #17212b;padding:9px 12px;text-align:center;vertical-align:middle}
+.common-info thead th{background:#dceef8;font-weight:800}
+.common-info tbody tr:nth-child(even){background:#f5f9fc}
+.common-info tbody th,.common-info tbody td:first-child{font-weight:800}
+.common-info .given-grid{min-width:650px;font-size:19px}
+.common-info .given-grid th,.common-info .given-grid td{width:auto;min-width:82px;height:48px;padding:9px}
+.common-info .given-grid .row-head{min-width:86px;background:#eef6fb;text-align:left;padding-left:10px}
+.common-info svg{display:block!important;visibility:visible!important;opacity:1!important;width:100%;max-width:none;height:auto;min-height:260px;max-height:none;margin:14px auto 20px;background:#fff;overflow:visible}
+.common-info .chart-svg,.common-info .set-info .chart-svg{width:100%;height:auto;min-height:320px;max-height:none;background:#fff}
+.common-info svg text{font-family:"Segoe UI",Arial,sans-serif;fill:#101820}
+.common-info .svg-line{stroke:#101820;stroke-width:3;fill:none}
+.common-info .grid-text{font-size:36px;font-weight:900;fill:#101820}
+.common-info .source-title{font-size:30px;font-weight:700;fill:#101820}
+.common-info .source-body{font-size:30px;font-weight:850;fill:#101820}
+.common-info .source-body-small{font-size:27px;font-weight:850;fill:#101820}
+.common-info .source-line{stroke:#101820;stroke-width:3;fill:none}
+.common-info .source-box,.common-info .box{fill:#fff;stroke:#101820;stroke-width:3}
+.common-info .svg-text{font-size:24px;font-weight:750;fill:#101820}
+.common-info .svg-small{font-size:20px;font-weight:700;fill:#101820}
+.common-info .road{stroke:#253846;stroke-width:3.2;fill:none}
+.common-info .node{fill:#e9f5fb;stroke:#253846;stroke-width:2.5}
+.common-info .ntext{font:800 18px "Segoe UI",Arial,sans-serif;fill:#101820}
+.common-info .label{font:700 18px "Segoe UI",Arial,sans-serif;fill:#101820}
+.common-info .toll{font:900 17px "Segoe UI",Arial,sans-serif;fill:#d9362b}
+.common-info .balance-directions{margin:0 0 8px;padding:4px 2px;font-size:20px;line-height:1.4;white-space:normal}
+.common-info .balance-figures{display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:22px;align-items:end;width:100%;margin:8px 0}
+.common-info .balance-figure-card{display:flex;align-items:center;justify-content:center;min-width:0;padding:8px;background:#fff}
+.common-info .balance-figure-svg{display:block!important;visibility:visible!important;width:100%;min-width:0!important;height:auto;min-height:0!important;max-height:none;margin:0;background:#fff;overflow:visible}
+.common-info .example-balance{align-self:end;padding-bottom:20px}
+.common-info .balance-caption{margin:4px 0 12px;text-align:center;font-size:17px;font-weight:700}
+.common-info .balance-rules{margin-top:0}
+.question-panel .qtext{font-size:18px;line-height:1.5;font-weight:700;letter-spacing:.005em}
+.question-panel .qtext h2{font-size:1.02em;line-height:1.5;font-weight:700;margin:0}
+.question-panel .option{font-size:18px;line-height:1.5;font-weight:650}
+.question-panel .typed-answer{font-size:19px;font-weight:650}
+@media(max-width:980px){.common-info{font-size:17px;font-weight:600}.question-panel .qtext{font-size:17px}.question-panel .qtext h2{font-size:1.02em}.question-panel .option{font-size:17px}.common-info table{min-width:560px}.common-info svg{min-width:620px}.common-info .balance-figures{grid-template-columns:1fr}.common-info .balance-figure-svg{min-width:0!important}.common-info .example-balance{width:min(430px,100%);margin:0 auto;padding-bottom:8px}.common-info .chart-card{overflow:auto}.common-info .chart-card svg{min-width:620px}.common-info .chart-card .balance-figure-svg{min-width:0!important}.common-info .given-grid{min-width:620px}}
+
+</style></head>
+<body><header><div class="topbar"><div class="title"><h1>Daily LRDI Set -16: CL Jaipur Repeaters Batch LRDI SET -4</h1><div class="meta">CL Jaipur | LRDI | Daily LRDI Set -16 | 1 Set | 4 Questions | 20 Minutes | +3 correct, -1 wrong</div></div><button type="button" class="calc-toggle" id="calcToggle" title="Open calculator" aria-label="Open calculator"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" fill="#fff4cf" stroke="#8f6500" stroke-width="1.7"/><rect x="8" y="5" width="8" height="3" rx=".6" fill="#8f6500"/><circle cx="8.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="12" cy="12" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="12" r="1.2" fill="#8f6500"/><circle cx="8.5" cy="16" r="1.2" fill="#8f6500"/><circle cx="12" cy="16" r="1.2" fill="#8f6500"/><circle cx="15.5" cy="16" r="1.2" fill="#8f6500"/></svg></button><div class="timer">Time Left: <span id="time">20:00</span></div></div></header>
+<main><section class="workspace"><section id="result"></section><div class="question-card" id="host"></div></section><aside class="question-palette-panel"><h2>Question Bar</h2><div class="qbar" id="qbar"></div><div class="legend"><span><i class="current"></i>Current</span><span><i class="answered"></i>Answered</span><span><i class="marked"></i>Marked</span></div><button class="side-submit" onclick="submitTest()">Submit</button></aside></main>
+<aside class="calc-wrap" id="calcPopup"><div class="calc"><div class="calc-title" id="calcDragHandle"><span>Normal Calculator</span><span class="calc-title-actions"><span class="calc-min">-</span><button type="button" class="calc-close" id="calcClose" aria-label="Close calculator">×</button></span></div><input id="calcDisplay" class="calc-display" readonly><div class="calc-subdisplay" id="calcSubDisplay">0</div><div class="calc-grid"><button data-calc="MC">MC</button><button data-calc="MR">MR</button><button data-calc="MS">MS</button><button data-calc="M+">M+</button><button data-calc="M-">M-</button><button data-calc="B" class="red">Back</button><button data-calc="C" class="red">C</button><button data-calc="+/-" class="red">+/-</button><button data-calc="sqrt">sqrt</button><button data-calc="%">%</button><button data-calc="7">7</button><button data-calc="8">8</button><button data-calc="9">9</button><button data-calc="/">/</button><button data-calc="1/x">1/x</button><button data-calc="4">4</button><button data-calc="5">5</button><button data-calc="6">6</button><button data-calc="*">*</button><button data-calc="=" class="eq">=</button><button data-calc="1">1</button><button data-calc="2">2</button><button data-calc="3">3</button><button data-calc="-">-</button><button data-calc="0">0</button><button data-calc=".">.</button><button data-calc="+">+</button></div></div></aside>
+<script>const TITLE="Daily LRDI Set -16: CL Jaipur Repeaters Batch LRDI SET -4",MINUTES=20,questions=[{"group":"set","q":"<div class=\"q-id\">Q.43 [2450309]<\/div>\n              <h2 class=\"q-title\">If two-wheelers are not allowed on road Q-R for a period of time, what is the maximum distance (in km) that a person can travel by bike from K to S?<\/h2>","answer":"D","solution":"<div class=\"final-answer\">Final Answer: Option 4 - 56<\/div>","options":["53","54","55","56"]},{"group":"set","q":"<div class=\"q-id\">Q.44 [2450309]<\/div>\n              <h2 class=\"q-title\">On a particular day, the roads from P to R and R to S were heavily congested with four-wheeler traffic. As a result, Kailash decided to travel from K to R by taxi and from R to S by bike. What is the maximum amount (in Rs.) that Kailash could have paid for this trip?<\/h2>","answer":"1620","solution":"<div class=\"final-answer\">Final Answer: 1620<\/div>","type":"text"},{"group":"set","q":"<div class=\"q-id\">Q.45 [2450309]<\/div>\n              <h2 class=\"q-title\">Three friends decide to travel from Kaushambi to Triveni Sangam, either together in a taxi or separately as pillion riders on bikes. What is the difference between the maximum and minimum possible amounts (in Rs.) they could spend on travel?<\/h2>","answer":"C","solution":"<div class=\"final-answer\">Final Answer: Option 3 - 3675<\/div>","options":["2925","3275","3675","3925"]},{"group":"set","q":"<div class=\"q-id\">Q.46 [2450309]<\/div>\n              <h2 class=\"q-title\">On certain important dates, heavy traffic was observed, prompting the government to impose an additional toll on four-wheelers along routes M-Q and M-P. This adjustment made the cost of traveling along K-M-Q-S and K-M-P-R-S equal to the cost of traveling along K-N-P-R-Q-S. What was the extra amount (in Rs.) charged on route M-Q compared to M-P at that time?<\/h2>","answer":"280","solution":"<div class=\"final-answer\">Final Answer: 280<\/div>","type":"text"}];
+const charts={"set":""},passages={"set":"<p><strong>Directions for questions 43 to 46:<\/strong> Answer the questions on the basis of the information given below.<\/p>\n              <p>Kaushambi is a city located at some distance from Triveni Sangam in Prayagraj. Several roads connect the two cities, as depicted in the road map below. The map may not be drawn to scale. Traffic on each road flows only in the direction indicated.<\/p>\n              <svg width=\"720\" height=\"245\" viewBox=\"0 0 720 245\" role=\"img\" aria-label=\"Directed road map from Kaushambi to Triveni Sangam\" style=\"max-width:100%;height:auto;margin:14px 0 18px;background:#fff;border:1px solid #ddd\">\n                <defs><marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"8\" refY=\"3\" orient=\"auto\" markerUnits=\"strokeWidth\"><path d=\"M0,0 L0,6 L9,3 z\" fill=\"#333\"><\/path><\/marker><\/defs>\n                <style>.road{stroke:#333;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.node{fill:#eef3f7;stroke:#555;stroke-width:2}.ntext{font:700 16px Arial;text-anchor:middle;dominant-baseline:middle;fill:#333}.label{font:16px Arial;fill:#333}.toll{font:700 15px Arial;fill:#f04b42}<\/style>\n                <circle class=\"node\" cx=\"80\" cy=\"118\" r=\"22\"><\/circle><text class=\"ntext\" x=\"80\" y=\"118\">K<\/text><text class=\"label\" x=\"8\" y=\"155\">Kaushambi<\/text>\n                <circle class=\"node\" cx=\"205\" cy=\"48\" r=\"22\"><\/circle><text class=\"ntext\" x=\"205\" y=\"48\">M<\/text>\n                <circle class=\"node\" cx=\"205\" cy=\"188\" r=\"22\"><\/circle><text class=\"ntext\" x=\"205\" y=\"188\">N<\/text>\n                <circle class=\"node\" cx=\"350\" cy=\"118\" r=\"22\"><\/circle><text class=\"ntext\" x=\"350\" y=\"118\">P<\/text>\n                <circle class=\"node\" cx=\"515\" cy=\"48\" r=\"22\"><\/circle><text class=\"ntext\" x=\"515\" y=\"48\">Q<\/text>\n                <circle class=\"node\" cx=\"515\" cy=\"188\" r=\"22\"><\/circle><text class=\"ntext\" x=\"515\" y=\"188\">R<\/text>\n                <circle class=\"node\" cx=\"635\" cy=\"118\" r=\"22\"><\/circle><text class=\"ntext\" x=\"635\" y=\"118\">S<\/text><text class=\"label\" x=\"665\" y=\"106\">Triveni<\/text><text class=\"label\" x=\"665\" y=\"126\">Sangam<\/text>\n                <path class=\"road\" d=\"M100 107 L184 60\"><\/path><text class=\"label\" x=\"115\" y=\"72\">15 km<\/text>\n                <path class=\"road\" d=\"M100 132 L184 176\"><\/path><text class=\"label\" x=\"112\" y=\"178\">18 km<\/text><text class=\"toll\" x=\"119\" y=\"144\" transform=\"rotate(33 119 144)\">TOLL<\/text>\n                <path class=\"road\" d=\"M228 48 L491 48\"><\/path><text class=\"label\" x=\"340\" y=\"32\">17 km<\/text>\n                <path class=\"road\" d=\"M223 61 L331 105\"><\/path><text class=\"label\" x=\"280\" y=\"78\">10 km<\/text>\n                <path class=\"road\" d=\"M227 178 L329 128\"><\/path><text class=\"label\" x=\"279\" y=\"154\">10 km<\/text>\n                <path class=\"road\" d=\"M229 188 L491 188\"><\/path><text class=\"label\" x=\"350\" y=\"211\">19 km<\/text>\n                <path class=\"road\" d=\"M371 129 L493 176\"><\/path><text class=\"label\" x=\"418\" y=\"160\">12 km<\/text><text class=\"toll\" x=\"416\" y=\"137\" transform=\"rotate(23 416 137)\">TOLL<\/text>\n                <path class=\"road\" d=\"M515 166 L515 72\"><\/path><text class=\"label\" x=\"468\" y=\"120\">14 km<\/text>\n                <path class=\"road\" d=\"M535 58 L615 102\"><\/path><text class=\"label\" x=\"574\" y=\"62\">13 km<\/text><text class=\"toll\" x=\"553\" y=\"84\" transform=\"rotate(31 553 84)\">TOLL<\/text>\n                <path class=\"road\" d=\"M535 178 L616 135\"><\/path><text class=\"label\" x=\"575\" y=\"166\">16 km<\/text>\n              <\/svg>\n              <p>It is also known that:<\/p>\n              <ol type=\"i\">\n                <li>There is a toll of Rs.75 on road K-N and Rs.50 on roads P-R and Q-S for four-wheelers. For two-wheelers, the toll at all three gates is Rs.25.<\/li>\n                <li>Bike rides with pillion riders are available at a rate of Rs.15 per km. If the distance exceeds 10 km, an additional charge of Rs.10 per km applies over and above the existing rate.<\/li>\n                <li>Taxi rides are available at a rate of Rs.25 per km. If the distance exceeds 35 km, an additional charge of Rs.10 per km applies over and above the existing rate. A taxi can accommodate a maximum of three passengers, excluding the driver.<\/li>\n              <\/ol>"};
+const labels=Array.from({length:26},(_,i)=>String.fromCharCode(65+i));let current=0,submitted=false,secondsLeft=MINUTES*60,timerId=null;
+const responses=Array(questions.length).fill(null),marked=Array(questions.length).fill(false);
+const host=document.getElementById("host"),qbar=document.getElementById("qbar"),result=document.getElementById("result");
+function renderBar(){qbar.innerHTML=questions.map((_,i)=>`<button class="qdot ${i===current?"current":responses[i]!==null?"answered":""} ${marked[i]?"marked":""}" onclick="go(${i})">${i+1}</button>`).join("")}
+function normalize(v){return String(v??"").replaceAll(",","").replace(/rs\.?/gi,"").replace(/%$/,"").replace(/\s+/g," ").trim().toLowerCase()}
+function save(){if(submitted)return;const radio=host.querySelector('input[name="answer"]:checked'),typed=host.querySelector('input.typed-answer');if(radio)responses[current]=radio.value;else if(typed)responses[current]=typed.value.trim()||null}
+function render(){const x=questions[current],commonText=passages[x.group]?`<div class="common-info">${passages[x.group]}</div>`:"",control=x.type==="text"?`<input class="typed-answer" name="answer" autocomplete="off" value="${responses[current]??""}" placeholder="Type your answer" ${submitted?"disabled":""}>`:`<div class="options">${x.options.map((o,i)=>`<label class="option"><input type="radio" name="answer" value="${labels[i]}" ${responses[current]===labels[i]?"checked":""} ${submitted?"disabled":""}><span>(${labels[i]}) ${o}</span></label>`).join("")}</div>`;host.innerHTML=`<section class="common-panel"><div class="block">${commonText}${charts[x.group]}<div id="solution" class="solution"><h3>Detailed Solution</h3>${x.solution}</div></div></section><section class="question-panel"><div class="qhead"><div><div class="qnum">Question ${current+1} of ${questions.length}</div><div class="source">${TITLE} | Source Q${current+1}</div></div></div><div class="question-body"><div class="qtext">${x.q}</div>${control}<div id="note" class="answer-note"></div></div><div class="navrow"><button class="mark-btn" onclick="markNext()">Mark for Review & Next</button><button class="clear-btn" onclick="clearResponse()" ${submitted?"disabled":""}>Clear Response</button><button class="previous-btn" onclick="go(${current-1})">Previous</button><button class="primary save-btn" onclick="next()">Save & Next</button></div></section>`;host.querySelectorAll('input[name="answer"]').forEach(el=>{el.addEventListener("change",()=>{responses[current]=el.value;renderBar()});el.addEventListener("input",()=>{responses[current]=el.value.trim()||null;renderBar()})});if(submitted)review();renderBar()}
+function go(i){save();if(i<0||i>=questions.length)return;current=i;render();document.querySelector(".question-card").scrollTop=0}
+function next(){save();go(Math.min(current+1,questions.length-1))}
+function markNext(){save();marked[current]=true;go(Math.min(current+1,questions.length-1))}
+function clearResponse(){if(submitted)return;responses[current]=null;render()}
+function isCorrect(x,response){return x.type==="text"?normalize(response)===normalize(x.answer):response===x.answer}
+function answerText(x){return x.type==="text"?x.answer:`(${x.answer})`}
+function review(){const x=questions[current],note=document.getElementById("note");document.getElementById("solution").style.display="block";if(responses[current]===null){note.className="answer-note muted";note.textContent=`Unattempted. Correct answer: ${answerText(x)}`}else if(isCorrect(x,responses[current])){note.className="answer-note ok";note.textContent="Correct."}else{note.className="answer-note bad";note.textContent=`Wrong. Correct answer: ${answerText(x)}`}}
+function submitTest(auto=false){if(submitted)return;save();if(!auto&&!confirm("Submit this test now? You will not be able to change responses afterward."))return;submitted=true;clearInterval(timerId);let c=0,w=0,u=0;questions.forEach((x,i)=>{if(responses[i]===null)u++;else if(isCorrect(x,responses[i]))c++;else w++});const score=c*3-w;result.style.display="block";result.innerHTML=`<h2>Test Submitted</h2><div class="score-grid"><div class="score-box">Score<strong>${score}</strong></div><div class="score-box">Correct<strong>${c}</strong></div><div class="score-box">Wrong<strong>${w}</strong></div><div class="score-box">Attempted<strong>${c+w}</strong></div><div class="score-box">Unattempted<strong>${u}</strong></div></div>`;render();result.scrollIntoView({behavior:"smooth"})}
+function tick(){const m=Math.floor(secondsLeft/60),s=secondsLeft%60;document.getElementById("time").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(secondsLeft<=0){submitTest(true);return}secondsLeft--}
+function calcEval(expr){if(!/^[0-9+\-*/().%\s]+$/.test(expr))return "Error";return Function("return ("+expr.replace(/%/g,"/100")+")")()}
+function updateCalcSub(){document.getElementById("calcSubDisplay").textContent=document.getElementById("calcDisplay").value||"0"}
+const calcPopup=document.getElementById("calcPopup"),calcHandle=document.getElementById("calcDragHandle"),calcClose=document.getElementById("calcClose");
+function closeCalculator(e){if(e){e.preventDefault();e.stopPropagation()}dragCalc=false;calcPopup.classList.remove("open");calcPopup.hidden=true;calcPopup.setAttribute("aria-hidden","true")}
+document.getElementById("calcToggle").onclick=()=>{if(calcPopup.classList.contains("open")){closeCalculator();return}calcPopup.hidden=false;calcPopup.setAttribute("aria-hidden","false");calcPopup.classList.add("open");if(!calcPopup.dataset.moved){calcPopup.style.left="52%";calcPopup.style.top="120px"}};
+calcClose.addEventListener("pointerdown",closeCalculator);
+calcClose.addEventListener("click",closeCalculator);
+calcPopup.addEventListener("click",e=>{if(e.target.closest("#calcClose"))closeCalculator(e)},true);
+document.querySelectorAll("[data-calc]").forEach(btn=>btn.onclick=()=>{const d=document.getElementById("calcDisplay"),v=btn.dataset.calc;if(["MC","MR","MS","M+","M-"].includes(v))return;if(v==="C")d.value="";else if(v==="B")d.value=d.value.slice(0,-1);else if(v==="+/-")d.value=d.value.startsWith("-")?d.value.slice(1):"-"+d.value;else if(v==="sqrt"){try{d.value=Math.sqrt(Number(calcEval(d.value||"0")))}catch{d.value="Error"}}else if(v==="1/x"){try{d.value=1/Number(calcEval(d.value||"0"))}catch{d.value="Error"}}else if(v==="="){try{d.value=calcEval(d.value)}catch{d.value="Error"}}else d.value+=v;updateCalcSub()});
+let dragCalc=false,calcDx=0,calcDy=0;
+calcHandle.onpointerdown=e=>{if(e.target.closest("#calcClose"))return;dragCalc=true;const r=calcPopup.getBoundingClientRect();calcDx=e.clientX-r.left;calcDy=e.clientY-r.top;calcPopup.style.left=r.left+"px";calcPopup.style.top=r.top+"px";calcPopup.style.right="auto";calcPopup.dataset.moved="1";e.preventDefault()};
+document.addEventListener("pointermove",e=>{if(!dragCalc)return;const maxX=innerWidth-calcPopup.offsetWidth-4,maxY=innerHeight-calcPopup.offsetHeight-4;calcPopup.style.left=Math.max(4,Math.min(maxX,e.clientX-calcDx))+"px";calcPopup.style.top=Math.max(4,Math.min(maxY,e.clientY-calcDy))+"px"});
+document.addEventListener("pointerup",()=>{dragCalc=false});
+document.addEventListener("pointercancel",()=>{dragCalc=false});
+render();tick();timerId=setInterval(tick,1000);
+</script></body></html>
