@@ -5681,6 +5681,17 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 20
+  },
+  {
+    "title": "QA Sectional Test - 1",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 1.html",
+    "original": "QA Sectional Test - 1.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 50,
+    "questions": 25
   }
 ];
 
