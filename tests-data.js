@@ -2547,6 +2547,116 @@ window.CAT_TESTS = [
     "minutes": 60
   },
   {
+    "title": "LRDI Sectional Test 16",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 16.html",
+    "original": "LRDI Sectional Test 16.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 17",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 17.html",
+    "original": "LRDI Sectional Test 17.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 18",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 18.html",
+    "original": "LRDI Sectional Test 18.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 19",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 19.html",
+    "original": "LRDI Sectional Test 19.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 20",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 20.html",
+    "original": "LRDI Sectional Test 20.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 21",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 21.html",
+    "original": "LRDI Sectional Test 21.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 22",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 22.html",
+    "original": "LRDI Sectional Test 22.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 23",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 23.html",
+    "original": "LRDI Sectional Test 23.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 24",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 24.html",
+    "original": "LRDI Sectional Test 24.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "LRDI Sectional Test 25",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 25.html",
+    "original": "LRDI Sectional Test 25.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
     "title": "QA Sectional Test - 1",
     "file": "tests/Sectional Test/QA/QA Sectional Test - 1.html",
     "original": "QA Sectional Test - 1.html",
