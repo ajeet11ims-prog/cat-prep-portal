@@ -5746,5 +5746,16 @@
     ],
     "minutes": 40,
     "questions": 20
+  },
+  {
+    "title": "QA Sectional Test - 7",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 7.html",
+    "original": "QA Sectional Test - 7.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 50,
+    "questions": 24
   }
 ]
