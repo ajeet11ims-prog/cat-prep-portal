@@ -2402,8 +2402,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 2",
@@ -2413,8 +2412,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 3",
@@ -2424,8 +2422,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 750
   },
   {
     "title": "LRDI Sectional Test 4",
@@ -2435,8 +2432,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 5",
@@ -2446,8 +2442,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 6",
@@ -2457,8 +2452,8 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60,
+    "questions": 5
   },
   {
     "title": "LRDI Sectional Test 7",
@@ -2468,8 +2463,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 10
   },
   {
     "title": "LRDI Sectional Test 8",
@@ -2479,8 +2473,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 9",
@@ -2490,8 +2483,7 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
-    "minutes": 50,
-    "questions": 25
+    "minutes": 60
   },
   {
     "title": "LRDI Sectional Test 10",
@@ -2501,8 +2493,134 @@ window.CAT_TESTS = [
       "Sectional Test",
       "LRDI"
     ],
+    "minutes": 60,
+    "questions": 8
+  },
+  {
+    "title": "LRDI Sectional Test 11",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 11.html",
+    "original": "LRDI Sectional Test 11.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 5
+  },
+  {
+    "title": "LRDI Sectional Test 12",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 12.html",
+    "original": "LRDI Sectional Test 12.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "LRDI Sectional Test 13",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 13.html",
+    "original": "LRDI Sectional Test 13.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "LRDI Sectional Test 14",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 14.html",
+    "original": "LRDI Sectional Test 14.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "LRDI Sectional Test 15",
+    "file": "tests/Sectional Test/LRDI/LRDI Sectional Test 15.html",
+    "original": "LRDI Sectional Test 15.html",
+    "folders": [
+      "Sectional Test",
+      "LRDI"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "QA Sectional Test - 1",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 1.html",
+    "original": "QA Sectional Test - 1.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
     "minutes": 50,
     "questions": 25
+  },
+  {
+    "title": "QA Sectional Test - 2",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 2.html",
+    "original": "QA Sectional Test - 2.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 50,
+    "questions": 25
+  },
+  {
+    "title": "QA Sectional Test - 3",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 3.html",
+    "original": "QA Sectional Test - 3.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "QA Sectional Test - 4",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 4.html",
+    "original": "QA Sectional Test - 4.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "QA Sectional Test - 5",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 5.html",
+    "original": "QA Sectional Test - 5.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 60
+  },
+  {
+    "title": "QA Sectional Test - 6",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 6.html",
+    "original": "QA Sectional Test - 6.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 20
+  },
+  {
+    "title": "QA Sectional Test - 7",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 7.html",
+    "original": "QA Sectional Test - 7.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 50,
+    "questions": 24
   },
   {
     "title": "DI - Bar Graph - Test - 11",
@@ -5681,82 +5799,6 @@ window.CAT_TESTS = [
     ],
     "minutes": 40,
     "questions": 20
-  },
-  {
-    "title": "QA Sectional Test - 1",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 1.html",
-    "original": "QA Sectional Test - 1.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 50,
-    "questions": 25
-  },
-  {
-    "title": "QA Sectional Test - 2",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 2.html",
-    "original": "QA Sectional Test - 2.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 50,
-    "questions": 25
-  },
-  {
-    "title": "QA Sectional Test - 3",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 3.html",
-    "original": "QA Sectional Test - 3.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "QA Sectional Test - 4",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 4.html",
-    "original": "QA Sectional Test - 4.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "QA Sectional Test - 5",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 5.html",
-    "original": "QA Sectional Test - 5.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 60
-  },
-  {
-    "title": "QA Sectional Test - 6",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 6.html",
-    "original": "QA Sectional Test - 6.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 40,
-    "questions": 20
-  },
-  {
-    "title": "QA Sectional Test - 7",
-    "file": "tests/Sectional Test/QA/QA Sectional Test - 7.html",
-    "original": "QA Sectional Test - 7.html",
-    "folders": [
-      "Sectional Test",
-      "QA"
-    ],
-    "minutes": 50,
-    "questions": 24
   }
 ];
 
