@@ -2733,6 +2733,171 @@ window.CAT_TESTS = [
     "questions": 24
   },
   {
+    "title": "QA Sectional Test - 8",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 8.html",
+    "original": "QA Sectional Test - 8.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 9",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 9.html",
+    "original": "QA Sectional Test - 9.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 10",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 10.html",
+    "original": "QA Sectional Test - 10.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 11",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 11.html",
+    "original": "QA Sectional Test - 11.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 12",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 12.html",
+    "original": "QA Sectional Test - 12.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 13",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 13.html",
+    "original": "QA Sectional Test - 13.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 14",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 14.html",
+    "original": "QA Sectional Test - 14.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 15",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 15.html",
+    "original": "QA Sectional Test - 15.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 16",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 16.html",
+    "original": "QA Sectional Test - 16.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 17",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 17.html",
+    "original": "QA Sectional Test - 17.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 18",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 18.html",
+    "original": "QA Sectional Test - 18.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 19",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 19.html",
+    "original": "QA Sectional Test - 19.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 20",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 20.html",
+    "original": "QA Sectional Test - 20.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 21",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 21.html",
+    "original": "QA Sectional Test - 21.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "QA Sectional Test - 22",
+    "file": "tests/Sectional Test/QA/QA Sectional Test - 22.html",
+    "original": "QA Sectional Test - 22.html",
+    "folders": [
+      "Sectional Test",
+      "QA"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
     "title": "DI - Bar Graph - Test - 11",
     "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
     "original": "DI - Bar Graph - Test - 11.html",
