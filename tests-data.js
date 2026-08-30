@@ -3798,6 +3798,116 @@ window.CAT_TESTS = [
     "questions": 24
   },
   {
+    "title": "VARC Sectional Test - 16",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 16.html",
+    "original": "VARC Sectional Test - 16.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 17",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 17.html",
+    "original": "VARC Sectional Test - 17.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 18",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 18.html",
+    "original": "VARC Sectional Test - 18.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 19",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 19.html",
+    "original": "VARC Sectional Test - 19.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 20",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 20.html",
+    "original": "VARC Sectional Test - 20.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 21",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 21.html",
+    "original": "VARC Sectional Test - 21.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 22",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 22.html",
+    "original": "VARC Sectional Test - 22.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 23",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 23.html",
+    "original": "VARC Sectional Test - 23.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 24",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 24.html",
+    "original": "VARC Sectional Test - 24.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
+    "title": "VARC Sectional Test - 25",
+    "file": "tests/Sectional Test/VARC/VARC Sectional Test - 25.html",
+    "original": "VARC Sectional Test - 25.html",
+    "folders": [
+      "Sectional Test",
+      "VARC"
+    ],
+    "minutes": 40,
+    "questions": 24
+  },
+  {
     "title": "DI - Bar Graph - Test - 11",
     "file": "tests/Topic Test/LRDI/DI - Bar Graph - Test - 11.html",
     "original": "DI - Bar Graph - Test - 11.html",
