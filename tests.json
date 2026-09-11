@@ -1174,6 +1174,56 @@
     "questions": 5
   },
   {
+    "title": "Daily RC - 6",
+    "file": "tests/Daily RC/Daily RC - 6.html",
+    "original": "Daily RC - 6.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 4
+  },
+  {
+    "title": "Daily RC - 7",
+    "file": "tests/Daily RC/Daily RC - 7.html",
+    "original": "Daily RC - 7.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 3
+  },
+  {
+    "title": "Daily RC - 8",
+    "file": "tests/Daily RC/Daily RC - 8.html",
+    "original": "Daily RC - 8.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 3
+  },
+  {
+    "title": "Daily RC - 9",
+    "file": "tests/Daily RC/Daily RC - 9.html",
+    "original": "Daily RC - 9.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 5
+  },
+  {
+    "title": "Daily RC - 10",
+    "file": "tests/Daily RC/Daily RC - 10.html",
+    "original": "Daily RC - 10.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 4
+  },
+  {
     "title": "LRDI CAT 2017 SLOT -1 Set -3",
     "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
     "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
