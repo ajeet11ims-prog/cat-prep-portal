@@ -1224,6 +1224,56 @@ window.CAT_TESTS = [
     "questions": 4
   },
   {
+    "title": "Daily RC - 11",
+    "file": "tests/Daily RC/Daily RC - 11.html",
+    "original": "Daily RC - 11.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 5
+  },
+  {
+    "title": "Daily RC - 12",
+    "file": "tests/Daily RC/Daily RC - 12.html",
+    "original": "Daily RC - 12.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 3
+  },
+  {
+    "title": "Daily RC - 13",
+    "file": "tests/Daily RC/Daily RC - 13.html",
+    "original": "Daily RC - 13.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 4
+  },
+  {
+    "title": "Daily RC - 14",
+    "file": "tests/Daily RC/Daily RC - 14.html",
+    "original": "Daily RC - 14.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 4
+  },
+  {
+    "title": "Daily RC - 15",
+    "file": "tests/Daily RC/Daily RC - 15.html",
+    "original": "Daily RC - 15.html",
+    "folders": [
+      "Daily RC"
+    ],
+    "minutes": 10,
+    "questions": 8
+  },
+  {
     "title": "LRDI CAT 2017 SLOT -1 Set -3",
     "file": "tests/PYQ/2017/LRDI/2017/LRDI CAT 2017 SLOT -1 Set -3.html",
     "original": "LRDI CAT 2017 SLOT -1 Set -3.html",
