@@ -5730,6 +5730,97 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "Quadratic Equations Test -1",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -1.html",
+    "original": "Quadratic Equations Test -1.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -2",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -2.html",
+    "original": "Quadratic Equations Test -2.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -3",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -3.html",
+    "original": "Quadratic Equations Test -3.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -4",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -4.html",
+    "original": "Quadratic Equations Test -4.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -5",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -5.html",
+    "original": "Quadratic Equations Test -5.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -6",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -6.html",
+    "original": "Quadratic Equations Test -6.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 45,
+    "questions": 20
+  },
+  {
+    "title": "Quadratic Equations Test -7",
+    "file": "tests/Topic Test/QA/Algebra/Quadratic Equation/Quadratic Equations Test -7.html",
+    "original": "Quadratic Equations Test -7.html",
+    "folders": [
+      "Topic Test",
+      "QA",
+      "Algebra",
+      "Quadratic Equation"
+    ],
+    "minutes": 15,
+    "questions": 4
+  },
+  {
     "title": "Career Launcher Percentage Test 1",
     "file": "tests/Topic Test/QA/Arithmetic/1.Percentage/Career Launcher Percentage Test 1.html",
     "original": "Career Launcher Percentage Test 1.html",
