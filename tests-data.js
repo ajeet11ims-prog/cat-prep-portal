@@ -67,6 +67,174 @@ window.CAT_TESTS = [
     "questions": 1
   },
   {
+    "title": "algebra-01",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-01.html",
+    "original": "algebra-01.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-02",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-02.html",
+    "original": "algebra-02.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-03",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-03.html",
+    "original": "algebra-03.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-04",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-04.html",
+    "original": "algebra-04.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-05",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-05.html",
+    "original": "algebra-05.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-06",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-06.html",
+    "original": "algebra-06.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-07",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-07.html",
+    "original": "algebra-07.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-08",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-08.html",
+    "original": "algebra-08.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-09",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-09.html",
+    "original": "algebra-09.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-10",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-10.html",
+    "original": "algebra-10.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-11",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-11.html",
+    "original": "algebra-11.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-12",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-12.html",
+    "original": "algebra-12.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-13",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-13.html",
+    "original": "algebra-13.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
+    "title": "algebra-14",
+    "file": "tests/Area Wise Test/QA/Algebra/algebra-14.html",
+    "original": "algebra-14.html",
+    "folders": [
+      "Area Wise Test",
+      "QA",
+      "Algebra"
+    ],
+    "minutes": 40,
+    "questions": 22
+  },
+  {
     "title": "Area Wise -Arithmetic Test -1",
     "file": "tests/Area Wise Test/QA/Arithmetic/Area Wise - Arithmetic Test  -1.html",
     "original": "Area Wise - Arithmetic Test  -1.html",
